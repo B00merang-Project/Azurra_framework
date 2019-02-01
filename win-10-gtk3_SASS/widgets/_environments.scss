@@ -109,6 +109,11 @@
     }
 
     &, .menubar { background-color: $taskbar_bg_color; }
+    
+    & menubar, & menubar menuitem, & togglebutton {
+      border-color: transparent;
+      background-color: transparent;
+    }
 
     & .menubar > .menuitem {
       padding-top: 0;
@@ -151,7 +156,8 @@
       &:checked,
       &:active {
         color: $theme_selected_fg_color;
-        background-color: $theme_selected_bg_color;
+        background-color: gtkalpha(gtkshade($theme_selected_bg_color, 0.6), 0.3);
+        box-shadow: inset 0 -2px gtkshade($theme_selected_bg_color, 0.8);
       }
     }
 
@@ -163,6 +169,10 @@
 
     NaTrayApplet {
       -NaTrayApplet-icon-padding: 2;
+    }
+    
+    #PanelApplet label {
+      color: $taskbar_fg_color;
     }
   }
 
