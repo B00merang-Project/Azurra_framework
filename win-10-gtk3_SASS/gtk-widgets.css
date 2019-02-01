@@ -913,7 +913,6 @@ notebook {
     border-radius: 0;
     border-color: @borders;
     color: @theme_fg_color;
-    margin: 2px;
     background-color: @theme_bg_color; }
     notebook tab:checked {
       border-color: @borders;
@@ -934,37 +933,37 @@ notebook {
       box-shadow: 0 1px @borders; }
       notebook > header.top > tabs > tab {
         border-bottom: none;
-        margin-bottom: 0; }
+        margin-top: 2px; }
         notebook > header.top > tabs > tab:checked {
           border-top-left-radius: 0px;
           border-top-right-radius: 0px;
-          margin: 0;
+          margin-top: 0;
           margin-bottom: -1px; }
     notebook > header.bottom {
       box-shadow: 0 -1px @borders; }
       notebook > header.bottom > tabs > tab {
         border-top: none;
-        margin-top: 0; }
+        margin-bottom: 2px; }
         notebook > header.bottom > tabs > tab:checked {
           border-bottom-left-radius: 0px;
           border-bottom-right-radius: 0px;
-          margin: 0;
+          margin-bottom: 0;
           margin-top: -1px; }
     notebook > header.right {
       box-shadow: -1px 0 @borders; }
       notebook > header.right > tabs > tab {
         border-left: none;
-        margin-left: 0; }
+        margin-right: 2px; }
         notebook > header.right > tabs > tab:checked {
           border-top-right-radius: 0px;
           border-bottom-right-radius: 0px;
-          margin: 0;
+          margin-right: 0;
           margin-left: -1px; }
     notebook > header.left {
       box-shadow: 1px 0 @borders; }
       notebook > header.left > tabs > tab {
         border-right: none;
-        margin-right: 0; }
+        margin-left: 2px; }
         notebook > header.left > tabs > tab:checked {
           border-top-left-radius: 0px;
           border-bottom-left-radius: 0px;
@@ -1802,6 +1801,14 @@ toolbar {
   .linked button:only-child, .linked .raised button:only-child, .inline-toolbar button:only-child, .inline-toolbar .raised button:only-child, .primary-toolbar button:only-child, .primary-toolbar .raised button:only-child {
     border-width: 1px;
     border-radius: 0px; }
+  .linked button:focus, .linked button:hover, .linked button:active, .linked button:checked, .linked .raised button:focus, .linked .raised button:hover, .linked .raised button:active, .linked .raised button:checked, .inline-toolbar button:focus, .inline-toolbar button:hover, .inline-toolbar button:active, .inline-toolbar button:checked, .inline-toolbar .raised button:focus, .inline-toolbar .raised button:hover, .inline-toolbar .raised button:active, .inline-toolbar .raised button:checked, .primary-toolbar button:focus, .primary-toolbar button:hover, .primary-toolbar button:active, .primary-toolbar button:checked, .primary-toolbar .raised button:focus, .primary-toolbar .raised button:hover, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked {
+    box-shadow: -1px 0 shade(@theme_selected_bg_color, 0.8); }
+    .linked button:focus:backdrop, .linked button:hover:backdrop, .linked button:active:backdrop, .linked button:checked:backdrop, .linked .raised button:focus:backdrop, .linked .raised button:hover:backdrop, .linked .raised button:active:backdrop, .linked .raised button:checked:backdrop, .inline-toolbar button:focus:backdrop, .inline-toolbar button:hover:backdrop, .inline-toolbar button:active:backdrop, .inline-toolbar button:checked:backdrop, .inline-toolbar .raised button:focus:backdrop, .inline-toolbar .raised button:hover:backdrop, .inline-toolbar .raised button:active:backdrop, .inline-toolbar .raised button:checked:backdrop, .primary-toolbar button:focus:backdrop, .primary-toolbar button:hover:backdrop, .primary-toolbar button:active:backdrop, .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:focus:backdrop, .primary-toolbar .raised button:hover:backdrop, .primary-toolbar .raised button:active:backdrop, .primary-toolbar .raised button:checked:backdrop {
+      box-shadow: -1px 0 shade(@theme_unfocused_bg_color, 0.85); }
+  .linked button:first-child:focus, .linked button:first-child:hover, .linked button:first-child:active, .linked button:first-child:checked, .linked button:only-child:focus, .linked button:only-child:hover, .linked button:only-child:active, .linked button:only-child:checked, .linked .raised button:first-child:focus, .linked .raised button:first-child:hover, .linked .raised button:first-child:active, .linked .raised button:first-child:checked, .linked .raised button:only-child:focus, .linked .raised button:only-child:hover, .linked .raised button:only-child:active, .linked .raised button:only-child:checked, .inline-toolbar button:first-child:focus, .inline-toolbar button:first-child:hover, .inline-toolbar button:first-child:active, .inline-toolbar button:first-child:checked, .inline-toolbar button:only-child:focus, .inline-toolbar button:only-child:hover, .inline-toolbar button:only-child:active, .inline-toolbar button:only-child:checked, .inline-toolbar .raised button:first-child:focus, .inline-toolbar .raised button:first-child:hover, .inline-toolbar .raised button:first-child:active, .inline-toolbar .raised button:first-child:checked, .inline-toolbar .raised button:only-child:focus, .inline-toolbar .raised button:only-child:hover, .inline-toolbar .raised button:only-child:active, .inline-toolbar .raised button:only-child:checked, .primary-toolbar button:first-child:focus, .primary-toolbar button:first-child:hover, .primary-toolbar button:first-child:active, .primary-toolbar button:first-child:checked, .primary-toolbar button:only-child:focus, .primary-toolbar button:only-child:hover, .primary-toolbar button:only-child:active, .primary-toolbar button:only-child:checked, .primary-toolbar .raised button:first-child:focus, .primary-toolbar .raised button:first-child:hover, .primary-toolbar .raised button:first-child:active, .primary-toolbar .raised button:first-child:checked, .primary-toolbar .raised button:only-child:focus, .primary-toolbar .raised button:only-child:hover, .primary-toolbar .raised button:only-child:active, .primary-toolbar .raised button:only-child:checked {
+    box-shadow: none; }
+    .linked button:first-child:focus:backdrop, .linked button:first-child:hover:backdrop, .linked button:first-child:active:backdrop, .linked button:first-child:checked:backdrop, .linked button:only-child:focus:backdrop, .linked button:only-child:hover:backdrop, .linked button:only-child:active:backdrop, .linked button:only-child:checked:backdrop, .linked .raised button:first-child:focus:backdrop, .linked .raised button:first-child:hover:backdrop, .linked .raised button:first-child:active:backdrop, .linked .raised button:first-child:checked:backdrop, .linked .raised button:only-child:focus:backdrop, .linked .raised button:only-child:hover:backdrop, .linked .raised button:only-child:active:backdrop, .linked .raised button:only-child:checked:backdrop, .inline-toolbar button:first-child:focus:backdrop, .inline-toolbar button:first-child:hover:backdrop, .inline-toolbar button:first-child:active:backdrop, .inline-toolbar button:first-child:checked:backdrop, .inline-toolbar button:only-child:focus:backdrop, .inline-toolbar button:only-child:hover:backdrop, .inline-toolbar button:only-child:active:backdrop, .inline-toolbar button:only-child:checked:backdrop, .inline-toolbar .raised button:first-child:focus:backdrop, .inline-toolbar .raised button:first-child:hover:backdrop, .inline-toolbar .raised button:first-child:active:backdrop, .inline-toolbar .raised button:first-child:checked:backdrop, .inline-toolbar .raised button:only-child:focus:backdrop, .inline-toolbar .raised button:only-child:hover:backdrop, .inline-toolbar .raised button:only-child:active:backdrop, .inline-toolbar .raised button:only-child:checked:backdrop, .primary-toolbar button:first-child:focus:backdrop, .primary-toolbar button:first-child:hover:backdrop, .primary-toolbar button:first-child:active:backdrop, .primary-toolbar button:first-child:checked:backdrop, .primary-toolbar button:only-child:focus:backdrop, .primary-toolbar button:only-child:hover:backdrop, .primary-toolbar button:only-child:active:backdrop, .primary-toolbar button:only-child:checked:backdrop, .primary-toolbar .raised button:first-child:focus:backdrop, .primary-toolbar .raised button:first-child:hover:backdrop, .primary-toolbar .raised button:first-child:active:backdrop, .primary-toolbar .raised button:first-child:checked:backdrop, .primary-toolbar .raised button:only-child:focus:backdrop, .primary-toolbar .raised button:only-child:hover:backdrop, .primary-toolbar .raised button:only-child:active:backdrop, .primary-toolbar .raised button:only-child:checked:backdrop {
+      box-shadow: none; }
 .linked entry, .inline-toolbar entry, .primary-toolbar entry {
   border-radius: 0;
   border-left-width: 0; }
@@ -1825,6 +1832,10 @@ toolbar {
 .linked combobox box.linked button, .inline-toolbar combobox box.linked button, .primary-toolbar combobox box.linked button {
   border-radius: 0;
   border-left-width: 0; }
+  .linked combobox box.linked button:focus, .linked combobox box.linked button:hover, .linked combobox box.linked button:active, .linked combobox box.linked button:checked, .inline-toolbar combobox box.linked button:focus, .inline-toolbar combobox box.linked button:hover, .inline-toolbar combobox box.linked button:active, .inline-toolbar combobox box.linked button:checked, .primary-toolbar combobox box.linked button:focus, .primary-toolbar combobox box.linked button:hover, .primary-toolbar combobox box.linked button:active, .primary-toolbar combobox box.linked button:checked {
+    box-shadow: -1px 0 shade(@theme_selected_bg_color, 0.8); }
+    .linked combobox box.linked button:focus:backdrop, .linked combobox box.linked button:hover:backdrop, .linked combobox box.linked button:active:backdrop, .linked combobox box.linked button:checked:backdrop, .inline-toolbar combobox box.linked button:focus:backdrop, .inline-toolbar combobox box.linked button:hover:backdrop, .inline-toolbar combobox box.linked button:active:backdrop, .inline-toolbar combobox box.linked button:checked:backdrop, .primary-toolbar combobox box.linked button:focus:backdrop, .primary-toolbar combobox box.linked button:hover:backdrop, .primary-toolbar combobox box.linked button:active:backdrop, .primary-toolbar combobox box.linked button:checked:backdrop {
+      box-shadow: -1px 0 shade(@theme_unfocused_bg_color, 0.85); }
 .linked combobox:first-child box.linked button, .inline-toolbar combobox:first-child box.linked button, .primary-toolbar combobox:first-child box.linked button {
   border-left-width: 1px;
   border-top-left-radius: 0px;
@@ -1838,6 +1849,10 @@ toolbar {
 .linked combobox:only-child box.linked button, .inline-toolbar combobox:only-child box.linked button, .primary-toolbar combobox:only-child box.linked button {
   border-width: 1px;
   border-radius: 0px; }
+.linked combobox:first-child box.linked button:focus, .linked combobox:first-child box.linked button:hover, .linked combobox:first-child box.linked button:active, .linked combobox:first-child box.linked button:checked, .linked combobox:only-child box.linked button:focus, .linked combobox:only-child box.linked button:hover, .linked combobox:only-child box.linked button:active, .linked combobox:only-child box.linked button:checked, .inline-toolbar combobox:first-child box.linked button:focus, .inline-toolbar combobox:first-child box.linked button:hover, .inline-toolbar combobox:first-child box.linked button:active, .inline-toolbar combobox:first-child box.linked button:checked, .inline-toolbar combobox:only-child box.linked button:focus, .inline-toolbar combobox:only-child box.linked button:hover, .inline-toolbar combobox:only-child box.linked button:active, .inline-toolbar combobox:only-child box.linked button:checked, .primary-toolbar combobox:first-child box.linked button:focus, .primary-toolbar combobox:first-child box.linked button:hover, .primary-toolbar combobox:first-child box.linked button:active, .primary-toolbar combobox:first-child box.linked button:checked, .primary-toolbar combobox:only-child box.linked button:focus, .primary-toolbar combobox:only-child box.linked button:hover, .primary-toolbar combobox:only-child box.linked button:active, .primary-toolbar combobox:only-child box.linked button:checked {
+  box-shadow: none; }
+  .linked combobox:first-child box.linked button:focus:backdrop, .linked combobox:first-child box.linked button:hover:backdrop, .linked combobox:first-child box.linked button:active:backdrop, .linked combobox:first-child box.linked button:checked:backdrop, .linked combobox:only-child box.linked button:focus:backdrop, .linked combobox:only-child box.linked button:hover:backdrop, .linked combobox:only-child box.linked button:active:backdrop, .linked combobox:only-child box.linked button:checked:backdrop, .inline-toolbar combobox:first-child box.linked button:focus:backdrop, .inline-toolbar combobox:first-child box.linked button:hover:backdrop, .inline-toolbar combobox:first-child box.linked button:active:backdrop, .inline-toolbar combobox:first-child box.linked button:checked:backdrop, .inline-toolbar combobox:only-child box.linked button:focus:backdrop, .inline-toolbar combobox:only-child box.linked button:hover:backdrop, .inline-toolbar combobox:only-child box.linked button:active:backdrop, .inline-toolbar combobox:only-child box.linked button:checked:backdrop, .primary-toolbar combobox:first-child box.linked button:focus:backdrop, .primary-toolbar combobox:first-child box.linked button:hover:backdrop, .primary-toolbar combobox:first-child box.linked button:active:backdrop, .primary-toolbar combobox:first-child box.linked button:checked:backdrop, .primary-toolbar combobox:only-child box.linked button:focus:backdrop, .primary-toolbar combobox:only-child box.linked button:hover:backdrop, .primary-toolbar combobox:only-child box.linked button:active:backdrop, .primary-toolbar combobox:only-child box.linked button:checked:backdrop {
+    box-shadow: none; }
 
 .vertical.linked button {
   border-left-width: 1px;
@@ -1857,6 +1872,14 @@ toolbar {
     border-bottom-right-radius: 0px; }
   .vertical.linked button:only-child {
     border-top-width: 1px; }
+  .vertical.linked button:focus, .vertical.linked button:hover, .vertical.linked button:active, .vertical.linked button:checked {
+    box-shadow: 0 -1px shade(@theme_selected_bg_color, 0.8); }
+    .vertical.linked button:focus:backdrop, .vertical.linked button:hover:backdrop, .vertical.linked button:active:backdrop, .vertical.linked button:checked:backdrop {
+      box-shadow: 0 -1px shade(@theme_unfocused_bg_color, 0.85); }
+  .vertical.linked button:first-child:focus, .vertical.linked button:first-child:hover, .vertical.linked button:first-child:active, .vertical.linked button:first-child:checked, .vertical.linked button:only-child:focus, .vertical.linked button:only-child:hover, .vertical.linked button:only-child:active, .vertical.linked button:only-child:checked {
+    box-shadow: none; }
+    .vertical.linked button:first-child:focus:backdrop, .vertical.linked button:first-child:hover:backdrop, .vertical.linked button:first-child:active:backdrop, .vertical.linked button:first-child:checked:backdrop, .vertical.linked button:only-child:focus:backdrop, .vertical.linked button:only-child:hover:backdrop, .vertical.linked button:only-child:active:backdrop, .vertical.linked button:only-child:checked:backdrop {
+      box-shadow: none; }
 .vertical.linked entry {
   border-left-width: 1px;
   border-top-width: 0;
@@ -1883,6 +1906,10 @@ toolbar {
   border-left-width: 1px;
   border-top-width: 0;
   border-radius: 0; }
+  .vertical.linked combobox box.linked button:focus, .vertical.linked combobox box.linked button:hover, .vertical.linked combobox box.linked button:active, .vertical.linked combobox box.linked button:checked {
+    box-shadow: 0 -1px shade(@theme_selected_bg_color, 0.8); }
+    .vertical.linked combobox box.linked button:focus:backdrop, .vertical.linked combobox box.linked button:hover:backdrop, .vertical.linked combobox box.linked button:active:backdrop, .vertical.linked combobox box.linked button:checked:backdrop {
+      box-shadow: 0 -1px shade(@theme_unfocused_bg_color, 0.85); }
 .vertical.linked combobox:first-child box.linked button {
   border-top-width: 1px;
   border-top-left-radius: 0px;
@@ -1897,6 +1924,10 @@ toolbar {
   border-bottom-right-radius: 0px; }
 .vertical.linked combobox:only-child box.linked button {
   border-top-width: 1px; }
+.vertical.linked combobox:first-child box.linked button:focus, .vertical.linked combobox:first-child box.linked button:hover, .vertical.linked combobox:first-child box.linked button:active, .vertical.linked combobox:first-child box.linked button:checked, .vertical.linked combobox:only-child box.linked button:focus, .vertical.linked combobox:only-child box.linked button:hover, .vertical.linked combobox:only-child box.linked button:active, .vertical.linked combobox:only-child box.linked button:checked {
+  box-shadow: none; }
+  .vertical.linked combobox:first-child box.linked button:focus:backdrop, .vertical.linked combobox:first-child box.linked button:hover:backdrop, .vertical.linked combobox:first-child box.linked button:active:backdrop, .vertical.linked combobox:first-child box.linked button:checked:backdrop, .vertical.linked combobox:only-child box.linked button:focus:backdrop, .vertical.linked combobox:only-child box.linked button:hover:backdrop, .vertical.linked combobox:only-child box.linked button:active:backdrop, .vertical.linked combobox:only-child box.linked button:checked:backdrop {
+    box-shadow: none; }
 
 stackswitcher button.text-button {
   min-width: 80px; }
@@ -2344,15 +2375,15 @@ panel-toplevel.background na-tray-applet {
 
 .xfce4-panel.panel {
   background-color: @taskbar_bg_color; }
-  .xfce4-panel.panel .button.flat {
+  .xfce4-panel.panel button.flat, .xfce4-panel.panel button.sidebar-button {
     color: @taskbar_fg_color;
     background-color: @taskbar_bg_color;
     border-radius: 0;
     border: none; }
-    .xfce4-panel.panel .button.flat:hover {
+    .xfce4-panel.panel button.flat:hover, .xfce4-panel.panel button.sidebar-button:hover {
       border: none;
       background-color: shade(@taskbar_bg_color, 1.1); }
-    .xfce4-panel.panel .button.flat:active, .xfce4-panel.panel .button.flat:checked {
+    .xfce4-panel.panel button.flat:active, .xfce4-panel.panel button.flat:checked, .xfce4-panel.panel button.sidebar-button:active, .xfce4-panel.panel button.sidebar-button:checked {
       color: @theme_selected_bg_color;
       border: none;
       background-color: shade(@taskbar_bg_color, 0.93); }

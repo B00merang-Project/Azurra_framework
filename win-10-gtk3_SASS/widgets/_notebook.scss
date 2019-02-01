@@ -51,7 +51,6 @@
       border-radius: 0;
       border-color: $borders;
       color: $theme_fg_color;
-      margin: 2px;
       background-color: $theme_bg_color;
 
       &:checked {
@@ -85,12 +84,12 @@
 
         & > tabs > tab {
           border-bottom: none;
-          margin-bottom: 0;
+          margin-top: 2px;
 
           &:checked {
             border-top-left-radius: $tab_radius;
             border-top-right-radius: $tab_radius;
-            margin: 0;
+            margin-top: 0;
             margin-bottom: -1px;
           }
         }
@@ -101,12 +100,12 @@
 
         & > tabs > tab {
           border-top: none;
-          margin-top: 0;
+          margin-bottom: 2px;
 
           &:checked {
             border-bottom-left-radius: $tab_radius;
             border-bottom-right-radius: $tab_radius;
-            margin: 0;
+            margin-bottom: 0;
             margin-top: -1px;
           }
         }
@@ -117,12 +116,12 @@
 
         & > tabs > tab {
           border-left: none;
-          margin-left: 0;
+          margin-right: 2px;
 
           &:checked {
             border-top-right-radius: $tab_radius;
             border-bottom-right-radius: $tab_radius;
-            margin: 0;
+            margin-right: 0;
             margin-left: -1px;
           }
         }
@@ -133,7 +132,7 @@
 
         & > tabs > tab {
           border-right: none;
-          margin-right: 0;
+          margin-left: 2px;
 
           &:checked {
             border-top-left-radius: $tab_radius;

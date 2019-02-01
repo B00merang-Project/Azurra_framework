@@ -23,6 +23,24 @@
         border-width: 1px;
         border-radius: $button_radius;
       }
+      
+      &:focus, &:hover, &:active, &:checked {
+        box-shadow: -1px 0 gtkshade($theme_selected_bg_color, 0.8);
+        
+        &:backdrop {
+          box-shadow: -1px 0 gtkshade($theme_unfocused_bg_color, 0.85);
+        }
+      }
+      
+      &:first-child, &:only-child {
+        &:focus, &:hover, &:active, &:checked {
+          box-shadow: none;
+          
+          &:backdrop {
+            box-shadow: none;
+          }
+        }
+      }
     }
     
     & entry {
@@ -61,6 +79,14 @@
       & box.linked button {
         border-radius: 0;
         border-left-width: 0;
+        
+        &:focus, &:hover, &:active, &:checked {
+          box-shadow: -1px 0 gtkshade($theme_selected_bg_color, 0.8);
+          
+          &:backdrop {
+            box-shadow: -1px 0 gtkshade($theme_unfocused_bg_color, 0.85);
+          }
+        }
       }
 
       &:first-child box.linked button {
@@ -80,6 +106,16 @@
       &:only-child box.linked button {
         border-width: 1px;
         border-radius: $button_radius;
+      }
+      
+      &:first-child box.linked button, &:only-child box.linked button {
+        &:focus, &:hover, &:active, &:checked {
+          box-shadow: none;
+          
+          &:backdrop {
+            box-shadow: none;
+          }
+        }
       }
     }
   }
@@ -109,6 +145,24 @@
 
       &:only-child {
         border-top-width: 1px;
+      }
+      
+      &:focus, &:hover, &:active, &:checked {
+        box-shadow: 0 -1px gtkshade($theme_selected_bg_color, 0.8);
+        
+        &:backdrop {
+          box-shadow: 0 -1px gtkshade($theme_unfocused_bg_color, 0.85);
+        }
+      }
+      
+      &:first-child, &:only-child {
+        &:focus, &:hover, &:active, &:checked {
+          box-shadow: none;
+          
+          &:backdrop {
+            box-shadow: none;
+          }
+        }
       }
     }
     
@@ -151,6 +205,14 @@
         border-left-width: 1px;
         border-top-width: 0;
         border-radius: 0;
+        
+        &:focus, &:hover, &:active, &:checked {
+          box-shadow: 0 -1px gtkshade($theme_selected_bg_color, 0.8);
+          
+          &:backdrop {
+            box-shadow: 0 -1px gtkshade($theme_unfocused_bg_color, 0.85);
+          }
+        }
       }
 
       &:first-child box.linked button {
@@ -171,6 +233,16 @@
 
       &:only-child box.linked button {
         border-top-width: 1px;
+      }
+      
+      &:first-child box.linked button, &:only-child box.linked button {
+        &:focus, &:hover, &:active, &:checked {
+          box-shadow: none;
+          
+          &:backdrop {
+            box-shadow: none;
+          }
+        }
       }
     }
   }
