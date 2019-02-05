@@ -1,4 +1,3 @@
-// desktop icons
 @mixin desktop_icons() {
   .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
     color: $desktop_item_fg;
@@ -98,8 +97,13 @@
   }
 }
 
-// MATE panel and mintmenu
+// Mate panel
 @mixin mate() {
+  .mate-panel-menu-bar menubar > menuitem {
+    color: $taskbar_fg_color;
+    background-color: $taskbar_bg_color;  
+  }
+
   .mate-panel-menu-bar {
     color: $taskbar_fg_color;
     background-color: $taskbar_bg_color;
@@ -109,15 +113,17 @@
     }
 
     &, .menubar { background-color: $taskbar_bg_color; }
-    
+
     & menubar, & menubar menuitem, & togglebutton {
       border-color: transparent;
       background-color: transparent;
     }
 
-    & menubar menuitem:hover &:active {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+    & menubar menuitem {
+      &:hover, &:active {
+        color: $theme_selected_fg_color;
+        background-color: $theme_selected_bg_color;
+      }
     }
 
     & .menubar > .menuitem {
@@ -179,7 +185,7 @@
     #PanelApplet label {
       color: $taskbar_fg_color;
     }
-    
+
     .caja-desktop, .caja-navigation-window .view {
       &.entry {
         background-image: none;
@@ -190,7 +196,7 @@
       
         &:selected {
           color: $theme_selected_fg_color;
-          background-color: theme_selected_bg_color;
+          background-color: $theme_selected_bg_color;
         }
       }
     }
@@ -211,7 +217,7 @@
 }
 
 // nemo file manager
-@mixin nemo() { 
+@mixin nemo() {
   .nemo-window {
     & .nemo-window-pane widget.entry {
       border: 1px solid;

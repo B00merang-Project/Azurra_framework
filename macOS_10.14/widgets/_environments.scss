@@ -73,8 +73,37 @@
   }
 }
 
+// Xfce Panel
+@mixin xfce() {
+  .xfce4-panel.panel {
+    background-color: $taskbar_bg_color;
+
+    button.flat, button.sidebar-button {
+      color: $taskbar_fg_color;
+      background-color: $taskbar_bg_color;
+      border-radius: 0;
+      border: none;
+
+      &:hover {
+        border: none;
+        background-color: gtkshade($taskbar_bg_color, 1.1);
+      }
+      &:active, &:checked {
+        color: $theme_selected_bg_color;
+        border: none;
+        background-color: gtkshade($taskbar_bg_color, 0.93);
+      }
+    }
+  }
+}
+
 // Mate panel
 @mixin mate() {
+  .mate-panel-menu-bar menubar > menuitem {
+    color: $taskbar_fg_color;
+    background-color: $taskbar_bg_color;  
+  }
+
   .mate-panel-menu-bar {
     color: $taskbar_fg_color;
     background-color: $taskbar_bg_color;
@@ -89,10 +118,12 @@
       border-color: transparent;
       background-color: transparent;
     }
-    
-    & menubar menuitem:hover &:active {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+
+    & menubar menuitem {
+      &:hover, &:active {
+        color: $theme_selected_fg_color;
+        background-color: $theme_selected_bg_color;
+      }
     }
 
     & .menubar > .menuitem {
@@ -153,6 +184,21 @@
     #PanelApplet label {
       color: $taskbar_fg_color;
     }
+
+    .caja-desktop, .caja-navigation-window .view {
+      &.entry {
+        background-image: none;
+        border-radius: $entry_radius;
+        box-shadow: none;
+        border-color: gtkshade($theme_selected_bg_color, 0.6);
+        background-color: $theme_base_color;
+      
+        &:selected {
+          color: $theme_selected_fg_color;
+          background-color: $theme_selected_bg_color;
+        }
+      }
+    }
   }
 
   .mintmenu:hover { background-color: gtkshade($taskbar_bg_color, 1.1); }
@@ -162,38 +208,14 @@
   }
 
   .wnck-pager {
-      background-color: gtkalpha(black, 0.04);
+    background-color: gtkalpha(black, 0.04);
 
-      &:selected { background-color: gtkalpha($selected_bg_color, 0.3); }
-      &:hover { background-color: gtkalpha($selected_bg_color, 0.2); }
+    &:selected { background-color: gtkalpha($selected_bg_color, 0.3); }
+    &:hover { background-color: gtkalpha($selected_bg_color, 0.2); }
   }
 }
 
-// Xfce Panel
-@mixin xfce() {
-  .xfce4-panel.panel {
-    background-color: $taskbar_bg_color;
-
-    button.flat, button.sidebar-button {
-      color: $taskbar_fg_color;
-      background-color: $taskbar_bg_color;
-      border-radius: 0;
-      border: none;
-
-      &:hover {
-        border: none;
-        background-color: gtkshade($taskbar_bg_color, 1.1);
-      }
-      &:active, &:checked {
-        color: $theme_selected_bg_color;
-        border: none;
-        background-color: gtkshade($taskbar_bg_color, 0.93);
-      }
-    }
-  }
-}
-
-// nemo file manager 
+// nemo file manager
 @mixin nemo() {
   .nemo-window {
     & .nemo-window-pane widget.entry {
