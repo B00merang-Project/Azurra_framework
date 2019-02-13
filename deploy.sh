@@ -75,3 +75,16 @@ cp -aR Win_XP_Embedded/gtk-widgets.css ~/Github/Windows-XP/Windows\ XP\ Embedded
 #cp -aR Win_XP_Zune/assets ~/Github/Windows-XP/Windows\ XP\ Zune/gtk-3.20
 cp -aR Win_XP_Zune/gtk.css ~/Github/Windows-XP/Windows\ XP\ Zune/gtk-3.20
 cp -aR Win_XP_Zune/gtk-widgets.css ~/Github/Windows-XP/Windows\ XP\ Zune/gtk-3.20
+
+echo "Copying Solaris 11"
+#cp -aR Solaris_11_Nimbus/assets ~/Github/Solaris-11/gtk-3.0
+cp -aR Solaris_11_Nimbus/gtk.css ~/Github/Solaris-11/gtk-3.0
+cp -aR Solaris_11_Nimbus/gtk-widgets.css ~/Github/Solaris-11/gtk-3.0
+
+#cp -aR Solaris_11_Nimbus/assets ~/Github/Solaris-11-Light/gtk-3.0
+cp -aR Solaris_11_Nimbus/gtk-light.css ~/Github/Solaris-11-Light/gtk-3.0/gtk.css
+cp -aR Solaris_11_Nimbus/gtk-widgets.css ~/Github/Solaris-11-Light/gtk-3.0
+
+#cp -aR Solaris_11_Nimbus/assets ~/Github/Solaris-11-Dark/gtk-3.0
+cp -aR Solaris_11_Nimbus/gtk-dark.css ~/Github/Solaris-11-Dark/gtk-3.0/gtk.css
+cp -aR Solaris_11_Nimbus/gtk-widgets.css ~/Github/Solaris-11-Dark/gtk-3.0

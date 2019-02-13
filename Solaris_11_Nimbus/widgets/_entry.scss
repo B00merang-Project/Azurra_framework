@@ -1,0 +1,76 @@
+// entry 
+@mixin entry() {
+  entry {
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gtkshade($borders, 0.8);
+    border-top-color: gtkshade($borders, 0.9);
+    border-left-color: gtkshade($borders, 0.9);
+    border-right-color: gtkshade($borders, 0.9);
+    border-radius: $entry_radius;
+    color: $theme_text_color;
+    caret-color: currentColor;
+    background-color: $theme_base_color;
+    box-shadow: inset 0 1px $borders;
+
+    &:selected, &:selected:focus, & selection, & selection:focus {
+      color: $theme_selected_fg_color;
+      background-color: $theme_selected_bg_color;
+    }
+
+    &:disabled {
+      border-color: gtkshade($unfocused_borders, 0.8);
+      border-top-color: gtkshade($unfocused_borders, 0.9);
+      border-left-color: gtkshade($unfocused_borders, 0.9);
+      border-right-color: gtkshade($unfocused_borders, 0.9);
+      color: $theme_disabled_text_color;
+      background-color: $theme_disabled_base_color;
+
+      &:backdrop {
+        color: $theme_unfocused_disabled_fg_color;
+        border-color: $unfocused_borders;
+        background-color: $theme_unfocused_disabled_bg_color;
+      }
+    }
+
+    &.read-only {
+      background-color: gtkmix($theme_bg_color, $theme_disabled_bg_color, 0.1);
+    }
+
+    &:backdrop {
+      color: $theme_unfocused_fg_color;
+      background-color: $theme_unfocused_base_color;
+    }
+
+    & > image {
+      &.left {
+        padding-right: 5px;
+      }
+      
+      &.right {
+        padding-left: 5px;
+      }
+    }
+
+    & progress {
+      margin: -4px -4px;
+      border-width: 0 0 2px;
+      border-radius: 0;
+      border-style: solid;
+      border-color: $theme_selected_bg_color;
+      background-color: transparent;
+    }
+
+    &.flat, &.flat:focus {
+      padding: 3px;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+    }
+
+    &.search {
+      border-radius: 0;
+    }
+  }
+}

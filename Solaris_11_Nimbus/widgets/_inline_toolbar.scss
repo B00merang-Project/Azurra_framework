@@ -1,0 +1,22 @@
+// inline-toolbar
+@mixin inline_toolbar() {
+  .inline-toolbar toolbar {
+    -GtkToolbar-button-relief: normal;
+
+    padding: 1px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gtkmix($borders, $toolbar_bg_color, 0.5);
+    border-radius: 0;
+    background-color: $toolbar_bg_color;
+
+    &:last-child {
+      border-width: 0 1px 1px 1px;
+      border-radius: 0;
+    }
+
+    & button {
+      @include normal_buttons($toolbar_bg_color, $toolbar_fg_color, $borders);
+    }
+  } 
+}
