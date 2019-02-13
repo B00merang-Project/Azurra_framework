@@ -1,23 +1,15 @@
 #!/bin/bash
 
 # build
-echo "Building macOS"
-cd macOS_10.14
-./run.sh
+for D in *; do
+  if [ -d "${D}" ]; then
+    echo "Building ${D}"
 
-echo "Building OS X Yosemite"
-cd ../OS_X_10.10
-./run.sh
-
-echo "Building iOS"
-cd ../iOS_12
-./run.sh
-
-echo "Building Windows 10"
-cd ../Win_10
-./run.sh
-
-cd ..
+    cd "${D}"
+    ./run.sh
+    cd ..
+  fi
+done
 
 # macOS
 echo "Copying macOS"
@@ -54,3 +46,32 @@ echo "Copying iOS"
 cp -aR iOS_12/gtk.css ~/Github/iOS/gtk-3.20
 #cp -aR iOS_12/gtk-dark.css ~/Github/iOS/gtk-3.20
 cp -aR iOS_12/gtk-widgets.css ~/Github/iOS/gtk-3.20
+
+echo "Copying Windows XP"
+#cp -aR Win_XP_Luna/assets ~/Github/Windows-XP/Windows\ XP\ Luna/gtk-3.20
+cp -aR Win_XP_Luna/gtk.css ~/Github/Windows-XP/Windows\ XP\ Luna/gtk-3.20
+cp -aR Win_XP_Luna/gtk-widgets.css ~/Github/Windows-XP/Windows\ XP\ Luna/gtk-3.20
+
+#cp -aR Win_XP_Olive/assets ~/Github/Windows-XP/Windows\ XP\ Homestead/gtk-3.20
+cp -aR Win_XP_Olive/gtk.css ~/Github/Windows-XP/Windows\ XP\ Homestead/gtk-3.20
+cp -aR Win_XP_Olive/gtk-widgets.css ~/Github/Windows-XP/Windows\ XP\ Homestead/gtk-3.20
+
+#cp -aR Win_XP_Metal/assets ~/Github/Windows-XP/Windows\ XP\ Metallic/gtk-3.20
+cp -aR Win_XP_Metal/gtk.css ~/Github/Windows-XP/Windows\ XP\ Metallic/gtk-3.20
+cp -aR Win_XP_Metal/gtk-widgets.css ~/Github/Windows-XP/Windows\ XP\ Metallic/gtk-3.20
+
+#cp -aR Win_XP_Royale/assets ~/Github/Windows-XP/Windows\ XP\ Royale/gtk-3.20
+cp -aR Win_XP_Royale/gtk.css ~/Github/Windows-XP/Windows\ XP\ Royale/gtk-3.20
+cp -aR Win_XP_Royale/gtk-widgets.css ~/Github/Windows-XP/Windows\ XP\ Royale/gtk-3.20
+
+#cp -aR Win_XP_Royale_Dark/assets ~/Github/Windows-XP/Windows\ XP\ Royale\ Dark/gtk-3.20
+cp -aR Win_XP_Royale_Dark/gtk.css ~/Github/Windows-XP/Windows\ XP\ Royale\ Dark/gtk-3.20
+cp -aR Win_XP_Royale_Dark/gtk-widgets.css ~/Github/Windows-XP/Windows\ XP\ Royale\ Dark/gtk-3.20
+
+#cp -aR Win_XP_Embedded/assets ~/Github/Windows-XP/Windows\ XP\ Embedded/gtk-3.20
+cp -aR Win_XP_Embedded/gtk.css ~/Github/Windows-XP/Windows\ XP\ Embedded/gtk-3.20
+cp -aR Win_XP_Embedded/gtk-widgets.css ~/Github/Windows-XP/Windows\ XP\ Embedded/gtk-3.20
+
+#cp -aR Win_XP_Zune/assets ~/Github/Windows-XP/Windows\ XP\ Zune/gtk-3.20
+cp -aR Win_XP_Zune/gtk.css ~/Github/Windows-XP/Windows\ XP\ Zune/gtk-3.20
+cp -aR Win_XP_Zune/gtk-widgets.css ~/Github/Windows-XP/Windows\ XP\ Zune/gtk-3.20

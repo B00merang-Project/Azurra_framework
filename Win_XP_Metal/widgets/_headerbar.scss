@@ -1,0 +1,41 @@
+// headerbar
+@mixin headerbar_buttons($bg, $fg, $border)
+{
+  @include normal_buttons($bg, $fg, gtkshade($borders, 0.9));
+}
+
+@mixin headerbar() {
+  headerbar, headerbar:not(.titlebar) {
+    padding: 4px 8px;
+    border-width: 0;
+    border-style: solid;
+    border-color: gtkmix($borders, $headerbar_bg_color, 0.5);
+    border-bottom-width: 1px;
+    color: $headerbar_fg_color;
+    background-color: $headerbar_bg_color;
+
+    &:backdrop {
+      border-color: $unfocused_borders;
+      color: $theme_unfocused_fg_color;
+      background-color: $theme_unfocused_bg_color;
+    }
+
+    .titlebar &, .titlebar &:backdrop {
+      background-color: transparent;
+    }
+
+    .tiled &, .tiled &:backdrop, .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+
+    // titles implemented in .titlebar class
+
+    button {
+      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, transparent);
+    }
+
+    & entry {
+      padding: 6px 8px;
+    }
+  }
+}

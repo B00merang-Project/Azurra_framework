@@ -5,8 +5,10 @@
 
 // wildcard settings
 * {
-  -GtkScrollbar-has-backward-stepper: $scrollbar_steppers;
-  -GtkScrollbar-has-forward-stepper: $scrollbar_steppers;
+  -GtkScrollbar-has-backward-stepper: $top_primary_stepper;
+  -GtkScrollbar-has-forward-stepper: $bottom_primary_stepper;
+  -GtkScrollbar-has-secondary-backward-stepper: $bottom_secondary_stepper;
+  -GtkScrollbar-has-secondary-forward-stepper: $top_secondary_stepper;
   -GtkScrolledwindow-scrollbar-spacing: 0;
   -GtkScrolledwindow-scrollbars-within-bevel: 1;
   -GtkTextView-error-underline-color: $error_color;
@@ -102,63 +104,7 @@ label {
   }
 }
 
-// transitions 
-button {
-  transition: border 100ms ease-in-out;
-}
-
-entry {
-  transition: border 100ms ease-out;
-
-  &:focus {
-    transition: border 100ms ease-in;
-  }
-}
-
-notebook {
-  & tab label, & .prelight-page, & .prelight-page label, & .active-page, & .active-page label {
-    transition: all 200ms ease-in;
-  }
-}
-
-scale, progressbar {
-  transition: 200ms ease-out;
-
-  &:backdrop {
-    transition: 200ms ease-out;
-  }
-}
-
-scale, switch {
-  & slider {
-    transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transition-property: background, border, box-shadow;
-
-    &:backdrop {
-      transition: 200ms ease-out;
-    }
-  }
-
-  &:backdrop slider {
-    transition: 200ms ease-out;
-  }
-}
-
-scrollbar {
-  transition: 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-  &:backdrop {
-    transition: 200ms ease-out;
-  }
-
-  & slider {
-    transition: 200ms ease-out;
-  }
-}
-
-decoration, decoration:backdrop {
-  transition: 200ms ease-out;
-}
+@include transitions();
 
 // assistant
 assistant {
@@ -243,18 +189,6 @@ button:visited {
 
 @include button();
 
-// row 
-row:selected, row:selected:hover, row:selected:focus {
-  border: none;
-  color: $theme_selected_fg_color;
-  background-color: $theme_selected_bg_color;
-  
-  & switch:checked {
-    background: shade($theme_selected_bg_color, 1.15);
-    border-color: shade($theme_selected_bg_color, 1.15);
-  }
-}
-
 @include checkradio();
 
 // content view 
@@ -279,7 +213,7 @@ row:selected, row:selected:hover, row:selected:focus {
 
 @include entry();
 
-// expander 
+// expander
 expander arrow {
   min-width: 16px;
   min-height: 16px;
@@ -298,41 +232,7 @@ expander arrow {
   }
 }
 
-// list boxes 
-list {
-  color: $theme_fg_color;
-  background-color: $theme_base_color;
-
-  & row {
-    padding: 2px;
-
-    &:hover {
-      background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
-    }
-    
-    &:backdrop {
-      color: $theme_unfocused_fg_color;
-    }
-
-    &:selected {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
-
-      &:disabled {
-        color: gtkalpha($theme_selected_fg_color, 0.7);
-        background-color: $theme_selected_bg_color;
-      }
-      
-      &:backdrop {
-        color: $theme_unfocused_selected_fg_color;
-        background-color: $theme_unfocused_selected_bg_color;
-      }
-    }
-  }
-  & separator, & separator:backdrop {
-    background: none; // no lines on sidebar
-  }
-}
+@include list();
 
 // frame 
 frame {
@@ -656,25 +556,6 @@ button.circular, button.circular-button {
 @include menubar_menuitem();
 
 @include menuitem();
-
-menuitem {
-  & check, & radio {
-    min-height: 16px;
-    min-width: 16px;
-  }
-
-  & accelerator {
-    color: gtkalpha(currentColor, 0.55);
-
-    &:hover {
-      color: gtkalpha($theme_selected_fg_color, 0.8);
-    }
-
-    &:disabled {
-      color: $theme_disabled_fg_color;
-    }
-  }
-}
 
 @include popover();
 
