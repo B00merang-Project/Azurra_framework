@@ -14,17 +14,17 @@
     min-width: 42px;
 
     &:checked {
-      border-color: gtkshade($theme_selected_bg_color, 0.6);
-      background-color: gtkshade($theme_selected_bg_color, 0.6);
+      border-color: $theme_selected_base_color;
+      background-color: $theme_selected_base_color;
       box-shadow: none;
 
       &:disabled {
-        border-color: gtkmix($theme_selected_bg_color, $theme_disabled_bg_color, 0.4);
+        border-color: gtkmix($theme_selected_base_color, $theme_disabled_bg_color, 0.4);
       }
 
       &:backdrop {
-        border-color: gtkshade($theme_unfocused_selected_bg_color, 0.6);
-        background-color: gtkshade($theme_unfocused_selected_bg_color, 0.6);
+        border-color: gtkshade($theme_selected_base_color, 0.9);
+        background-color: gtkshade($theme_selected_base_color, 0.9);
       }
     }
 

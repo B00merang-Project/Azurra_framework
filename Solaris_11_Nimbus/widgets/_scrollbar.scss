@@ -9,14 +9,14 @@
       border-radius: 0;
     }
 
-    &.overlay-indicator:not(.dragging):not(.hovering) {
-      border: none;
-      opacity: 1;
-      margin: 0;
-      background-color: transparent;
-    }
-
     &.overlay-indicator {
+      &:not(.dragging):not(.hovering) {
+        border: none;
+        opacity: 1;
+        margin: 0;
+        background-color: transparent;
+      }
+      
       &.dragging, &.hovering {
         opacity: 1;
       }

@@ -198,15 +198,14 @@ button:visited {
 button {
   padding: 4px 8px;
   border-style: solid;
-  border-width: 1px;
+  border-width: 0;
   border-radius: 4px;
   color: @theme_selected_bg_color;
   border-color: @theme_selected_bg_color;
   background-color: transparent;
   -gtk-outline-radius: 4px; }
   button:hover {
-    color: @theme_selected_bg_color;
-    background-color: shade(@theme_base_color, 1.1); }
+    color: @theme_selected_bg_color; }
   button:active, button:checked {
     color: @theme_selected_fg_color;
     border-color: @theme_selected_bg_color;
@@ -1683,15 +1682,14 @@ headerbar, headerbar:not(.titlebar) {
   headerbar button, headerbar:not(.titlebar) button {
     padding: 4px 8px;
     border-style: solid;
-    border-width: 1px;
+    border-width: 0;
     border-radius: 4px;
     color: @theme_selected_bg_color;
     border-color: @theme_selected_bg_color;
     background-color: transparent;
     -gtk-outline-radius: 4px; }
     headerbar button:hover, headerbar:not(.titlebar) button:hover {
-      color: @theme_selected_bg_color;
-      background-color: shade(@theme_base_color, 1.1); }
+      color: @theme_selected_bg_color; }
     headerbar button:active, headerbar button:checked, headerbar:not(.titlebar) button:active, headerbar:not(.titlebar) button:checked {
       color: @theme_selected_fg_color;
       border-color: @theme_selected_bg_color;
@@ -1774,15 +1772,14 @@ toolbar {
   .primary-toolbar button, .primary-toolbar .raised button {
     padding: 4px 8px;
     border-style: solid;
-    border-width: 1px;
+    border-width: 0;
     border-radius: 4px;
     color: @theme_selected_bg_color;
     border-color: @theme_selected_bg_color;
     background-color: transparent;
     -gtk-outline-radius: 4px; }
     .primary-toolbar button:hover, .primary-toolbar .raised button:hover {
-      color: @theme_selected_bg_color;
-      background-color: shade(@theme_base_color, 1.1); }
+      color: @theme_selected_bg_color; }
     .primary-toolbar button:active, .primary-toolbar button:checked, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked {
       color: @theme_selected_fg_color;
       border-color: @theme_selected_bg_color;
@@ -1823,15 +1820,14 @@ toolbar {
   .inline-toolbar toolbar button {
     padding: 4px 8px;
     border-style: solid;
-    border-width: 1px;
+    border-width: 0;
     border-radius: 4px;
     color: @theme_selected_bg_color;
     border-color: @theme_selected_bg_color;
     background-color: transparent;
     -gtk-outline-radius: 4px; }
     .inline-toolbar toolbar button:hover {
-      color: @theme_selected_bg_color;
-      background-color: shade(@theme_base_color, 1.1); }
+      color: @theme_selected_bg_color; }
     .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
       color: @theme_selected_fg_color;
       border-color: @theme_selected_bg_color;
@@ -1875,7 +1871,7 @@ toolbar {
       border-color: @theme_unfocused_selected_bg_color;
       background-color: @theme_unfocused_selected_bg_color; }
   .linked button:first-child, .linked .raised button:first-child, .inline-toolbar button:first-child, .inline-toolbar .raised button:first-child, .primary-toolbar button:first-child, .primary-toolbar .raised button:first-child {
-    border-left-width: 1px;
+    border-left-width: 0;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px; }
   .linked button:last-child, .linked .raised button:last-child, .inline-toolbar button:last-child, .inline-toolbar .raised button:last-child, .primary-toolbar button:last-child, .primary-toolbar .raised button:last-child {
@@ -1932,7 +1928,7 @@ toolbar {
   border-radius: 4px; }
 
 .vertical.linked button {
-  border-left-width: 1px;
+  border-left-width: 0;
   border-top-width: 0;
   border-radius: 0;
   border-color: @theme_base_color;
@@ -2050,7 +2046,7 @@ treeview {
       background-image: none;
       background-color: @theme_bg_color; }
     treeview header button:hover, treeview header button:active:hover, treeview header button:hover:focus, treeview header button:active:hover:focus {
-      color: @theme_selected_fg_color;
+      color: @theme_fg_color;
       background-color: @theme_bg_color; }
   treeview header:last-child button {
     border-width: 0 0 1px 0; }

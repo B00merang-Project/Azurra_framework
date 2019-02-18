@@ -1,0 +1,55 @@
+// menuitem
+@mixin menuitem() {
+  menu menuitem, .menu menuitem {
+    min-height: 16px;
+    min-width: 40px;
+    padding: 4px;
+    border: none;
+    border-radius: 0;
+    color: $menu_fg_color;
+    text-shadow: none;
+    background-color: $menu_bg_color;
+
+    &:hover {
+      border-radius: 40px 0 0 40px;
+      color: $theme_selected_fg_color;
+      text-shadow: 1px 1px $dark_shadow;
+      background-color: $theme_selected_bg_color;
+      background-image: linear-gradient(to right, $theme_selected_bg_color 60%, $menu_bg_color 95%);
+    }
+
+    &:disabled {
+      color: gtkmix($menu_fg_color, $menu_bg_color, 0.5);
+    }
+
+    // menu arrow 
+    & arrow {
+      min-width: 16px;
+      min-height: 16px;
+
+      &:dir(ltr) {
+        margin-left: 10px;
+        -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+      }
+
+      &:dir(rtl) {
+        margin-right: 10px;
+        -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
+      }
+    }
+  }
+  
+  menuitem {
+    & accelerator {
+      color: gtkalpha(currentColor, 0.55);
+
+      &:hover {
+        color: gtkalpha($theme_selected_fg_color, 0.8);
+      }
+
+      &:disabled {
+        color: $theme_disabled_fg_color;
+      }
+    }
+  }
+}

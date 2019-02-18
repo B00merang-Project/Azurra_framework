@@ -1,0 +1,28 @@
+// destructive action buttons
+@mixin destructive_button() {
+  button.destructive-action {
+    border-width: 1px;
+    border-style: solid;
+    border-color: gtkmix($error_color, $theme_fg_color, 0.2);
+    border-radius: $button_radius;
+    color: gtkmix($theme_selected_fg_color, $error_color, 0.1);
+    background-color: $error_color;
+    background-image: linear-gradient(to bottom, gtkshade($error_color,1.15), gtkshade($error_color, 1.05) 40%, $error_color 55%);
+
+    &:hover {
+      border-color: gtkmix($error_color, $theme_fg_color, 0.3);
+      background-color: gtkmix($error_color, $theme_selected_fg_color, 0.2);
+    }
+
+    &:active {
+      border-color: gtkmix($error_color, $theme_fg_color, 0.3);
+      background-color: gtkmix($error_color, $theme_fg_color, 0.1);
+    }
+
+    &:backdrop {
+      border-color: gtkmix($error_color, $theme_unfocused_fg_color, 0.2);
+      color: gtkmix($theme_unfocused_selected_fg_color, $error_color, 0.1);
+      background-color: gtkmix($error_color, $theme_unfocused_bg_color, 0.3);
+    }
+  }
+}

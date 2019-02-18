@@ -52,10 +52,18 @@
       border-color: $borders;
       color: $theme_fg_color;
       background-color: $theme_bg_color;
+      
+      &:hover {
+        background-color: $theme_selected_bg_color;
+      }
 
       &:checked {
         border-color: $borders;
         background-color: $theme_base_color;
+        
+        &:hover {
+          background-color: $theme_base_color;
+        }
 
         &:backdrop {
           border-color: $unfocused_borders;

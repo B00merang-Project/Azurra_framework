@@ -980,7 +980,8 @@ menubar, .menubar {
   border-style: none;
   background-color: @menubar_bg_color;
   background-image: linear-gradient(to bottom, shade(@theme_bg_color, 0.98), shade(@theme_bg_color, 0.97) 47%, shade(@theme_bg_color, 0.98) 58%);
-  color: @menubar_fg_color; }
+  color: @menubar_fg_color;
+  box-shadow: inset 0 5px 2px -2px alpha(@light_shadow, 0.85); }
   menubar:backdrop, .menubar:backdrop {
     color: @theme_unfocused_fg_color;
     background-color: @theme_unfocused_bg_color; }
@@ -1732,8 +1733,8 @@ switch {
     border-color: @theme_selected_bg_color;
     background-color: @theme_selected_bg_color; }
     switch:checked:backdrop {
-      border-color: mix(@theme_unfocused_selected_bg_color, @success_color, 0.8);
-      background-color: mix(@theme_unfocused_selected_bg_color, @success_color, 0.8); }
+      border-color: @theme_unfocused_selected_bg_color;
+      background-color: @theme_unfocused_selected_bg_color; }
   switch:disabled {
     border-color: @theme_disabled_bg_color;
     background-color: @theme_disabled_bg_color; }
@@ -2106,7 +2107,7 @@ treeview {
       background-image: none;
       background-color: @theme_bg_color; }
     treeview header button:hover, treeview header button:active:hover, treeview header button:hover:focus, treeview header button:active:hover:focus {
-      color: @theme_selected_fg_color;
+      color: @theme_fg_color;
       background-color: @theme_bg_color; }
   treeview header:last-child button {
     border-width: 0 0 1px 0; }
@@ -2295,7 +2296,7 @@ button.destructive-action {
   border-radius: 5px;
   color: mix(@theme_selected_fg_color, @error_color, 0.1);
   background-color: @error_color;
-  background-image: none; }
+  background-image: linear-gradient(to bottom, shade(@error_color, 1.15), @error_color, shade(@error_color, 1.05)); }
   button.destructive-action:hover {
     border-color: mix(@error_color, @theme_fg_color, 0.3);
     background-color: mix(@error_color, @theme_selected_fg_color, 0.2); }
