@@ -58,8 +58,30 @@
 
     // allows light scrollbar on dark sidebar
     & scrollbar {
-      background-color: transparent;
+    
+      &.vertical, &.horizontal {
+        border: none;
+        background-color: transparent;
+      }
+      
+      &.overlay-indicator {
+        &.horizontal {
+          border: none;
+          background-color: transparent;
+        }
+        
+        &.vertical {
+          border: none;
+          background-color: transparent;
+        }
+        
+        &:not(.dragging):not(.hovering) {
+          border: none;
+          background-color: transparent;
+        }
+      }
     }
+
 
     paned &.left,
     paned &.right,

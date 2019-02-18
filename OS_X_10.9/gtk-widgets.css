@@ -1455,7 +1455,17 @@ filechooser placessidebar.sidebar row, filechooser placessidebar.sidebar view ro
 
 .sidebar frame, .sidebar.frame {
   border: none; }
-.sidebar scrollbar {
+.sidebar scrollbar.vertical, .sidebar scrollbar.horizontal {
+  border: none;
+  background-color: transparent; }
+.sidebar scrollbar.overlay-indicator.horizontal {
+  border: none;
+  background-color: transparent; }
+.sidebar scrollbar.overlay-indicator.vertical {
+  border: none;
+  background-color: transparent; }
+.sidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) {
+  border: none;
   background-color: transparent; }
 paned .sidebar.left, paned .sidebar.right, paned .sidebar.left:dir(rtl), paned .sidebar:dir(rtl), paned .sidebar:dir(ltr), paned .sidebar {
   border: none; }
