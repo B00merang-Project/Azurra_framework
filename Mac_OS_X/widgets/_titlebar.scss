@@ -1,0 +1,103 @@
+// titlebar
+@mixin titlebar() {
+  .titlebar {
+    border-bottom: none;
+    border-radius: $csd_radius $csd_radius 0px 0px;
+
+    & .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    & .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    // titlebutton 
+    & .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        padding: 2px 2px;
+        border: none;
+        color: transparent;
+        box-shadow: none;
+        background-color: transparent;
+        -gtk-icon-shadow: none;
+        
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      &:backdrop {
+        opacity: 0.6;
+      }
+      &.close {
+        background: url('assets/close-normal.png') 100% 100%;
+
+        &:hover {
+          background: url('assets/close-hover.png') 100% 100%;
+        }
+
+        &:active {
+          background: url('assets/close-active.png') 100% 100%;
+        }
+
+        &:backdrop {
+          background: url('assets/close-backdrop.png') 100% 100%;
+        }
+      }
+
+      &.minimize {
+        background: url('assets/minimize-normal.png') 100% 100%;
+
+        &:hover {
+          background: url('assets/minimize-hover.png') 100% 100%;
+        }
+
+        &:active {
+          background: url('assets/minimize-active.png') 100% 100%;
+        }
+
+        &:backdrop {
+          background: url('assets/minimize-backdrop.png') 100% 100%;
+        }
+      }
+
+      &.maximize {
+        background: url('assets/maximize-normal.png') 100% 100%;
+
+        &:hover {
+          background: url('assets/maximize-hover.png') 100% 100%;
+        }
+
+        &:active {
+          background: url('assets/maximize-active.png') 100% 100%;
+        }
+
+        &:backdrop {
+          background: url('assets/maximize-backdrop.png') 100% 100%;
+        }
+      }
+    }
+
+    .tiled &:not(headerbar), .tiled &:backdrop:not(headerbar), .maximized &:not(headerbar), .maximized &:backdrop:not(headerbar) {
+      border-radius: 0;
+    }
+  }
+
+  .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
+    min-height: 28px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    background-size: 100% 5px;
+    background-image: linear-gradient(to bottom, $titlebar_bg_color 35%, gtkalpha($borders, 0.7) 40%, gtkalpha($borders, 0.7) 64%, $titlebar_bg_color 85%);
+
+    &:backdrop {
+      color: $theme_unfocused_fg_color;
+      background-image: linear-gradient(to bottom, $theme_unfocused_base_color 35%, gtkalpha($unfocused_borders, 0.5) 40%, gtkalpha($unfocused_borders, 0.5) 64%, $theme_unfocused_base_color 85%);
+      background-color: $theme_unfocused_base_color;
+    }
+  }
+}

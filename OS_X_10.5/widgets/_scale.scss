@@ -6,7 +6,7 @@
     padding: 12px;
 
     & fill, & trough {
-      border: 1px solid gtkshade($borders, 0.8);
+      border: 1px solid $theme_selected_bg_color;
       border-left-color: gtkshade($borders, 0.9);
       border-right-color: gtkshade($borders, 0.9);
       border-bottom-color: gtkshade($borders, 0.95);
@@ -125,21 +125,18 @@
     }
 
     & slider {
-      min-height: 16px;
-      min-width: 16px;
-      margin: -8px;
-      border: 1px solid gtkshade($borders, 0.85);
+      min-height: 14px;
+      min-width: 14px;
+      margin: -6px;
+      border: 1px solid $theme_selected_bg_color;
       border-radius: 100%;
       color: $theme_fg_color;
-      background-color: gtkshade($theme_bg_color, 0.8);
-      background-image: linear-gradient(to bottom, $theme_base_color 40%, $theme_bg_color 60%);
-
-      &:hover {
-        color: $theme_fg_color;
-        background-color: $theme_base_color;
-      }
+      background-color: gtkshade($theme_selected_bg_color, 0.8);
+      background-image: linear-gradient(to bottom, #fff, #95b9df 50%, #689dd3 51%, #d0faff);
+      box-shadow: inset 3px 0 gtkalpha($dark_shadow, 0.1), inset -3px 0 gtkalpha($dark_shadow, 0.1);
 
       &:disabled {
+        opacity: 0.7;
         background-color: $theme_disabled_base_color;
         -gtk-icon-shadow: none;
 

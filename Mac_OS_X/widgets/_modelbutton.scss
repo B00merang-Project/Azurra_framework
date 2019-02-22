@@ -1,0 +1,26 @@
+// modelbutton
+@mixin modelbutton() {
+  modelbutton.flat, menuitem.button.flat, .menuitem.button.flat {
+    padding: 2px 8px;
+    border: none;
+    color: $theme_fg_color;
+    background-color: transparent;
+
+    &:hover, &:selected, &:active:hover {
+      color: $theme_selected_fg_color;
+      background-color: gtkalpha($theme_selected_bg_color, 0.7);
+    }
+
+    & > image {
+      padding-right: 4px;
+    }
+
+    &.flat arrow.left {
+      -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
+    }
+
+    &.flat arrow.right {
+      -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+    }
+  }
+}

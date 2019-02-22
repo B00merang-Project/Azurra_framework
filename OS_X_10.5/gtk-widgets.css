@@ -201,17 +201,17 @@ button {
   border-width: 1px;
   border-radius: 40px;
   color: @theme_fg_color;
-  border-color: shade(@borders, 0.85);
+  border-color: shade(@borders, 0.6);
   background-color: @theme_base_color;
-  background-image: linear-gradient(to bottom, @theme_base_color, shade(@theme_bg_color, 1.05) 40%, @theme_bg_color 55%);
-  box-shadow: 0 1px alpha(mix(@light_shadow, @dark_shadow, 0.5), 0.1);
+  background-image: linear-gradient(to bottom, @theme_base_color, shade(@theme_base_color, 0.97) 30%, @theme_bg_color 40%, @theme_base_color 90%);
+  box-shadow: 0 1px 2px 0px alpha(@dark_shadow, 0.3);
   -gtk-outline-radius: 40px; }
   button:active, button:checked {
     color: @theme_selected_fg_color;
     border-color: shade(@borders, 0.5);
     background-color: shade(@theme_base_color, 0.5);
     background-image: none;
-    box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 -2px 3px 1px alpha(@light_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
+    box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
     button:active:backdrop, button:checked:backdrop {
       color: @theme_unfocused_fg_color;
       border-color: shade(@theme_unfocused_bg_color, 0.85);
@@ -238,19 +238,20 @@ button.flat {
   color: @theme_fg_color;
   box-shadow: none;
   background-image: none;
-  background-color: transparent; }
+  background-color: transparent;
+  -gtk-outline-radius: 40px; }
   button.flat:hover {
     color: @theme_fg_color;
-    border-color: shade(@borders, 0.85);
+    border-color: shade(@borders, 0.6);
     background-color: @theme_base_color;
-    background-image: linear-gradient(to bottom, @theme_base_color, shade(@theme_bg_color, 1.05) 40%, @theme_bg_color 55%);
-    box-shadow: 0 1px alpha(mix(@light_shadow, @dark_shadow, 0.5), 0.1); }
+    background-image: linear-gradient(to bottom, @theme_base_color, shade(@theme_bg_color, 0.97) 30%, @theme_bg_color 40%, @theme_base_color 90%);
+    box-shadow: 0 1px 2px 0px alpha(@dark_shadow, 0.3); }
   button.flat:active, button.flat:checked {
     color: @theme_selected_fg_color;
     border-color: shade(@borders, 0.5);
     background-color: shade(@theme_base_color, 0.5);
     background-image: none;
-    box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 -2px 3px 1px alpha(@light_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
+    box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
     button.flat:active:backdrop, button.flat:checked:backdrop {
       color: @theme_unfocused_fg_color;
       border-color: shade(@theme_unfocused_bg_color, 0.85);
@@ -483,9 +484,9 @@ entry {
   border-radius: 0px;
   color: @theme_text_color;
   caret-color: currentColor;
-  background-color: @theme_base_color; }
+  background-color: @theme_base_color;
+  box-shadow: inset 0 0 2px 0 alpha(@dark_shadow, 0.08), inset 0 1px shade(@theme_bg_color, 0.8); }
   entry:active, entry:focus {
-    border-color: shade(@borders, 1.05);
     box-shadow: inset 0 0 1px 3px shade(@theme_selected_bg_color, 1.9); }
   entry:selected, entry:selected:focus, entry selection, entry selection:focus {
     color: @theme_selected_fg_color;
@@ -519,6 +520,9 @@ entry {
     background-color: transparent; }
   entry.search {
     border-radius: 40px; }
+  entry entry {
+    box-shadow: none;
+    background-color: transparent; }
 
 expander arrow {
   min-width: 16px;
@@ -1126,27 +1130,38 @@ progressbar {
   progressbar progress {
     border: none;
     border-radius: 0;
+    box-shadow: 0 -1px #2b5dbe;
     background-color: @theme_selected_bg_color;
-    background-image: linear-gradient(to right, transparent 20%, alpha(@theme_selected_bg_color, 0.03), transparent 80%), linear-gradient(to bottom, #accbf3, #83cbf8 50%, #56c0f8 51%, #addef6);
-    background-size: 20px 16px, auto; }
+    background-image: linear-gradient(to right, transparent, alpha(@dark_shadow, 0.05), transparent), linear-gradient(to top, #b9edff, shade(@theme_selected_bg_color, 1.8) 40%, shade(@theme_selected_bg_color, 1.6) 60%, shade(@theme_selected_bg_color, 2.1) 80%);
+    background-size: 16px 16px, auto; }
     progressbar progress:backdrop {
       background-color: @theme_unfocused_selected_bg_color; }
   progressbar trough {
     border-width: 1px;
     border-style: solid;
-    border-radius: 0px;
-    border-color: shade(@borders, 0.9);
+    border-radius: 0;
+    border-color: shade(@theme_bg_color, 0.68);
+    border-left-color: shade(@theme_bg_color, 0.8);
+    border-right-color: shade(@theme_bg_color, 0.8);
+    border-bottom-color: shade(@theme_bg_color, 0.9);
     background-color: shade(@theme_bg_color, 0.8);
-    background-image: linear-gradient(to bottom, shade(@theme_bg_color, 0.9), shade(@theme_bg_color, 0.95) 33%, shade(@theme_bg_color, 0.98)); }
+    background-image: linear-gradient(to bottom, @theme_base_color 15%, @theme_bg_color 40%, @theme_base_color 75%);
+    box-shadow: 0 2px 2px 0 alpha(@dark_shadow, 0.2); }
     progressbar trough:backdrop {
       background-color: shade(@theme_unfocused_bg_color, 0.95); }
   progressbar.vertical progress {
-    background-image: linear-gradient(to top, transparent 20%, alpha(@theme_selected_bg_color, 0.03), transparent 80%), linear-gradient(to right, #accbf3, #83cbf8 50%, #56c0f8 51%, #addef6);
-    background-size: 16px 20px, auto; }
+    box-shadow: -1px 0 #2b5dbe;
+    border-left-color: #2b5dbe;
+    background-image: linear-gradient(to top, transparent, alpha(@dark_shadow, 0.05), transparent), linear-gradient(to left, #b9edff, shade(@theme_selected_bg_color, 1.8) 40%, shade(@theme_selected_bg_color, 1.6) 60%, shade(@theme_selected_bg_color, 2.1) 80%); }
     progressbar.vertical progress:backdrop {
       background-color: @theme_unfocused_selected_bg_color; }
   progressbar.vertical trough {
-    background-image: linear-gradient(to right, shade(@theme_bg_color, 0.9), shade(@theme_bg_color, 0.95) 33%, shade(@theme_bg_color, 0.98)); }
+    border-left: shade(@theme_bg_color, 0.68);
+    border-top-color: shade(@theme_bg_color, 0.8);
+    border-bottom-color: shade(@theme_bg_color, 0.8);
+    border-right-color: shade(@theme_bg_color, 0.9);
+    background-image: linear-gradient(to right, @theme_base_color 15%, @theme_bg_color 40%, @theme_base_color 75%);
+    box-shadow: 2px 0 2px 0 alpha(@dark_shadow, 0.2); }
     progressbar.vertical trough:backdrop {
       background-color: shade(@theme_unfocused_bg_color, 0.95); }
   progressbar.horizontal trough, progressbar.horizontal progress {
@@ -1199,7 +1214,7 @@ scale {
   min-width: 10px;
   padding: 12px; }
   scale fill, scale trough {
-    border: 1px solid shade(@borders, 0.8);
+    border: 1px solid @theme_selected_bg_color;
     border-left-color: shade(@borders, 0.9);
     border-right-color: shade(@borders, 0.9);
     border-bottom-color: shade(@borders, 0.95);
@@ -1266,18 +1281,17 @@ scale {
     margin-left: 8px;
     margin-right: -13px; }
   scale slider {
-    min-height: 16px;
-    min-width: 16px;
-    margin: -8px;
-    border: 1px solid shade(@borders, 0.85);
+    min-height: 14px;
+    min-width: 14px;
+    margin: -6px;
+    border: 1px solid @theme_selected_bg_color;
     border-radius: 100%;
     color: @theme_fg_color;
-    background-color: shade(@theme_bg_color, 0.8);
-    background-image: linear-gradient(to bottom, @theme_base_color 40%, @theme_bg_color 60%); }
-    scale slider:hover {
-      color: @theme_fg_color;
-      background-color: @theme_base_color; }
+    background-color: shade(@theme_selected_bg_color, 0.8);
+    background-image: linear-gradient(to bottom, #fff, #95b9df 50%, #689dd3 51%, #d0faff);
+    box-shadow: inset 3px 0 alpha(@dark_shadow, 0.1), inset -3px 0 alpha(@dark_shadow, 0.1); }
     scale slider:disabled {
+      opacity: 0.7;
       background-color: @theme_disabled_base_color;
       -gtk-icon-shadow: none; }
       scale slider:disabled:backdrop {
@@ -1305,16 +1319,17 @@ scale {
 
 scrollbar {
   border: none;
-  background-color: @theme_base_color;
-  box-shadow: inset 2px -2px 5px 1px alpha(@dark_shadow, 0.25); }
+  background-color: transparent; }
   scrollbar trough {
     border: none;
-    border-radius: 0; }
+    background-color: @theme_base_color;
+    box-shadow: inset 2px -2px 5px 1px alpha(@dark_shadow, 0.25);
+    border-radius: 16px; }
   scrollbar.overlay-indicator:not(.dragging):not(.hovering) {
     border: none;
     opacity: 1;
     margin: 0;
-    background-color: @theme_base_color; }
+    background-color: transparent; }
   scrollbar.overlay-indicator.dragging, scrollbar.overlay-indicator.hovering {
     opacity: 1; }
   scrollbar.horizontal {
@@ -1324,14 +1339,15 @@ scrollbar {
       min-width: 45px;
       border-width: 2px;
       border-color: transparent;
-      border-radius: 10px;
+      border-radius: 16px;
       background-color: mix(@theme_bg_color, @theme_fg_color, 0.21);
       background-image: linear-gradient(to right, transparent, alpha(@dark_shadow, 0.05), transparent), linear-gradient(to bottom, shade(@theme_selected_bg_color, 2.3) 15%, shade(@theme_selected_bg_color, 1.6) 45%, shade(@theme_selected_bg_color, 2.1) 75%);
       background-size: 16px 16px, auto;
-      box-shadow: inset 1px 0 2px 0 alpha(@dark_shadow, 0.34), inset -1px 0 2px 0 alpha(@dark_shadow, 0.34);
-      margin-right: -5px; }
+      box-shadow: inset 1px 0 2px 0 alpha(@dark_shadow, 0.34), inset -1px 0 2px 0 alpha(@dark_shadow, 0.34); }
       scrollbar.horizontal slider:backdrop {
         background-image: linear-gradient(to bottom, @theme_base_color 15%, @theme_bg_color 40%, @theme_base_color 75%); }
+    scrollbar.horizontal trough {
+      margin-right: -5px; }
     scrollbar.horizontal button {
       border: none;
       padding: 0;
@@ -1355,14 +1371,15 @@ scrollbar {
       padding: 0;
       border-width: 2px;
       border-color: transparent;
-      border-radius: 10px;
+      border-radius: 16px;
       background-color: mix(@theme_bg_color, @theme_fg_color, 0.21);
       background-image: linear-gradient(to bottom, transparent, alpha(@dark_shadow, 0.05), transparent), linear-gradient(to right, shade(@theme_selected_bg_color, 2.3) 15%, shade(@theme_selected_bg_color, 1.6) 45%, shade(@theme_selected_bg_color, 2.1) 75%);
       background-size: 16px 16px, auto;
-      box-shadow: inset 1px 0 2px 0 alpha(@dark_shadow, 0.34), inset -1px 0 2px 0 alpha(@dark_shadow, 0.34);
-      margin-bottom: -5px; }
+      box-shadow: inset 1px 0 2px 0 alpha(@dark_shadow, 0.34), inset -1px 0 2px 0 alpha(@dark_shadow, 0.34); }
       scrollbar.vertical slider:backdrop {
         background-image: linear-gradient(to right, @theme_base_color 15%, @theme_bg_color 40%, @theme_base_color 75%); }
+    scrollbar.vertical trough {
+      margin-bottom: -5px; }
     scrollbar.vertical button {
       border: none;
       padding: 0;
@@ -1532,6 +1549,8 @@ button.sidebar-button:not(:hover):not(:active) > image {
 spinbutton:not(.vertical) selection, spinbutton:not(.vertical) selection:focus {
   color: @theme_selected_fg_color;
   background-color: @theme_selected_bg_color; }
+spinbutton button {
+  border-radius: 4px; }
 spinbutton button:disabled, spinbutton entry:disabled {
   color: @theme_disabled_fg_color; }
   spinbutton button:disabled:backdrop, spinbutton entry:disabled:backdrop {
@@ -1588,7 +1607,7 @@ switch {
   margin: 4px;
   color: alpha(@theme_fg_color, 0.6);
   border: 1px solid @borders;
-  border-radius: 16px;
+  border-radius: 4px;
   background-color: @theme_base_color;
   box-shadow: inset 0 10px #eeeeee, inset 0 2px alpha(@dark_shadow, 0.1); }
   switch:checked {
@@ -1610,11 +1629,11 @@ switch {
     border-color: @unfocused_borders;
     background-color: @unfocused_borders; }
   switch slider {
-    min-width: 20px;
+    min-width: 30px;
     min-height: 20px;
     margin: 0;
     border: none;
-    border-radius: 100%;
+    border-radius: 4px;
     color: @theme_fg_color;
     box-shadow: 0 2px 2px 1px alpha(@dark_shadow, 0.09);
     background-color: @theme_base_color;
@@ -1748,13 +1767,13 @@ headerbar, headerbar:not(.titlebar) {
     background-color: @headerbar_bg_color;
     background-image: linear-gradient(to top, shade(@theme_base_color, 0.8), shade(@theme_bg_color, 1.15));
     box-shadow: 0 1px alpha(@light_shadow, 0.1);
-    -gtk-outline-radius: 40px; }
+    -gtk-outline-radius: 4px; }
     headerbar button:active, headerbar button:checked, headerbar:not(.titlebar) button:active, headerbar:not(.titlebar) button:checked {
       color: @theme_selected_fg_color;
       border-color: shade(@borders, 0.5);
       background-color: shade(@headerbar_bg_color, 0.5);
       background-image: none;
-      box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 -2px 3px 1px alpha(@light_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
+      box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
       headerbar button:active:backdrop, headerbar button:checked:backdrop, headerbar:not(.titlebar) button:active:backdrop, headerbar:not(.titlebar) button:checked:backdrop {
         color: @theme_unfocused_fg_color;
         border-color: shade(@theme_unfocused_bg_color, 0.85);
@@ -1793,23 +1812,24 @@ toolbar {
     background-color: @theme_disabled_bg_color; }
   toolbar button.flat {
     border-color: transparent;
-    border-radius: 40px;
+    border-radius: 4px;
     color: @toolbar_fg_color;
     box-shadow: none;
     background-image: none;
-    background-color: transparent; }
+    background-color: transparent;
+    -gtk-outline-radius: 4px; }
     toolbar button.flat:hover {
       color: @toolbar_fg_color;
-      border-color: shade(@borders, 0.85);
+      border-color: shade(@borders, 0.6);
       background-color: @theme_base_color;
-      background-image: linear-gradient(to bottom, @theme_base_color, shade(@theme_bg_color, 1.05) 40%, @theme_bg_color 55%);
-      box-shadow: 0 1px alpha(mix(@light_shadow, @dark_shadow, 0.5), 0.1); }
+      background-image: linear-gradient(to bottom, @theme_base_color, shade(@theme_bg_color, 0.97) 30%, @theme_bg_color 40%, @theme_base_color 90%);
+      box-shadow: 0 1px 2px 0px alpha(@dark_shadow, 0.3); }
     toolbar button.flat:active, toolbar button.flat:checked {
       color: @theme_selected_fg_color;
       border-color: shade(@borders, 0.5);
       background-color: shade(@theme_base_color, 0.5);
       background-image: none;
-      box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 -2px 3px 1px alpha(@light_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
+      box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
       toolbar button.flat:active:backdrop, toolbar button.flat:checked:backdrop {
         color: @theme_unfocused_fg_color;
         border-color: shade(@theme_unfocused_bg_color, 0.85);
@@ -1846,17 +1866,17 @@ toolbar {
     border-width: 1px;
     border-radius: 40px;
     color: @toolbar_fg_color;
-    border-color: shade(@borders, 0.85);
+    border-color: shade(@borders, 0.6);
     background-color: @theme_base_color;
-    background-image: linear-gradient(to bottom, @theme_base_color, shade(@theme_bg_color, 1.05) 40%, @theme_bg_color 55%);
-    box-shadow: 0 1px alpha(mix(@light_shadow, @dark_shadow, 0.5), 0.1);
+    background-image: linear-gradient(to bottom, @theme_base_color, shade(@theme_base_color, 0.97) 30%, @theme_bg_color 40%, @theme_base_color 90%);
+    box-shadow: 0 1px 2px 0px alpha(@dark_shadow, 0.3);
     -gtk-outline-radius: 40px; }
     .primary-toolbar button:active, .primary-toolbar button:checked, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked {
       color: @theme_selected_fg_color;
       border-color: shade(@borders, 0.5);
       background-color: shade(@theme_base_color, 0.5);
       background-image: none;
-      box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 -2px 3px 1px alpha(@light_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
+      box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
       .primary-toolbar button:active:backdrop, .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:active:backdrop, .primary-toolbar .raised button:checked:backdrop {
         color: @theme_unfocused_fg_color;
         border-color: shade(@theme_unfocused_bg_color, 0.85);
@@ -1895,17 +1915,17 @@ toolbar {
     border-width: 1px;
     border-radius: 40px;
     color: @toolbar_fg_color;
-    border-color: shade(@borders, 0.85);
+    border-color: shade(@borders, 0.6);
     background-color: @theme_base_color;
-    background-image: linear-gradient(to bottom, @theme_base_color, shade(@theme_bg_color, 1.05) 40%, @theme_bg_color 55%);
-    box-shadow: 0 1px alpha(mix(@light_shadow, @dark_shadow, 0.5), 0.1);
+    background-image: linear-gradient(to bottom, @theme_base_color, shade(@theme_base_color, 0.97) 30%, @theme_bg_color 40%, @theme_base_color 90%);
+    box-shadow: 0 1px 2px 0px alpha(@dark_shadow, 0.3);
     -gtk-outline-radius: 40px; }
     .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
       color: @theme_selected_fg_color;
       border-color: shade(@borders, 0.5);
       background-color: shade(@theme_base_color, 0.5);
       background-image: none;
-      box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 -2px 3px 1px alpha(@light_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
+      box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 1px shade(@theme_bg_color, 0.35); }
       .inline-toolbar toolbar button:active:backdrop, .inline-toolbar toolbar button:checked:backdrop {
         color: @theme_unfocused_fg_color;
         border-color: shade(@theme_unfocused_bg_color, 0.85);
@@ -1927,58 +1947,59 @@ toolbar {
       color: @theme_unfocused_fg_color;
       background-color: @theme_unfocused_base_color; }
 
-.linked button, .linked .raised button, .inline-toolbar button, .inline-toolbar .raised button, .primary-toolbar button, .primary-toolbar .raised button {
+.linked button, .linked .raised button, .inline-toolbar button, .inline-toolbar .raised button {
   border-radius: 0;
-  border-left-width: 0; }
-  .linked button:first-child, .linked .raised button:first-child, .inline-toolbar button:first-child, .inline-toolbar .raised button:first-child, .primary-toolbar button:first-child, .primary-toolbar .raised button:first-child {
+  border-left-width: 0;
+  -gtk-outline-radius: 4px; }
+  .linked button:first-child, .linked .raised button:first-child, .inline-toolbar button:first-child, .inline-toolbar .raised button:first-child {
     border-left-width: 1px;
-    border-top-left-radius: 40px;
-    border-bottom-left-radius: 40px; }
-  .linked button:last-child, .linked .raised button:last-child, .inline-toolbar button:last-child, .inline-toolbar .raised button:last-child, .primary-toolbar button:last-child, .primary-toolbar .raised button:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px; }
+  .linked button:last-child, .linked .raised button:last-child, .inline-toolbar button:last-child, .inline-toolbar .raised button:last-child {
     border-left-width: 0;
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px; }
-  .linked button:only-child, .linked .raised button:only-child, .inline-toolbar button:only-child, .inline-toolbar .raised button:only-child, .primary-toolbar button:only-child, .primary-toolbar .raised button:only-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px; }
+  .linked button:only-child, .linked .raised button:only-child, .inline-toolbar button:only-child, .inline-toolbar .raised button:only-child {
     border-width: 1px;
-    border-radius: 40px; }
-.linked entry, .inline-toolbar entry, .primary-toolbar entry {
+    border-radius: 4px; }
+.linked entry, .inline-toolbar entry {
   border-radius: 0;
   border-left-width: 0; }
-  .linked entry:first-child, .inline-toolbar entry:first-child, .primary-toolbar entry:first-child {
+  .linked entry:first-child, .inline-toolbar entry:first-child {
     border-left-width: 1px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px; }
-  .linked entry:last-child, .inline-toolbar entry:last-child, .primary-toolbar entry:last-child {
+  .linked entry:last-child, .inline-toolbar entry:last-child {
     border-left-width: 0;
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px; }
-  .linked entry:only-child, .inline-toolbar entry:only-child, .primary-toolbar entry:only-child {
+  .linked entry:only-child, .inline-toolbar entry:only-child {
     border-width: 1px;
     border-radius: 0px; }
-  .linked entry:focus, .linked entry:last-child:focus, .inline-toolbar entry:focus, .inline-toolbar entry:last-child:focus, .primary-toolbar entry:focus, .primary-toolbar entry:last-child:focus {
-    box-shadow: inset 0 0 1px 3px shade(@theme_selected_bg_color, 1.9), -1px 0 shade(@borders, 1.05); }
-  .linked entry:first-child:focus, .inline-toolbar entry:first-child:focus, .primary-toolbar entry:first-child:focus {
+  .linked entry:focus, .linked entry:last-child:focus, .inline-toolbar entry:focus, .inline-toolbar entry:last-child:focus {
+    box-shadow: inset 0 0 1px 3px shade(@theme_selected_bg_color, 1.9), -1px 0 shade(@borders, 0.85); }
+  .linked entry:first-child:focus, .inline-toolbar entry:first-child:focus {
     box-shadow: inset 0 0 1px 3px shade(@theme_selected_bg_color, 1.9); }
-.linked combobox box.linked button, .inline-toolbar combobox box.linked button, .primary-toolbar combobox box.linked button {
+.linked combobox box.linked button, .inline-toolbar combobox box.linked button {
   border-radius: 0;
   border-left-width: 0; }
-.linked combobox:first-child box.linked button, .inline-toolbar combobox:first-child box.linked button, .primary-toolbar combobox:first-child box.linked button {
+.linked combobox:first-child box.linked button, .inline-toolbar combobox:first-child box.linked button {
   border-left-width: 1px;
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 40px; }
-.linked combobox:last-child box.linked button, .inline-toolbar combobox:last-child box.linked button, .primary-toolbar combobox:last-child box.linked button {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px; }
+.linked combobox:last-child box.linked button, .inline-toolbar combobox:last-child box.linked button {
   border-left-width: 0;
   border-top-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-top-right-radius: 40px;
-  border-bottom-right-radius: 40px; }
-.linked combobox:only-child box.linked button, .inline-toolbar combobox:only-child box.linked button, .primary-toolbar combobox:only-child box.linked button {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px; }
+.linked combobox:only-child box.linked button, .inline-toolbar combobox:only-child box.linked button {
   border-width: 1px;
-  border-radius: 40px; }
+  border-radius: 4px; }
 
 .vertical.linked button {
   border-left-width: 1px;
@@ -1986,16 +2007,16 @@ toolbar {
   border-radius: 0; }
   .vertical.linked button:first-child {
     border-top-width: 1px;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0; }
   .vertical.linked button:last-child {
     border-top-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px; }
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px; }
   .vertical.linked button:only-child {
     border-top-width: 1px; }
 .vertical.linked entry {
@@ -2017,7 +2038,7 @@ toolbar {
   .vertical.linked entry:only-child {
     border-top-width: 1px; }
   .vertical.linked entry:focus, .vertical.linked entry:last-child:focus {
-    box-shadow: inset 0 0 1px 3px shade(@theme_selected_bg_color, 1.9), 0 -1px shade(@borders, 1.05); }
+    box-shadow: inset 0 0 1px 3px shade(@theme_selected_bg_color, 1.9), 0 -1px shade(@borders, 0.85); }
   .vertical.linked entry:first-child:focus {
     box-shadow: inset 0 0 1px 3px shade(@theme_selected_bg_color, 1.9); }
 .vertical.linked combobox box.linked button {
@@ -2026,16 +2047,16 @@ toolbar {
   border-radius: 0; }
 .vertical.linked combobox:first-child box.linked button {
   border-top-width: 1px;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0; }
 .vertical.linked combobox:last-child box.linked button {
   border-top-width: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px; }
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; }
 .vertical.linked combobox:only-child box.linked button {
   border-top-width: 1px; }
 
@@ -2145,7 +2166,8 @@ searchbar {
   border-width: 1px;
   border-style: solid;
   border-color: shade(@osd_bg, 0.8);
-  border-radius: 40px;
+  border-radius: 4px;
+  background-image: none;
   background-color: shade(@osd_bg, 1.08);
   color: @osd_fg; }
   .osd button:hover, button.osd:hover {
@@ -2177,7 +2199,7 @@ searchbar {
     border-width: 1px;
     border-style: solid;
     border-color: shade(@osd_bg, 0.8);
-    border-radius: 40px;
+    border-radius: 4px;
     background-color: shade(@osd_bg, 1.08);
     color: @osd_fg; }
     .osd toolbar button:hover, toolbar.osd button:hover {
@@ -2258,7 +2280,7 @@ button.destructive-action {
   border-radius: 40px;
   color: mix(@theme_selected_fg_color, @error_color, 0.1);
   background-color: @error_color;
-  background-image: linear-gradient(to bottom, shade(@error_color, 1.15), shade(@error_color, 1.05) 40%, @error_color 55%); }
+  background-image: linear-gradient(to bottom, @error_color, shade(@error_color, 0.87) 30%, shade(@error_color, 0.9) 40%, @error_color 90%); }
   button.destructive-action:hover {
     border-color: mix(@error_color, @theme_fg_color, 0.3);
     background-color: mix(@error_color, @theme_selected_fg_color, 0.2); }
@@ -2275,12 +2297,11 @@ button.suggested-action {
   border-style: solid;
   border-radius: 40px;
   color: @theme_fg_color;
-  background-image: linear-gradient(to bottom, #b6d2ed, #8ebbe8 45%, #63a1df 50%, #b9edff);
-  border-color: #07067b;
-  border-left-color: shade(@theme_selected_bg_color, 1.15);
-  border-right-color: shade(@theme_selected_bg_color, 1.15);
-  border-bottom-color: shade(@theme_selected_bg_color, 1.3);
-  box-shadow: 0 0 2px 0px alpha(@dark_shadow, 0.3), inset 1px 0 2px 0 alpha(@dark_shadow, 0.4), inset -1px 0 2px 0 alpha(@dark_shadow, 0.4); }
+  background-image: linear-gradient(to bottom, #b6c7e0, #95b9df 32%, #689dd3 38%, #bae3f6);
+  background-color: shade(@theme_bg_color, 0.8);
+  border-color: shade(@theme_bg_color, 0.45);
+  border-top-color: @theme_selected_bg_color;
+  box-shadow: 0 1px 2px 0px alpha(@dark_shadow, 0.3), inset 0 0 0 1px alpha(@light_shadow, 0.3), inset 1px 0 2px 0 alpha(@dark_shadow, 0.2), inset -1px 0 2px 0 alpha(@dark_shadow, 0.2); }
   button.suggested-action:active, button.suggested-action:checked {
     box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 -2px 3px 1px alpha(@light_shadow, 0.45), inset 0 1px shade(#8ebbe8, 0.35); }
     button.suggested-action:active:backdrop, button.suggested-action:checked:backdrop {
@@ -2301,14 +2322,13 @@ button.suggested-action {
 headerbar button.suggested-action {
   border-width: 1px;
   border-style: solid;
-  border-radius: 40px;
+  border-radius: 4px;
   color: @theme_fg_color;
-  background-image: linear-gradient(to bottom, #b6d2ed, #8ebbe8 45%, #63a1df 50%, #b9edff);
-  border-color: #07067b;
-  border-left-color: shade(@theme_selected_bg_color, 1.15);
-  border-right-color: shade(@theme_selected_bg_color, 1.15);
-  border-bottom-color: shade(@theme_selected_bg_color, 1.3);
-  box-shadow: 0 0 2px 0px alpha(@dark_shadow, 0.3), inset 1px 0 2px 0 alpha(@dark_shadow, 0.4), inset -1px 0 2px 0 alpha(@dark_shadow, 0.4); }
+  background-image: linear-gradient(to bottom, #b6c7e0, #95b9df 32%, #689dd3 38%, #bae3f6);
+  background-color: shade(@theme_bg_color, 0.8);
+  border-color: shade(@theme_bg_color, 0.45);
+  border-top-color: @theme_selected_bg_color;
+  box-shadow: 0 1px 2px 0px alpha(@dark_shadow, 0.3), inset 0 0 0 1px alpha(@light_shadow, 0.3), inset 1px 0 2px 0 alpha(@dark_shadow, 0.2), inset -1px 0 2px 0 alpha(@dark_shadow, 0.2); }
   headerbar button.suggested-action:active, headerbar button.suggested-action:checked {
     box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 -2px 3px 1px alpha(@light_shadow, 0.45), inset 0 1px shade(#8ebbe8, 0.35); }
     headerbar button.suggested-action:active:backdrop, headerbar button.suggested-action:checked:backdrop {
@@ -2362,12 +2382,11 @@ headerbar.selection-mode, toolbar.selection-mode {
     border-style: solid;
     border-radius: 40px;
     color: @theme_fg_color;
-    background-image: linear-gradient(to bottom, #b6d2ed, #8ebbe8 45%, #63a1df 50%, #b9edff);
-    border-color: #07067b;
-    border-left-color: shade(@theme_selected_bg_color, 1.15);
-    border-right-color: shade(@theme_selected_bg_color, 1.15);
-    border-bottom-color: shade(@theme_selected_bg_color, 1.3);
-    box-shadow: 0 0 2px 0px alpha(@dark_shadow, 0.3), inset 1px 0 2px 0 alpha(@dark_shadow, 0.4), inset -1px 0 2px 0 alpha(@dark_shadow, 0.4); }
+    background-image: linear-gradient(to bottom, #b6c7e0, #95b9df 32%, #689dd3 38%, #bae3f6);
+    background-color: shade(@theme_bg_color, 0.8);
+    border-color: shade(@theme_bg_color, 0.45);
+    border-top-color: @theme_selected_bg_color;
+    box-shadow: 0 1px 2px 0px alpha(@dark_shadow, 0.3), inset 0 0 0 1px alpha(@light_shadow, 0.3), inset 1px 0 2px 0 alpha(@dark_shadow, 0.2), inset -1px 0 2px 0 alpha(@dark_shadow, 0.2); }
     headerbar.selection-mode button.suggested-action:active, headerbar.selection-mode button.suggested-action:checked, toolbar.selection-mode button.suggested-action:active, toolbar.selection-mode button.suggested-action:checked {
       box-shadow: inset 0 2px 3px 1px alpha(@dark_shadow, 0.45), inset 0 -2px 3px 1px alpha(@light_shadow, 0.45), inset 0 1px shade(#8ebbe8, 0.35); }
       headerbar.selection-mode button.suggested-action:active:backdrop, headerbar.selection-mode button.suggested-action:checked:backdrop, toolbar.selection-mode button.suggested-action:active:backdrop, toolbar.selection-mode button.suggested-action:checked:backdrop {
@@ -2437,7 +2456,8 @@ messagedialog {
   messagedialog.csd .dialog-action-area button {
     padding: 10px;
     border-radius: 0;
-    border-bottom-style: none; }
+    border-bottom-style: none;
+    -gtk-outline-radius: 4px; }
     messagedialog.csd .dialog-action-area button:last-child {
       border-right-width: 0;
       border-radius: 0px;

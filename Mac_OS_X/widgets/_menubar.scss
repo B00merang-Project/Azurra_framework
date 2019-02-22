@@ -1,0 +1,17 @@
+// menubar 
+@mixin menubar() {
+  menubar, .menubar {
+    -GtkWidget-window-dragging: true;
+    padding: 0;
+    border-style: none;
+    background-color: $menubar_bg_color;
+    color: $menubar_fg_color;
+    background-size: 100% 5px;
+    background-image: linear-gradient(to bottom, $titlebar_bg_color 35%, gtkalpha($borders, 0.7) 40%, gtkalpha($borders, 0.7) 64%, $titlebar_bg_color 85%);
+
+    &:backdrop {
+      color: $theme_unfocused_fg_color;
+      background-color: $theme_unfocused_bg_color;
+    }
+  }
+}

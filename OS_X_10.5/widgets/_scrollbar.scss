@@ -2,12 +2,13 @@
 @mixin scrollbar() {
   scrollbar {
     border: none;
-    background-color: $theme_base_color;
-    box-shadow: inset 2px -2px 5px 1px gtkalpha($dark_shadow, 0.25);
+    background-color: transparent;
 
     & trough {
       border: none;
-      border-radius: 0;
+      background-color: $theme_base_color;
+      box-shadow: inset 2px -2px 5px 1px gtkalpha($dark_shadow, 0.25);
+      border-radius: $scrollbar_radius;
     }
 
     &.overlay-indicator {
@@ -15,7 +16,7 @@
         border: none;
         opacity: 1;
         margin: 0;
-        background-color: $theme_base_color;
+        background-color: transparent;
       }
       
       &.dragging, &.hovering {
@@ -36,11 +37,14 @@
         background-image: linear-gradient(to right, transparent, gtkalpha($dark_shadow, 0.05), transparent), linear-gradient(to bottom, gtkshade($theme_selected_bg_color, 2.3) 15%, gtkshade($theme_selected_bg_color, 1.6) 45%, gtkshade($theme_selected_bg_color, 2.1) 75%);
         background-size: 16px 16px, auto;
         box-shadow: inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.34), inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.34);
-        margin-right: -5px;
         
         &:backdrop {
           background-image: linear-gradient(to bottom, $theme_base_color 15%, $theme_bg_color 40%, $theme_base_color 75%);
         }
+      }
+      
+      & trough {
+        margin-right: -5px;
       }
 
       & button {
@@ -80,11 +84,14 @@
         background-image: linear-gradient(to bottom, transparent, gtkalpha($dark_shadow, 0.05), transparent), linear-gradient(to right, gtkshade($theme_selected_bg_color, 2.3) 15%, gtkshade($theme_selected_bg_color, 1.6) 45%, gtkshade($theme_selected_bg_color, 2.1) 75%);
         background-size: 16px 16px, auto;
         box-shadow: inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.34), inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.34);
-        margin-bottom: -5px;
         
         &:backdrop {
           background-image: linear-gradient(to right, $theme_base_color 15%, $theme_bg_color 40%, $theme_base_color 75%);
         }
+      }
+      
+      & trough {
+        margin-bottom: -5px;
       }
 
       & button {
