@@ -65,6 +65,7 @@
     &:active, &:checked {
       background-color: gtkshade($bg, 0.9);
       box-shadow: inset -3px -3px gtkshade($theme_base_color, 0.9), inset -1px -1px gtkshade($theme_bg_color, 0.9), inset 2px 2px gtkshade($theme_bg_color, 0.85), inset 1px 1px gtkshade($theme_bg_color, 0.65);
+      
       &:backdrop {
         color: $theme_unfocused_selected_fg_color;
       }
@@ -74,6 +75,7 @@
       border-color: transparent;
       color: gtkalpha($fg, 0.8);
       background-color: transparent;
+      
       &:backdrop {
         border-color: transparent;
         color: gtkalpha($fg, 0.7);
@@ -82,6 +84,8 @@
     }
 
     &:backdrop {
+      border-color: transparent;
+      background-color: transparent;
       color: $theme_unfocused_fg_color;
     }
   }

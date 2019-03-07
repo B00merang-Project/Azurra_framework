@@ -268,6 +268,8 @@ button.flat {
       color: alpha(@theme_fg_color, 0.7);
       background-color: transparent; }
   button.flat:backdrop {
+    border-color: transparent;
+    background-color: transparent;
     color: @theme_unfocused_fg_color; }
 
 checkbutton.text-button, radiobutton.text-button {
@@ -805,6 +807,11 @@ button.circular, button.circular-button {
   border-radius: 50%;
   -gtk-outline-radius: 50%; }
 
+printdialog paper {
+  border: 1px solid @borders;
+  background: @light_shadow;
+  padding: 0; }
+
 menu, .menu {
   margin: 4px;
   padding: 0;
@@ -962,9 +969,10 @@ notebook {
     border-style: solid;
     border-radius: 0;
     border-color: transparent;
-    color: @theme_fg_color;
+    color: alpha(@theme_fg_color, 0.5);
     background-color: transparent; }
     notebook tab:checked {
+      color: @theme_fg_color;
       border-color: @borders;
       background-color: @theme_base_color;
       background-image: linear-gradient(to bottom, shade(@theme_bg_color, 0.9), shade(@theme_bg_color, 0.85)); }
@@ -1283,7 +1291,7 @@ scale {
 
 scrollbar {
   border: none;
-  background-color: @theme_base_color; }
+  background-color: shade(@theme_bg_color, 1.2); }
   scrollbar trough {
     border: none;
     border-radius: 0; }
@@ -1777,6 +1785,8 @@ toolbar {
         color: alpha(@toolbar_fg_color, 0.7);
         background-color: transparent; }
     toolbar button.flat:backdrop {
+      border-color: transparent;
+      background-color: transparent;
       color: @theme_unfocused_fg_color; }
   toolbar menubar {
     -GtkToolbar-button-relief: normal; }
@@ -2008,10 +2018,13 @@ toolbar {
   min-height: 20px;
   min-width: 80px;
   box-shadow: none; }
-  .stack-switcher button:checked, .stack-switcher button:checked:hover, .stack-switcher button:checked:focus, .stack-switcher button:checked:backdrop, .stack-switcher button:checked:hover:backdrop, .stack-switcher button:active, .stack-switcher button:active:hover, .stack-switcher button:active:focus, .stack-switcher button:active:backdrop, .stack-switcher button:active:hover:backdrop {
+  .stack-switcher button:checked, .stack-switcher button:checked:hover, .stack-switcher button:checked:focus, .stack-switcher button:active, .stack-switcher button:active:hover, .stack-switcher button:active:focus {
     background-color: transparent;
     background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.4), shade(@theme_selected_bg_color, 1.05));
     color: @theme_selected_fg_color; }
+    .stack-switcher button:checked:backdrop, .stack-switcher button:checked:hover:backdrop, .stack-switcher button:checked:focus:backdrop, .stack-switcher button:active:backdrop, .stack-switcher button:active:hover:backdrop, .stack-switcher button:active:focus:backdrop {
+      background-image: linear-gradient(to bottom, shade(@theme_unfocused_bg_color, 0.9), shade(@theme_unfocused_bg_color, 1.05));
+      color: @theme_unfocused_fg_color; }
 
 tooltip {
   border-radius: 4px;
@@ -2609,6 +2622,57 @@ panel-toplevel.background na-tray-applet {
       color: @theme_selected_bg_color;
       border: none;
       background-color: shade(@taskbar_bg_color, 0.93); }
+
+#XfceNotifyWindow.osd {
+  background-color: @theme_bg_color;
+  color: @theme_fg_color;
+  border-radius: 4px;
+  border: none; }
+  #XfceNotifyWindow.osd label#summary {
+    font-weight: bold; }
+  #XfceNotifyWindow.osd button {
+    padding: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    color: @theme_fg_color;
+    border-color: @borders;
+    border-top-color: shade(@borders, 1.1);
+    border-left-color: shade(@borders, 1.05);
+    border-right-color: shade(@borders, 1.05);
+    background-color: @theme_base_color;
+    background-image: linear-gradient(to bottom, shade(@theme_bg_color, 1.4), mix(shade(@theme_bg_color, 1.2), @dark_shadow, 0.02));
+    -gtk-outline-radius: 4px; }
+    #XfceNotifyWindow.osd button:hover {
+      color: @theme_fg_color;
+      background-color: shade(@theme_base_color, 1.1); }
+    #XfceNotifyWindow.osd button:active, #XfceNotifyWindow.osd button:checked {
+      color: @theme_selected_fg_color;
+      border-color: shade(@borders, 0.9);
+      background-image: none;
+      background-color: mix(@theme_fg_color, @theme_base_color, 0.5); }
+      #XfceNotifyWindow.osd button:active:backdrop, #XfceNotifyWindow.osd button:checked:backdrop {
+        color: @theme_unfocused_fg_color;
+        border-color: shade(@theme_unfocused_bg_color, 0.85);
+        background-color: shade(@theme_unfocused_bg_color, 0.85); }
+      #XfceNotifyWindow.osd button:active:disabled, #XfceNotifyWindow.osd button:checked:disabled {
+        color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1);
+        border-color: mix(@theme_fg_color, @theme_disabled_bg_color, 0.85);
+        background-color: shade(@theme_disabled_bg_color, 0.9); }
+        #XfceNotifyWindow.osd button:active:disabled:backdrop, #XfceNotifyWindow.osd button:checked:disabled:backdrop {
+          color: @theme_unfocused_disabled_fg_color;
+          border-color: @unfocused_borders;
+          background-color: shade(@theme_unfocused_disabled_bg_color, 0.9); }
+    #XfceNotifyWindow.osd button:disabled {
+      color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.5); }
+      #XfceNotifyWindow.osd button:disabled:backdrop {
+        color: @theme_unfocused_disabled_fg_color;
+        background-image: none; }
+    #XfceNotifyWindow.osd button:backdrop {
+      color: @theme_unfocused_fg_color;
+      border-color: @unfocused_borders;
+      background-image: none;
+      background-color: @theme_unfocused_bg_color; }
 
 .nemo-window .nemo-window-pane widget.entry {
   border: 1px solid;

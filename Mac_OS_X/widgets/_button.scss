@@ -40,6 +40,7 @@
         border-color: gtkmix($fg, $theme_disabled_bg_color, 0.85);
         background-image: linear-gradient(to bottom, $theme_base_color 20%, $theme_unfocused_bg_color 40%, $theme_base_color 75%);
         background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        
         &:backdrop {
           color: $theme_unfocused_disabled_fg_color;
           border-color: $unfocused_borders;
@@ -50,6 +51,7 @@
 
     &:disabled {
       color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      
       &:backdrop {
         color: $theme_unfocused_disabled_fg_color;
       }
@@ -103,6 +105,7 @@
       border-color: transparent;
       color: gtkalpha($fg, 0.8);
       background-color: transparent;
+      
       &:backdrop {
         border-color: transparent;
         color: gtkalpha($fg, 0.7);
@@ -111,6 +114,8 @@
     }
 
     &:backdrop {
+      border-color: transparent;
+      background-color: transparent;
       color: $theme_unfocused_fg_color;
     }
   }

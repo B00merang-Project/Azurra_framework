@@ -35,6 +35,7 @@
         color: $theme_disabled_fg_color;
         border-color: gtkmix($fg, $theme_disabled_bg_color, 0.85);
         background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        
         &:backdrop {
           color: $theme_unfocused_disabled_fg_color;
           border-color: $unfocused_borders;
@@ -77,8 +78,9 @@
     }
 
     &:active, &:checked {
-      color: $theme_selected_bg_color;
+      color: $theme_selected_fg_color;
       background-color: $theme_selected_bg_color;
+      
       &:backdrop {
         color: $theme_unfocused_selected_fg_color;
         background-color: gtkshade($theme_unfocused_selected_bg_color, 0.6);
@@ -89,6 +91,7 @@
       border-color: transparent;
       color: gtkalpha($fg, 0.8);
       background-color: transparent;
+      
       &:backdrop {
         border-color: transparent;
         color: gtkalpha($fg, 0.7);
@@ -97,6 +100,8 @@
     }
 
     &:backdrop {
+      border-color: transparent;
+      background-color: transparent;
       color: $theme_unfocused_fg_color;
     }
   }

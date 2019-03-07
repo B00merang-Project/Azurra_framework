@@ -242,6 +242,8 @@ button.flat {
       color: alpha(@theme_fg_color, 0.7);
       background-color: transparent; }
   button.flat:backdrop {
+    border-color: transparent;
+    background-color: transparent;
     color: @theme_unfocused_fg_color; }
 
 checkbutton.text-button, radiobutton.text-button {
@@ -775,6 +777,11 @@ button.circular, button.circular-button {
   padding: 2px 6px;
   border-radius: 50%;
   -gtk-outline-radius: 50%; }
+
+printdialog paper {
+  border: 1px solid @borders;
+  background: @light_shadow;
+  padding: 0; }
 
 menu, .menu {
   margin: 4px;
@@ -1709,6 +1716,8 @@ toolbar {
         color: alpha(@toolbar_fg_color, 0.7);
         background-color: transparent; }
     toolbar button.flat:backdrop {
+      border-color: transparent;
+      background-color: transparent;
       color: @theme_unfocused_fg_color; }
   toolbar menubar {
     -GtkToolbar-button-relief: normal; }
@@ -2475,6 +2484,35 @@ panel-toplevel.background na-tray-applet {
       color: @theme_selected_bg_color;
       border: none;
       background-color: shade(@taskbar_bg_color, 0.93); }
+
+#XfceNotifyWindow.osd {
+  background-color: @theme_bg_color;
+  color: @theme_fg_color;
+  border-radius: 2px;
+  border: none; }
+  #XfceNotifyWindow.osd label#summary {
+    font-weight: bold; }
+  #XfceNotifyWindow.osd button {
+    padding: 4px 9px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    color: @theme_fg_color;
+    border-color: shade(@borders, 0.55);
+    background-color: shade(@theme_bg_color, 1.08);
+    -gtk-outline-radius: 2px;
+    box-shadow: inset 3px 3px @light_shadow, inset 1px 1px @theme_bg_color, inset -2px -2px shade(@theme_bg_color, 0.85), inset -1px -1px shade(@theme_bg_color, 0.65);
+    outline-offset: 2px;
+    outline-style: solid;
+    outline-color: alpha(@dark_shadow, 0.5); }
+    #XfceNotifyWindow.osd button:active, #XfceNotifyWindow.osd button:checked {
+      background-color: shade(@theme_bg_color, 0.9);
+      box-shadow: inset -3px -3px shade(@theme_base_color, 0.9), inset -1px -1px shade(@theme_bg_color, 0.9), inset 2px 2px shade(@theme_bg_color, 0.85), inset 1px 1px shade(@theme_bg_color, 0.65); }
+      #XfceNotifyWindow.osd button:active:disabled, #XfceNotifyWindow.osd button:checked:disabled {
+        color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
+    #XfceNotifyWindow.osd button:disabled {
+      color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.5);
+      box-shadow: inset 3px 3px @light_shadow, inset 1px 1px @theme_bg_color, inset -2px -2px shade(@theme_bg_color, 0.95); }
 
 .nemo-window .nemo-window-pane widget.entry {
   border: 1px solid;

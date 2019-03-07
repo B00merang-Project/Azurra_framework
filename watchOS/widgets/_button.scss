@@ -1,0 +1,97 @@
+// button
+@mixin normal_buttons($bg, $fg, $border) {
+  // dirty override
+  $bg : gtkmix($theme_bg_color, $theme_fg_color, 0.1);
+
+  & {
+    padding: 4px 8px;
+    border: none;
+    border-radius: $button_radius;
+    color: $fg;
+    background-color: $bg;
+    -gtk-outline-radius: $button_radius;
+
+    &:hover {
+      color: $fg;
+    }
+
+    &:active, &:checked {
+      color: $theme_selected_fg_color;
+      background-color: $theme_selected_bg_color;
+
+      &:backdrop {
+        color: $theme_unfocused_selected_fg_color;
+        background-color: $theme_unfocused_selected_bg_color;
+      }
+      
+      &:disabled {
+        color: $theme_disabled_fg_color;
+        background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        &:backdrop {
+          color: $theme_unfocused_disabled_fg_color;
+          background-color: gtkshade($theme_unfocused_disabled_bg_color, 0.9);
+        }
+      }
+    }
+
+    &:disabled {
+      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      &:backdrop {
+        color: $theme_unfocused_disabled_fg_color;
+      }
+    }
+
+    &:backdrop {
+      color: $theme_unfocused_fg_color;
+    }
+  }
+}
+
+@mixin flat_buttons($bg, $fg, $border)
+{
+  $fg : $theme_selected_bg_color;
+  
+  & {
+    border: none;
+    border-radius: $button_radius;
+    color: $fg;
+    background-color: transparent;
+
+    &:hover {
+      color: $fg;
+      background-color: transparent;
+    }
+
+    &:active, &:checked {
+      color: $theme_selected_fg_color;
+      background-color: $theme_selected_bg_color;
+      &:backdrop {
+        color: $theme_unfocused_selected_fg_color;
+        background-color: gtkshade($theme_unfocused_selected_bg_color, 0.6);
+      }
+    }
+
+    &:disabled {
+      color: gtkalpha($fg, 0.8);
+      background-color: transparent;
+      &:backdrop {
+        color: gtkalpha($fg, 0.7);
+        background-color: transparent;
+      }
+    }
+
+    &:backdrop {
+      color: $theme_unfocused_fg_color;
+    }
+  }
+}
+
+@mixin button() {
+  button {
+    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    
+    &.flat {
+      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+    }
+  }
+}

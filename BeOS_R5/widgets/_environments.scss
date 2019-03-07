@@ -95,6 +95,25 @@
       }
     }
   }
+  
+  #XfceNotifyWindow {
+    &.osd {
+      background-color: $theme_bg_color;
+      color: $theme_fg_color;
+      border-radius: $roundness;
+      border: none;
+
+      label {
+        &#summary {
+          font-weight: bold;
+        }
+      }
+      
+      button {
+        @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+      }
+    }
+  }
 }
 
 // Mate panel
