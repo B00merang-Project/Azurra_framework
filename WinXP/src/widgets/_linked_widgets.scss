@@ -189,6 +189,26 @@
         border-top-width: 1px;
       }
     }
+    
+    & spinbutton {
+      button {
+        &:first-child {
+          border-width: 1px;
+          border-top-width: 0;
+          border-left-width: 1px;
+        }
+        
+        &:last-child {
+          border-width: 0;
+          border-left-width: 1px;
+          border-right-width: 1px;
+          border-bottom-width: 1px;
+          border-top-right-radius: 0;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }      
+      }
+    }
   }
   
   .stack-switcher {

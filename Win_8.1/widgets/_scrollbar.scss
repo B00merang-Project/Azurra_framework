@@ -1,0 +1,108 @@
+// scrollbar  
+@mixin scrollbar() {
+  scrollbar {
+    border: none;
+    background-color: gtkshade($theme_bg_color, 0.9);
+
+    & trough {
+      border: none;
+      border-radius: 0;
+    }
+
+    &:backdrop {
+      background-color: gtkshade($theme_bg_color, 0.9);
+    }
+    
+    & button {
+      &, &:hover, &:active, &:disabled, {
+        padding: 3px;
+        border-color: gtkshade($theme_bg_color, 0.9);
+        background-color: gtkshade($theme_bg_color, 0.9);
+      }
+    }
+
+    & slider {
+      min-width: 45px;
+      min-height: 14px;
+      margin: 0;
+      border: none;
+      border-radius: $scrollbar_radius;
+      background-clip: padding-box;
+      background-color: gtkshade($theme_bg_color, 0.6);
+
+      &:hover {
+        background-color: gtkshade($theme_bg_color, 0.6);
+
+        &:active {
+          background-color: gtkshade($theme_bg_color, 0.55);
+        }
+      }
+
+      &:backdrop {
+        background-color: gtkshade($theme_bg_color, 0.55);
+      }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+    
+    &.vertical slider {
+      min-width: 14px;
+      min-height: 45px;
+    }
+
+    // not implemented in windows 10
+    &.fine-tune {
+      
+    }
+
+    &.overlay-indicator {
+      opacity: 1;
+      // not implemented
+    }
+
+    &.horizontal {
+      & slider {
+        min-width: 40px;
+      }
+
+      & button {
+        min-height: 6px;
+        min-width: 6px;
+      
+        &.down {
+          -gtk-icon-source: url('assets/arrow-right.svg');
+        }
+
+        &.up {
+          -gtk-icon-source: url('assets/arrow-left.svg');
+        }
+      }
+    }
+
+    &.vertical {
+      & slider {
+        min-height: 40px;
+      }
+
+      & button {
+        min-height: 6px;
+        min-width: 6px;
+
+        &.down {
+          -gtk-icon-source: url('assets/arrow-down.svg');
+        }
+
+        &.up {
+          -gtk-icon-source: url('assets/arrow-up.svg')
+        }
+      }
+    }
+
+    treeview ~ &.vertical {
+      border-top: 1px solid $borders;
+      margin-top: -1px;
+    }
+  }
+}

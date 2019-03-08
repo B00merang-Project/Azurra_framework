@@ -1,0 +1,108 @@
+// headerbar
+@mixin headerbar_buttons($bg, $fg, $border)
+{
+  & {
+    padding: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: $button_radius;
+    color: $fg;
+    border-color: gtkshade($bg, 0.5);
+    background-color: $bg;
+    background-image: linear-gradient(to bottom, gtkshade($bg, 1.05), gtkshade($bg, 0.81) 50%, gtkshade($bg, 0.77) 51%, gtkshade($bg, 0.72));
+    box-shadow: 0 1px gtkalpha($light_shadow, 0.1);
+
+    &:hover {
+    }
+
+    &:active, &:checked {
+      color: $theme_selected_fg_color;
+      border-color: gtkshade($bg, 0.5);
+      background-color: gtkshade($bg, 0.5);
+      background-image: none;
+      box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.45), inset 0 1px gtkshade($theme_bg_color, 0.35);
+
+      &:backdrop {
+        color: $theme_unfocused_fg_color;
+        border-color: gtkshade($theme_unfocused_bg_color, 0.85);
+        background-color: gtkshade($theme_unfocused_bg_color, 0.85);
+        box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.25), inset 0 1px gtkshade($theme_bg_color, 0.55);
+      }
+      
+      &:disabled {
+        color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
+        border-color: gtkmix($fg, $theme_disabled_bg_color, 0.85);
+        background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        
+        &:backdrop {
+          color: $theme_unfocused_disabled_fg_color;
+          border-color: $unfocused_borders;
+          background-color: gtkshade($theme_unfocused_disabled_bg_color, 0.9);
+        }
+      }
+    }
+
+    &:disabled {
+      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      
+      &:backdrop {
+        color: $theme_unfocused_disabled_fg_color;
+      }
+    }
+
+    &:backdrop {
+      color: $theme_unfocused_fg_color;
+      border-color: $unfocused_borders;
+      background-image: linear-gradient(to bottom,  gtkshade($theme_unfocused_bg_color, 1.1), gtkshade($theme_unfocused_bg_color, 1.03) 50%, gtkshade($theme_unfocused_base_color, 0.99) 51%, gtkshade($theme_unfocused_base_color, 0.95));
+      background-color: $theme_unfocused_base_color;
+    }
+  }
+}
+
+@mixin headerbar() {
+  headerbar, headerbar:not(.titlebar) {
+    padding: 4px 8px;
+    border-width: 0;
+    border-style: solid;
+    border-color: gtkmix($borders, $headerbar_bg_color, 0.5);
+    border-bottom-width: 1px;
+    box-shadow: 0 1px $dark_shadow;
+    color: $headerbar_fg_color;
+    background-color: $headerbar_bg_color;
+
+    &:backdrop {
+      border-color: $unfocused_borders;
+      color: $theme_unfocused_fg_color;
+      background-color: $theme_unfocused_bg_color;
+    }
+
+    .titlebar &, .titlebar &:backdrop {
+      background-color: transparent;
+    }
+
+    .tiled &, .tiled &:backdrop, .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+
+    & .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    & .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    button {
+      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, transparent);
+    }
+
+    & entry {
+      padding: 4px 8px;
+    }
+  }
+}

@@ -34,6 +34,7 @@
         color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
         border-color: gtkmix($fg, $theme_disabled_bg_color, 0.85);
         background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        
         &:backdrop {
           color: $theme_unfocused_disabled_fg_color;
           border-color: $unfocused_borders;
@@ -44,6 +45,7 @@
 
     &:disabled {
       color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      
       &:backdrop {
         color: $theme_unfocused_disabled_fg_color;
       }
