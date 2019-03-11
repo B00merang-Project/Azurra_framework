@@ -1999,10 +1999,15 @@ toolbar {
   min-height: 20px;
   min-width: 80px;
   box-shadow: none; }
-  .stack-switcher button:checked, .stack-switcher button:checked:hover, .stack-switcher button:checked:focus, .stack-switcher button:checked:backdrop, .stack-switcher button:checked:hover:backdrop, .stack-switcher button:active, .stack-switcher button:active:hover, .stack-switcher button:active:focus, .stack-switcher button:active:backdrop, .stack-switcher button:active:hover:backdrop {
+  .stack-switcher button:checked, .stack-switcher button:checked:hover, .stack-switcher button:checked:focus, .stack-switcher button:active, .stack-switcher button:active:hover, .stack-switcher button:active:focus {
     background-color: transparent;
     background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.2), shade(@theme_selected_bg_color, 1.05));
     color: @theme_selected_fg_color; }
+    .stack-switcher button:checked:backdrop, .stack-switcher button:checked:hover:backdrop, .stack-switcher button:checked:focus:backdrop, .stack-switcher button:active:backdrop, .stack-switcher button:active:hover:backdrop, .stack-switcher button:active:focus:backdrop {
+      color: @theme_unfocused_fg_color;
+      border-color: shade(@theme_unfocused_bg_color, 0.85);
+      background-color: shade(@theme_unfocused_bg_color, 0.85);
+      background-image: none; }
 
 tooltip {
   border-radius: 4px;

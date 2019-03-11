@@ -19,6 +19,7 @@
 
     // titlebutton 
     & .titlebutton {
+      
       &.close, &.maximize, &.minimize, &:not(separator) {
         padding: 3px 5px;
         border: none;
@@ -29,27 +30,28 @@
         background-position: center;
         background-repeat: no-repeat;
       }
+      
       &.close {
         padding: 3px 14px;
-        background: url('assets/close-normal.png') 100% 100%;
+        background: url('assets/close-normal.png') center center;
 
         &:hover {
-          background: url('assets/close-hover.png') 100% 100%;
+          background: url('assets/close-hover.png') center center;
         }
 
         &:active {
-          background: url('assets/close-active.png') 100% 100%;
+          background: url('assets/close-active.png') center center;
         }
 
         &:backdrop {
-          background: url('assets/close-backdrop.png') 100% 100%;
+          background: url('assets/close-backdrop.png') center center;
           
           &:hover {
-            background: url('assets/close-hover.png') 100% 100%;
+            background: url('assets/close-hover.png') center center;
           }
 
           &:active {
-            background: url('assets/close-active.png') 100% 100%;
+            background: url('assets/close-active.png') center center;
           }
         }
       }

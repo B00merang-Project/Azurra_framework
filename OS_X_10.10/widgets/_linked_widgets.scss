@@ -202,10 +202,17 @@
       box-shadow: none;
 
       &:checked, &:active {
-        &, &:hover, &:focus, &:backdrop, &:hover:backdrop {
+        &, &:hover, &:focus {
           background-color: transparent;
           background-image: linear-gradient(to bottom, gtkshade($theme_selected_bg_color, 1.2), gtkshade($theme_selected_bg_color, 1.05));
           color: $theme_selected_fg_color;
+  
+          &:backdrop {
+            color: $theme_unfocused_fg_color;
+            border-color: gtkshade($theme_unfocused_bg_color, 0.85);
+            background-color: gtkshade($theme_unfocused_bg_color, 0.85);
+            background-image: none;
+          }
         }
       }
     }
