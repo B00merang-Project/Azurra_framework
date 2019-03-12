@@ -1,0 +1,114 @@
+// scrollbar  
+@mixin scrollbar() {
+  scrollbar {
+    border: 1px solid $borders;
+    background-color: $theme_bg_color;
+
+    & trough {
+      border: none;
+      border-radius: 0;
+    }
+
+    & button {
+      &, &:active, &:disabled {
+        &, &:backdrop {
+          padding: 0;
+          border: none;
+          border-radius: 0;
+          background-color: transparent;
+          background-image: none;
+          background-size: 100% 100%;
+          box-shadow: none;
+          color: transparent;
+        }
+      }
+    }
+
+    // not implemented in windows 10
+    &.fine-tune {
+      
+    }
+
+    &.overlay-indicator {
+      opacity: 1;
+      // not implemented
+    }
+
+    &.horizontal {
+    
+      & slider {
+        min-width: 45px;
+        min-height: 14px;
+        margin: 0;
+        border: 1px solid $borders;
+        border-radius: $scrollbar_radius;
+        background-clip: padding-box;
+        background-color: $theme_bg_color;
+        box-shadow: inset -2px 0 gtkshade($theme_bg_color, 0.65), inset 0 -2px gtkshade($theme_bg_color, 0.65), inset 1px 0 $light_shadow, inset 0 1px $light_shadow;
+        margin: -1px;
+      }
+
+      & button {
+        min-height: 13px;
+        min-width: 16px;
+      
+        &.down {
+          background-image: url('assets/stepper-right.png');
+          
+          &:active {
+            background-image: url('assets/stepper-right-active.png ');
+          }
+        }
+
+        &.up {
+          background-image: url('assets/stepper-left.png');
+          
+          &:active {
+            background-image: url('assets/stepper-left-active.png');
+          }
+        }
+      }
+    }
+
+    &.vertical {
+      
+      & slider {
+        min-width: 14px;
+        min-height: 45px;
+        margin: 0;
+        border: 1px solid $borders;
+        border-radius: $scrollbar_radius;
+        background-clip: padding-box;
+        background-color: $theme_bg_color;
+        box-shadow: inset -2px 0 gtkshade($theme_bg_color, 0.65), inset 0 -2px gtkshade($theme_bg_color, 0.65), inset 1px 0 $light_shadow, inset 0 1px $light_shadow;
+        margin: -1px;
+      }
+
+      & button {
+        min-height: 16px;
+        min-width: 13px;
+
+        &.down {
+          background-image: url('assets/stepper-down.png');
+          
+          &:active {
+            background-image: url('assets/stepper-down-active.png');
+          }
+        }
+
+        &.up {
+          background-image: url('assets/stepper-up.png');
+          
+          &:active {
+            background-image: url('assets/stepper-up-active.png');
+          }
+        }
+      }
+    }
+
+    treeview ~ &.vertical {
+      border-top: 1px solid $borders;
+      margin-top: -1px;
+    }
+  }
+}

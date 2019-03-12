@@ -14,13 +14,13 @@
     background-color: $theme_base_color;
 
     &:active, &:focus {
-      border-color: gtkshade($theme_selected_bg_color, 1.5);
-      box-shadow: 0 0 2px 2px gtkshade($theme_selected_bg_color, 1.5);
+      border-color: $borders;
+      box-shadow: 0 0 0 4px $theme_selected_base_color;
     }
 
     &:selected, &:selected:focus, & selection, & selection:focus {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+      color: $theme_selected_text_color;
+      background-color: $theme_selected_base_color;
     }
 
     &:disabled {
