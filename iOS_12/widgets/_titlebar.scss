@@ -19,6 +19,7 @@
 
     // titlebutton 
     & .titlebutton {
+      
       &.close, &.maximize, &.minimize, &:not(separator) {
         padding: 2px 2px;
         border: none;
@@ -29,6 +30,7 @@
         background-position: center;
         background-repeat: no-repeat;
       }
+      
       &.close {
         background: url('assets/close-normal.svg') 100% 100%;
 
@@ -84,7 +86,7 @@
   }
 
   .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
-    min-height: 28px;
+    min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
 

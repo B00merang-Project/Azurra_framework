@@ -1,0 +1,98 @@
+// button
+@mixin normal_buttons($bg, $fg, $border) {
+  & {
+    padding: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: $button_radius;
+    color: $fg;
+    border-color: $borders;
+    border-top-color: gtkshade($borders, 1.1);
+    border-left-color: gtkshade($borders, 1.05);
+    border-right-color: gtkshade($borders, 1.05);
+    background-color: $bg;
+    -gtk-outline-radius: $button_radius;
+
+    &:hover {
+      color: $fg;
+      background-color: gtkshade($bg, 1.1);
+    }
+
+    &:active, &:checked {
+      color: $theme_fg_color;
+      border-color: gtkshade($borders, 0.9);
+      background-color: gtkshade($theme_bg_color, 0.9);
+
+      &:backdrop {
+      }
+      
+      &:disabled {
+        color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
+        border-color: gtkmix($fg, $theme_disabled_bg_color, 0.85);
+        background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        
+        &:backdrop {
+        }
+      }
+    }
+
+    &:disabled {
+      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      
+      &:backdrop {
+      }
+    }
+
+    &:backdrop {
+    }
+  }
+}
+
+@mixin flat_buttons($bg, $fg, $border)
+{
+  & {
+    border-color: transparent;
+    border-radius: $button_radius;
+    color: $fg;
+    background-color: transparent;
+
+    &:hover {
+      border-color: $borders;
+      border-top-color: gtkshade($borders, 1.1);
+      border-left-color: gtkshade($borders, 1.05);
+      border-right-color: gtkshade($borders, 1.05);
+      color: $fg;
+      background-color: $bg;
+    }
+
+    &:active, &:checked {
+      color: $theme_fg_color;
+      background-color: gtkshade($theme_bg_color, 0.9);
+      
+      &:backdrop {
+      }
+    }
+
+    &:disabled {
+      border-color: transparent;
+      color: gtkalpha($fg, 0.8);
+      background-color: transparent;
+      
+      &:backdrop {
+      }
+    }
+
+    &:backdrop {
+    }
+  }
+}
+
+@mixin button() {
+  button {
+    @include normal_buttons($theme_base_color, $theme_fg_color, $borders);
+    
+    &.flat {
+      @include flat_buttons($theme_base_color, $theme_fg_color, $borders);
+    }
+  }
+}

@@ -23,6 +23,7 @@
 
     // titlebutton 
     & .titlebutton {
+      
       &.close, &.maximize, &.minimize, &:not(separator) {
         padding: 2px 2px;
         border: none;
@@ -30,6 +31,7 @@
         background-color: transparent;
         -gtk-icon-shadow: none;
       }
+      
       &.close {
         background: url('assets/close-normal.png') 100% 100%;
 
@@ -85,7 +87,7 @@
   }
 
   .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
-    min-height: 28px;
+    min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
 

@@ -471,9 +471,6 @@ entry {
   border-width: 1px;
   border-style: solid;
   border-color: @borders;
-  border-top-color: shade(@borders, 1.1);
-  border-left-color: shade(@borders, 1.05);
-  border-right-color: shade(@borders, 1.05);
   border-radius: 0px;
   color: @theme_text_color;
   caret-color: currentColor;
@@ -486,7 +483,7 @@ entry {
     entry:disabled:backdrop {
       color: @theme_unfocused_disabled_fg_color;
       border-color: @unfocused_borders;
-      background-color: @theme_unfocused_disabled_bg_color; }
+      background-color: @theme_unfocused_disabled_base_color; }
   entry.read-only {
     background-color: mix(@theme_bg_color, @theme_disabled_bg_color, 0.1); }
   entry:backdrop {
@@ -2236,7 +2233,7 @@ messagedialog {
     color: transparent;
     padding: 2px 2px;
     border-radius: 0;
-    -gtk-shadow: none;
+    -gtk-icon-shadow: none;
     background-position: center;
     background-repeat: no-repeat; }
   .titlebar .titlebutton.close {
@@ -2251,7 +2248,7 @@ messagedialog {
     border-radius: 0; }
 
 .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
-  min-height: 28px;
+  min-height: 30px;
   color: @titlebar_fg_color;
   background-color: @titlebar_bg_color; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
