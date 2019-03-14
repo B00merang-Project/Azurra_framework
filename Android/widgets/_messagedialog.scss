@@ -1,38 +1,50 @@
 // message dialog
 @mixin messagedialog() {
   messagedialog {
+    // Android has rounded message dialogs
+    $radius : 4px;
+   
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+    
     .background.csd {
-	    border-radius: 0 0 $csd_radius $csd_radius;
+	    border-radius: $radius;
 	    color: $theme_fg_color;
       background-color: $theme_bg_color;
     }
-
+  
     & decoration {
-      border-radius: $csd_radius;
+      border-radius: $radius;
+      border-bottom-left-radius: $radius;
+      border-bottom-right-radius: $radius;
       box-shadow: 0 1px 2px gtkalpha($dark_shadow, 0.2);
     }
 
     & .titlebar.horizontal {
+      border-radius: $radius $radius 0 0;
+      background-image: none;
       background-color: $theme_bg_color;
     }
 
     &.csd .dialog-action-area button {
       padding: 10px;
       border-radius: 0;
-      border-bottom-style: none;
+      outline-offset: -2px;
 
       &:last-child {
-        border-right-width: 0;
         border-radius: 0px;
+        border-bottom-right-radius: $radius;
       }
 
       &:first-child {
-        border-left-width: 0;
         border-radius: 0px;
+        border-bottom-left-radius: $radius;
       }
 
       &:only-child {
         border-radius: 0px;
+        border-bottom-left-radius: $radius;
+        border-bottom-right-radius: $radius;
       }
     }
   }

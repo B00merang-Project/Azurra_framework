@@ -54,15 +54,15 @@
 
 @mixin flat_buttons($bg, $fg, $border)
 {
-  @include normal_buttons($theme_bg_color, $theme_selected_bg_color, $borders);
+  @include normal_buttons($bg, $fg, $border);
 }
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_bg_color, $theme_selected_bg_color, $borders);
+    @include normal_buttons($theme_base_color, $theme_fg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_bg_color, $theme_selected_bg_color, $borders);
+      @include flat_buttons($theme_base_color, $theme_fg_color, $borders);
     }
   }
 }

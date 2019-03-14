@@ -1,7 +1,7 @@
 // headerbar
 @mixin headerbar_buttons($bg, $fg, $border)
 {
-  @include normal_buttons($bg, $fg, $borders);
+  @include normal_buttons($theme_base_color, $fg, $borders);
 }
 
 @mixin headerbar() {
@@ -44,7 +44,7 @@
     button {
       @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, transparent);
     }
-    
+
     & entry {
       padding: 4px 8px;
     }

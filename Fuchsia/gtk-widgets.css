@@ -199,9 +199,9 @@ button {
   padding: 4px 8px;
   border: none;
   border-radius: 3px;
-  color: @theme_selected_bg_color;
-  border-color: @theme_bg_color;
-  background-color: @theme_bg_color;
+  color: @theme_fg_color;
+  border-color: @theme_base_color;
+  background-color: @theme_base_color;
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 0;
@@ -220,7 +220,7 @@ button {
       color: @theme_unfocused_selected_fg_color;
       background-color: @theme_unfocused_selected_bg_color; }
   button:disabled {
-    color: mix(@theme_selected_bg_color, @theme_unfocused_disabled_fg_color, 0.1); }
+    color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
     button:disabled:backdrop {
       color: @theme_unfocused_disabled_fg_color; }
   button:backdrop {
@@ -230,9 +230,9 @@ button.flat {
   padding: 4px 8px;
   border: none;
   border-radius: 3px;
-  color: @theme_selected_bg_color;
-  border-color: @theme_bg_color;
-  background-color: @theme_bg_color;
+  color: @theme_fg_color;
+  border-color: @theme_base_color;
+  background-color: @theme_base_color;
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 0;
@@ -251,7 +251,7 @@ button.flat {
       color: @theme_unfocused_selected_fg_color;
       background-color: @theme_unfocused_selected_bg_color; }
   button.flat:disabled {
-    color: mix(@theme_selected_bg_color, @theme_unfocused_disabled_fg_color, 0.1); }
+    color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
     button.flat:disabled:backdrop {
       color: @theme_unfocused_disabled_fg_color; }
   button.flat:backdrop {
@@ -371,13 +371,10 @@ entry {
   border-width: 0;
   border-style: solid;
   border-color: alpha(@theme_fg_color, 0.3);
-  border-bottom-width: 2px;
-  border-radius: 0px;
+  border-radius: 3px;
   color: @theme_text_color;
   caret-color: currentColor;
   background-color: @theme_base_color; }
-  entry:active, entry:focus {
-    border-color: @theme_selected_bg_color; }
   entry:selected, entry:selected:focus, entry selection, entry selection:focus {
     color: @theme_selected_fg_color;
     background-color: @theme_selected_bg_color; }
@@ -1135,15 +1132,15 @@ scale {
     margin-left: 8px;
     margin-right: -13px; }
   scale slider {
-    min-height: 16px;
-    min-width: 16px;
-    margin: -7px;
-    border: none;
+    min-height: 20px;
+    min-width: 20px;
+    margin: -9px;
+    border: 2px solid mix(@theme_base_color, @theme_fg_color, 0.3);
     border-radius: 100%;
     color: @theme_selected_fg_color;
-    background-color: @theme_selected_bg_color; }
-    scale slider:active {
-      box-shadow: 0 0 0 5px alpha(@dark_shadow, 0.15); }
+    background-color: @theme_base_color; }
+    scale slider:hover {
+      border-color: mix(@theme_base_color, @theme_fg_color, 0.3); }
     scale slider:disabled {
       background-color: @theme_disabled_bg_color;
       -gtk-icon-shadow: none; }
@@ -1577,8 +1574,8 @@ headerbar, headerbar:not(.titlebar) {
     border: none;
     border-radius: 3px;
     color: @headerbar_fg_color;
-    border-color: @headerbar_bg_color;
-    background-color: @headerbar_bg_color;
+    border-color: @theme_base_color;
+    background-color: @theme_base_color;
     outline-style: solid;
     outline-width: 2px;
     outline-offset: 0;
@@ -1621,9 +1618,9 @@ toolbar {
     padding: 4px 8px;
     border: none;
     border-radius: 3px;
-    color: @theme_selected_bg_color;
-    border-color: @theme_bg_color;
-    background-color: @theme_bg_color;
+    color: @toolbar_fg_color;
+    border-color: @toolbar_bg_color;
+    background-color: @toolbar_bg_color;
     outline-style: solid;
     outline-width: 2px;
     outline-offset: 0;
@@ -1642,7 +1639,7 @@ toolbar {
         color: @theme_unfocused_selected_fg_color;
         background-color: @theme_unfocused_selected_bg_color; }
     toolbar button.flat:disabled {
-      color: mix(@theme_selected_bg_color, @theme_unfocused_disabled_fg_color, 0.1); }
+      color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
       toolbar button.flat:disabled:backdrop {
         color: @theme_unfocused_disabled_fg_color; }
     toolbar button.flat:backdrop {
@@ -1737,6 +1734,80 @@ toolbar {
     .inline-toolbar toolbar button:backdrop {
       color: @theme_unfocused_fg_color;
       background-color: @theme_unfocused_bg_color; }
+
+.linked button, .linked .raised button, .inline-toolbar button, .inline-toolbar .raised button, .primary-toolbar button, .primary-toolbar .raised button {
+  border-radius: 0; }
+  .linked button:first-child, .linked .raised button:first-child, .inline-toolbar button:first-child, .inline-toolbar .raised button:first-child, .primary-toolbar button:first-child, .primary-toolbar .raised button:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  .linked button:last-child, .linked .raised button:last-child, .inline-toolbar button:last-child, .inline-toolbar .raised button:last-child, .primary-toolbar button:last-child, .primary-toolbar .raised button:last-child {
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; }
+  .linked button:only-child, .linked .raised button:only-child, .inline-toolbar button:only-child, .inline-toolbar .raised button:only-child, .primary-toolbar button:only-child, .primary-toolbar .raised button:only-child {
+    border-radius: 3px; }
+.linked entry, .inline-toolbar entry, .primary-toolbar entry {
+  border-radius: 0; }
+  .linked entry:first-child, .inline-toolbar entry:first-child, .primary-toolbar entry:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  .linked entry:last-child, .inline-toolbar entry:last-child, .primary-toolbar entry:last-child {
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; }
+  .linked entry:only-child, .inline-toolbar entry:only-child, .primary-toolbar entry:only-child {
+    border-radius: 3px; }
+.linked combobox box.linked button, .inline-toolbar combobox box.linked button, .primary-toolbar combobox box.linked button {
+  border-radius: 0; }
+.linked combobox:first-child box.linked button, .inline-toolbar combobox:first-child box.linked button, .primary-toolbar combobox:first-child box.linked button {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px; }
+.linked combobox:last-child box.linked button, .inline-toolbar combobox:last-child box.linked button, .primary-toolbar combobox:last-child box.linked button {
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px; }
+.linked combobox:only-child box.linked button, .inline-toolbar combobox:only-child box.linked button, .primary-toolbar combobox:only-child box.linked button {
+  border-radius: 3px; }
+
+.vertical.linked button {
+  border-radius: 0; }
+  .vertical.linked button:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .vertical.linked button:last-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px; }
+.vertical.linked entry {
+  border-radius: 0; }
+  .vertical.linked entry:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .vertical.linked entry:last-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px; }
+.vertical.linked combobox box.linked button {
+  border-radius: 0; }
+.vertical.linked combobox:first-child box.linked button {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; }
+.vertical.linked combobox:last-child box.linked button {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px; }
 
 stackswitcher button.text-button {
   min-width: 80px; }
@@ -2093,27 +2164,36 @@ decoration {
 window.background.csd.popup {
   border-radius: 8px; }
 
-messagedialog .background.csd {
-  border-radius: 0 0 0px 0px;
-  color: @theme_fg_color;
-  background-color: @theme_bg_color; }
-messagedialog decoration {
-  border-radius: 0px;
-  box-shadow: 0 1px 2px alpha(@dark_shadow, 0.2); }
-messagedialog .titlebar.horizontal {
-  background-color: @theme_bg_color; }
-messagedialog.csd .dialog-action-area button {
-  padding: 10px;
-  border-radius: 0;
-  border-bottom-style: none; }
-  messagedialog.csd .dialog-action-area button:last-child {
-    border-right-width: 0;
-    border-radius: 0px; }
-  messagedialog.csd .dialog-action-area button:first-child {
-    border-left-width: 0;
-    border-radius: 0px; }
-  messagedialog.csd .dialog-action-area button:only-child {
-    border-radius: 0px; }
+messagedialog {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; }
+  messagedialog .background.csd {
+    border-radius: 4px;
+    color: @theme_fg_color;
+    background-color: @theme_bg_color; }
+  messagedialog decoration {
+    border-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 1px 2px alpha(@dark_shadow, 0.2); }
+  messagedialog .titlebar.horizontal {
+    border-radius: 4px 4px 0 0;
+    background-image: none;
+    background-color: @theme_bg_color; }
+  messagedialog.csd .dialog-action-area button {
+    padding: 10px;
+    border-radius: 0;
+    outline-offset: -2px; }
+    messagedialog.csd .dialog-action-area button:last-child {
+      border-radius: 0px;
+      border-bottom-right-radius: 4px; }
+    messagedialog.csd .dialog-action-area button:first-child {
+      border-radius: 0px;
+      border-bottom-left-radius: 4px; }
+    messagedialog.csd .dialog-action-area button:only-child {
+      border-radius: 0px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px; }
 
 .titlebar {
   border-bottom: none;
@@ -2128,7 +2208,8 @@ messagedialog.csd .dialog-action-area button {
     padding-right: 12px;
     color: alpha(currentColor, 0.7); }
   .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
-    padding: 2px 2px; }
+    padding: 2px 2px;
+    background-color: transparent; }
   .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
     border-radius: 0; }
 
@@ -2244,7 +2325,7 @@ panel-toplevel.background na-tray-applet {
     color: @taskbar_fg_color; }
   .mate-panel-menu-bar .caja-desktop.entry, .mate-panel-menu-bar .caja-navigation-window .view.entry {
     background-image: none;
-    border-radius: 0px;
+    border-radius: 3px;
     box-shadow: none;
     border-color: shade(@theme_selected_bg_color, 0.6);
     background-color: @theme_base_color; }
