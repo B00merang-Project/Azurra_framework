@@ -260,7 +260,7 @@ button.flat {
 
 checkbutton.text-button, radiobutton.text-button {
   padding: 4px;
-  outline-offset: 0; }
+  outline-width: 0; }
 
 checkbutton {
   padding: 4px; }
@@ -276,6 +276,12 @@ checkbutton {
       padding: 4px;
       border-style: none;
       background-color: transparent; }
+
+check {
+  border-radius: 4px; }
+
+radio {
+  border-radius: 100%; }
 
 view.content-view check, .content-view.view check {
   background-color: transparent; }
@@ -1464,8 +1470,8 @@ textview {
   color: @theme_text_color;
   background-color: @theme_base_color; }
   textview text:selected, textview text selection, textview text:selected:focus, textview text selection:focus {
-    color: @theme_selected_fg_color;
-    background-color: @theme_selected_bg_color; }
+    color: @theme_selected_text_color;
+    background-color: @theme_selected_base_color; }
 
 colorswatch.top {
   border-top-left-radius: 2.5px;

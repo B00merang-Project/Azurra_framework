@@ -47,22 +47,22 @@
 
     &:backdrop {
       color: $theme_unfocused_fg_color;
-      background-color: $theme_unfocused_bg_color;
+      background-color: $bg;
     }
   }
 }
 
 @mixin flat_buttons($bg, $fg, $border)
 {
-  @include normal_buttons($theme_bg_color, $theme_selected_bg_color, $borders);
+  @include normal_buttons($bg, $theme_selected_bg_color, $borders);
 }
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_bg_color, $theme_selected_bg_color, $borders);
+    @include normal_buttons(transparent, $theme_selected_bg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_bg_color, $theme_selected_bg_color, $borders);
+      @include flat_buttons(transparent, $theme_selected_bg_color, $borders);
     }
   }
 }

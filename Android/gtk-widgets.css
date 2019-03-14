@@ -200,8 +200,8 @@ button {
   border: none;
   border-radius: 3px;
   color: @theme_selected_bg_color;
-  border-color: @theme_bg_color;
-  background-color: @theme_bg_color;
+  border-color: transparent;
+  background-color: transparent;
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 0;
@@ -225,14 +225,14 @@ button {
       color: @theme_unfocused_disabled_fg_color; }
   button:backdrop {
     color: @theme_unfocused_fg_color;
-    background-color: @theme_unfocused_bg_color; }
+    background-color: transparent; }
 button.flat {
   padding: 4px 8px;
   border: none;
   border-radius: 3px;
   color: @theme_selected_bg_color;
-  border-color: @theme_bg_color;
-  background-color: @theme_bg_color;
+  border-color: transparent;
+  background-color: transparent;
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 0;
@@ -256,11 +256,11 @@ button.flat {
       color: @theme_unfocused_disabled_fg_color; }
   button.flat:backdrop {
     color: @theme_unfocused_fg_color;
-    background-color: @theme_unfocused_bg_color; }
+    background-color: transparent; }
 
 checkbutton.text-button, radiobutton.text-button {
   padding: 4px;
-  outline-offset: 0; }
+  outline-width: 0; }
 
 checkbutton {
   padding: 4px; }
@@ -276,6 +276,12 @@ checkbutton {
       padding: 4px;
       border-style: none;
       background-color: transparent; }
+
+check {
+  border-radius: 4px; }
+
+radio {
+  border-radius: 100%; }
 
 view.content-view check, .content-view.view check {
   background-color: transparent; }
@@ -379,8 +385,8 @@ entry {
   entry:active, entry:focus {
     border-color: @theme_selected_bg_color; }
   entry:selected, entry:selected:focus, entry selection, entry selection:focus {
-    color: @theme_selected_fg_color;
-    background-color: @theme_selected_bg_color; }
+    color: @theme_selected_text_color;
+    background-color: @theme_selected_base_color; }
   entry:disabled {
     color: @theme_disabled_text_color;
     border-color: @theme_disabled_bg_color; }
@@ -1143,7 +1149,7 @@ scale {
     color: @theme_selected_fg_color;
     background-color: @theme_selected_bg_color; }
     scale slider:active {
-      box-shadow: 0 0 0 5px alpha(@dark_shadow, 0.15); }
+      box-shadow: 0 0 0 8px alpha(@dark_shadow, 0.08); }
     scale slider:disabled {
       background-color: @theme_disabled_bg_color;
       -gtk-icon-shadow: none; }
@@ -1467,8 +1473,8 @@ textview {
   color: @theme_text_color;
   background-color: @theme_base_color; }
   textview text:selected, textview text selection, textview text:selected:focus, textview text selection:focus {
-    color: @theme_selected_fg_color;
-    background-color: @theme_selected_bg_color; }
+    color: @theme_selected_text_color;
+    background-color: @theme_selected_base_color; }
 
 colorswatch.top {
   border-top-left-radius: 2.5px;
@@ -1577,8 +1583,8 @@ headerbar, headerbar:not(.titlebar) {
     border: none;
     border-radius: 3px;
     color: @headerbar_fg_color;
-    border-color: @headerbar_bg_color;
-    background-color: @headerbar_bg_color;
+    border-color: transparent;
+    background-color: transparent;
     outline-style: solid;
     outline-width: 2px;
     outline-offset: 0;
@@ -1602,7 +1608,7 @@ headerbar, headerbar:not(.titlebar) {
         color: @theme_unfocused_disabled_fg_color; }
     headerbar button:backdrop, headerbar:not(.titlebar) button:backdrop {
       color: @theme_unfocused_fg_color;
-      background-color: @theme_unfocused_bg_color; }
+      background-color: transparent; }
   headerbar entry, headerbar:not(.titlebar) entry {
     padding: 4px 8px; }
 
@@ -1622,8 +1628,8 @@ toolbar {
     border: none;
     border-radius: 3px;
     color: @theme_selected_bg_color;
-    border-color: @theme_bg_color;
-    background-color: @theme_bg_color;
+    border-color: @toolbar_bg_color;
+    background-color: @toolbar_bg_color;
     outline-style: solid;
     outline-width: 2px;
     outline-offset: 0;
@@ -1647,7 +1653,7 @@ toolbar {
         color: @theme_unfocused_disabled_fg_color; }
     toolbar button.flat:backdrop {
       color: @theme_unfocused_fg_color;
-      background-color: @theme_unfocused_bg_color; }
+      background-color: @toolbar_bg_color; }
   toolbar menubar {
     -GtkToolbar-button-relief: normal; }
 
@@ -1693,7 +1699,7 @@ toolbar {
         color: @theme_unfocused_disabled_fg_color; }
     .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop {
       color: @theme_unfocused_fg_color;
-      background-color: @theme_unfocused_bg_color; }
+      background-color: @toolbar_bg_color; }
 
 .inline-toolbar toolbar {
   -GtkToolbar-button-relief: normal;
@@ -1736,7 +1742,7 @@ toolbar {
         color: @theme_unfocused_disabled_fg_color; }
     .inline-toolbar toolbar button:backdrop {
       color: @theme_unfocused_fg_color;
-      background-color: @theme_unfocused_bg_color; }
+      background-color: @toolbar_bg_color; }
 
 stackswitcher button.text-button {
   min-width: 80px; }
@@ -2093,27 +2099,36 @@ decoration {
 window.background.csd.popup {
   border-radius: 8px; }
 
-messagedialog .background.csd {
-  border-radius: 0 0 0px 0px;
-  color: @theme_fg_color;
-  background-color: @theme_bg_color; }
-messagedialog decoration {
-  border-radius: 0px;
-  box-shadow: 0 1px 2px alpha(@dark_shadow, 0.2); }
-messagedialog .titlebar.horizontal {
-  background-color: @theme_bg_color; }
-messagedialog.csd .dialog-action-area button {
-  padding: 10px;
-  border-radius: 0;
-  border-bottom-style: none; }
-  messagedialog.csd .dialog-action-area button:last-child {
-    border-right-width: 0;
-    border-radius: 0px; }
-  messagedialog.csd .dialog-action-area button:first-child {
-    border-left-width: 0;
-    border-radius: 0px; }
-  messagedialog.csd .dialog-action-area button:only-child {
-    border-radius: 0px; }
+messagedialog {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; }
+  messagedialog .background.csd {
+    border-radius: 4px;
+    color: @theme_fg_color;
+    background-color: @theme_bg_color; }
+  messagedialog decoration {
+    border-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 1px 2px alpha(@dark_shadow, 0.2); }
+  messagedialog .titlebar.horizontal {
+    border-radius: 4px 4px 0 0;
+    background-image: none;
+    background-color: @theme_bg_color; }
+  messagedialog.csd .dialog-action-area button {
+    padding: 10px;
+    border-radius: 0;
+    outline-offset: -2px; }
+    messagedialog.csd .dialog-action-area button:last-child {
+      border-radius: 0px;
+      border-bottom-right-radius: 4px; }
+    messagedialog.csd .dialog-action-area button:first-child {
+      border-radius: 0px;
+      border-bottom-left-radius: 4px; }
+    messagedialog.csd .dialog-action-area button:only-child {
+      border-radius: 0px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px; }
 
 .titlebar {
   border-bottom: none;
@@ -2318,7 +2333,7 @@ panel-toplevel.background na-tray-applet {
         color: @theme_unfocused_disabled_fg_color; }
     #XfceNotifyWindow.osd button:backdrop {
       color: @theme_unfocused_fg_color;
-      background-color: @theme_unfocused_bg_color; }
+      background-color: @theme_bg_color; }
 
 .nemo-window .nemo-window-pane widget.entry {
   border: 1px solid;

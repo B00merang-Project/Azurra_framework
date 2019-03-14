@@ -14,3 +14,6 @@ for F in *; do
     cd "../../$TARGET/widgets"
   fi
 done
+
+cd "$SRCDIR"
+rm linker-sass.sh

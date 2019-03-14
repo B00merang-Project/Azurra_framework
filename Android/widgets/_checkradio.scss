@@ -1,7 +1,7 @@
 @mixin checkradio() {
   checkbutton.text-button, radiobutton.text-button {
     padding: 4px;
-    outline-offset: 0;
+    outline-width: 0;
   }
 
   checkbutton {
@@ -22,6 +22,13 @@
         background-color: transparent;
       }
     }
+  }
+  check {
+    border-radius: 4px;
+  }
+  
+  radio {
+    border-radius: 100%;
   }
   
   view.content-view check, .content-view.view check {
