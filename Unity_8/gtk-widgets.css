@@ -2166,15 +2166,9 @@ button.suggested-action {
   button.suggested-action:disabled {
     border-color: mix(@success_color, @theme_disabled_bg_color, 0.2);
     color: mix(@theme_selected_fg_color, @theme_disabled_fg_color, 0.2);
-    background-image: linear-gradient(to bottom, shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2), shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.05)); }
-    button.suggested-action:disabled:backdrop {
-      border-color: mix(@theme_unfocused_selected_bg_color, @theme_unfocused_disabled_bg_color, 0.2);
-      color: mix(@theme_unfocused_selected_fg_color, @theme_unfocused_disabled_fg_color, 0.2);
-      background-image: linear-gradient(to bottom, shade(mix(@theme_unfocused_selected_bg_color, @theme_unfocused_disabled_bg_color, 0.2), 1.1), shade(mix(@theme_unfocused_selected_bg_color, @theme_unfocused_disabled_bg_color, 0.2), 0.95)); }
+    background-color: linear-gradient(to bottom, shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2)); }
   button.suggested-action:backdrop {
-    border-color: @theme_unfocused_selected_bg_color;
-    color: @theme_unfocused_selected_fg_color;
-    background-image: linear-gradient(to bottom, shade(@success_color, 1.2), shade(@success_color, 1.05)); }
+    color: @theme_unfocused_selected_fg_color; }
 
 headerbar button.suggested-action {
   border-width: 1px;
@@ -2190,15 +2184,9 @@ headerbar button.suggested-action {
   headerbar button.suggested-action:disabled {
     border-color: mix(@success_color, @theme_disabled_bg_color, 0.2);
     color: mix(@theme_selected_fg_color, @theme_disabled_fg_color, 0.2);
-    background-image: linear-gradient(to bottom, shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2), shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.05)); }
-    headerbar button.suggested-action:disabled:backdrop {
-      border-color: mix(@theme_unfocused_selected_bg_color, @theme_unfocused_disabled_bg_color, 0.2);
-      color: mix(@theme_unfocused_selected_fg_color, @theme_unfocused_disabled_fg_color, 0.2);
-      background-image: linear-gradient(to bottom, shade(mix(@theme_unfocused_selected_bg_color, @theme_unfocused_disabled_bg_color, 0.2), 1.1), shade(mix(@theme_unfocused_selected_bg_color, @theme_unfocused_disabled_bg_color, 0.2), 0.95)); }
+    background-color: linear-gradient(to bottom, shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2)); }
   headerbar button.suggested-action:backdrop {
-    border-color: @theme_unfocused_selected_bg_color;
-    color: @theme_unfocused_selected_fg_color;
-    background-image: linear-gradient(to bottom, shade(@success_color, 1.2), shade(@success_color, 1.05)); }
+    color: @theme_unfocused_selected_fg_color; }
 
 toolbar.selection-mode {
   padding: 4px; }
@@ -2245,15 +2233,9 @@ headerbar.selection-mode, toolbar.selection-mode {
     headerbar.selection-mode button.suggested-action:disabled, toolbar.selection-mode button.suggested-action:disabled {
       border-color: mix(@success_color, @theme_disabled_bg_color, 0.2);
       color: mix(@theme_selected_fg_color, @theme_disabled_fg_color, 0.2);
-      background-image: linear-gradient(to bottom, shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2), shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.05)); }
-      headerbar.selection-mode button.suggested-action:disabled:backdrop, toolbar.selection-mode button.suggested-action:disabled:backdrop {
-        border-color: mix(@theme_unfocused_selected_bg_color, @theme_unfocused_disabled_bg_color, 0.2);
-        color: mix(@theme_unfocused_selected_fg_color, @theme_unfocused_disabled_fg_color, 0.2);
-        background-image: linear-gradient(to bottom, shade(mix(@theme_unfocused_selected_bg_color, @theme_unfocused_disabled_bg_color, 0.2), 1.1), shade(mix(@theme_unfocused_selected_bg_color, @theme_unfocused_disabled_bg_color, 0.2), 0.95)); }
+      background-color: linear-gradient(to bottom, shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2)); }
     headerbar.selection-mode button.suggested-action:backdrop, toolbar.selection-mode button.suggested-action:backdrop {
-      border-color: @theme_unfocused_selected_bg_color;
-      color: @theme_unfocused_selected_fg_color;
-      background-image: linear-gradient(to bottom, shade(@success_color, 1.2), shade(@success_color, 1.05)); }
+      color: @theme_unfocused_selected_fg_color; }
   headerbar.selection-mode .selection-menu button, toolbar.selection-mode .selection-menu button {
     border-style: none;
     background-color: transparent;
@@ -2288,7 +2270,7 @@ decoration {
     box-shadow: none; }
 
 window.background.csd.popup {
-  border-radius: 10px; }
+  border-radius: 4px; }
 
 messagedialog {
   border-bottom-left-radius: 4px;
