@@ -53,7 +53,7 @@
       margin: 1px;
       color: $theme_fg_color;
       background-color: transparent;
-      background-image: linear-gradient(to bottom, gtkshade($theme_bg_color, 1.05) 15%, $theme_bg_color, $theme_bg_color);
+      background-image: linear-gradient(to bottom, #fff, #f1f4fb 25%, #e8eaf6 50%, #d9dbe8 75%, #cccbd9 95%); 
 
       &:checked {
         margin: 0;
@@ -68,10 +68,13 @@
       }
 
       // close button styling 
-      & button, & button:hover, & button:focus, & button:active, & button:checked, & button:active:hover, & button:checked:hover, & button:backdrop, &:checked button, &:checked button:hover, &:checked button:focus, &:checked button:active, &:checked button:checked, &:checked button:active:hover, &:checked button:checked:hover, &:checked button:backdrop {
-        border-color: transparent;
-        background-color: transparent;
-        color: $theme_fg_color;
+      & button, &:checked button {
+        &, &:backdrop {
+          border-color: transparent;
+          background-color: transparent;
+          background-image: none;
+          color: $theme_fg_color;
+        }
       }
     }
 
@@ -90,6 +93,10 @@
           border-bottom: none;
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
+          
+          &:hover {
+            box-shadow: inset 0 2px #ffc73c;
+          }
 
           &:checked {
             margin-top: -1px;
@@ -109,6 +116,10 @@
           border-top: none;
           border-top-left-radius: 0;
           border-top-right-radius: 0;
+          
+          &:hover {
+            box-shadow: inset 0 -2px #ffc73c;
+          }
 
           &:checked {
             margin-bottom: -1px;
@@ -128,6 +139,10 @@
           border-left: none;
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
+          
+          &:hover {
+            box-shadow: inset -2px 0 #ffc73c;
+          }
 
           &:checked {
             margin-right: -1px;
@@ -147,6 +162,10 @@
           border-right: none;
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
+          
+          &:hover {
+            box-shadow: inset 2px 0 #ffc73c;
+          }
 
           &:checked {
             margin-left: -1px;
