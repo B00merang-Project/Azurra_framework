@@ -14,10 +14,12 @@
     }
     
     & button {
-      &, &:hover, &:active, &:disabled, {
-        padding: 3px;
-        border-color: gtkshade($theme_bg_color, 0.9);
-        background-color: gtkshade($theme_bg_color, 0.9);
+      &, &:hover, &:active, &:disabled {
+        &, &:backdrop {
+          padding: 3px;
+          border-color: gtkshade($theme_bg_color, 0.9);
+          background-color: gtkshade($theme_bg_color, 0.9);
+        }
       }
     }
 
@@ -59,7 +61,6 @@
 
     &.overlay-indicator {
       opacity: 1;
-      // not implemented
     }
 
     &.horizontal {

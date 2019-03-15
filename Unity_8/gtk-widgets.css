@@ -1959,14 +1959,14 @@ treeview {
     color: @theme_disabled_fg_color;
     background-color: @theme_disabled_bg_color; }
   .view:selected, .view:selected:focus, .view text:selected, .view text:selected:focus, .view text selection, .view text selection:focus {
-    color: @theme_selected_fg_color;
-    background-color: @theme_selected_bg_color; }
+    color: @theme_selected_text_color;
+    background-color: @theme_selected_base_color; }
     .view:selected:disabled, .view:selected:focus:disabled, .view text:selected:disabled, .view text:selected:focus:disabled, .view text selection:disabled, .view text selection:focus:disabled {
-      color: mix(@theme_selected_fg_color, @theme_disabled_fg_color, 0.5);
-      background-color: @theme_selected_bg_color; }
+      color: mix(@theme_selected_text_color, @theme_disabled_fg_color, 0.5);
+      background-color: @theme_selected_base_color; }
     .view:selected:backdrop, .view:selected:focus:backdrop, .view text:selected:backdrop, .view text:selected:focus:backdrop, .view text selection:backdrop, .view text selection:focus:backdrop {
-      color: @theme_unfocused_selected_fg_color;
-      background-color: @theme_unfocused_selected_bg_color; }
+      color: @theme_selected_text_color;
+      background-color: @theme_selected_base_color; }
 
 actionbar {
   padding: 4px;
@@ -2166,7 +2166,7 @@ button.suggested-action {
   button.suggested-action:disabled {
     border-color: mix(@success_color, @theme_disabled_bg_color, 0.2);
     color: mix(@theme_selected_fg_color, @theme_disabled_fg_color, 0.2);
-    background-color: linear-gradient(to bottom, shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2)); }
+    background-color: shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2); }
   button.suggested-action:backdrop {
     color: @theme_unfocused_selected_fg_color; }
 
@@ -2184,7 +2184,7 @@ headerbar button.suggested-action {
   headerbar button.suggested-action:disabled {
     border-color: mix(@success_color, @theme_disabled_bg_color, 0.2);
     color: mix(@theme_selected_fg_color, @theme_disabled_fg_color, 0.2);
-    background-color: linear-gradient(to bottom, shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2)); }
+    background-color: shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2); }
   headerbar button.suggested-action:backdrop {
     color: @theme_unfocused_selected_fg_color; }
 
@@ -2233,7 +2233,7 @@ headerbar.selection-mode, toolbar.selection-mode {
     headerbar.selection-mode button.suggested-action:disabled, toolbar.selection-mode button.suggested-action:disabled {
       border-color: mix(@success_color, @theme_disabled_bg_color, 0.2);
       color: mix(@theme_selected_fg_color, @theme_disabled_fg_color, 0.2);
-      background-color: linear-gradient(to bottom, shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2)); }
+      background-color: shade(mix(@success_color, @theme_disabled_bg_color, 0.2), 1.2); }
     headerbar.selection-mode button.suggested-action:backdrop, toolbar.selection-mode button.suggested-action:backdrop {
       color: @theme_unfocused_selected_fg_color; }
   headerbar.selection-mode .selection-menu button, toolbar.selection-mode .selection-menu button {
@@ -2317,7 +2317,9 @@ messagedialog {
     padding-right: 12px;
     color: alpha(currentColor, 0.7); }
   .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
-    padding: 2px 2px;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 0;
     border: none;
     color: transparent;
     background-color: transparent;

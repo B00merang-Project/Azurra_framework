@@ -1,0 +1,105 @@
+// button
+@mixin normal_buttons($bg, $fg, $border) {
+  & {
+    color: $fg;
+    padding: 4px 8px;
+    border-radius: $button_radius;
+    border: none;
+    background-color: gtkmix($bg, $fg, 0.15);
+    
+    outline-color: $theme_fg_color;
+    outline-offset: 0px;
+    outline-width: 2px;
+    outline-style: solid;
+
+    &:hover {
+      color: $fg;
+      box-shadow: inset 0 0 0 2px gtkalpha($theme_fg_color, 0.4);
+      background-color: gtkmix($bg, $fg, 0.15);
+    }
+
+    &:active, &:checked {
+      color: $fg;
+      background-color: gtkmix($bg, $fg, 0.35);
+
+      &:backdrop {
+        color: $theme_unfocused_fg_color;
+        background-color: gtkshade($theme_unfocused_bg_color, 0.85);
+      }
+    }
+    
+    &:focus {
+      box-shadow: inset 0 0 0 1px $theme_base_color;
+    }
+
+    &:disabled {
+      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
+      background-color: gtkmix($bg, $theme_disabled_bg_color, 0.3);
+      
+      &:backdrop {
+        color: $theme_unfocused_disabled_fg_color;
+        background-color: gtkmix($bg, $theme_unfocused_disabled_bg_color, 0.3);
+      }
+    }
+
+    &:backdrop {
+      color: gtkmix($fg, $theme_unfocused_bg_color, 0.3);
+      background-color: gtkmix($bg, $fg, 0.2);
+    }
+  }
+}
+
+@mixin flat_buttons($bg, $fg, $border)
+{
+  & {
+    border-color: transparent;
+    border-radius: $button_radius;
+    color: $fg;
+    background-color: transparent;
+
+    &:hover {
+      color: $fg;
+      box-shadow: inset 0 0 0 2px gtkalpha($theme_fg_color, 0.4);
+      background-color: gtkmix($bg, $fg, 0.15);
+    }
+
+    &:active, &:checked {
+      color: $fg;
+      background-color: gtkmix($bg, $fg, 0.35);
+
+      &:backdrop {
+        color: $theme_unfocused_fg_color;
+        background-color: gtkshade($theme_unfocused_bg_color, 0.85);
+      }
+    }
+    
+    &:focus {
+      box-shadow: inset 0 0 0 1px $light_shadow;
+    }
+
+    &:disabled {
+      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
+      background-color: gtkmix($bg, $theme_disabled_bg_color, 0.3);
+      
+      &:backdrop {
+        color: $theme_unfocused_disabled_fg_color;
+        background-color: gtkmix($bg, $theme_unfocused_disabled_bg_color, 0.3);
+      }
+    }
+
+    &:backdrop {
+      color: gtkmix($fg, $theme_unfocused_bg_color, 0.3);
+      background-color: gtkmix($bg, $fg, 0.2);
+    }
+  }
+}
+
+@mixin button() {
+  button {
+    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    
+    &.flat {
+      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+    }
+  }
+}
