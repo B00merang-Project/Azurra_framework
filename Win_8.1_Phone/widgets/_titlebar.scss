@@ -25,12 +25,13 @@
         min-width: 30px;
         min-height: 30px;
         border: none;
-        color: transparent;
+        color: $titlebar_fg_color;
         background-color: transparent;
         background-position: center center;
         -gtk-icon-shadow: none;
         
         &:hover {
+          color: $theme_selected_fg_color;
           background-color: #3665b3;
         }
         
@@ -44,7 +45,6 @@
       }
       
       &.close {
-        background-image: url('assets/close.png');
 
         &:hover {
           background-color: #e04343;
@@ -56,11 +56,9 @@
       }
 
       &.minimize {
-        background-image: url('assets/minimize.png');
       }
 
       &.maximize {
-        background-image: url('assets/maximize.png');
       }
     }
 

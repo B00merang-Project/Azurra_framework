@@ -1,9 +1,4 @@
-// NOTE
-// If reimplemented elsewhere, replace alpha($theme_fg_color)
-// with alpha($dark_shadow). It's just a hack for better visibility in the dark theme.
-// Also replace gtkmix($theme_unfocused_bg_color, $theme_unfocused_fg_color, 0.05)
-// with gtkshade($theme_unfocused_bg_color, 0.95)
-
+// progressbar 
 @mixin progressbar() {
   progressbar {
     padding: 0;
@@ -14,31 +9,30 @@
     & progress {
       border: none;
       border-radius: $progressbar_radius;
-      background-color: $progressbar_bg_color;
+      background-color: $theme_selected_bg_color;
 
       &:backdrop {
-        background-color: $progressbar_bg_color;
+        background-color: $theme_unfocused_selected_bg_color;
       }
     }
 
     & trough {
-      border: 1px solid gtkshade($borders, 0.85);
       border-radius: $progressbar_radius;
       background-color: gtkalpha($theme_fg_color, 0.1);
 
       &:backdrop {
-        background-color: gtkmix($theme_unfocused_bg_color, $theme_unfocused_fg_color, 0.05);
+        background-color: gtkshade($theme_unfocused_bg_color, 0.95);
       }
     }
 
     &.horizontal trough,
     &.horizontal progress {
-      min-height: 14px;
+      min-height: 7px;
     }
 
     &.vertical trough,
     &.vertical progress {
-      min-width: 14px;
+      min-width: 7px;
     }
   }
 
@@ -47,13 +41,13 @@
       &, &:disabled {
         color: $theme_selected_fg_color;
         border-radius: 0;
-        background-color: $progressbar_bg_color;
+        background-color: $theme_selected_bg_color;
       }
 
       &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
         border-radius: 0;
         color: $theme_selected_bg_color;
-        background-color: $progressbar_bg_color;
+        background-color: $theme_selected_fg_color;
       }
     }
 

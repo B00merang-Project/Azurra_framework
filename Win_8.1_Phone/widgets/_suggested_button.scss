@@ -1,0 +1,39 @@
+// suggested action button
+@mixin suggested_button() {
+  button.suggested-action {
+    border-color: $borders;
+    border-radius: $button_radius;
+    color: $theme_selected_fg_color;
+    background-color: $theme_selected_bg_color;
+
+    &:hover {
+      color: $theme_selected_fg_color;
+      background-color: gtkmix($theme_selected_bg_color, $theme_selected_fg_color, 0.2);
+    }
+
+    &:active, &:checked {
+      color: $theme_selected_fg_color;
+      background-color: gtkmix($theme_selected_bg_color, $theme_fg_color, 0.1);
+
+      &:backdrop {
+        color: $theme_unfocused_selected_fg_color;
+        background-color: gtkmix($theme_unfocused_selected_bg_color, $theme_unfocused_fg_color, 0.1);
+      }
+    }
+
+    &:disabled {
+      color: gtkmix($theme_selected_fg_color, $theme_disabled_fg_color, 0.2);
+      background-color: gtkmix($theme_selected_bg_color, $theme_disabled_bg_color, 0.2);
+
+      &:backdrop {
+        color: gtkmix($theme_unfocused_selected_fg_color, $theme_unfocused_disabled_fg_color, 0.2);
+        background-color: gtkmix($theme_unfocused_selected_bg_color, $theme_unfocused_disabled_bg_color, 0.2);
+      }
+    }
+
+    &:backdrop {
+      color: $theme_unfocused_selected_fg_color;
+      background-color: $theme_unfocused_selected_bg_color;
+    }
+  }
+}

@@ -1,7 +1,4 @@
-// NOTE
-// If reimplemented elsewhere, replace alpha($theme_fg_color)
-// with alpha($dark_shadow). It's just a hack for better visibility in the dark theme
-
+// scale
 @mixin scale() {
   scale {
     min-height: 10px;
@@ -9,17 +6,17 @@
     padding: 12px;
 
     & fill, & trough {
-      border: 1px solid $borders;
-      border-radius: 0;
-      background-color: gtkalpha($theme_fg_color, 0.1);
+      border: none;
+      border-radius: $scale_radius;
+      background-color: gtkalpha($theme_fg_color, 0.2);
       outline-offset: 2px;
       -gtk-outline-radius: 0;
 
       &:disabled {
-        background-color: gtkalpha($theme_fg_color, 0.05);
+        background-color: gtkalpha($theme_fg_color, 0.15);
 
         &:backdrop {
-          background-color: gtkalpha($theme_fg_color, 0.05);
+          background-color: gtkalpha($theme_fg_color, 0.08);
         }
       }
 
@@ -30,19 +27,19 @@
 
     & highlight {
       border: none;
-      border-radius: 4px;
-      background-color: transparent;
+      border-radius: $scale_radius;
+      background-color: $theme_selected_bg_color;
 
       &:disabled {
-        background-color: transparent;
+        background-color: gtkshade($theme_disabled_bg_color, 0.8);
 
         &:backdrop {
-          background-color: transparent;
+          background-color: gtkshade($theme_unfocused_disabled_bg_color, 0.8);
         }
       }
 
       &:backdrop {
-        background-color: transparent;
+        background-color: $theme_unfocused_selected_bg_color;
       }
     }
 
@@ -82,8 +79,7 @@
       }
 
       & slider {
-        margin-top: -6px;
-        margin-bottom: -9px;
+        margin: -6px;
       }
 
       & fill, & trough, & highlight {
@@ -115,69 +111,44 @@
     }
 
     & slider {
-      min-height: 19px;
-      min-width: 11px;
-      margin: -5px;
-      margin-bottom: -10px;
+      min-height: 14px;
+      min-width: 8px;
+      margin: -4px;
       border: none;
-      border-radius: 0;
+      border-radius: $scale_slider_radius;
       color: $theme_selected_fg_color;
-      background-color: transparent;
-      background-image: url('assets/slider-horiz.png');
+      background-color: $theme_fg_color;
 
       &:hover {
-        color: $theme_selected_fg_color;
-        background-image: url('assets/slider-horiz-hover.png');
       }
 
       &:disabled {
+        background-color: $theme_disabled_fg_color;
         -gtk-icon-shadow: none;
-        background-image: url('assets/slider-horiz-insensitive.png');
 
         &:backdrop {
+          background-color: $theme_unfocused_disabled_fg_color;
           -gtk-icon-shadow: none;
-          background-image: url('assets/slider-horiz-insensitive.png');
         }
       }
 
       &:backdrop {
         color: $theme_unfocused_selected_fg_color;
-        background-image: url('assets/slider-horiz-insensitive.png');
+        background-color: $theme_unfocused_fg_color;
       }
     }
     
-    &.vertical {
-      & slider {
-        min-height: 11px;
-        min-width: 19px;
-        margin: -5px;
-        margin-right: -10px;
-        background-image: url('assets/slider-vert.png');
-
-        &:hover {
-          background-image: url('assets/slider-vert-hover.png');
-        }
-
-        &:disabled {
-          background-image: url('assets/slider-vert-insensitive.png');
-
-          &:backdrop {
-            background-image: url('assets/slider-vert-insensitive.png');
-          }
-        }
-
-        &:backdrop {
-          background-image: url('assets/slider-vert-insensitive.png');
-        }
-      }
+    &.vertical slider {
+      min-height: 8px;
+      min-width: 14px;
     }
 
     & value {
-      color: gtkalpha(currentColor,0.35);
+      color: gtkalpha(currentColor,0.55);
     }
 
     & marks {
-      color: gtkalpha(currentColor,0.35);
+      color: gtkalpha(currentColor,0.55);
 
       &.top {
         margin-bottom: 6px;
