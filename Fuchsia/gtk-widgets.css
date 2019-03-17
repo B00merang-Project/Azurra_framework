@@ -1188,13 +1188,13 @@ scrollbar {
     border: none;
     border-radius: 0px;
     background-clip: padding-box;
-    background-color: shade(@theme_bg_color, 0.6); }
+    background-color: mix(@theme_bg_color, @theme_fg_color, 0.4); }
     scrollbar slider:hover {
-      background-color: shade(@theme_bg_color, 0.6); }
+      background-color: mix(@theme_bg_color, @theme_fg_color, 0.4); }
       scrollbar slider:hover:active {
-        background-color: shade(@theme_bg_color, 0.55); }
+        background-color: mix(@theme_bg_color, @theme_fg_color, 0.45); }
     scrollbar slider:backdrop {
-      background-color: shade(@theme_bg_color, 0.55); }
+      background-color: mix(@theme_bg_color, @theme_fg_color, 0.45); }
     scrollbar slider:disabled {
       background-color: transparent; }
   scrollbar.fine-tune slider {
