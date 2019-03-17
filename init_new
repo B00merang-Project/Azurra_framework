@@ -1,3 +1,11 @@
 #!/bin/bash
 
 cp -aR Azurra "$1"
+cd "$1"
+rm -rf 'widgets'
+mkdir widgets
+cd widgets
+cp ../../linker-sass.sh .
+./linker-sass.sh 'Azurra'
+
+echo 'Done'
