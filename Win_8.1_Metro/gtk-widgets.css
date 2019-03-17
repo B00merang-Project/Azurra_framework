@@ -1843,9 +1843,6 @@ headerbar, headerbar:not(.titlebar) {
     headerbar button:backdrop, headerbar:not(.titlebar) button:backdrop {
       color: mix(@headerbar_fg_color, @theme_unfocused_bg_color, 0.3);
       background-color: mix(@headerbar_bg_color, @headerbar_fg_color, 0.2); }
-  headerbar switch:checked, headerbar:not(.titlebar) switch:checked {
-    border-color: shade(@theme_selected_bg_color, 1.15);
-    background-color: shade(@theme_selected_bg_color, 1.15); }
   headerbar entry, headerbar:not(.titlebar) entry {
     padding: 4px 8px; }
 
@@ -2438,34 +2435,6 @@ messagedialog.csd .dialog-action-area button {
     padding-left: 12px;
     padding-right: 12px;
     color: alpha(currentColor, 0.7); }
-  .titlebar button {
-    padding: 4px 8px;
-    border: none;
-    border-radius: 0px;
-    color: @headerbar_fg_color;
-    background-color: mix(@headerbar_bg_color, @headerbar_fg_color, 0.2);
-    outline-color: alpha(@dark_shadow, 0.15);
-    outline-offset: -2px;
-    outline-width: 2px;
-    outline-style: solid; }
-    .titlebar button:hover {
-      color: @headerbar_fg_color;
-      background-color: mix(@headerbar_bg_color, @headerbar_fg_color, 0.25); }
-    .titlebar button:active, .titlebar button:checked {
-      color: @headerbar_fg_color;
-      background-color: mix(@headerbar_bg_color, @headerbar_fg_color, 0.35); }
-      .titlebar button:active:backdrop, .titlebar button:checked:backdrop {
-        color: @theme_unfocused_fg_color;
-        background-color: shade(@theme_unfocused_bg_color, 0.85); }
-    .titlebar button:disabled {
-      color: mix(@headerbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1);
-      background-color: mix(@headerbar_bg_color, @theme_disabled_bg_color, 0.3); }
-      .titlebar button:disabled:backdrop {
-        color: @theme_unfocused_disabled_fg_color;
-        background-color: mix(@headerbar_bg_color, @theme_unfocused_disabled_bg_color, 0.3); }
-    .titlebar button:backdrop {
-      color: mix(@headerbar_fg_color, @theme_unfocused_bg_color, 0.3);
-      background-color: mix(@headerbar_bg_color, @headerbar_fg_color, 0.2); }
   .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
     padding: 0 0;
     min-width: 30px;

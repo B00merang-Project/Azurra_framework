@@ -130,14 +130,14 @@
         -gtk-icon-shadow: none;
 
         &:backdrop {
-          background-color: $theme_unfocused_disabled_bg_color;
+          background-color: $theme_unfocused_disabled_base_color;
           -gtk-icon-shadow: none;
         }
       }
 
       &:backdrop {
         color: $theme_unfocused_fg_color;
-        background-color: $theme_unfocused_base_color;
+        background-color: gtkshade($theme_unfocused_bg_color, 1.4);
       }
     }
 
