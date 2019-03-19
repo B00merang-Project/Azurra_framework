@@ -39,7 +39,7 @@
         &:last-child {
           border-left-width: 0;
           border-top-left-radius: 0;
-          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
           border-top-right-radius: $entry_radius;
           border-bottom-right-radius: $entry_radius;
         }
@@ -47,10 +47,6 @@
         &:only-child {
           border-width: 1px;
           border-radius: $entry_radius;
-        }
-        
-        &:focus {
-          box-shadow: 0 0 0 4px $theme_selected_base_color;
         }
       }
 
@@ -133,10 +129,6 @@
 
       &:only-child {
         border-top-width: 1px;
-      }
-      
-      &:focus {
-        box-shadow: 0 0 0 4px $theme_selected_base_color;
       }
     }
 

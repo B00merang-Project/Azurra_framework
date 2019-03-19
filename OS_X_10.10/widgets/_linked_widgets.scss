@@ -1,81 +1,79 @@
 // linked widgets
 @mixin linked_widgets() {
-  .linked, .inline-toolbar, .primary-toolbar {
-    & button, & .raised button {
-      border-radius: 0;
-      border-left-width: 0;
-
-      &:first-child {
-        border-left-width: 1px;
-        border-top-left-radius: $button_radius;
-        border-bottom-left-radius: $button_radius;
-      }
-
-      &:last-child {
-        border-left-width: 0;
-        border-top-left-radius: 0;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: $button_radius;
-        border-bottom-right-radius: $button_radius;
-      }
-
-      &:only-child {
-        border-width: 1px;
-        border-radius: $button_radius;
-      }
-    }
-    
-    & entry {
-      border-radius: 0;
-      border-left-width: 0;
-
-      &:first-child {
-        border-left-width: 1px;
-        border-top-left-radius: $entry_radius;
-        border-bottom-left-radius: $entry_radius;
-      }
-
-      &:last-child {
-        border-left-width: 0;
-        border-top-left-radius: 0;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: $entry_radius;
-        border-bottom-right-radius: $entry_radius;
-      }
-
-      &:only-child {
-        border-width: 1px;
-        border-radius: $entry_radius;
-      }
-      
-      &:focus {
-        box-shadow: 0 0 0 4px $theme_selected_base_color;
-      }
-    }
-
-    & combobox {
-      & box.linked button {
+  .linked {
+    &, .inline-toolbar &, .primary-toolbar & {
+      & button, & .raised button {
         border-radius: 0;
         border-left-width: 0;
-      }
 
-      &:first-child box.linked button {
-        border-left-width: 1px;
-        border-top-left-radius: $button_radius;
-        border-bottom-left-radius: $button_radius;
-      }
+        &:first-child {
+          border-left-width: 1px;
+          border-top-left-radius: $button_radius;
+          border-bottom-left-radius: $button_radius;
+        }
 
-      &:last-child box.linked button {
+        &:last-child {
+          border-left-width: 0;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          border-top-right-radius: $button_radius;
+          border-bottom-right-radius: $button_radius;
+        }
+
+        &:only-child {
+          border-width: 1px;
+          border-radius: $button_radius;
+        }
+      }
+      
+      & entry {
+        border-radius: 0;
         border-left-width: 0;
-        border-top-left-radius: 0;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: $button_radius;
-        border-bottom-right-radius: $button_radius;
+
+        &:first-child {
+          border-left-width: 1px;
+          border-top-left-radius: $entry_radius;
+          border-bottom-left-radius: $entry_radius;
+        }
+
+        &:last-child {
+          border-left-width: 0;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          border-top-right-radius: $entry_radius;
+          border-bottom-right-radius: $entry_radius;
+        }
+
+        &:only-child {
+          border-width: 1px;
+          border-radius: $entry_radius;
+        }
       }
 
-      &:only-child box.linked button {
-        border-width: 1px;
-        border-radius: $button_radius;
+      & combobox {
+        & box.linked button {
+          border-radius: 0;
+          border-left-width: 0;
+        }
+
+        &:first-child box.linked button {
+          border-left-width: 1px;
+          border-top-left-radius: $button_radius;
+          border-bottom-left-radius: $button_radius;
+        }
+
+        &:last-child box.linked button {
+          border-left-width: 0;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          border-top-right-radius: $button_radius;
+          border-bottom-right-radius: $button_radius;
+        }
+
+        &:only-child box.linked button {
+          border-width: 1px;
+          border-radius: $button_radius;
+        }
       }
     }
   }
@@ -131,10 +129,6 @@
 
       &:only-child {
         border-top-width: 1px;
-      }
-      
-      &:focus {
-        box-shadow: 0 0 0 4px $theme_selected_base_color;
       }
     }
 
@@ -196,14 +190,12 @@
       &:checked, &:active {
         &, &:hover, &:focus {
           background-color: transparent;
-          background-image: linear-gradient(to bottom, gtkshade($theme_selected_bg_color, 1.2), gtkshade($theme_selected_bg_color, 1.05));
+          background-image: linear-gradient(to bottom, gtkshade($theme_selected_bg_color, 1.4), gtkshade($theme_selected_bg_color, 1.05));
           color: $theme_selected_fg_color;
-  
+          
           &:backdrop {
+            background-image: linear-gradient(to bottom, gtkshade($theme_unfocused_bg_color, 0.9), gtkshade($theme_unfocused_bg_color, 1.05));
             color: $theme_unfocused_fg_color;
-            border-color: gtkshade($theme_unfocused_bg_color, 0.85);
-            background-color: gtkshade($theme_unfocused_bg_color, 0.85);
-            background-image: none;
           }
         }
       }

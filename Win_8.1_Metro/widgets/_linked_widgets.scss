@@ -1,63 +1,65 @@
 // linked widgets
 @mixin linked_widgets() {
-  .linked, .inline-toolbar, .primary-toolbar {
-    // buttons aren't linked
-    
-    & entry {
-      border-radius: 0;
-      border-left-width: 0;
-
-      &:first-child {
-        border-left-width: 2px;
-        border-top-left-radius: $entry_radius;
-        border-bottom-left-radius: $entry_radius;
-      }
-
-      &:last-child {
-        border-left-width: 0;
-        border-top-left-radius: 0;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: $entry_radius;
-        border-bottom-right-radius: $entry_radius;
-      }
-
-      &:only-child {
-        border-width: 2px;
-        border-radius: $entry_radius;
-      }
+  .linked {
+    &, .inline-toolbar &, .primary-toolbar & {
+      // buttons aren't linked
       
-      &:focus, &:last-child:focus {
-        box-shadow: -2px 0 $theme_selected_bg_color;
-      }
-        
-      &:first-child:focus {
-        box-shadow: none;
-      }
-    }
-
-    & combobox {
-      & box.linked button {
+      & entry {
         border-radius: 0;
         border-left-width: 0;
+
+        &:first-child {
+          border-left-width: 2px;
+          border-top-left-radius: $entry_radius;
+          border-bottom-left-radius: $entry_radius;
+        }
+
+        &:last-child {
+          border-left-width: 0;
+          border-top-left-radius: 0;
+          border-bottom-right-radius: 0;
+          border-top-right-radius: $entry_radius;
+          border-bottom-right-radius: $entry_radius;
+        }
+
+        &:only-child {
+          border-width: 2px;
+          border-radius: $entry_radius;
+        }
+        
+        &:focus, &:last-child:focus {
+          box-shadow: -2px 0 $theme_selected_bg_color;
+        }
+          
+        &:first-child:focus {
+          box-shadow: none;
+        }
       }
 
-      &:first-child box.linked button {
-        border-left-width: 2px;
-        border-top-left-radius: $button_radius;
-        border-bottom-left-radius: $button_radius;
-      }
+      & combobox {
+        & box.linked button {
+          border-radius: 0;
+          border-left-width: 0;
+        }
 
-      &:last-child box.linked button {
-        border-left-width: 0;
-        border-top-left-radius: 0;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: $button_radius;
-        border-bottom-right-radius: $button_radius;
-      }
+        &:first-child box.linked button {
+          border-left-width: 2px;
+          border-top-left-radius: $button_radius;
+          border-bottom-left-radius: $button_radius;
+        }
 
-      &:only-child box.linked button {
-        border-width: 2px;
-        border-radius: $button_radius;
+        &:last-child box.linked button {
+          border-left-width: 0;
+          border-top-left-radius: 0;
+          border-bottom-right-radius: 0;
+          border-top-right-radius: $button_radius;
+          border-bottom-right-radius: $button_radius;
+        }
+
+        &:only-child box.linked button {
+          border-width: 2px;
+          border-radius: $button_radius;
+        }
       }
     }
   }
