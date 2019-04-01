@@ -46,34 +46,34 @@
   }
   
   check, .check {
-    -gtk-icon-source: url('assets/new/checkbox-unchecked.png');
+    -gtk-icon-source: url('assets/checkbox-unchecked.png');
     
     &:checked {
-      -gtk-icon-source: url('assets/new/checkbox-checked.png');
+      -gtk-icon-source: url('assets/checkbox-checked.png');
       
       &:disabled {
-        opacity: 0.5;
+        -gtk-icon-source: url('assets/checkbox-checked-disabled.png');
       }
     }
     
     &:disabled {
-      opacity: 0.5;
+      -gtk-icon-source: url('assets/checkbox-unchecked-disabled.png');
     }
   }
   
   radio, .radio {
-    -gtk-icon-source: url('assets/new/radio-unchecked.png');
+    -gtk-icon-source: url('assets/radio-unchecked.png');
     
     &:checked {
-      -gtk-icon-source: url('assets/new/radio-checked.png');
+      -gtk-icon-source: url('assets/radio-checked.png');
       
       &:disabled {
-        opacity: 0.5;
+        -gtk-icon-source: url('assets/radio-checked-disabled.png');
       }
     }
     
     &:disabled {
-      opacity: 0.5;
+      -gtk-icon-source: url('assets/radio-unchecked-disabled.png');
     }
   }
 }
