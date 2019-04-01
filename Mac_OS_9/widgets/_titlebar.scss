@@ -1,0 +1,78 @@
+// titlebar
+@mixin titlebar() {
+  .titlebar {
+    border-bottom: none;
+    border-radius: $csd_radius $csd_radius 0px 0px;
+
+    & .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+      background-color: $titlebar_bg_color;
+    }
+
+    & .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+      background-color: $titlebar_bg_color;
+    }
+
+    // titlebutton 
+    & .titlebutton {
+      
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        color: transparent;
+        padding: 2px;
+        box-shadow: none;
+        border: none;
+        background-color: $titlebar_bg_color;
+        border-radius: 0;
+        -gtk-icon-shadow: none;
+        
+        background-size: 13px 13px;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      
+      &.close {
+        background-image: url('assets/close.png');
+      }
+
+      &.minimize {
+        background-image: url('assets/minimize.png');
+      }
+
+      &.maximize {
+        background-image: url('assets/maximize.png');
+      }
+             
+      &:backdrop {
+        background-image: none;
+      }
+    }
+
+    .tiled &:not(headerbar), .tiled &:backdrop:not(headerbar), .maximized &:not(headerbar), .maximized &:backdrop:not(headerbar) {
+      border-radius: 0;
+    }
+  }
+
+  .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-image: url('assets/titlebar.png');
+    background-size: 98% 12px;
+    background-position: 4px 46%;
+    background-repeat: no-repeat;
+    background-color: $titlebar_bg_color;
+    box-shadow: inset 1px 1px $light_shadow, inset -1px -1px gtkshade($titlebar_bg_color, 0.85);
+
+    &:backdrop {
+      box-shadow: none;
+      color: $theme_unfocused_fg_color;
+      background-image: none;
+      background-color: $titlebar_bg_color;
+    }
+  }
+}

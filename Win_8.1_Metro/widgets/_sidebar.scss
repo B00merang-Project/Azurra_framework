@@ -63,30 +63,9 @@
 
     // allows light scrollbar on dark sidebar
     & scrollbar {
-      background-color: gtkalpha($light_shadow, 0.5);
-      
-      &.horizontal {
-        button {
-          &.down {
-            -gtk-icon-source: url('assets/arrow-right-dark.svg');
-          }
-
-          &.up {
-            -gtk-icon-source: url('assets/arrow-left-dark.svg');
-          }
-        }
-      }
-      
-      &.vertical {
-        button {
-          &.down {
-            -gtk-icon-source: url('assets/arrow-down-dark.svg');
-          }
-
-          &.up {
-            -gtk-icon-source: url('assets/arrow-up-dark.svg')
-          }
-        }
+      background-color: gtkmix($sidebar_bg_color, $light_shadow, 0.2);
+      button {
+        background-color: gtkmix($sidebar_bg_color, $light_shadow, 0.2);
       }
     }
     

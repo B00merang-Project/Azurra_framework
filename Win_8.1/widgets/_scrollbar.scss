@@ -2,7 +2,7 @@
 @mixin scrollbar() {
   scrollbar {
     border: none;
-    background-color: gtkshade($theme_bg_color, 0.9);
+    background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
 
     & trough {
       border: none;
@@ -10,15 +10,28 @@
     }
 
     &:backdrop {
-      background-color: gtkshade($theme_bg_color, 0.9);
+      background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
     }
     
     & button {
-      &, &:hover, &:active, &:disabled {
+      &:hover {
+        border-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
+        background-image: none;
+        background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.2);
+      }
+      
+      &:active {
+        background-image: none;
+        border-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
+        background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.6);
+      }
+    
+      &, &:disabled {
         &, &:backdrop {
           padding: 3px;
-          border-color: gtkshade($theme_bg_color, 0.9);
-          background-color: gtkshade($theme_bg_color, 0.9);
+          border-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
+          background-image: none;
+          background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
         }
       }
     }
@@ -30,18 +43,18 @@
       border: none;
       border-radius: $scrollbar_radius;
       background-clip: padding-box;
-      background-color: gtkshade($theme_bg_color, 0.6);
+      background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.4);
 
       &:hover {
-        background-color: gtkshade($theme_bg_color, 0.6);
+        background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.35);
 
         &:active {
-          background-color: gtkshade($theme_bg_color, 0.55);
+          background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.6);
         }
       }
 
       &:backdrop {
-        background-color: gtkshade($theme_bg_color, 0.55);
+        background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.45);
       }
 
       &:disabled {
@@ -60,7 +73,50 @@
     }
 
     &.overlay-indicator {
-      opacity: 1;
+      &:not(.dragging):not(.hovering) {
+        border: none;
+        opacity: 0.7;
+        margin: 0;
+        background-color: transparent;
+
+        & slider {
+          margin: 0;
+          min-width: 2px;
+          min-height: 2px;
+          background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.6);
+          border: 2px solid transparent;
+          border-radius: 2px;
+        }
+
+        &.horizontal {
+          slider {
+            margin: 0;
+            min-width: 40px;
+          }
+        }
+
+        &.vertical {
+          slider {
+            margin: 0;
+            min-height: 40px;
+          }
+        }
+        
+        // hide overlay scrollbutton
+        & button {
+          min-width: 0;
+          min-height: 0;
+          padding: 0;
+          border: none;
+          box-shadow: none;
+          color: transparent;
+          background-color: transparent;
+        }
+      }
+      
+      &.dragging, &.hovering {
+        opacity: 1;
+      }
     }
 
     &.horizontal {
@@ -74,10 +130,18 @@
       
         &.down {
           -gtk-icon-source: url('assets/arrow-right.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-right-active.svg');
+          }
         }
 
         &.up {
           -gtk-icon-source: url('assets/arrow-left.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-left-active.svg');
+          }
         }
       }
     }
@@ -93,10 +157,18 @@
 
         &.down {
           -gtk-icon-source: url('assets/arrow-down.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-down-active.svg');
+          }
         }
 
         &.up {
           -gtk-icon-source: url('assets/arrow-up.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-up-active.svg');
+          }
         }
       }
     }

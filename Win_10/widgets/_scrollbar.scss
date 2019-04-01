@@ -14,7 +14,17 @@
     }
     
     & button {
-      &, &:hover, &:active, &:disabled {
+      &:hover {
+        border-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
+        background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.2);
+      }
+      
+      &:active {
+        border-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
+        background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.6);
+      }
+    
+      &, &:disabled {
         &, &:backdrop {
           padding: 3px;
           border-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
@@ -33,10 +43,10 @@
       background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.4);
 
       &:hover {
-        background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.4);
+        background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.35);
 
         &:active {
-          background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.45);
+          background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.6);
         }
       }
 
@@ -117,10 +127,18 @@
       
         &.down {
           -gtk-icon-source: url('assets/arrow-right.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-right-active.svg');
+          }
         }
 
         &.up {
           -gtk-icon-source: url('assets/arrow-left.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-left-active.svg');
+          }
         }
       }
     }
@@ -136,10 +154,18 @@
 
         &.down {
           -gtk-icon-source: url('assets/arrow-down.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-down-active.svg');
+          }
         }
 
         &.up {
           -gtk-icon-source: url('assets/arrow-up.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-up-active.svg');
+          }
         }
       }
     }

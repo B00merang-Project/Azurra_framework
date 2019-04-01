@@ -1403,10 +1403,20 @@ scrollbar {
     border-radius: 0; }
   scrollbar:backdrop {
     background-color: mix(@theme_bg_color, @theme_fg_color, 0.1); }
-  scrollbar button, scrollbar button:backdrop, scrollbar button:hover, scrollbar button:hover:backdrop, scrollbar button:active, scrollbar button:active:backdrop, scrollbar button:disabled, scrollbar button:disabled:backdrop {
-    padding: 3px;
+  scrollbar button:hover {
+    box-shadow: none;
     border-color: mix(@theme_bg_color, @theme_fg_color, 0.1);
-    background-color: mix(@theme_bg_color, @theme_fg_color, 0.1); }
+    background-color: mix(@theme_bg_color, @theme_fg_color, 0.2); }
+  scrollbar button:active {
+    box-shadow: none;
+    border-color: mix(@theme_bg_color, @theme_fg_color, 0.1);
+    background-color: mix(@theme_bg_color, @theme_fg_color, 0.6); }
+  scrollbar button, scrollbar button:disabled {
+    border-width: 1px; }
+    scrollbar button, scrollbar button:backdrop, scrollbar button:disabled, scrollbar button:disabled:backdrop {
+      padding: 3px;
+      border-color: mix(@theme_bg_color, @theme_fg_color, 0.1);
+      background-color: mix(@theme_bg_color, @theme_fg_color, 0.1); }
   scrollbar slider {
     min-width: 45px;
     min-height: 14px;
@@ -1416,9 +1426,9 @@ scrollbar {
     background-clip: padding-box;
     background-color: mix(@theme_bg_color, @theme_fg_color, 0.4); }
     scrollbar slider:hover {
-      background-color: mix(@theme_bg_color, @theme_fg_color, 0.4); }
+      background-color: mix(@theme_bg_color, @theme_fg_color, 0.35); }
       scrollbar slider:hover:active {
-        background-color: mix(@theme_bg_color, @theme_fg_color, 0.45); }
+        background-color: mix(@theme_bg_color, @theme_fg_color, 0.6); }
     scrollbar slider:backdrop {
       background-color: mix(@theme_bg_color, @theme_fg_color, 0.45); }
     scrollbar slider:disabled {
@@ -1461,8 +1471,12 @@ scrollbar {
     min-width: 6px; }
     scrollbar.horizontal button.down {
       -gtk-icon-source: url("assets/arrow-right.svg"); }
+      scrollbar.horizontal button.down:active {
+        -gtk-icon-source: url("assets/arrow-right-active.svg"); }
     scrollbar.horizontal button.up {
       -gtk-icon-source: url("assets/arrow-left.svg"); }
+      scrollbar.horizontal button.up:active {
+        -gtk-icon-source: url("assets/arrow-left-active.svg"); }
   scrollbar.vertical slider {
     min-height: 40px; }
   scrollbar.vertical button {
@@ -1470,8 +1484,12 @@ scrollbar {
     min-width: 6px; }
     scrollbar.vertical button.down {
       -gtk-icon-source: url("assets/arrow-down.svg"); }
+      scrollbar.vertical button.down:active {
+        -gtk-icon-source: url("assets/arrow-down-active.svg"); }
     scrollbar.vertical button.up {
       -gtk-icon-source: url("assets/arrow-up.svg"); }
+      scrollbar.vertical button.up:active {
+        -gtk-icon-source: url("assets/arrow-up-active.svg"); }
   treeview ~ scrollbar.vertical {
     border-top: 1px solid @borders;
     margin-top: -1px; }
