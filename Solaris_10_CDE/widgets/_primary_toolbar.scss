@@ -4,9 +4,11 @@
     -GtkWidget-window-dragging: true;
 
     padding: 4px;
-    border-width: 0 0 1px 0;
+    border-width: 1px;
     border-style: solid;
-    border-color: gtkmix($borders, $toolbar_bg_color, 0.5);
+    border-color: $borders;
+    border-top-color: gtkmix($toolbar_bg_color, $light_shadow, 0.7);
+    border-left-color: gtkmix($toolbar_bg_color, $light_shadow, 0.7);
     color: $toolbar_fg_color;
     background-color: $toolbar_bg_color;
 

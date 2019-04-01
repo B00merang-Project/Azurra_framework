@@ -5,14 +5,10 @@
 
     &.frame {
       margin: -1px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: $borders;
-      border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-      border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+      border: none;
 
       & > header {
-        margin: -1px;
+        margin: 0;
 
         &.top {
           margin-bottom: 0;
@@ -42,14 +38,25 @@
       }
     }
 
-    & > stack:not(:only-child) {
-      background-color: $theme_bg_color;
-      box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+    // override the override :/
+    .nautilus-window &, .nautilus-window & > stack:not(:only-child) searchbar {
+      background-color: gtkshade($theme_bg_color, 0.8);
+    }
+
+    & > stack {
+      padding: 6px;
+      border: 1px solid $borders;
+      border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+      border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+    
+      &:not(:only-child) {
+        background-color: $theme_bg_color;
+      }
       
       // file manager exception
       .nautilus-window & {
-        box-shadow: none;
-        background-color: $theme_base_color;
+        box-shadow: inset 0 0 0 6px $theme_bg_color;
+        background-color: gtkshade($theme_bg_color, 0.8);
       }
     }
 
@@ -60,7 +67,7 @@
       border-radius: $tab_radius;
       border-color: $borders;
       color: $theme_fg_color;
-      background-color: $theme_bg_color;
+      background-color: gtkshade($theme_bg_color, 0.9);
       
       &:checked {
         border-color: $borders;
@@ -85,7 +92,7 @@
       background-color: $theme_bg_color;
       
       &.top {
-        box-shadow: 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 -1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+        box-shadow: 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
 
         & > tabs > tab {
           border-bottom: none;
@@ -95,7 +102,6 @@
           border-bottom-right-radius: 0;
           border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
           border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-          box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
 
           &:checked {
             margin-top: 0;
@@ -106,7 +112,7 @@
 
       &.bottom {
         padding-top: 0;
-        box-shadow: 0 -1px $borders, inset 0 1px gtkshade($theme_bg_color, 0.65);
+        box-shadow: 0 -1px $borders;
 
         & > tabs > tab {
           border-top: none;
@@ -115,7 +121,6 @@
           border-top-left-radius: 0;
           border-top-right-radius: 0;
           border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-          box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7);
 
           &:checked {
             margin-bottom: 0;
@@ -125,7 +130,7 @@
       }
 
       &.right {
-        box-shadow: -1px 0 $borders, inset 1px 0 gtkshade($theme_bg_color, 0.65);
+        box-shadow: -1px 0 $borders;
 
         & > tabs > tab {
           border-left: none;
@@ -134,7 +139,6 @@
           border-bottom-left-radius: 0;
           border-top-left-radius: 0;
           border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-          box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
 
           &:checked {
             margin-right: 0;
@@ -144,7 +148,7 @@
       }
 
       &.left {
-        box-shadow: 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset -1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7);
+        box-shadow: 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7);
 
         & > tabs > tab {
           border-right: none;
@@ -154,7 +158,6 @@
           border-bottom-right-radius: 0;
           border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
           border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-          box-shadow: inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
 
           &:checked {
             margin-left: 0;

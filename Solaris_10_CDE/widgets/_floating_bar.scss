@@ -4,6 +4,8 @@
     border-width: 1px;
     border-style: solid;
     border-color: $borders;
+    border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+    border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
     border-radius: $roundness;
     background-color: $theme_bg_color;
     color: $theme_fg_color;
@@ -38,5 +40,12 @@
       border-style: none;
       background-color: transparent;
     }
+  }
+  
+  // statusbar override
+  statusbar {
+    border: 1px solid $borders;
+    border-bottom-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+    border-right-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
   }
 }

@@ -1,10 +1,10 @@
 /* Normal colors */
 @import url("gtk-widgets.css");
-@define-color bg_color #d3d0c7;
+@define-color bg_color #aeb2c3;
 @define-color fg_color #000000;
-@define-color base_color #FFFFFF;
+@define-color base_color #fff7e9;
 @define-color text_color #000000;
-@define-color selected_bg_color #000082;
+@define-color selected_bg_color #000000;
 @define-color selected_fg_color #FFFFFF;
 @define-color disabled_bg_color mix(@fg_color, @bg_color, 0.95);
 @define-color disabled_fg_color mix(@fg_color, @bg_color, 0.5);
@@ -22,7 +22,7 @@
 @define-color unfocused_disabled_base_color @disabled_base_color;
 @define-color unfocused_disabled_text_color @disabled_text_color;
 /* Darker color scheme */
-@define-color dark_bg_color #d3d0c7;
+@define-color dark_bg_color #aeb2c3;
 @define-color dark_fg_color #000000;
 /* Theme colors */
 @define-color theme_bg_color @bg_color;
@@ -51,8 +51,8 @@
 @define-color color_shadow @selected_bg_color;
 @define-color light_shadow rgb(255, 255, 255);
 /* Borders */
-@define-color borders @fg_color;
-@define-color outline_color @fg_color;
+@define-color borders shade(@bg_color, 0.7);
+@define-color outline_color @borders;
 @define-color unfocused_borders @unfocused_fg_color;
 /* Notification header backgrounds */
 @define-color info_fg_color #FFFFFF;
@@ -80,12 +80,12 @@
 @define-color sidebar_fg_color @fg_color;
 @define-color taskbar_bg_color @base_color;
 @define-color taskbar_fg_color @fg_color;
-@define-color titlebar_bg_color @selected_bg_color;
+@define-color titlebar_bg_color #b24d7a;
 @define-color titlebar_fg_color @selected_fg_color;
 @define-color headerbar_bg_color @bg_color;
 @define-color headerbar_fg_color @fg_color;
-@define-color terminal_bg_color @fg_color;
-@define-color terminal_fg_color @base_color;
+@define-color terminal_bg_color #000000;
+@define-color terminal_fg_color #ffffff;
 /* OSD */
 @define-color osd_fg @dark_bg_color;
 @define-color osd_bg mix(@dark_fg_color, @dark_bg_color, 0.2);

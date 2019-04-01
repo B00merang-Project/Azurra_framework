@@ -21,7 +21,12 @@
     & .titlebutton {
       
       &.close, &.maximize, &.minimize, &:not(separator) {
+        min-width: 19px;
+        min-height: 19px;
         color: transparent;
+        background: none;
+        box-shadow: none;
+        border: none;
         padding: 0;
         border-radius: 0;
         -gtk-icon-shadow: none;
@@ -31,19 +36,27 @@
       }
       
       &.close {
-        background-image: url('assets/close.png');
+        background-image: url('assets/close-focused.png');
+        
+        &:backdrop {
+          background-image: url('assets/close-unfocused.png');
+        }
       }
 
       &.minimize {
-        background-image: url('assets/minimize.png');
+        background-image: url('assets/minimize-focused.png');
+        
+        &:backdrop {
+          background-image: url('assets/minimize-unfocused.png');
+        }
       }
 
       &.maximize {
-        background-image: url('assets/maximize.png');
-      }
-      
-      .maximized &.maximize {
-        background-image: url('assets/restore.png');
+        background-image: url('assets/maximize-focused.png');
+        
+        &:backdrop {
+          background-image: url('assets/maximize-unfocused.png');
+        }
       }
     }
 
@@ -56,11 +69,13 @@
     min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
+    box-shadow: inset 2px 2px gtkshade($titlebar_bg_color, 1.4), inset -2px -2px gtkshade($titlebar_bg_color, 0.6);
 
     &:backdrop {
       color: $theme_unfocused_fg_color;
       background-image: none;
       background-color: $theme_unfocused_bg_color;
+      box-shadow: inset 2px 2px gtkshade($theme_unfocused_bg_color, 1.2), inset -2px -2px gtkshade($theme_unfocused_bg_color, 0.8);
     }
   }
 }

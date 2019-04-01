@@ -12,7 +12,6 @@
       outline-offset: 2px;
       border-bottom-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
       border-right-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-      box-shadow: inset 1px 0 gtkshade($theme_bg_color, 0.65), inset 0 1px gtkshade($theme_bg_color, 0.65), inset -1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 -1px gtkmix($theme_bg_color, $light_shadow, 0.7);
       -gtk-outline-radius: 0;
 
       &:disabled {
@@ -107,60 +106,46 @@
     }
 
     & slider {
-      min-height: 21px;
-      min-width: 15px;
-      margin: -6px;
-      margin-bottom: -10px;
-      border: none;
+      min-height: 13px;
+      min-width: 30px;
+      margin: 0;
       border-radius: 0;
-      color: $theme_selected_fg_color;
-      background-color: transparent;
-      background-image: url('assets/slider-horiz.png');
+      color: $theme_fg_color;
+      background-color: $theme_bg_color;
+      border: 1px solid $borders;
+      border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+      border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+      background-image: linear-gradient(to right, $borders, gtkmix($theme_bg_color, $light_shadow, 0.7));
+      background-size: 2px 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
 
       &:hover {
-        color: $theme_selected_fg_color;
-        background-image: url('assets/slider-horiz.png');
       }
 
       &:disabled {
         -gtk-icon-shadow: none;
-        background-image: url('assets/slider-horiz-insensitive.png');
+        background-color: $theme_disabled_bg_color;
 
         &:backdrop {
           -gtk-icon-shadow: none;
-          background-image: url('assets/slider-horiz-insensitive.png');
+          background-color: $theme_unfocused_disabled_bg_color;
         }
       }
 
       &:backdrop {
         color: $theme_unfocused_selected_fg_color;
-        background-image: url('assets/slider-horiz-insensitive.png');
+        background-color: $theme_unfocused_bg_color;
       }
     }
     
     &.vertical {
       & slider {
-        min-height: 15px;
-        min-width: 21px;
-        margin: -5px;
-        margin-right: -10px;
-        background-image: url('assets/slider-vert.png');
-
-        &:hover {
-          background-image: url('assets/slider-vert.png');
-        }
-
-        &:disabled {
-          background-image: url('assets/slider-vert-insensitive.png');
-
-          &:backdrop {
-            background-image: url('assets/slider-vert-insensitive.png');
-          }
-        }
-
-        &:backdrop {
-          background-image: url('assets/slider-vert-insensitive.png');
-        }
+        min-height: 30px;
+        min-width: 15px;
+        margin: 0;
+        background-size: 100% 2px;
+        background-image: linear-gradient(to bottom, $borders, gtkmix($theme_bg_color, $light_shadow, 0.7));
       }
     }
 

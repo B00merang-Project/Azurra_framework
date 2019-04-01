@@ -1,8 +1,16 @@
 // scrollbar  
 @mixin scrollbar() {
+  scrolledwindow {
+    border: 1px solid $borders;
+    border-bottom-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+    border-right-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+  }
+
   scrollbar {
-    border: none;
-    background-color: $theme_bg_color;
+    border: 1px solid $borders;
+    border-bottom-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+    border-right-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+    background-color: gtkshade($theme_bg_color, 0.9);
 
     & trough {
       border: none;
@@ -12,8 +20,11 @@
     & button {
       &, &:active, &:disabled {
         &, &:backdrop {
+          border: none;
+          box-shadow: none;
           color: transparent;
           padding: 0;
+          background-color: transparent;
           background-size: auto;
           background-position: center center;
           background-repeat: no-repeat;
@@ -35,18 +46,19 @@
     
       & slider {
         min-width: 45px;
-        min-height: 14px;
+        min-height: 11px;
         margin: 0;
         border: 1px solid $borders;
+        border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+        border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
         background-color: $theme_bg_color;
-        box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
       }
 
       & button {
-        min-height: 14px;
-        min-width: 14px;
+        min-height: 11px;
+        min-width: 11px;
       
         &.down {
           background-image: url('assets/arrow-right.png');
@@ -61,7 +73,7 @@
     &.vertical {
       
       & slider {
-        min-width: 14px;
+        min-width: 11px;
         min-height: 45px;
         margin: 0;
         border: 1px solid $borders;
@@ -70,12 +82,11 @@
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
         background-color: $theme_bg_color;
-        box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
       }
 
       & button {
-        min-height: 14px;
-        min-width: 14px;
+        min-height: 11px;
+        min-width: 11px;
 
         &.down {
           background-image: url('assets/arrow-down.png');

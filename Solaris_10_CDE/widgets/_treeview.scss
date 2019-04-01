@@ -9,12 +9,12 @@
 
     & header {
       & button {
-        border-width: 0 1px 1px 0;
         border-radius: 0;
+        outline-color: transparent;
 
         &, &:active, &:focus, &:active:focus {
           background-image: none;
-          background-color: $theme_bg_color;
+          background-color: $theme_base_color;
         }
 
         &:hover, &:active:hover, &:hover:focus, &:active:hover:focus {
@@ -23,7 +23,6 @@
         }
       }
       &:last-child button {
-        border-width: 0 0 1px 0;
       }
     }
   }

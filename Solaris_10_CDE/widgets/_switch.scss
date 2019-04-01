@@ -9,11 +9,9 @@
     border-bottom-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
     border-right-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
     background-color: $theme_bg_color;
-    box-shadow: inset 1px 0 gtkshade($theme_bg_color, 0.65), inset 0 1px gtkshade($theme_bg_color, 0.65), inset -1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 -1px gtkmix($theme_bg_color, $light_shadow, 0.7);
 
     &:checked {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+      background-color: gtkshade($theme_bg_color, 0.8);
     }
 
     &:disabled {
@@ -29,7 +27,6 @@
       border: 1px solid $borders;
       border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
       border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-      box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
       background-color: $theme_bg_color;
     }
 

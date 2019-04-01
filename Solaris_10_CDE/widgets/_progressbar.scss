@@ -9,23 +9,15 @@
     & progress {
       border: none;
       border-radius: $progressbar_radius;
-      background-image: linear-gradient(to right, transparent, transparent 37.5%, $theme_bg_color 37.5%, $theme_bg_color 50%, transparent 50%, transparent 87.5%, $theme_bg_color 87.5%, $theme_bg_color 100%), image($theme_selected_bg_color);
-    background-size: 20px 16px, auto;
+      background-color: gtkalpha($dark_shadow, 0.15);
     }
     
-    &.vertical progress {
-      background-image: linear-gradient(to bottom, transparent, transparent 37.5%, $theme_bg_color 37.5%, $theme_bg_color 50%, transparent 50%, transparent 87.5%, $theme_bg_color 87.5%, $theme_bg_color 100%), image($theme_selected_bg_color);
-      background-size: 16px 20px, auto;
-    }
-
     & trough {
-      padding: 2px;
       border: 1px solid $borders;
       border-radius: $progressbar_radius;
       background-color: $theme_bg_color;
       border-bottom-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
       border-right-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-      box-shadow: inset 1px 0 gtkshade($theme_bg_color, 0.65), inset 0 1px gtkshade($theme_bg_color, 0.65), inset -1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 -1px gtkmix($theme_bg_color, $light_shadow, 0.7);
     }
 
     &.horizontal trough,

@@ -2,9 +2,11 @@
 @mixin toolbar() {
   toolbar {
     padding: 4px;
-    border: none;
+    border: 1px solid $borders;
     color: $toolbar_fg_color;
     background-color: $toolbar_bg_color;
+    border-top-color: gtkmix($toolbar_bg_color, $light_shadow, 0.7);
+    border-left-color: gtkmix($toolbar_bg_color, $light_shadow, 0.7);
 
     &:backdrop {
       color: $theme_unfocused_fg_color;
