@@ -8,6 +8,7 @@
       padding-left: 12px;
       padding-right: 12px;
       font-weight: bold;
+      background-color: $titlebar_bg_color;
     }
 
     & .subtitle {
@@ -15,48 +16,49 @@
       padding-left: 12px;
       padding-right: 12px;
       color: gtkalpha(currentColor, 0.7);
+      background-color: $titlebar_bg_color;
     }
 
     // titlebutton 
     & .titlebutton {
       
       &.close, &.maximize, &.minimize, &:not(separator) {
-        min-width: 14px;
-        min-height: 14px;
         padding: 0;
-        border: none;
-        box-shadow: none;
+        min-height: 17px;
+        min-width: 17px;
         border-radius: 0;
+        border: none;
         color: transparent;
-        background-color: transparent;
+        background-color: $titlebar_bg_color;
         -gtk-icon-shadow: none;
+        box-shadow: 0 0 0 1px $titlebar_bg_color;
         
         background-position: center center;
         background-repeat: no-repeat;
       }
       
       &.close {
-        background: url('assets/close-focused.png') no-repeat no-repeat;
-        
+        background: url('assets/close.png') no-repeat no-repeat;
+
         &:backdrop {
-          background: url('assets/close-unfocused.png') no-repeat no-repeat;
-        }     
-      } 
-      
-      &.maximize {
-        background: url('assets/maximize-focused.png') no-repeat no-repeat;
-        
-        &:backdrop {
-          background: url('assets/maximize-unfocused.png') no-repeat no-repeat;
-        }     
+          background: none;
+        }
       }
-      
+
       &.minimize {
-        background: url('assets/minimize-focused.png') no-repeat no-repeat;
-        
+        background: url('assets/minimize.png') no-repeat no-repeat;
+
         &:backdrop {
-          background: url('assets/minimize-unfocused.png') no-repeat no-repeat;
-        }     
+          background: none;
+        }
+      }
+
+      &.maximize {
+        background: url('assets/maximize.png') no-repeat no-repeat;
+
+        &:backdrop {
+          background: none;
+        }
       }
     }
 
@@ -69,11 +71,14 @@
     min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    box-shadow: inset 1px 1px gtkmix($titlebar_bg_color, $theme_base_color, 0.4), inset -1px -1px $titlebar_bg_color;
+    box-shadow: inset 0 0 0 4px $titlebar_bg_color;
+    background-size: 100% 2px;
+    background-image: linear-gradient(to bottom, $titlebar_bg_color 35%, $borders 40%, $borders 64%, $titlebar_bg_color 85%);
+
     &:backdrop {
       color: $theme_unfocused_fg_color;
+      background-image: none;
       background-color: $theme_unfocused_bg_color;
-      box-shadow: inset 1px 1px gtkshade($light_shadow, 0.95), inset -1px -1px gtkshade($theme_bg_color, 0.85);
     }
   }
 }

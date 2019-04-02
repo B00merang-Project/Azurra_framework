@@ -1,0 +1,74 @@
+// button
+@mixin normal_buttons($bg, $fg, $border) {
+  & {
+    padding: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: $button_radius;
+    color: $fg;
+    border-color: $border;
+    background-color: $bg;
+    outline-offset: 1px;
+    outline-width: 3px;
+    outline-style: solid;
+    -gtk-outline-radius: $button_radius + 3;
+
+    &:active, &:checked {
+      color: $theme_selected_fg_color;
+      border-color: $theme_selected_bg_color;
+      background-color: $theme_selected_bg_color;
+
+      &:backdrop {
+        color: $theme_unfocused_selected_fg_color;
+      }
+      
+      &:disabled {
+        color: $theme_disabled_fg_color;
+        border-color: gtkmix($fg, $theme_disabled_bg_color, 0.85);
+        background-color: gtkshade($theme_disabled_bg_color, 0.9);
+      }
+    }
+
+    &:disabled {
+      color: $theme_disabled_fg_color;
+    }
+  }
+}
+
+@mixin flat_buttons($bg, $fg, $border)
+{
+  & {
+    border-color: transparent;
+    border-radius: $button_radius;
+    color: $fg;
+    background-color: transparent;
+
+    &:hover {
+      border-color: $border;
+      color: $fg;
+      background-color: $bg;
+    }
+
+    &:active, &:checked {
+      color: $theme_selected_fg_color;
+      border-color: $theme_selected_bg_color;
+      background-color: $theme_selected_bg_color;
+    }
+
+    &:disabled {
+      border-color: transparent;
+      color: $theme_disabled_fg_color;
+      background-color: transparent;
+    }
+  }
+}
+
+@mixin button() {
+  button {
+    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    
+    &.flat {
+      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+    }
+  }
+}

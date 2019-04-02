@@ -1,0 +1,142 @@
+// scale
+@mixin scale() {
+  scale {
+    min-height: 10px;
+    min-width: 10px;
+    padding: 12px;
+
+    & fill, & trough {
+      border: 1px solid $borders;
+      border-radius: 4px;
+      background-color: $theme_base_color;
+      background-image: linear-gradient(to bottom left, $theme_base_color 33%, $borders 34%, $borders 66%, $theme_base_color 67%);
+      box-shadow: inset 0 0 0 2px $borders, inset 0 0 0 1px $theme_bg_color;
+      background-size: 3px 3px, auto;
+      outline-offset: 2px;
+      -gtk-outline-radius: 7px;
+
+      &:disabled {
+      }
+    }
+
+    & highlight {
+    }
+
+    &.horizontal {
+      & indicator {
+        min-height: 6px;
+        min-width: 1px;
+      }
+
+      &.fine-tune indicator {
+        min-height: 3px;
+      }
+    }
+
+    &.vertical {
+      & indicator {
+        min-height: 1px;
+        min-width: 6px;
+      }
+
+      &.fine-tune indicator {
+        min-width: 3px;
+      }
+    }
+
+    &.fine-tune {
+      &.horizontal {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        min-height: 14px;
+      }
+
+      &.vertical {
+        padding-left: 10px;
+        padding-right: 10px;
+        min-width: 14px;
+      }
+
+      & slider {
+        margin: -6px;
+      }
+
+      & fill, & trough, & highlight {
+        border-radius: 4px;
+        -gtk-outline-radius: 0;
+      }
+
+      & marks {
+        &.top {
+          margin-bottom: 8px;
+          margin-top: -13px;
+        }
+
+        &.bottom {
+          margin-top: 8px;
+          margin-bottom: -13px;
+        }
+
+        &.top {
+          margin-right: 8px;
+          margin-left: -13px;
+        }
+
+        &.bottom {
+          margin-left: 8px;
+          margin-right: -13px;
+        }
+      }
+    }
+
+    & slider {
+      min-height: 23px;
+      min-width: 11px;
+      margin: -5px;
+      border: 1px solid $borders;
+      border-radius: 4px;
+      color: $theme_fg_color;
+      background-color: $theme_base_color;
+      background-image: linear-gradient(to right, transparent 14%, $borders 15%, $borders 25%, transparent 26%, transparent 69%, $borders 70%, $borders 80%, transparent 81%, transparent);
+
+      &:disabled {
+        background-color: $theme_disabled_base_color;
+        -gtk-icon-shadow: none;
+      }
+    }
+    
+    &.vertical slider {
+      min-height: 11px;
+      min-width: 23px;
+      background-image: linear-gradient(to bottom, transparent 14%, $borders 15%, $borders 25%, transparent 26%, transparent 69%, $borders 70%, $borders 80%, transparent 81%, transparent);
+    }
+
+    & value {
+      color: gtkalpha(currentColor,0.55);
+    }
+
+    & marks {
+      color: gtkalpha(currentColor,0.55);
+
+      &.top {
+        margin-bottom: 6px;
+        margin-top: -12px;
+      }
+
+      &.bottom {
+        margin-top: 6px;
+        margin-bottom: -12px;
+      }
+
+      &.top {
+        margin-right: 6px;
+        margin-left: -12px;
+      }
+
+      &.bottom {
+        margin-left: 6px;
+        margin-right: -12px;
+      }
+    }
+  }
+}
