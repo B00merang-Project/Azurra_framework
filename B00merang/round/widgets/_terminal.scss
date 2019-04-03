@@ -1,0 +1,25 @@
+@mixin terminal() {
+  .terminal-screen, terminal-window, vte-terminal {
+    background-color: $terminal_bg_color;
+    color: $terminal_fg_color;
+  }
+
+  terminal-screen-container {
+    &, & scrollbar:not(slider) {
+      &, &:backdrop {
+        border-color: transparent;
+        background-color: transparent;
+      }
+    }
+    
+    & scrollbar slider {
+      &, &:backdrop {
+        background-color: gtkmix($terminal_fg_color, $terminal_bg_color, 0.2);
+        
+        &:hover, &:hover:active {
+          background-color: gtkmix($terminal_fg_color, $terminal_bg_color, 0.05);
+        }
+      }
+    } 
+  }
+}
