@@ -3,11 +3,11 @@
   decoration {
     border-radius: $csd_radius $csd_radius 0 0;
     border-width: 0px;
-    box-shadow: 0 8px 8px 0 gtkalpha($dark_shadow, 0.2), 0 0 0 1px $theme_selected_bg_color;
+    box-shadow: 0 8px 8px 0 gtkalpha($dark_shadow, 0.1), 0 0 0 1px gtkalpha($dark_shadow, 0.3);
     margin: 10px;
 
     &:backdrop {
-      box-shadow: 0 8px 8px 0 transparent, 0 5px 5px 0 gtkalpha($dark_shadow, 0.2), 0 0 0 1px $borders;
+      box-shadow: 0 8px 8px 0 transparent, 0 5px 5px 0 gtkalpha($dark_shadow, 0.1), 0 0 0 1px gtkalpha($dark_shadow, 0.2);
     }
 
     .fullscreen &, .tiled & {

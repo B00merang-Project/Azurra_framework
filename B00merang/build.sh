@@ -1,12 +1,13 @@
 #!/bin/bash
 
-#--- colors ---#
+# build
+for D in *; do
+  if [ -d "${D}" ] &&               # theme exists
+     [ -f "${D}/build.sh" ]; then   # is buildable
+    echo "Building ${D}"
 
-# flat
-sass -C --sourcemap=none flat/_gtk.scss flat/gtk.css
-sass -C --sourcemap=none flat/_gtk-light.scss flat/gtk-light.css
-sass -C --sourcemap=none flat/_gtk-dark.scss flat/gtk-dark.css
-
-#--- GTK ---#
-# flat
-sass -C --sourcemap=none flat/_common.scss flat/gtk-widgets.css
+    cd "${D}"
+    ./build.sh
+    cd ..
+  fi
+done

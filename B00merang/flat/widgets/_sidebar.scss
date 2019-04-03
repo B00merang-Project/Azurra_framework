@@ -38,6 +38,11 @@
     border: none;
     color: $sidebar_fg_color;
     
+    &:hover {
+      color: $sidebar_fg_color;
+      background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.15);
+    }
+    
     &:checked, &:selected {
       color: $theme_selected_fg_color;
     }
@@ -134,12 +139,14 @@
       margin-bottom: 2px;
       padding: 0;
       border-radius: 100%;
+      border-color: transparent;
+      background-color: transparent;
       color: $sidebar_fg_color;
       -gtk-outline-radius: 100%;
     }
 
     &:hover, &:active {
-      color: $theme_fg_color;
+      color: $sidebar_fg_color;
     }
 
     &:not(:hover):not(:active) > image {
