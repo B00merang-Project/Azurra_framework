@@ -33,17 +33,21 @@
       }
       
       &.close {
-        color: gtkshade($error_color, 1.7);
+        color: gtkshade($error_color, 0.8);
       }
     }
 
     .tiled &:not(headerbar), .tiled &:backdrop:not(headerbar), .maximized &:not(headerbar), .maximized &:backdrop:not(headerbar) {
       border-radius: 0;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
   .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
     min-height: 30px;
+    padding-right: 15px;
+    padding-left: 15px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
 
