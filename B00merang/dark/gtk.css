@@ -1,11 +1,11 @@
 /* Normal colors */
 @import url("gtk-widgets.css");
-@define-color bg_color #F8F8F9;
-@define-color fg_color #000000;
-@define-color base_color #FFFFFF;
-@define-color text_color #000000;
-@define-color selected_bg_color #2081CE;
-@define-color selected_fg_color #FFFFFF;
+@define-color bg_color #0d0d0f;
+@define-color fg_color #969696;
+@define-color base_color #151516;
+@define-color text_color #a3a3a3;
+@define-color selected_bg_color #1a347c;
+@define-color selected_fg_color #000;
 @define-color disabled_bg_color shade(@bg_color, 0.95);
 @define-color disabled_fg_color shade(@bg_color, 0.5);
 @define-color disabled_base_color @disabled_bg_color;
@@ -22,8 +22,8 @@
 @define-color unfocused_disabled_base_color @unfocused_disabled_bg_color;
 @define-color unfocused_disabled_text_color @unfocused_disabled_fg_color;
 /* Darker color scheme */
-@define-color dark_bg_color #003C6A;
-@define-color dark_fg_color #FFFFFF;
+@define-color dark_bg_color #151516;
+@define-color dark_fg_color #a3a3a3;
 /* Theme colors */
 @define-color theme_bg_color @bg_color;
 @define-color theme_fg_color @fg_color;
@@ -51,9 +51,9 @@
 @define-color color_shadow @selected_bg_color;
 @define-color light_shadow rgb(255, 255, 255);
 /* Borders */
-@define-color borders shade(@bg_color, 0.95);
-@define-color outline_color shade(@bg_color, 0.75);
-@define-color unfocused_borders shade(@unfocused_bg_color, 0.95);
+@define-color borders #090909;
+@define-color outline_color @fg_color;
+@define-color unfocused_borders #090909;
 /* Notification header backgrounds */
 @define-color info_fg_color #FFFFFF;
 @define-color info_bg_color #0055FF;
@@ -76,11 +76,11 @@
 @define-color menubar_fg_color @fg_color;
 @define-color toolbar_bg_color @bg_color;
 @define-color toolbar_fg_color @fg_color;
-@define-color sidebar_bg_color alpha(@dark_bg_color, 0.8);
-@define-color sidebar_fg_color @dark_fg_color;
+@define-color sidebar_bg_color @bg_color;
+@define-color sidebar_fg_color @fg_color;
 @define-color taskbar_bg_color @dark_bg_color;
 @define-color taskbar_fg_color @dark_fg_color;
-@define-color titlebar_bg_color alpha(@dark_bg_color, 0.95);
+@define-color titlebar_bg_color @dark_bg_color;
 @define-color titlebar_fg_color @dark_fg_color;
 @define-color headerbar_bg_color @dark_bg_color;
 @define-color headerbar_fg_color @dark_fg_color;

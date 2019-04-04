@@ -95,10 +95,10 @@
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_base_color, $theme_fg_color, $borders);
+    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_base_color, $theme_fg_color, $borders);
+      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
     }
   }
 }

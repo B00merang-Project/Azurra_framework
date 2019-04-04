@@ -1,17 +1,23 @@
 // menu 
 @mixin menu() {
+  // transparency for popovers and menus
+  .background.popup {
+    background-color: transparent;
+  }
+
   menu, .menu {
     margin: 4px;
     padding: 0;
     border-radius: 0;
     border-style: none;
     color: $menu_fg_color;
-    background-color: $menu_bg_color;
+    background-color: transparent;
 
-    .csd & {
-      padding: 4px 0px;
+    .csd &, .csd.background & {
+      padding: 4px 1px;
       border-radius: 0;
-      border: none;
+      border: 1px solid $borders;
+      background-color: $menu_bg_color;
     }
     
     & > arrow {

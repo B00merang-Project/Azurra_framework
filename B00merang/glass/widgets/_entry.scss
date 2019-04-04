@@ -10,10 +10,6 @@
     caret-color: currentColor;
     background-color: $theme_base_color;
 
-    &:active, &:focus {
-      border-color: $theme_selected_bg_color;
-    }
-
     &:selected, &:selected:focus, & selection, & selection:focus {
       color: $theme_selected_fg_color;
       background-color: $theme_selected_bg_color;
@@ -26,7 +22,7 @@
 
       &:backdrop {
         color: $theme_unfocused_disabled_fg_color;
-        border-color: $unfocused_borders;
+        border-color: gtkmix($theme_unfocused_bg_color, $theme_unfocused_disabled_bg_color, 0.6);
         background-color: $theme_unfocused_disabled_bg_color;
       }
     }

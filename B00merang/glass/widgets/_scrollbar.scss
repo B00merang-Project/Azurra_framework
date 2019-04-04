@@ -1,37 +1,37 @@
 // scrollbar  
 @mixin scrollbar() {
   scrollbar {
-    border: none;
-    background-color: gtkshade($theme_bg_color, 0.9);
+    border: 1px solid $borders;
+    background-color: $theme_bg_color;
 
-    & trough {
+    trough {
       border: none;
       border-radius: 0;
     }
 
     &:backdrop {
-      background-color: gtkshade($theme_unfocused_bg_color, 0.9);
+      background-color: $theme_unfocused_bg_color;
     }
 
-    & slider {
-      min-width: 8px;
-      min-height: 8px;
+    slider {
+      min-width: 10px;
+      min-height: 10px;
       margin: 2px;
       border: none;
       border-radius: $scrollbar_radius;
       background-clip: padding-box;
-      background-color: gtkshade($theme_bg_color, 0.6);
+      background-color: gtkmix($theme_fg_color, $theme_bg_color, 0.1);
 
       &:hover {
-        background-color: gtkshade($theme_bg_color, 0.6);
+        background-color: gtkmix($theme_fg_color, $theme_bg_color, 0.1);
 
         &:active {
-          background-color: gtkshade($theme_bg_color, 0.55);
+          background-color: $theme_fg_color;
         }
       }
 
       &:backdrop {
-        background-color: gtkshade($theme_bg_color, 0.55);
+        background-color: gtkmix($theme_unfocused_fg_color, $theme_unfocused_bg_color, 0.1);
       }
 
       &:disabled {
@@ -63,11 +63,19 @@
       margin: 0;
       background-color: transparent;
 
-      & slider {
+      button {
+        padding: 0;
+        color: transparent;
+        border: none;
+        min-width: 0;
+        min-height: 0;
+      }
+
+      slider {
         margin: 0;
         min-width: 1px;
         min-height: 1px;
-        background-color: gtkshade($theme_bg_color, 0.6);
+        background-color: gtkmix($theme_fg_color, $theme_bg_color, 0.1);
         border: none;
       }
 
@@ -92,12 +100,26 @@
       }
     }
 
+    button {
+      &, &:disabled {
+        &, &:backdrop {
+          padding: 0;
+          border: none;
+          color: $theme_fg_color;
+          background-color: transparent;
+        }
+      }
+    }
+
     &.horizontal {
-      & slider {
+      slider {
         min-width: 40px;
       }
 
-      & button {
+      button {
+        min-height: 14px;
+        min-width: 14px;
+      
         &.down {
           -gtk-icon-source: -gtk-icontheme("pan-right-symbolic");
         }
@@ -109,11 +131,14 @@
     }
 
     &.vertical {
-      & slider {
+      slider {
         min-height: 40px;
       }
 
-      & button {
+      button {
+        min-height: 14px;
+        min-width: 14px;
+      
         &.down {
           -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
         }

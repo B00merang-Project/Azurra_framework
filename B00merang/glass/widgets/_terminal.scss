@@ -1,4 +1,8 @@
 @mixin terminal() {
+  vte-terminal.terminal-screen {
+    -TerminalScreen-background-darkness: 0.9;
+  }
+
   .terminal-screen, terminal-window, vte-terminal {
     background-color: $terminal_bg_color;
     color: $terminal_fg_color;
