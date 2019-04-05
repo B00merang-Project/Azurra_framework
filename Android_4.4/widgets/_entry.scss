@@ -1,0 +1,71 @@
+// entry 
+@mixin entry() {
+  entry {
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: $entry_radius;
+    color: $theme_text_color;
+    caret-color: currentColor;
+    background-color: transparent;
+    border-image: linear-gradient(to bottom, transparent 80%, $borders 81%) 1 1 1 1;
+
+    &:active, &:focus {
+      border-image: linear-gradient(to bottom, transparent 80%, $theme_selected_bg_color 81%) 1 1 1 1;
+    }
+
+    &:selected, &:selected:focus, & selection, & selection:focus {
+      color: $theme_selected_text_color;
+      background-color: $theme_selected_base_color;
+    }
+
+    &:disabled {
+      color: $theme_disabled_text_color;
+      border-image: linear-gradient(to bottom, transparent 80%, $unfocused_borders 81%) 1 1 1 1;
+
+      &:backdrop {
+        color: $theme_unfocused_disabled_fg_color;
+      }
+    }
+
+    &.read-only {
+      background-color: gtkmix($theme_bg_color, $theme_disabled_bg_color, 0.1);
+    }
+
+    &:backdrop {
+      color: $theme_unfocused_fg_color;
+    }
+
+    & > image {
+      &.left {
+        padding-right: 5px;
+      }
+      
+      &.right {
+        padding-left: 5px;
+      }
+    }
+
+    & progress {
+      margin: -4px -4px;
+      border-width: 0 0 2px;
+      border-radius: 0;
+      border-style: solid;
+      border-color: $theme_selected_bg_color;
+      background-color: transparent;
+    }
+
+    &.flat, &.flat:focus {
+      padding: 3px;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+    }
+
+    &.search {
+      border-radius: $entry_radius;
+      border: 1px solid $borders;
+    }
+  }
+}

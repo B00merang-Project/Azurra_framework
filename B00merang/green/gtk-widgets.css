@@ -202,7 +202,8 @@ button {
   border-radius: 2px;
   color: @theme_fg_color;
   border-color: @borders;
-  background-color: @theme_bg_color; }
+  background-color: @theme_bg_color;
+  -gtk-outline-radius: 2px; }
   button:hover {
     color: @theme_fg_color;
     border-color: @borders;
@@ -812,9 +813,9 @@ menu, .menu {
   color: @menu_fg_color;
   background-color: transparent; }
   .csd menu, .csd.background menu, .csd .menu, .csd.background .menu {
-    padding: 4px 1px;
+    padding: 4px 0;
     border-radius: 0;
-    border: 1px solid @borders;
+    border: none;
     background-color: @menu_bg_color; }
   menu > arrow, .menu > arrow {
     padding: 4px;
@@ -1801,7 +1802,8 @@ toolbar {
     border-radius: 2px;
     color: @toolbar_fg_color;
     border-color: @borders;
-    background-color: @toolbar_bg_color; }
+    background-color: @toolbar_bg_color;
+    -gtk-outline-radius: 2px; }
     .primary-toolbar button:hover, .primary-toolbar .raised button:hover {
       color: @toolbar_fg_color;
       border-color: @borders;
@@ -1845,7 +1847,8 @@ toolbar {
     border-radius: 2px;
     color: @toolbar_fg_color;
     border-color: @borders;
-    background-color: @toolbar_bg_color; }
+    background-color: @toolbar_bg_color;
+    -gtk-outline-radius: 2px; }
     .inline-toolbar toolbar button:hover {
       color: @toolbar_fg_color;
       border-color: @borders;
@@ -2013,7 +2016,8 @@ treeview {
   color: @theme_text_color;
   background-color: @theme_base_color; }
   .view:not(treeview) {
-    border-radius: 0px; }
+    border-radius: 0px;
+    -gtk-outline-radius: 0px; }
   .view:disabled {
     color: @theme_disabled_fg_color;
     background-color: @theme_disabled_bg_color; }
@@ -2574,7 +2578,8 @@ panel-toplevel.background na-tray-applet {
     border-radius: 2px;
     color: @theme_fg_color;
     border-color: @borders;
-    background-color: @theme_bg_color; }
+    background-color: @theme_bg_color;
+    -gtk-outline-radius: 2px; }
     #XfceNotifyWindow.osd button:hover {
       color: @theme_fg_color;
       border-color: @borders;
