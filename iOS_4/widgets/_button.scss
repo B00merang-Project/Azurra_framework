@@ -1,8 +1,5 @@
 // button
 @mixin normal_buttons($bg, $fg, $border) {
-  // dirty override
-  $bg : unquote("@theme_base_color");
-
   & {
     padding: 4px 8px;
     border-style: solid;
@@ -11,12 +8,9 @@
     color: $fg;
     border-color: gtkshade($borders, 0.85);
     background-color: $bg;
-    background-image: linear-gradient(to bottom, $theme_base_color 40%, gtkshade($theme_bg_color, 1.02) 60%);
+    background-image: linear-gradient(to bottom, $bg 40%, gtkshade($bg, 0.95) 60%);
     box-shadow: 0 1px gtkalpha(gtkmix($light_shadow, $dark_shadow, 0.5), 0.1);
     -gtk-outline-radius: $button_radius;
-
-    &:hover {
-    }
 
     &:active, &:checked {
       color: $theme_selected_fg_color;
@@ -62,9 +56,6 @@
 
 @mixin flat_buttons($bg, $fg, $border)
 {
-  // dirty override
-  $bg : unquote("@theme_base_color");
-  
   & {
     border-color: transparent;
     border-radius: $button_radius;
@@ -118,10 +109,10 @@
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    @include normal_buttons($theme_base_color, $theme_fg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+      @include flat_buttons($theme_base_color, $theme_fg_color, $borders);
     }
   }
 }

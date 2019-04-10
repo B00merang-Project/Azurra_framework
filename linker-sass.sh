@@ -1,6 +1,11 @@
 #!/bin/bash
 
-TARGET="$1"
+TARGET="Azurra"
+
+if [ ! -z "$1" ]; then
+  TARGET="$1"
+fi
+
 SRCDIR="$PWD"
 
 cd "../../$TARGET/widgets"

@@ -1,8 +1,5 @@
 // button
 @mixin normal_buttons($bg, $fg, $border, $radius : $normal_button_radius) {
-  // dirty override
-  $bg : unquote("$theme_base_color");
-
   & {
     padding: 4px 8px;
     border-style: solid;
@@ -66,9 +63,6 @@
 
 @mixin flat_buttons($bg, $fg, $border, $radius : $normal_button_radius)
 {
-  // dirty override
-  $bg : unquote("$theme_base_color");
-  
   & {
     border-color: transparent;
     border-radius: $radius;
@@ -123,10 +117,10 @@
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    @include normal_buttons($theme_base_color, $theme_fg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+      @include flat_buttons($theme_base_color, $theme_fg_color, $borders);
     }
   }
 }
