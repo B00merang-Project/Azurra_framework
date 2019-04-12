@@ -1468,32 +1468,23 @@ switch {
   outline-offset: -4px;
   margin: 4px;
   border: 1px solid @borders;
-  border-radius: 16px;
-  background-color: @borders; }
+  border-radius: 5px;
+  background-color: @theme_bg_color; }
   switch:checked {
-    border-color: @success_color;
-    background-color: @success_color; }
-    switch:checked:backdrop {
-      border-color: mix(@theme_unfocused_selected_bg_color, @success_color, 0.8);
-      background-color: mix(@theme_unfocused_selected_bg_color, @success_color, 0.8); }
+    border-color: @borders;
+    background-color: @theme_selected_bg_color; }
   switch:disabled {
-    border-color: @theme_disabled_bg_color;
     background-color: @theme_disabled_bg_color; }
-    switch:disabled:backdrop {
-      border-color: @theme_unfocused_disabled_bg_color;
-      background-color: @theme_unfocused_disabled_bg_color; }
   switch:backdrop {
-    border-color: @unfocused_borders;
-    background-color: @unfocused_borders; }
+    border-color: @unfocused_borders; }
   switch slider {
     min-width: 20px;
     min-height: 20px;
-    margin: 0;
-    border: none;
-    border-radius: 100%;
+    margin: -1px;
+    border: 1px solid @borders;
+    border-radius: 4px;
     color: @theme_fg_color;
-    box-shadow: 0 2px 2px 1px alpha(@dark_shadow, 0.09);
-    background-color: shade(@theme_bg_color, 1.4); }
+    background-color: @theme_base_color; }
   switch:disabled slider {
     background-color: @theme_disabled_base_color; }
   switch:disabled:backdrop slider {
