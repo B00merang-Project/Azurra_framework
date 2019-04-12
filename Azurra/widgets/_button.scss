@@ -1,0 +1,116 @@
+// button
+@mixin normal_buttons($bg, $fg, $border) {
+  & {
+    padding: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: $button_radius;
+    color: $fg;
+    border-color: $border;
+    background-color: $bg;
+
+    &:hover {
+      color: $fg;
+      border-color: $border;
+      background-color: gtkshade($bg, 1.1);
+    }
+
+    &:active, &:checked {
+      color: $fg;
+      border-color: gtkshade($border, 0.9);
+      background-color: gtkshade($bg, 0.85);
+
+      &:backdrop {
+        color: $theme_unfocused_fg_color;
+        border-color: gtkshade($theme_unfocused_bg_color, 0.85);
+        background-color: gtkshade($theme_unfocused_bg_color, 0.85);
+      }
+      
+      &:disabled {
+        color: gtkmix($fg, $theme_disabled_fg_color, 0.1);
+        border-color: gtkmix(gtkshade($bg, 0.85), $theme_disabled_bg_color, 0.6);
+        background-color: gtkmix(gtkshade($bg, 0.85), $theme_disabled_bg_color, 0.1);
+        
+        &:backdrop {
+          color: gtkmix($fg, $theme_disabled_fg_color, 0.1);
+          border-color: gtkmix(gtkshade($bg, 0.85), $theme_unfocused_disabled_bg_color, 0.6);
+          background-color: gtkmix(gtkshade($bg, 0.85), $theme_unfocused_disabled_bg_color, 0.1);
+        }
+      }
+    }
+
+    &:disabled {
+      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
+      border-color: gtkmix($bg, $theme_disabled_bg_color, 0.6);
+      background-color: gtkmix($bg, $theme_disabled_bg_color, 0.1);
+      
+      &:backdrop {
+        color: $theme_unfocused_disabled_fg_color;
+        border-color: $unfocused_borders;
+        background-color: $theme_unfocused_disabled_bg_color;
+      }
+    }
+
+    &:backdrop {
+      border-color: $unfocused_borders;
+      color: $theme_unfocused_fg_color;
+      background-color: $theme_unfocused_bg_color;
+    }
+  }
+}
+
+@mixin flat_buttons($bg, $fg, $border)
+{
+  & {
+    border-color: transparent;
+    border-radius: $button_radius;
+    color: $fg;
+    background-color: transparent;
+
+    &:hover {
+      border-color: $border;
+      color: $fg;
+      background-color: $bg;
+    }
+
+    &:active, &:checked {
+      border-color: $theme_selected_bg_color;
+      color: $theme_selected_fg_color;
+      background-color: $theme_selected_bg_color;
+      
+      &:backdrop {
+        border-color: $theme_unfocused_selected_bg_color;
+        color: $theme_unfocused_selected_fg_color;
+        background-color: $theme_unfocused_selected_bg_color;
+      }
+    }
+
+    &:disabled {
+      border-color: transparent;
+      color: gtkalpha($fg, 0.8);
+      background-color: transparent;
+      
+      &:backdrop {
+        border-color: transparent;
+        color: gtkalpha($fg, 0.7);
+        background-color: transparent;
+      }
+    }
+
+    &:backdrop {
+      border-color: transparent;
+      background-color: transparent;
+      color: $theme_unfocused_fg_color;
+    }
+  }
+}
+
+@mixin button() {
+  button {
+    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    
+    &.flat {
+      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+    }
+  }
+}
