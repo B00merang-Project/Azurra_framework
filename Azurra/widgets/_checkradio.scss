@@ -98,7 +98,6 @@
   }
 }
 
-
 @mixin checkradio() {
   checkbutton.text-button, radiobutton.text-button {
     padding: 4px;
@@ -147,7 +146,7 @@
   check, .check {
     @include check();
     
-    row:selected {
+    row:selected check {
       @include check();
     }
   }
@@ -155,51 +154,21 @@
   radio, .radio {
     @include radio();
     
-    row:selected {
+    row:selected radio {
       @include radio();
     }
   }
   
-  // menuitem check and radio
-
   menuitem {
     check, radio {
       min-height: 16px;
       min-width: 16px;
     }
     check {
-      -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked.png"), url("assets/checkbox-unchecked@2.png"));
-      color: $theme_fg_color;
-      -gtk-icon-shadow: none;
-      &:active, &:checked {
-        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked.png"), url("assets/checkbox-checked@2.png"));
-      }
-      &:indeterminate {
-        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed.png"), url("assets/checkbox-mixed@2.png"));
-      }
-      &:active:hover {
-        color: $theme_selected_fg_color;
-      }
-      &:disabled {
-        color: $theme_disabled_fg_color;
-      }
+      @include check();
     }
     radio {
-      -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked.png"), url("assets/radio-unchecked@2.png"));
-      color: $theme_fg_color;
-      -gtk-icon-shadow: none;
-      &:active, &:checked {
-        -gtk-icon-source: -gtk-scaled(url("assets/radio-checked.png"), url("assets/radio-checked@2.png"));
-      }
-      &:indeterminate {
-        -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed.png"), url("assets/radio-mixed@2.png"));
-      }
-      &:hover {
-        color: $theme_selected_fg_color;
-      }
-      &:disabled {
-        color: $theme_disabled_fg_color;
-      }
+      @include radio();
     }
   }
 }
