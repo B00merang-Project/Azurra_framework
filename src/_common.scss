@@ -80,22 +80,18 @@ image, image:disabled, label, label:disabled, box, box:disabled {
   background-color: transparent;
 }
 
-image:disabled {
-  color: gtkalpha(currentColor, 0.5);
-}
-
 @include labels();
 
 @include transitions();
 
 // assistant
 assistant {
-  & .sidebar label.highlight {
+  .sidebar label.highlight {
     color: $theme_selected_fg_color;
     background-color: $theme_selected_bg_color;
   }
 
-  & .sidebar {
+  .sidebar {
     padding: 4px;
     border-width: 0 1px 0 0;
     border-style: solid;
@@ -195,45 +191,11 @@ button:visited {
 
 @include entry();
 
-// expander
-expander arrow {
-  min-width: 16px;
-  min-height: 16px;
-  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
-
-  &:dir(rtl) {
-    -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
-  }
-
-  &:hover {
-    color: $theme_selected_bg_color;
-  }
-
-  &:checked {
-    -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-  }
-}
+@include expander();
 
 @include list();
 
-// frame 
-frame {
-  & > border {
-    border-width: 1px;
-    border-style: solid;
-    border-color: $borders;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  &.flat > border, & > border.flat, statusbar & > border {
-    border: none;
-  }
-}
-
-.frame {
-	background: none;
-}
+@include frame();
 
 @include iconview();
 
@@ -241,96 +203,13 @@ frame {
 
 @include infobar();
 
-// symbolic images (icons) 
-image {
-  color: gtkalpha(currentColor, 0.75);
-
-  &:hover {
-    color: gtkalpha(currentColor, 0.9);
-  }
-
-  &:selected, &:selected:hover {
-    color: $theme_selected_fg_color;
-  }
-
-  view &, view &:hover {
-    color: gtkalpha(currentColor, 0.9);
-  }
-
-  view &:selected, view &:selected:hover {
-    color: $theme_selected_fg_color;
-  }
-}
+@include images();
 
 @include floating_bar();
 
-// miscellaneous 
-.dnd {
-  border-width: 1px;
-  border-style: solid;
-  border-color: $borders;
-}
-
 @include terminal();
 
-.nautilus-window notebook, .nautilus-window notebook > stack:not(:only-child) searchbar {
-  background-color: $theme_base_color;
-}
-
-.caja-location-entry {
-  padding: 3px 5px;
-}
-
-scrolledwindow viewport.frame {
-  border: none;
-}
-
-arrow, combobox arrow {
-  color: gtkalpha(currentColor, 0.75);
-  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-  min-height: 16px;
-  min-width: 16px;
-}
-
-.context-menu, popover.touch-selection, .csd popover.touch-selection,
-popover.background.touch-selection, .csd popover.background.touch-selection {
-  font: initial;
-}
-
-.monospace {
-  font-family: Monospace;
-}
-
-.gedit-search-entry-occurrences-tag {
-  color: gtkalpha(currentColor, 0.7);
-  border: none;
-  margin: 2px;
-  padding: 2px;
-}
-
-.gedit-search-slider {
-  border-color: $borders;
-  padding: 6px;
-  border-radius: 0 0 $roundness $roundness;
-  border-width: 0 1px 1px 1px;
-  border-style: solid;
-  background-color: $theme_bg_color;
-}
-
-button.circular, button.circular-button {
-  padding: 0;
-  min-width: 16px;
-  min-height: 24px;
-  padding: 2px 6px;
-  border-radius: 50%;
-  -gtk-outline-radius: 50%;
-}
-  
-printdialog paper {
-  border: 1px solid $borders;
-  background: $light_shadow;
-  padding: 0;
-}
+@include miscellaneous();
 
 @include menu();
 
@@ -346,26 +225,7 @@ printdialog paper {
 
 @include notebook();
 
-// pane separator 
-paned {
-  & > separator {
-    border: none;
-    color: transparent;
-    background-color: $borders;
-
-    &:backdrop {
-      background-color: $unfocused_borders;
-    }
-
-    &:selected {
-      background-color: $borders;
-    }
-  }
-
-  & .sidebar.left, & .sidebar.right, & .sidebar.left:dir(rtl), & .sidebar:dir(rtl), & .sidebar:dir(ltr), & .sidebar {
-    border-style: none;
-  }
-}
+@include paned();
 
 @include over_undershoot();
 
@@ -404,15 +264,7 @@ spinner {
   }
 }
 
-// statusbar 
-statusbar {
-  padding: 4px;
-  color: $theme_fg_color;
-
-  & frame > border {
-    border: none;
-  }
-}
+@include statusbar();
 
 @include switch();
 
@@ -424,7 +276,7 @@ colorswatch {
     border-top-left-radius: 2.5px;
     border-top-right-radius: 2.5px;
 
-    & overlay {
+    overlay {
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
     }
@@ -433,7 +285,7 @@ colorswatch {
     border-bottom-left-radius: 2.5px;
     border-bottom-right-radius: 2.5px;
 
-    & overlay {
+    overlay {
       border-bottom-left-radius: 2px;
       border-bottom-right-radius: 2px;
     }
@@ -443,7 +295,7 @@ colorswatch {
     border-top-left-radius: 2.5px;
     border-bottom-left-radius: 2.5px;
 
-    & overlay {
+    overlay {
       border-top-left-radius: 2px;
       border-bottom-left-radius: 2px;
     }
@@ -453,7 +305,7 @@ colorswatch {
     border-top-right-radius: 2.5px;
     border-bottom-right-radius: 2.5px;
 
-    & overlay {
+    overlay {
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;
     }
@@ -475,7 +327,7 @@ colorswatch {
     }
   }
 
-  & overlay {
+  overlay {
     border: 1px solid gtkalpha($dark_shadow, 0.15);
 
     &:hover {
@@ -486,7 +338,7 @@ colorswatch {
   &:disabled {
     opacity: 0.5;
 
-    & overlay {
+    overlay {
       border-color: gtkalpha($dark_shadow, 0.6);
       box-shadow: none;
     }
@@ -496,18 +348,18 @@ colorswatch {
 button.color {
   padding: 0;
 
-  & colorswatch:first-child:last-child, & colorswatch:first-child:last-child overlay {
+  colorswatch:first-child:last-child, colorswatch:first-child:last-child overlay {
     margin: 4px;
     border-radius: 0;
   }
 }
 
 colorchooser {
-  & .popover.osd {
+  .popover.osd {
     border-radius: 0;
   }
 
-  & #add-color-button {
+  #add-color-button {
     background-clip: padding-box;
     border-color: gtkalpha($dark_shadow, 0.1);
     background-color: gtkshade($theme_bg_color, 0.95);
@@ -521,36 +373,7 @@ colorchooser {
   }
 }
 
-// pathbars 
-.path-bar button {
-  &.text-button, &.image-button, & button {
-    padding-left: 4px;
-    padding-right: 4px;
-  }
-
-  &.text-button.image-button label, & label {
-    padding-left: 0;
-    padding-right: 0;
-
-    &:last-child {
-      padding-right: 8px;
-    }
-
-    &:first-child {
-      padding-left: 8px;
-    }
-  }
-
-  & image {
-    padding-left: 4px;
-    padding-right: 4px;
-  }
-
-  &.slider-button {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
+@include pathbar();
 
 @include headerbar();
 
@@ -568,65 +391,11 @@ colorchooser {
 
 @include view();
 
-// action-bar 
-actionbar {
-  padding: 4px;
-  border-width: 1px 0 0 0;
-  border-style: solid;
-  border-color: $borders;
-  color: $theme_fg_color;
-  background-color: $theme_bg_color;
+@include actionbar();
 
-  &:backdrop {
-    border-color: $unfocused_borders;
-    color: $theme_unfocused_fg_color;
-    background-color: $theme_unfocused_bg_color;
-  }
+@include searchbar();
 
-  & button {
-    &.text-button {
-      padding: 4px;
-    }
-
-    & .image-button {
-      padding: 6px;
-    }
-  }
-
-  & .title {
-    font-weight: bold;
-    padding: 0 12px;
-  }
-
-  & .subtitle {
-    font-size: smaller;
-    padding: 0 12px;
-  }
-}
-
-// search bars 
-searchbar {
-  border-width: 0 0 1px 0;
-  border-style: solid;
-  border-color: $borders;
-  background-color: $theme_bg_color;
-}
-
-// app notifications 
-.app-notification {
-  border-style: solid;
-  border-color: $borders;
-  border-width: 1px;
-  border-radius: 0;
-  margin: 5px;
-  padding: 8px;
-  background-color: $theme_base_color;
-  color: $theme_text_color;
-  
-  & border {
-    border: none;
-  }
-}
+@include app_notifications();
 
 @include osd;
 

@@ -1,97 +1,98 @@
-@mixin check() {
+// added the ext part for when we need selected (or dark) assets
+@mixin check($ext : "") {
   & {
-    -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked.png"), url("assets/checkbox-unchecked@2.png"));
+    -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked" + $ext + ".png"), url("assets/checkbox-unchecked" + $ext + "-@2.png"));
     
     &:backdrop {
-      -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked-unfocused.png"), url("assets/checkbox-unchecked-unfocused@2.png"));
+      -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked-unfocused" + $ext + ".png"), url("assets/checkbox-unchecked-unfocused" + $ext + "-@2.png"));
     }
     
     &:disabled {
-      -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked-insensitive.png"), url("assets/checkbox-unchecked-insensitive@2.png"));
+      -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked-insensitive" + $ext + ".png"), url("assets/checkbox-unchecked-insensitive" + $ext + "-@2.png"));
       
       &:backdrop {
-        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked-insensitive-unfocused.png"), url("assets/checkbox-unchecked-insensitive-unfocused@2.png"));
+        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked-insensitive-unfocused" + $ext + ".png"), url("assets/checkbox-unchecked-insensitive-unfocused" + $ext + "-@2.png"));
       }
     }
     
     &:active, &:checked {
-      -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked.png"), url("assets/checkbox-checked@2.png"));
+      -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked" + $ext + ".png"), url("assets/checkbox-checked" + $ext + "-@2.png"));
       
       &:backdrop {
-        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked-unfocused.png"), url("assets/checkbox-checked-unfocused@2.png"));
+        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked-unfocused" + $ext + ".png"), url("assets/checkbox-checked-unfocused" + $ext + "-@2.png"));
       }
       
       &:disabled {
-        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked-insensitive.png"), url("assets/checkbox-checked-insensitive@2.png"));
+        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked-insensitive" + $ext + ".png"), url("assets/checkbox-checked-insensitive" + $ext + "-@2.png"));
         
         &:backdrop {
-          -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked-insensitive-unfocused.png"));
+          -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked-insensitive-unfocused" + $ext + ".png"));
         }
       }
     }
     
     &:indeterminate {
-      -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed.png"), url("assets/checkbox-mixed@2.png"));
+      -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed" + $ext + ".png"), url("assets/checkbox-mixed" + $ext + "-@2.png"));
       
       &:backdrop {
-        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed-unfocused.png"), url("assets/checkbox-mixed-unfocused@2.png"));
+        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed-unfocused" + $ext + ".png"), url("assets/checkbox-mixed-unfocused" + $ext + "-@2.png"));
       }
       
       &:disabled {
-        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed-insensitive.png"), url("assets/checkbox-mixed-insensitive@2.png"));
+        -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed-insensitive" + $ext + ".png"), url("assets/checkbox-mixed-insensitive" + $ext + "-@2.png"));
         
         &:backdrop {
-          -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed-insensitive-unfocused.png"), url("assets/checkbox-mixed-insensitive-unfocused@2.png"));
+          -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed-insensitive-unfocused" + $ext + ".png"), url("assets/checkbox-mixed-insensitive-unfocused" + $ext + "-@2.png"));
         }
       }
     }
   }
 }
 
-@mixin radio() {
+@mixin radio($ext : "") {
   & {
-    -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked.png"), url("assets/radio-unchecked@2.png"));
+    -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked" + $ext + ".png"), url("assets/radio-unchecked" + $ext + "-@2.png"));
     
     &:backdrop {
-      -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked-unfocused.png"), url("assets/radio-unchecked-unfocused@2.png"));
+      -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked-unfocused" + $ext + ".png"), url("assets/radio-unchecked-unfocused" + $ext + "-@2.png"));
     }
 
     &:disabled {
-      -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked-insensitive.png"), url("assets/radio-unchecked-insensitive@2.png"));
+      -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked-insensitive" + $ext + ".png"), url("assets/radio-unchecked-insensitive" + $ext + "-@2.png"));
       
       &:backdrop {
-        -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked-insensitive-unfocused.png"), url("assets/radio-unchecked-insensitive-unfocused@2.png"));
+        -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked-insensitive-unfocused" + $ext + ".png"), url("assets/radio-unchecked-insensitive-unfocused" + $ext + "-@2.png"));
       }
     }
     
     &:active, &:checked {
-      -gtk-icon-source: -gtk-scaled(url("assets/radio-checked.png"), url("assets/radio-checked@2.png"));
+      -gtk-icon-source: -gtk-scaled(url("assets/radio-checked" + $ext + ".png"), url("assets/radio-checked" + $ext + "-@2.png"));
       
       &:backdrop {
-        -gtk-icon-source: -gtk-scaled(url("assets/radio-checked-unfocused.png"), url("assets/radio-checked-unfocused@2.png"));
+        -gtk-icon-source: -gtk-scaled(url("assets/radio-checked-unfocused" + $ext + ".png"), url("assets/radio-checked-unfocused" + $ext + "-@2.png"));
       }
       
       &:disabled {
-        -gtk-icon-source: -gtk-scaled(url("assets/radio-checked-insensitive.png"), url("assets/radio-checked-insensitive@2.png"));
+        -gtk-icon-source: -gtk-scaled(url("assets/radio-checked-insensitive" + $ext + ".png"), url("assets/radio-checked-insensitive" + $ext + "-@2.png"));
         
         &:backdrop {
-          -gtk-icon-source: -gtk-scaled(url("assets/radio-checked-insensitive-unfocused.png"), url("assets/radio-checked-insensitive-unfocused@2.png"));
+          -gtk-icon-source: -gtk-scaled(url("assets/radio-checked-insensitive-unfocused" + $ext + ".png"), url("assets/radio-checked-insensitive-unfocused" + $ext + "-@2.png"));
         }
       }
     }
     
     &:indeterminate {
-      -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed.png"), url("assets/radio-mixed@2.png"));
+      -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed" + $ext + ".png"), url("assets/radio-mixed" + $ext + "-@2.png"));
       
       &:backdrop {
-        -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed-unfocused.png"), url("assets/radio-mixed-unfocused@2.png"));
+        -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed-unfocused" + $ext + ".png"), url("assets/radio-mixed-unfocused" + $ext + "-@2.png"));
       }
       
       &:disabled {
-        -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed-insensitive.png"), url("assets/radio-mixed-insensitive@2.png"));
+        -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed-insensitive" + $ext + ".png"), url("assets/radio-mixed-insensitive" + $ext + "-@2.png"));
         
         &:backdrop {
-          -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed-insensitive-unfocused.png"), url("assets/radio-mixed-insensitive-unfocused@2.png"));
+          -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed-insensitive-unfocused" + $ext + ".png"), url("assets/radio-mixed-insensitive-unfocused" + $ext + "-@2.png"));
         }
       }
     }
@@ -147,7 +148,7 @@
     @include check();
     
     row:selected check {
-      @include check();
+      @include check("-selected");
     }
   }
   
@@ -155,7 +156,7 @@
     @include radio();
     
     row:selected radio {
-      @include radio();
+      @include radio("-selected");
     }
   }
   
@@ -166,9 +167,18 @@
     }
     check {
       @include check();
+      
+      &:hover {
+        @include check("-selected");
+      }
     }
+    
     radio {
       @include radio();
+      
+      &:hover {
+        @include radio("-selected");
+      }
     }
   }
 }

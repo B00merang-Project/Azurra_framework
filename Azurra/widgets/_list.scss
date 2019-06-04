@@ -3,11 +3,11 @@
     color: $theme_fg_color;
     background-color: $theme_base_color;
 
-    & row {
+    row {
       padding: 2px;
 
       &:hover {
-        background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
+        background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.05);
       }
       
       &:backdrop {
@@ -20,9 +20,15 @@
           color: $theme_selected_fg_color;
           background-color: $theme_selected_bg_color;
           
-          & switch:checked {
-            background-color: shade($theme_selected_bg_color, 1.15);
-            border-color: shade($theme_selected_bg_color, 1.15);
+          switch:checked {
+            background-color: gtkshade($theme_selected_bg_color, 1.15);
+            border-color: gtkshade($theme_selected_bg_color, 1.15);
+          }
+          
+          scale {
+            highlight, slider {
+              background-color: $theme_selected_fg_color;
+            }
           }
         }
 
@@ -37,7 +43,8 @@
         }
       }
     }
-    & separator, & separator:backdrop {
+    
+    separator, separator:backdrop {
       background: none; // no lines on sidebar
     }
   }

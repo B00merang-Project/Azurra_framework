@@ -2,14 +2,11 @@
 @mixin sidebar() {
   filechooser {
 
-    &.csd.background,
-    & placessidebar list {
+    &.csd.background, placessidebar list {
       background-color: $sidebar_bg_color;
     }
 
-    & placessidebar.sidebar row,
-    & placessidebar.sidebar view row,
-    & placessidebar.sidebar row.sidebar-row {
+    placessidebar.sidebar row, placessidebar.sidebar view row, placessidebar.sidebar row.sidebar-row {
       border: none;
       color: $sidebar_fg_color;
 
@@ -29,8 +26,7 @@
   }
 
   // nautilus-specific rules
-  .nautilus-window.csd.background,
-  .nautilus-window placessidebar list {
+  .nautilus-window.csd.background, .nautilus-window placessidebar list {
     background-color: $sidebar_bg_color;
   }
 
@@ -44,18 +40,15 @@
   }
 
   .sidebar {
-    & frame, &.frame {
+    frame, &.frame {
       border: none;
     }
 
     // allows light scrollbar on dark sidebar
-    & scrollbar {
+    scrollbar {
       background-color: transparent;
       
-      & slider,
-      & slider:hover,
-      & slider:active,
-      &.overlay-indicator:not(.dragging):not(.hovering) slider {
+      slider, slider:hover, slider:active, &.overlay-indicator:not(.dragging):not(.hovering) slider {
         background-color: gtkalpha($sidebar_fg_color,
       0.3);
       }
@@ -79,7 +72,7 @@
       background-color: $theme_selected_bg_color;
     }
 
-    & > label {
+    > label {
       padding-left: 6px;
       padding-right: 6px;
     }
@@ -90,19 +83,19 @@
   }
 
   placessidebar {
-    & > viewport.frame {
+    > viewport.frame {
       border-style: none;
     }
 
-    & row {
+    row {
       min-height: 36px;
       padding: 0px;
 
-      & > revealer {
+      > revealer {
         padding: 0 14px;
       }
 
-      & image.sidebar-icon {
+      image.sidebar-icon {
         opacity: 0.75;
 
         &:dir(ltr) {
@@ -114,7 +107,7 @@
         }
       }
 
-      & label.sidebar-label {
+      label.sidebar-label {
         &:dir(ltr) {
           padding-right: 2px;
         }

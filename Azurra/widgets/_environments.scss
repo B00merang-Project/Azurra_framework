@@ -1,3 +1,5 @@
+// TODO: Separate taskbar styles for reuse
+
 @mixin desktop_icons() {
   .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
     color: $desktop_item_fg;
@@ -17,24 +19,24 @@
 // gnome flashback
 @mixin gnome_flashback() {
   panel-toplevel.background {
-    &, & menubar {
+    &, menubar {
       background-color: $taskbar_bg_color;
       color: $taskbar_fg_color;
     }
 
-    & menubar, & #PanelApplet label, & #PanelApplet image {
+    menubar, #PanelApplet label, #PanelApplet image {
       color: $taskbar_fg_color;
     }
 
-    & menubar > menuitem, & menubar > menuitem label:backdrop {
+    menubar > menuitem, menubar > menuitem label:backdrop {
       color: $taskbar_fg_color;
     }
 
-    & menubar > menuitem:hover, & menubar > menuitem:hover label:backdrop {
+    menubar > menuitem:hover, menubar > menuitem:hover label:backdrop {
       color: $theme_selected_fg_color;
     }
 
-    & button {
+    button {
       background-color: $taskbar_bg_color;
       border: none;
       border-radius: 0;
@@ -102,7 +104,7 @@
       color: $theme_fg_color;
       border-radius: $roundness;
       border: none;
-
+      
       label {
         &#summary {
           font-weight: bold;
@@ -127,30 +129,30 @@
     color: $taskbar_fg_color;
     background-color: $taskbar_bg_color;
 
-    & button, & button.flat {
+    button, button.flat {
       background-color: transparent;
     }
 
     &, .menubar { background-color: $taskbar_bg_color; }
 
-    & menubar, & menubar menuitem, & togglebutton {
+    menubar, menubar menuitem, togglebutton {
       border-color: transparent;
       background-color: transparent;
     }
 
-    & menubar menuitem {
+    menubar menuitem {
       &:hover, &:active {
         color: $theme_selected_fg_color;
         background-color: $theme_selected_bg_color;
       }
     }
 
-    & .menubar > .menuitem {
+    .menubar > .menuitem {
       padding-top: 0;
       padding-bottom: 0;
     }
 
-    & GtkMenu .label {
+    GtkMenu .label {
       color: $theme_fg_color;
       font-style: normal;
 
@@ -237,7 +239,7 @@
 // nemo file manager
 @mixin nemo() {
   .nemo-window {
-    & .nemo-window-pane widget.entry {
+    .nemo-window-pane widget.entry {
       border: 1px solid;
       border-radius: 3px;
       border-color: $theme_selected_bg_color;
@@ -250,10 +252,10 @@
       }
     }
     
-    & .sidebar {
+    .sidebar {
       background-color: $theme_bg_color;
 
-      & .view, & iconview, & row {
+      .view, iconview, row {
         background-color: transparent;
 
         &.cell:selected {
@@ -271,7 +273,7 @@
         }
       }
 
-      & separator, & separator:backdrop {
+      separator, separator:backdrop {
         background-color: transparent;
       }
     }
@@ -298,7 +300,7 @@
     -UnityDecoration-title-fade: 35px;
     -UnityDecoration-title-alignment: 0.0;
 
-    & .top {
+    .top {
       border: none;
       border-radius: $roundness $roundness 0 0;
       padding: 1px 8px 0 8px;
@@ -312,7 +314,7 @@
       }
     }
 
-    & .left, & .right, &.bottom {
+    .left, .right, &.bottom {
       background-color: $titlebar_bg_color;
 
       &:backdrop {
@@ -321,10 +323,10 @@
     }
 
     // new menubar function in unity 7.5
-    &.menuitem, & .menuitem {
+    &.menuitem, .menuitem {
       border-radius: 0;
 
-      &:hover, & *:hover {
+      &:hover, *:hover {
         background-color: $theme_selected_bg_color;
         color: $theme_selected_fg_color;
       }
@@ -338,7 +340,7 @@
     background-color: $taskbar_bg_color;
     color: $taskbar_fg_color;
 
-    &.menuitem, & .menuitem {
+    &.menuitem, .menuitem {
       border-width: 0 1px;
       color: $taskbar_fg_color;
     }
