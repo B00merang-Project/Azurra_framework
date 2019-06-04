@@ -25,5 +25,15 @@
       &:last-child button {
       }
     }
+    
+    entry, entry.flat {
+      border-radius: 0;
+      background-image: none;
+      background-color: $theme_base_color;
+      
+      &:focus {
+        border-color: $theme_selected_bg_color;
+      }
+    }
   }
 }
