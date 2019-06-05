@@ -113,37 +113,44 @@ assistant .sidebar {
   background-color: @theme_bg_color; }
 
 button:link > label,
-button:visited > label, *:link, button:link,
+button:visited > label,
+*:link,
+button:link,
 button:visited {
   color: @link_color; }
   button:link > label:visited,
-  button:visited > label:visited, *:link:visited,
+  button:visited > label:visited,
+  *:link:visited,
   button:visited {
     color: mix(@link_color, @theme_fg_color, 0.2); }
     *:selected button:link > label:visited,
-    *:selected button:visited > label:visited,
-    *:selected *:link:visited,
-    *:selected button:visited:link,
+    *:selected button:visited > label:visited, *:selected
+    *:link:visited, *:selected
+    button:visited:link,
     *:selected button:visited {
       color: mix(@selected_fg_color, @selected_bg_color, 0.4); }
   button:link > label:hover,
-  button:visited > label:hover, *:link:hover, button:hover:link,
+  button:visited > label:hover,
+  *:link:hover,
+  button:hover:link,
   button:hover:visited {
     color: shade(@link_color, 1.1); }
     *:selected button:link > label:hover,
-    *:selected button:visited > label:hover,
-    *:selected *:link:hover,
-    *:selected button:hover:link,
+    *:selected button:visited > label:hover, *:selected
+    *:link:hover, *:selected
+    button:hover:link,
     *:selected button:hover:visited {
       color: mix(@selected_fg_color, @selected_bg_color, 0.9); }
   button:link > label:active,
-  button:visited > label:active, *:link:active, button:active:link,
+  button:visited > label:active,
+  *:link:active,
+  button:active:link,
   button:active:visited {
     color: @link_color; }
     *:selected button:link > label:active,
-    *:selected button:visited > label:active,
-    *:selected *:link:active,
-    *:selected button:active:link,
+    *:selected button:visited > label:active, *:selected
+    *:link:active, *:selected
+    button:active:link,
     *:selected button:active:visited {
       color: mix(@selected_fg_color, @selected_bg_color, 0.8); }
   button:link > label:backdrop:backdrop:hover,
@@ -165,9 +172,9 @@ button:visited {
   *:selected button:visited > label,
   *:link:selected,
   button:selected:link,
-  button:selected:visited,
-  *:selected *:link,
-  *:selected button:link,
+  button:selected:visited, *:selected
+  *:link, *:selected
+  button:link,
   *:selected button:visited {
     color: mix(@selected_fg_color, @selected_bg_color, 0.8); }
 
@@ -619,10 +626,11 @@ entry {
     border-color: @theme_selected_bg_color;
     background-color: transparent; }
   entry.flat, entry.flat:focus {
+    min-height: 0;
     padding: 3px;
-    border: none;
     border-radius: 0;
-    background-color: transparent; }
+    background-image: none;
+    border-color: transparent; }
   entry.search {
     border-radius: 0; }
 
@@ -643,7 +651,7 @@ list {
   list row {
     padding: 2px; }
     list row:hover {
-      background-color: mix(@theme_bg_color, @theme_fg_color, 0.1); }
+      background-color: mix(@theme_bg_color, @theme_fg_color, 0.05); }
     list row:backdrop {
       color: @theme_unfocused_fg_color; }
     list row:selected, list row:selected:hover, list row:selected:focus {
@@ -653,6 +661,8 @@ list {
       list row:selected switch:checked, list row:selected:hover switch:checked, list row:selected:focus switch:checked {
         background-color: shade(@theme_selected_bg_color, 1.15);
         border-color: shade(@theme_selected_bg_color, 1.15); }
+      list row:selected scale highlight, list row:selected scale slider, list row:selected:hover scale highlight, list row:selected:hover scale slider, list row:selected:focus scale highlight, list row:selected:focus scale slider {
+        background-color: @theme_selected_fg_color; }
     list row:selected:disabled {
       color: alpha(@theme_selected_fg_color, 0.7);
       background-color: @theme_selected_bg_color; }
@@ -1077,10 +1087,10 @@ notebook {
         background-color: @theme_unfocused_base_color; }
     notebook tab:backdrop {
       background-color: @theme_unfocused_bg_color; }
-    notebook tab button, notebook tab button:hover, notebook tab button:focus, notebook tab button:active, notebook tab button:checked, notebook tab button:active:hover, notebook tab button:checked:hover, notebook tab button:backdrop, notebook tab:checked button, notebook tab:checked button:hover, notebook tab:checked button:focus, notebook tab:checked button:active, notebook tab:checked button:checked, notebook tab:checked button:active:hover, notebook tab:checked button:checked:hover, notebook tab:checked button:backdrop {
+    notebook tab button:focus, notebook tab button:backdrop, notebook tab button:hover:focus, notebook tab button:hover:backdrop, notebook tab button:active:focus, notebook tab button:active:backdrop, notebook tab button:checked:focus, notebook tab button:checked:backdrop, notebook tab button:disabled:focus, notebook tab button:disabled:backdrop, notebook tab:checked button:focus, notebook tab:checked button:backdrop, notebook tab:checked button:hover:focus, notebook tab:checked button:hover:backdrop, notebook tab:checked button:active:focus, notebook tab:checked button:active:backdrop, notebook tab:checked button:checked:focus, notebook tab:checked button:checked:backdrop, notebook tab:checked button:disabled:focus, notebook tab:checked button:disabled:backdrop {
+      color: @theme_fg_color;
       border-color: transparent;
-      background-color: transparent;
-      color: @theme_fg_color; }
+      background-color: transparent; }
   notebook > header {
     padding-top: 2px;
     background-color: @theme_bg_color; }
@@ -2140,6 +2150,12 @@ treeview {
       background-color: @theme_selected_bg_color; }
   treeview header:last-child button {
     border-width: 0 0 1px 0; }
+  treeview entry, treeview entry.flat {
+    border-radius: 0;
+    background-image: none;
+    background-color: @theme_base_color; }
+    treeview entry:focus, treeview entry.flat:focus {
+      border-color: @theme_selected_bg_color; }
 
 .view {
   color: @theme_text_color;
