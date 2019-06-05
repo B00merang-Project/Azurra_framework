@@ -1,23 +1,23 @@
 // button
-@mixin normal_buttons($bg, $fg, $border) {
+@mixin normal_buttons($bg, $fg, $br) {
   & {
     padding: 4px 8px;
     border-style: solid;
     border-width: 1px;
     border-radius: $button_radius;
     color: $fg;
-    border-color: $border;
+    border-color: $br;
     background-color: $bg;
 
     &:hover {
       color: $fg;
-      border-color: $border;
+      border-color: $br;
       background-color: gtkshade($bg, 1.1);
     }
 
     &:active, &:checked {
       color: $fg;
-      border-color: gtkshade($border, 0.9);
+      border-color: gtkshade($br, 0.9);
       background-color: gtkshade($bg, 0.85);
 
       &:backdrop {
@@ -46,7 +46,7 @@
       
       &:backdrop {
         color: $theme_unfocused_disabled_fg_color;
-        border-color: $unfocused_borders;
+        border-color: gtkmix($theme_unfocused_bg_color, $theme_unfocused_disabled_bg_color, 0.6);;
         background-color: $theme_unfocused_disabled_bg_color;
       }
     }
@@ -59,7 +59,7 @@
   }
 }
 
-@mixin flat_buttons($bg, $fg, $border)
+@mixin flat_buttons($bg, $fg, $br)
 {
   & {
     border-color: transparent;
@@ -68,7 +68,7 @@
     background-color: transparent;
 
     &:hover {
-      border-color: $border;
+      border-color: $br;
       color: $fg;
       background-color: $bg;
     }

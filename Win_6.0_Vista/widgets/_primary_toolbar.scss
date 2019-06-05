@@ -1,1 +1,24 @@
-../../Win_7/widgets/_primary_toolbar.scss
+// primary-toolbar 
+@mixin primary_toolbar() {
+  .primary-toolbar {
+    -GtkWidget-window-dragging: true;
+
+    padding: 4px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: gtkmix($borders, $titlebar_bg_color, 0.5);
+    color: $theme_fg_color;
+    background-image: none;
+    background-color: $titlebar_bg_color;
+
+    &:backdrop {
+      border-color: $titlebar_bg_color;
+      color: $theme_unfocused_fg_color;
+      background-color: $titlebar_bg_color;
+    }
+
+    button, .raised button {
+      @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    }
+  }
+}

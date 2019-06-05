@@ -1,1 +1,15 @@
-../../OS_X_10.5/widgets/_menubar.scss
+// menubar 
+@mixin menubar() {
+  menubar, .menubar {
+    -GtkWidget-window-dragging: true;
+    padding: 0;
+    border-style: none;
+    background-color: $menubar_bg_color;
+    color: $menubar_fg_color;
+
+    &:backdrop {
+      color: $theme_unfocused_fg_color;
+      background-color: gtkshade($theme_unfocused_bg_color, 0.95);
+    }
+  }
+}

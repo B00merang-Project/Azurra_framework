@@ -10,7 +10,7 @@
       border-color: transparent;
 
       & > header {
-        margin: -1px;
+        margin: 0;
 
         &.top {
           margin-bottom: 0;
@@ -67,12 +67,9 @@
       &:backdrop {
         background-color: transparent;
       }
-
-      // close button styling 
-      & button, & button:hover, & button:focus, & button:active, & button:checked, & button:active:hover, & button:checked:hover, & button:backdrop, &:checked button, &:checked button:hover, &:checked button:focus, &:checked button:active, &:checked button:checked, &:checked button:active:hover, &:checked button:checked:hover, &:checked button:backdrop {
-        border-color: transparent;
-        background-color: transparent;
-        color: $theme_fg_color;
+      
+      &:checked button.flat, &:checked button.flat:hover {
+        color: $theme_selected_fg_color;
       }
     }
 

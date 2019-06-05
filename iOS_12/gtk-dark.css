@@ -1,16 +1,14 @@
 /* Normal colors */
 @import url("gtk-widgets.css");
-@define-color bg_color #f0f0f0;
-@define-color fg_color #000000;
-@define-color base_color #FFFFFF;
-@define-color text_color #000000;
-@define-color selected_bg_color #cce8ff;
-@define-color selected_fg_color #000000;
-@define-color selected_base_color #3399ff;
-@define-color selected_text_color #ffffff;
+@define-color bg_color #000;
+@define-color fg_color #fff;
+@define-color base_color #1f1f1f;
+@define-color text_color #fff;
+@define-color selected_bg_color #3478f5;
+@define-color selected_fg_color #FFFFFF;
 @define-color disabled_bg_color mix(@fg_color, @bg_color, 0.95);
 @define-color disabled_fg_color mix(@fg_color, @bg_color, 0.5);
-@define-color disabled_base_color shade(@base_color, 0.95);
+@define-color disabled_base_color @disabled_bg_color;
 @define-color disabled_text_color @disabled_fg_color;
 /* Backdrop state colors */
 @define-color unfocused_bg_color @bg_color;
@@ -19,13 +17,13 @@
 @define-color unfocused_text_color @text_color;
 @define-color unfocused_selected_bg_color @selected_bg_color;
 @define-color unfocused_selected_fg_color @selected_fg_color;
-@define-color unfocused_disabled_bg_color mix(@fg_color, @bg_color, 0.98);
-@define-color unfocused_disabled_fg_color mix(@fg_color, @bg_color, 0.75);
-@define-color unfocused_disabled_base_color shade(@unfocused_base_color, 0.95);
+@define-color unfocused_disabled_bg_color @disabled_bg_color;
+@define-color unfocused_disabled_fg_color @disabled_fg_color;
+@define-color unfocused_disabled_base_color @unfocused_disabled_bg_color;
 @define-color unfocused_disabled_text_color @unfocused_disabled_fg_color;
 /* Darker color scheme */
-@define-color dark_bg_color #e8ecf6;
-@define-color dark_fg_color #000000;
+@define-color dark_bg_color @bg_color;
+@define-color dark_fg_color @fg_color;
 /* Theme colors */
 @define-color theme_bg_color @bg_color;
 @define-color theme_fg_color @fg_color;
@@ -33,8 +31,6 @@
 @define-color theme_text_color @text_color;
 @define-color theme_selected_bg_color @selected_bg_color;
 @define-color theme_selected_fg_color @selected_fg_color;
-@define-color theme_selected_base_color @selected_base_color;
-@define-color theme_selected_text_color @selected_text_color;
 @define-color theme_disabled_bg_color @disabled_bg_color;
 @define-color theme_disabled_fg_color @disabled_fg_color;
 @define-color theme_disabled_text_color @disabled_text_color;
@@ -55,9 +51,9 @@
 @define-color color_shadow @selected_bg_color;
 @define-color light_shadow rgb(255, 255, 255);
 /* Borders */
-@define-color borders shade(@bg_color, 0.9);
+@define-color borders shade(@fg_color, 0.1);
 @define-color outline_color shade(@bg_color, 0.75);
-@define-color unfocused_borders shade(@unfocused_bg_color, 0.9);
+@define-color unfocused_borders shade(@unfocused_fg_color, 0.1);
 /* Notification header backgrounds */
 @define-color info_fg_color #FFFFFF;
 @define-color info_bg_color #0055FF;
@@ -67,31 +63,29 @@
 @define-color question_bg_color #2C2C2C;
 @define-color error_fg_color #FFFFFF;
 @define-color error_bg_color #FF0000;
-@define-color link_color #224ba0;
+@define-color link_color #1D8ECE;
 @define-color error_color #CC0000;
-@define-color success_color #39e4a3;
+@define-color success_color #4ed464;
 @define-color warning_color #FF9900;
 /* Widget colors */
-@define-color tooltip_bg_color @base_color;
-@define-color tooltip_fg_color @fg_color;
+@define-color tooltip_bg_color @dark_bg_color;
+@define-color tooltip_fg_color @dark_fg_color;
 @define-color menu_bg_color @bg_color;
 @define-color menu_fg_color @fg_color;
 @define-color menubar_bg_color @bg_color;
 @define-color menubar_fg_color @fg_color;
-@define-color toolbar_bg_color #2a6c8e;
-@define-color toolbar_fg_color #ffffff;
-@define-color sidebar_bg_color @base_color;
+@define-color toolbar_bg_color @bg_color;
+@define-color toolbar_fg_color @fg_color;
+@define-color sidebar_bg_color alpha(@bg_color, 0.85);
 @define-color sidebar_fg_color @fg_color;
-@define-color taskbar_bg_color #0c0c0c;
+@define-color taskbar_bg_color #000000;
 @define-color taskbar_fg_color #ffffff;
-@define-color titlebar_bg_color @dark_bg_color;
-@define-color titlebar_fg_color @dark_fg_color;
-@define-color headerbar_bg_color #6badf7;
+@define-color titlebar_bg_color @bg_color;
+@define-color titlebar_fg_color @selected_bg_color;
+@define-color headerbar_bg_color @bg_color;
 @define-color headerbar_fg_color @fg_color;
-@define-color terminal_bg_color @fg_color;
-@define-color terminal_fg_color @bg_color;
-@define-color progressbar_bg_color #06B025;
-@define-color progressbar_fg_color @selected_fg_color;
+@define-color terminal_bg_color @base_color;
+@define-color terminal_fg_color @fg_color;
 /* OSD */
 @define-color osd_fg @dark_bg_color;
 @define-color osd_bg mix(@dark_fg_color, @dark_bg_color, 0.2);

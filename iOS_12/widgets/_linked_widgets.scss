@@ -1,10 +1,8 @@
 // linked widgets
 @mixin linked_widgets() {
   .linked {
-    &, .inline-toolbar &, .primary-toolbar & {
-      & button, & .raised button {
-        border-radius: 0;
-        border-left-width: 0;
+    &, .inline-toolbar &, .primary-toolbar {
+      button, .raised button {
         border-color: $theme_base_color;
         background-color: $theme_base_color;
         
@@ -24,9 +22,31 @@
             background-color: $theme_unfocused_selected_bg_color;
           }
         }
+      }
+      
+      entry {
+        border-color: $theme_base_color;
+        
+        &:disabled, &:backdrop {
+          border-color: $theme_base_color;
+        }
+        
+        &:checked, &:active {
+          border-color: $theme_selected_bg_color;
+        }
+      }
+    }
+  }
+   
+  .linked, .osd .linked {
+    &, .inline-toolbar &, .primary-toolbar {
+      button, .raised button {
+        border-width: 1px;
+        border-radius: 0;
+        border-left-width: 0;
 
         &:first-child {
-          border-left-width: 0;
+          border-left-width: 1px;
           border-top-left-radius: $button_radius;
           border-bottom-left-radius: $button_radius;
         }
@@ -45,18 +65,9 @@
         }
       }
       
-      & entry {
+      entry {
         border-radius: 0;
         border-left-width: 0;
-        border-color: $theme_base_color;
-        
-        &:disabled, &:backdrop {
-          border-color: $theme_base_color;
-        }
-        
-        &:checked, &:active {
-          border-color: $theme_selected_bg_color;
-        }
 
         &:first-child {
           border-left-width: 1px;
@@ -88,8 +99,8 @@
         }
       }
 
-      & combobox {
-        & box.linked button {
+      combobox {
+        box.linked button {
           border-radius: 0;
           border-left-width: 0;
         }
@@ -117,30 +128,12 @@
   }
   
   // vertical
-  .vertical.linked {
-    & button {
-      border-left-width: 0;
+  .vertical.linked, .osd .vertical.linked {
+    button {
+      border-width: 1px;
+      border-left-width: 1px;
       border-top-width: 0;
       border-radius: 0;
-      border-color: $theme_base_color;
-      background-color: $theme_base_color;
-      
-      &:disabled, &:backdrop {
-        border-color: $theme_base_color;
-        background-color: $theme_base_color;
-      }
-      
-      &:checked, &:active {
-        color: $theme_selected_fg_color;
-        border-color: $theme_selected_bg_color;
-        background-color: $theme_selected_bg_color;
-        
-        &:backdrop {
-          color: $theme_unfocused_selected_fg_color;
-          border-color: $theme_unfocused_selected_bg_color;
-          background-color: $theme_unfocused_selected_bg_color;
-        }
-      }
 
       &:first-child {
         border-top-width: 1px;
@@ -163,19 +156,10 @@
       }
     }
     
-    & entry {
+    entry {
       border-left-width: 1px;
       border-top-width: 0;
       border-radius: 0;
-      border-color: $theme_base_color;
-      
-      &:disabled, &:backdrop {
-        border-color: $theme_base_color;
-      }
-      
-      &:checked, &:active {
-        border-color: $theme_selected_bg_color;
-      }
 
       &:first-child {
         border-top-width: 1px;
@@ -208,8 +192,8 @@
       }
     }
 
-    & combobox {
-      & box.linked button {
+    combobox {
+      box.linked button {
         border-left-width: 1px;
         border-top-width: 0;
         border-radius: 0;
@@ -235,10 +219,30 @@
         border-top-width: 1px;
       }
     }
+    
+    spinbutton {
+      button {
+        &:first-child {
+          border-width: 1px;
+          border-top-width: 0;
+          border-left-width: 1px;
+        }
+        
+        &:last-child {
+          border-width: 0;
+          border-left-width: 1px;
+          border-right-width: 1px;
+          border-bottom-width: 1px;
+          border-top-right-radius: 0;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }      
+      }
+    }
   }
   
   .stack-switcher {
-    & button {
+    button {
       min-height: 20px;
       min-width: 80px;
       box-shadow: none;

@@ -1584,17 +1584,17 @@ headerbar, headerbar:not(.titlebar) {
     color: @headerbar_fg_color;
     border: 2px solid transparent;
     border-color: transparent;
-    background-color: mix(@theme_bg_color, @light_shadow, 0.15);
+    background-color: mix(@headerbar_bg_color, @light_shadow, 0.15);
     outline-style: solid;
     outline-width: 2px;
     outline-offset: 0;
     -gtk-outline-radius: 0; }
     headerbar button:focus, headerbar:not(.titlebar) button:focus {
-      border-color: mix(@theme_bg_color, @light_shadow, 0.15); }
+      border-color: mix(@headerbar_bg_color, @light_shadow, 0.15); }
     headerbar button:hover, headerbar:not(.titlebar) button:hover {
-      background-color: mix(@theme_bg_color, @light_shadow, 0.2); }
+      background-color: mix(@headerbar_bg_color, @light_shadow, 0.2); }
       headerbar button:hover:focus, headerbar:not(.titlebar) button:hover:focus {
-        border-color: mix(@theme_bg_color, @light_shadow, 0.2); }
+        border-color: mix(@headerbar_bg_color, @light_shadow, 0.2); }
     headerbar button:active, headerbar button:checked, headerbar:not(.titlebar) button:active, headerbar:not(.titlebar) button:checked {
       outline-color: shade(@theme_selected_bg_color, 1.4);
       color: @theme_selected_fg_color;
@@ -1612,7 +1612,7 @@ headerbar, headerbar:not(.titlebar) {
         background-color: @theme_unfocused_selected_bg_color; }
     headerbar button:disabled, headerbar:not(.titlebar) button:disabled {
       color: mix(@headerbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1);
-      background-color: mix(@theme_bg_color, @dark_shadow, 0.3); }
+      background-color: mix(@headerbar_bg_color, @dark_shadow, 0.3); }
       headerbar button:disabled:backdrop, headerbar:not(.titlebar) button:disabled:backdrop {
         color: @theme_unfocused_disabled_fg_color; }
     headerbar button:backdrop, headerbar:not(.titlebar) button:backdrop {
@@ -1641,11 +1641,11 @@ toolbar {
     border-color: transparent;
     background-color: transparent; }
     toolbar button.flat:focus {
-      border-color: mix(@theme_bg_color, @light_shadow, 0.15); }
+      border-color: mix(@toolbar_bg_color, @light_shadow, 0.15); }
     toolbar button.flat:hover {
-      background-color: mix(@theme_bg_color, @light_shadow, 0.2); }
+      background-color: mix(@toolbar_bg_color, @light_shadow, 0.2); }
       toolbar button.flat:hover:focus {
-        border-color: mix(@theme_bg_color, @light_shadow, 0.2); }
+        border-color: mix(@toolbar_bg_color, @light_shadow, 0.2); }
     toolbar button.flat:active, toolbar button.flat:checked {
       outline-color: shade(@theme_selected_bg_color, 1.4);
       color: @theme_selected_fg_color;
@@ -1667,9 +1667,9 @@ toolbar {
         color: @theme_unfocused_disabled_fg_color; }
     toolbar button.flat:backdrop {
       color: @theme_unfocused_fg_color;
-      background-color: @toolbar_bg_color; }
+      background-color: transparent; }
       toolbar button.flat:backdrop:focus {
-        border-color: @toolbar_bg_color; }
+        border-color: @borders; }
   toolbar menubar {
     -GtkToolbar-button-relief: normal; }
 
@@ -1689,19 +1689,19 @@ toolbar {
     padding: 4px 8px;
     border-radius: 0px;
     color: @toolbar_fg_color;
-    border: 2px solid @toolbar_bg_color;
-    border-color: @toolbar_bg_color;
-    background-color: mix(@theme_bg_color, @light_shadow, 0.15);
+    border: 2px solid @borders;
+    border-color: @borders;
+    background-color: mix(@toolbar_bg_color, @light_shadow, 0.15);
     outline-style: solid;
     outline-width: 2px;
     outline-offset: 0;
     -gtk-outline-radius: 0; }
     .primary-toolbar button:focus, .primary-toolbar .raised button:focus {
-      border-color: mix(@theme_bg_color, @light_shadow, 0.15); }
+      border-color: mix(@toolbar_bg_color, @light_shadow, 0.15); }
     .primary-toolbar button:hover, .primary-toolbar .raised button:hover {
-      background-color: mix(@theme_bg_color, @light_shadow, 0.2); }
+      background-color: mix(@toolbar_bg_color, @light_shadow, 0.2); }
       .primary-toolbar button:hover:focus, .primary-toolbar .raised button:hover:focus {
-        border-color: mix(@theme_bg_color, @light_shadow, 0.2); }
+        border-color: mix(@toolbar_bg_color, @light_shadow, 0.2); }
     .primary-toolbar button:active, .primary-toolbar button:checked, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked {
       outline-color: shade(@theme_selected_bg_color, 1.4);
       color: @theme_selected_fg_color;
@@ -1719,14 +1719,14 @@ toolbar {
         background-color: @theme_unfocused_selected_bg_color; }
     .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled {
       color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1);
-      background-color: mix(@theme_bg_color, @dark_shadow, 0.3); }
+      background-color: mix(@toolbar_bg_color, @dark_shadow, 0.3); }
       .primary-toolbar button:disabled:backdrop, .primary-toolbar .raised button:disabled:backdrop {
         color: @theme_unfocused_disabled_fg_color; }
     .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop {
       color: @theme_unfocused_fg_color;
-      background-color: @toolbar_bg_color; }
+      background-color: transparent; }
       .primary-toolbar button:backdrop:focus, .primary-toolbar .raised button:backdrop:focus {
-        border-color: @toolbar_bg_color; }
+        border-color: @borders; }
 
 .inline-toolbar toolbar {
   -GtkToolbar-button-relief: normal;
@@ -1743,19 +1743,19 @@ toolbar {
     padding: 4px 8px;
     border-radius: 0px;
     color: @toolbar_fg_color;
-    border: 2px solid @toolbar_bg_color;
-    border-color: @toolbar_bg_color;
-    background-color: mix(@theme_bg_color, @light_shadow, 0.15);
+    border: 2px solid @borders;
+    border-color: @borders;
+    background-color: mix(@toolbar_bg_color, @light_shadow, 0.15);
     outline-style: solid;
     outline-width: 2px;
     outline-offset: 0;
     -gtk-outline-radius: 0; }
     .inline-toolbar toolbar button:focus {
-      border-color: mix(@theme_bg_color, @light_shadow, 0.15); }
+      border-color: mix(@toolbar_bg_color, @light_shadow, 0.15); }
     .inline-toolbar toolbar button:hover {
-      background-color: mix(@theme_bg_color, @light_shadow, 0.2); }
+      background-color: mix(@toolbar_bg_color, @light_shadow, 0.2); }
       .inline-toolbar toolbar button:hover:focus {
-        border-color: mix(@theme_bg_color, @light_shadow, 0.2); }
+        border-color: mix(@toolbar_bg_color, @light_shadow, 0.2); }
     .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
       outline-color: shade(@theme_selected_bg_color, 1.4);
       color: @theme_selected_fg_color;
@@ -1773,14 +1773,14 @@ toolbar {
         background-color: @theme_unfocused_selected_bg_color; }
     .inline-toolbar toolbar button:disabled {
       color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1);
-      background-color: mix(@theme_bg_color, @dark_shadow, 0.3); }
+      background-color: mix(@toolbar_bg_color, @dark_shadow, 0.3); }
       .inline-toolbar toolbar button:disabled:backdrop {
         color: @theme_unfocused_disabled_fg_color; }
     .inline-toolbar toolbar button:backdrop {
       color: @theme_unfocused_fg_color;
-      background-color: @toolbar_bg_color; }
+      background-color: transparent; }
       .inline-toolbar toolbar button:backdrop:focus {
-        border-color: @toolbar_bg_color; }
+        border-color: @borders; }
 
 .linked button:not(:only-child) {
   border-color: transparent;
@@ -2364,8 +2364,8 @@ panel-toplevel.background na-tray-applet {
     padding: 4px 8px;
     border-radius: 0px;
     color: @theme_fg_color;
-    border: 2px solid @theme_bg_color;
-    border-color: @theme_bg_color;
+    border: 2px solid @borders;
+    border-color: @borders;
     background-color: mix(@theme_bg_color, @light_shadow, 0.15);
     outline-style: solid;
     outline-width: 2px;
@@ -2399,9 +2399,9 @@ panel-toplevel.background na-tray-applet {
         color: @theme_unfocused_disabled_fg_color; }
     #XfceNotifyWindow.osd button:backdrop {
       color: @theme_unfocused_fg_color;
-      background-color: @theme_bg_color; }
+      background-color: transparent; }
       #XfceNotifyWindow.osd button:backdrop:focus {
-        border-color: @theme_bg_color; }
+        border-color: @borders; }
 
 .nemo-window .nemo-window-pane widget.entry {
   border: 1px solid;
@@ -2413,8 +2413,10 @@ panel-toplevel.background na-tray-applet {
     color: @theme_selected_fg_color;
     background-color: @theme_selected_bg_color; }
 .nemo-window .sidebar {
-  background-color: @theme_bg_color; }
+  color: @sidebar_fg_color;
+  background-color: @sidebar_bg_color; }
   .nemo-window .sidebar .view, .nemo-window .sidebar iconview, .nemo-window .sidebar row {
+    color: @sidebar_fg_color;
     background-color: transparent; }
     .nemo-window .sidebar .view.cell:selected, .nemo-window .sidebar iconview.cell:selected, .nemo-window .sidebar row.cell:selected {
       border-color: @theme_selected_bg_color;

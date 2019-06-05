@@ -208,7 +208,7 @@ button {
     background-color: mix(@theme_bg_color, @theme_disabled_bg_color, 0.1); }
     button:disabled:backdrop {
       color: @theme_unfocused_disabled_fg_color;
-      border-color: @unfocused_borders;
+      border-color: mix(@theme_unfocused_bg_color, @theme_unfocused_disabled_bg_color, 0.6);
       background-color: @theme_unfocused_disabled_bg_color; }
   button:backdrop {
     border-color: @unfocused_borders;
@@ -524,7 +524,7 @@ entry {
     background-color: mix(@theme_bg_color, @theme_disabled_bg_color, 0.1); }
     entry:disabled:backdrop {
       color: @theme_unfocused_disabled_fg_color;
-      border-color: @unfocused_borders;
+      border-color: mix(@theme_unfocused_bg_color, @theme_unfocused_disabled_bg_color, 0.6);
       background-color: @theme_unfocused_disabled_bg_color; }
   entry.read-only {
     background-color: mix(@theme_bg_color, @theme_disabled_bg_color, 0.1); }
@@ -1878,7 +1878,7 @@ toolbar {
       background-color: mix(@toolbar_bg_color, @theme_disabled_bg_color, 0.1); }
       .primary-toolbar button:disabled:backdrop, .primary-toolbar .raised button:disabled:backdrop {
         color: @theme_unfocused_disabled_fg_color;
-        border-color: @unfocused_borders;
+        border-color: mix(@theme_unfocused_bg_color, @theme_unfocused_disabled_bg_color, 0.6);
         background-color: @theme_unfocused_disabled_bg_color; }
     .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop {
       border-color: @unfocused_borders;
@@ -1930,7 +1930,7 @@ toolbar {
       background-color: mix(@toolbar_bg_color, @theme_disabled_bg_color, 0.1); }
       .inline-toolbar toolbar button:disabled:backdrop {
         color: @theme_unfocused_disabled_fg_color;
-        border-color: @unfocused_borders;
+        border-color: mix(@theme_unfocused_bg_color, @theme_unfocused_disabled_bg_color, 0.6);
         background-color: @theme_unfocused_disabled_bg_color; }
     .inline-toolbar toolbar button:backdrop {
       border-color: @unfocused_borders;
@@ -2674,7 +2674,7 @@ panel-toplevel.background na-tray-applet {
       background-color: mix(@theme_bg_color, @theme_disabled_bg_color, 0.1); }
       #XfceNotifyWindow.osd button:disabled:backdrop {
         color: @theme_unfocused_disabled_fg_color;
-        border-color: @unfocused_borders;
+        border-color: mix(@theme_unfocused_bg_color, @theme_unfocused_disabled_bg_color, 0.6);
         background-color: @theme_unfocused_disabled_bg_color; }
     #XfceNotifyWindow.osd button:backdrop {
       border-color: @unfocused_borders;
@@ -2691,8 +2691,10 @@ panel-toplevel.background na-tray-applet {
     color: @theme_selected_fg_color;
     background-color: @theme_selected_bg_color; }
 .nemo-window .sidebar {
-  background-color: @theme_bg_color; }
+  color: @sidebar_fg_color;
+  background-color: @sidebar_bg_color; }
   .nemo-window .sidebar .view, .nemo-window .sidebar iconview, .nemo-window .sidebar row {
+    color: @sidebar_fg_color;
     background-color: transparent; }
     .nemo-window .sidebar .view.cell:selected, .nemo-window .sidebar iconview.cell:selected, .nemo-window .sidebar row.cell:selected {
       border-color: @theme_selected_bg_color;

@@ -1,12 +1,12 @@
 // headerbar
-@mixin headerbar_buttons($bg, $fg, $border)
+@mixin headerbar_buttons($bg, $fg, $br)
 {
   & {
     padding: 4px 8px;
     border: none;
     border-radius: $button_radius;
     color: $fg;
-    border-color: $bg;
+    border-color: $br;
     background-color: $bg;
     
     outline-style: solid;
@@ -77,13 +77,13 @@
       border-radius: 0;
     }
 
-    & .title {
+    .title {
       padding-left: 12px;
       padding-right: 12px;
       font-weight: bold;
     }
 
-    & .subtitle {
+    .subtitle {
       font-size: smaller;
       padding-left: 12px;
       padding-right: 12px;
@@ -91,10 +91,10 @@
     }
 
     button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, transparent);
+      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $headerbar_bg_color);
     }
     
-    & entry {
+    entry {
       padding: 4px 8px;
     }
   }

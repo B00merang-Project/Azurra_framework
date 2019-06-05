@@ -1,11 +1,11 @@
 // button
-@mixin normal_buttons($bg, $fg, $border) {
+@mixin normal_buttons($bg, $fg, $br) {
   & {
     padding: 4px 8px;
     border: none;
     border-radius: $button_radius;
     color: $fg;
-    border-color: $bg;
+    border-color: $br;
     background-color: $bg;
     
     outline-style: solid;
@@ -27,7 +27,7 @@
       
         &:backdrop {
           color: gtkmix($theme_selected_fg_color, $theme_unfocused_disabled_fg_color, 0.4);
-        background-color: gtkmix($theme_selected_bg_color, $theme_unfocused_disabled_bg_color, 0.3);
+          background-color: gtkmix($theme_selected_bg_color, $theme_unfocused_disabled_bg_color, 0.3);
         }
       }
 
@@ -54,7 +54,7 @@
   }
 }
 
-@mixin flat_buttons($bg, $fg, $border)
+@mixin flat_buttons($bg, $fg, $br)
 {
   & {
     background-color: transparent;
@@ -73,7 +73,7 @@
       
         &:backdrop {
           color: gtkmix($theme_selected_fg_color, $theme_unfocused_disabled_fg_color, 0.4);
-        background-color: gtkmix($theme_selected_bg_color, $theme_unfocused_disabled_bg_color, 0.3);
+          background-color: gtkmix($theme_selected_bg_color, $theme_unfocused_disabled_bg_color, 0.3);
         }
       }
 
@@ -94,10 +94,10 @@
 
 @mixin button() {
   button {
-    @include normal_buttons(gtkalpha($theme_fg_color, 0.2), $theme_fg_color, $borders);
+    @include normal_buttons(gtkalpha($theme_fg_color, 0.2), $theme_fg_color, gtkalpha($theme_fg_color, 0.2));
     
     &.flat {
-      @include flat_buttons(gtkalpha($theme_fg_color, 0.2), $theme_fg_color, $borders);
+      @include flat_buttons(gtkalpha($theme_fg_color, 0.2), $theme_fg_color, gtkalpha($theme_fg_color, 0.2));
     }
   }
 }

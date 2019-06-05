@@ -1,12 +1,12 @@
 // button
-@mixin normal_buttons($bg, $fg, $border) {
+@mixin normal_buttons($bg, $fg, $br) {
   & {
     padding: 4px 8px;
     border-style: solid;
     border-width: 1px;
     border-radius: $button_radius;
     color: $fg;
-    border-color: gtkshade($borders, 0.85);
+    border-color: gtkshade($br, 0.85);
     background-color: $bg;
     background-image: linear-gradient(to bottom, $bg 40%, gtkshade($bg, 0.95) 60%);
     box-shadow: 0 1px gtkalpha(gtkmix($light_shadow, $dark_shadow, 0.5), 0.1);
@@ -14,7 +14,7 @@
 
     &:active, &:checked {
       color: $theme_selected_fg_color;
-      border-color: gtkshade($borders, 0.5);
+      border-color: gtkshade($br, 0.5);
       background-color: gtkshade($bg, 0.5);
       background-image: none;
       box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.45), inset 0 -2px 3px 1px gtkalpha($light_shadow, 0.45), inset 0 1px gtkshade($theme_bg_color, 0.35);
@@ -54,7 +54,7 @@
   }
 }
 
-@mixin flat_buttons($bg, $fg, $border)
+@mixin flat_buttons($bg, $fg, $br)
 {
   & {
     border-color: transparent;
@@ -65,8 +65,8 @@
     background-color: transparent;
 
     &:hover {
-      color: $fg;
-      border-color: gtkshade($borders, 0.85);
+      color: $theme_fg_color;
+      border-color: gtkshade($br, 0.85);
       background-color: $bg;
       background-image: linear-gradient(to bottom, $theme_base_color 40%, gtkshade($theme_bg_color, 1.02) 60%);
       box-shadow: 0 1px gtkalpha(gtkmix($light_shadow, $dark_shadow, 0.5), 0.1);
@@ -74,7 +74,7 @@
 
     &:active, &:checked {
       color: $theme_selected_fg_color;
-      border-color: gtkshade($borders, 0.5);
+      border-color: gtkshade($br, 0.5);
       background-color: gtkshade($bg, 0.5);
       background-image: none;
       box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.45), inset 0 -2px 3px 1px gtkalpha($light_shadow, 0.45), inset 0 1px gtkshade($theme_bg_color, 0.35);

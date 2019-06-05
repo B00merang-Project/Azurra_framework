@@ -20,9 +20,9 @@ then
       echo "Invalid directory ($arg)."
     fi
   done
-fi
 
-exit 0
+  exit 0
+fi
 
 # build
 for D in *; do

@@ -1,7 +1,7 @@
 // linked widgets
 @mixin linked_widgets() {
-  .linked, .inline-toolbar, .primary-toolbar {
-    & button, & .raised button {
+  .linked, .inline-toolbar {
+    button, .raised button {
       border-radius: 0;
 
       &:first-child {
@@ -21,7 +21,7 @@
       }
     }
     
-    & entry {
+    entry {
       border-radius: 0;
 
       &:first-child {
@@ -41,8 +41,8 @@
       }
     }
 
-    & combobox {
-      & box.linked button {
+    combobox {
+      box.linked button {
         border-radius: 0;
       }
 
@@ -66,7 +66,7 @@
   
   // vertical
   .vertical.linked {
-    & button {
+    button {
       border-radius: 0;
 
       &:first-child {
@@ -84,7 +84,7 @@
       }
     }
     
-    & entry {
+    entry {
       border-radius: 0;
 
       &:first-child {
@@ -102,8 +102,8 @@
       }
     }
 
-    & combobox {
-      & box.linked button {
+    combobox {
+      box.linked button {
         border-radius: 0;
       }
 
@@ -121,10 +121,38 @@
         border-bottom-right-radius: $button_radius;
       }
     }
+    
+    spinbutton {
+      button {
+        &:first-child {
+          border-width: 1px;
+          border-top-width: 0;
+          border-left-width: 1px;
+        }
+        
+        &:last-child {
+          border-width: 0;
+          border-left-width: 1px;
+          border-right-width: 1px;
+          border-bottom-width: 1px;
+          border-top-right-radius: 0;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }      
+      }
+    }
   }
   
   // stack switcher 
   stackswitcher button.text-button {
     min-width: 80px;
+  }
+  
+  .primary-toolbar {
+    button, .raised button {
+      &, &:first-child, &:last-child {
+        border-radius: $button_radius;
+      }
+    }
   }
 }

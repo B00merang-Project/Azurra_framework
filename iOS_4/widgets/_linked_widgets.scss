@@ -1,7 +1,7 @@
 // linked widgets
 @mixin linked_widgets() {
   .linked {
-    &, .inline-toolbar &, .primary-toolbar & {
+    &, .inline-toolbar & {
       & button, & .raised button {
         border-radius: 0;
         border-left-width: 0;
@@ -208,6 +208,15 @@
   combobox {
     button {
       background-image: none;
+    }
+  }
+  
+  .primary-toolbar {
+    button, .raised button {
+      &, &:first-child, &:last-child {
+        border-width: 1px;
+        border-radius: $button_radius;
+      }
     }
   }
 }

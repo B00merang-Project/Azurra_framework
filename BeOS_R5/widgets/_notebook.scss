@@ -5,10 +5,31 @@
 
     &.frame {
       margin: -1px;
-      border: none;
-      
+      border-width: 1px;
+      border-style: solid;
+      border-color: gtkshade($theme_bg_color, 1.1);
+      border-right-color: gtkshade($borders, 0.8);
+      border-bottom-color: gtkshade($borders, 0.8);
+      background-color: transparent;
+
       & > header {
         margin: -1px;
+
+        &.top {
+          margin-bottom: 0;
+        }
+
+        &.bottom {
+          margin-top: 0;
+        }
+
+        &.left {
+          margin-right: 0;
+        }
+
+        &.right {
+          margin-left: 0;
+        }
 
         &.top, &.bottom {
           padding-left: 0;
@@ -23,18 +44,17 @@
     }
 
     & > stack:not(:only-child) {
-      border: 1px solid transparent;
       background-color: transparent;
-      border-image: url('assets/notebook.png') 2 2 2 2 stretch;
     }
 
     & tab {
-      padding: 4px 6px;
-      border-width: 4px;
+      padding: 2px 6px;
+      border-width: 6px;
       border-style: solid;
       border-radius: 0;
       border-color: transparent;
       color: $theme_fg_color;
+      outline-color: transparent;
       background-color: gtkshade($theme_bg_color, 0.92);
 
       &:checked {
@@ -46,17 +66,10 @@
 
       &:backdrop {
       }
-
-      // close button styling 
-      & button, & button:hover, & button:focus, & button:active, & button:checked, & button:active:hover, & button:checked:hover, & button:backdrop, &:checked button, &:checked button:hover, &:checked button:focus, &:checked button:active, &:checked button:checked, &:checked button:active:hover, &:checked button:checked:hover, &:checked button:backdrop {
-        border-color: transparent;
-        background-color: transparent;
-        color: $theme_fg_color;
-        box-shadow: none;
-      }
     }
 
     & > header {
+      padding-top: 2px;
       background-color: $theme_bg_color;
       
       &:backdrop {
@@ -64,45 +77,62 @@
       }
 
       &.top {
+        box-shadow: 0 1px gtkshade($theme_bg_color, 1.1);
 
         & > tabs > tab {
           border-image: url('assets/tab-top.png') 6 6 6 6 stretch;
+          margin-top: 2px;
 
           &:checked {
             border-image: url('assets/tab-top-active.png') 6 6 6 6 stretch;
+            margin-top: 0;
+            margin-bottom: -1px;
           }
         }
       }
 
       &.bottom {
+        padding-top: 0;
+        box-shadow: 0 -1px gtkshade($borders, 0.8);
 
         & > tabs > tab {
           border-image: url('assets/tab-bottom.png') 6 6 6 6 stretch;
+          margin-bottom: 2px;
 
           &:checked {
             border-image: url('assets/tab-bottom-active.png') 6 6 6 6 stretch;
+            margin-bottom: 0;
+            margin-top: -1px;
           }
         }
       }
 
       &.right {
+        box-shadow: -1px 0 gtkshade($borders, 0.8);
 
         & > tabs > tab {
           border-image: url('assets/tab-right.png') 6 6 6 6 stretch;
+          margin-right: 2px;
 
           &:checked {
             border-image: url('assets/tab-right-active.png') 6 6 6 6 stretch;
+            margin-right: 0;
+            margin-left: -1px;
           }
         }
       }
 
       &.left {
+        box-shadow: 1px 0 gtkshade($theme_bg_color, 1.1);
 
         & > tabs > tab {
           border-image: url('assets/tab-left.png') 6 6 6 6 stretch;
+          margin-left: 2px;
 
           &:checked {
             border-image: url('assets/tab-left-active.png') 6 6 6 6 stretch;
+            margin-left: 0;
+            margin-right: -1px;
           }
         }
       }

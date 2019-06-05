@@ -1504,11 +1504,13 @@ switch {
   border-radius: 0;
   background-color: shade(@borders, 0.9); }
   switch:disabled {
+    color: @theme_disabled_fg_color;
     border-color: @theme_disabled_bg_color;
-    background-color: @theme_disabled_bg_color; }
+    background-color: shade(@theme_disabled_bg_color, 1.2); }
     switch:disabled:backdrop {
+      color: @theme_unfocused_disabled_fg_color;
       border-color: @theme_unfocused_disabled_bg_color;
-      background-color: @theme_unfocused_disabled_bg_color; }
+      background-color: shade(@theme_unfocused_disabled_bg_color, 1.2); }
   switch:backdrop {
     border-color: @unfocused_borders;
     background-color: @unfocused_borders; }
@@ -1726,7 +1728,7 @@ toolbar {
     border: none;
     border-radius: 0px;
     color: @toolbar_fg_color;
-    border-color: @toolbar_bg_color;
+    border-color: @borders;
     background-color: @toolbar_bg_color;
     outline-style: solid;
     outline-width: 2px;
@@ -1771,7 +1773,7 @@ toolbar {
     border: none;
     border-radius: 0px;
     color: @toolbar_fg_color;
-    border-color: @toolbar_bg_color;
+    border-color: @borders;
     background-color: @toolbar_bg_color;
     outline-style: solid;
     outline-width: 2px;
@@ -2370,7 +2372,7 @@ panel-toplevel.background na-tray-applet {
     border: none;
     border-radius: 0px;
     color: @theme_fg_color;
-    border-color: @theme_bg_color;
+    border-color: @borders;
     background-color: @theme_bg_color;
     outline-style: solid;
     outline-width: 2px;
@@ -2409,8 +2411,10 @@ panel-toplevel.background na-tray-applet {
     color: @theme_selected_fg_color;
     background-color: @theme_selected_bg_color; }
 .nemo-window .sidebar {
-  background-color: @theme_bg_color; }
+  color: @sidebar_fg_color;
+  background-color: @sidebar_bg_color; }
   .nemo-window .sidebar .view, .nemo-window .sidebar iconview, .nemo-window .sidebar row {
+    color: @sidebar_fg_color;
     background-color: transparent; }
     .nemo-window .sidebar .view.cell:selected, .nemo-window .sidebar iconview.cell:selected, .nemo-window .sidebar row.cell:selected {
       border-color: @theme_selected_bg_color;

@@ -6,7 +6,7 @@
     color: gtkmix($theme_fg_color, $theme_selected_fg_color, 0.5);
     background-color: transparent;
 
-    & progress {
+    progress {
       border: none;
       border-radius: $progressbar_radius;
       background-color: $theme_selected_bg_color;
@@ -16,12 +16,12 @@
       }
     }
 
-    & trough {
+    trough {
       border-radius: $progressbar_radius;
-      background-color: gtkalpha($dark_shadow, 0.1);
+      background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
 
       &:backdrop {
-        background-color: gtkshade($theme_unfocused_bg_color, 0.95);
+        background-color: gtkmix($theme_unfocused_fg_color, $theme_unfocused_bg_color, 0.95);
       }
     }
 
@@ -65,7 +65,7 @@
       }
     }
 
-    infobar & trough, row:selected & trough {
+    infobar trough, row:selected trough {
       background-color: gtkalpha($dark_shadow, 0.1);
     }
   }

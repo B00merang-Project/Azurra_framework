@@ -10,7 +10,7 @@
 
     &:backdrop {
       color: $theme_unfocused_fg_color;
-      background-color: $theme_unfocused_bg_color;
+      background-color: $toolbar_bg_color;
     }
     
     &.vertical, &.vertical:backdrop {
@@ -28,21 +28,25 @@
       background-color: transparent;
       border: 1px solid transparent;
       box-shadow: none;
-      color: $theme_selected_fg_color;
+      color: $toolbar_fg_color;
       
       &:hover {
         border-color: transparent;
         background-image: none;
         background-color: transparent;
-        color: $theme_selected_fg_color;
+        color: $toolbar_fg_color;
       }
       
       &:active, &:checked {
-        color: $theme_selected_fg_color;
+        color: $toolbar_fg_color;
         
         // TODO: remix as colors later
         background-image: linear-gradient(to bottom, #82a7e8, #5d78be 40%, #153c9c 41%, #235db6 66%, #50c3e8);
         box-shadow: inset 0 0 1px 1px gtkalpha($dark_shadow, 0.45), inset 0 1px gtkshade($theme_bg_color, 0.35);
+      }
+      
+      &:backdrop {
+        color: $toolbar_fg_color;
       }
     }
 
