@@ -1,1 +1,22 @@
-../../src/widgets/_suggested_button.scss
+// suggested action button
+@mixin suggested_button() {
+  button.suggested-action {
+    box-shadow: inset 0 0 2px 1px #95b4e8;
+
+    &:hover {
+    }
+
+    &:active, &:checked {
+      &:backdrop {
+      }
+    }
+
+    &:disabled {
+      &:backdrop {
+      }
+    }
+
+    &:backdrop {
+    }
+  }
+}
