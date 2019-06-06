@@ -1,0 +1,75 @@
+// entry 
+@mixin entry() {
+  entry {
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $borders;
+    border-radius: $entry_radius;
+    color: $theme_text_color;
+    caret-color: currentColor;
+    background-color: $theme_base_color;
+    border-bottom-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+    border-right-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+    box-shadow: inset 1px 0 gtkshade($theme_bg_color, 0.65), inset 0 1px gtkshade($theme_bg_color, 0.65), inset -1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 -1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+
+    &:selected, &:selected:focus, & selection, & selection:focus {
+      color: $theme_selected_fg_color;
+      background-color: $theme_selected_bg_color;
+    }
+
+    &:disabled {
+      color: $theme_disabled_text_color;
+
+      &:backdrop {
+        color: $theme_unfocused_disabled_fg_color;
+        background-color: $theme_unfocused_disabled_base_color;
+      }
+    }
+
+    &.read-only {
+      background-color: gtkmix($theme_bg_color, $theme_disabled_bg_color, 0.1);
+    }
+
+    &:backdrop {
+      color: $theme_unfocused_fg_color;
+      background-color: $theme_unfocused_base_color;
+    }
+
+    & > image {
+      &.left {
+        padding-right: 5px;
+      }
+      
+      &.right {
+        padding-left: 5px;
+      }
+    }
+
+    & progress {
+      margin: -4px -4px;
+      border-width: 0 0 2px;
+      border-radius: 0;
+      border-style: solid;
+      border-color: $theme_selected_bg_color;
+      background-color: transparent;
+    }
+
+    &.flat, &.flat:focus {
+      min-height: 0;
+      padding: 3px;
+      border-radius: 0;
+      box-shadow: none;
+      background-image: none;
+      border-color: transparent;
+    }
+
+    &.search {
+      border-radius: 0px;
+    }
+    
+    entry {
+      box-shadow: none;
+    }
+  }
+}

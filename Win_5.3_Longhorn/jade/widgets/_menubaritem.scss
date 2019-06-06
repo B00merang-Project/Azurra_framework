@@ -1,0 +1,28 @@
+// menubaritem
+@mixin menubar_menuitem() {
+  menubar > menuitem, .menubar > menuitem {
+    padding: 3px 5px;
+    border: 1px solid transparent;
+    color: $menubar_fg_color;
+    background-color: transparent;
+
+    &:hover {
+      color: $theme_selected_fg_color;
+      background-color: $theme_selected_bg_color;
+      border-color: gtkshade($theme_selected_bg_color, 0.9);
+      border-radius: $roundness;
+      background-color: gtkshade($theme_selected_bg_color, 1.12);
+      background-image: linear-gradient(to bottom, gtkshade($theme_selected_bg_color, 1.06), gtkshade($theme_selected_bg_color, 1.02));
+    }
+
+    &:disabled {
+      color: $theme_disabled_fg_color;
+      background-color: transparent;
+    }
+
+    &:backdrop {
+      color: $theme_unfocused_fg_color;
+      background-color: transparent;
+    }
+  }
+}
