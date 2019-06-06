@@ -4,14 +4,13 @@
 for D in *; do
   if [ -d "${D}" ] &&               # theme exists
      [ -f "${D}/build.sh" ] &&      # is buildable
-     [ -f "${D}/deploy.sh" ] &&     # is deployable
-     [ "${D}" = "WinXP_"* ]; then
+     [ -f "${D}/deploy.sh" ]        # is deployable
+   then
 
-    cd "${D}/widgets"
-    
-    cp -R ../../iOS_12/widgets/_treeview.scss .
-    
-    cd ../..
+    cd "${D}"
+    echo "${D}"
+    resolve refs.scss
+    cd ..
     
   fi
 done
