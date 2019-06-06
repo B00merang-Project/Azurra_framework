@@ -1,7 +1,7 @@
 // linked widgets
 @mixin linked_widgets() {
   .linked {
-    &, .inline-toolbar &, .primary-toolbar {
+    &, .inline-toolbar & {
       button, .raised button {
         border-color: $theme_base_color;
         background-color: $theme_base_color;
@@ -260,6 +260,19 @@
           color: $theme_unfocused_selected_fg_color;
           background-color: $theme_unfocused_selected_bg_color;
         }
+      }
+    }
+  }
+  
+  .primary-toolbar {
+    button, .raised button {
+      &, &:first-child, &:last-child {
+        border-radius: $button_radius;
+        border-width: 0;
+      }
+      
+      &:backdrop, &:disabled, &:disabled:backdrop {
+        background-color: transparent;
       }
     }
   }

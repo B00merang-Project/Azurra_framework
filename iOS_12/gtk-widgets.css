@@ -109,28 +109,39 @@ assistant .sidebar {
   color: @theme_fg_color;
   background-color: @theme_bg_color; }
 
-button:link > label, button:visited > label, *:link, button:link, button:visited {
+button:link > label, button:visited > label,
+*:link,
+button:link,
+button:visited {
   color: @link_color; }
-  button:link > label:visited, button:visited > label:visited, *:link:visited, button:visited {
+  button:link > label:visited, button:visited > label:visited,
+  *:link:visited,
+  button:visited {
     color: mix(@link_color, @theme_fg_color, 0.2); }
-    *:selected button:link > label:visited, *:selected button:visited > label:visited,
-    *:selected *:link:visited,
-    *:selected button:visited:link,
-    *:selected button:visited {
+    *:selected button:link > label:visited, *:selected button:visited > label:visited, *:selected
+    *:link:visited, *:selected
+    button:visited:link, *:selected
+    button:visited {
       color: mix(@selected_fg_color, @selected_bg_color, 0.4); }
-  button:link > label:hover, button:visited > label:hover, *:link:hover, button:hover:link, button:hover:visited {
+  button:link > label:hover, button:visited > label:hover,
+  *:link:hover,
+  button:hover:link,
+  button:hover:visited {
     color: shade(@link_color, 1.1); }
-    *:selected button:link > label:hover, *:selected button:visited > label:hover,
-    *:selected *:link:hover,
-    *:selected button:hover:link,
-    *:selected button:hover:visited {
+    *:selected button:link > label:hover, *:selected button:visited > label:hover, *:selected
+    *:link:hover, *:selected
+    button:hover:link, *:selected
+    button:hover:visited {
       color: mix(@selected_fg_color, @selected_bg_color, 0.9); }
-  button:link > label:active, button:visited > label:active, *:link:active, button:active:link, button:active:visited {
+  button:link > label:active, button:visited > label:active,
+  *:link:active,
+  button:active:link,
+  button:active:visited {
     color: @link_color; }
-    *:selected button:link > label:active, *:selected button:visited > label:active,
-    *:selected *:link:active,
-    *:selected button:active:link,
-    *:selected button:active:visited {
+    *:selected button:link > label:active, *:selected button:visited > label:active, *:selected
+    *:link:active, *:selected
+    button:active:link, *:selected
+    button:active:visited {
       color: mix(@selected_fg_color, @selected_bg_color, 0.8); }
   button:link > label:backdrop:backdrop:hover, button:visited > label:backdrop:backdrop:hover, button:link > label:backdrop:backdrop:hover:selected, button:visited > label:backdrop:backdrop:hover:selected, button:link > label:backdrop, button:visited > label:backdrop,
   *:link:backdrop:backdrop:hover,
@@ -146,10 +157,10 @@ button:link > label, button:visited > label, *:link, button:link, button:visited
   button:link > label:selected, button:visited > label:selected, *:selected button:link > label, *:selected button:visited > label,
   *:link:selected,
   button:selected:link,
-  button:selected:visited,
-  *:selected *:link,
-  *:selected button:link,
-  *:selected button:visited {
+  button:selected:visited, *:selected
+  *:link, *:selected
+  button:link, *:selected
+  button:visited {
     color: mix(@selected_fg_color, @selected_bg_color, 0.8); }
 
 button:link, button:visited {
@@ -1877,25 +1888,25 @@ toolbar {
       color: @theme_unfocused_fg_color;
       border-color: @theme_unfocused_fg_color; }
 
-.linked button, .linked .raised button, .inline-toolbar .linked button, .inline-toolbar .linked .raised button, .linked .primary-toolbar button, .linked .primary-toolbar .raised button {
+.linked button, .linked .raised button, .inline-toolbar .linked button, .inline-toolbar .linked .raised button {
   border-color: @theme_base_color;
   background-color: @theme_base_color; }
-  .linked button:disabled, .linked button:backdrop, .linked button:disabled:backdrop, .linked .raised button:disabled, .linked .raised button:backdrop, .linked .raised button:disabled:backdrop, .inline-toolbar .linked button:disabled, .inline-toolbar .linked button:backdrop, .inline-toolbar .linked button:disabled:backdrop, .inline-toolbar .linked .raised button:disabled, .inline-toolbar .linked .raised button:backdrop, .inline-toolbar .linked .raised button:disabled:backdrop, .linked .primary-toolbar button:disabled, .linked .primary-toolbar button:backdrop, .linked .primary-toolbar button:disabled:backdrop, .linked .primary-toolbar .raised button:disabled, .linked .primary-toolbar .raised button:backdrop, .linked .primary-toolbar .raised button:disabled:backdrop {
+  .linked button:disabled, .linked button:backdrop, .linked button:disabled:backdrop, .linked .raised button:disabled, .linked .raised button:backdrop, .linked .raised button:disabled:backdrop, .inline-toolbar .linked button:disabled, .inline-toolbar .linked button:backdrop, .inline-toolbar .linked button:disabled:backdrop, .inline-toolbar .linked .raised button:disabled, .inline-toolbar .linked .raised button:backdrop, .inline-toolbar .linked .raised button:disabled:backdrop {
     border-color: @theme_base_color;
     background-color: @theme_base_color; }
-  .linked button:checked, .linked button:active, .linked .raised button:checked, .linked .raised button:active, .inline-toolbar .linked button:checked, .inline-toolbar .linked button:active, .inline-toolbar .linked .raised button:checked, .inline-toolbar .linked .raised button:active, .linked .primary-toolbar button:checked, .linked .primary-toolbar button:active, .linked .primary-toolbar .raised button:checked, .linked .primary-toolbar .raised button:active {
+  .linked button:checked, .linked button:active, .linked .raised button:checked, .linked .raised button:active, .inline-toolbar .linked button:checked, .inline-toolbar .linked button:active, .inline-toolbar .linked .raised button:checked, .inline-toolbar .linked .raised button:active {
     color: @theme_selected_fg_color;
     border-color: @theme_selected_bg_color;
     background-color: @theme_selected_bg_color; }
-    .linked button:checked:backdrop, .linked button:active:backdrop, .linked .raised button:checked:backdrop, .linked .raised button:active:backdrop, .inline-toolbar .linked button:checked:backdrop, .inline-toolbar .linked button:active:backdrop, .inline-toolbar .linked .raised button:checked:backdrop, .inline-toolbar .linked .raised button:active:backdrop, .linked .primary-toolbar button:checked:backdrop, .linked .primary-toolbar button:active:backdrop, .linked .primary-toolbar .raised button:checked:backdrop, .linked .primary-toolbar .raised button:active:backdrop {
+    .linked button:checked:backdrop, .linked button:active:backdrop, .linked .raised button:checked:backdrop, .linked .raised button:active:backdrop, .inline-toolbar .linked button:checked:backdrop, .inline-toolbar .linked button:active:backdrop, .inline-toolbar .linked .raised button:checked:backdrop, .inline-toolbar .linked .raised button:active:backdrop {
       color: @theme_unfocused_selected_fg_color;
       border-color: @theme_unfocused_selected_bg_color;
       background-color: @theme_unfocused_selected_bg_color; }
-.linked entry, .inline-toolbar .linked entry, .linked .primary-toolbar entry {
+.linked entry, .inline-toolbar .linked entry {
   border-color: @theme_base_color; }
-  .linked entry:disabled, .linked entry:backdrop, .inline-toolbar .linked entry:disabled, .inline-toolbar .linked entry:backdrop, .linked .primary-toolbar entry:disabled, .linked .primary-toolbar entry:backdrop {
+  .linked entry:disabled, .linked entry:backdrop, .inline-toolbar .linked entry:disabled, .inline-toolbar .linked entry:backdrop {
     border-color: @theme_base_color; }
-  .linked entry:checked, .linked entry:active, .inline-toolbar .linked entry:checked, .inline-toolbar .linked entry:active, .linked .primary-toolbar entry:checked, .linked .primary-toolbar entry:active {
+  .linked entry:checked, .linked entry:active, .inline-toolbar .linked entry:checked, .inline-toolbar .linked entry:active {
     border-color: @theme_selected_bg_color; }
 
 .linked button, .linked .raised button, .inline-toolbar .linked button, .inline-toolbar .linked .raised button, .linked .primary-toolbar button, .linked .primary-toolbar .raised button, .osd .linked button, .osd .linked .raised button, .inline-toolbar .osd .linked button, .inline-toolbar .osd .linked .raised button, .osd .linked .primary-toolbar button, .osd .linked .primary-toolbar .raised button {
@@ -2041,6 +2052,12 @@ toolbar {
     .stack-switcher button:checked:backdrop, .stack-switcher button:active:backdrop {
       color: @theme_unfocused_selected_fg_color;
       background-color: @theme_unfocused_selected_bg_color; }
+
+.primary-toolbar button, .primary-toolbar button:first-child, .primary-toolbar button:last-child, .primary-toolbar .raised button, .primary-toolbar .raised button:first-child, .primary-toolbar .raised button:last-child {
+  border-radius: 4px;
+  border-width: 0; }
+.primary-toolbar button:backdrop, .primary-toolbar button:disabled, .primary-toolbar button:disabled:backdrop, .primary-toolbar .raised button:backdrop, .primary-toolbar .raised button:disabled, .primary-toolbar .raised button:disabled:backdrop {
+  background-color: transparent; }
 
 tooltip {
   border-radius: 4px;
