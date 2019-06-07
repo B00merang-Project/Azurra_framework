@@ -6,11 +6,11 @@
     color: gtkmix($theme_fg_color, $theme_selected_fg_color, 0.5);
     background-color: transparent;
 
-    & progress {
+    progress {
       border: none;
       border-radius: $progressbar_radius;
       background-image: linear-gradient(to right, transparent, transparent 37.5%, $theme_bg_color 37.5%, $theme_bg_color 50%, transparent 50%, transparent 87.5%, $theme_bg_color 87.5%, $theme_bg_color 100%), image($theme_selected_bg_color);
-    background-size: 20px 16px, auto;
+      background-size: 20px 16px, auto;
     }
     
     &.vertical progress {
@@ -18,7 +18,7 @@
       background-size: 16px 20px, auto;
     }
 
-    & trough {
+    trough {
       padding: 2px;
       border: 1px solid $borders;
       border-radius: $progressbar_radius;

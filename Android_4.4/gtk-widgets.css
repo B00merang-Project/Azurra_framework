@@ -1507,6 +1507,7 @@ switch {
       border-color: @theme_unfocused_disabled_bg_color;
       background-color: shade(@theme_unfocused_disabled_bg_color, 1.2); }
   switch:backdrop {
+    color: @theme_unfocused_fg_color;
     border-color: @unfocused_borders;
     background-color: @unfocused_borders; }
   switch slider {
@@ -1719,16 +1720,7 @@ toolbar {
     color: @theme_unfocused_fg_color;
     background-color: @theme_unfocused_bg_color; }
   .primary-toolbar button, .primary-toolbar .raised button {
-    padding: 4px 8px;
-    border: none;
-    border-radius: 0px;
-    color: @toolbar_fg_color;
-    border-color: @borders;
-    background-color: @toolbar_bg_color;
-    outline-style: solid;
-    outline-width: 2px;
-    outline-offset: 0;
-    -gtk-outline-radius: 0; }
+    background-color: transparent; }
     .primary-toolbar button:active, .primary-toolbar button:checked, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked {
       outline-color: shade(@theme_selected_bg_color, 1.4);
       color: @theme_selected_fg_color;
@@ -1740,17 +1732,11 @@ toolbar {
           color: mix(@theme_selected_fg_color, @theme_unfocused_disabled_fg_color, 0.4);
           background-color: mix(@theme_selected_bg_color, @theme_unfocused_disabled_bg_color, 0.3); }
       .primary-toolbar button:active:backdrop, .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:active:backdrop, .primary-toolbar .raised button:checked:backdrop {
-        color: @theme_unfocused_selected_fg_color;
-        background-color: @theme_unfocused_selected_bg_color; }
+        color: @theme_unfocused_selected_fg_color; }
     .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled {
-      color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1);
-      background-color: @theme_disabled_bg_color; }
+      color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
       .primary-toolbar button:disabled:backdrop, .primary-toolbar .raised button:disabled:backdrop {
-        color: @theme_unfocused_disabled_fg_color;
-        background-color: @theme_unfocused_disabled_bg_color; }
-    .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop {
-      color: @theme_unfocused_fg_color;
-      background-color: @toolbar_bg_color; }
+        color: @theme_unfocused_disabled_fg_color; }
 
 .inline-toolbar toolbar {
   -GtkToolbar-button-relief: normal;
@@ -1821,10 +1807,10 @@ treeview {
     background-color: @theme_selected_bg_color; }
   treeview header button {
     border-width: 0 1px 1px 0;
-    border-radius: 0; }
+    border-radius: 0;
+    outline-style: none; }
     treeview header button, treeview header button:active, treeview header button:focus, treeview header button:active:focus {
-      background-image: none;
-      background-color: @theme_bg_color; }
+      background-image: none; }
     treeview header button:hover, treeview header button:active:hover, treeview header button:hover:focus, treeview header button:active:hover:focus {
       color: @theme_selected_fg_color;
       background-color: @theme_selected_bg_color; }

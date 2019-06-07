@@ -26,11 +26,10 @@
       margin: 0;
       border-radius: $roundness;
       color: $theme_fg_color;
-      border: 1px solid $borders;
-      border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-      border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-      box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+      border-color: $borders;
       background-color: $theme_bg_color;
+      background-image: linear-gradient(to bottom, gtkshade($theme_bg_color, 1.05) 5%, $theme_bg_color 20%, $theme_bg_color 70%, gtkshade($theme_bg_color, 0.95) 90%);
+      box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
     }
 
     &:disabled {

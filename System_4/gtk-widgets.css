@@ -2321,37 +2321,24 @@ messagedialog {
     padding-right: 12px;
     color: alpha(currentColor, 0.7); }
   .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
-    padding: 2px 2px;
+    padding: 0;
+    min-height: 17px;
+    min-width: 17px;
     border: none;
+    border-radius: 0;
     color: transparent;
     background-color: transparent;
     -gtk-icon-shadow: none;
     background-position: center;
     background-repeat: no-repeat; }
+    .titlebar .titlebutton.close:backdrop, .titlebar .titlebutton.maximize:backdrop, .titlebar .titlebutton.minimize:backdrop, .titlebar .titlebutton:not(separator):backdrop {
+      background: none; }
   .titlebar .titlebutton.close {
-    background: url("assets/close-normal.svg") 100% 100%; }
-    .titlebar .titlebutton.close:hover {
-      background: url("assets/close-hover.svg") 100% 100%; }
-    .titlebar .titlebutton.close:active {
-      background: url("assets/close-active.svg") 100% 100%; }
-    .titlebar .titlebutton.close:backdrop {
-      background: url("assets/close-backdrop.svg") 100% 100%; }
+    background: url("assets/close.png") 100% 100%; }
   .titlebar .titlebutton.minimize {
-    background: url("assets/minimize-normal.svg") 100% 100%; }
-    .titlebar .titlebutton.minimize:hover {
-      background: url("assets/minimize-hover.svg") 100% 100%; }
-    .titlebar .titlebutton.minimize:active {
-      background: url("assets/minimize-active.svg") 100% 100%; }
-    .titlebar .titlebutton.minimize:backdrop {
-      background: url("assets/minimize-backdrop.svg") 100% 100%; }
+    background: url("assets/minimize.png") 100% 100%; }
   .titlebar .titlebutton.maximize {
-    background: url("assets/maximize-normal.svg") 100% 100%; }
-    .titlebar .titlebutton.maximize:hover {
-      background: url("assets/maximize-hover.svg") 100% 100%; }
-    .titlebar .titlebutton.maximize:active {
-      background: url("assets/maximize-active.svg") 100% 100%; }
-    .titlebar .titlebutton.maximize:backdrop {
-      background: url("assets/maximize-backdrop.svg") 100% 100%; }
+    background: url("assets/maximize.png") 100% 100%; }
   .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
     border-radius: 0; }
 

@@ -886,7 +886,8 @@ menubar, .menubar {
   background-image: linear-gradient(to bottom, @titlebar_bg_color 35%, alpha(@borders, 0.7) 40%, alpha(@borders, 0.7) 64%, @titlebar_bg_color 85%); }
   menubar:backdrop, .menubar:backdrop {
     color: @theme_unfocused_fg_color;
-    background-color: @theme_unfocused_bg_color; }
+    background-color: @theme_unfocused_bg_color;
+    background-image: linear-gradient(to bottom, @theme_unfocused_base_color 35%, alpha(@unfocused_borders, 0.5) 40%, alpha(@unfocused_borders, 0.5) 64%, @theme_unfocused_base_color 85%); }
 
 menubar > menuitem, .menubar > menuitem {
   padding: 3px 5px;

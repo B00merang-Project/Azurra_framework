@@ -17,24 +17,37 @@
       color: gtkalpha(currentColor, 0.7);
     }
 
+    // titlebutton 
     & .titlebutton {
+      
       &.close, &.maximize, &.minimize, &:not(separator) {
         padding: 0;
+        min-height: 17px;
+        min-width: 17px;
+        border: none;
         border-radius: 0;
-        -gtk-icon-shadow: none;
-        box-shadow: none;
-        color: gtkalpha($titlebar_fg_color, 0.8);
-        border-color: gtkalpha($titlebar_fg_color, 0.8);
-        background-image: none;
+        color: transparent;
         background-color: transparent;
+        -gtk-icon-shadow: none;
         
         background-position: center;
         background-repeat: no-repeat;
         
         &:backdrop {
-          color: gtkalpha($titlebar_fg_color, 0.25);
-          border-color: gtkalpha($titlebar_fg_color, 0.25);
+          background: none;
         }
+      }
+      
+      &.close {
+        background: url('assets/close.png') 100% 100%;
+      }
+
+      &.minimize {
+        background: url('assets/minimize.png') 100% 100%;
+      }
+
+      &.maximize {
+        background: url('assets/maximize.png') 100% 100%;
       }
     }
 
@@ -44,18 +57,13 @@
   }
 
   .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
-    min-height: 34px;
+    min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    background-image: url('assets/titlebar.png');
-    background-position: right;
-    background-size: 200px 100%;
-    background-repeat: no-repeat;
 
     &:backdrop {
-      color: gtkalpha(titlebar_fg_color, 0.4);
-      background-image: none;
-      background-color: gtkshade($titlebar_bg_color, 0.65);;
+      color: $theme_unfocused_fg_color;
+      background-color: $theme_unfocused_bg_color;
     }
   }
 }

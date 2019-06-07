@@ -2,18 +2,21 @@
 @mixin scrollbar() {
   scrollbar {
     border: none;
-    background-color: $theme_bg_color;
+    background-color: gtkshade($theme_bg_color, 0.95);
 
-    & trough {
+    trough {
       border: none;
       border-radius: 0;
     }
 
-    & button {
+    button {
       &, &:active, &:disabled {
         &, &:backdrop {
           color: transparent;
           padding: 0;
+          border-color: gtkshade($theme_bg_color, 0.95);
+          background-color: gtkshade($theme_bg_color, 0.95);
+          box-shadow: none;
           background-size: auto;
           background-position: center center;
           background-repeat: no-repeat;
@@ -32,21 +35,18 @@
     }
 
     &.horizontal {
-    
-      & slider {
+      slider {
         min-width: 45px;
         min-height: 14px;
         margin: 0;
-        border: 1px solid $borders;
-        border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-        border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+        border: 1px solid gtkshade($theme_bg_color, 0.8);
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
-        background-color: $theme_bg_color;
-        box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+        background: url("assets/handle.png") no-repeat center center;
+        background-color: $theme_base_color;
       }
 
-      & button {
+      button {
         min-height: 14px;
         min-width: 14px;
       
@@ -61,21 +61,18 @@
     }
 
     &.vertical {
-      
-      & slider {
+      slider {
         min-width: 14px;
         min-height: 45px;
         margin: 0;
-        border: 1px solid $borders;
-        border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-        border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+        border: 1px solid gtkshade($theme_bg_color, 0.8);
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
-        background-color: $theme_bg_color;
-        box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+        background: url("assets/handle-vert.png") no-repeat center center;
+        background-color: $theme_base_color;
       }
 
-      & button {
+      button {
         min-height: 14px;
         min-width: 14px;
 

@@ -1,0 +1,19 @@
+@mixin frame() {
+  frame {
+    > border {
+      border-width: 1px;
+      border-style: solid;
+      border-color: gtkshade($theme_bg_color, 0.8);
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    &.flat > border, > border.flat, statusbar & > border {
+      border: none;
+    }
+  }
+
+  .frame {
+	  background: none;
+  }
+}

@@ -9,7 +9,7 @@
 @define-color selected_base_color #0681aa;
 @define-color selected_text_color @selected_fg_color;
 @define-color disabled_bg_color shade(@bg_color, 0.75);
-@define-color disabled_fg_color mix(@fg_color, @bg_color, 0.5);
+@define-color disabled_fg_color mix(@fg_color, @bg_color, 0.35);
 @define-color disabled_base_color @disabled_bg_color;
 @define-color disabled_text_color @disabled_fg_color;
 /* Backdrop state colors */
@@ -20,7 +20,7 @@
 @define-color unfocused_selected_bg_color @selected_bg_color;
 @define-color unfocused_selected_fg_color @selected_fg_color;
 @define-color unfocused_disabled_bg_color shade(@bg_color, 0.75);
-@define-color unfocused_disabled_fg_color mix(@fg_color, @bg_color, 0.75);
+@define-color unfocused_disabled_fg_color mix(@fg_color, @bg_color, 0.5);
 @define-color unfocused_disabled_base_color @unfocused_disabled_bg_color;
 @define-color unfocused_disabled_text_color @unfocused_disabled_fg_color;
 /* Darker color scheme */
@@ -76,7 +76,7 @@
 @define-color tooltip_fg_color @dark_fg_color;
 @define-color menu_bg_color @bg_color;
 @define-color menu_fg_color @fg_color;
-@define-color menubar_bg_color @bg_color;
+@define-color menubar_bg_color #ffffff;
 @define-color menubar_fg_color @fg_color;
 @define-color toolbar_bg_color #ffffff;
 @define-color toolbar_fg_color @fg_color;
