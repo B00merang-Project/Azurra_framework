@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Copying Windows 7"
-#cp -aR assets ~/Github/Windows-7/gtk-3.0
-cp -aR gtk.css ~/Github/Windows-7/gtk-3.0
-cp -aR gtk-widgets.css ~/Github/Windows-7/gtk-3.0
+echo "Copying Windows Longhorn Jade"
+#cp -aR assets ~/Github/Windows-Longhorn/Windows\ Longhorn\ Jade/gtk-3.20
+cp -aR gtk.css ~/Github/Windows-Longhorn/Windows\ Longhorn\ Jade/gtk-3.20
+cp -aR gtk-widgets.css ~/Github/Windows-Longhorn/Windows\ Longhorn\ Jade/gtk-3.20

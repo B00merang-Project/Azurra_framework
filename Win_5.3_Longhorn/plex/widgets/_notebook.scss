@@ -53,7 +53,7 @@
       margin: 1px;
       color: $theme_fg_color;
       background-color: transparent;
-      background-image: linear-gradient(to left, rgba(0, 0, 0, 0.045) 1px, rgba(0, 0, 0, 0.006) 2px, transparent 2px), linear-gradient(to top, rgba(0, 0, 0, 0.13), transparent 3px), linear-gradient(to bottom, white, #fcfcfa 3px, #f6f6f3 7px, #f4f4f0 50%, #f0f0ea);
+      background-image: linear-gradient(to bottom, gtkshade($theme_bg_color, 1.015) 20%, $color_shadow 35%);
 
       &:checked {
         margin: 0;
@@ -85,13 +85,13 @@
           border-bottom-right-radius: 0;
           
           &:hover {
-            box-shadow: inset 0 2px #ffc73c;
+            box-shadow: inset 0 2px gtkshade($theme_selected_bg_color, 0.6);
           }
 
           &:checked {
             margin-top: -1px;
             margin-bottom: -2px;
-            box-shadow: inset 0 2px #ffc73c;
+            box-shadow: inset 0 2px gtkshade($theme_selected_bg_color, 0.6);
             border-top-left-radius: $tab_radius;
             border-top-right-radius: $tab_radius;
           }
@@ -108,13 +108,13 @@
           border-top-right-radius: 0;
           
           &:hover {
-            box-shadow: inset 0 -2px #ffc73c;
+            box-shadow: inset 0 -2px gtkshade($theme_selected_bg_color, 0.6);
           }
 
           &:checked {
             margin-bottom: -1px;
             margin-top: -2px;
-            box-shadow: inset 0 -2px #ffc73c;
+            box-shadow: inset 0 -2px gtkshade($theme_selected_bg_color, 0.6);
             border-bottom-left-radius: $tab_radius;
             border-bottom-right-radius: $tab_radius;
           }
@@ -131,13 +131,13 @@
           border-bottom-left-radius: 0;
           
           &:hover {
-            box-shadow: inset -2px 0 #ffc73c;
+            box-shadow: inset -2px 0 gtkshade($theme_selected_bg_color, 0.6);
           }
 
           &:checked {
             margin-right: -1px;
             margin-left: -2px;
-            box-shadow: inset -2px 0 #ffc73c;
+            box-shadow: inset -2px 0 gtkshade($theme_selected_bg_color, 0.6);
             border-top-right-radius: $tab_radius;
             border-bottom-right-radius: $tab_radius;
           }
@@ -154,13 +154,13 @@
           border-bottom-right-radius: 0;
           
           &:hover {
-            box-shadow: inset 2px 0 #ffc73c;
+            box-shadow: inset 2px 0 gtkshade($theme_selected_bg_color, 0.6);
           }
 
           &:checked {
             margin-left: -1px;
             margin-right: -2px;
-            box-shadow: inset 2px 0 #ffc73c;
+            box-shadow: inset 2px 0 gtkshade($theme_selected_bg_color, 0.6);
             border-top-left-radius: $tab_radius;
             border-bottom-left-radius: $tab_radius;
           }

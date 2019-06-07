@@ -8,13 +8,13 @@
       padding-left: 12px;
       padding-right: 12px;
       font-weight: bold;
-      color: $theme_selected_fg_color;
+      color: $titlebar_fg_color;
       padding: 0 12px;
       text-shadow: 1px 1px $dark_shadow;
       
       &:backdrop {
         text-shadow: none;
-        color: gtkalpha($theme_selected_fg_color, 0.3);
+        color: gtkalpha($titlebar_fg_color, 0.5);
       }
     }
 
@@ -22,13 +22,18 @@
       font-size: smaller;
       padding-left: 12px;
       padding-right: 12px;
-      color: gtkalpha($theme_selected_fg_color, 0.7);
+      color: gtkalpha($titlebar_fg_color, 0.7);
+      
+      &:backdrop {
+        text-shadow: none;
+        color: gtkalpha($titlebar_fg_color, 0.4);
+      }
     }
 
     // titlebutton 
     & .titlebutton {
       &.close, &.maximize, &.minimize, &:not(separator) {
-        padding: 2px 2px;
+        padding: 0;
         border: none;
         box-shadow: none;
         color: transparent;
@@ -109,30 +114,6 @@
           }
         }
       }
-      
-      .maximized &.maximize {
-        background: url('assets/restore-normal.png') 100% 100%;
-
-        &:hover {
-          background: url('assets/restore-hover.png') 100% 100%;
-        }
-
-        &:active {
-          background: url('assets/restore-active.png') 100% 100%;
-        }
-
-        &:backdrop {
-          background: url('assets/restore-backdrop.png') 100% 100%;
-          
-          &:hover {
-            background: url('assets/restore-backdrop-hover.png') 100% 100%;
-          }
-
-          &:active {
-            background: url('assets/restore-active.png') 100% 100%;
-          }
-        }
-      }
     }
 
     .tiled &:not(headerbar), .tiled &:backdrop:not(headerbar), .maximized &:not(headerbar), .maximized &:backdrop:not(headerbar) {
@@ -144,13 +125,14 @@
     min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    background-size: 1px 100%;
-    background-image: url('assets/titlebar-focused-middle.png');
+    background-size: 100% 100%;
+    background-image: url('assets/titlebar-focused.png');
 
     &:backdrop {
       color: $theme_unfocused_fg_color;
       background-color: $theme_unfocused_bg_color;
-      background-image: url('assets/titlebar-unfocused-middle.png');
+      background-size: 100% 100%;
+      background-image: url('assets/titlebar-backdrop.png');
     }
   }
 }

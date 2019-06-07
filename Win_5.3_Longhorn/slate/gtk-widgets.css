@@ -963,9 +963,10 @@ menu, .menu {
   color: @menu_fg_color;
   background-color: @menu_bg_color; }
   .csd menu, .csd .menu {
-    padding: 4px 0px;
+    padding: 4px 4px;
     border-radius: 2px;
-    border: none; }
+    border: 3px solid transparent;
+    border-image: url("assets/menu-bg.png") 3 3 3 3; }
   menu > arrow, .menu > arrow {
     padding: 4px;
     border-color: transparent;
@@ -2780,7 +2781,7 @@ decoration {
   .fullscreen decoration, .tiled decoration {
     border-radius: 0; }
   .popup decoration {
-    box-shadow: 2px 2px 2px 1px alpha(@dark_shadow, 0.3), 0 0 0 1px @borders;
+    box-shadow: 2px 2px 2px 1px alpha(@dark_shadow, 0.3);
     border-radius: 0; }
   .ssd decoration {
     border-radius: 6px 6px 0 0;
@@ -2834,19 +2835,22 @@ messagedialog {
     padding-left: 12px;
     padding-right: 12px;
     font-weight: bold;
-    color: @theme_selected_fg_color;
+    color: @titlebar_fg_color;
     padding: 0 12px;
     text-shadow: 1px 1px @dark_shadow; }
     .titlebar .title:backdrop {
       text-shadow: none;
-      color: alpha(@theme_selected_fg_color, 0.3); }
+      color: alpha(@titlebar_fg_color, 0.5); }
   .titlebar .subtitle {
     font-size: smaller;
     padding-left: 12px;
     padding-right: 12px;
-    color: alpha(@theme_selected_fg_color, 0.7); }
+    color: alpha(@titlebar_fg_color, 0.7); }
+    .titlebar .subtitle:backdrop {
+      text-shadow: none;
+      color: alpha(@titlebar_fg_color, 0.4); }
   .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
-    padding: 2px 2px;
+    padding: 0;
     border: none;
     box-shadow: none;
     color: transparent;
@@ -2890,18 +2894,6 @@ messagedialog {
         background: url("assets/maximize-backdrop-hover.png") 100% 100%; }
       .titlebar .titlebutton.maximize:backdrop:active {
         background: url("assets/maximize-active.png") 100% 100%; }
-  .maximized .titlebar .titlebutton.maximize {
-    background: url("assets/restore-normal.png") 100% 100%; }
-    .maximized .titlebar .titlebutton.maximize:hover {
-      background: url("assets/restore-hover.png") 100% 100%; }
-    .maximized .titlebar .titlebutton.maximize:active {
-      background: url("assets/restore-active.png") 100% 100%; }
-    .maximized .titlebar .titlebutton.maximize:backdrop {
-      background: url("assets/restore-backdrop.png") 100% 100%; }
-      .maximized .titlebar .titlebutton.maximize:backdrop:hover {
-        background: url("assets/restore-backdrop-hover.png") 100% 100%; }
-      .maximized .titlebar .titlebutton.maximize:backdrop:active {
-        background: url("assets/restore-active.png") 100% 100%; }
   .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
     border-radius: 0; }
 
@@ -2909,12 +2901,13 @@ messagedialog {
   min-height: 30px;
   color: @titlebar_fg_color;
   background-color: @titlebar_bg_color;
-  background-size: 1px 100%;
-  background-image: url("assets/titlebar-focused-middle.png"); }
+  background-size: 100% 100%;
+  background-image: url("assets/titlebar-focused.png"); }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: @theme_unfocused_fg_color;
     background-color: @theme_unfocused_bg_color;
-    background-image: url("assets/titlebar-unfocused-middle.png"); }
+    background-size: 100% 100%;
+    background-image: url("assets/titlebar-backdrop.png"); }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: @desktop_item_fg;

@@ -1,25 +1,23 @@
 // button
-@mixin normal_buttons($bg, $fg, $border) {
+@mixin normal_buttons($bg, $fg, $br) {
   & {
     padding: 6px 6px;
     border-style: solid;
     border-width: 1px;
     border-radius: $button_radius;
     color: $fg;
-    border-color: gtkmix(gtkshade($borders, 0.3), $theme_selected_bg_color, 0.25);
+    border-color: gtkmix(gtkshade($br, 0.3), $theme_selected_bg_color, 0.25);
     background-color: $bg;
-    background-image: linear-gradient(to left, gtkalpha($dark_shadow, 0.045) 1px, gtkalpha($dark_shadow, 0.006) 2px, transparent 2px), linear-gradient(to top, gtkalpha($dark_shadow, 0.13), transparent 3px), linear-gradient(to bottom, $light_shadow, #fcfcfa 3px, #f6f6f3 7px, #f4f4f0 50%, #f0f0ea);
+    background-image: linear-gradient(to bottom, gtkshade($bg, 1.015) 20%, $color_shadow 35%);
     -gtk-outline-radius: $button_radius;
 
     &:hover, &:focus {
-      box-shadow: inset 0 0 1px 2px #ffc73c;
-      border-color: gtkmix(gtkshade($borders, 0.3), $theme_selected_bg_color, 0.3);
     }
 
     &:active, &:checked {
-      border-color: shade($borders, 0.3);
-      background-color: gtkshade($theme_bg_color, 0.95);
-      background-image: linear-gradient(to right, gtkalpha($dark_shadow, 0.045) 1px, gtkalpha($dark_shadow, 0.006) 2px, transparent 2px), linear-gradient(to bottom, gtkalpha($dark_shadow, 0.13), transparent 3px), linear-gradient(to top, $light_shadow, #fcfcfa 3px, #f6f6f3 7px, #f4f4f0 50%, #f0f0ea);
+      border-color: gtkshade($br, 0.3);
+      background-color: gtkshade($bg, 0.95);
+      background-image: linear-gradient(to bottom, gtkshade($bg, 0.6), gtkshade($bg, 0.7), gtkshade($theme_bg_color, 0.75));
 
       &:backdrop {
       }
@@ -36,7 +34,7 @@
 
     &:disabled {
       color: $theme_disabled_fg_color;
-      border-color: gtkshade($borders, 0.75);
+      border-color: gtkshade($br, 0.75);
       background-color: $theme_disabled_bg_color;
         
       &:backdrop {
@@ -48,7 +46,7 @@
   }
 }
 
-@mixin flat_buttons($bg, $fg, $border)
+@mixin flat_buttons($bg, $fg, $br)
 {
   & {
     border-color: transparent;
@@ -58,15 +56,15 @@
     background-image: none;
 
     &:hover {
-      border-color: gtkmix(gtkshade($borders, 0.3), $theme_selected_bg_color, 0.3);
+      border-color: gtkmix(gtkshade($br, 0.3), $theme_selected_bg_color, 0.3);
       background-color: $bg;
-      background-image: linear-gradient(to left, gtkalpha($dark_shadow, 0.045) 1px, gtkalpha($dark_shadow, 0.006) 2px, transparent 2px), linear-gradient(to top, gtkalpha($dark_shadow, 0.13), transparent 3px), linear-gradient(to bottom, $light_shadow, #fcfcfa 3px, #f6f6f3 7px, #f4f4f0 50%, #f0f0ea);
+      background-image: linear-gradient(to bottom, gtkshade($bg, 1.015) 20%, $color_shadow 35%);
     }
 
     &:active, &:checked {
-      border-color: gtkshade($borders, 0.3);
+      border-color: gtkshade($br, 0.3);
       background-color: gtkshade($theme_bg_color, 0.95);
-      background-image: linear-gradient(to bottom, shade(#f5f5f5, 0.6), shade(#f5f5f5, 0.7), shade(#f5f5f5, 0.75));
+      background-image: linear-gradient(to bottom, gtkshade($bg, 0.6), gtkshade($bg, 0.7), gtkshade($bg, 0.75));
       
       &:backdrop {
       }

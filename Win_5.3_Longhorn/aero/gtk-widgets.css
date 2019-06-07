@@ -180,9 +180,9 @@ button {
   border-width: 1px;
   border-radius: 3px;
   color: @theme_fg_color;
-  border-color: shade(@theme_bg_color, 0.75);
-  background-color: @theme_bg_color;
-  background-image: linear-gradient(to bottom, @theme_bg_color 50%, shade(@theme_bg_color, 0.95) 51%, shade(@theme_bg_color, 0.94));
+  border-color: shade(@borders, 0.8);
+  background-color: @dark_bg_color;
+  background-image: linear-gradient(to bottom, @dark_bg_color 50%, shade(@dark_bg_color, 0.95) 51%, shade(@dark_bg_color, 0.94));
   box-shadow: inset 0 0 0 1px alpha(@light_shadow, 0.6); }
   button:hover {
     color: @theme_fg_color;
@@ -976,7 +976,8 @@ menubar, .menubar {
   border-style: none;
   background-color: @menubar_bg_color;
   color: @menubar_fg_color;
-  background-image: linear-gradient(to bottom, shade(@dark_bg_color, 1.05), shade(@dark_bg_color, 1.012) 40%, shade(@dark_bg_color, 0.98) 41%, shade(@dark_bg_color, 1.02) 89%, shade(@dark_bg_color, 1.05) 90%, shade(@dark_bg_color, 0.75)); }
+  background-image: url("assets/titlebar.png");
+  background-size: 100% 100%; }
   menubar:backdrop, .menubar:backdrop {
     color: @theme_unfocused_fg_color;
     background-color: @theme_unfocused_bg_color; }
@@ -1108,10 +1109,10 @@ notebook {
     border-width: 1px;
     border-style: solid;
     border-radius: 0;
-    border-color: @borders;
+    border-color: shade(@dark_bg_color, 0.8);
     color: @theme_fg_color;
     background-color: @theme_bg_color;
-    background-image: linear-gradient(to bottom, @bg_color 50%, shade(@bg_color, 0.95) 51%, shade(@bg_color, 0.94)); }
+    background-image: linear-gradient(to bottom, @dark_bg_color 50%, shade(@dark_bg_color, 0.95) 51%, shade(@dark_bg_color, 0.94)); }
     notebook tab:hover {
       border-color: shade(@theme_selected_bg_color, 0.7);
       background-color: @theme_selected_bg_color;
@@ -1298,7 +1299,7 @@ progressbar {
       background-color: @progressbar_bg_color; }
   progressbar.horizontal trough {
     border: 1px solid #7d7d7d;
-    border-radius: 3px;
+    border-radius: 2px;
     background-image: linear-gradient(to bottom, @light_shadow 20%, #c9cacb 65%, @light_shadow 98%);
     box-shadow: inset -6px 0 4px 0 alpha(@dark_shadow, 0.08), inset 6px 0 4px 0 alpha(@dark_shadow, 0.08); }
     progressbar.horizontal trough:backdrop {
@@ -1313,7 +1314,7 @@ progressbar {
       background-color: @progressbar_bg_color; }
   progressbar.vertical trough {
     border: 1px solid #7d7d7d;
-    border-radius: 3px;
+    border-radius: 2px;
     background-image: linear-gradient(to right, @light_shadow 20%, #c9cacb 65%, @light_shadow 98%);
     box-shadow: inset -6px 0 4px 0 alpha(@dark_shadow, 0.08), inset 6px 0 4px 0 alpha(@dark_shadow, 0.08); }
     progressbar.vertical trough:backdrop {
@@ -1354,7 +1355,7 @@ levelbar.vertical.discrete block {
 levelbar block {
   border: none;
   padding: 2px;
-  border-radius: 3px;
+  border-radius: 2px;
   background-color: @theme_selected_bg_color; }
   levelbar block.high {
     background-color: shade(@success_color, 0.9); }
@@ -1497,16 +1498,16 @@ scrollbar {
   scrollbar.overlay-indicator {
     opacity: 1; }
   scrollbar.horizontal {
-    background-image: linear-gradient(to bottom, @bg_color, shade(@bg_color, 1.1)); }
+    background-image: linear-gradient(to bottom, @dark_bg_color, shade(@dark_bg_color, 1.1)); }
     scrollbar.horizontal slider {
       min-width: 45px;
       min-height: 14px;
       margin: 0;
-      border: 1px solid shade(@bg_color, 0.75);
+      border: 1px solid shade(@dark_bg_color, 0.75);
       border-radius: 3px;
       background-clip: padding-box;
       background-color: shade(@theme_bg_color, 0.6);
-      background: url("assets/handle-vert.png") no-repeat center center, linear-gradient(to bottom, @bg_color 50%, shade(@bg_color, 0.95) 51%, shade(@bg_color, 0.94)); }
+      background: url("assets/handle-vert.png") no-repeat center center, linear-gradient(to bottom, @dark_bg_color 50%, shade(@dark_bg_color, 0.95) 51%, shade(@dark_bg_color, 0.94)); }
       scrollbar.horizontal slider:hover {
         border-color: shade(@theme_selected_bg_color, 0.7);
         background-color: shade(@theme_bg_color, 0.6);
@@ -1531,16 +1532,16 @@ scrollbar {
         scrollbar.horizontal button.up:hover, scrollbar.horizontal button.up:active {
           background-image: url("assets/stepper-left-hover.png"); }
   scrollbar.vertical {
-    background-image: linear-gradient(to right, @bg_color, shade(@bg_color, 1.1)); }
+    background-image: linear-gradient(to right, @dark_bg_color, shade(@dark_bg_color, 1.1)); }
     scrollbar.vertical slider {
       min-width: 14px;
       min-height: 45px;
       margin: 0;
-      border: 1px solid shade(@bg_color, 0.75);
+      border: 1px solid shade(@dark_bg_color, 0.75);
       border-radius: 3px;
       background-clip: padding-box;
       background-color: shade(@theme_bg_color, 0.6);
-      background: url("assets/handle-vert.png") no-repeat center center, linear-gradient(to right, @bg_color 50%, shade(@bg_color, 0.95) 51%, shade(@bg_color, 0.94)); }
+      background: url("assets/handle-vert.png") no-repeat center center, linear-gradient(to right, @dark_bg_color 50%, shade(@dark_bg_color, 0.95) 51%, shade(@dark_bg_color, 0.94)); }
       scrollbar.vertical slider:hover {
         border-color: shade(@theme_selected_bg_color, 0.7);
         background-color: shade(@theme_bg_color, 0.6);
@@ -1772,11 +1773,11 @@ switch {
     min-width: 20px;
     min-height: 16px;
     margin: 0;
-    border: 1px solid shade(@borders, 0.8);
+    border: 1px solid shade(@dark_bg_color, 0.8);
     border-radius: 3px;
     color: @theme_fg_color;
     background-color: @theme_base_color;
-    background-image: linear-gradient(to bottom, @bg_color 50%, shade(@bg_color, 0.95) 51%, shade(@bg_color, 0.94)); }
+    background-image: linear-gradient(to bottom, @dark_bg_color 50%, shade(@dark_bg_color, 0.95) 51%, shade(@dark_bg_color, 0.94)); }
   switch:disabled slider {
     background-color: @theme_disabled_base_color; }
   switch:disabled:backdrop slider {
@@ -1941,7 +1942,7 @@ toolbar {
     border-width: 1px;
     border-radius: 3px;
     color: @toolbar_fg_color;
-    border-color: shade(@toolbar_bg_color, 0.75);
+    border-color: @borders;
     background-color: @toolbar_bg_color;
     background-image: linear-gradient(to bottom, @toolbar_bg_color 50%, shade(@toolbar_bg_color, 0.95) 51%, shade(@toolbar_bg_color, 0.94));
     box-shadow: inset 0 0 0 1px alpha(@light_shadow, 0.6); }
@@ -1988,7 +1989,7 @@ toolbar {
     border-width: 1px;
     border-radius: 3px;
     color: @toolbar_fg_color;
-    border-color: shade(@toolbar_bg_color, 0.75);
+    border-color: @borders;
     background-color: @toolbar_bg_color;
     background-image: linear-gradient(to bottom, @toolbar_bg_color 50%, shade(@toolbar_bg_color, 0.95) 51%, shade(@toolbar_bg_color, 0.94));
     box-shadow: inset 0 0 0 1px alpha(@light_shadow, 0.6); }
@@ -2153,6 +2154,18 @@ toolbar {
   box-shadow: none; }
   .vertical.linked combobox:first-child box.linked button:focus:backdrop, .vertical.linked combobox:first-child box.linked button:hover:backdrop, .vertical.linked combobox:first-child box.linked button:active:backdrop, .vertical.linked combobox:first-child box.linked button:checked:backdrop, .vertical.linked combobox:only-child box.linked button:focus:backdrop, .vertical.linked combobox:only-child box.linked button:hover:backdrop, .vertical.linked combobox:only-child box.linked button:active:backdrop, .vertical.linked combobox:only-child box.linked button:checked:backdrop {
     box-shadow: none; }
+.vertical.linked spinbutton button:first-child {
+  border-width: 1px;
+  border-top-width: 0;
+  border-left-width: 1px; }
+.vertical.linked spinbutton button:last-child {
+  border-width: 0;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; }
 
 stackswitcher button.text-button {
   min-width: 80px; }
@@ -2524,8 +2537,8 @@ messagedialog.csd .dialog-action-area button {
     color: alpha(currentColor, 0.7); }
   .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
     padding: 0 0;
-    min-height: 17px;
-    min-width: 31px;
+    min-height: 14px;
+    min-width: 25px;
     border: none;
     border-radius: 0;
     color: transparent;
@@ -2590,12 +2603,12 @@ messagedialog.csd .dialog-action-area button {
   color: @titlebar_fg_color;
   background-color: @titlebar_bg_color;
   box-shadow: inset 1px 0 alpha(@light_shadow, 0.6), inset -1px 0 alpha(@light_shadow, 0.6), inset 0 1px alpha(@light_shadow, 0.6);
-  background-image: linear-gradient(to bottom, shade(mix(@titlebar_bg_color, @theme_selected_bg_color, 0.3), 0.8), shade(mix(@titlebar_bg_color, @theme_selected_bg_color, 0.3), 0.95)); }
+  background-image: url("assets/titlebar.png");
+  background-size: 100% 100%; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: @theme_unfocused_fg_color;
     background-color: shade(@theme_unfocused_bg_color, 0.95);
-    box-shadow: inset 1px 0 alpha(@light_shadow, 0.3), inset -1px 0 alpha(@light_shadow, 0.3), inset 0 1px alpha(@light_shadow, 0.3);
-    background-image: linear-gradient(to bottom, shade(@titlebar_bg_color, 0.85), shade(@titlebar_bg_color, 0.95)); }
+    box-shadow: inset 1px 0 alpha(@light_shadow, 0.3), inset -1px 0 alpha(@light_shadow, 0.3), inset 0 1px alpha(@light_shadow, 0.3); }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: @desktop_item_fg;
@@ -2752,7 +2765,7 @@ panel-toplevel.background na-tray-applet {
     border-width: 1px;
     border-radius: 3px;
     color: @theme_fg_color;
-    border-color: shade(@theme_bg_color, 0.75);
+    border-color: @borders;
     background-color: @theme_bg_color;
     background-image: linear-gradient(to bottom, @theme_bg_color 50%, shade(@theme_bg_color, 0.95) 51%, shade(@theme_bg_color, 0.94));
     box-shadow: inset 0 0 0 1px alpha(@light_shadow, 0.6); }

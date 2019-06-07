@@ -180,25 +180,26 @@ button {
   border-width: 1px;
   border-radius: 3px;
   color: @theme_fg_color;
-  border-color: shade(@theme_bg_color, 0.75);
-  background-color: @theme_bg_color;
-  background-image: linear-gradient(to bottom, @theme_bg_color 50%, shade(@theme_bg_color, 0.95) 51%, shade(@theme_bg_color, 0.94));
-  box-shadow: inset 0 0 0 1px alpha(@light_shadow, 0.6); }
+  border-color: shade(@dark_bg_color, 0.5);
+  background-color: @dark_bg_color;
+  background-image: linear-gradient(to bottom, @light_shadow, shade(@dark_bg_color, 0.98) 21%, shade(@dark_bg_color, 0.93) 51%, shade(@dark_bg_color, 0.87) 60%, shade(@dark_bg_color, 0.82) 70%, shade(@dark_bg_color, 0.9) 90%); }
   button:hover {
     color: @theme_fg_color;
     border-color: shade(@theme_selected_bg_color, 0.7);
     background-color: shade(@theme_selected_bg_color, 1.02);
-    background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.12), @theme_selected_bg_color 50%, shade(@theme_selected_bg_color, 0.95) 51%); }
+    background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.12), @theme_selected_bg_color 60%, shade(@theme_selected_bg_color, 0.95) 70%); }
+  button:focus {
+    background-image: linear-gradient(to bottom, @light_shadow, shade(@color_shadow, 0.98) 21%, shade(@color_shadow, 0.93) 51%, shade(@color_shadow, 0.87) 60%, shade(@color_shadow, 0.82) 70%, shade(@color_shadow, 0.9) 90%); }
   button:active, button:checked {
     color: @theme_fg_color;
     border-color: shade(@theme_selected_bg_color, 0.6);
     background-color: shade(@theme_selected_bg_color, 0.95);
-    background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.07), shade(@theme_selected_bg_color, 0.95) 50%, shade(@theme_selected_bg_color, 0.9) 51%); }
+    background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.07), shade(@theme_selected_bg_color, 0.95) 60%, shade(@theme_selected_bg_color, 0.9) 70%); }
     button:active:backdrop, button:checked:backdrop {
       color: @theme_unfocused_fg_color;
       border-color: shade(@theme_unfocused_bg_color, 0.85);
       background-color: shade(@theme_unfocused_bg_color, 0.85);
-      background-image: linear-gradient(to bottom, shade(@theme_unfocused_selected_bg_color, 1.07), shade(@theme_unfocused_selected_bg_color, 0.95) 50%, shade(@theme_unfocused_selected_bg_color, 0.9) 51%); }
+      background-image: linear-gradient(to bottom, shade(@theme_unfocused_selected_bg_color, 1.07), shade(@theme_unfocused_selected_bg_color, 0.95) 60%, shade(@theme_unfocused_selected_bg_color, 0.9) 70%); }
     button:active:disabled, button:checked:disabled {
       color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
       button:active:disabled:backdrop, button:checked:disabled:backdrop {
@@ -220,17 +221,17 @@ button.flat {
     color: @theme_fg_color;
     border-color: shade(@theme_selected_bg_color, 0.7);
     background-color: shade(@theme_selected_bg_color, 1.02);
-    background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.12), @theme_selected_bg_color 50%, shade(@theme_selected_bg_color, 0.95) 51%); }
+    background-image: linear-gradient(to bottom, @light_shadow, shade(@dark_bg_color, 0.98) 21%, shade(@dark_bg_color, 0.93) 51%, shade(@dark_bg_color, 0.87) 60%, shade(@dark_bg_color, 0.82) 70%, shade(@dark_bg_color, 0.9) 90%); }
   button.flat:active, button.flat:checked {
     color: @theme_fg_color;
     border-color: shade(@theme_selected_bg_color, 0.6);
     background-color: shade(@theme_selected_bg_color, 0.95);
-    background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.07), shade(@theme_selected_bg_color, 0.95) 50%, shade(@theme_selected_bg_color, 0.9) 51%); }
+    background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.07), shade(@theme_selected_bg_color, 0.95) 60%, shade(@theme_selected_bg_color, 0.9) 70%); }
     button.flat:active:backdrop, button.flat:checked:backdrop {
       color: @theme_unfocused_fg_color;
       border-color: shade(@theme_unfocused_bg_color, 0.85);
       background-color: shade(@theme_unfocused_bg_color, 0.85);
-      background-image: linear-gradient(to bottom, shade(@theme_unfocused_selected_bg_color, 1.07), shade(@theme_unfocused_selected_bg_color, 0.95) 50%, shade(@theme_unfocused_selected_bg_color, 0.9) 51%); }
+      background-image: linear-gradient(to bottom, shade(@theme_unfocused_selected_bg_color, 1.07), shade(@theme_unfocused_selected_bg_color, 0.95) 60%, shade(@theme_unfocused_selected_bg_color, 0.9) 70%); }
     button.flat:active:disabled, button.flat:checked:disabled {
       color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
       button.flat:active:disabled:backdrop, button.flat:checked:disabled:backdrop {
@@ -976,10 +977,12 @@ menubar, .menubar {
   border-style: none;
   background-color: @menubar_bg_color;
   color: @menubar_fg_color;
-  background-image: linear-gradient(to bottom, shade(@dark_bg_color, 1.05), shade(@dark_bg_color, 1.012) 40%, shade(@dark_bg_color, 0.98) 41%, shade(@dark_bg_color, 1.02) 89%, shade(@dark_bg_color, 1.05) 90%, shade(@dark_bg_color, 0.75)); }
+  background-image: url("assets/titlebar.png");
+  background-size: 100% 100%; }
   menubar:backdrop, .menubar:backdrop {
     color: @theme_unfocused_fg_color;
-    background-color: @theme_unfocused_bg_color; }
+    background-color: @theme_unfocused_bg_color;
+    background-image: url("assets/titlebar-backdrop.png"); }
 
 menubar > menuitem, .menubar > menuitem {
   padding: 3px 5px;
@@ -1108,10 +1111,10 @@ notebook {
     border-width: 1px;
     border-style: solid;
     border-radius: 0;
-    border-color: @borders;
+    border-color: shade(@dark_bg_color, 0.8);
     color: @theme_fg_color;
     background-color: @theme_bg_color;
-    background-image: linear-gradient(to bottom, @bg_color 50%, shade(@bg_color, 0.95) 51%, shade(@bg_color, 0.94)); }
+    background-image: linear-gradient(to bottom, @dark_bg_color 50%, shade(@dark_bg_color, 0.95) 51%, shade(@dark_bg_color, 0.94)); }
     notebook tab:hover {
       border-color: shade(@theme_selected_bg_color, 0.7);
       background-color: @theme_selected_bg_color;
@@ -1298,7 +1301,7 @@ progressbar {
       background-color: @progressbar_bg_color; }
   progressbar.horizontal trough {
     border: 1px solid #7d7d7d;
-    border-radius: 3px;
+    border-radius: 2px;
     background-image: linear-gradient(to bottom, @light_shadow 20%, #c9cacb 65%, @light_shadow 98%);
     box-shadow: inset -6px 0 4px 0 alpha(@dark_shadow, 0.08), inset 6px 0 4px 0 alpha(@dark_shadow, 0.08); }
     progressbar.horizontal trough:backdrop {
@@ -1313,7 +1316,7 @@ progressbar {
       background-color: @progressbar_bg_color; }
   progressbar.vertical trough {
     border: 1px solid #7d7d7d;
-    border-radius: 3px;
+    border-radius: 2px;
     background-image: linear-gradient(to right, @light_shadow 20%, #c9cacb 65%, @light_shadow 98%);
     box-shadow: inset -6px 0 4px 0 alpha(@dark_shadow, 0.08), inset 6px 0 4px 0 alpha(@dark_shadow, 0.08); }
     progressbar.vertical trough:backdrop {
@@ -1354,7 +1357,7 @@ levelbar.vertical.discrete block {
 levelbar block {
   border: none;
   padding: 2px;
-  border-radius: 3px;
+  border-radius: 2px;
   background-color: @theme_selected_bg_color; }
   levelbar block.high {
     background-color: shade(@success_color, 0.9); }
@@ -1497,16 +1500,16 @@ scrollbar {
   scrollbar.overlay-indicator {
     opacity: 1; }
   scrollbar.horizontal {
-    background-image: linear-gradient(to bottom, @bg_color, shade(@bg_color, 1.1)); }
+    background-image: linear-gradient(to bottom, @dark_bg_color, shade(@dark_bg_color, 1.1)); }
     scrollbar.horizontal slider {
       min-width: 45px;
       min-height: 14px;
       margin: 0;
-      border: 1px solid shade(@bg_color, 0.75);
+      border: 1px solid shade(@dark_bg_color, 0.75);
       border-radius: 3px;
       background-clip: padding-box;
       background-color: shade(@theme_bg_color, 0.6);
-      background: url("assets/handle-vert.png") no-repeat center center, linear-gradient(to bottom, @bg_color 50%, shade(@bg_color, 0.95) 51%, shade(@bg_color, 0.94)); }
+      background: url("assets/handle-vert.png") no-repeat center center, linear-gradient(to bottom, @dark_bg_color 50%, shade(@dark_bg_color, 0.95) 51%, shade(@dark_bg_color, 0.94)); }
       scrollbar.horizontal slider:hover {
         border-color: shade(@theme_selected_bg_color, 0.7);
         background-color: shade(@theme_bg_color, 0.6);
@@ -1531,16 +1534,16 @@ scrollbar {
         scrollbar.horizontal button.up:hover, scrollbar.horizontal button.up:active {
           background-image: url("assets/stepper-left-hover.png"); }
   scrollbar.vertical {
-    background-image: linear-gradient(to right, @bg_color, shade(@bg_color, 1.1)); }
+    background-image: linear-gradient(to right, @dark_bg_color, shade(@dark_bg_color, 1.1)); }
     scrollbar.vertical slider {
       min-width: 14px;
       min-height: 45px;
       margin: 0;
-      border: 1px solid shade(@bg_color, 0.75);
+      border: 1px solid shade(@dark_bg_color, 0.75);
       border-radius: 3px;
       background-clip: padding-box;
       background-color: shade(@theme_bg_color, 0.6);
-      background: url("assets/handle-vert.png") no-repeat center center, linear-gradient(to right, @bg_color 50%, shade(@bg_color, 0.95) 51%, shade(@bg_color, 0.94)); }
+      background: url("assets/handle-vert.png") no-repeat center center, linear-gradient(to right, @dark_bg_color 50%, shade(@dark_bg_color, 0.95) 51%, shade(@dark_bg_color, 0.94)); }
       scrollbar.vertical slider:hover {
         border-color: shade(@theme_selected_bg_color, 0.7);
         background-color: shade(@theme_bg_color, 0.6);
@@ -1772,11 +1775,11 @@ switch {
     min-width: 20px;
     min-height: 16px;
     margin: 0;
-    border: 1px solid shade(@borders, 0.8);
+    border: 1px solid shade(@dark_bg_color, 0.5);
     border-radius: 3px;
     color: @theme_fg_color;
     background-color: @theme_base_color;
-    background-image: linear-gradient(to bottom, @bg_color 50%, shade(@bg_color, 0.95) 51%, shade(@bg_color, 0.94)); }
+    background-image: linear-gradient(to bottom, @light_shadow, shade(@dark_bg_color, 0.98) 21%, shade(@dark_bg_color, 0.93) 51%, shade(@dark_bg_color, 0.87) 60%, shade(@dark_bg_color, 0.82) 70%, shade(@dark_bg_color, 0.9) 90%); }
   switch:disabled slider {
     background-color: @theme_disabled_base_color; }
   switch:disabled:backdrop slider {
@@ -1941,25 +1944,26 @@ toolbar {
     border-width: 1px;
     border-radius: 3px;
     color: @toolbar_fg_color;
-    border-color: shade(@toolbar_bg_color, 0.75);
+    border-color: @borders;
     background-color: @toolbar_bg_color;
-    background-image: linear-gradient(to bottom, @toolbar_bg_color 50%, shade(@toolbar_bg_color, 0.95) 51%, shade(@toolbar_bg_color, 0.94));
-    box-shadow: inset 0 0 0 1px alpha(@light_shadow, 0.6); }
+    background-image: linear-gradient(to bottom, @light_shadow, shade(@toolbar_bg_color, 0.98) 21%, shade(@toolbar_bg_color, 0.93) 51%, shade(@toolbar_bg_color, 0.87) 60%, shade(@toolbar_bg_color, 0.82) 70%, shade(@toolbar_bg_color, 0.9) 90%); }
     .primary-toolbar button:hover, .primary-toolbar .raised button:hover {
       color: @toolbar_fg_color;
       border-color: shade(@theme_selected_bg_color, 0.7);
       background-color: shade(@theme_selected_bg_color, 1.02);
-      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.12), @theme_selected_bg_color 50%, shade(@theme_selected_bg_color, 0.95) 51%); }
+      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.12), @theme_selected_bg_color 60%, shade(@theme_selected_bg_color, 0.95) 70%); }
+    .primary-toolbar button:focus, .primary-toolbar .raised button:focus {
+      background-image: linear-gradient(to bottom, @light_shadow, shade(@color_shadow, 0.98) 21%, shade(@color_shadow, 0.93) 51%, shade(@color_shadow, 0.87) 60%, shade(@color_shadow, 0.82) 70%, shade(@color_shadow, 0.9) 90%); }
     .primary-toolbar button:active, .primary-toolbar button:checked, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked {
       color: @toolbar_fg_color;
       border-color: shade(@theme_selected_bg_color, 0.6);
       background-color: shade(@theme_selected_bg_color, 0.95);
-      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.07), shade(@theme_selected_bg_color, 0.95) 50%, shade(@theme_selected_bg_color, 0.9) 51%); }
+      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.07), shade(@theme_selected_bg_color, 0.95) 60%, shade(@theme_selected_bg_color, 0.9) 70%); }
       .primary-toolbar button:active:backdrop, .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:active:backdrop, .primary-toolbar .raised button:checked:backdrop {
         color: @theme_unfocused_fg_color;
         border-color: shade(@theme_unfocused_bg_color, 0.85);
         background-color: shade(@theme_unfocused_bg_color, 0.85);
-        background-image: linear-gradient(to bottom, shade(@theme_unfocused_selected_bg_color, 1.07), shade(@theme_unfocused_selected_bg_color, 0.95) 50%, shade(@theme_unfocused_selected_bg_color, 0.9) 51%); }
+        background-image: linear-gradient(to bottom, shade(@theme_unfocused_selected_bg_color, 1.07), shade(@theme_unfocused_selected_bg_color, 0.95) 60%, shade(@theme_unfocused_selected_bg_color, 0.9) 70%); }
       .primary-toolbar button:active:disabled, .primary-toolbar button:checked:disabled, .primary-toolbar .raised button:active:disabled, .primary-toolbar .raised button:checked:disabled {
         color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
         .primary-toolbar button:active:disabled:backdrop, .primary-toolbar button:checked:disabled:backdrop, .primary-toolbar .raised button:active:disabled:backdrop, .primary-toolbar .raised button:checked:disabled:backdrop {
@@ -1988,25 +1992,26 @@ toolbar {
     border-width: 1px;
     border-radius: 3px;
     color: @toolbar_fg_color;
-    border-color: shade(@toolbar_bg_color, 0.75);
+    border-color: @borders;
     background-color: @toolbar_bg_color;
-    background-image: linear-gradient(to bottom, @toolbar_bg_color 50%, shade(@toolbar_bg_color, 0.95) 51%, shade(@toolbar_bg_color, 0.94));
-    box-shadow: inset 0 0 0 1px alpha(@light_shadow, 0.6); }
+    background-image: linear-gradient(to bottom, @light_shadow, shade(@toolbar_bg_color, 0.98) 21%, shade(@toolbar_bg_color, 0.93) 51%, shade(@toolbar_bg_color, 0.87) 60%, shade(@toolbar_bg_color, 0.82) 70%, shade(@toolbar_bg_color, 0.9) 90%); }
     .inline-toolbar toolbar button:hover {
       color: @toolbar_fg_color;
       border-color: shade(@theme_selected_bg_color, 0.7);
       background-color: shade(@theme_selected_bg_color, 1.02);
-      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.12), @theme_selected_bg_color 50%, shade(@theme_selected_bg_color, 0.95) 51%); }
+      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.12), @theme_selected_bg_color 60%, shade(@theme_selected_bg_color, 0.95) 70%); }
+    .inline-toolbar toolbar button:focus {
+      background-image: linear-gradient(to bottom, @light_shadow, shade(@color_shadow, 0.98) 21%, shade(@color_shadow, 0.93) 51%, shade(@color_shadow, 0.87) 60%, shade(@color_shadow, 0.82) 70%, shade(@color_shadow, 0.9) 90%); }
     .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
       color: @toolbar_fg_color;
       border-color: shade(@theme_selected_bg_color, 0.6);
       background-color: shade(@theme_selected_bg_color, 0.95);
-      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.07), shade(@theme_selected_bg_color, 0.95) 50%, shade(@theme_selected_bg_color, 0.9) 51%); }
+      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.07), shade(@theme_selected_bg_color, 0.95) 60%, shade(@theme_selected_bg_color, 0.9) 70%); }
       .inline-toolbar toolbar button:active:backdrop, .inline-toolbar toolbar button:checked:backdrop {
         color: @theme_unfocused_fg_color;
         border-color: shade(@theme_unfocused_bg_color, 0.85);
         background-color: shade(@theme_unfocused_bg_color, 0.85);
-        background-image: linear-gradient(to bottom, shade(@theme_unfocused_selected_bg_color, 1.07), shade(@theme_unfocused_selected_bg_color, 0.95) 50%, shade(@theme_unfocused_selected_bg_color, 0.9) 51%); }
+        background-image: linear-gradient(to bottom, shade(@theme_unfocused_selected_bg_color, 1.07), shade(@theme_unfocused_selected_bg_color, 0.95) 60%, shade(@theme_unfocused_selected_bg_color, 0.9) 70%); }
       .inline-toolbar toolbar button:active:disabled, .inline-toolbar toolbar button:checked:disabled {
         color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
         .inline-toolbar toolbar button:active:disabled:backdrop, .inline-toolbar toolbar button:checked:disabled:backdrop {
@@ -2153,6 +2158,18 @@ toolbar {
   box-shadow: none; }
   .vertical.linked combobox:first-child box.linked button:focus:backdrop, .vertical.linked combobox:first-child box.linked button:hover:backdrop, .vertical.linked combobox:first-child box.linked button:active:backdrop, .vertical.linked combobox:first-child box.linked button:checked:backdrop, .vertical.linked combobox:only-child box.linked button:focus:backdrop, .vertical.linked combobox:only-child box.linked button:hover:backdrop, .vertical.linked combobox:only-child box.linked button:active:backdrop, .vertical.linked combobox:only-child box.linked button:checked:backdrop {
     box-shadow: none; }
+.vertical.linked spinbutton button:first-child {
+  border-width: 1px;
+  border-top-width: 0;
+  border-left-width: 1px; }
+.vertical.linked spinbutton button:last-child {
+  border-width: 0;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; }
 
 stackswitcher button.text-button {
   min-width: 80px; }
@@ -2524,8 +2541,8 @@ messagedialog.csd .dialog-action-area button {
     color: alpha(currentColor, 0.7); }
   .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
     padding: 0 0;
-    min-height: 17px;
-    min-width: 31px;
+    min-height: 19px;
+    min-width: 19px;
     border: none;
     border-radius: 0;
     color: transparent;
@@ -2590,12 +2607,13 @@ messagedialog.csd .dialog-action-area button {
   color: @titlebar_fg_color;
   background-color: @titlebar_bg_color;
   box-shadow: inset 1px 0 alpha(@light_shadow, 0.6), inset -1px 0 alpha(@light_shadow, 0.6), inset 0 1px alpha(@light_shadow, 0.6);
-  background-image: linear-gradient(to bottom, shade(mix(@titlebar_bg_color, @theme_selected_bg_color, 0.3), 0.8), shade(mix(@titlebar_bg_color, @theme_selected_bg_color, 0.3), 0.95)); }
+  background-image: url("assets/titlebar.png");
+  background-size: 100% 100%; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: @theme_unfocused_fg_color;
     background-color: shade(@theme_unfocused_bg_color, 0.95);
-    box-shadow: inset 1px 0 alpha(@light_shadow, 0.3), inset -1px 0 alpha(@light_shadow, 0.3), inset 0 1px alpha(@light_shadow, 0.3);
-    background-image: linear-gradient(to bottom, shade(@titlebar_bg_color, 0.85), shade(@titlebar_bg_color, 0.95)); }
+    background-image: url("assets/titlebar-backdrop.png");
+    box-shadow: inset 1px 0 alpha(@light_shadow, 0.3), inset -1px 0 alpha(@light_shadow, 0.3), inset 0 1px alpha(@light_shadow, 0.3); }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: @desktop_item_fg;
@@ -2752,25 +2770,26 @@ panel-toplevel.background na-tray-applet {
     border-width: 1px;
     border-radius: 3px;
     color: @theme_fg_color;
-    border-color: shade(@theme_bg_color, 0.75);
+    border-color: @borders;
     background-color: @theme_bg_color;
-    background-image: linear-gradient(to bottom, @theme_bg_color 50%, shade(@theme_bg_color, 0.95) 51%, shade(@theme_bg_color, 0.94));
-    box-shadow: inset 0 0 0 1px alpha(@light_shadow, 0.6); }
+    background-image: linear-gradient(to bottom, @light_shadow, shade(@theme_bg_color, 0.98) 21%, shade(@theme_bg_color, 0.93) 51%, shade(@theme_bg_color, 0.87) 60%, shade(@theme_bg_color, 0.82) 70%, shade(@theme_bg_color, 0.9) 90%); }
     #XfceNotifyWindow.osd button:hover {
       color: @theme_fg_color;
       border-color: shade(@theme_selected_bg_color, 0.7);
       background-color: shade(@theme_selected_bg_color, 1.02);
-      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.12), @theme_selected_bg_color 50%, shade(@theme_selected_bg_color, 0.95) 51%); }
+      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.12), @theme_selected_bg_color 60%, shade(@theme_selected_bg_color, 0.95) 70%); }
+    #XfceNotifyWindow.osd button:focus {
+      background-image: linear-gradient(to bottom, @light_shadow, shade(@color_shadow, 0.98) 21%, shade(@color_shadow, 0.93) 51%, shade(@color_shadow, 0.87) 60%, shade(@color_shadow, 0.82) 70%, shade(@color_shadow, 0.9) 90%); }
     #XfceNotifyWindow.osd button:active, #XfceNotifyWindow.osd button:checked {
       color: @theme_fg_color;
       border-color: shade(@theme_selected_bg_color, 0.6);
       background-color: shade(@theme_selected_bg_color, 0.95);
-      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.07), shade(@theme_selected_bg_color, 0.95) 50%, shade(@theme_selected_bg_color, 0.9) 51%); }
+      background-image: linear-gradient(to bottom, shade(@theme_selected_bg_color, 1.07), shade(@theme_selected_bg_color, 0.95) 60%, shade(@theme_selected_bg_color, 0.9) 70%); }
       #XfceNotifyWindow.osd button:active:backdrop, #XfceNotifyWindow.osd button:checked:backdrop {
         color: @theme_unfocused_fg_color;
         border-color: shade(@theme_unfocused_bg_color, 0.85);
         background-color: shade(@theme_unfocused_bg_color, 0.85);
-        background-image: linear-gradient(to bottom, shade(@theme_unfocused_selected_bg_color, 1.07), shade(@theme_unfocused_selected_bg_color, 0.95) 50%, shade(@theme_unfocused_selected_bg_color, 0.9) 51%); }
+        background-image: linear-gradient(to bottom, shade(@theme_unfocused_selected_bg_color, 1.07), shade(@theme_unfocused_selected_bg_color, 0.95) 60%, shade(@theme_unfocused_selected_bg_color, 0.9) 70%); }
       #XfceNotifyWindow.osd button:active:disabled, #XfceNotifyWindow.osd button:checked:disabled {
         color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
         #XfceNotifyWindow.osd button:active:disabled:backdrop, #XfceNotifyWindow.osd button:checked:disabled:backdrop {

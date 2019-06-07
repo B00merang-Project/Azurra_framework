@@ -36,7 +36,7 @@
       border-radius: $button_radius;
       border-color: gtkmix(gtkshade($borders, 0.3), $theme_selected_bg_color, 0.25);
       background-color: $theme_bg_color;
-      background-image: linear-gradient(to left, rgba(0, 0, 0, 0.045) 1px, rgba(0, 0, 0, 0.006) 2px, transparent 2px), linear-gradient(to top, rgba(0, 0, 0, 0.13), transparent 3px), linear-gradient(to bottom, white, #fcfcfa 3px, #f6f6f3 7px, #f4f4f0 50%, #f0f0ea);
+      background-image: linear-gradient(to bottom, gtkshade($theme_bg_color, 1.015) 20%, $color_shadow 35%);
     }
 
     &:disabled {

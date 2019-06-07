@@ -109,30 +109,6 @@
           }
         }
       }
-      
-      .maximized &.maximize {
-        background: url('assets/restore-normal.png') 100% 100%;
-
-        &:hover {
-          background: url('assets/restore-hover.png') 100% 100%;
-        }
-
-        &:active {
-          background: url('assets/restore-active.png') 100% 100%;
-        }
-
-        &:backdrop {
-          background: url('assets/restore-backdrop.png') 100% 100%;
-          
-          &:hover {
-            background: url('assets/restore-backdrop-hover.png') 100% 100%;
-          }
-
-          &:active {
-            background: url('assets/restore-active.png') 100% 100%;
-          }
-        }
-      }
     }
 
     .tiled &:not(headerbar), .tiled &:backdrop:not(headerbar), .maximized &:not(headerbar), .maximized &:backdrop:not(headerbar) {
@@ -145,12 +121,12 @@
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
     background-size: 1px 100%;
-    background-image: url('assets/titlebar-focused-middle.png');
+    background-image: url('assets/titlebar.png');
 
     &:backdrop {
       color: $theme_unfocused_fg_color;
       background-color: $theme_unfocused_bg_color;
-      background-image: url('assets/titlebar-unfocused-middle.png');
+      background-image: url('assets/titlebar-backdrop.png');
     }
   }
 }

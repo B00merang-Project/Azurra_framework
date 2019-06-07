@@ -19,11 +19,10 @@
 
     // titlebutton 
     & .titlebutton {
-      
       &.close, &.maximize, &.minimize, &:not(separator) {
         padding: 0 0;
-        min-height: 17px;
-        min-width: 31px;
+        min-height: 19px;
+        min-width: 19px;
         border: none;
         border-radius: 0;
         color: transparent;
@@ -142,13 +141,14 @@
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
     box-shadow: inset 1px 0 gtkalpha($light_shadow, 0.6), inset -1px 0 gtkalpha($light_shadow, 0.6), inset 0 1px gtkalpha($light_shadow, 0.6);
-    background-image: linear-gradient(to bottom, gtkshade(gtkmix($titlebar_bg_color, $theme_selected_bg_color, 0.3),  0.8), gtkshade(gtkmix($titlebar_bg_color, $theme_selected_bg_color, 0.3), 0.95));
+    background-image: url('assets/titlebar.png');
+    background-size: 100% 100%;
 
     &:backdrop {
       color: $theme_unfocused_fg_color;
       background-color: gtkshade($theme_unfocused_bg_color, 0.95);
+      background-image: url('assets/titlebar-backdrop.png');
       box-shadow: inset 1px 0 gtkalpha($light_shadow, 0.3), inset -1px 0 gtkalpha($light_shadow, 0.3), inset 0 1px gtkalpha($light_shadow, 0.3);
-      background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 0.85), gtkshade($titlebar_bg_color, 0.95));
     }
   }
 }

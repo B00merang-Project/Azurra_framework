@@ -1,11 +1,11 @@
 /* Normal colors */
 @import url("gtk-widgets.css");
-@define-color bg_color #ECE9D8;
-@define-color fg_color #000000;
-@define-color base_color #FFFFFF;
-@define-color text_color #000000;
-@define-color selected_bg_color #1466c9;
-@define-color selected_fg_color #FFFFFF;
+@define-color bg_color #ebe9ed;
+@define-color fg_color #000;
+@define-color base_color #ffffff;
+@define-color text_color #4c4c4c;
+@define-color selected_bg_color #EDB081;
+@define-color selected_fg_color #262626;
 @define-color disabled_bg_color mix(@fg_color, @bg_color, 0.95);
 @define-color disabled_fg_color mix(@fg_color, @bg_color, 0.5);
 @define-color disabled_base_color shade(@disabled_bg_color, 1.05);
@@ -15,14 +15,14 @@
 @define-color unfocused_fg_color @fg_color;
 @define-color unfocused_base_color @base_color;
 @define-color unfocused_text_color @text_color;
-@define-color unfocused_selected_bg_color #1466c9;
+@define-color unfocused_selected_bg_color #8c8c8c;
 @define-color unfocused_selected_fg_color shade(@unfocused_text_color, 0.8);
 @define-color unfocused_disabled_bg_color mix(@fg_color, @bg_color, 0.98);
 @define-color unfocused_disabled_fg_color mix(@fg_color, @bg_color, 0.75);
 @define-color unfocused_disabled_base_color @unfocused_disabled_bg_color;
 @define-color unfocused_disabled_text_color @unfocused_disabled_fg_color;
 /* Darker color scheme */
-@define-color dark_bg_color #ECE9D8;
+@define-color dark_bg_color #f7f7f7;
 @define-color dark_fg_color #000000;
 /* Theme colors */
 @define-color theme_bg_color @bg_color;
@@ -76,12 +76,12 @@
 @define-color menubar_fg_color @fg_color;
 @define-color toolbar_bg_color @bg_color;
 @define-color toolbar_fg_color @fg_color;
-@define-color sidebar_bg_color #6c86dd;
-@define-color sidebar_fg_color #ffffff;
+@define-color sidebar_bg_color @base_color;
+@define-color sidebar_fg_color @fg_color;
 @define-color taskbar_bg_color #f6f6f6;
 @define-color taskbar_fg_color #000000;
 @define-color titlebar_bg_color @bg_color;
-@define-color titlebar_fg_color @fg_color;
+@define-color titlebar_fg_color #ffffff;
 @define-color headerbar_bg_color @bg_color;
 @define-color headerbar_fg_color @fg_color;
 @define-color terminal_bg_color @fg_color;
