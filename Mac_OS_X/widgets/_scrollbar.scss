@@ -1,10 +1,9 @@
-// scrollbar  
 @mixin scrollbar() {
   scrollbar {
     border: none;
     background-color: transparent;
 
-    & trough {
+    trough {
       border: none;
       background-color: $theme_base_color;
       box-shadow: inset 2px -2px 5px 1px gtkalpha($dark_shadow, 0.25);
@@ -27,7 +26,7 @@
     &.horizontal {
       border-top: none;
       
-      & slider {
+      slider {
         min-height: 13px;
         min-width: 45px;
         border-width: 2px;
@@ -43,12 +42,12 @@
         }
       }
       
-      & trough {
+      trough {
         margin-right: -5px;
         margin-left: -5px;
       }
 
-      & button {
+      button {
         border: none;
         padding: 0;
         border-radius: 0;
@@ -73,7 +72,7 @@
     &.vertical {
       border-left: none;
       
-      & slider {
+      slider {
         min-height: 45px;
         min-width: 13px;
         padding: 0;
@@ -90,12 +89,12 @@
         }
       }
       
-      & trough {
+      trough {
         margin-bottom: -5px;
         margin-top: -5px;
       }
 
-      & button {
+      button {
         border: none;
         padding: 0;
         border-radius: 0;

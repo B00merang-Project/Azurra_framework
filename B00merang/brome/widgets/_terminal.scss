@@ -9,14 +9,14 @@
   }
 
   terminal-screen-container {
-    &, & scrollbar:not(slider) {
+    &, scrollbar:not(slider) {
       &, &:backdrop {
         border-color: transparent;
         background-color: transparent;
       }
     }
     
-    & scrollbar slider {
+    scrollbar slider {
       &, &:backdrop {
         background-color: gtkmix($terminal_fg_color, $terminal_bg_color, 0.2);
         

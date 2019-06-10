@@ -1,6 +1,5 @@
-// linked widgets
 @mixin linked_widgets() {
-  .linked {
+  .linked, .osd .linked {
     &, .inline-toolbar &, .primary-toolbar & {
       button, .raised button {
         border-radius: 0;
@@ -78,8 +77,7 @@
     }
   }
   
-  // vertical
-  .vertical.linked {
+  .vertical.linked, .osd .vertical.linked {
     button {
       border-left-width: 1px;
       border-top-width: 0;

@@ -1,4 +1,3 @@
-// toolbar 
 @mixin toolbar() {
   toolbar {
     padding: 4px;
@@ -16,12 +15,12 @@
       background-color: $theme_disabled_bg_color;
     }
 
-    & button.flat {
+    button.flat {
       @include flat_buttons($theme_base_color, $toolbar_fg_color, $borders, $secondary_button_radius);
     }
 
     // menubar toolbars 
-    & menubar {
+    menubar {
       -GtkToolbar-button-relief: normal;
     }
   }

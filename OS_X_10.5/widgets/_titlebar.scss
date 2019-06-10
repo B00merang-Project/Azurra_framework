@@ -1,25 +1,22 @@
-// titlebar
 @mixin titlebar() {
   .titlebar {
     border-bottom: none;
     border-radius: $csd_radius $csd_radius 0px 0px;
 
-    & .title {
+    .title {
       padding-left: 12px;
       padding-right: 12px;
       font-weight: bold;
     }
 
-    & .subtitle {
+    .subtitle {
       font-size: smaller;
       padding-left: 12px;
       padding-right: 12px;
       color: gtkalpha(currentColor, 0.7);
     }
 
-    // titlebutton 
-    & .titlebutton {
-      
+    .titlebutton {
       &.close, &.maximize, &.minimize, &:not(separator) {
         padding: 2px 2px;
         border: none;

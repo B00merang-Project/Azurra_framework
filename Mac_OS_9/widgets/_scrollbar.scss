@@ -1,16 +1,15 @@
-// scrollbar  
 @mixin scrollbar() {
   scrollbar {
     border: 1px solid $dark_shadow;
     background-color: gtkshade($theme_bg_color, 0.8);
     box-shadow: inset 2px 2px gtkshade($theme_bg_color, 0.6), inset -2px 0 gtkshade($theme_bg_color, 0.95);
 
-    & trough {
+    trough {
       border: none;
       border-radius: 0;
     }
 
-    & button {
+    button {
       box-shadow: inset 1px 1px $light_shadow, inset -1px -1px gtkshade($theme_bg_color, 0.85);
       
       &:active {
@@ -29,19 +28,15 @@
       }
     }
 
-    // not implemented in windows 10
     &.fine-tune {
-      
     }
 
     &.overlay-indicator {
       opacity: 1;
-      // not implemented
     }
 
     &.horizontal {
-    
-      & slider {
+      slider {
         min-width: 45px;
         min-height: 14px;
         margin: 0;
@@ -56,7 +51,7 @@
         background-repeat: no-repeat;
       }
 
-      & button {
+      button {
         min-height: 14px;
         min-width: 14px;
         margin-top: -1px;
@@ -73,8 +68,7 @@
     }
 
     &.vertical {
-      
-      & slider {
+      slider {
         min-width: 14px;
         min-height: 45px;
         margin: 0;
@@ -89,7 +83,7 @@
         background-repeat: no-repeat;
       }
 
-      & button {
+      button {
         min-height: 14px;
         min-width: 14px;
         margin-left: -1px;

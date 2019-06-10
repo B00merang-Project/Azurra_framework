@@ -1,16 +1,3 @@
-@mixin notebook_button() {
-  & button, &:checked button, & button.flat, &:checked button.flat {
-    &, &:hover, &:active, &:checked, &:disabled {
-      &:focus, &:backdrop {
-        color: $theme_fg_color;
-        border-color: transparent;
-        background-color: transparent;
-        box-shadow: none;
-      }
-    }
-  }
-}
-
 @mixin notebook() {
   notebook {
     padding: 0;
@@ -21,7 +8,7 @@
       border-style: solid;
       border-color: $borders;
 
-      & > header {
+      > header {
         margin: -1px;
         
         &.top {
@@ -52,11 +39,11 @@
       }
     }
 
-    & > stack:not(:only-child) {
+    > stack:not(:only-child) {
       background-color: $theme_base_color;
     }
 
-    & tab {
+    tab {
       padding: 6px 20px;
       border: 2px solid transparent;
       border-radius: 0;
@@ -76,7 +63,7 @@
       }
     }
 
-    & > header {
+    > header {
       padding-top: 2px;
       background-color: $dark_bg_color;
       
@@ -87,7 +74,7 @@
       &.top {
         box-shadow: 0 1px $borders;
 
-        & > tabs > tab {
+        > tabs > tab {
           border-bottom: none;
 
           &:checked {
@@ -102,7 +89,7 @@
         padding-top: 0;
         box-shadow: 0 -1px $borders;
 
-        & > tabs > tab {
+        > tabs > tab {
           border-top: none;
 
           &:checked {
@@ -116,7 +103,7 @@
       &.right {
         box-shadow: -1px 0 $borders;
 
-        & > tabs > tab {
+        > tabs > tab {
           border-left: none;
 
           &:checked {
@@ -130,7 +117,7 @@
       &.left {
         box-shadow: 1px 0 $borders;
 
-        & > tabs > tab {
+        > tabs > tab {
           border-right: none;
 
           &:checked {
@@ -143,7 +130,7 @@
     }
 
     // alignments
-    & > header.top > tabs > arrow.up, & > header.bottom > tabs > arrow.up {
+    > header.top > tabs > arrow.up, > header.bottom > tabs > arrow.up {
       -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
 
       &:last-child {
@@ -151,7 +138,7 @@
       }
     }
 
-    & > header.top > tabs > arrow.down, & > header.bottom > tabs > arrow.down {
+    > header.top > tabs > arrow.down, > header.bottom > tabs > arrow.down {
       -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
 
       &:first-child {
@@ -159,7 +146,7 @@
       }
     }
 
-    & > header.left > tabs > arrow.up, & > header.right > tabs > arrow.up {
+    > header.left > tabs > arrow.up, > header.right > tabs > arrow.up {
       -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 
       &:last-child {
@@ -167,7 +154,7 @@
       }
     }
 
-    & > header.left > tabs > arrow.down, & > header.right > tabs > arrow.down {
+    > header.left > tabs > arrow.down, > header.right > tabs > arrow.down {
       -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
 
       &:first-child {
@@ -175,7 +162,7 @@
       }
     }
 
-    & > header > tabs > arrow {
+    > header > tabs > arrow {
       color: $theme_fg_color;
 
       &:hover {

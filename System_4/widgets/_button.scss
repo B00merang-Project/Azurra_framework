@@ -1,12 +1,12 @@
 // button
-@mixin normal_buttons($bg, $fg, $border) {
+@mixin normal_buttons($bg, $fg, $br) {
   & {
     padding: 4px 8px;
     border-style: solid;
     border-width: 1px;
     border-radius: $button_radius;
     color: $fg;
-    border-color: $border;
+    border-color: $br;
     background-color: $bg;
     outline-offset: 1px;
     outline-width: 3px;
@@ -35,7 +35,7 @@
   }
 }
 
-@mixin flat_buttons($bg, $fg, $border)
+@mixin flat_buttons($bg, $fg, $br)
 {
   & {
     border-color: transparent;
@@ -44,7 +44,7 @@
     background-color: transparent;
 
     &:hover {
-      border-color: $border;
+      border-color: $br;
       color: $fg;
       background-color: $bg;
     }

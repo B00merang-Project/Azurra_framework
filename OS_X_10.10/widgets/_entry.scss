@@ -1,4 +1,3 @@
-// entry 
 @mixin entry() {
   entry {
     padding: 5px;
@@ -18,7 +17,7 @@
       box-shadow: 0 0 0 4px $theme_selected_base_color;
     }
 
-    &:selected, &:selected:focus, & selection, & selection:focus {
+    &:selected, &:selected:focus, selection, selection:focus {
       color: $theme_selected_text_color;
       background-color: $theme_selected_base_color;
     }
@@ -42,7 +41,7 @@
       background-color: $theme_unfocused_base_color;
     }
 
-    & > image {
+    > image {
       &.left {
         padding-right: 5px;
       }
@@ -52,7 +51,7 @@
       }
     }
 
-    & progress {
+    progress {
       margin: -4px -4px;
       border-width: 0 0 2px;
       border-radius: 0;

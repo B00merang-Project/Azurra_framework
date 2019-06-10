@@ -1,8 +1,7 @@
-// linked widgets
 @mixin linked_widgets() {
-  .linked {
+  .linked, .osd .linked {
     &, .inline-toolbar &, .primary-toolbar & {
-      & button, & .raised button {
+      button, .raised button {
         border-radius: 0;
         border-left-width: 0;
 
@@ -26,7 +25,7 @@
         }
       }
       
-      & entry {
+      entry {
         border-radius: 0;
         border-left-width: 0;
 
@@ -50,8 +49,8 @@
         }
       }
 
-      & combobox {
-        & box.linked button {
+      combobox {
+        box.linked button {
           border-radius: 0;
           border-left-width: 0;
         }
@@ -78,9 +77,8 @@
     }
   }
   
-  // vertical
-  .vertical.linked {
-    & button {
+  .vertical.linked, .osd .vertical.linked {
+    button {
       border-left-width: 1px;
       border-top-width: 0;
       border-radius: 0;
@@ -106,7 +104,7 @@
       }
     }
     
-    & entry {
+    entry {
       border-left-width: 1px;
       border-top-width: 0;
       border-radius: 0;
@@ -132,8 +130,8 @@
       }
     }
 
-    & combobox {
-      & box.linked button {
+    combobox {
+      box.linked button {
         border-left-width: 1px;
         border-top-width: 0;
         border-radius: 0;
@@ -161,7 +159,6 @@
     }
   }
   
-  // stack switcher 
   stackswitcher button.text-button {
     min-width: 80px;
   }

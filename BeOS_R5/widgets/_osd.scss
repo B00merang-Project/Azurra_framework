@@ -1,4 +1,3 @@
-// osd
 @mixin osd() {
   .background.osd {
     color: $osd_fg;
@@ -53,7 +52,7 @@
     background-color: $osd_bg;
     color: $osd_fg;
 
-    & button {
+    button {
       padding: 2px 4px;
       border-width: 1px;
       border-style: solid;
@@ -86,14 +85,14 @@
       }
     }
 
-    & separator {
+    separator {
       color: gtkshade($osd_bg, 0.9);
     }
   }
 
   .osd scale, scale.osd {
 
-    & slider {
+    slider {
       background-color: $theme_selected_bg_color;
 
       &:hover {
@@ -105,7 +104,7 @@
       }
     }
     
-    & trough {
+    trough {
       border-color: gtkmix($osd_bg, $osd_fg, 0.15);
 
       &:disabled {
@@ -114,7 +113,7 @@
       }
     }
 
-    & highlight {
+    highlight {
       border-color: $theme_selected_bg_color;
       background-color: $theme_selected_bg_color;
     }
@@ -127,14 +126,14 @@
   .osd progressbar, progressbar.osd {
     padding: 0;
 
-    & trough {
+    trough {
       padding: 0;
       border-style: none;
       border-radius: 0;
       background-color: transparent;
     }
 
-    & progress {
+    progress {
       border-style: none;
       border-radius: 0;
       background-color: $theme_selected_bg_color;
@@ -142,11 +141,11 @@
   }
 
   .osd scrollbar, scrollbar.osd {
-    & trough {
+    trough {
       background-color: transparent;
     }
 
-    & slider {
+    slider {
       border-width: 0px;
       border-radius: 6px;
       background-color: gtkmix($osd_base, $osd_fg, 0.21);

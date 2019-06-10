@@ -1,4 +1,3 @@
-// inline-toolbar
 @mixin inline_toolbar() {
   .inline-toolbar toolbar {
     -GtkToolbar-button-relief: normal;
@@ -17,7 +16,7 @@
       border-radius: 0;
     }
 
-    & button {
+    button {
       @include normal_buttons($toolbar_bg_color, $toolbar_fg_color, $borders);
     }
   } 

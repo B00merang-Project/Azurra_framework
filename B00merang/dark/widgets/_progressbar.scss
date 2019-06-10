@@ -1,4 +1,3 @@
-// progressbar 
 @mixin progressbar() {
   progressbar {
     padding: 0;
@@ -6,7 +5,7 @@
     color: gtkmix($theme_fg_color, $theme_selected_fg_color, 0.5);
     background-color: transparent;
 
-    & progress {
+    progress {
       border: none;
       border-radius: $progressbar_radius;
       background-color: $theme_selected_bg_color;
@@ -16,7 +15,7 @@
       }
     }
 
-    & trough {
+    trough {
       border: 1px solid $borders;
       border-radius: $progressbar_radius;
       background-color: gtkalpha($dark_shadow, 0.2);

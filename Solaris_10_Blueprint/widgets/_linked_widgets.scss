@@ -1,25 +1,22 @@
-// linked widgets
 @mixin linked_widgets() {
-  .linked {
-    &, .inline-toolbar &, .primary-toolbar & {
-      & button, & .raised button {
-        margin: 1px;
-      }
-      
-      & entry {
-        margin: 1px;
-      }
+  .linked, .inline-toolbar .linked, .primary-toolbar .linked {
+    button, .raised button {
+      margin: 1px;
+    }
+    
+    entry {
+      margin: 1px;
+    }
 
-      & combobox {
-        margin: 1px;
-      }
+    combobox {
+      margin: 1px;
+    }
+    
+    spinbutton {
+      margin: 1px;
       
-      & spinbutton {
-        margin: 1px;
-        
-        & entry, & button {
-          margin: 0;
-        }
+      entry, button {
+        margin: 0;
       }
     }
   }

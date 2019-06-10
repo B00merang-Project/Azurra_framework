@@ -1,7 +1,6 @@
-// sidebar
 @mixin sidebar() {
   .sidebar {
-    & frame, &.frame {
+    frame, &.frame {
       border: none;
     }
 
@@ -18,7 +17,7 @@
   stacksidebar row {
     padding: 10px 4px;
 
-    & > label {
+    > label {
       padding-left: 6px;
       padding-right: 6px;
     }
@@ -29,19 +28,19 @@
   }
 
   placessidebar {
-    & > viewport.frame {
+    > viewport.frame {
       border-style: none;
     }
 
-    & row {
+    row {
       min-height: 36px;
       padding: 0px;
 
-      & > revealer {
+      > revealer {
         padding: 0 14px;
       }
 
-      & image.sidebar-icon {
+      image.sidebar-icon {
         opacity: 1;
 
         &:dir(ltr) {
@@ -53,7 +52,7 @@
         }
       }
 
-      & label.sidebar-label {
+      label.sidebar-label {
         &:dir(ltr) {
           padding-right: 2px;
         }

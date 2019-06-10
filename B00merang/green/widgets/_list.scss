@@ -3,7 +3,7 @@
     color: $theme_fg_color;
     background-color: $theme_bg_color;
 
-    & row {
+    row {
       padding: 2px;
 
       &:hover {
@@ -20,7 +20,7 @@
           color: $theme_selected_fg_color;
           background-color: $theme_selected_bg_color;
           
-          & switch:checked {
+          switch:checked {
             background-color: shade($theme_selected_bg_color, 1.15);
             border-color: shade($theme_selected_bg_color, 1.15);
           }
@@ -37,7 +37,8 @@
         }
       }
     }
-    & separator, & separator:backdrop {
+    
+    separator, separator:backdrop {
       background: none; // no lines on sidebar
     }
   }

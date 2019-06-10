@@ -1,4 +1,3 @@
-// progressbar 
 @mixin progressbar() {
   progressbar {
     padding: 0;
@@ -6,7 +5,7 @@
     color: gtkmix($theme_fg_color, $theme_selected_fg_color, 0.5);
     background-color: transparent;
 
-    & progress {
+    progress {
       border: none;
       border-radius: 0;
       background-color: $theme_selected_bg_color;
@@ -18,7 +17,7 @@
       }
     }
 
-    & trough {
+    trough {
       border-width: 1px;
       border-style: solid;
       border-radius: $progressbar_radius;
@@ -32,7 +31,7 @@
     }
     
     &.vertical {
-      & progress {
+      progress {
         background-image: linear-gradient(to top, transparent 20%, gtkalpha($theme_selected_bg_color, 0.03), transparent 80%), linear-gradient(to right, #accbf3, #83cbf8 50%, #56c0f8 51%, #addef6);
         background-size: 16px 20px, auto;
 
@@ -41,7 +40,7 @@
         }
       }
 
-      & trough {
+      trough {
         background-image: linear-gradient(to right, gtkshade($theme_bg_color, 0.9), gtkshade($theme_bg_color, 0.95) 33%, gtkshade($theme_bg_color, 0.98));
 
         &:backdrop {

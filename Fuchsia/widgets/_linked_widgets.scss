@@ -1,6 +1,5 @@
-// linked widgets
 @mixin linked_widgets() {
-  .linked, .inline-toolbar {
+  .linked, .inline-toolbar .linked {
     button, .raised button {
       border-radius: 0;
 
@@ -64,7 +63,6 @@
     }
   }
   
-  // vertical
   .vertical.linked {
     button {
       border-radius: 0;
@@ -143,7 +141,6 @@
     }
   }
   
-  // stack switcher 
   stackswitcher button.text-button {
     min-width: 80px;
   }

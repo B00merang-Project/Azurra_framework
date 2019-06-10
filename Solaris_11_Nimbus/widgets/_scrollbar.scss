@@ -1,10 +1,9 @@
-// scrollbar  
 @mixin scrollbar() {
   scrollbar {
     border: none;
     background-color: transparent;
 
-    & trough {
+    trough {
       border: none;
       border-radius: 0;
     }
@@ -26,7 +25,7 @@
       border-top: none;
       background-image: url('assets/trough-h.png');
       
-      & slider {
+      slider {
         min-height: 0px;
         min-width: 45px;
         margin: 1px;
@@ -41,7 +40,7 @@
         border-image: url("assets/scrollbar-slider-h.png") 7 11 7 11 stretch;
       }
 
-      & button {
+      button {
         border: none;
         padding: 0;
         border-radius: 0;
@@ -67,7 +66,7 @@
       border-left: none;
       background-image: url('assets/trough-v.png');
       
-      & slider {
+      slider {
         min-height: 45px;
         min-width: 0px;
         padding: 0;
@@ -82,7 +81,7 @@
         border-image: url("assets/scrollbar-slider-v.png") 11 7 11 7 stretch;
       }
 
-      & button {
+      button {
         border: none;
         padding: 0;
         border-radius: 0;
