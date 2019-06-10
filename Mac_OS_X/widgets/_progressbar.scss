@@ -6,7 +6,7 @@
     color: gtkmix($theme_fg_color, $theme_selected_fg_color, 0.5);
     background-color: transparent;
 
-    & progress {
+    progress {
       border: none;
       border-radius: 0;
       box-shadow: 0 -1px #2b5dbe;
@@ -19,7 +19,7 @@
       }
     }
 
-    & trough {
+    trough {
       border-width: 1px;
       border-style: solid;
       border-radius: 0;
@@ -37,7 +37,7 @@
     }
     
     &.vertical {
-      & progress {
+      progress {
         box-shadow: -1px 0 #2b5dbe;
         border-left-color: #2b5dbe;
         background-image: linear-gradient(to top, transparent, gtkalpha($dark_shadow, 0.05), transparent), 
@@ -48,8 +48,8 @@
         }
       }
 
-      & trough {
-        border-left: gtkshade($theme_bg_color, 0.68);
+      trough {
+        border-left-color: gtkshade($theme_bg_color, 0.68);
         border-top-color: gtkshade($theme_bg_color, 0.8);
         border-bottom-color: gtkshade($theme_bg_color, 0.8);
         border-right-color: gtkshade($theme_bg_color, 0.9);
@@ -102,7 +102,7 @@
       }
     }
 
-    infobar & trough, row:selected & trough {
+    infobar trough, row:selected trough {
       background-color: gtkalpha($dark_shadow, 0.1);
     }
   }
