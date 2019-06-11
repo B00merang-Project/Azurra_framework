@@ -1,5 +1,4 @@
-// button
-@mixin normal_buttons($bg, $fg, $border) {
+@mixin normal_buttons($bg, $fg, $br) {
   & {
     color: $fg;
     padding: 4px 8px;
@@ -49,7 +48,7 @@
   }
 }
 
-@mixin flat_buttons($bg, $fg, $border)
+@mixin flat_buttons($bg, $fg, $br)
 {
   & {
     border-color: transparent;
@@ -89,7 +88,6 @@
 
     &:backdrop {
       color: gtkmix($fg, $theme_unfocused_bg_color, 0.3);
-      background-color: gtkmix($bg, $fg, 0.2);
     }
   }
 }

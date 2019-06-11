@@ -1,9 +1,3 @@
-// NOTE
-// If reimplemented elsewhere, replace alpha($theme_fg_color)
-// with alpha($dark_shadow). It's just a hack for better visibility in the dark theme.
-// Also replace gtkmix($theme_unfocused_bg_color, $theme_unfocused_fg_color, 0.05)
-// with gtkshade($theme_unfocused_bg_color, 0.95)
-
 @mixin progressbar() {
   progressbar {
     padding: 0;
@@ -11,7 +5,7 @@
     color: gtkmix($theme_fg_color, $theme_selected_fg_color, 0.5);
     background-color: transparent;
 
-    & progress {
+    progress {
       border: none;
       border-radius: $progressbar_radius;
       background-color: $progressbar_bg_color;
@@ -21,7 +15,7 @@
       }
     }
 
-    & trough {
+    trough {
       border: 1px solid gtkshade($borders, 0.85);
       border-radius: $progressbar_radius;
       background-color: gtkalpha($theme_fg_color, 0.1);

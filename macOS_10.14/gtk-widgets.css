@@ -122,7 +122,7 @@ button:visited {
     *:link:visited, *:selected
     button:visited:link, *:selected
     button:visited {
-      color: mix(@selected_fg_color, @selected_bg_color, 0.4); }
+      color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.4); }
   button:link > label:hover, button:visited > label:hover,
   *:link:hover,
   button:hover:link,
@@ -132,7 +132,7 @@ button:visited {
     *:link:hover, *:selected
     button:hover:link, *:selected
     button:hover:visited {
-      color: mix(@selected_fg_color, @selected_bg_color, 0.9); }
+      color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.9); }
   button:link > label:active, button:visited > label:active,
   *:link:active,
   button:active:link,
@@ -142,7 +142,7 @@ button:visited {
     *:link:active, *:selected
     button:active:link, *:selected
     button:active:visited {
-      color: mix(@selected_fg_color, @selected_bg_color, 0.8); }
+      color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.8); }
   button:link > label:backdrop:backdrop:hover, button:visited > label:backdrop:backdrop:hover, button:link > label:backdrop:backdrop:hover:selected, button:visited > label:backdrop:backdrop:hover:selected, button:link > label:backdrop, button:visited > label:backdrop,
   *:link:backdrop:backdrop:hover,
   button:backdrop:backdrop:hover:link,
@@ -153,7 +153,7 @@ button:visited {
   *:link:backdrop,
   button:backdrop:link,
   button:backdrop:visited {
-    color: @selected_bg_color; }
+    color: mix(@link_color, @theme_unfocused_selected_bg_color, 0.3); }
   button:link > label:selected, button:visited > label:selected, *:selected button:link > label, *:selected button:visited > label,
   *:link:selected,
   button:selected:link,
@@ -161,7 +161,7 @@ button:visited {
   *:link, *:selected
   button:link, *:selected
   button:visited {
-    color: mix(@selected_fg_color, @selected_bg_color, 0.8); }
+    color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.8); }
 
 button:link, button:visited {
   border-color: transparent;

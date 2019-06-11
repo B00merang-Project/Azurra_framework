@@ -109,29 +109,40 @@ assistant .sidebar {
   color: @theme_fg_color;
   background-color: @theme_bg_color; }
 
-button:link > label, button:visited > label, *:link, button:link, button:visited {
+button:link > label, button:visited > label,
+*:link,
+button:link,
+button:visited {
   color: @link_color; }
-  button:link > label:visited, button:visited > label:visited, *:link:visited, button:visited {
+  button:link > label:visited, button:visited > label:visited,
+  *:link:visited,
+  button:visited {
     color: mix(@link_color, @theme_fg_color, 0.2); }
-    *:selected button:link > label:visited, *:selected button:visited > label:visited,
-    *:selected *:link:visited,
-    *:selected button:visited:link,
-    *:selected button:visited {
-      color: mix(@selected_fg_color, @selected_bg_color, 0.4); }
-  button:link > label:hover, button:visited > label:hover, *:link:hover, button:hover:link, button:hover:visited {
+    *:selected button:link > label:visited, *:selected button:visited > label:visited, *:selected
+    *:link:visited, *:selected
+    button:visited:link, *:selected
+    button:visited {
+      color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.4); }
+  button:link > label:hover, button:visited > label:hover,
+  *:link:hover,
+  button:hover:link,
+  button:hover:visited {
     color: shade(@link_color, 1.1); }
-    *:selected button:link > label:hover, *:selected button:visited > label:hover,
-    *:selected *:link:hover,
-    *:selected button:hover:link,
-    *:selected button:hover:visited {
-      color: mix(@selected_fg_color, @selected_bg_color, 0.9); }
-  button:link > label:active, button:visited > label:active, *:link:active, button:active:link, button:active:visited {
+    *:selected button:link > label:hover, *:selected button:visited > label:hover, *:selected
+    *:link:hover, *:selected
+    button:hover:link, *:selected
+    button:hover:visited {
+      color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.9); }
+  button:link > label:active, button:visited > label:active,
+  *:link:active,
+  button:active:link,
+  button:active:visited {
     color: @link_color; }
-    *:selected button:link > label:active, *:selected button:visited > label:active,
-    *:selected *:link:active,
-    *:selected button:active:link,
-    *:selected button:active:visited {
-      color: mix(@selected_fg_color, @selected_bg_color, 0.8); }
+    *:selected button:link > label:active, *:selected button:visited > label:active, *:selected
+    *:link:active, *:selected
+    button:active:link, *:selected
+    button:active:visited {
+      color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.8); }
   button:link > label:backdrop:backdrop:hover, button:visited > label:backdrop:backdrop:hover, button:link > label:backdrop:backdrop:hover:selected, button:visited > label:backdrop:backdrop:hover:selected, button:link > label:backdrop, button:visited > label:backdrop,
   *:link:backdrop:backdrop:hover,
   button:backdrop:backdrop:hover:link,
@@ -142,15 +153,15 @@ button:link > label, button:visited > label, *:link, button:link, button:visited
   *:link:backdrop,
   button:backdrop:link,
   button:backdrop:visited {
-    color: @selected_bg_color; }
+    color: mix(@link_color, @theme_unfocused_selected_bg_color, 0.3); }
   button:link > label:selected, button:visited > label:selected, *:selected button:link > label, *:selected button:visited > label,
   *:link:selected,
   button:selected:link,
-  button:selected:visited,
-  *:selected *:link,
-  *:selected button:link,
-  *:selected button:visited {
-    color: mix(@selected_fg_color, @selected_bg_color, 0.8); }
+  button:selected:visited, *:selected
+  *:link, *:selected
+  button:link, *:selected
+  button:visited {
+    color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.8); }
 
 button:link, button:visited {
   border-color: transparent;
@@ -173,7 +184,7 @@ button {
   background-color: @theme_bg_color; }
   button:hover {
     color: @theme_fg_color;
-    border-color: @theme_fg_color;
+    border-color: @borders;
     background-color: @theme_bg_color; }
   button:active, button:checked {
     color: @theme_selected_fg_color;
@@ -1535,8 +1546,7 @@ filechooser placessidebar.sidebar row, filechooser placessidebar.sidebar view ro
     color: @theme_selected_fg_color;
     background-color: @theme_selected_bg_color; }
 
-.nautilus-window.csd.background,
-.nautilus-window placessidebar list {
+.nautilus-window.csd.background, .nautilus-window placessidebar list {
   background-color: @sidebar_bg_color; }
 
 .nautilus-window placessidebar.sidebar row.sidebar-row {
@@ -1811,14 +1821,14 @@ headerbar, headerbar:not(.titlebar) {
   headerbar button, headerbar:not(.titlebar) button {
     padding: 4px 8px;
     border-style: solid;
-    border-color: @borders;
+    border-color: transparent;
     border-width: 2px;
     border-radius: 0px;
     color: @headerbar_fg_color;
     background-color: @headerbar_bg_color; }
     headerbar button:hover, headerbar:not(.titlebar) button:hover {
       color: @headerbar_fg_color;
-      border-color: @headerbar_fg_color;
+      border-color: transparent;
       background-color: @headerbar_bg_color; }
     headerbar button:active, headerbar button:checked, headerbar:not(.titlebar) button:active, headerbar:not(.titlebar) button:checked {
       color: @theme_selected_fg_color;
@@ -1908,7 +1918,7 @@ toolbar {
     background-color: @toolbar_bg_color; }
     .primary-toolbar button:hover, .primary-toolbar .raised button:hover {
       color: @toolbar_fg_color;
-      border-color: @toolbar_fg_color;
+      border-color: @borders;
       background-color: @toolbar_bg_color; }
     .primary-toolbar button:active, .primary-toolbar button:checked, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked {
       color: @theme_selected_fg_color;
@@ -1950,7 +1960,7 @@ toolbar {
     background-color: @toolbar_bg_color; }
     .inline-toolbar toolbar button:hover {
       color: @toolbar_fg_color;
-      border-color: @toolbar_fg_color;
+      border-color: @borders;
       background-color: @toolbar_bg_color; }
     .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
       color: @theme_selected_fg_color;
@@ -2127,7 +2137,8 @@ treeview {
   color: @theme_text_color;
   background-color: @theme_base_color; }
   .view:not(treeview) {
-    border-radius: 0px; }
+    border-radius: 0px;
+    -gtk-outline-radius: 0px; }
   .view:disabled {
     color: @theme_disabled_fg_color;
     background-color: @theme_disabled_bg_color; }
@@ -2676,7 +2687,7 @@ panel-toplevel.background na-tray-applet {
     background-color: @theme_bg_color; }
     #XfceNotifyWindow.osd button:hover {
       color: @theme_fg_color;
-      border-color: @theme_fg_color;
+      border-color: @borders;
       background-color: @theme_bg_color; }
     #XfceNotifyWindow.osd button:active, #XfceNotifyWindow.osd button:checked {
       color: @theme_selected_fg_color;
