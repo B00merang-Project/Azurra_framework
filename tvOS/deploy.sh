@@ -1,9 +1,7 @@
 #!/bin/bash
 
-echo "WAY NOT READY!"
-exit
-
-echo "Copying watchOS"
-#cp -aR assets ~/Github/watchOS/gtk-3.0
-cp -aR gtk.css ~/Github/watchOS/gtk-3.0
-cp -aR gtk-widgets.css ~/Github/watchOS/gtk-3.0
+echo "Copying tvOS"
+#cp -aR assets ~/Github/tvOS/gtk-3.0
+cp -aR gtk.css ~/Github/tvOS/gtk-3.0
+cp -aR gtk-dark.css ~/Github/tvOS/gtk-3.0
+cp -aR gtk-widgets.css ~/Github/tvOS/gtk-3.0
