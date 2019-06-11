@@ -1,4 +1,3 @@
-// toolbar 
 @mixin toolbar() {
   toolbar {
     padding: 4px;
@@ -22,7 +21,7 @@
       background-color: $theme_disabled_bg_color;
     }
 
-    & button.flat {
+    button.flat {
       //@include flat_buttons($toolbar_bg_color, $toolbar_fg_color, $borders);
       background-image: none;
       background-color: transparent;
@@ -39,8 +38,6 @@
       
       &:active, &:checked {
         color: $toolbar_fg_color;
-        
-        // TODO: remix as colors later
         background-image: linear-gradient(to bottom, #82a7e8, #5d78be 40%, #153c9c 41%, #235db6 66%, #50c3e8);
         box-shadow: inset 0 0 1px 1px gtkalpha($dark_shadow, 0.45), inset 0 1px gtkshade($theme_bg_color, 0.35);
       }

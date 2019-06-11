@@ -1,4 +1,3 @@
-// entry 
 @mixin entry() {
   entry {
     padding: 5px;
@@ -13,7 +12,7 @@
     border-right-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
     box-shadow: inset 1px 0 gtkshade($theme_bg_color, 0.65), inset 0 1px gtkshade($theme_bg_color, 0.65), inset -1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 -1px gtkmix($theme_bg_color, $light_shadow, 0.7);
 
-    &:selected, &:selected:focus, & selection, & selection:focus {
+    &:selected, &:selected:focus, selection, selection:focus {
       color: $theme_selected_fg_color;
       background-color: $theme_selected_bg_color;
     }
@@ -36,7 +35,7 @@
       background-color: $theme_unfocused_base_color;
     }
 
-    & > image {
+    > image {
       &.left {
         padding-right: 5px;
       }
@@ -46,7 +45,7 @@
       }
     }
 
-    & progress {
+    progress {
       margin: -4px -4px;
       border-width: 0 0 2px;
       border-radius: 0;

@@ -1,4 +1,3 @@
-// primary-toolbar 
 @mixin primary_toolbar() {
   .primary-toolbar {
     -GtkWidget-window-dragging: true;
@@ -16,7 +15,7 @@
       background-color: $theme_unfocused_bg_color;
     }
 
-    & button, & .raised button {
+    button, .raised button {
       @include normal_buttons($toolbar_bg_color, $toolbar_fg_color, $borders);
     }
   }

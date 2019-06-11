@@ -1,15 +1,14 @@
-// scrollbar  
 @mixin scrollbar() {
   scrollbar {
     border: 1px solid $borders;
     background-color: $theme_bg_color;
 
-    & trough {
+    trough {
       border: none;
       border-radius: 0;
     }
 
-    & button {
+    button {
       &, &:active, &:disabled {
         &, &:backdrop {
           padding: 0;
@@ -24,19 +23,16 @@
       }
     }
 
-    // not implemented in windows 10
     &.fine-tune {
       
     }
 
     &.overlay-indicator {
       opacity: 1;
-      // not implemented
     }
 
     &.horizontal {
-    
-      & slider {
+      slider {
         min-width: 45px;
         min-height: 14px;
         margin: 0;
@@ -48,7 +44,7 @@
         margin: -1px;
       }
 
-      & button {
+      button {
         min-height: 13px;
         min-width: 16px;
       
@@ -71,8 +67,7 @@
     }
 
     &.vertical {
-      
-      & slider {
+      slider {
         min-width: 14px;
         min-height: 45px;
         margin: 0;
@@ -84,7 +79,7 @@
         margin: -1px;
       }
 
-      & button {
+      button {
         min-height: 16px;
         min-width: 13px;
 

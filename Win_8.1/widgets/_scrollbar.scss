@@ -1,10 +1,9 @@
-// scrollbar  
 @mixin scrollbar() {
   scrollbar {
     border: none;
     background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
 
-    & trough {
+    trough {
       border: none;
       border-radius: 0;
     }
@@ -13,7 +12,7 @@
       background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
     }
     
-    & button {
+    button {
       &:hover {
         border-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
         background-image: none;
@@ -36,7 +35,7 @@
       }
     }
 
-    & slider {
+    slider {
       min-width: 45px;
       min-height: 14px;
       margin: 0;
@@ -79,7 +78,7 @@
         margin: 0;
         background-color: transparent;
 
-        & slider {
+        slider {
           margin: 0;
           min-width: 2px;
           min-height: 2px;
@@ -103,7 +102,7 @@
         }
         
         // hide overlay scrollbutton
-        & button {
+        button {
           min-width: 0;
           min-height: 0;
           padding: 0;
@@ -120,11 +119,11 @@
     }
 
     &.horizontal {
-      & slider {
+      slider {
         min-width: 40px;
       }
 
-      & button {
+      button {
         min-height: 6px;
         min-width: 6px;
       
@@ -147,11 +146,11 @@
     }
 
     &.vertical {
-      & slider {
+      slider {
         min-height: 40px;
       }
 
-      & button {
+      button {
         min-height: 6px;
         min-width: 6px;
 

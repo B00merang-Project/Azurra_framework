@@ -1,11 +1,10 @@
-// scale
 @mixin scale() {
   scale {
     min-height: 10px;
     min-width: 10px;
     padding: 12px;
 
-    & fill, & trough {
+    fill, trough {
       border: 1px solid $borders;
       border-radius: 0;
       background-color: $theme_bg_color;
@@ -20,7 +19,7 @@
       }
     }
 
-    & highlight {
+    highlight {
       border: none;
       border-radius: 4px;
       background-color: transparent;
@@ -39,7 +38,7 @@
     }
 
     &.horizontal {
-      & indicator {
+      indicator {
         min-height: 6px;
         min-width: 1px;
       }
@@ -50,7 +49,7 @@
     }
 
     &.vertical {
-      & indicator {
+      indicator {
         min-height: 1px;
         min-width: 6px;
       }
@@ -73,17 +72,17 @@
         min-width: 14px;
       }
 
-      & slider {
+      slider {
         margin-top: -6px;
         margin-bottom: -9px;
       }
 
-      & fill, & trough, & highlight {
+      fill, trough, highlight {
         border-radius: 0;
         -gtk-outline-radius: 0;
       }
 
-      & marks {
+      marks {
         &.top {
           margin-bottom: 8px;
           margin-top: -13px;
@@ -106,7 +105,7 @@
       }
     }
 
-    & slider {
+    slider {
       min-height: 21px;
       min-width: 15px;
       margin: -6px;
@@ -139,7 +138,7 @@
     }
     
     &.vertical {
-      & slider {
+      slider {
         min-height: 15px;
         min-width: 21px;
         margin: -5px;
@@ -164,11 +163,11 @@
       }
     }
 
-    & value {
+    value {
       color: gtkalpha(currentColor,0.35);
     }
 
-    & marks {
+    marks {
       color: gtkalpha(currentColor,0.35);
 
       &.top {

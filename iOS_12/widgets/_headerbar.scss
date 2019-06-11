@@ -42,7 +42,7 @@
     }
 
     button {
-      @include headerbar_buttons(transparent, $headerbar_fg_color, transparent);
+      @include headerbar_buttons(gtkmix($theme_bg_color, $theme_fg_color, 0.1), $headerbar_fg_color, $borders);
     }
 
     entry {

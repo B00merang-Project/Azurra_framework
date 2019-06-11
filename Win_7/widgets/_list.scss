@@ -3,7 +3,7 @@
     color: $theme_fg_color;
     background-color: $theme_base_color;
 
-    & row {
+    row {
       padding: 2px;
       border: 1px solid transparent;
 
@@ -26,7 +26,7 @@
           background-color: $theme_selected_bg_color;
           background-image: linear-gradient(to bottom, gtkshade($theme_selected_bg_color, 1.02), gtkshade($theme_selected_bg_color, 0.98));
           
-          & switch:checked {
+          switch:checked {
           }
         }
 
@@ -41,7 +41,7 @@
         }
       }
     }
-    & separator, & separator:backdrop {
+    separator, separator:backdrop {
       background: none; // no lines on sidebar
     }
   }

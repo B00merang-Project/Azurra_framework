@@ -1,10 +1,9 @@
-// scrollbar  
 @mixin scrollbar() {
   scrollbar {
     border: none;
     background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
 
-    & trough {
+    trough {
       border: none;
       border-radius: 0;
     }
@@ -13,7 +12,7 @@
       background-color: $theme_unfocused_base_color;
     }
 
-    & slider {
+    slider {
       min-width: 4px;
       min-height: 4px;
       margin: 0;
@@ -37,7 +36,7 @@
     }
 
     &.fine-tune {
-      & slider {
+      slider {
         min-width: 6px;
         min-height: 6px;
         border-radius: $scrollbar_radius;
@@ -61,11 +60,11 @@
     &.horizontal {
       border: none;
       
-      & slider {
+      slider {
         min-width: 40px;
       }
 
-      & button {
+      button {
         &.down {
           -gtk-icon-source: -gtk-icontheme("pan-right-symbolic");
         }
@@ -79,11 +78,11 @@
     &.vertical {
       border: none;
       
-      & slider {
+      slider {
         min-height: 40px;
       }
 
-      & button {
+      button {
         &.down {
           -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
         }

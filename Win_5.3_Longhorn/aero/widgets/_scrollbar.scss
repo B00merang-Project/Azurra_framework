@@ -1,10 +1,9 @@
-// scrollbar  
 @mixin scrollbar() {
   scrollbar {
     border: none;
     background-color: gtkshade($theme_bg_color, 0.9);
 
-    & trough {
+    trough {
       border: none;
       border-radius: 0;
     }
@@ -13,7 +12,7 @@
       background-color: gtkshade($theme_bg_color, 0.9);
     }
     
-    & button {
+    button {
       &, &:hover, &:active, &:disabled {
         &, &:backdrop {
           padding: 3px;
@@ -27,20 +26,17 @@
       }
     }
 
-    // not implemented in windows 10
     &.fine-tune {
-      
     }
 
     &.overlay-indicator {
       opacity: 1;
-      // not implemented
     }
 
     &.horizontal {
       background-image: linear-gradient(to bottom, $dark_bg_color, gtkshade($dark_bg_color, 1.1));
     
-      & slider {
+      slider {
         min-width: 45px;
         min-height: 14px;
         margin: 0;
@@ -71,7 +67,7 @@
         }
       }
 
-      & button {
+      button {
         min-height: 6px;
         min-width: 10px;
       
@@ -96,7 +92,7 @@
     &.vertical {
       background-image: linear-gradient(to right, $dark_bg_color, gtkshade($dark_bg_color, 1.1));
       
-      & slider {
+      slider {
         min-width: 14px;
         min-height: 45px;
         margin: 0;
@@ -127,7 +123,7 @@
         }
       }
 
-      & button {
+      button {
         min-height: 10px;
         min-width: 6px;
 

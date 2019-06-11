@@ -1,12 +1,11 @@
-// button
-@mixin normal_buttons($bg, $fg, $border) {
+@mixin normal_buttons($bg, $fg, $br) {
   & {
     padding: 3px;
     border-style: solid;
     border-width: 1px;
     border-radius: $button_radius;
     color: $fg;
-    border-color: gtkshade($borders, 0.8);
+    border-color: $br;
     background-color: $bg;
     background-image: linear-gradient(to bottom, $bg, gtkshade($bg, 0.9));
 
@@ -69,7 +68,7 @@
   }
 }
 
-@mixin flat_buttons($bg, $fg, $border)
+@mixin flat_buttons($bg, $fg, $br)
 {
   & {
     border-color: transparent;
@@ -138,7 +137,7 @@
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    @include normal_buttons($theme_bg_color, $theme_fg_color, gtkshade($borders, 0.85));
     
     &.flat {
       @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);

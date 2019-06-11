@@ -1,36 +1,26 @@
-// sidebar
 @mixin sidebar() {
   filechooser {
-
-    &.csd.background,
-    & placessidebar list {
+    &.csd.background, placessidebar list {
       background-color: $sidebar_bg_color;
     }
 
-    & placessidebar.sidebar row,
-    & placessidebar.sidebar view row,
-    & placessidebar.sidebar row.sidebar-row {
+    placessidebar.sidebar row, placessidebar.sidebar view row, placessidebar.sidebar row.sidebar-row {
       border: none;
       color: $sidebar_fg_color;
 
-      &:hover,
-      &:selected:hover {
+      &:hover, &:selected:hover {
         color: $sidebar_fg_color;
         background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.15);
       }
 
-      &:selected,
-      &:selected:hover,
-      &:selected:focus {
+      &:selected, &:selected:hover, &:selected:focus {
         color: $theme_selected_fg_color;
         background-color: $theme_selected_bg_color;
       }
     }
   }
 
-  // nautilus-specific rules
-  .nautilus-window.csd.background,
-  .nautilus-window placessidebar list {
+  .nautilus-window.csd.background, .nautilus-window placessidebar list {
     background-color: $sidebar_bg_color;
   }
 
@@ -57,7 +47,7 @@
   }
 
   .sidebar {
-    & frame, &.frame {
+    frame, &.frame {
       border: none;
     }
 
@@ -89,7 +79,7 @@
       background-color: $theme_selected_bg_color;
     }
 
-    & > label {
+    > label {
       padding-left: 6px;
       padding-right: 6px;
     }
@@ -100,19 +90,19 @@
   }
 
   placessidebar {
-    & > viewport.frame {
+    > viewport.frame {
       border-style: none;
     }
 
-    & row {
+    row {
       min-height: 36px;
       padding: 0px;
 
-      & > revealer {
+      > revealer {
         padding: 0 14px;
       }
 
-      & image.sidebar-icon {
+      image.sidebar-icon {
         opacity: 0.75;
 
         &:dir(ltr) {
@@ -124,7 +114,7 @@
         }
       }
 
-      & label.sidebar-label {
+      label.sidebar-label {
         &:dir(ltr) {
           padding-right: 2px;
         }

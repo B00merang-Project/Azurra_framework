@@ -4,7 +4,7 @@
     border: none;
     background-color: gtkshade($theme_bg_color, 0.9);
 
-    & trough {
+    trough {
       border: none;
       border-radius: 0;
     }
@@ -13,7 +13,7 @@
       background-color: gtkshade($theme_unfocused_bg_color, 0.9);
     }
 
-    & slider {
+    slider {
       min-width: 4px;
       min-height: 4px;
       margin: 0;
@@ -40,7 +40,7 @@
     }
 
     &.fine-tune {
-      & slider {
+      slider {
         min-width: 6px;
         min-height: 6px;
         border-radius: $scrollbar_radius;
@@ -63,7 +63,7 @@
       margin: 0;
       background-color: transparent;
 
-      & slider {
+      slider {
         margin: 0;
         min-width: 1px;
         min-height: 1px;
@@ -93,11 +93,11 @@
     }
 
     &.horizontal {
-      & slider {
+      slider {
         min-width: 40px;
       }
 
-      & button {
+      button {
         &.down {
           -gtk-icon-source: -gtk-icontheme("pan-right-symbolic");
         }
@@ -109,11 +109,11 @@
     }
 
     &.vertical {
-      & slider {
+      slider {
         min-height: 40px;
       }
 
-      & button {
+      button {
         &.down {
           -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
         }

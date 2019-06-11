@@ -1,7 +1,6 @@
-// headerbar
-@mixin headerbar_buttons($bg, $fg, $border)
+@mixin headerbar_buttons($bg, $fg, $br)
 {
-  @include normal_buttons($bg, $fg, gtkshade($borders, 0.9));
+  @include normal_buttons($bg, $fg, $br);
 }
 
 @mixin headerbar() {
@@ -28,13 +27,11 @@
       border-radius: 0;
     }
 
-    // titles implemented in .titlebar class
-
     button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, transparent);
+      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $borders);
     }
 
-    & entry {
+    entry {
       padding: 6px 8px;
     }
   }
