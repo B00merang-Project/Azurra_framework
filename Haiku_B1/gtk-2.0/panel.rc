@@ -1,0 +1,130 @@
+########################################################################
+# Panels
+########################################################################
+
+style "panel"
+{
+### Panel's bg ###
+	xthickness = 0
+	ythickness = 0
+	bg_pixmap[NORMAL] = "/panel/panel-bg.png" 
+}
+
+style "panel_buttons"
+{
+	engine "pixmap" 
+	{
+### Buttons ###
+
+## Normal
+      	image
+		{
+			function = BOX
+			state = NORMAL
+			file = "panel/panel-button.png"
+			border = {4, 4, 4, 4}
+			stretch = TRUE			
+		}
+
+## Prelight
+		image
+		{
+			function = BOX
+			state = PRELIGHT
+			file = "panel/panel-button.png"
+			border = {2, 2, 2, 2}
+			stretch = TRUE
+		}
+
+## Insensitive
+		image
+		{
+			function = BOX
+			state = INSENSITIVE
+			file = "panel/panel-button.png"
+			border = {4, 4, 4, 4}
+			stretch = TRUE
+		} 	
+
+## Active	
+		image
+		{
+			function = BOX
+			state = ACTIVE
+			file = "panel/panel-button-active.png"
+			border = {4, 4, 4, 4}
+			stretch = TRUE
+		}  
+	}
+}
+
+widget "*PanelWidget*" style "panel_buttons"
+widget "*PanelApplet*" style "panel_buttons"
+widget "*fast-user-switch*"	style "panel"
+widget "*gdm-user-switch*" style "panel"
+widget "*CPUFreq*Applet*" style "panel"
+widget "*indicator-applet*"	style "panel"
+class "PanelApp*" style "panel"
+widget_class "*PanelButton*." style "panel_buttons"
+class "PanelToplevel*" style "panel"
+widget_class "*PanelToplevel*" style "panel"
+#widget_class "*Mail*" style "panel" # Disabled to fix Evolution bug.
+#class "*Panel*" style "panel" # Disabled to fix bug.
+widget_class "*notif*" style "panel"
+widget_class "*Notif*" style "panel"
+widget_class "*Tray*" style "panel" 
+widget_class "*tray*" style "panel"
+widget_class "*computertemp*" style "panel"
+widget_class "*Applet*Tomboy*" style "panel"
+widget_class "*Applet*Netstatus*" style "panel"
+
+# Fix for Gnome-GlobalMenu, not sure if there's a better solution atm
+widget "*GlobalMenu*" style "panel"
+
+
+style "panel-light"
+{
+	fg[NORMAL]	= @fg_color
+}
+
+# Fixes for tooltip text in some apps.
+widget_class "*Notif*Beagle*" style "panel-light"
+widget_class "*Notif*Brasero*" style "panel-light"
+
+# XFCE panel theming.
+widget "*Xfce*Panel*" style "panel"
+class "*Xfce*Panel*" style "panel"
+
+style "handle" 
+{
+	engine "pixmap" 
+	{
+### Hanlde ###
+		image
+		{
+			function = HANDLE
+			file = "panel/handle-v.png"
+			border = {4, 4, 4, 4}
+			stretch = TRUE
+			orientation	= VERTICAL
+		}	
+	
+		image
+		{
+			function = HANDLE
+			file = "panel/handle-h.png"
+			border = {4, 4, 4, 4}
+			stretch = TRUE
+			orientation	= HORIZONTAL
+		}
+	}
+}
+class "PanelAppletFrame" style "handle"
+
+style "panelapplets" = "panel"
+{
+	xthickness = 1
+	ythickness = 2
+}
+
+widget_class "*Panel*Applet*" style:highest "panelapplets"
