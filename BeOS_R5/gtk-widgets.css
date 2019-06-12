@@ -105,39 +105,28 @@ assistant .sidebar {
   color: @theme_fg_color;
   background-color: @theme_bg_color; }
 
-button:link > label, button:visited > label,
-*:link,
-button:link,
-button:visited {
+button:link > label, button:visited > label, *:link, button:link, button:visited {
   color: @link_color; }
-  button:link > label:visited, button:visited > label:visited,
-  *:link:visited,
-  button:visited {
+  button:link > label:visited, button:visited > label:visited, *:link:visited, button:visited {
     color: mix(@link_color, @theme_fg_color, 0.2); }
-    *:selected button:link > label:visited, *:selected button:visited > label:visited, *:selected
-    *:link:visited, *:selected
-    button:visited:link, *:selected
-    button:visited {
+    *:selected button:link > label:visited, *:selected button:visited > label:visited,
+    *:selected *:link:visited,
+    *:selected button:visited:link,
+    *:selected button:visited {
       color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.4); }
-  button:link > label:hover, button:visited > label:hover,
-  *:link:hover,
-  button:hover:link,
-  button:hover:visited {
+  button:link > label:hover, button:visited > label:hover, *:link:hover, button:hover:link, button:hover:visited {
     color: shade(@link_color, 1.1); }
-    *:selected button:link > label:hover, *:selected button:visited > label:hover, *:selected
-    *:link:hover, *:selected
-    button:hover:link, *:selected
-    button:hover:visited {
+    *:selected button:link > label:hover, *:selected button:visited > label:hover,
+    *:selected *:link:hover,
+    *:selected button:hover:link,
+    *:selected button:hover:visited {
       color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.9); }
-  button:link > label:active, button:visited > label:active,
-  *:link:active,
-  button:active:link,
-  button:active:visited {
+  button:link > label:active, button:visited > label:active, *:link:active, button:active:link, button:active:visited {
     color: @link_color; }
-    *:selected button:link > label:active, *:selected button:visited > label:active, *:selected
-    *:link:active, *:selected
-    button:active:link, *:selected
-    button:active:visited {
+    *:selected button:link > label:active, *:selected button:visited > label:active,
+    *:selected *:link:active,
+    *:selected button:active:link,
+    *:selected button:active:visited {
       color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.8); }
   button:link > label:backdrop:backdrop:hover, button:visited > label:backdrop:backdrop:hover, button:link > label:backdrop:backdrop:hover:selected, button:visited > label:backdrop:backdrop:hover:selected, button:link > label:backdrop, button:visited > label:backdrop,
   *:link:backdrop:backdrop:hover,
@@ -153,10 +142,10 @@ button:visited {
   button:link > label:selected, button:visited > label:selected, *:selected button:link > label, *:selected button:visited > label,
   *:link:selected,
   button:selected:link,
-  button:selected:visited, *:selected
-  *:link, *:selected
-  button:link, *:selected
-  button:visited {
+  button:selected:visited,
+  *:selected *:link,
+  *:selected button:link,
+  *:selected button:visited {
     color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.8); }
 
 button:link, button:visited {
@@ -186,7 +175,10 @@ button {
   button:active, button:checked {
     background-color: shade(@theme_bg_color, 0.9);
     box-shadow: inset -3px -3px shade(@theme_base_color, 0.9), inset -1px -1px shade(@theme_bg_color, 0.9), inset 2px 2px shade(@theme_bg_color, 0.85), inset 1px 1px shade(@theme_bg_color, 0.65); }
+    button:active:backdrop, button:checked:backdrop {
+      box-shadow: inset -3px -3px shade(@theme_base_color, 0.9), inset -1px -1px shade(@theme_bg_color, 0.9), inset 2px 2px shade(@theme_bg_color, 0.85), inset 1px 1px shade(@theme_bg_color, 0.65); }
     button:active:disabled, button:checked:disabled {
+      background-color: @theme_disabled_bg_color;
       color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
   button:disabled {
     color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.5);
@@ -211,7 +203,8 @@ button.flat {
   button.flat:disabled {
     border-color: transparent;
     color: alpha(@theme_fg_color, 0.8);
-    background-color: transparent; }
+    background-color: transparent;
+    box-shadow: none; }
     button.flat:disabled:backdrop {
       border-color: transparent;
       color: alpha(@theme_fg_color, 0.7);
@@ -493,7 +486,6 @@ entry {
   color: @theme_text_color;
   caret-color: currentColor; }
   entry:active, entry:focus {
-    border-right-color: shade(@borders, 1.05);
     box-shadow: inset 0 0 0 1px #0000dd; }
   entry:selected, entry:selected:focus, entry selection, entry selection:focus {
     color: @theme_selected_fg_color;
@@ -1736,7 +1728,10 @@ headerbar, headerbar:not(.titlebar) {
     headerbar button:active, headerbar button:checked, headerbar:not(.titlebar) button:active, headerbar:not(.titlebar) button:checked {
       background-color: shade(@headerbar_bg_color, 0.9);
       box-shadow: inset -3px -3px shade(@theme_base_color, 0.9), inset -1px -1px shade(@theme_bg_color, 0.9), inset 2px 2px shade(@theme_bg_color, 0.85), inset 1px 1px shade(@theme_bg_color, 0.65); }
+      headerbar button:active:backdrop, headerbar button:checked:backdrop, headerbar:not(.titlebar) button:active:backdrop, headerbar:not(.titlebar) button:checked:backdrop {
+        box-shadow: inset -3px -3px shade(@theme_base_color, 0.9), inset -1px -1px shade(@theme_bg_color, 0.9), inset 2px 2px shade(@theme_bg_color, 0.85), inset 1px 1px shade(@theme_bg_color, 0.65); }
       headerbar button:active:disabled, headerbar button:checked:disabled, headerbar:not(.titlebar) button:active:disabled, headerbar:not(.titlebar) button:checked:disabled {
+        background-color: @theme_disabled_bg_color;
         color: mix(@headerbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
     headerbar button:disabled, headerbar:not(.titlebar) button:disabled {
       color: mix(@headerbar_fg_color, @theme_unfocused_disabled_fg_color, 0.5);
@@ -1775,7 +1770,8 @@ toolbar {
     toolbar button.flat:disabled {
       border-color: transparent;
       color: alpha(@toolbar_fg_color, 0.8);
-      background-color: transparent; }
+      background-color: transparent;
+      box-shadow: none; }
       toolbar button.flat:disabled:backdrop {
         border-color: transparent;
         color: alpha(@toolbar_fg_color, 0.7);
@@ -1815,7 +1811,10 @@ toolbar {
     .primary-toolbar button:active, .primary-toolbar button:checked, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked {
       background-color: shade(@toolbar_bg_color, 0.9);
       box-shadow: inset -3px -3px shade(@theme_base_color, 0.9), inset -1px -1px shade(@theme_bg_color, 0.9), inset 2px 2px shade(@theme_bg_color, 0.85), inset 1px 1px shade(@theme_bg_color, 0.65); }
+      .primary-toolbar button:active:backdrop, .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:active:backdrop, .primary-toolbar .raised button:checked:backdrop {
+        box-shadow: inset -3px -3px shade(@theme_base_color, 0.9), inset -1px -1px shade(@theme_bg_color, 0.9), inset 2px 2px shade(@theme_bg_color, 0.85), inset 1px 1px shade(@theme_bg_color, 0.65); }
       .primary-toolbar button:active:disabled, .primary-toolbar button:checked:disabled, .primary-toolbar .raised button:active:disabled, .primary-toolbar .raised button:checked:disabled {
+        background-color: @theme_disabled_bg_color;
         color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
     .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled {
       color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.5);
@@ -1848,7 +1847,10 @@ toolbar {
     .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
       background-color: shade(@toolbar_bg_color, 0.9);
       box-shadow: inset -3px -3px shade(@theme_base_color, 0.9), inset -1px -1px shade(@theme_bg_color, 0.9), inset 2px 2px shade(@theme_bg_color, 0.85), inset 1px 1px shade(@theme_bg_color, 0.65); }
+      .inline-toolbar toolbar button:active:backdrop, .inline-toolbar toolbar button:checked:backdrop {
+        box-shadow: inset -3px -3px shade(@theme_base_color, 0.9), inset -1px -1px shade(@theme_bg_color, 0.9), inset 2px 2px shade(@theme_bg_color, 0.85), inset 1px 1px shade(@theme_bg_color, 0.65); }
       .inline-toolbar toolbar button:active:disabled, .inline-toolbar toolbar button:checked:disabled {
+        background-color: @theme_disabled_bg_color;
         color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
     .inline-toolbar toolbar button:disabled {
       color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.5);
@@ -1886,10 +1888,6 @@ toolbar {
   .linked entry:only-child, .inline-toolbar .linked entry:only-child, .primary-toolbar .linked entry:only-child {
     border-width: 1px;
     border-radius: 2px; }
-  .linked entry:focus, .linked entry:last-child:focus, .inline-toolbar .linked entry:focus, .inline-toolbar .linked entry:last-child:focus, .primary-toolbar .linked entry:focus, .primary-toolbar .linked entry:last-child:focus {
-    box-shadow: inset 0 0 0 1px #0000dd, -1px 0 shade(@borders, 1.05); }
-  .linked entry:first-child:focus, .inline-toolbar .linked entry:first-child:focus, .primary-toolbar .linked entry:first-child:focus {
-    box-shadow: inset 0 0 0 1px #0000dd; }
 .linked combobox box.linked button, .inline-toolbar .linked combobox box.linked button, .primary-toolbar .linked combobox box.linked button {
   border-radius: 0;
   border-left-width: 0; }
@@ -1943,10 +1941,6 @@ toolbar {
     border-bottom-right-radius: 2px; }
   .vertical.linked entry:only-child {
     border-top-width: 1px; }
-  .vertical.linked entry:focus, .vertical.linked entry:last-child:focus {
-    box-shadow: inset 0 0 0 1px #0000dd, 0 -1px shade(@borders, 1.05); }
-  .vertical.linked entry:first-child:focus {
-    box-shadow: inset 0 0 0 1px #0000dd; }
 .vertical.linked combobox box.linked button {
   border-left-width: 1px;
   border-top-width: 0;
@@ -2604,7 +2598,10 @@ panel-toplevel.background na-tray-applet {
     #XfceNotifyWindow.osd button:active, #XfceNotifyWindow.osd button:checked {
       background-color: shade(@theme_bg_color, 0.9);
       box-shadow: inset -3px -3px shade(@theme_base_color, 0.9), inset -1px -1px shade(@theme_bg_color, 0.9), inset 2px 2px shade(@theme_bg_color, 0.85), inset 1px 1px shade(@theme_bg_color, 0.65); }
+      #XfceNotifyWindow.osd button:active:backdrop, #XfceNotifyWindow.osd button:checked:backdrop {
+        box-shadow: inset -3px -3px shade(@theme_base_color, 0.9), inset -1px -1px shade(@theme_bg_color, 0.9), inset 2px 2px shade(@theme_bg_color, 0.85), inset 1px 1px shade(@theme_bg_color, 0.65); }
       #XfceNotifyWindow.osd button:active:disabled, #XfceNotifyWindow.osd button:checked:disabled {
+        background-color: @theme_disabled_bg_color;
         color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
     #XfceNotifyWindow.osd button:disabled {
       color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.5);

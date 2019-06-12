@@ -105,39 +105,28 @@ assistant .sidebar {
   color: @theme_fg_color;
   background-color: @theme_bg_color; }
 
-button:link > label, button:visited > label,
-*:link,
-button:link,
-button:visited {
+button:link > label, button:visited > label, *:link, button:link, button:visited {
   color: @link_color; }
-  button:link > label:visited, button:visited > label:visited,
-  *:link:visited,
-  button:visited {
+  button:link > label:visited, button:visited > label:visited, *:link:visited, button:visited {
     color: mix(@link_color, @theme_fg_color, 0.2); }
-    *:selected button:link > label:visited, *:selected button:visited > label:visited, *:selected
-    *:link:visited, *:selected
-    button:visited:link, *:selected
-    button:visited {
+    *:selected button:link > label:visited, *:selected button:visited > label:visited,
+    *:selected *:link:visited,
+    *:selected button:visited:link,
+    *:selected button:visited {
       color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.4); }
-  button:link > label:hover, button:visited > label:hover,
-  *:link:hover,
-  button:hover:link,
-  button:hover:visited {
+  button:link > label:hover, button:visited > label:hover, *:link:hover, button:hover:link, button:hover:visited {
     color: shade(@link_color, 1.1); }
-    *:selected button:link > label:hover, *:selected button:visited > label:hover, *:selected
-    *:link:hover, *:selected
-    button:hover:link, *:selected
-    button:hover:visited {
+    *:selected button:link > label:hover, *:selected button:visited > label:hover,
+    *:selected *:link:hover,
+    *:selected button:hover:link,
+    *:selected button:hover:visited {
       color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.9); }
-  button:link > label:active, button:visited > label:active,
-  *:link:active,
-  button:active:link,
-  button:active:visited {
+  button:link > label:active, button:visited > label:active, *:link:active, button:active:link, button:active:visited {
     color: @link_color; }
-    *:selected button:link > label:active, *:selected button:visited > label:active, *:selected
-    *:link:active, *:selected
-    button:active:link, *:selected
-    button:active:visited {
+    *:selected button:link > label:active, *:selected button:visited > label:active,
+    *:selected *:link:active,
+    *:selected button:active:link,
+    *:selected button:active:visited {
       color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.8); }
   button:link > label:backdrop:backdrop:hover, button:visited > label:backdrop:backdrop:hover, button:link > label:backdrop:backdrop:hover:selected, button:visited > label:backdrop:backdrop:hover:selected, button:link > label:backdrop, button:visited > label:backdrop,
   *:link:backdrop:backdrop:hover,
@@ -153,10 +142,10 @@ button:visited {
   button:link > label:selected, button:visited > label:selected, *:selected button:link > label, *:selected button:visited > label,
   *:link:selected,
   button:selected:link,
-  button:selected:visited, *:selected
-  *:link, *:selected
-  button:link, *:selected
-  button:visited {
+  button:selected:visited,
+  *:selected *:link,
+  *:selected button:link,
+  *:selected button:visited {
     color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.8); }
 
 button:link, button:visited {
@@ -190,9 +179,11 @@ button {
     background-image: none;
     box-shadow: inset -1px -1px shade(@theme_bg_color, 1.4), inset 1px 1px shade(@theme_bg_color, 0.65), 0 0 0 1px alpha(@light_shadow, 0.5), 1px 1px alpha(@dark_shadow, 0.05); }
     button:active:disabled, button:checked:disabled {
-      color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
+      color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1);
+      background-color: shade(@theme_disabled_bg_color, 0.95); }
   button:disabled {
-    color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.5); }
+    color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.5);
+    background-color: @theme_disabled_bg_color; }
 button.flat {
   border-color: transparent;
   border-radius: 0px;
@@ -489,11 +480,8 @@ entry {
   padding: 5px;
   border-width: 1px;
   border-style: solid;
-  border-color: shade(@borders, 0.9);
-  border-right-color: shade(@light_shadow, 0.95);
-  border-bottom-color: shade(@light_shadow, 0.95);
+  border-color: shade(@borders, 0.8);
   background-color: @theme_base_color;
-  box-shadow: inset 0 0 0 1px shade(@theme_bg_color, 0.65), inset -1px -1px shade(@theme_bg_color, 1.02);
   color: @theme_text_color;
   caret-color: currentColor; }
   entry:active, entry:focus {
@@ -835,7 +823,7 @@ menu, .menu {
     padding: 4px;
     border-radius: 0px;
     border: none;
-    box-shadow: inset -1px 0 shade(@menu_bg_color, 0.65), inset 0 -1px shade(@menu_bg_color, 0.65), inset 1px 0 @light_shadow, inset 0 1px @light_shadow; }
+    box-shadow: inset -1px 0 shade(@menu_bg_color, 0.9), inset 0 -1px shade(@menu_bg_color, 0.9), inset 1px 0 alpha(@light_shadow, 0.7), inset 0 1px alpha(@light_shadow, 0.7); }
   menu > arrow, .menu > arrow {
     padding: 4px;
     border-color: transparent;
@@ -856,8 +844,9 @@ menubar, .menubar {
   padding: 0;
   border-style: none;
   background-color: @menubar_bg_color;
+  background-image: linear-gradient(to bottom, shade(@menubar_bg_color, 1.05), @menubar_bg_color);
   color: @menubar_fg_color;
-  box-shadow: inset 0 -1px shade(@menubar_bg_color, 0.9), inset 1px 1px alpha(@light_shadow, 0.5); }
+  box-shadow: inset 0 -1px shade(@menubar_bg_color, 0.8), inset 0 0 0 1px alpha(@light_shadow, 0.3); }
   menubar:backdrop, .menubar:backdrop {
     color: @theme_unfocused_fg_color;
     background-color: @theme_unfocused_bg_color; }
@@ -1604,8 +1593,8 @@ switch {
     border-color: @theme_selected_bg_color;
     background-color: @theme_selected_bg_color; }
   switch:disabled {
-    border-color: @theme_disabled_bg_color;
-    background-color: @theme_disabled_bg_color; }
+    border-color: shade(@theme_disabled_bg_color, 1.02);
+    background-color: shade(@theme_disabled_bg_color, 1.02); }
     switch:disabled:backdrop {
       border-color: @theme_unfocused_disabled_bg_color;
       background-color: @theme_unfocused_disabled_bg_color; }
@@ -1755,9 +1744,11 @@ headerbar, headerbar:not(.titlebar) {
       background-image: none;
       box-shadow: inset -1px -1px shade(@headerbar_bg_color, 1.4), inset 1px 1px shade(@headerbar_bg_color, 0.65), 0 0 0 1px alpha(@light_shadow, 0.5), 1px 1px alpha(@dark_shadow, 0.05); }
       headerbar button:active:disabled, headerbar button:checked:disabled, headerbar:not(.titlebar) button:active:disabled, headerbar:not(.titlebar) button:checked:disabled {
-        color: mix(@headerbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
+        color: mix(@headerbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1);
+        background-color: shade(@theme_disabled_bg_color, 0.95); }
     headerbar button:disabled, headerbar:not(.titlebar) button:disabled {
-      color: mix(@headerbar_fg_color, @theme_unfocused_disabled_fg_color, 0.5); }
+      color: mix(@headerbar_fg_color, @theme_unfocused_disabled_fg_color, 0.5);
+      background-color: @theme_disabled_bg_color; }
   headerbar entry, headerbar:not(.titlebar) entry {
     padding: 4px 8px; }
 
@@ -1838,9 +1829,11 @@ toolbar {
       background-image: none;
       box-shadow: inset -1px -1px shade(@toolbar_bg_color, 1.4), inset 1px 1px shade(@toolbar_bg_color, 0.65), 0 0 0 1px alpha(@light_shadow, 0.5), 1px 1px alpha(@dark_shadow, 0.05); }
       .primary-toolbar button:active:disabled, .primary-toolbar button:checked:disabled, .primary-toolbar .raised button:active:disabled, .primary-toolbar .raised button:checked:disabled {
-        color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
+        color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1);
+        background-color: shade(@theme_disabled_bg_color, 0.95); }
     .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled {
-      color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.5); }
+      color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.5);
+      background-color: @theme_disabled_bg_color; }
 
 .inline-toolbar toolbar {
   -GtkToolbar-button-relief: normal;
@@ -1873,9 +1866,11 @@ toolbar {
       background-image: none;
       box-shadow: inset -1px -1px shade(@toolbar_bg_color, 1.4), inset 1px 1px shade(@toolbar_bg_color, 0.65), 0 0 0 1px alpha(@light_shadow, 0.5), 1px 1px alpha(@dark_shadow, 0.05); }
       .inline-toolbar toolbar button:active:disabled, .inline-toolbar toolbar button:checked:disabled {
-        color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
+        color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.1);
+        background-color: shade(@theme_disabled_bg_color, 0.95); }
     .inline-toolbar toolbar button:disabled {
-      color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.5); }
+      color: mix(@toolbar_fg_color, @theme_unfocused_disabled_fg_color, 0.5);
+      background-color: @theme_disabled_bg_color; }
 
 .linked button, .linked .raised button, .inline-toolbar .linked button, .inline-toolbar .linked .raised button, .primary-toolbar .linked button, .primary-toolbar .linked .raised button {
   border-radius: 0;
@@ -1909,10 +1904,6 @@ toolbar {
   .linked entry:only-child, .inline-toolbar .linked entry:only-child, .primary-toolbar .linked entry:only-child {
     border-width: 1px;
     border-radius: 0px; }
-  .linked entry:focus, .linked entry:last-child:focus, .inline-toolbar .linked entry:focus, .inline-toolbar .linked entry:last-child:focus, .primary-toolbar .linked entry:focus, .primary-toolbar .linked entry:last-child:focus {
-    box-shadow: inset 0 0 0 1px #0000dd, -1px 0 shade(@borders, 1.05); }
-  .linked entry:first-child:focus, .inline-toolbar .linked entry:first-child:focus, .primary-toolbar .linked entry:first-child:focus {
-    box-shadow: inset 0 0 0 1px #0000dd; }
 .linked combobox box.linked button, .inline-toolbar .linked combobox box.linked button, .primary-toolbar .linked combobox box.linked button {
   border-radius: 0;
   border-left-width: 0; }
@@ -1966,10 +1957,6 @@ toolbar {
     border-bottom-right-radius: 0px; }
   .vertical.linked entry:only-child {
     border-top-width: 1px; }
-  .vertical.linked entry:focus, .vertical.linked entry:last-child:focus {
-    box-shadow: inset 0 0 0 1px #0000dd, 0 -1px shade(@borders, 1.05); }
-  .vertical.linked entry:first-child:focus {
-    box-shadow: inset 0 0 0 1px #0000dd; }
 .vertical.linked combobox box.linked button {
   border-left-width: 1px;
   border-top-width: 0;
@@ -2226,13 +2213,15 @@ button.destructive-action {
   border-color: mix(@error_color, @theme_fg_color, 0.2);
   border-radius: 0px;
   color: mix(@theme_selected_fg_color, @error_color, 0.1);
-  background-color: @error_color; }
+  background-color: @error_color;
+  background-image: none; }
   button.destructive-action:hover {
     border-color: mix(@error_color, @theme_fg_color, 0.3);
     background-color: mix(@error_color, @theme_selected_fg_color, 0.2); }
   button.destructive-action:active {
     border-color: mix(@error_color, @theme_fg_color, 0.3);
-    background-color: mix(@error_color, @theme_fg_color, 0.1); }
+    background-color: mix(@error_color, @theme_fg_color, 0.1);
+    background-image: none; }
   button.destructive-action:backdrop {
     border-color: mix(@error_color, @theme_unfocused_fg_color, 0.2);
     color: mix(@theme_unfocused_selected_fg_color, @error_color, 0.1);
@@ -2357,7 +2346,7 @@ decoration {
   .fullscreen decoration, .tiled decoration {
     border-radius: 0; }
   .popup decoration {
-    box-shadow: 0 0 0 1px alpha(@dark_shadow, 0.1);
+    box-shadow: 0 0 0 1px shade(@borders, 0.9);
     border-radius: 0; }
   .ssd decoration {
     border-radius: 0px 0px 0 0;
@@ -2452,10 +2441,12 @@ messagedialog {
   min-height: 30px;
   color: @titlebar_fg_color;
   background-color: @titlebar_bg_color;
+  background-image: linear-gradient(to bottom, shade(@titlebar_bg_color, 1.6), @titlebar_bg_color);
   box-shadow: inset 1px 1px mix(@titlebar_bg_color, @theme_base_color, 0.4), inset -1px -1px @titlebar_bg_color; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: @theme_unfocused_fg_color;
     background-color: @theme_unfocused_bg_color;
+    background-image: linear-gradient(to bottom, shade(@theme_unfocused_bg_color, 1.05), @theme_unfocused_bg_color);
     box-shadow: inset 1px 1px shade(@light_shadow, 0.95), inset -1px -1px shade(@theme_bg_color, 0.85); }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
@@ -2631,9 +2622,11 @@ panel-toplevel.background na-tray-applet {
       background-image: none;
       box-shadow: inset -1px -1px shade(@theme_bg_color, 1.4), inset 1px 1px shade(@theme_bg_color, 0.65), 0 0 0 1px alpha(@light_shadow, 0.5), 1px 1px alpha(@dark_shadow, 0.05); }
       #XfceNotifyWindow.osd button:active:disabled, #XfceNotifyWindow.osd button:checked:disabled {
-        color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1); }
+        color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.1);
+        background-color: shade(@theme_disabled_bg_color, 0.95); }
     #XfceNotifyWindow.osd button:disabled {
-      color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.5); }
+      color: mix(@theme_fg_color, @theme_unfocused_disabled_fg_color, 0.5);
+      background-color: @theme_disabled_bg_color; }
 
 .nemo-window .nemo-window-pane widget.entry {
   border: 1px solid;

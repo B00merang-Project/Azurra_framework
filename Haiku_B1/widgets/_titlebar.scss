@@ -66,10 +66,12 @@
     min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
+    background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.6), $titlebar_bg_color);
     box-shadow: inset 1px 1px gtkmix($titlebar_bg_color, $theme_base_color, 0.4), inset -1px -1px $titlebar_bg_color;
     &:backdrop {
       color: $theme_unfocused_fg_color;
       background-color: $theme_unfocused_bg_color;
+      background-image: linear-gradient(to bottom, gtkshade($theme_unfocused_bg_color, 1.05), $theme_unfocused_bg_color);
       box-shadow: inset 1px 1px gtkshade($light_shadow, 0.95), inset -1px -1px gtkshade($theme_bg_color, 0.85);
     }
   }
