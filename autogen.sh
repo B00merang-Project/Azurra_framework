@@ -1,40 +1,30 @@
 #!/bin/bash
 
 BASE="Azurra"
+QUEUE="$@"
 
-if [[ ! -z "$@" ]]
+# compile all if no theme specified
+if [[ -z "$QUEUE" ]]
 then
-  for arg in "$@"
-  do
-    if [ -d "$arg" ] &&               # it's a directory
-       [ "$arg" != "$BASE" ] &&	      # not the base theme
-       [ -f "$arg/build.sh" ] &&      # is buildable
-       [ -f "$arg/deploy.sh" ]; then  # is deployable
-      echo "Building $arg"
-
-      cd "$arg"
-      ./build.sh
-      ./deploy.sh
-      cd ..
-    else
-      echo "Invalid directory ($arg)."
-    fi
-  done
-
-  exit 0
+  QUEUE=*
 fi
 
-# build
-for D in *; do
-  if [ -d "${D}" ] &&               # it's a directory
-     [ "${D}" != "$BASE" ] &&	      # not the base theme
-     [ -f "${D}/build.sh" ] &&      # is buildable
-     [ -f "${D}/deploy.sh" ]; then  # is deployable
-    echo "Building ${D}"
+for dir in $QUEUE
+do
+  if [ -d "$dir" ] &&               # it's a directory
+     [ "$dir" != "$BASE" ] &&	      # not the base theme
+     [ -f "$dir/build.sh" ] &&      # is buildable
+     [ -f "$dir/deploy.sh" ]; then  # is deployable
+    echo "Building $dir"
 
-    cd "${D}"
+    cd "$dir"
     ./build.sh
     ./deploy.sh
     cd ..
+  elif [ -f "$dir" ]; then
+    # don't warn of root dir files
+    echo "$dir" > /dev/null
+  else
+    echo "Invalid directory ($dir)."
   fi
 done

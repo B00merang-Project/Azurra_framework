@@ -18,7 +18,7 @@ dependor() {
       theme="${display%%'/widgets/'*}"
       widget="${display#*'/widgets/'}"
       
-      printf "%-20s %-5s %-0s" "  $theme" "->" "$widget"
+      printf "%-20s %-5s %-0s" "  $widget" "->" "$theme"
       printf "\n"
       
       dependencies=$(($dependencies + 1 ))
