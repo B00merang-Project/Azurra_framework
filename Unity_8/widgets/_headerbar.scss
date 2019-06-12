@@ -1,6 +1,51 @@
 @mixin headerbar_buttons($bg, $fg, $br)
 {
-  @include normal_buttons($bg, $fg, $br);
+  & {
+    padding: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: $button_radius;
+    color: $fg;
+    border-color: $br;
+    border-top-color: gtkshade($br, 1.1);
+    border-left-color: gtkshade($br, 1.05);
+    border-right-color: gtkshade($br, 1.05);
+    background-color: $bg;
+    -gtk-outline-radius: $button_radius;
+
+    &:hover {
+      color: $fg;
+      background-color: gtkshade($bg, 1.1);
+    }
+
+    &:active, &:checked {
+      color: $theme_selected_fg_color;
+      border-color: gtkshade($br, 0.9);
+      background-color: gtkmix($bg, $fg, 0.2);
+
+      &:backdrop {
+      }
+      
+      &:disabled {
+        color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
+        border-color: gtkmix($fg, $theme_disabled_bg_color, 0.85);
+        background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        
+        &:backdrop {
+        }
+      }
+    }
+
+    &:disabled {
+      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      
+      &:backdrop {
+      }
+    }
+
+    &:backdrop {
+    }
+  }
 }
 
 @mixin headerbar() {
