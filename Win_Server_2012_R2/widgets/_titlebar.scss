@@ -19,7 +19,7 @@
     .titlebutton {
       &.close, &.maximize, &.minimize, &:not(separator) {
         padding: 0;
-        min-height: 20px;
+        min-height: 21px;
         min-width: 26px;
         border: none;
         color: transparent;
@@ -31,100 +31,36 @@
       }
       
       &.close {
-        min-height: 20px;
+        min-height: 21px;
         min-width: 45px;
         background: url('assets/close-normal.png') center center;
 
-        &:hover {
-          background: url('assets/close-hover.png') center center;
-        }
-
-        &:active {
-          background: url('assets/close-active.png') center center;
-        }
-
         &:backdrop {
           background: url('assets/close-backdrop.png') center center;
-          
-          &:hover {
-            background: url('assets/close-hover.png') center center;
-          }
-
-          &:active {
-            background: url('assets/close-active.png') center center;
-          }
         }
       }
 
       &.minimize {
         background: url('assets/minimize-normal.png') 100% 100%;
 
-        &:hover {
-          background: url('assets/minimize-hover.png') 100% 100%;
-        }
-
-        &:active {
-          background: url('assets/minimize-active.png') 100% 100%;
-        }
-
         &:backdrop {
           background: url('assets/minimize-normal.png') 100% 100%;
-          
-          &:hover {
-            background: url('assets/minimize-hover.png') 100% 100%;
-          }
-
-          &:active {
-            background: url('assets/minimize-active.png') 100% 100%;
-          }
         }
       }
 
       &.maximize {
         background: url('assets/maximize-normal.png') 100% 100%;
 
-        &:hover {
-          background: url('assets/maximize-hover.png') 100% 100%;
-        }
-
-        &:active {
-          background: url('assets/maximize-active.png') 100% 100%;
-        }
-
         &:backdrop {
           background: url('assets/maximize-normal.png') 100% 100%;
-          
-          &:hover {
-            background: url('assets/maximize-hover.png') 100% 100%;
-          }
-
-          &:active {
-            background: url('assets/maximize-active.png') 100% 100%;
-          }
         }
       }
       
       .maximized &.maximize {
         background: url('assets/restore-normal.png') 100% 100%;
 
-        &:hover {
-          background: url('assets/restore-hover.png') 100% 100%;
-        }
-
-        &:active {
-          background: url('assets/restore-active.png') 100% 100%;
-        }
-
         &:backdrop {
           background: url('assets/restore-normal.png') 100% 100%;
-          
-          &:hover {
-            background: url('assets/restore-hover.png') 100% 100%;
-          }
-
-          &:active {
-            background: url('assets/restore-active.png') 100% 100%;
-          }
         }
       }
     }
@@ -140,7 +76,7 @@
     background-color: $titlebar_bg_color;
 
     &:backdrop {
-      background-color: gtkshade($theme_unfocused_bg_color, 0.95);
+      background-color: gtkshade($theme_unfocused_bg_color, 0.9);
       color: $theme_unfocused_fg_color;
     }
   }

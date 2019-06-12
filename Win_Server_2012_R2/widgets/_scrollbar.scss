@@ -1,0 +1,136 @@
+@mixin scrollbar() {
+  scrollbar {
+    border: none;
+    box-shadow: inset 0 0 0 1px $borders;
+    background-color: $theme_base_color;
+
+    trough {
+      border: none;
+      border-radius: 0;
+    }
+
+    &:backdrop {
+      background-color: $theme_unfocused_base_color;
+    }
+    
+    button {
+      padding: 5px;
+      background-color: $theme_base_color;
+      
+      &:disabled, &:disabled:backdrop, &:backdrop {
+        background-color: $theme_unfocused_base_color;
+      }
+    }
+
+    slider {
+      margin: 0;
+      border: 1px solid gtkshade($borders, 0.9);
+      border-radius: $scrollbar_radius;
+      background-clip: padding-box;
+      background-color: gtkshade($theme_bg_color, 0.9);
+      
+      background-position: center center;
+      background-repeat: no-repeat;
+
+      &:hover {
+        border-color: gtkshade($theme_selected_bg_color, 0.7);
+        background-color: gtkshade($theme_selected_bg_color, 1.02);
+
+        &:active {
+          border-color: gtkshade($theme_selected_bg_color, 0.8);
+          background-color: gtkshade($theme_selected_bg_color, 0.95);
+        }
+      }
+
+      &:backdrop {
+        border-color: gtkshade($unfocused_borders, 0.9);
+        background-color: gtkshade($theme_unfocused_bg_color, 0.9);
+      }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+    
+    &.vertical slider {
+      min-width: 14px;
+      min-height: 45px;
+      
+      background-image: url('assets/handle-v.png');
+    }
+
+    &.fine-tune {
+    }
+
+    &.overlay-indicator {
+      &:not(.dragging):not(.hovering) {
+        opacity: 1;
+      }
+
+      &.dragging, &.hovering {
+        opacity: 1;
+      }
+    }
+
+    &.horizontal {
+      slider {
+        min-width: 45px;
+        min-height: 14px;
+        background-image: url('assets/handle-h.png');
+      }
+
+      button {
+        min-height: 5px;
+        min-width: 5px;
+      
+        &.down {
+          -gtk-icon-source: url('assets/arrow-right.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-right-active.svg');
+          }
+        }
+
+        &.up {
+          -gtk-icon-source: url('assets/arrow-left.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-left-active.svg');
+          }
+        }
+      }
+    }
+
+    &.vertical {
+      slider {
+        min-height: 40px;
+      }
+
+      button {
+        min-height: 5px;
+        min-width: 5px;
+
+        &.down {
+          -gtk-icon-source: url('assets/arrow-down.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-down-active.svg');
+          }
+        }
+
+        &.up {
+          -gtk-icon-source: url('assets/arrow-up.svg');
+          
+          &:active {
+            -gtk-icon-source: url('assets/arrow-up-active.svg');
+          }
+        }
+      }
+    }
+
+    treeview ~ &.vertical {
+      border-top: 1px solid $borders;
+      margin-top: -1px;
+    }
+  }
+}
