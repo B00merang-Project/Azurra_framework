@@ -292,6 +292,13 @@ get_children() {
 #############################################
 get_arguments $@
 
+if [ ! -z $name ]; then
+  cp -a Azurra $name
+  echo "$name theme created. You'll have to manually edit build and deploy scripts"
+  
+  exit $OK
+fi
+
 if [ ! -z $parent ]; then
   OP=get_parents
   ARGS=($widget)
