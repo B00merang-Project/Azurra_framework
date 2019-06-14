@@ -105,39 +105,28 @@ assistant .sidebar {
   color: #000000;
   background-color: #ffffff; }
 
-button:link > label, button:visited > label,
-*:link,
-button:link,
-button:visited {
+button:link > label, button:visited > label, *:link, button:link, button:visited {
   color: #1d72e9; }
-  button:link > label:visited, button:visited > label:visited,
-  *:link:visited,
-  button:visited {
+  button:link > label:visited, button:visited > label:visited, *:link:visited, button:visited {
     color: #175bba; }
-    *:selected button:link > label:visited, *:selected button:visited > label:visited, *:selected
-    *:link:visited, *:selected
-    button:visited:link, *:selected
-    button:visited {
+    *:selected button:link > label:visited, *:selected button:visited > label:visited,
+    *:selected *:link:visited,
+    *:selected button:visited:link,
+    *:selected button:visited {
       color: #a5c7f6; }
-  button:link > label:hover, button:visited > label:hover,
-  *:link:hover,
-  button:hover:link,
-  button:hover:visited {
+  button:link > label:hover, button:visited > label:hover, *:link:hover, button:hover:link, button:hover:visited {
     color: #4b8fee; }
-    *:selected button:link > label:hover, *:selected button:visited > label:hover, *:selected
-    *:link:hover, *:selected
-    button:hover:link, *:selected
-    button:hover:visited {
+    *:selected button:link > label:hover, *:selected button:visited > label:hover,
+    *:selected *:link:hover,
+    *:selected button:hover:link,
+    *:selected button:hover:visited {
       color: #3480eb; }
-  button:link > label:active, button:visited > label:active,
-  *:link:active,
-  button:active:link,
-  button:active:visited {
+  button:link > label:active, button:visited > label:active, *:link:active, button:active:link, button:active:visited {
     color: #1d72e9; }
-    *:selected button:link > label:active, *:selected button:visited > label:active, *:selected
-    *:link:active, *:selected
-    button:active:link, *:selected
-    button:active:visited {
+    *:selected button:link > label:active, *:selected button:visited > label:active,
+    *:selected *:link:active,
+    *:selected button:active:link,
+    *:selected button:active:visited {
       color: #4a8eed; }
   button:link > label:backdrop:backdrop:hover, button:visited > label:backdrop:backdrop:hover, button:link > label:backdrop:backdrop:hover:selected, button:visited > label:backdrop:backdrop:hover:selected, button:link > label:backdrop, button:visited > label:backdrop,
   *:link:backdrop:backdrop:hover,
@@ -153,10 +142,10 @@ button:visited {
   button:link > label:selected, button:visited > label:selected, *:selected button:link > label, *:selected button:visited > label,
   *:link:selected,
   button:selected:link,
-  button:selected:visited, *:selected
-  *:link, *:selected
-  button:link, *:selected
-  button:visited {
+  button:selected:visited,
+  *:selected *:link,
+  *:selected button:link,
+  *:selected button:visited {
     color: #4a8eed; }
 
 button:link, button:visited {
@@ -2408,70 +2397,48 @@ UnityPanelWidget, .unity-panel {
   animation: playbackmenuitem_spinner 1s infinite linear;
   color: #1d72e9; }
 
-/* GTK NAMED COLORS
-   ----------------
-   use responsibly! */
-/*
-widget text/foreground color */
+/* GTK NAMED COLORS - use responsibly! */
+/* widget text/foreground color */
 @define-color theme_fg_color #000000;
-/*
-text color for entries, views and content in general */
+/* text color for entries, views and content in general */
 @define-color theme_text_color #000000;
-/*
-widget base background color */
+/* widget base background color */
 @define-color theme_bg_color #ffffff;
-/*
-text widgets and the like base background color */
+/* text widgets and the like base background color */
 @define-color theme_base_color #FFFFFF;
-/*
-base background color of selections */
+/* base background color of selections */
 @define-color theme_selected_bg_color #1d72e9;
-/*
-text/foreground color of selections */
+/* text/foreground color of selections */
 @define-color theme_selected_fg_color #FFFFFF;
-/*
-base background color of insensitive widgets */
+/* base background color of insensitive widgets */
 @define-color insensitive_bg_color #f2f2f2;
-/*
-text foreground color of insensitive widgets */
+/* text foreground color of insensitive widgets */
 @define-color insensitive_fg_color gray;
-/*
-insensitive text widgets and the like base background color */
+/* insensitive text widgets and the like base background color */
 @define-color insensitive_base_color #FFFFFF;
-/*
-widget text/foreground color on backdrop windows */
+/* widget text/foreground color on backdrop windows */
 @define-color theme_unfocused_fg_color #000000;
-/*
-text color for entries, views and content in general on backdrop windows */
+/* text color for entries, views and content in general on backdrop windows */
 @define-color theme_unfocused_text_color #000000;
-/*
-widget base background color on backdrop windows */
+/* widget base background color on backdrop windows */
 @define-color theme_unfocused_bg_color #ffffff;
-/*
-text widgets and the like base background color on backdrop windows */
+/* text widgets and the like base background color on backdrop windows */
 @define-color theme_unfocused_base_color #FFFFFF;
-/*
-base background color of selections on backdrop windows */
+/* base background color of selections on backdrop windows */
 @define-color theme_unfocused_selected_bg_color #1d72e9;
-/*
-text/foreground color of selections on backdrop windows */
+/* text/foreground color of selections on backdrop windows */
 @define-color theme_unfocused_selected_fg_color #FFFFFF;
-/*
-insensitive color on backdrop windows*/
+/* insensitive color on backdrop windows*/
 @define-color unfocused_insensitive_color #bfbfbf;
-/*
-widgets main borders color */
+/* widgets main borders color */
 @define-color borders #e6e6e6;
-/*
-widgets main borders color on backdrop windows */
+/* widgets main borders color on backdrop windows */
 @define-color unfocused_borders #e6e6e6;
-/*
-these are pretty self explicative */
+/* these are pretty self explicative */
 @define-color warning_color #FF9900;
 @define-color error_color #CC0000;
 @define-color success_color #39e4a3;
-/*
-these colors are exported for the window manager and shouldn't be used in applications,
+/* these colors are exported for the window manager and shouldn't be used in applications,
 read if you used those and something break with a version upgrade you're on your own... */
 @define-color wm_title shade(#000000, 1.8);
 @define-color wm_unfocused_title #000000;
