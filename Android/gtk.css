@@ -2132,6 +2132,8 @@ messagedialog {
   .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
     padding: 2px 2px;
     background-color: transparent; }
+    .titlebar .titlebutton.close:active, .titlebar .titlebutton.maximize:active, .titlebar .titlebutton.minimize:active, .titlebar .titlebutton:not(separator):active {
+      color: #0e4592; }
   .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
     border-radius: 0; }
 
@@ -2477,8 +2479,8 @@ read if you used those and something break with a version upgrade you're on your
 @define-color wm_borders_edge #e6e6e6;
 @define-color wm_bg_a shade(#ffffff, 1.2);
 @define-color wm_bg_b #ffffff;
-@define-color wm_shadow gtkalpha(white, 0.35);
-@define-color wm_border gtkalpha(white, 0.18);
+@define-color wm_shadow alpha(white, 0.35);
+@define-color wm_border alpha(white, 0.18);
 @define-color wm_button_hover_color_a shade(#ffffff, 1.3);
 @define-color wm_button_hover_color_b #ffffff;
 @define-color wm_button_active_color_a shade(#ffffff, 0.85);

@@ -1,6 +1,13 @@
+// Azurra uses old gtk shade, mix and alpha syntax for processing.
+// This is done for code ports compatibility
+
 // Register functions
 @function gtkalpha($c,$a) {
-  @return unquote("alpha(#{$c}, #{$a})");
+  @if $c == 'currentColor' {
+    @return unquote("alpha(#{$c}, #{$a})");
+  }
+  
+  @return rgba($c, $a);
 }
 
 @function hex2rgba($color, $opacity) {
@@ -8,9 +15,18 @@
 }
 
 @function gtkmix($c1,$c2,$r) {
-  @return unquote("mix(#{$c1}, #{$c2}, #{$r})");
+  @return mix($c1,$c2,(100% - ($r * 100%)));
 }
 
 @function gtkshade($c,$s) {
-  @return unquote("shade(#{$c}, #{$s})");
+  $shaded_color : $c;  // fallback
+
+  @if $s > 1 {
+    $shaded_color : lighten($c, (($s * 100%) - 100%));
+  }
+  @else if 1 > $s {
+    $shaded_color : darken($c, abs(100% - ($s * 100%)));
+  }
+
+  @return $shaded_color;
 }
