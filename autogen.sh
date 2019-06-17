@@ -9,7 +9,12 @@ fail() {
   exit
 }
 
+sass_args='sass -C --sourcemap=none'
+
 for dir in $QUEUE; do
+  [ $dir == "-q" ] || [ $dir == "--quiet" ] && sass_args='sass -C -q --sourcemap=none'
+  shift
+
   if [ -f $dir/theme.conf ]; then  # if has valid configuration
     # Load variables from theme config. Variables allowed:
     # - name: theme name to display
@@ -26,9 +31,9 @@ for dir in $QUEUE; do
     echo "Generating files for $name"
     
     # run SASS
-    sass -C -q --sourcemap=none $dir/gtk.scss $dir/gtk.css
-    [ $variant_light == true ] && sass -C -q --sourcemap=none $dir/gtk-light.scss $dir/gtk-light.css
-    [ $variant_dark == true ] && sass -C -q --sourcemap=none $dir/gtk-dark.scss $dir/gtk-dark.css
+    $sass_args $dir/gtk.scss $dir/gtk.css
+    [ $variant_light == true ] && $sass_args $dir/gtk-light.scss $dir/gtk-light.css
+    [ $variant_dark == true ] && $sass_args $dir/gtk-dark.scss $dir/gtk-dark.css
   
     # copy CSS files
     cp -aR  $dir/gtk.css $target_dir
