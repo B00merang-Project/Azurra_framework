@@ -7,22 +7,18 @@
     @return unquote("alpha(#{$c}, #{$a})");
   }
   
-  @warn("This function is deprecated and will be removed soon");
   @return rgba($c, $a);
 }
 
 @function hex2rgba($color, $opacity) {
-  @warn("This function is deprecated and will be removed soon");
   @return rgba($color, $opacity);
 }
 
 @function gtkmix($c1,$c2,$r) {
-  @warn("This function is deprecated and will be removed soon");
   @return mix($c1,$c2,(100% - ($r * 100%)));
 }
 
 @function gtkshade($c,$s) {
-  @warn("This function is deprecated and will be removed soon");
   $shaded_color : $c;  // fallback
 
   @if $s > 1 {
