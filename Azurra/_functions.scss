@@ -22,10 +22,10 @@
   $shaded_color : $c;  // fallback
 
   @if $s > 1 {
-    $shaded_color : lighten($c, (($s * 100%) - 100%));
+    $shaded_color : lighten($c, (($s * 100%) - 100%) / 2);
   }
   @else if 1 > $s {
-    $shaded_color : darken($c, abs(100% - ($s * 100%)));
+    $shaded_color : darken($c, abs(100% - ($s * 100%)) / 2);
   }
 
   @return $shaded_color;
