@@ -18,8 +18,7 @@
 @function gtkshade($color, $shading) {
   @if $shading > 1 {
     // in case of bug, remove first level mix with bg_color
-    $shaded_color : mix(#ffffff, $color, ($shading - 1) * 100%);
-    @return mix($shaded_color, $bg_color, 50%);
+    @return mix(#ffffff, $color, ($shading - 1) * 100%);
   }
   @else if 1 > $shading {
     @return mix($color, #000000, $shading * 100%);

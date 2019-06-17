@@ -18,8 +18,6 @@ for dir in $QUEUE; do
     # - target_dir: where to copy the generated files
     source $dir/theme.conf
     
-    [ $dir == '-q' ] || [ $dir == '--quiet' ] && sass_args="$sass_args" + ' -q'
-    
     # detect light and dark variants
     [ -f $dir/gtk-dark.scss ] && variant_dark=true || variant_dark=false
     [ -f $dir/gtk-light.scss ] && variant_light=true || variant_light=false
@@ -51,6 +49,6 @@ for dir in $QUEUE; do
     # verify deployment
     [ -d $target_dir/assets ] && [ -f $target_dir/gtk.css ] && echo "Deployment for $name successful" || fail "Deployment for $name failed"
   else
-    fail "Not a valid directory"
+    [[ "$dir" == "-q" ]] && sass_args="$sass_args -q" && shift || fail "Not a valid directory '$dir'"
   fi
 done
