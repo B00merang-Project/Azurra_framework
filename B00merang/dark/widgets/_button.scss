@@ -7,7 +7,7 @@
     color: $fg;
     border-color: $br;
     background-color: $bg;
-    background-image: linear-gradient(to bottom, gtkshade($bg, 1.2), gtkshade($bg, 0.8));
+    background-image: linear-gradient(to bottom, gtkshade($bg, 1.02), gtkshade($bg, 0.8));
     box-shadow: inset 0 1px gtkalpha($light_shadow, 0.1), inset 0 -1px gtkalpha($dark_shadow, 0.1);
 
     &:hover {
@@ -15,13 +15,13 @@
 
     &:active, &:checked {
       background-color: $theme_selected_bg_color;
-      background-image: linear-gradient(to top, gtkshade($bg, 1.2), gtkshade($bg, 0.8));
+      background-image: linear-gradient(to top, gtkshade($bg, 1.02), gtkshade($bg, 0.8));
       box-shadow: inset 0 -1px gtkalpha($light_shadow, 0.1), inset 0 1px gtkalpha($dark_shadow, 0.1);
 
       &:backdrop {
         border-color: gtkshade($theme_unfocused_bg_color, 0.85);
         background-color: gtkshade($theme_unfocused_bg_color, 0.85);
-        background-image: linear-gradient(to bottom, gtkshade($theme_unfocused_bg_color, 1.2), gtkshade($theme_unfocused_bg_color, 0.8));
+        background-image: linear-gradient(to top, gtkshade($theme_unfocused_bg_color, 1.05), gtkshade($theme_unfocused_bg_color, 0.8));
       }
       
       &:disabled {
