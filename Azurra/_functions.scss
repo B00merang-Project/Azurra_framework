@@ -1,32 +1,29 @@
 // Azurra uses old gtk shade, mix and alpha syntax for processing.
 // This is done for code ports compatibility
 
-// Register functions
-@function gtkalpha($c,$a) {
-  @if $c == 'currentColor' {
-    @return unquote("alpha(#{$c}, #{$a})");
+@function gtkalpha($color, $alpha_level) {
+  // return literal when using constant currentColor
+  @if $color == 'currentColor' {
+    @return unquote("alpha(#{$color}, #{$alpha_level})");
   }
   
-  @return rgba($c, $a);
+  @return rgba($color, $alpha_level);
 }
 
-@function hex2rgba($color, $opacity) {
-  @return rgba($color, $opacity);
+@function gtkmix($color1, $color2, $ratio) {
+  @return mix($color1, $color2, (100% - ($ratio * 100%)));
 }
 
-@function gtkmix($c1,$c2,$r) {
-  @return mix($c1,$c2,(100% - ($r * 100%)));
-}
-
-@function gtkshade($c,$s) {
-  $shaded_color : $c;  // fallback
-
-  @if $s > 1 {
-    $shaded_color : lighten($c, (($s * 100%) - 100%) / 2);
+// emulate GTK shading as closely as possible
+@function gtkshade($color, $shading) {
+  @if $shading > 1 {
+    // in case of bug, remove first level mix with bg_color
+    $shaded_color : mix(#ffffff, $color, ($shading - 1) * 100%);
+    @return mix($shaded_color, $bg_color, 50%);
   }
-  @else if 1 > $s {
-    $shaded_color : darken($c, abs(100% - ($s * 100%)) / 2);
+  @else if 1 > $shading {
+    @return mix($color, #000000, $shading * 100%);
   }
 
-  @return $shaded_color;
+  @return $color;
 }
