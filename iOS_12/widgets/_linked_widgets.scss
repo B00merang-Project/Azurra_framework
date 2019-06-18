@@ -1,6 +1,6 @@
 @mixin linked_widgets() {
   .linked, .inline-toolbar .linked {
-    button, .raised button {
+    button, .raised button, button:hover, .raised button:hover {
       border-color: $theme_base_color;
       background-color: $theme_base_color;
       
@@ -238,7 +238,7 @@
   }
   
   .stack-switcher {
-    button {
+    button, button:hover {
       min-height: 20px;
       min-width: 80px;
       box-shadow: none;

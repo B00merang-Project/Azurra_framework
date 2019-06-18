@@ -109,11 +109,11 @@ button:link > label, button:visited > label,
 *:link,
 button:link,
 button:visited {
-  color: #1d72e9; }
+  color: #1D72E9; }
   button:link > label:visited, button:visited > label:visited,
   *:link:visited,
   button:visited {
-    color: mix(#1d72e9, #000000, 0.2); }
+    color: mix(#1D72E9, #000000, 0.2); }
     *:selected button:link > label:visited, *:selected button:visited > label:visited, *:selected
     *:link:visited, *:selected
     button:visited:link, *:selected
@@ -123,7 +123,7 @@ button:visited {
   *:link:hover,
   button:hover:link,
   button:hover:visited {
-    color: shade(#1d72e9, 1.1); }
+    color: shade(#1D72E9, 1.1); }
     *:selected button:link > label:hover, *:selected button:visited > label:hover, *:selected
     *:link:hover, *:selected
     button:hover:link, *:selected
@@ -133,7 +133,7 @@ button:visited {
   *:link:active,
   button:active:link,
   button:active:visited {
-    color: #1d72e9; }
+    color: #1D72E9; }
     *:selected button:link > label:active, *:selected button:visited > label:active, *:selected
     *:link:active, *:selected
     button:active:link, *:selected
@@ -149,7 +149,7 @@ button:visited {
   *:link:backdrop,
   button:backdrop:link,
   button:backdrop:visited {
-    color: mix(#1d72e9, #32A3CC, 0.3); }
+    color: mix(#1D72E9, #32A3CC, 0.3); }
   button:link > label:selected, button:visited > label:selected, *:selected button:link > label, *:selected button:visited > label,
   *:link:selected,
   button:selected:link,
@@ -711,7 +711,7 @@ image {
     background-color: transparent; }
 
 .terminal-screen, terminal-window, vte-terminal {
-  background-color: #F2F2F2;
+  background-color: #FFFFFF;
   color: #000000; }
 
 terminal-screen-container, terminal-screen-container:backdrop,
@@ -1144,7 +1144,7 @@ levelbar block {
   border-radius: 0px;
   background-color: #32A3CC; }
   levelbar block.high {
-    background-color: shade(#39e4a3, 0.9); }
+    background-color: shade(#39E4A3, 0.9); }
   levelbar block.low {
     background-color: shade(#FF9900, 0.9); }
   levelbar block.empty {
@@ -1332,7 +1332,7 @@ separator {
       border: none;
       background-color: #E1E1E1; }
   .primary-toolbar separator, toolbar separator {
-    background-color: mix(#CECECE, #F2F2F2, 0.5); }
+    background-color: mix(#CECECE, #FFFFFF, 0.5); }
     .primary-toolbar separator:backdrop, toolbar separator:backdrop {
       background-color: #E1E1E1; }
   headerbar separator {
@@ -1683,8 +1683,8 @@ headerbar, headerbar:not(.titlebar) {
 toolbar {
   padding: 4px;
   border: none;
-  color: #FFFFFF;
-  background-color: #F2F2F2;
+  color: #000000;
+  background-color: #FFFFFF;
   box-shadow: inset 0 -1px #32A3CC; }
   toolbar.vertical {
     box-shadow: inset -1px 0 #32A3CC; }
@@ -1709,7 +1709,7 @@ toolbar {
       toolbar button.flat:active:backdrop, toolbar button.flat:checked:backdrop {
         color: #FFFFFF; }
     toolbar button.flat:disabled {
-      color: mix(#FFFFFF, mix(#000000, #F2F2F2, 0.5), 0.1); }
+      color: mix(#000000, mix(#000000, #F2F2F2, 0.5), 0.1); }
       toolbar button.flat:disabled:backdrop {
         color: mix(#000000, #F2F2F2, 0.5); }
   toolbar menubar {
@@ -1720,9 +1720,9 @@ toolbar {
   padding: 4px;
   border-width: 0 0 1px 0;
   border-style: solid;
-  border-color: mix(#CECECE, #F2F2F2, 0.5);
-  color: #FFFFFF;
-  background-color: #F2F2F2; }
+  border-color: mix(#CECECE, #FFFFFF, 0.5);
+  color: #000000;
+  background-color: #FFFFFF; }
   .primary-toolbar:backdrop {
     border-color: #F2F2F2;
     color: #000000;
@@ -1742,7 +1742,7 @@ toolbar {
       .primary-toolbar button:active:backdrop, .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:active:backdrop, .primary-toolbar .raised button:checked:backdrop {
         color: #FFFFFF; }
     .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled {
-      color: mix(#FFFFFF, mix(#000000, #F2F2F2, 0.5), 0.1); }
+      color: mix(#000000, mix(#000000, #F2F2F2, 0.5), 0.1); }
       .primary-toolbar button:disabled:backdrop, .primary-toolbar .raised button:disabled:backdrop {
         color: mix(#000000, #F2F2F2, 0.5); }
 
@@ -1751,9 +1751,9 @@ toolbar {
   padding: 1px;
   border-width: 1px;
   border-style: solid;
-  border-color: mix(#CECECE, #F2F2F2, 0.5);
+  border-color: mix(#CECECE, #FFFFFF, 0.5);
   border-radius: 0;
-  background-color: #F2F2F2; }
+  background-color: #FFFFFF; }
   .inline-toolbar toolbar:last-child {
     border-width: 0 1px 1px 1px;
     border-radius: 0; }
@@ -1761,9 +1761,9 @@ toolbar {
     padding: 4px 8px;
     border: none;
     border-radius: 0px;
-    color: #FFFFFF;
+    color: #000000;
     border-color: #CECECE;
-    background-color: #F2F2F2;
+    background-color: #FFFFFF;
     outline-style: solid;
     outline-width: 2px;
     outline-offset: 0;
@@ -1782,14 +1782,14 @@ toolbar {
         color: #FFFFFF;
         background-color: #32A3CC; }
     .inline-toolbar toolbar button:disabled {
-      color: mix(#FFFFFF, mix(#000000, #F2F2F2, 0.5), 0.1);
+      color: mix(#000000, mix(#000000, #F2F2F2, 0.5), 0.1);
       background-color: shade(#F2F2F2, 0.75); }
       .inline-toolbar toolbar button:disabled:backdrop {
         color: mix(#000000, #F2F2F2, 0.5);
         background-color: shade(#F2F2F2, 0.75); }
     .inline-toolbar toolbar button:backdrop {
       color: #000000;
-      background-color: #F2F2F2; }
+      background-color: #FFFFFF; }
 
 stackswitcher button.text-button {
   min-width: 80px; }
@@ -2514,7 +2514,7 @@ UnityPanelWidget, .unity-panel {
 /* these are pretty self explicative */
 @define-color warning_color #FF9900;
 @define-color error_color #CC0000;
-@define-color success_color #39e4a3;
+@define-color success_color #39E4A3;
 /* these colors are exported for the window manager and shouldn't be used in applications,
 read if you used those and something break with a version upgrade you're on your own... */
 @define-color wm_title shade(#000000, 1.8);

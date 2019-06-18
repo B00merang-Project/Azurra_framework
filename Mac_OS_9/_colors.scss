@@ -13,20 +13,22 @@ $disabled_base_color : $base_color;
 $disabled_text_color : $disabled_fg_color;
 
 // Backdrop state colors
-$unfocused_bg_color : #E4E4E4;
-$unfocused_fg_color : #8C8C8C;
+$unfocused_bg_color : $bg_color;
+$unfocused_fg_color : $fg_color;
 $unfocused_base_color : $base_color;
-$unfocused_text_color : #8C8C8C;
+$unfocused_text_color : $text_color;
 $unfocused_selected_bg_color : #000000;
 $unfocused_selected_fg_color : #FFFFFF;
+$unfocused_selected_base_color : #000000;
+$unfocused_selected_text_color : #FFFFFF;
 $unfocused_disabled_bg_color : $disabled_bg_color;
 $unfocused_disabled_fg_color : $disabled_fg_color;
 $unfocused_disabled_base_color : $disabled_base_color;
 $unfocused_disabled_text_color : $disabled_text_color;
 
 // Darker color scheme
-$dark_bg_color : #DCDCDC;
-$dark_fg_color : #000000;
+$dark_bg_color : $bg_color;
+$dark_fg_color : $fg_color;
 
 // Theme colors
 $theme_bg_color : $bg_color;
@@ -54,16 +56,15 @@ $theme_unfocused_disabled_fg_color : $unfocused_disabled_fg_color;
 $theme_unfocused_disabled_text_color : $unfocused_disabled_text_color;
 $theme_unfocused_disabled_base_color : $unfocused_disabled_base_color;
 
-
 // Shadows
 $dark_shadow : rgb(0, 0, 0);
 $color_shadow : $selected_bg_color;
 $light_shadow : rgb(255, 255, 255);
 
 // Borders
-$borders : gtkshade($bg_color, 0.9);
-$outline_color : gtkshade($bg_color, 0.75);
-$unfocused_borders : gtkshade($unfocused_bg_color, 0.9);
+$borders : gtkshade($bg_color, 0.8);
+$outline_color : $fg_color;
+$unfocused_borders : gtkshade($unfocused_bg_color, 0.8);
 
 // Notification header backgrounds
 $info_fg_color : #FFFFFF;
@@ -74,9 +75,11 @@ $question_fg_color : #FFFFFF;
 $question_bg_color : #2C2C2C;
 $error_fg_color : #FFFFFF;
 $error_bg_color : #FF0000;
-$link_color : #1d72e9;
+
+// Special foreground colors
+$link_color : #1D8ECE;
 $error_color : #CC0000;
-$success_color : #39e4a3;
+$success_color : #4ED464;
 $warning_color : #FF9900;
 
 // Widget colors
@@ -96,13 +99,13 @@ $titlebar_bg_color : gtkshade($bg_color, 0.9);
 $titlebar_fg_color : $fg_color;
 $headerbar_bg_color : $bg_color;
 $headerbar_fg_color : $fg_color;
-$terminal_bg_color : $fg_color;
-$terminal_fg_color : $base_color;
+$terminal_bg_color : #000000;
+$terminal_fg_color : #FFFFFF;
 
 // OSD
-$osd_fg : $dark_bg_color;
-$osd_bg : gtkmix($dark_fg_color, $dark_bg_color, 0.2);
-$osd_base : $dark_fg_color;
+$osd_fg : $dark_fg_color;
+$osd_bg : gtkmix($dark_bg_color, $dark_fg_color, 0.2);
+$osd_base : $dark_bg_color;
 
 // Budgie colors
 $raven_fg_color : $dark_fg_color;
