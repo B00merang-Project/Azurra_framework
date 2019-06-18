@@ -40,9 +40,10 @@ for dir in $QUEUE; do
     # clean old assets and copy new ones
     rm -rf $target_dir/assets/ && cp -r $dir/assets $target_dir
     
-    # if there is a light and/or dark target dir, copy corresponding resources
+    # if there are light and/or dark source and target dirs, copy corresponding resources
     if [ ! -z $target_dir_dark ]; then
-      rm -rf $target_dir_dark/assets/ && cp -r $dir/assets $target_dir_dark
+      [ -d $dir/assets-dark ] && src=$dir/assets-dark || src=$dir/assets
+      rm -rf $target_dir_dark/assets/ && cp -r $src $target_dir_dark/assets
       cp -aR $dir/gtk-dark.css $target_dir_dark/gtk.css
     fi
     

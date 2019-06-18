@@ -87,7 +87,7 @@ $menu_fg_color : $fg_color;
 $menubar_bg_color : $bg_color;
 $menubar_fg_color : $fg_color;
 $toolbar_bg_color : $bg_color;
-$toolbar_fg_color : $selected_fg_color;
+$toolbar_fg_color : $selected_bg_color;
 $sidebar_bg_color : gtkalpha($bg_color, 0.85);
 $sidebar_fg_color : $fg_color;
 $taskbar_bg_color : $bg_color;
@@ -101,8 +101,8 @@ $terminal_fg_color : $fg_color;
 
 // OSD
 $osd_fg : $dark_bg_color;
-$osd_bg : #202F50;
-$osd_base : #202F50;
+$osd_bg : gtkmix($dark_fg_color, $dark_bg_color, 0.2);
+$osd_base : $dark_fg_color;
 
 // Budgie colors
 $raven_fg_color : $dark_fg_color;
