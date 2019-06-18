@@ -1,120 +1,118 @@
-@import 'functions';
+// Normal colors
+$bg_color : #DCDCDC;
+$fg_color : #000000;
+$base_color : #FFFFFF;
+$text_color : #000000;
+$selected_bg_color : #9999FF;
+$selected_fg_color : #FFFFFF;
+$selected_base_color : #9999FF;
+$selected_text_color : #FFFFFF;
+$disabled_bg_color : gtkmix($fg_color, $bg_color, 0.95);
+$disabled_fg_color : gtkmix($fg_color, $bg_color, 0.5);
+$disabled_base_color : $base_color;
+$disabled_text_color : $disabled_fg_color;
 
-// Normal colors 
-$bg_color : unquote("@bg_color");
-$fg_color : unquote("@fg_color");
-$base_color : unquote("@base_color");
-$text_color : unquote("@text_color");
-$selected_bg_color : unquote("@selected_bg_color");
-$selected_fg_color : unquote("@selected_fg_color");
-$disabled_bg_color : unquote("@disabled_bg_color");
-$disabled_fg_color : unquote("@disabled_fg_color");
-$disabled_base_color : unquote("@disabled_base_color");
-$disabled_text_color : unquote("@disabled_text_color");
+// Backdrop state colors
+$unfocused_bg_color : #E4E4E4;
+$unfocused_fg_color : #8C8C8C;
+$unfocused_base_color : $base_color;
+$unfocused_text_color : #8C8C8C;
+$unfocused_selected_bg_color : #000000;
+$unfocused_selected_fg_color : #FFFFFF;
+$unfocused_disabled_bg_color : $disabled_bg_color;
+$unfocused_disabled_fg_color : $disabled_fg_color;
+$unfocused_disabled_base_color : $disabled_base_color;
+$unfocused_disabled_text_color : $disabled_text_color;
 
-// Backdrop state colors 
-$unfocused_bg_color : unquote("@unfocused_bg_color");
-$unfocused_fg_color : unquote("@unfocused_fg_color");
-$unfocused_base_color : unquote("@unfocused_base_color");
-$unfocused_text_color : unquote("@unfocused_text_color");
-$unfocused_selected_bg_color : unquote("@unfocused_selected_bg_color");
-$unfocused_selected_fg_color : unquote("@unfocused_selected_fg_color");
-$unfocused_disabled_bg_color : unquote("@unfocused_disabled_bg_color");
-$unfocused_disabled_fg_color : unquote("@unfocused_disabled_fg_color");
-$unfocused_disabled_base_color : unquote("@unfocused_disabled_base_color");
-$unfocused_disabled_text_color : unquote("@unfocused_disabled_text_color");
+// Darker color scheme
+$dark_bg_color : #DCDCDC;
+$dark_fg_color : #000000;
 
-// Darker color scheme 
-$dark_bg_color : unquote("@dark_bg_color");
-$dark_fg_color : unquote("@dark_fg_color");
+// Theme colors
+$theme_bg_color : $bg_color;
+$theme_fg_color : $fg_color;
+$theme_base_color : $base_color;
+$theme_text_color : $text_color;
+$theme_selected_bg_color : $selected_bg_color;
+$theme_selected_fg_color : $selected_fg_color;
+$theme_selected_base_color : $selected_base_color;
+$theme_selected_text_color : $selected_text_color;
+$theme_disabled_bg_color : $disabled_bg_color;
+$theme_disabled_fg_color : $disabled_fg_color;
+$theme_disabled_text_color : $disabled_text_color;
+$theme_disabled_base_color : $disabled_base_color;
 
-// Theme colors 
-$theme_bg_color : unquote("@theme_bg_color");
-$theme_fg_color : unquote("@theme_fg_color");
-$theme_base_color : unquote("@theme_base_color");
-$theme_text_color : unquote("@theme_text_color");
-$theme_selected_bg_color : unquote("@theme_selected_bg_color");
-$theme_selected_fg_color : unquote("@theme_selected_fg_color");
-$theme_disabled_bg_color : unquote("@theme_disabled_bg_color");
-$theme_disabled_fg_color : unquote("@theme_disabled_fg_color");
-$theme_disabled_base_color : unquote("@theme_disabled_base_color");
-$theme_disabled_text_color : unquote("@theme_disabled_text_color");
-
-// Unfocused color scheme 
-$theme_unfocused_bg_color : unquote("@theme_unfocused_bg_color");
-$theme_unfocused_fg_color : unquote("@theme_unfocused_fg_color");
-$theme_unfocused_base_color : unquote("@theme_unfocused_base_color");
-$theme_unfocused_text_color : unquote("@theme_unfocused_text_color");
-$theme_unfocused_selected_bg_color : unquote("@theme_unfocused_selected_bg_color");
-$theme_unfocused_selected_fg_color : unquote("@theme_unfocused_selected_fg_color");
-$theme_unfocused_disabled_bg_color : unquote("@theme_unfocused_disabled_bg_color");
-$theme_unfocused_disabled_fg_color : unquote("@theme_unfocused_disabled_fg_color");
-$theme_unfocused_disabled_text_color : unquote("@theme_unfocused_disabled_text_color");
-$theme_unfocused_disabled_base_color : unquote("@theme_unfocused_disabled_base_color");
-
-// Shadows 
-$dark_shadow : unquote("@dark_shadow");
-$color_shadow : unquote("@color_shadow");
-$light_shadow : unquote("@light_shadow");
-
-// Borders 
-$borders : unquote("@borders");
-$outline_color : unquote("@outline_color");
-$unfocused_borders : unquote("@unfocused_borders");
-
-// Notification header backgrounds 
-$info_bg_color : unquote("@info_bg_color");
-$info_fg_color : unquote("@info_fg_color");
-$warning_bg_color : unquote("@warning_bg_color");
-$warning_fg_color : unquote("@warning_fg_color");
-$question_bg_color : unquote("@question_bg_color");
-$question_fg_color : unquote("@question_fg_color");
-$error_bg_color : unquote("@error_bg_color");
-$error_fg_color : unquote("@error_fg_color");
-
-$link_color : unquote("@link_color");
-$error_color : unquote("@error_color");
-$success_color : unquote("@success_color");
-$warning_color : unquote("@warning_color");
-
-// Widget colors 
-$tooltip_bg_color : unquote("@tooltip_bg_color");
-$tooltip_fg_color : unquote("@tooltip_fg_color");
-$menu_bg_color : unquote("@menu_bg_color");
-$menu_fg_color : unquote("@menu_fg_color");
-$menubar_bg_color : unquote("@menubar_bg_color");
-$menubar_fg_color : unquote("@menubar_fg_color");
-$toolbar_bg_color : unquote("@toolbar_bg_color");
-$toolbar_fg_color : unquote("@toolbar_fg_color");
-$sidebar_bg_color : unquote("@sidebar_bg_color");
-$sidebar_fg_color : unquote("@sidebar_fg_color");
-$taskbar_bg_color : unquote("@taskbar_bg_color");
-$taskbar_fg_color : unquote("@taskbar_fg_color");
-$titlebar_bg_color : unquote("@titlebar_bg_color");
-$titlebar_fg_color : unquote("@titlebar_fg_color");
-$headerbar_bg_color : unquote("@headerbar_bg_color");
-$headerbar_fg_color : unquote("@headerbar_fg_color");
-$terminal_bg_color : unquote("@terminal_bg_color");
-$terminal_fg_color : unquote("@terminal_fg_color");
+// Unfocused color scheme
+$theme_unfocused_bg_color : $unfocused_bg_color;
+$theme_unfocused_fg_color : $unfocused_fg_color;
+$theme_unfocused_base_color : $unfocused_base_color;
+$theme_unfocused_text_color : $unfocused_text_color;
+$theme_unfocused_selected_bg_color : $unfocused_selected_bg_color;
+$theme_unfocused_selected_fg_color : $unfocused_selected_fg_color;
+$theme_unfocused_disabled_bg_color : $unfocused_disabled_bg_color;
+$theme_unfocused_disabled_fg_color : $unfocused_disabled_fg_color;
+$theme_unfocused_disabled_text_color : $unfocused_disabled_text_color;
+$theme_unfocused_disabled_base_color : $unfocused_disabled_base_color;
 
 
-// OSD 
-$osd_bg : unquote("@osd_bg");
-$osd_fg : unquote("@osd_fg");
-$osd_base : unquote("@osd_base");
+// Shadows
+$dark_shadow : rgb(0, 0, 0);
+$color_shadow : $selected_bg_color;
+$light_shadow : rgb(255, 255, 255);
 
-// Budgie colors 
-$raven_fg_color : unquote("@raven_fg_color");
-$raven_bg_color : unquote("@raven_bg_color");
+// Borders
+$borders : gtkshade($bg_color, 0.9);
+$outline_color : gtkshade($bg_color, 0.75);
+$unfocused_borders : gtkshade($unfocused_bg_color, 0.9);
 
-// Desktop Icons 
-$desktop_item_fg : unquote("@desktop_item_fg");
-$desktop_item_selected_fg : unquote("@desktop_item_selected_fg");
-$desktop_item_text_shadow : unquote("@desktop_item_text_shadow");
+// Notification header backgrounds
+$info_fg_color : #FFFFFF;
+$info_bg_color : #0055FF;
+$warning_fg_color : #FFFFFF;
+$warning_bg_color : #FF8300;
+$question_fg_color : #FFFFFF;
+$question_bg_color : #2C2C2C;
+$error_fg_color : #FFFFFF;
+$error_bg_color : #FF0000;
+$link_color : #1d72e9;
+$error_color : #CC0000;
+$success_color : #39e4a3;
+$warning_color : #FF9900;
 
-// LightDM greeter colors 
-$lightdm_bg_color : unquote("@lightdm_bg_color");
-$lightdm_fg_color : unquote("@lightdm_fg_color");
+// Widget colors
+$tooltip_bg_color : $bg_color;
+$tooltip_fg_color : $fg_color;
+$menu_bg_color : $bg_color;
+$menu_fg_color : $fg_color;
+$menubar_bg_color : $bg_color;
+$menubar_fg_color : $fg_color;
+$toolbar_bg_color : $bg_color;
+$toolbar_fg_color : $fg_color;
+$sidebar_bg_color : $base_color;
+$sidebar_fg_color : $text_color;
+$taskbar_bg_color : $bg_color;
+$taskbar_fg_color : $fg_color;
+$titlebar_bg_color : gtkshade($bg_color, 0.9);
+$titlebar_fg_color : $fg_color;
+$headerbar_bg_color : $bg_color;
+$headerbar_fg_color : $fg_color;
+$terminal_bg_color : $fg_color;
+$terminal_fg_color : $base_color;
 
-// ADD to CSS definitions
-// $define-color event_shadow_color gtkalpha(black, 0.2);
+// OSD
+$osd_fg : $dark_bg_color;
+$osd_bg : gtkmix($dark_fg_color, $dark_bg_color, 0.2);
+$osd_base : $dark_fg_color;
+
+// Budgie colors
+$raven_fg_color : $dark_fg_color;
+$raven_bg_color : gtkalpha($dark_bg_color, 0.9);
+
+// Desktop Icons
+$desktop_item_fg : #FFFFFF;
+$desktop_item_selected_fg : $selected_fg_color;
+$desktop_item_text_shadow : gtkalpha($dark_shadow, 0.8);
+
+// LightDM greeter colors
+$lightdm_bg_color : $dark_bg_color;
+$lightdm_fg_color : $dark_fg_color;
