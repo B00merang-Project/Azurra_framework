@@ -1,0 +1,72 @@
+@mixin miscellaneous() {
+  .dnd {
+    border-width: 1px;
+    border-style: solid;
+    border-color: $borders;
+  }
+
+  .nautilus-window notebook, .nautilus-window notebook > stack:not(:only-child) searchbar {
+    background-color: $base_color;
+  }
+
+  .caja-location-entry {
+    padding: 3px 5px;
+  }
+
+  scrolledwindow viewport.frame {
+    border: none;
+  }
+
+  arrow, combobox arrow {
+    color: gtkalpha(currentColor, 0.75);
+    -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+    min-height: 16px;
+    min-width: 16px;
+  }
+
+  .context-menu, popover.touch-selection, .csd popover.touch-selection,
+  popover.background.touch-selection, .csd popover.background.touch-selection {
+    font: initial;
+  }
+
+  .monospace {
+    font-family: Monospace;
+  }
+
+  .gedit-search-entry-occurrences-tag {
+    color: gtkalpha(currentColor, 0.7);
+    border: none;
+    margin: 2px;
+    padding: 2px;
+  }
+
+  .gedit-search-slider {
+    border-color: $borders;
+    padding: 6px;
+    border-radius: 0 0 $roundness $roundness;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    background-color: $bg_color;
+  }
+
+  button.circular, button.circular-button {
+    padding: 0;
+    min-width: 16px;
+    min-height: 24px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    -gtk-outline-radius: 50%;
+  }
+  
+  stackswitcher button.circular, stackswitcher button.text-button.circular {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0;
+  }
+    
+  printdialog paper {
+    border: 1px solid $borders;
+    background: $light_shadow;
+    padding: 0;
+  }
+}

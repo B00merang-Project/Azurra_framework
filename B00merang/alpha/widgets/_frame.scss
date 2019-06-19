@@ -1,0 +1,19 @@
+@mixin frame() {
+  frame {
+    > border {
+      border-width: 1px;
+      border-style: solid;
+      border-color: $borders;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    &.flat > border, > border.flat, statusbar & > border {
+      border: none;
+    }
+  }
+
+  .frame {
+	  background: none;
+  }
+}

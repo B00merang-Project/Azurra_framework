@@ -1,0 +1,141 @@
+@mixin sidebar() {
+  filechooser {
+    &.csd.background, placessidebar list {
+      background-color: $sidebar_bg_color;
+    }
+
+    placessidebar.sidebar row, placessidebar.sidebar view row, placessidebar.sidebar row.sidebar-row {
+      border: none;
+      color: $sidebar_fg_color;
+
+      &:hover, &:selected:hover {
+        color: $sidebar_fg_color;
+        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.15);
+      }
+
+      &:selected, &:selected:hover, &:selected:focus {
+        color: $sidebar_fg_color;
+        background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.15);
+      }
+    }
+  }
+
+  .nautilus-window.csd.background, .nautilus-window placessidebar list {
+    background-color: $sidebar_bg_color;
+  }
+
+  .nautilus-window placessidebar.sidebar row.sidebar-row {
+    border: none;
+    color: $sidebar_fg_color;
+    
+    &:hover {
+      color: $sidebar_fg_color;
+      background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.15);
+    }
+    
+    &:checked, &:selected {
+      color: $selected_fg_color;
+    }
+  }
+
+  .sidebar {
+    frame, &.frame {
+      border: none;
+    }
+
+    // allows light scrollbar on dark sidebar
+    scrollbar {
+      background-color: transparent;
+      
+      slider, slider:hover, slider:active, &.overlay-indicator:not(.dragging):not(.hovering) slider {
+        background-color: gtkalpha($sidebar_fg_color,
+      0.3);
+      }
+    }
+    
+    paned &.left,
+    paned &.right,
+    paned &.left:dir(rtl),
+    paned &:dir(rtl),
+    paned &:dir(ltr),
+    paned & {
+      border: none;
+    }
+  }
+
+  stacksidebar row {
+    padding: 10px 4px;
+
+    &:selected {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+    }
+
+    > label {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+
+    &.needs-attention > label {
+      background-size: 6px 6px, 0 0;
+    }
+  }
+
+  placessidebar {
+    > viewport.frame {
+      border-style: none;
+    }
+
+    row {
+      min-height: 36px;
+      padding: 0px;
+
+      > revealer {
+        padding: 0 14px;
+      }
+
+      image.sidebar-icon {
+        opacity: 0.75;
+
+        &:dir(ltr) {
+          padding-right: 8px;
+        }
+
+        &:dir(rtl) {
+          padding-left: 8px;
+        }
+      }
+
+      label.sidebar-label {
+        &:dir(ltr) {
+          padding-right: 2px;
+        }
+
+        &:dir(rtl) {
+          padding-left: 2px;
+        }
+      }
+    }
+  }
+
+  button.sidebar-button {
+    &, &:backdrop {
+      min-width: 22px;
+      min-height: 22px;
+      margin-top: 2px;
+      margin-bottom: 2px;
+      padding: 0;
+      border-radius: 100%;
+      color: $sidebar_fg_color;
+      -gtk-outline-radius: 100%;
+    }
+
+    &:hover, &:active {
+      color: $fg_color;
+    }
+
+    &:not(:hover):not(:active) > image {
+      opacity: 0.5;
+    }
+  }
+}

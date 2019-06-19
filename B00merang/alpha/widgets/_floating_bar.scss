@@ -1,0 +1,41 @@
+@mixin floating_bar() {
+  .floating-bar {
+    border-width: 1px;
+    border-style: solid;
+    border-color: gtkshade($base_color, 0.85);
+    border-radius: $roundness;
+    background-color: $base_color;
+    color: $fg_color;
+
+    &.top {
+      border-top-width: 0px;
+      border-top-right-radius: 0px;
+      border-top-left-radius: 0px;
+    }
+
+    &.bottom {
+      border-bottom-width: 0px;
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+    
+    &.top, &.bottom {
+      &.left {
+        border-left-width: 0px;
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 0px;
+      }
+
+      &.right {
+        border-right-width: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+    }
+
+    button {
+      border-style: none;
+      background-color: transparent;
+    }
+  }
+}
