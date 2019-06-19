@@ -7,12 +7,14 @@
 version=2.1
 description="Azurra Autogen, version $version"
 
+ROOT_DIR="$PWD"
 BASE_THEME='Azurra'
 
 # OPS
 GEN_AND_DEPLOY=build
 GEN_ONLY=just_sass
 DEPLOY_ONLY=just_deploy
+SCRIPT=run_script
 
 BUNDLE_DISPLAY=false
 
@@ -248,7 +250,7 @@ while [ "$1" != "" ]; do
     -a | --all )            QUEUE=*/
                             break
                             ;;
-    -s | --sass )           OP=$GEN_ONLY
+    -c | --compile )        OP=$GEN_ONLY
                             ;;
     -d | --deploy )         OP=$DEPLOY_ONLY
                             ;;
