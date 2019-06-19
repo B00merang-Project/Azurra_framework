@@ -1,6 +1,7 @@
 #!/bin/bash
 
+# batch apply REGEX on all widget files
 for F in *.*; do
-  [ -f $F ] && [ $F != "migrator.sh" ] && sed -i 's/theme_//g' $F
-  echo "$F"
+  [ -f $F ] && sed -i 's/theme_//g' $F
+  echo "$F migrated"
 done

@@ -9,6 +9,7 @@ description="Azurra Utils, version $version"
 
 BASE_THEME='Azurra'
 IGNORE_BASE_THEME=true
+WIKI=http://github.com/Elbullazul/Azurra_framework/wiki
 
 # Exit codes
 OK=0
@@ -23,13 +24,6 @@ STATIC[1]=0
 #############################################
 # FUNCTIONS
 #############################################
-ignore_base_theme() {
-  if [[ $IGNORE_BASE_THEME == true ]]; then
-    return 1    # bash false
-  fi
-  return 0      # bash true
-}
-
 clean_string() {
   string="$1"
   
@@ -55,7 +49,7 @@ show_help() {
   echo "  -b   --base         " "Specify new theme's parent (Azurra by default)"
 
   echo
-  echo "More information: <http://github.com/Azurra_framework/wiki>"
+  echo "More information: <$WIKI>"
 }
 
 show_version() {
@@ -99,36 +93,24 @@ get_arguments() {
 }
 
 # 0=true, 1=false
+ignore_base_theme() {
+  [[ $IGNORE_BASE_THEME == true ]] && return 1 || return 0
+}
+
 has_refs() {
-  if [ -f "$1/_imports.scss" ]; then
-     return 0
-  fi
-  return 1
+  [ -f "$1/_imports.scss" ] && return 0 || return 1
 }
 
 can_build() {
-  if [ -f "$1/theme.conf" ]; then
-    return 0
-  fi
-  return 1
+  [ -f "$1/theme.conf" ] && return 0 || return 1
 }
 
 is_theme_dir() {
-  if can_build $1 && has_refs $1; then
-    return 0
-  fi
-  return 1
+  can_build $1 && has_refs $1 && return 0 || return 1
 }
 
 is_bundle_dir() {
-  if can_build $1; then
-    for d in $1/*; do
-      if is_theme_dir $d; then
-        return 0
-      fi
-    done
-  fi
-  return 1
+  [ -f "$1/bundle.conf" ] && return 0 || return 1
 }
 
 get_parents() {
@@ -278,7 +260,7 @@ get_arguments $@
 
 if [ ! -z $name ]; then
   cp -a Azurra $name
-  echo "$name theme created. You'll have to manually edit build and deploy scripts"
+  echo "$name theme created. You now have to configure it in theme.conf"
   
   exit $OK
 fi

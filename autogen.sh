@@ -9,6 +9,7 @@ description="Azurra Autogen, version $version"
 
 ROOT_DIR="$PWD"
 BASE_THEME='Azurra'
+WIKI=http://github.com/Elbullazul/Azurra_framework/wiki
 
 # OPS
 GEN_AND_DEPLOY=build
@@ -18,11 +19,12 @@ SCRIPT=run_script
 
 BUNDLE_DISPLAY=false
 
-# COMMON
+# DEBUG: must be run like so: breakpoint $LINENO
 breakpoint() {
-  read -p "Breakpoint at $(basename $0), line $LINENO. Continue? " var
+  read -p "Breakpoint at $(basename $0), line $1. Continue? " var
 }
 
+# Coloring functions
 cyan() {
   [ -z $1 ] && tput setab 12 || tput setaf 12
 }
@@ -49,6 +51,38 @@ white() {
 
 gray() {
   [ -z $1 ] && tput setab 237 || tput setaf 237
+}
+
+# Support functions
+show_help() {
+  echo $description
+  echo
+  
+  echo "Usage:  ./autogen.sh <ARGUMENTS> <TARGETS>"
+  echo
+  
+  echo "Generates and deploys CSS and asset files"
+  echo
+  
+  echo "  -h   --help         " "Shows help"
+  echo "  -v   --version      " "Script version"
+  echo "  -q   --quiet        " "Silences ALL SASS warnings"
+  echo "  -a   --all          " "Generates and deploys all themes with valid configuration"
+  echo "  -d   --deploy       " "Deploys current files"
+  echo "  -c   --compile      " "Run SASS compiler only (no deployment)"
+  
+  echo
+  echo "More information: <$WIKI>"
+  
+  exit
+}
+
+show_version() {
+  echo $description
+  echo "Copyright (c) 2019 The B00merang Group"
+  echo "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
+  
+  exit
 }
 
 # Functions for reusability & recursion
@@ -101,9 +135,22 @@ clean() {
   [ -f "$clean__theme_dir"/gtk-dark.css ]  && rm "$clean__theme_dir"/gtk-dark.css
   [ -f "$clean__theme_dir"/gtk-light.css ] && rm "$clean__theme_dir"/gtk-light.css
   
+  # Remove previous files
   [ -f "$clean__theme_dir"/gtk-widgets.css ] && echo "Force-cleaning $clean__theme_dir" && rm "$clean__theme_dir"/gtk-widgets.css
   
   unset clean__theme_dir
+}
+
+load_config() {
+  # Load variables
+  # <name, author, version, target_dir, target_dir_dark, target_dir_light>
+  # from theme config
+
+  load_config__dir="$1"
+  source "$load_config__dir"/theme.conf
+  
+  # check if all required variables are set
+  [ -z "$name" ] || [ -z "$version" ] || [ -z "$target_dir" ] && fail "For '$build__theme_dir': config file incomplete or empty"
 }
 
 gen_sass() {
@@ -176,18 +223,7 @@ deploy() {
   unset deploy__theme_dir target target_dark target_light
 }
 
-load_config() {
-  # Load variables
-  # <name, author, version, target_dir, target_dir_dark, target_dir_light>
-  # from theme config
-
-  load_config__dir="$1"
-  source "$load_config__dir"/theme.conf
-  
-  # check if all required variables are set
-  [ -z "$name" ] || [ -z "$version" ] || [ -z "$target_dir" ] && fail "For '$build__theme_dir': config file incomplete or empty"
-}
-
+# Work meta-functions
 build() {
   build__theme_dir="$1"
   
@@ -205,35 +241,23 @@ build() {
   unset build__theme_dir
 }
 
-show_help() {
-  echo $description
-  echo
+just_sass() {
+  display "Compiling $1"
   
-  echo "Usage:  ./autogen.sh <ARGUMENTS> <TARGETS>"
-  echo
+  gen_sass $@
   
-  echo "Generates and deploys CSS and asset files"
-  echo
-  
-  echo "  -h   --help         " "Shows help"
-  echo "  -v   --version      " "Script version"
-  echo "  -q   --quiet        " "Silences ALL SASS warnings"
-  echo "  -a   --all          " "Generates and deploys all themes with valid configuration"
-  echo "  -d   --deploy       " "Deploys current files"
-  echo "  -c   --compile      " "Run SASS compiler only (no deployment)"
-  
-  echo
-  echo "More information: <http://github.com/Azurra_Utils/wiki>"
-  
-  exit
+  display "Done." 'last'
 }
 
-show_version() {
-  echo $description
-  echo "Copyright (c) 2019 The B00merang Group"
-  echo "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
+just_deploy() {
+  display "Deploying $1"
   
-  exit
+  load_config $@
+
+  # imported from config
+  deploy "$1" "$target_dir" "$target_dir_dark" "$target_dir_light"
+  
+  display "Done." 'last'
 }
 
 # Main
@@ -263,25 +287,6 @@ while [ "$1" != "" ]; do
   esac
   shift
 done
-
-just_sass() {
-  display "Compiling $1"
-  
-  gen_sass $@
-  
-  display "Done." 'last'
-}
-
-just_deploy() {
-  display "Deploying $1"
-  
-  load_config $@
-
-  # imported from config
-  deploy "$1" "$target_dir" "$target_dir_dark" "$target_dir_light"
-  
-  display "Done." 'last'
-}
 
 for dir in ${QUEUE[@]}; do
   # ignore base theme
