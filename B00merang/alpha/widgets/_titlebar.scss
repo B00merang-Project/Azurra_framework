@@ -18,58 +18,19 @@
     
     .titlebutton {
       &.close, &.maximize, &.minimize, &:not(separator) {
-        padding: 2px 2px;
+        padding: 0;
         border: none;
-        color: transparent;
-        background-color: transparent;
+        border-radius: 100%;
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
         -gtk-icon-shadow: none;
-      }
-      
-      &.close {
-        background: url('assets/close-normal.png') 100% 100%;
-
+        
         &:hover {
-          background: url('assets/close-hover.png') 100% 100%;
+          background-color: gtkshade($selected_bg_color, 1.1);
         }
-
+        
         &:active {
-          background: url('assets/close-active.png') 100% 100%;
-        }
-
-        &:backdrop {
-          background: url('assets/close-backdrop.png') 100% 100%;
-        }
-      }
-
-      &.minimize {
-        background: url('assets/minimize-normal.png') 100% 100%;
-
-        &:hover {
-          background: url('assets/minimize-hover.png') 100% 100%;
-        }
-
-        &:active {
-          background: url('assets/minimize-active.png') 100% 100%;
-        }
-
-        &:backdrop {
-          background: url('assets/minimize-backdrop.png') 100% 100%;
-        }
-      }
-
-      &.maximize {
-        background: url('assets/maximize-normal.png') 100% 100%;
-
-        &:hover {
-          background: url('assets/maximize-hover.png') 100% 100%;
-        }
-
-        &:active {
-          background: url('assets/maximize-active.png') 100% 100%;
-        }
-
-        &:backdrop {
-          background: url('assets/maximize-backdrop.png') 100% 100%;
+          background-color: gtkshade($selected_bg_color, 0.9);
         }
       }
     }
