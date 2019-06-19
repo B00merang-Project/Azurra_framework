@@ -40,27 +40,27 @@
     }
 
     > stack:not(:only-child) {
-      background-color: $theme_base_color;
+      background-color: $base_color;
     }
 
     tab {
       border-radius: $tab_radius;
-      color: $theme_fg_color;
+      color: $fg_color;
       padding: 4px 6px;
-      border: 1px solid gtkshade($theme_bg_color, 0.7);
-      background-color: $theme_bg_color;
-      box-shadow: inset 0 3px 2px 0 gtkshade($theme_bg_color, 0.95);
+      border: 1px solid gtkshade($bg_color, 0.7);
+      background-color: $bg_color;
+      box-shadow: inset 0 3px 2px 0 gtkshade($bg_color, 0.95);
 
       &:checked {
         border-radius: 5px;
         border-color: gtkshade($borders, 0.8);
-        background-color: gtkshade($theme_bg_color, 0.9);
+        background-color: gtkshade($bg_color, 0.9);
         box-shadow: inset 0 3px 2px 0 gtkalpha($dark_shadow, 0.15);
       }
     }
 
     > header {
-      background-color: $theme_bg_color;
+      background-color: $bg_color;
       
       &.top {
         box-shadow: 0 1px $borders;
@@ -161,18 +161,18 @@
     }
 
     > header > tabs > arrow {
-      color: $theme_fg_color;
+      color: $fg_color;
 
       &:hover {
-        color: gtkshade($theme_fg_color, 1.2);
+        color: gtkshade($fg_color, 1.2);
       }
 
       &:active {
-        color: gtkshade($theme_fg_color, 0.8);
+        color: gtkshade($fg_color, 0.8);
       }
 
       &:disabled {
-        color: gtkshade($theme_bg_color, 0.6);
+        color: gtkshade($bg_color, 0.6);
       }
     }
   }

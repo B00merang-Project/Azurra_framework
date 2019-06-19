@@ -10,22 +10,22 @@
     background-image: linear-gradient(to bottom, gtkshade($borders, 0.9), $borders);
 
     &:checked {
-      background-color: gtkshade($theme_selected_bg_color, 0.7);
-      background-image: linear-gradient(to bottom, gtkshade($theme_selected_bg_color, 0.7), gtkshade($theme_selected_bg_color, 0.85));
+      background-color: gtkshade($selected_bg_color, 0.7);
+      background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 0.7), gtkshade($selected_bg_color, 0.85));
 
       &:backdrop {
-        background-color: $theme_unfocused_selected_bg_color;
-        background-image: linear-gradient(to bottom, gtkshade($theme_unfocused_selected_bg_color, 0.7), gtkshade($theme_unfocused_selected_bg_color, 0.85));
+        background-color: $unfocused_selected_bg_color;
+        background-image: linear-gradient(to bottom, gtkshade($unfocused_selected_bg_color, 0.7), gtkshade($unfocused_selected_bg_color, 0.85));
       }
     }
 
     &:disabled {
-      background-color: $theme_disabled_bg_color;
-      background-image: linear-gradient(to bottom, gtkshade($theme_disabled_bg_color, 0.9), $theme_disabled_bg_color);
+      background-color: $disabled_bg_color;
+      background-image: linear-gradient(to bottom, gtkshade($disabled_bg_color, 0.9), $disabled_bg_color);
 
       &:backdrop {
-        background-color: $theme_unfocused_disabled_bg_color;
-        background-image: linear-gradient(to bottom, gtkshade($theme_unfocused_disabled_bg_color, 0.9), $theme_unfocused_disabled_bg_color);
+        background-color: $unfocused_disabled_bg_color;
+        background-image: linear-gradient(to bottom, gtkshade($unfocused_disabled_bg_color, 0.9), $unfocused_disabled_bg_color);
       }
     }
 
@@ -40,8 +40,8 @@
       margin: 0;
       border: 1px solid gtkshade($dark_bg_color, 0.5);
       border-radius: $roundness;
-      color: $theme_fg_color;
-      background-color: $theme_base_color;
+      color: $fg_color;
+      background-color: $base_color;
       background-image: linear-gradient(to bottom,
         $light_shadow,
         gtkshade($dark_bg_color, 0.98) 21%,
@@ -54,16 +54,16 @@
 
     &:disabled {
       slider {
-        background-color: $theme_disabled_base_color;
+        background-color: $disabled_base_color;
       }
 
       &:backdrop slider {
-        background-color: $theme_unfocused_disabled_base_color;
+        background-color: $unfocused_disabled_base_color;
       }
     }
 
     &:backdrop slider {
-      background-color: $theme_unfocused_base_color;
+      background-color: $unfocused_base_color;
     }
   }
 }

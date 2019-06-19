@@ -11,7 +11,7 @@
       -gtk-outline-radius: 0;
       border: 4px solid transparent;
       border-radius: 10px;
-      background-image: linear-gradient(to bottom, gtkshade($theme_bg_color, 0.8), $theme_fg_color);
+      background-image: linear-gradient(to bottom, gtkshade($bg_color, 0.8), $fg_color);
       border-image: url('assets/scale-h-trough.png') 4 4 4 4;
 
       &:disabled {
@@ -29,7 +29,7 @@
     
     &.vertical {
       fill, trough {
-        background-image: linear-gradient(to right, gtkshade($theme_bg_color, 0.8), $theme_fg_color);
+        background-image: linear-gradient(to right, gtkshade($bg_color, 0.8), $fg_color);
         border-image: url('assets/scale-v-trough.png') 4 4 4 4;
       }
     }
@@ -124,13 +124,13 @@
       border: none;
       border-radius: 0;
       box-shadow: 0 1px 2px 1px gtkalpha($dark_shadow, 0.09);
-      color: $theme_fg_color;
+      color: $fg_color;
       background-color: transparent;
       background-image: url('assets/scale-h-slider.png');
 
       &:hover {
-        color: $theme_fg_color;
-        background-color: $theme_base_color;
+        color: $fg_color;
+        background-color: $base_color;
         background-image: url('assets/scale-h-slider-hover.png');
       }
 
@@ -145,7 +145,7 @@
       }
 
       &:backdrop {
-        color: $theme_unfocused_fg_color;
+        color: $unfocused_fg_color;
         background-color: transparent;
       }
     }

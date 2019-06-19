@@ -2,7 +2,7 @@
   progressbar {
     padding: 0;
     border: none;
-    color: gtkmix($theme_fg_color, $theme_selected_fg_color, 0.5);
+    color: gtkmix($fg_color, $selected_fg_color, 0.5);
     background-color: transparent;
 
     progress {
@@ -14,10 +14,10 @@
 
     trough {
       border-radius: $progressbar_radius;
-      border: 1px solid gtkshade($theme_bg_color, 0.8);
-      border-bottom-color: $theme_base_color;
-      border-right-color: $theme_base_color;
-      background-color: $theme_bg_color;
+      border: 1px solid gtkshade($bg_color, 0.8);
+      border-bottom-color: $base_color;
+      border-right-color: $base_color;
+      background-color: $bg_color;
       padding: 2px;
     }
     
@@ -31,10 +31,10 @@
 
       trough {
         border-radius: $progressbar_radius;
-        border: 1px solid gtkshade($theme_bg_color, 0.8);
-        border-bottom-color: $theme_base_color;
-        border-right-color: $theme_base_color;
-        background-color: $theme_bg_color;
+        border: 1px solid gtkshade($bg_color, 0.8);
+        border-bottom-color: $base_color;
+        border-right-color: $base_color;
+        background-color: $bg_color;
         padding: 2px;
       }
     }
@@ -53,26 +53,26 @@
   treeview.view {
     &.progressbar {
       &, &:disabled {
-        color: $theme_selected_fg_color;
+        color: $selected_fg_color;
         border-radius: 0;
-        background-color: $theme_selected_bg_color;
+        background-color: $selected_bg_color;
       }
 
       &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
         border-radius: 0;
-        color: $theme_selected_bg_color;
-        background-color: $theme_selected_fg_color;
+        color: $selected_bg_color;
+        background-color: $selected_fg_color;
       }
     }
 
     &.trough {
-      color: $theme_fg_color;
+      color: $fg_color;
       background-color: gtkalpha($dark_shadow, 0.1);
       border-radius: 0;
       border: none;
 
       &:selected, &:selected:focus {
-        color: $theme_selected_fg_color;
+        color: $selected_fg_color;
         background-color: gtkalpha($dark_shadow, 0.1);
         border-radius: 0;
         border: none;

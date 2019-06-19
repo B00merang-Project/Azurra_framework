@@ -7,20 +7,20 @@
     fill, trough {
       border: 1px solid $borders;
       border-radius: 0;
-      background-color: gtkalpha($theme_fg_color, 0.1);
+      background-color: gtkalpha($fg_color, 0.1);
       outline-offset: 2px;
       -gtk-outline-radius: 0;
 
       &:disabled {
-        background-color: gtkalpha($theme_fg_color, 0.05);
+        background-color: gtkalpha($fg_color, 0.05);
 
         &:backdrop {
-          background-color: gtkalpha($theme_fg_color, 0.05);
+          background-color: gtkalpha($fg_color, 0.05);
         }
       }
 
       &:backdrop {
-        background-color: gtkalpha($theme_fg_color, 0.1);
+        background-color: gtkalpha($fg_color, 0.1);
       }
     }
 
@@ -117,12 +117,12 @@
       margin-bottom: -10px;
       border: none;
       border-radius: 0;
-      color: $theme_selected_fg_color;
+      color: $selected_fg_color;
       background-color: transparent;
       background-image: url('assets/slider-horiz.png');
 
       &:hover {
-        color: $theme_selected_fg_color;
+        color: $selected_fg_color;
         background-image: url('assets/slider-horiz-hover.png');
       }
 
@@ -137,7 +137,7 @@
       }
 
       &:backdrop {
-        color: $theme_unfocused_selected_fg_color;
+        color: $unfocused_selected_fg_color;
         background-image: url('assets/slider-horiz-insensitive.png');
       }
     }

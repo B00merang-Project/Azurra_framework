@@ -13,19 +13,19 @@
     }
 
     &:disabled {
-      color: $theme_disabled_fg_color;
-      border-color: $theme_disabled_bg_color;
-      background-color: gtkshade($theme_disabled_bg_color, 1.2);
+      color: $disabled_fg_color;
+      border-color: $disabled_bg_color;
+      background-color: gtkshade($disabled_bg_color, 1.2);
 
       &:backdrop {
-        color: $theme_unfocused_disabled_fg_color;
-        border-color: $theme_unfocused_disabled_bg_color;
-        background-color: gtkshade($theme_unfocused_disabled_bg_color, 1.2);
+        color: $unfocused_disabled_fg_color;
+        border-color: $unfocused_disabled_bg_color;
+        background-color: gtkshade($unfocused_disabled_bg_color, 1.2);
       }
     }
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
+      color: $unfocused_fg_color;
       border-color: $unfocused_borders;
       background-color: $unfocused_borders;
     }
@@ -36,32 +36,32 @@
       margin: 0;
       border: none;
       border-radius: 0;
-      color: $theme_fg_color;
-      background-color: gtkmix($theme_fg_color, $theme_bg_color, 0.6);
+      color: $fg_color;
+      background-color: gtkmix($fg_color, $bg_color, 0.6);
     }
 
     &:checked {
       slider {
-        background-color: $theme_selected_bg_color;
+        background-color: $selected_bg_color;
       }
       
       &:backdrop slider {
-        background-color: $theme_unfocused_selected_bg_color;
+        background-color: $unfocused_selected_bg_color;
       }
     }
 
     &:disabled {
       slider {
-        background-color: $theme_disabled_base_color;
+        background-color: $disabled_base_color;
       }
 
       &:backdrop slider {
-        background-color: $theme_unfocused_disabled_base_color;
+        background-color: $unfocused_disabled_base_color;
       }
     }
 
     &:backdrop slider {
-      background-color: gtkshade($theme_unfocused_base_color, 0.95);
+      background-color: gtkshade($unfocused_base_color, 0.95);
     }
   }
 }

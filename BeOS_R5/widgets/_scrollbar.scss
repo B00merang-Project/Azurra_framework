@@ -1,7 +1,7 @@
 @mixin scrollbar() {
   scrollbar {
     border: 1px solid gtkshade($borders, 0.8);
-    background-color: $theme_bg_color;
+    background-color: $bg_color;
 
     trough {
       border: none;
@@ -9,7 +9,7 @@
     }
 
     &:backdrop {
-      background-color: $theme_unfocused_bg_color;
+      background-color: $unfocused_bg_color;
     }
 
     slider {
@@ -17,12 +17,12 @@
       border-width: 1px;
       border-radius: 0px;
       border-style: solid;
-      border-color: gtkshade($theme_bg_color, 0.65);
-      border-top-color: gtkshade($theme_bg_color, 0.75);
-      border-left-color: gtkshade($theme_bg_color, 0.75);
-      background-color: $theme_bg_color;
-      color: $theme_fg_color;
-      box-shadow: inset -1px -1px gtkshade($theme_bg_color, 0.85), inset 1px 1px $theme_base_color;
+      border-color: gtkshade($bg_color, 0.65);
+      border-top-color: gtkshade($bg_color, 0.75);
+      border-left-color: gtkshade($bg_color, 0.75);
+      background-color: $bg_color;
+      color: $fg_color;
+      box-shadow: inset -1px -1px gtkshade($bg_color, 0.85), inset 1px 1px $base_color;
       background-position: center center;
       background-repeat: no-repeat;
     }
@@ -32,7 +32,7 @@
         border: 1px solid gtkshade($borders, 0.8);
         opacity: 1;
         margin: 0;
-        background-color: $theme_bg_color;
+        background-color: $bg_color;
       }
       
       &.dragging, &.hovering {

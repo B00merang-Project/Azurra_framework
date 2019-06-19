@@ -27,14 +27,14 @@
       background-image: none;
 
       &:disabled {
-        color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
+        color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
         text-shadow: 1px 1px gtkalpha($light_shadow, 0.7);
-        background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        background-color: gtkshade($disabled_bg_color, 0.9);
       }
     }
 
     &:disabled {
-      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
       text-shadow: 1px 1px gtkalpha($light_shadow, 0.7);
     }
   }
@@ -69,9 +69,9 @@
       background-image: none;
 
       &:disabled {
-        color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
+        color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
         text-shadow: 1px 1px gtkalpha($light_shadow, 0.7);
-        background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        background-color: gtkshade($disabled_bg_color, 0.9);
       }
     }
 
@@ -86,10 +86,10 @@
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    @include normal_buttons($bg_color, $fg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+      @include flat_buttons($bg_color, $fg_color, $borders);
     }
   }
 }

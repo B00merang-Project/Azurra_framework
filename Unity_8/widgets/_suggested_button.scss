@@ -4,7 +4,7 @@
     border-style: solid;
     border-radius: $button_radius;
     border-color: $success_color;
-    color: $theme_selected_fg_color;
+    color: $selected_fg_color;
     background-color: $success_color;
 
     &:hover {
@@ -14,21 +14,21 @@
       background-color: gtkshade($success_color, 0.9);
 
       &:backdrop {
-        color: $theme_unfocused_selected_fg_color;
+        color: $unfocused_selected_fg_color;
       }
     }
 
     &:disabled {
-      border-color: gtkmix($success_color, $theme_disabled_bg_color, 0.2);
-      color: gtkmix($theme_selected_fg_color, $theme_disabled_fg_color, 0.2);
-      background-color: gtkshade(gtkmix($success_color, $theme_disabled_bg_color, 0.2), 1.2);
+      border-color: gtkmix($success_color, $disabled_bg_color, 0.2);
+      color: gtkmix($selected_fg_color, $disabled_fg_color, 0.2);
+      background-color: gtkshade(gtkmix($success_color, $disabled_bg_color, 0.2), 1.2);
 
       &:backdrop {
       }
     }
 
     &:backdrop {
-      color: $theme_unfocused_selected_fg_color;
+      color: $unfocused_selected_fg_color;
     }
   }
 }

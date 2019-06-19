@@ -7,14 +7,14 @@
     fill, trough {
       border: 1px solid $borders;
       border-radius: 0;
-      background-color: $theme_bg_color;
+      background-color: $bg_color;
       outline-offset: 2px;
-      border-bottom-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-      border-right-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+      border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
+      border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
       -gtk-outline-radius: 0;
 
       &:disabled {
-        background-color: $theme_disabled_bg_color;
+        background-color: $disabled_bg_color;
       }
     }
 
@@ -109,12 +109,12 @@
       min-width: 30px;
       margin: 0;
       border-radius: 0;
-      color: $theme_fg_color;
-      background-color: $theme_bg_color;
+      color: $fg_color;
+      background-color: $bg_color;
       border: 1px solid $borders;
-      border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-      border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-      background-image: linear-gradient(to right, $borders, gtkmix($theme_bg_color, $light_shadow, 0.7));
+      border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+      border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+      background-image: linear-gradient(to right, $borders, gtkmix($bg_color, $light_shadow, 0.7));
       background-size: 2px 100%;
       background-position: center center;
       background-repeat: no-repeat;
@@ -124,17 +124,17 @@
 
       &:disabled {
         -gtk-icon-shadow: none;
-        background-color: $theme_disabled_bg_color;
+        background-color: $disabled_bg_color;
 
         &:backdrop {
           -gtk-icon-shadow: none;
-          background-color: $theme_unfocused_disabled_bg_color;
+          background-color: $unfocused_disabled_bg_color;
         }
       }
 
       &:backdrop {
-        color: $theme_unfocused_selected_fg_color;
-        background-color: $theme_unfocused_bg_color;
+        color: $unfocused_selected_fg_color;
+        background-color: $unfocused_bg_color;
       }
     }
     
@@ -144,7 +144,7 @@
         min-width: 15px;
         margin: 0;
         background-size: 100% 2px;
-        background-image: linear-gradient(to bottom, $borders, gtkmix($theme_bg_color, $light_shadow, 0.7));
+        background-image: linear-gradient(to bottom, $borders, gtkmix($bg_color, $light_shadow, 0.7));
       }
     }
 

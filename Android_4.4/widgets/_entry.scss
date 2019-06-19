@@ -5,35 +5,35 @@
     border-style: solid;
     border-color: transparent;
     border-radius: $entry_radius;
-    color: $theme_text_color;
+    color: $text_color;
     caret-color: currentColor;
     background-color: transparent;
     border-image: linear-gradient(to bottom, transparent 80%, $borders 81%) 1 1 1 1;
 
     &:active, &:focus {
-      border-image: linear-gradient(to bottom, transparent 80%, $theme_selected_bg_color 81%) 1 1 1 1;
+      border-image: linear-gradient(to bottom, transparent 80%, $selected_bg_color 81%) 1 1 1 1;
     }
 
     &:selected, &:selected:focus, selection, selection:focus {
-      color: $theme_selected_text_color;
-      background-color: $theme_selected_base_color;
+      color: $selected_text_color;
+      background-color: $selected_base_color;
     }
 
     &:disabled {
-      color: $theme_disabled_text_color;
+      color: $disabled_text_color;
       border-image: linear-gradient(to bottom, transparent 80%, $unfocused_borders 81%) 1 1 1 1;
 
       &:backdrop {
-        color: $theme_unfocused_disabled_fg_color;
+        color: $unfocused_disabled_fg_color;
       }
     }
 
     &.read-only {
-      background-color: gtkmix($theme_bg_color, $theme_disabled_bg_color, 0.1);
+      background-color: gtkmix($bg_color, $disabled_bg_color, 0.1);
     }
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
+      color: $unfocused_fg_color;
     }
 
     > image {
@@ -51,7 +51,7 @@
       border-width: 0 0 2px;
       border-radius: 0;
       border-style: solid;
-      border-color: $theme_selected_bg_color;
+      border-color: $selected_bg_color;
       background-color: transparent;
     }
 

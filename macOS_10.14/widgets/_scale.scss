@@ -27,18 +27,18 @@
     highlight {
       border: none;
       border-radius: 4px;
-      background-color: $theme_selected_bg_color;
+      background-color: $selected_bg_color;
 
       &:disabled {
-        background-color: $theme_disabled_bg_color;
+        background-color: $disabled_bg_color;
 
         &:backdrop {
-          background-color: $theme_unfocused_disabled_bg_color;
+          background-color: $unfocused_disabled_bg_color;
         }
       }
 
       &:backdrop {
-        background-color: $theme_unfocused_selected_bg_color;
+        background-color: $unfocused_selected_bg_color;
       }
     }
 
@@ -116,25 +116,25 @@
       border: none;
       border-radius: 100%;
       box-shadow: 0 1px 2px 1px gtkalpha($dark_shadow, 0.09);
-      color: $theme_fg_color;
-      background-color: gtkshade($theme_bg_color, 1.4);
+      color: $fg_color;
+      background-color: gtkshade($bg_color, 1.4);
 
       &:hover {
       }
 
       &:disabled {
-        background-color: $theme_disabled_base_color;
+        background-color: $disabled_base_color;
         -gtk-icon-shadow: none;
 
         &:backdrop {
-          background-color: $theme_unfocused_disabled_base_color;
+          background-color: $unfocused_disabled_base_color;
           -gtk-icon-shadow: none;
         }
       }
 
       &:backdrop {
-        color: $theme_unfocused_fg_color;
-        background-color: gtkshade($theme_unfocused_bg_color, 1.4);
+        color: $unfocused_fg_color;
+        background-color: gtkshade($unfocused_bg_color, 1.4);
       }
     }
 

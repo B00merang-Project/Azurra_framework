@@ -40,7 +40,7 @@
     }
 
     > stack:not(:only-child) {
-      background-color: $theme_base_color;
+      background-color: $base_color;
     }
 
     tab {
@@ -49,42 +49,42 @@
       border-style: solid;
       border-radius: 0;
       border-color: $borders;
-      color: $theme_fg_color;
-      background-color: $theme_bg_color;
-      background-image: linear-gradient(to bottom, gtkshade($theme_bg_color, 1.1), gtkshade($theme_bg_color, 0.985) 50%, gtkshade($theme_bg_color, 0.95) 51%, gtkshade($theme_bg_color, 0.94));
+      color: $fg_color;
+      background-color: $bg_color;
+      background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.1), gtkshade($bg_color, 0.985) 50%, gtkshade($bg_color, 0.95) 51%, gtkshade($bg_color, 0.94));
       
       &:hover {
-        border-color: gtkshade($theme_selected_bg_color, 0.7);
-        background-color: $theme_selected_bg_color;
-        background-image: linear-gradient(to bottom, gtkshade($theme_selected_bg_color, 1.12), $theme_selected_bg_color 50%, gtkshade($theme_selected_bg_color, 0.95) 51%);
+        border-color: gtkshade($selected_bg_color, 0.7);
+        background-color: $selected_bg_color;
+        background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.12), $selected_bg_color 50%, gtkshade($selected_bg_color, 0.95) 51%);
       }
 
       &:checked {
         border-color: $borders;
-        background-color: $theme_base_color;
+        background-color: $base_color;
         background-image: none;
         
         &:hover {
-          background-color: $theme_base_color;
+          background-color: $base_color;
         }
 
         &:backdrop {
           border-color: $unfocused_borders;
-          background-color: $theme_unfocused_base_color;
+          background-color: $unfocused_base_color;
         }
       }
 
       &:backdrop {
-        background-color: $theme_unfocused_bg_color;
+        background-color: $unfocused_bg_color;
       }
     }
 
     > header {
       padding-top: 2px;
-      background-color: $theme_bg_color;
+      background-color: $bg_color;
       
       &:backdrop {
-        background-color: $theme_unfocused_bg_color;
+        background-color: $unfocused_bg_color;
       }
 
       &.top {
@@ -187,18 +187,18 @@
     }
 
     > header > tabs > arrow {
-      color: $theme_fg_color;
+      color: $fg_color;
 
       &:hover {
-        color: gtkshade($theme_fg_color, 1.2);
+        color: gtkshade($fg_color, 1.2);
       }
 
       &:active {
-        color: gtkshade($theme_fg_color, 0.8);
+        color: gtkshade($fg_color, 0.8);
       }
 
       &:disabled {
-        color: gtkshade($theme_bg_color, 0.6);
+        color: gtkshade($bg_color, 0.6);
       }
     }
   }

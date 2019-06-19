@@ -9,20 +9,20 @@
     background-color: $borders;
 
     &:checked {
-      border-color: $theme_selected_bg_color;
-      background-color: $theme_selected_bg_color;
+      border-color: $selected_bg_color;
+      background-color: $selected_bg_color;
 
       &:backdrop {
       }
     }
 
     &:disabled {
-      border-color: $theme_disabled_bg_color;
-      background-color: $theme_disabled_bg_color;
+      border-color: $disabled_bg_color;
+      background-color: $disabled_bg_color;
 
       &:backdrop {
-        border-color: $theme_unfocused_disabled_bg_color;
-        background-color: $theme_unfocused_disabled_bg_color;
+        border-color: $unfocused_disabled_bg_color;
+        background-color: $unfocused_disabled_bg_color;
       }
     }
 
@@ -37,11 +37,11 @@
       margin: 0;
       border: none;
       border-radius: $roundness;
-      color: $theme_fg_color;
+      color: $fg_color;
       border-color: gtkshade($borders, 0.55);
-      background-color: gtkshade($theme_bg_color, 1.08);
+      background-color: gtkshade($bg_color, 1.08);
       -gtk-outline-radius: $button_radius;
-      box-shadow: inset 3px 3px $light_shadow, inset 1px 1px $theme_bg_color, inset -2px -2px gtkshade($theme_bg_color, 0.85), inset -1px -1px gtkshade($theme_bg_color, 0.65);
+      box-shadow: inset 3px 3px $light_shadow, inset 1px 1px $bg_color, inset -2px -2px gtkshade($bg_color, 0.85), inset -1px -1px gtkshade($bg_color, 0.65);
     }
 
     &:disabled {

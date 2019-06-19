@@ -7,8 +7,8 @@
       border-width: 1px;
       border-style: solid;
       border-color: $borders;
-      border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-      border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+      border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+      border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
 
       > header {
         margin: -1px;
@@ -42,13 +42,13 @@
     }
 
     > stack:not(:only-child) {
-      background-color: $theme_bg_color;
-      box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+      background-color: $bg_color;
+      box-shadow: inset -1px 0 gtkshade($bg_color, 0.65), inset 0 -1px gtkshade($bg_color, 0.65), inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
       
       // file manager exception
       .nautilus-window & {
         box-shadow: none;
-        background-color: $theme_base_color;
+        background-color: $base_color;
       }
     }
 
@@ -58,21 +58,21 @@
       border-style: solid;
       border-radius: $tab_radius;
       border-color: $borders;
-      color: $theme_fg_color;
-      background-color: $theme_bg_color;
+      color: $fg_color;
+      background-color: $bg_color;
       
       &:checked {
         border-color: $borders;
-        background-color: $theme_bg_color;
+        background-color: $bg_color;
       }
     }
 
     > header {
       padding-top: 2px;
-      background-color: $theme_bg_color;
+      background-color: $bg_color;
       
       &.top {
-        box-shadow: 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 -1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+        box-shadow: 0 1px gtkmix($bg_color, $light_shadow, 0.7), inset 0 -1px gtkmix($bg_color, $light_shadow, 0.7);
 
         > tabs > tab {
           border-bottom: none;
@@ -80,9 +80,9 @@
           margin-bottom: 1px;
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
-          border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-          border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-          box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+          border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+          border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+          box-shadow: inset -1px 0 gtkshade($bg_color, 0.65), inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
 
           &:checked {
             margin-top: 0;
@@ -93,7 +93,7 @@
 
       &.bottom {
         padding-top: 0;
-        box-shadow: 0 -1px $borders, inset 0 1px gtkshade($theme_bg_color, 0.65);
+        box-shadow: 0 -1px $borders, inset 0 1px gtkshade($bg_color, 0.65);
 
         > tabs > tab {
           border-top: none;
@@ -101,8 +101,8 @@
           margin-top: 1px;
           border-top-left-radius: 0;
           border-top-right-radius: 0;
-          border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-          box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7);
+          border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+          box-shadow: inset -1px 0 gtkshade($bg_color, 0.65), inset 0 -1px gtkshade($bg_color, 0.65), inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7);
 
           &:checked {
             margin-bottom: 0;
@@ -112,7 +112,7 @@
       }
 
       &.right {
-        box-shadow: -1px 0 $borders, inset 1px 0 gtkshade($theme_bg_color, 0.65);
+        box-shadow: -1px 0 $borders, inset 1px 0 gtkshade($bg_color, 0.65);
 
         > tabs > tab {
           border-left: none;
@@ -120,8 +120,8 @@
           margin-left: 1px;
           border-bottom-left-radius: 0;
           border-top-left-radius: 0;
-          border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-          box-shadow: inset -1px 0 gtkshade($theme_bg_color, 0.65), inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+          border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+          box-shadow: inset -1px 0 gtkshade($bg_color, 0.65), inset 0 -1px gtkshade($bg_color, 0.65), inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
 
           &:checked {
             margin-right: 0;
@@ -131,7 +131,7 @@
       }
 
       &.left {
-        box-shadow: 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset -1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7);
+        box-shadow: 1px 0 gtkmix($bg_color, $light_shadow, 0.7), inset -1px 0 gtkmix($bg_color, $light_shadow, 0.7);
 
         > tabs > tab {
           border-right: none;
@@ -139,9 +139,9 @@
           margin-right: 1px;
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
-          border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-          border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-          box-shadow: inset 0 -1px gtkshade($theme_bg_color, 0.65), inset 1px 0 gtkmix($theme_bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+          border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+          border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+          box-shadow: inset 0 -1px gtkshade($bg_color, 0.65), inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
 
           &:checked {
             margin-left: 0;
@@ -185,18 +185,18 @@
     }
 
     > header > tabs > arrow {
-      color: $theme_fg_color;
+      color: $fg_color;
 
       &:hover {
-        color: gtkshade($theme_fg_color, 1.2);
+        color: gtkshade($fg_color, 1.2);
       }
 
       &:active {
-        color: gtkshade($theme_fg_color, 0.8);
+        color: gtkshade($fg_color, 0.8);
       }
 
       &:disabled {
-        color: gtkshade($theme_bg_color, 0.6);
+        color: gtkshade($bg_color, 0.6);
       }
     }
   }

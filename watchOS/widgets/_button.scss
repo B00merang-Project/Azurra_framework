@@ -11,33 +11,33 @@
     }
 
     &:active, &:checked {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
 
       &:backdrop {
-        color: $theme_unfocused_selected_fg_color;
-        background-color: $theme_unfocused_selected_bg_color;
+        color: $unfocused_selected_fg_color;
+        background-color: $unfocused_selected_bg_color;
       }
       
       &:disabled {
-        color: $theme_disabled_fg_color;
-        background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        color: $disabled_fg_color;
+        background-color: gtkshade($disabled_bg_color, 0.9);
         &:backdrop {
-          color: $theme_unfocused_disabled_fg_color;
-          background-color: gtkshade($theme_unfocused_disabled_bg_color, 0.9);
+          color: $unfocused_disabled_fg_color;
+          background-color: gtkshade($unfocused_disabled_bg_color, 0.9);
         }
       }
     }
 
     &:disabled {
-      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
       &:backdrop {
-        color: $theme_unfocused_disabled_fg_color;
+        color: $unfocused_disabled_fg_color;
       }
     }
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
+      color: $unfocused_fg_color;
     }
   }
 }
@@ -56,12 +56,12 @@
     }
 
     &:active, &:checked {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
 
       &:backdrop {
-        color: $theme_unfocused_selected_fg_color;
-        background-color: gtkshade($theme_unfocused_selected_bg_color, 0.6);
+        color: $unfocused_selected_fg_color;
+        background-color: gtkshade($unfocused_selected_bg_color, 0.6);
       }
     }
 
@@ -76,17 +76,17 @@
     }
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
+      color: $unfocused_fg_color;
     }
   }
 }
 
 @mixin button() {
   button {
-    @include normal_buttons(gtkmix($theme_bg_color, $theme_fg_color, 0.1), $theme_fg_color, $borders);
+    @include normal_buttons(gtkmix($bg_color, $fg_color, 0.1), $fg_color, $borders);
     
     &.flat {
-      @include flat_buttons(transparent, $theme_selected_bg_color, $borders);
+      @include flat_buttons(transparent, $selected_bg_color, $borders);
     }
   }
 }

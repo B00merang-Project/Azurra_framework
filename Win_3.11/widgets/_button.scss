@@ -29,18 +29,18 @@
       border-color: $br;
       box-shadow: none;
       background-color: $bg;
-      background-image: linear-gradient(to bottom left, $theme_base_color 33%, $bg 34%, $bg 66%, $theme_base_color 67%);
+      background-image: linear-gradient(to bottom left, $base_color 33%, $bg 34%, $bg 66%, $base_color 67%);
 background-size: 3px 3px, auto;
 
       &:disabled {
-        color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
-        border-color: gtkmix($fg, $theme_disabled_bg_color, 0.85);
-        background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
+        border-color: gtkmix($fg, $disabled_bg_color, 0.85);
+        background-color: gtkshade($disabled_bg_color, 0.9);
       }
     }
 
     &:disabled {
-      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
     }
   }
 }
@@ -74,7 +74,7 @@ background-size: 3px 3px, auto;
       border-color: $br;
       box-shadow: none;
       background-color: $bg;
-      background-image: linear-gradient(to bottom left, $theme_base_color 33%, $bg 34%, $bg 66%, $theme_base_color 67%);
+      background-image: linear-gradient(to bottom left, $base_color 33%, $bg 34%, $bg 66%, $base_color 67%);
 background-size: 3px 3px, auto;
     }
 
@@ -88,10 +88,10 @@ background-size: 3px 3px, auto;
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    @include normal_buttons($bg_color, $fg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+      @include flat_buttons($bg_color, $fg_color, $borders);
     }
   }
 }

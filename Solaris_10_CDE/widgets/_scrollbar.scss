@@ -1,15 +1,15 @@
 @mixin scrollbar() {
   scrolledwindow {
     border: 1px solid $borders;
-    border-bottom-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-    border-right-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
   }
 
   scrollbar {
     border: 1px solid $borders;
-    border-bottom-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-    border-right-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-    background-color: gtkshade($theme_bg_color, 0.9);
+    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+    background-color: gtkshade($bg_color, 0.9);
 
     trough {
       border: none;
@@ -44,11 +44,11 @@
         min-height: 11px;
         margin: 0;
         border: 1px solid $borders;
-        border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-        border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+        border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+        border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
-        background-color: $theme_bg_color;
+        background-color: $bg_color;
       }
 
       button {
@@ -71,11 +71,11 @@
         min-height: 45px;
         margin: 0;
         border: 1px solid $borders;
-        border-top-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
-        border-left-color: gtkmix($theme_bg_color, $light_shadow, 0.7);
+        border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+        border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
-        background-color: $theme_bg_color;
+        background-color: $bg_color;
       }
 
       button {

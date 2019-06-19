@@ -10,13 +10,13 @@
     background-color: $toolbar_bg_color;
 
     &:backdrop {
-      border-color: $theme_unfocused_bg_color;
-      color: $theme_unfocused_fg_color;
-      background-color: gtkshade($theme_unfocused_bg_color, 0.95);
+      border-color: $unfocused_bg_color;
+      color: $unfocused_fg_color;
+      background-color: gtkshade($unfocused_bg_color, 0.95);
     }
 
     button, .raised button {
-      @include normal_buttons($theme_base_color, $toolbar_fg_color, $borders);
+      @include normal_buttons($base_color, $toolbar_fg_color, $borders);
     }
   }
 }

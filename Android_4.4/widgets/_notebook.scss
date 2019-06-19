@@ -40,7 +40,7 @@
     }
 
     > stack:not(:only-child) {
-      background-color: $theme_base_color;
+      background-color: $base_color;
     }
 
     tab {
@@ -49,12 +49,12 @@
       border-style: solid;
       border-radius: 0;
       border-color: transparent;
-      color: $theme_fg_color;
+      color: $fg_color;
       background-color: transparent;
       outline-style: none;
 
       &:checked:hover {
-        background-color: gtkalpha($theme_selected_bg_color, 0.6);
+        background-color: gtkalpha($selected_bg_color, 0.6);
       }
 
       &:backdrop {
@@ -63,10 +63,10 @@
     }
 
     > header {
-      background-color: gtkmix($theme_bg_color, $theme_fg_color, 0.1);
+      background-color: gtkmix($bg_color, $fg_color, 0.1);
       
       &:backdrop {
-        background-color: $theme_unfocused_bg_color;
+        background-color: $unfocused_bg_color;
       }
 
       &.top {
@@ -78,7 +78,7 @@
           &:checked {
             border-top-left-radius: $tab_radius;
             border-top-right-radius: $tab_radius;
-            box-shadow: inset 0 -4px $theme_selected_bg_color;
+            box-shadow: inset 0 -4px $selected_bg_color;
           }
         }
       }
@@ -92,7 +92,7 @@
           &:checked {
             border-bottom-left-radius: $tab_radius;
             border-bottom-right-radius: $tab_radius;
-            box-shadow: inset 0 4px $theme_selected_bg_color;
+            box-shadow: inset 0 4px $selected_bg_color;
           }
         }
       }
@@ -106,7 +106,7 @@
           &:checked {
             border-top-right-radius: $tab_radius;
             border-bottom-right-radius: $tab_radius;
-            box-shadow: inset 4px 0 $theme_selected_bg_color;
+            box-shadow: inset 4px 0 $selected_bg_color;
           }
         }
       }
@@ -120,7 +120,7 @@
           &:checked {
             border-top-left-radius: $tab_radius;
             border-bottom-left-radius: $tab_radius;
-            box-shadow: inset -4px 0 $theme_selected_bg_color;
+            box-shadow: inset -4px 0 $selected_bg_color;
           }
         }
       }
@@ -160,18 +160,18 @@
     }
 
     > header > tabs > arrow {
-      color: $theme_fg_color;
+      color: $fg_color;
 
       &:hover {
-        color: gtkshade($theme_fg_color, 1.2);
+        color: gtkshade($fg_color, 1.2);
       }
 
       &:active {
-        color: gtkshade($theme_fg_color, 0.8);
+        color: gtkshade($fg_color, 0.8);
       }
 
       &:disabled {
-        color: gtkshade($theme_bg_color, 0.6);
+        color: gtkshade($bg_color, 0.6);
       }
     }
   }

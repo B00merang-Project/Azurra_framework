@@ -8,7 +8,7 @@
     border-color: gtkshade($br, 0.55);
     background-color: $bg;
     -gtk-outline-radius: $button_radius + 2;
-    box-shadow: inset 2px 2px $light_shadow, inset 1px 1px $theme_bg_color, inset -2px -2px gtkshade($theme_bg_color, 0.85), inset -1px -1px gtkshade($theme_bg_color, 0.65);
+    box-shadow: inset 2px 2px $light_shadow, inset 1px 1px $bg_color, inset -2px -2px gtkshade($bg_color, 0.85), inset -1px -1px gtkshade($bg_color, 0.65);
     outline-offset: 2px;
     outline-style: solid;
     outline-color: gtkalpha($dark_shadow, 0.5);
@@ -18,15 +18,15 @@
 
     &:active, &:checked {
       background-color: gtkshade($bg, 0.9);
-      box-shadow: inset -2px -2px gtkshade($theme_base_color, 0.9), inset -1px -1px gtkshade($theme_bg_color, 0.9), inset 2px 2px gtkshade($theme_bg_color, 0.85), inset 1px 1px gtkshade($theme_bg_color, 0.65);
+      box-shadow: inset -2px -2px gtkshade($base_color, 0.9), inset -1px -1px gtkshade($bg_color, 0.9), inset 2px 2px gtkshade($bg_color, 0.85), inset 1px 1px gtkshade($bg_color, 0.65);
 
       &:backdrop {
       }
       
       &:disabled {
-        color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
+        color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
         box-shadow: none;
-        border-color: gtkshade($theme_bg_color, 0.6);
+        border-color: gtkshade($bg_color, 0.6);
         
         &:backdrop {
         }
@@ -34,9 +34,9 @@
     }
 
     &:disabled {
-      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
       box-shadow: none;
-      border-color: gtkshade($theme_bg_color, 0.7);
+      border-color: gtkshade($bg_color, 0.7);
       
       &:backdrop {
       }
@@ -61,15 +61,15 @@
       color: $fg;
       background-color: $bg;
       -gtk-outline-radius: $button_radius;
-      box-shadow: inset 2px 2px $light_shadow, inset 1px 1px $theme_bg_color, inset -2px -2px gtkshade($theme_bg_color, 0.85), inset -1px -1px gtkshade($theme_bg_color, 0.65);
+      box-shadow: inset 2px 2px $light_shadow, inset 1px 1px $bg_color, inset -2px -2px gtkshade($bg_color, 0.85), inset -1px -1px gtkshade($bg_color, 0.65);
     }
 
     &:active, &:checked {
       background-color: gtkshade($bg, 0.9);
-      box-shadow: inset -2px -2px gtkshade($theme_base_color, 0.9), inset -1px -1px gtkshade($theme_bg_color, 0.9), inset 2px 2px gtkshade($theme_bg_color, 0.85), inset 1px 1px gtkshade($theme_bg_color, 0.65);
+      box-shadow: inset -2px -2px gtkshade($base_color, 0.9), inset -1px -1px gtkshade($bg_color, 0.9), inset 2px 2px gtkshade($bg_color, 0.85), inset 1px 1px gtkshade($bg_color, 0.65);
       
       &:backdrop {
-        color: $theme_unfocused_selected_fg_color;
+        color: $unfocused_selected_fg_color;
       }
     }
 
@@ -88,17 +88,17 @@
     &:backdrop {
       border-color: transparent;
       background-color: transparent;
-      color: $theme_unfocused_fg_color;
+      color: $unfocused_fg_color;
     }
   }
 }
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    @include normal_buttons($bg_color, $fg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+      @include flat_buttons($bg_color, $fg_color, $borders);
     }
   }
 }

@@ -9,22 +9,22 @@
     background-color: gtkshade($borders, 0.9);
 
     &:checked {
-      border-color: gtkalpha($theme_selected_bg_color, 0.4);
-      background-color: gtkalpha($theme_selected_bg_color, 0.4);
+      border-color: gtkalpha($selected_bg_color, 0.4);
+      background-color: gtkalpha($selected_bg_color, 0.4);
 
       &:backdrop {
-        border-color: gtkalpha($theme_unfocused_selected_bg_color, 0.4);
-        background-color: gtkalpha($theme_unfocused_selected_bg_color, 0.4);
+        border-color: gtkalpha($unfocused_selected_bg_color, 0.4);
+        background-color: gtkalpha($unfocused_selected_bg_color, 0.4);
       }
     }
 
     &:disabled {
-      border-color: $theme_disabled_bg_color;
-      background-color: $theme_disabled_bg_color;
+      border-color: $disabled_bg_color;
+      background-color: $disabled_bg_color;
 
       &:backdrop {
-        border-color: $theme_unfocused_disabled_bg_color;
-        background-color: $theme_unfocused_disabled_bg_color;
+        border-color: $unfocused_disabled_bg_color;
+        background-color: $unfocused_disabled_bg_color;
       }
     }
 
@@ -39,33 +39,33 @@
       margin: -3px;
       border: none;
       border-radius: 100%;
-      color: $theme_fg_color;
-      background-color: gtkshade($theme_base_color, 0.95);
+      color: $fg_color;
+      background-color: gtkshade($base_color, 0.95);
       box-shadow: 0 2px 3px 0 gtkalpha($dark_shadow, 0.15);
     }
 
     &:checked {
       slider {
-        background-color: $theme_selected_bg_color;
+        background-color: $selected_bg_color;
       }
       
       &:backdrop slider {
-        background-color: $theme_unfocused_selected_bg_color;
+        background-color: $unfocused_selected_bg_color;
       }
     }
 
     &:disabled {
       slider {
-        background-color: $theme_disabled_base_color;
+        background-color: $disabled_base_color;
       }
 
       &:backdrop slider {
-        background-color: $theme_unfocused_disabled_base_color;
+        background-color: $unfocused_disabled_base_color;
       }
     }
 
     &:backdrop slider {
-      background-color: gtkshade($theme_unfocused_base_color, 0.95);
+      background-color: gtkshade($unfocused_base_color, 0.95);
     }
   }
 }

@@ -2,18 +2,18 @@
   progressbar {
     padding: 0;
     border: none;
-    color: gtkmix($theme_fg_color, $theme_selected_fg_color, 0.5);
+    color: gtkmix($fg_color, $selected_fg_color, 0.5);
     background-color: transparent;
 
     progress {
       border: none;
       border-radius: 0;
-      background-color: $theme_selected_bg_color;
-      background-image: linear-gradient(to right, transparent 20%, gtkalpha($theme_selected_bg_color, 0.03), transparent 80%), linear-gradient(to bottom, #accbf3, #83cbf8 50%, #56c0f8 51%, #addef6);
+      background-color: $selected_bg_color;
+      background-image: linear-gradient(to right, transparent 20%, gtkalpha($selected_bg_color, 0.03), transparent 80%), linear-gradient(to bottom, #accbf3, #83cbf8 50%, #56c0f8 51%, #addef6);
       background-size: 20px 16px, auto;
 
       &:backdrop {
-        background-color: $theme_unfocused_selected_bg_color;
+        background-color: $unfocused_selected_bg_color;
       }
     }
 
@@ -22,29 +22,29 @@
       border-style: solid;
       border-radius: $progressbar_radius;
       border-color: gtkshade($borders, 0.9);
-      background-color: gtkshade($theme_bg_color, 0.8);
-      background-image: linear-gradient(to bottom, gtkshade($theme_bg_color, 0.9), gtkshade($theme_bg_color, 0.95) 33%, gtkshade($theme_bg_color, 0.98));
+      background-color: gtkshade($bg_color, 0.8);
+      background-image: linear-gradient(to bottom, gtkshade($bg_color, 0.9), gtkshade($bg_color, 0.95) 33%, gtkshade($bg_color, 0.98));
 
       &:backdrop {
-        background-color: gtkshade($theme_unfocused_bg_color, 0.95);
+        background-color: gtkshade($unfocused_bg_color, 0.95);
       }
     }
     
     &.vertical {
       progress {
-        background-image: linear-gradient(to top, transparent 20%, gtkalpha($theme_selected_bg_color, 0.03), transparent 80%), linear-gradient(to right, #accbf3, #83cbf8 50%, #56c0f8 51%, #addef6);
+        background-image: linear-gradient(to top, transparent 20%, gtkalpha($selected_bg_color, 0.03), transparent 80%), linear-gradient(to right, #accbf3, #83cbf8 50%, #56c0f8 51%, #addef6);
         background-size: 16px 20px, auto;
 
         &:backdrop {
-          background-color: $theme_unfocused_selected_bg_color;
+          background-color: $unfocused_selected_bg_color;
         }
       }
 
       trough {
-        background-image: linear-gradient(to right, gtkshade($theme_bg_color, 0.9), gtkshade($theme_bg_color, 0.95) 33%, gtkshade($theme_bg_color, 0.98));
+        background-image: linear-gradient(to right, gtkshade($bg_color, 0.9), gtkshade($bg_color, 0.95) 33%, gtkshade($bg_color, 0.98));
 
         &:backdrop {
-          background-color: gtkshade($theme_unfocused_bg_color, 0.95);
+          background-color: gtkshade($unfocused_bg_color, 0.95);
         }
       }
     }
@@ -63,26 +63,26 @@
   treeview.view {
     &.progressbar {
       &, &:disabled {
-        color: $theme_selected_fg_color;
+        color: $selected_fg_color;
         border-radius: 0;
-        background-color: $theme_selected_bg_color;
+        background-color: $selected_bg_color;
       }
 
       &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
         border-radius: 0;
-        color: $theme_selected_bg_color;
-        background-color: $theme_selected_fg_color;
+        color: $selected_bg_color;
+        background-color: $selected_fg_color;
       }
     }
 
     &.trough {
-      color: $theme_fg_color;
+      color: $fg_color;
       background-color: gtkalpha($dark_shadow, 0.1);
       border-radius: 0;
       border: none;
 
       &:selected, &:selected:focus {
-        color: $theme_selected_fg_color;
+        color: $selected_fg_color;
         background-color: gtkalpha($dark_shadow, 0.1);
         border-radius: 0;
         border: none;

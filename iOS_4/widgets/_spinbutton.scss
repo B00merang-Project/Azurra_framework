@@ -1,8 +1,8 @@
 @mixin spinbutton() {
   spinbutton {
     &:not(.vertical) selection, &:not(.vertical) selection:focus {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
     }
     
     button, entry {
@@ -10,10 +10,10 @@
       background-image: none;
       
       &:disabled {
-        color: $theme_disabled_fg_color;
+        color: $disabled_fg_color;
         
         &:backdrop {
-          color: $theme_unfocused_disabled_fg_color;
+          color: $unfocused_disabled_fg_color;
         }
       }
     }

@@ -7,7 +7,7 @@
     fill, trough {
       border: none;
       border-radius: 4px;
-      background-color: gtkalpha($theme_selected_bg_color, 0.2);
+      background-color: gtkalpha($selected_bg_color, 0.2);
       outline-offset: 2px;
       -gtk-outline-radius: 0;
 
@@ -20,25 +20,25 @@
       }
 
       &:backdrop {
-        background-color: gtkalpha($theme_unfocused_selected_bg_color, 0.1);
+        background-color: gtkalpha($unfocused_selected_bg_color, 0.1);
       }
     }
 
     highlight {
       border: none;
       border-radius: 4px;
-      background-color: $theme_selected_bg_color;
+      background-color: $selected_bg_color;
 
       &:disabled {
-        background-color: $theme_disabled_bg_color;
+        background-color: $disabled_bg_color;
 
         &:backdrop {
-          background-color: $theme_unfocused_disabled_bg_color;
+          background-color: $unfocused_disabled_bg_color;
         }
       }
 
       &:backdrop {
-        background-color: $theme_unfocused_selected_bg_color;
+        background-color: $unfocused_selected_bg_color;
       }
     }
 
@@ -115,26 +115,26 @@
       margin: -4px;
       border: none;
       border-radius: 100%;
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
 
       &:active {
-        box-shadow: 0 0 0 8px gtkalpha($theme_selected_bg_color, 0.2);
+        box-shadow: 0 0 0 8px gtkalpha($selected_bg_color, 0.2);
       }
 
       &:disabled {
-        background-color: $theme_disabled_bg_color;
+        background-color: $disabled_bg_color;
         -gtk-icon-shadow: none;
 
         &:backdrop {
-          background-color: $theme_unfocused_disabled_bg_color;
+          background-color: $unfocused_disabled_bg_color;
           -gtk-icon-shadow: none;
         }
       }
 
       &:backdrop {
-        color: $theme_unfocused_selected_fg_color;
-        background-color: $theme_unfocused_selected_bg_color;
+        color: $unfocused_selected_fg_color;
+        background-color: $unfocused_selected_bg_color;
       }
     }
 

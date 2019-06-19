@@ -40,22 +40,22 @@
     }
 
     > stack:not(:only-child) {
-      background-color: $theme_base_color;
+      background-color: $base_color;
     }
 
     tab {
       padding: 6px 20px;
       border: 2px solid transparent;
       border-radius: 0;
-      color: $theme_fg_color;
+      color: $fg_color;
       background-color: transparent;
       -gtk-outline-radius: $tab_radius;
 
       &:checked {
-        background-color: $theme_base_color;
+        background-color: $base_color;
 
         &:backdrop {
-          background-color: $theme_unfocused_base_color;
+          background-color: $unfocused_base_color;
         }
       }
 
@@ -68,7 +68,7 @@
       background-color: $dark_bg_color;
       
       &:backdrop {
-        background-color: gtkmix($dark_bg_color, $theme_unfocused_bg_color, 0.3);
+        background-color: gtkmix($dark_bg_color, $unfocused_bg_color, 0.3);
       }
 
       &.top {
@@ -163,18 +163,18 @@
     }
 
     > header > tabs > arrow {
-      color: $theme_fg_color;
+      color: $fg_color;
 
       &:hover {
-        color: gtkshade($theme_fg_color, 1.2);
+        color: gtkshade($fg_color, 1.2);
       }
 
       &:active {
-        color: gtkshade($theme_fg_color, 0.8);
+        color: gtkshade($fg_color, 0.8);
       }
 
       &:disabled {
-        color: gtkshade($theme_bg_color, 0.6);
+        color: gtkshade($bg_color, 0.6);
       }
     }
   }

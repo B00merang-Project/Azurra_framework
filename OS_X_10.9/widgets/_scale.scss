@@ -129,28 +129,28 @@
       margin: -8px;
       border: 1px solid gtkshade($borders, 0.85);
       border-radius: 100%;
-      color: $theme_fg_color;
-      background-color: gtkshade($theme_bg_color, 0.8);
-      background-image: linear-gradient(to bottom, $theme_base_color 40%, $theme_bg_color 60%);
+      color: $fg_color;
+      background-color: gtkshade($bg_color, 0.8);
+      background-image: linear-gradient(to bottom, $base_color 40%, $bg_color 60%);
 
       &:hover {
-        color: $theme_fg_color;
-        background-color: $theme_base_color;
+        color: $fg_color;
+        background-color: $base_color;
       }
 
       &:disabled {
-        background-color: $theme_disabled_base_color;
+        background-color: $disabled_base_color;
         -gtk-icon-shadow: none;
 
         &:backdrop {
-          background-color: $theme_unfocused_disabled_bg_color;
+          background-color: $unfocused_disabled_bg_color;
           -gtk-icon-shadow: none;
         }
       }
 
       &:backdrop {
-        color: $theme_unfocused_fg_color;
-        background-color: $theme_unfocused_base_color;
+        color: $unfocused_fg_color;
+        background-color: $unfocused_base_color;
       }
     }
 

@@ -9,8 +9,8 @@
     background-color: $menu_bg_color;
 
     &:hover {
-      border-color: gtkalpha(gtkmix($theme_selected_bg_color, $dark_shadow, 0.3), 0.6);
-      background-color: gtkalpha(gtkmix($theme_selected_bg_color, $dark_shadow, 0.3), 0.4);
+      border-color: gtkalpha(gtkmix($selected_bg_color, $dark_shadow, 0.3), 0.6);
+      background-color: gtkalpha(gtkmix($selected_bg_color, $dark_shadow, 0.3), 0.4);
     }
 
     &:disabled {
@@ -38,11 +38,11 @@
       color: gtkalpha(currentColor, 0.55);
 
       &:hover {
-        color: gtkalpha($theme_selected_fg_color, 0.8);
+        color: gtkalpha($selected_fg_color, 0.8);
       }
 
       &:disabled {
-        color: $theme_disabled_fg_color;
+        color: $disabled_fg_color;
       }
     }
   }

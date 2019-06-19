@@ -8,40 +8,40 @@
     border-left-color: gtkshade($borders, 1.05);
     border-right-color: gtkshade($borders, 1.05);
     border-radius: $entry_radius;
-    color: $theme_text_color;
+    color: $text_color;
     caret-color: currentColor;
-    background-color: $theme_base_color;
-    background-image: linear-gradient(to bottom, gtkshade($theme_bg_color, 1.4), gtkmix(gtkshade($theme_bg_color, 1.2), $dark_shadow, 0.02));
+    background-color: $base_color;
+    background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.4), gtkmix(gtkshade($bg_color, 1.2), $dark_shadow, 0.02));
 
     &:active, &:focus {
       border-color: $borders;
-      box-shadow: 0 0 0 4px $theme_selected_base_color;
+      box-shadow: 0 0 0 4px $selected_base_color;
     }
 
     &:selected, &:selected:focus, selection, selection:focus {
-      color: $theme_selected_text_color;
-      background-color: $theme_selected_base_color;
+      color: $selected_text_color;
+      background-color: $selected_base_color;
     }
 
     &:disabled {
-      color: $theme_disabled_text_color;
+      color: $disabled_text_color;
 
       &:backdrop {
-        color: $theme_unfocused_disabled_fg_color;
+        color: $unfocused_disabled_fg_color;
         border-color: $unfocused_borders;
         background-image: none;
-        background-color: $theme_unfocused_disabled_bg_color;
+        background-color: $unfocused_disabled_bg_color;
       }
     }
 
     &.read-only {
-      background-color: gtkmix($theme_bg_color, $theme_disabled_bg_color, 0.1);
+      background-color: gtkmix($bg_color, $disabled_bg_color, 0.1);
     }
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
+      color: $unfocused_fg_color;
       border-color: $unfocused_borders;
-      background-color: $theme_unfocused_bg_color;
+      background-color: $unfocused_bg_color;
       background-image: none;
     }
 
@@ -60,7 +60,7 @@
       border-width: 0 0 2px;
       border-radius: 0;
       border-style: solid;
-      border-color: $theme_selected_bg_color;
+      border-color: $selected_bg_color;
       background-color: transparent;
     }
 

@@ -1,7 +1,7 @@
 @mixin scrollbar() {
   scrollbar {
     border: none;
-    background-color: gtkshade($theme_bg_color, 0.95);
+    background-color: gtkshade($bg_color, 0.95);
 
     trough {
       border: none;
@@ -13,8 +13,8 @@
         &, &:backdrop {
           color: transparent;
           padding: 0;
-          border-color: gtkshade($theme_bg_color, 0.95);
-          background-color: gtkshade($theme_bg_color, 0.95);
+          border-color: gtkshade($bg_color, 0.95);
+          background-color: gtkshade($bg_color, 0.95);
           box-shadow: none;
           background-size: auto;
           background-position: center center;
@@ -35,11 +35,11 @@
         min-width: 45px;
         min-height: 14px;
         margin: 0;
-        border: 1px solid gtkshade($theme_bg_color, 0.8);
+        border: 1px solid gtkshade($bg_color, 0.8);
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
         background: url("assets/handle.png") no-repeat center center;
-        background-color: $theme_base_color;
+        background-color: $base_color;
       }
 
       button {
@@ -61,11 +61,11 @@
         min-width: 14px;
         min-height: 45px;
         margin: 0;
-        border: 1px solid gtkshade($theme_bg_color, 0.8);
+        border: 1px solid gtkshade($bg_color, 0.8);
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
         background: url("assets/handle-vert.png") no-repeat center center;
-        background-color: $theme_base_color;
+        background-color: $base_color;
       }
 
       button {

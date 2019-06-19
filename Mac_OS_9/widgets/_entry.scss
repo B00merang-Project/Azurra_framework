@@ -3,15 +3,15 @@
     padding: 5px;
     border-width: 1px;
     border-style: solid;
-    border-color: $theme_fg_color;
+    border-color: $fg_color;
     border-radius: $entry_radius;
-    color: $theme_text_color;
+    color: $text_color;
     caret-color: currentColor;
-    background-color: $theme_base_color;
+    background-color: $base_color;
 
     &:selected, &:selected:focus, selection, selection:focus {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
     }
     
     &:focus {
@@ -19,21 +19,21 @@
     }
 
     &:disabled {
-      color: $theme_disabled_text_color;
+      color: $disabled_text_color;
 
       &:backdrop {
-        color: $theme_unfocused_disabled_fg_color;
-        background-color: $theme_unfocused_disabled_base_color;
+        color: $unfocused_disabled_fg_color;
+        background-color: $unfocused_disabled_base_color;
       }
     }
 
     &.read-only {
-      background-color: gtkmix($theme_bg_color, $theme_disabled_bg_color, 0.1);
+      background-color: gtkmix($bg_color, $disabled_bg_color, 0.1);
     }
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
-      background-color: $theme_unfocused_base_color;
+      color: $unfocused_fg_color;
+      background-color: $unfocused_base_color;
     }
 
     > image {
@@ -51,7 +51,7 @@
       border-width: 0 0 2px;
       border-radius: 0;
       border-style: solid;
-      border-color: $theme_selected_bg_color;
+      border-color: $selected_bg_color;
       background-color: transparent;
     }
 

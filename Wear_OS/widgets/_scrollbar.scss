@@ -2,7 +2,7 @@
 @mixin scrollbar() {
   scrollbar {
     border: none;
-    background-color: gtkshade($theme_bg_color, 0.9);
+    background-color: gtkshade($bg_color, 0.9);
 
     trough {
       border: none;
@@ -10,7 +10,7 @@
     }
 
     &:backdrop {
-      background-color: gtkshade($theme_unfocused_bg_color, 0.9);
+      background-color: gtkshade($unfocused_bg_color, 0.9);
     }
 
     slider {
@@ -20,18 +20,18 @@
       border: none;
       border-radius: $scrollbar_radius;
       background-clip: padding-box;
-      background-color: gtkalpha($theme_fg_color, 0.6);
+      background-color: gtkalpha($fg_color, 0.6);
 
       &:hover {
-        background-color: gtkalpha($theme_fg_color, 0.7);
+        background-color: gtkalpha($fg_color, 0.7);
 
         &:active {
-          background-color: $theme_selected_bg_color;
+          background-color: $selected_bg_color;
         }
       }
 
       &:backdrop {
-        background-color: gtkshade($theme_fg_color, 0.4);
+        background-color: gtkshade($fg_color, 0.4);
       }
 
       &:disabled {
@@ -67,7 +67,7 @@
         margin: 0;
         min-width: 1px;
         min-height: 1px;
-        background-color: gtkalpha($theme_fg_color, 0.6);
+        background-color: gtkalpha($fg_color, 0.6);
         border: none;
       }
 

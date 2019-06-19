@@ -26,12 +26,12 @@
 
 // base states 
 .background {
-  color: $theme_fg_color;
-  background-color: gtkalpha($theme_bg_color, 0.999);
+  color: $fg_color;
+  background-color: gtkalpha($bg_color, 0.999);
 
   &:backdrop {
-    color: $theme_unfocused_fg_color; 
-    background-color: $theme_unfocused_bg_color;
+    color: $unfocused_fg_color; 
+    background-color: $unfocused_bg_color;
   }
 }
 
@@ -47,27 +47,27 @@
 }
 
 .gtkstyle-fallback {
-  color: $theme_fg_color;
-  background-color: $theme_bg_color;
+  color: $fg_color;
+  background-color: $bg_color;
 
   &:hover {
-    color: $theme_fg_color;
-    background-color: gtkshade($theme_bg_color, 1.1);
+    color: $fg_color;
+    background-color: gtkshade($bg_color, 1.1);
   }
 
   &:active {
-    color: $theme_fg_color;
-    background-color: gtkshade($theme_bg_color, 0.9);
+    color: $fg_color;
+    background-color: gtkshade($bg_color, 0.9);
   }
 
   &:disabled {
-    color: $theme_disabled_fg_color;
-    background-color: $theme_disabled_bg_color;
+    color: $disabled_fg_color;
+    background-color: $disabled_bg_color;
   }
 
   &:selected {
-    color: $theme_selected_fg_color;
-    background-color: $theme_selected_bg_color;
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
   }
 }
 
@@ -81,8 +81,8 @@ image, image:disabled, label, label:disabled, box, box:disabled {
 
 assistant {
   .sidebar label.highlight {
-    color: $theme_selected_fg_color;
-    background-color: $theme_selected_bg_color;
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
   }
 
   .sidebar {
@@ -91,8 +91,8 @@ assistant {
     border-style: solid;
     border-radius: 0;
     border-right-color: $borders;
-    color: $theme_fg_color;
-    background-color: $theme_bg_color;
+    color: $fg_color;
+    background-color: $bg_color;
   }
 }
 
@@ -102,10 +102,10 @@ assistant {
   color: $link_color;
 
   &:visited {
-    color: gtkmix($link_color, $theme_fg_color, 0.2);
+    color: gtkmix($link_color, $fg_color, 0.2);
 
     *:selected & {
-      color: gtkmix($theme_selected_fg_color, $theme_selected_bg_color, 0.4);
+      color: gtkmix($selected_fg_color, $selected_bg_color, 0.4);
     }
   }
 
@@ -113,7 +113,7 @@ assistant {
     color: gtkshade($link_color, 1.1);
 
     *:selected & {
-      color: gtkmix($theme_selected_fg_color, $theme_selected_bg_color, 0.9);
+      color: gtkmix($selected_fg_color, $selected_bg_color, 0.9);
     }
   }
 
@@ -121,19 +121,19 @@ assistant {
     color: $link_color;
 
     *:selected & {
-      color: gtkmix($theme_selected_fg_color, $theme_selected_bg_color, 0.8);
+      color: gtkmix($selected_fg_color, $selected_bg_color, 0.8);
     }
   }
 
   &:backdrop {
     &:backdrop:hover, &:backdrop:hover:selected, & {
-      color: gtkmix($link_color, $theme_unfocused_selected_bg_color, 0.3);
+      color: gtkmix($link_color, $unfocused_selected_bg_color, 0.3);
     }
   }
 
   @at-root %link_selected,
   &:selected, *:selected & {
-    color: gtkmix($theme_selected_fg_color, $theme_selected_bg_color, 0.8);
+    color: gtkmix($selected_fg_color, $selected_bg_color, 0.8);
   }
 }
 
@@ -162,18 +162,18 @@ button:link, button:visited {
 @include checkradio();
 
 .content-view.view {
-  background-color: $theme_base_color;
+  background-color: $base_color;
 
   &:hover {
-    background-color: gtkalpha($theme_selected_bg_color, 0.6);
+    background-color: gtkalpha($selected_bg_color, 0.6);
   }
 
   &:selected, &:active {
-    background-color: $theme_selected_bg_color;
+    background-color: $selected_bg_color;
   }
 
   &:disabled {
-    background-color: gtkshade($theme_base_color, 0.9);
+    background-color: gtkshade($base_color, 0.9);
   }
 
 }
@@ -353,13 +353,13 @@ colorchooser {
   #add-color-button {
     background-clip: padding-box;
     border-color: gtkalpha($dark_shadow, 0.1);
-    background-color: gtkshade($theme_bg_color, 0.95);
-    color: $theme_fg_color;
+    background-color: gtkshade($bg_color, 0.95);
+    color: $fg_color;
 
     &:hover {
       border-color: gtkalpha($dark_shadow, 0.3);
-      background-color: gtkshade($theme_bg_color, 0.90);
-      color: $theme_fg_color;
+      background-color: gtkshade($bg_color, 0.90);
+      color: $fg_color;
     }
   }
 }

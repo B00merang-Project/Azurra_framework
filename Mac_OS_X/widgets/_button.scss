@@ -8,7 +8,7 @@
     border-color: gtkshade($br, 0.85);
     border-bottom-color: gtkshade($br, 0.6);
     background-color: $bg;
-    background-image: linear-gradient(to bottom, $theme_bg_color 40%, $theme_base_color 75%);
+    background-image: linear-gradient(to bottom, $bg_color 40%, $base_color 75%);
     box-shadow: 0 2px 3px 0px gtkalpha($dark_shadow, 0.3), inset 0 0 0 1px gtkalpha($light_shadow, 0.3), inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.2), inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.2), inset 0 6px 3px -2px $light_shadow;
     -gtk-outline-radius: $radius;
 
@@ -18,44 +18,44 @@
     &:active, &:checked {
       background-image: linear-gradient(to bottom, #b6d2ed, #8ebbe8 35%, #63a1df 36%, #b9edff);
       border-color: #07067b;
-      border-left-color: gtkshade($theme_selected_bg_color, 1.15);
-      border-right-color: gtkshade($theme_selected_bg_color, 1.15);
-      border-bottom-color: gtkshade($theme_selected_bg_color, 1.3);
+      border-left-color: gtkshade($selected_bg_color, 1.15);
+      border-right-color: gtkshade($selected_bg_color, 1.15);
+      border-bottom-color: gtkshade($selected_bg_color, 1.3);
       box-shadow: 0 2px 3px 0px gtkalpha($dark_shadow, 0.3), inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.4), inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.4), inset 0 4px 3px -2px gtkalpha($light_shadow, 0.8);
 
       &:backdrop {
-        color: $theme_unfocused_fg_color;
-        border-color: gtkshade($theme_unfocused_bg_color, 0.85);
-        background-image: linear-gradient(to bottom, $theme_base_color 20%, $theme_unfocused_bg_color 40%, $theme_base_color 75%);
-        background-color: gtkshade($theme_unfocused_bg_color, 0.85);
-        box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.25), inset 0 1px gtkshade($theme_bg_color, 0.55);
+        color: $unfocused_fg_color;
+        border-color: gtkshade($unfocused_bg_color, 0.85);
+        background-image: linear-gradient(to bottom, $base_color 20%, $unfocused_bg_color 40%, $base_color 75%);
+        background-color: gtkshade($unfocused_bg_color, 0.85);
+        box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.25), inset 0 1px gtkshade($bg_color, 0.55);
       }
       
       &:disabled {
-        color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
-        border-color: gtkmix($fg, $theme_disabled_bg_color, 0.85);
-        background-image: linear-gradient(to bottom, $theme_base_color 20%, $theme_unfocused_bg_color 40%, $theme_base_color 75%);
-        background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
+        border-color: gtkmix($fg, $disabled_bg_color, 0.85);
+        background-image: linear-gradient(to bottom, $base_color 20%, $unfocused_bg_color 40%, $base_color 75%);
+        background-color: gtkshade($disabled_bg_color, 0.9);
         
         &:backdrop {
-          color: $theme_unfocused_disabled_fg_color;
+          color: $unfocused_disabled_fg_color;
           border-color: $unfocused_borders;
-          background-color: gtkshade($theme_unfocused_disabled_bg_color, 0.9);
+          background-color: gtkshade($unfocused_disabled_bg_color, 0.9);
         }
       }
     }
 
     &:disabled {
-      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
       
       &:backdrop {
-        color: $theme_unfocused_disabled_fg_color;
+        color: $unfocused_disabled_fg_color;
       }
     }
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
-      background-color: $theme_unfocused_base_color;
+      color: $unfocused_fg_color;
+      background-color: $unfocused_base_color;
     }
   }
 }
@@ -74,23 +74,23 @@
       color: $fg;
       border-color: gtkshade($br, 0.6);
       background-color: $bg;
-      background-image: linear-gradient(to bottom, $theme_base_color 15%, $theme_bg_color 40%, $theme_base_color 75%);
+      background-image: linear-gradient(to bottom, $base_color 15%, $bg_color 40%, $base_color 75%);
       box-shadow: 0 2px 3px 0px gtkalpha($dark_shadow, 0.3), inset 0 0 0 1px gtkalpha($light_shadow, 0.3), inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.2), inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.2), inset 0 6px 3px -2px $light_shadow;
     }
 
     &:active, &:checked {
       background-image: linear-gradient(to bottom, #b6d2ed, #8ebbe8 35%, #63a1df 36%, #b9edff);
       border-color: #07067b;
-      border-left-color: gtkshade($theme_selected_bg_color, 1.15);
-      border-right-color: gtkshade($theme_selected_bg_color, 1.15);
-      border-bottom-color: gtkshade($theme_selected_bg_color, 1.3);
+      border-left-color: gtkshade($selected_bg_color, 1.15);
+      border-right-color: gtkshade($selected_bg_color, 1.15);
+      border-bottom-color: gtkshade($selected_bg_color, 1.3);
       box-shadow: 0 2px 3px 0px gtkalpha($dark_shadow, 0.3), inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.4), inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.4), inset 0 4px 3px -2px gtkalpha($light_shadow, 0.8);
       
       &:backdrop {
-        color: $theme_unfocused_fg_color;
-        border-color: gtkshade($theme_unfocused_bg_color, 0.85);
-        background-color: gtkshade($theme_unfocused_bg_color, 0.85);
-        box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.25), inset 0 1px gtkshade($theme_bg_color, 0.55);
+        color: $unfocused_fg_color;
+        border-color: gtkshade($unfocused_bg_color, 0.85);
+        background-color: gtkshade($unfocused_bg_color, 0.85);
+        box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.25), inset 0 1px gtkshade($bg_color, 0.55);
       }
     }
 
@@ -109,17 +109,17 @@
     &:backdrop {
       border-color: transparent;
       background-color: transparent;
-      color: $theme_unfocused_fg_color;
+      color: $unfocused_fg_color;
     }
   }
 }
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_base_color, $theme_fg_color, $borders);
+    @include normal_buttons($base_color, $fg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_base_color, $theme_fg_color, $borders);
+      @include flat_buttons($base_color, $fg_color, $borders);
     }
   }
 }

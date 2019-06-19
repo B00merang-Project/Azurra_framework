@@ -5,38 +5,38 @@
     border-style: solid;
     border-color: $borders;
     border-radius: $entry_radius;
-    color: $theme_text_color;
+    color: $text_color;
     caret-color: currentColor;
-    background-color: $theme_base_color;
+    background-color: $base_color;
 
     &:active, &:focus {
-      border-color: $theme_selected_bg_color;
+      border-color: $selected_bg_color;
     }
 
     &:selected, &:selected:focus, selection, selection:focus {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
     }
 
     &:disabled {
-      color: $theme_disabled_text_color;
-      border-color: gtkmix($theme_bg_color, $theme_disabled_bg_color, 0.6);
-      background-color: gtkmix($theme_bg_color, $theme_disabled_bg_color, 0.1);
+      color: $disabled_text_color;
+      border-color: gtkmix($bg_color, $disabled_bg_color, 0.6);
+      background-color: gtkmix($bg_color, $disabled_bg_color, 0.1);
 
       &:backdrop {
-        color: $theme_unfocused_disabled_fg_color;
+        color: $unfocused_disabled_fg_color;
         border-color: $unfocused_borders;
-        background-color: $theme_unfocused_disabled_bg_color;
+        background-color: $unfocused_disabled_bg_color;
       }
     }
 
     &.read-only {
-      background-color: gtkmix($theme_bg_color, $theme_disabled_bg_color, 0.1);
+      background-color: gtkmix($bg_color, $disabled_bg_color, 0.1);
     }
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
-      background-color: $theme_unfocused_base_color;
+      color: $unfocused_fg_color;
+      background-color: $unfocused_base_color;
     }
 
     > image {
@@ -54,7 +54,7 @@
       border-width: 0 0 2px;
       border-radius: 0;
       border-style: solid;
-      border-color: $theme_selected_bg_color;
+      border-color: $selected_bg_color;
       background-color: transparent;
     }
 

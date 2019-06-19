@@ -2,7 +2,7 @@
   progressbar {
     padding: 0;
     border: none;
-    color: gtkmix($theme_fg_color, $theme_selected_fg_color, 0.5);
+    color: gtkmix($fg_color, $selected_fg_color, 0.5);
     background-color: transparent;
 
     &.horizontal {
@@ -26,7 +26,7 @@
                     inset 6px 0 4px 0 gtkalpha($dark_shadow, 0.08);
 
         &:backdrop {
-          background-color: gtkshade($theme_unfocused_bg_color, 0.95);
+          background-color: gtkshade($unfocused_bg_color, 0.95);
         }
       }
     }
@@ -52,7 +52,7 @@
                     inset 6px 0 4px 0 gtkalpha($dark_shadow, 0.08);
 
         &:backdrop {
-          background-color: gtkshade($theme_unfocused_bg_color, 0.95);
+          background-color: gtkshade($unfocused_bg_color, 0.95);
         }
       }
     }
@@ -71,26 +71,26 @@
   treeview.view {
     &.progressbar {
       &, &:disabled {
-        color: $theme_selected_fg_color;
+        color: $selected_fg_color;
         border-radius: 0;
         background-color: $success_color;
       }
 
       &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
         border-radius: 0;
-        color: $theme_selected_bg_color;
+        color: $selected_bg_color;
         background-color: $success_color;
       }
     }
 
     &.trough {
-      color: $theme_fg_color;
+      color: $fg_color;
       background-color: gtkalpha($dark_shadow, 0.1);
       border-radius: 0;
       border: none;
 
       &:selected, &:selected:focus {
-        color: $theme_selected_fg_color;
+        color: $selected_fg_color;
         background-color: gtkalpha($dark_shadow, 0.1);
         border-radius: 0;
         border: none;

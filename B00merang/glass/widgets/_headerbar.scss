@@ -15,8 +15,8 @@
 
     &:backdrop {
       border-color: $unfocused_borders;
-      color: $theme_unfocused_fg_color;
-      background-color: $theme_unfocused_bg_color;
+      color: $unfocused_fg_color;
+      background-color: $unfocused_bg_color;
     }
 
     .titlebar &, .titlebar &:backdrop {
@@ -46,8 +46,8 @@
     
     switch {
       &:checked {
-        border-color: gtkshade($theme_selected_bg_color, 1.15);
-        background-color: gtkshade($theme_selected_bg_color, 1.15);  
+        border-color: gtkshade($selected_bg_color, 1.15);
+        background-color: gtkshade($selected_bg_color, 1.15);  
       }
     }
 

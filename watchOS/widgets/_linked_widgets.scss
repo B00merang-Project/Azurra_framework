@@ -24,14 +24,14 @@
       entry {
         border-radius: 0;
         border-left-width: 0;
-        border-color: $theme_base_color;
+        border-color: $base_color;
         
         &:disabled, &:backdrop {
-          border-color: $theme_base_color;
+          border-color: $base_color;
         }
         
         &:checked, &:active {
-          border-color: $theme_selected_bg_color;
+          border-color: $selected_bg_color;
         }
 
         &:first-child {
@@ -54,13 +54,13 @@
         }
         
         &:focus, &:last-child:focus {
-          border-color: $theme_selected_bg_color;
-          box-shadow: -1px 0 $theme_selected_bg_color;
+          border-color: $selected_bg_color;
+          box-shadow: -1px 0 $selected_bg_color;
         }
           
         &:first-child:focus {
           box-shadow: none;
-          border-color: $theme_selected_bg_color;
+          border-color: $selected_bg_color;
         }
       }
 
@@ -116,14 +116,14 @@
       border-left-width: 1px;
       border-top-width: 0;
       border-radius: 0;
-      border-color: $theme_base_color;
+      border-color: $base_color;
       
       &:disabled, &:backdrop {
-        border-color: $theme_base_color;
+        border-color: $base_color;
       }
       
       &:checked, &:active {
-        border-color: $theme_selected_bg_color;
+        border-color: $selected_bg_color;
       }
 
       &:first-child {
@@ -147,13 +147,13 @@
       }
       
       &:focus, &:last-child:focus {
-        border-color: $theme_selected_bg_color;
-        box-shadow: 0 -1px $theme_selected_bg_color;
+        border-color: $selected_bg_color;
+        box-shadow: 0 -1px $selected_bg_color;
       }
 
       &:first-child:focus {
         box-shadow: none;
-        border-color: $theme_selected_bg_color;
+        border-color: $selected_bg_color;
       }
     }
 
@@ -187,19 +187,19 @@
       min-height: 20px;
       min-width: 80px;
       box-shadow: none;
-      border-color: $theme_selected_bg_color;
+      border-color: $selected_bg_color;
       
       &:backdrop {
-        border-color: $theme_unfocused_selected_bg_color; 
+        border-color: $unfocused_selected_bg_color; 
       }
 
       &:checked, &:active {
-        background-color: $theme_selected_bg_color;
-        color: $theme_selected_fg_color;
+        background-color: $selected_bg_color;
+        color: $selected_fg_color;
         
         &:backdrop {
-          color: $theme_unfocused_selected_fg_color;
-          background-color: $theme_unfocused_selected_bg_color;
+          color: $unfocused_selected_fg_color;
+          background-color: $unfocused_selected_bg_color;
         }
       }
     }

@@ -4,9 +4,9 @@
     color: transparent;
     outline-offset: -4px;
     margin: 4px;
-    border: 1px solid gtkmix($theme_bg_color, $dark_shadow, 0.4);
+    border: 1px solid gtkmix($bg_color, $dark_shadow, 0.4);
     border-radius: 16px;
-    background-color: gtkmix($theme_bg_color, $dark_shadow, 0.4);
+    background-color: gtkmix($bg_color, $dark_shadow, 0.4);
 
     &:checked {
       border-color: $borders;
@@ -19,12 +19,12 @@
     }
 
     &:disabled {
-      border-color: $theme_disabled_bg_color;
-      background-color: $theme_disabled_bg_color;
+      border-color: $disabled_bg_color;
+      background-color: $disabled_bg_color;
 
       &:backdrop {
-        border-color: $theme_unfocused_disabled_bg_color;
-        background-color: $theme_unfocused_disabled_bg_color;
+        border-color: $unfocused_disabled_bg_color;
+        background-color: $unfocused_disabled_bg_color;
       }
     }
 
@@ -39,22 +39,22 @@
       margin: 0;
       border: none;
       border-radius: 100%;
-      color: $theme_fg_color;
-      background-color: $theme_base_color;
+      color: $fg_color;
+      background-color: $base_color;
     }
 
     &:disabled {
       slider {
-        background-color: $theme_disabled_base_color;
+        background-color: $disabled_base_color;
       }
 
       &:backdrop slider {
-        background-color: $theme_unfocused_disabled_base_color;
+        background-color: $unfocused_disabled_base_color;
       }
     }
 
     &:backdrop slider {
-      background-color: $theme_unfocused_base_color;
+      background-color: $unfocused_base_color;
     }
   }
 }

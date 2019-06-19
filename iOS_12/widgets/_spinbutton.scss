@@ -1,30 +1,30 @@
 @mixin spinbutton() {
   spinbutton {
     &:not(.vertical) selection, &:not(.vertical) selection:focus {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
     }
     
     button, entry {
-      border-color: $theme_base_color;
-      background-color: $theme_base_color;
+      border-color: $base_color;
+      background-color: $base_color;
       
       &:disabled {
-        color: $theme_disabled_fg_color;
-        border-color: $theme_base_color;
-        background-color: $theme_base_color;
+        color: $disabled_fg_color;
+        border-color: $base_color;
+        background-color: $base_color;
         
         &:backdrop {
-          color: $theme_unfocused_disabled_fg_color;
-          border-color: $theme_base_color;
-          background-color: $theme_base_color;
+          color: $unfocused_disabled_fg_color;
+          border-color: $base_color;
+          background-color: $base_color;
         }
       }
       
       &:backdrop {
-        color: $theme_unfocused_disabled_fg_color;
-        border-color: $theme_base_color;
-        background-color: $theme_base_color;
+        color: $unfocused_disabled_fg_color;
+        border-color: $base_color;
+        background-color: $base_color;
       }
     }
 

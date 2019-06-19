@@ -14,7 +14,7 @@
     outline-offset: 0;
     outline-width: 2px;
     outline-style: solid;
-    outline-color: $theme_selected_bg_color;
+    outline-color: $selected_bg_color;
 
     &:hover {
     }
@@ -28,8 +28,8 @@
       }
       
       &:disabled {
-        color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
-        background-color: gtkshade($theme_disabled_bg_color, 0.95);
+        color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
+        background-color: gtkshade($disabled_bg_color, 0.95);
         
         &:backdrop {
         }
@@ -37,8 +37,8 @@
     }
 
     &:disabled {
-      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
-      background-color: $theme_disabled_bg_color;
+      color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
+      background-color: $disabled_bg_color;
       
       &:backdrop {
       }
@@ -73,7 +73,7 @@
       box-shadow: inset -1px -1px gtkshade($bg, 1.4), inset 1px 1px gtkshade($bg, 0.65), 0 0 0 1px gtkalpha($light_shadow, 0.5), 1px 1px gtkalpha($dark_shadow, 0.05);
 
       &:backdrop {
-        color: $theme_unfocused_selected_fg_color;
+        color: $unfocused_selected_fg_color;
       }
     }
 
@@ -92,17 +92,17 @@
     &:backdrop {
       border-color: transparent;
       background-color: transparent;
-      color: $theme_unfocused_fg_color;
+      color: $unfocused_fg_color;
     }
   }
 }
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    @include normal_buttons($bg_color, $fg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+      @include flat_buttons($bg_color, $fg_color, $borders);
     }
   }
 }

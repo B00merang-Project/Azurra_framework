@@ -16,8 +16,8 @@
 
     &:backdrop {
       border-color: $unfocused_borders;
-      color: $theme_unfocused_fg_color;
-      background-color: $theme_unfocused_bg_color;
+      color: $unfocused_fg_color;
+      background-color: $unfocused_bg_color;
     }
 
     .titlebar &, .titlebar &:backdrop {
@@ -42,7 +42,7 @@
     }
 
     button {
-      @include headerbar_buttons($theme_base_color, $headerbar_fg_color, $borders);
+      @include headerbar_buttons($base_color, $headerbar_fg_color, $borders);
     }
 
     entry {

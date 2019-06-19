@@ -8,7 +8,7 @@
     box-shadow: 0 1px gtkalpha($dark_shadow, 0.7);
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
+      color: $unfocused_fg_color;
       background-color: $toolbar_bg_color;
     }
     
@@ -17,8 +17,8 @@
     }
 
     &:disabled {
-      color: $theme_disabled_fg_color;
-      background-color: $theme_disabled_bg_color;
+      color: $disabled_fg_color;
+      background-color: $disabled_bg_color;
     }
 
     button.flat {
@@ -39,7 +39,7 @@
       &:active, &:checked {
         color: $toolbar_fg_color;
         background-image: linear-gradient(to bottom, #82a7e8, #5d78be 40%, #153c9c 41%, #235db6 66%, #50c3e8);
-        box-shadow: inset 0 0 1px 1px gtkalpha($dark_shadow, 0.45), inset 0 1px gtkshade($theme_bg_color, 0.35);
+        box-shadow: inset 0 0 1px 1px gtkalpha($dark_shadow, 0.45), inset 0 1px gtkshade($bg_color, 0.35);
       }
       
       &:backdrop {

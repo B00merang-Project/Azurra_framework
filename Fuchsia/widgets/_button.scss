@@ -16,36 +16,36 @@
     }
 
     &:active, &:checked {
-      outline-color: gtkshade($theme_selected_bg_color, 1.4);
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+      outline-color: gtkshade($selected_bg_color, 1.4);
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
 
       &:disabled {
-        color: gtkmix($theme_selected_fg_color, $theme_disabled_fg_color, 0.4);
-        background-color: gtkmix($theme_selected_bg_color, $theme_disabled_bg_color, 0.3);
+        color: gtkmix($selected_fg_color, $disabled_fg_color, 0.4);
+        background-color: gtkmix($selected_bg_color, $disabled_bg_color, 0.3);
       
         &:backdrop {
-          color: gtkmix($theme_selected_fg_color, $theme_unfocused_disabled_fg_color, 0.4);
-        background-color: gtkmix($theme_selected_bg_color, $theme_unfocused_disabled_bg_color, 0.3);
+          color: gtkmix($selected_fg_color, $unfocused_disabled_fg_color, 0.4);
+        background-color: gtkmix($selected_bg_color, $unfocused_disabled_bg_color, 0.3);
         }
       }
 
       &:backdrop {
-        color: $theme_unfocused_selected_fg_color;
-        background-color: $theme_unfocused_selected_bg_color;
+        color: $unfocused_selected_fg_color;
+        background-color: $unfocused_selected_bg_color;
       }
     }
 
     &:disabled {
-      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
+      color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
       
       &:backdrop {
-        color: $theme_unfocused_disabled_fg_color;
+        color: $unfocused_disabled_fg_color;
       }
     }
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
+      color: $unfocused_fg_color;
       background-color: transparent;
     }
   }
@@ -58,10 +58,10 @@
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_base_color, $theme_fg_color, transparent);
+    @include normal_buttons($base_color, $fg_color, transparent);
     
     &.flat {
-      @include flat_buttons(transparent, $theme_fg_color, transparent);
+      @include flat_buttons(transparent, $fg_color, transparent);
     }
   }
 }

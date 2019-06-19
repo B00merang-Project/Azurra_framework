@@ -27,18 +27,18 @@
     highlight {
       border: none;
       border-radius: 0;
-      background-color: $theme_selected_bg_color;
+      background-color: $selected_bg_color;
 
       &:disabled {
-        background-color: gtkshade($theme_disabled_bg_color, 0.8);
+        background-color: gtkshade($disabled_bg_color, 0.8);
 
         &:backdrop {
-          background-color: gtkshade($theme_unfocused_disabled_bg_color, 0.8);
+          background-color: gtkshade($unfocused_disabled_bg_color, 0.8);
         }
       }
 
       &:backdrop {
-        background-color: $theme_unfocused_selected_bg_color;
+        background-color: $unfocused_selected_bg_color;
       }
     }
 
@@ -115,25 +115,25 @@
       margin: 0;
       border: none;
       border-radius: 0;
-      color: $theme_selected_fg_color;
-      background-color: $theme_fg_color;
+      color: $selected_fg_color;
+      background-color: $fg_color;
 
       &:hover {
       }
 
       &:disabled {
-        background-color: $theme_disabled_fg_color;
+        background-color: $disabled_fg_color;
         -gtk-icon-shadow: none;
 
         &:backdrop {
-          background-color: $theme_unfocused_disabled_fg_color;
+          background-color: $unfocused_disabled_fg_color;
           -gtk-icon-shadow: none;
         }
       }
 
       &:backdrop {
-        color: $theme_unfocused_selected_fg_color;
-        background-color: $theme_unfocused_fg_color;
+        color: $unfocused_selected_fg_color;
+        background-color: $unfocused_fg_color;
       }
     }
 

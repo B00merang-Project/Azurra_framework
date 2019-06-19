@@ -6,17 +6,17 @@
     background-color: $toolbar_bg_color;
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
-      background-color: $theme_unfocused_bg_color;
+      color: $unfocused_fg_color;
+      background-color: $unfocused_bg_color;
     }
 
     &:disabled {
-      color: $theme_disabled_fg_color;
-      background-color: $theme_disabled_bg_color;
+      color: $disabled_fg_color;
+      background-color: $disabled_bg_color;
     }
 
     button.flat {
-      @include flat_buttons($theme_base_color, $toolbar_fg_color, $borders, $secondary_button_radius);
+      @include flat_buttons($base_color, $toolbar_fg_color, $borders, $secondary_button_radius);
     }
 
     // menubar toolbars 

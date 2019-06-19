@@ -2,7 +2,7 @@
   scrollbar {
     border: none;
     box-shadow: inset 0 0 0 1px $borders;
-    background-color: $theme_base_color;
+    background-color: $base_color;
 
     trough {
       border: none;
@@ -10,15 +10,15 @@
     }
 
     &:backdrop {
-      background-color: $theme_unfocused_base_color;
+      background-color: $unfocused_base_color;
     }
     
     button {
       padding: 5px;
-      background-color: $theme_base_color;
+      background-color: $base_color;
       
       &:disabled, &:disabled:backdrop, &:backdrop {
-        background-color: $theme_unfocused_base_color;
+        background-color: $unfocused_base_color;
       }
     }
 
@@ -27,24 +27,24 @@
       border: 1px solid gtkshade($borders, 0.9);
       border-radius: $scrollbar_radius;
       background-clip: padding-box;
-      background-color: gtkshade($theme_bg_color, 0.9);
+      background-color: gtkshade($bg_color, 0.9);
       
       background-position: center center;
       background-repeat: no-repeat;
 
       &:hover {
-        border-color: gtkshade($theme_selected_bg_color, 0.7);
-        background-color: gtkshade($theme_selected_bg_color, 1.02);
+        border-color: gtkshade($selected_bg_color, 0.7);
+        background-color: gtkshade($selected_bg_color, 1.02);
 
         &:active {
-          border-color: gtkshade($theme_selected_bg_color, 0.8);
-          background-color: gtkshade($theme_selected_bg_color, 0.95);
+          border-color: gtkshade($selected_bg_color, 0.8);
+          background-color: gtkshade($selected_bg_color, 0.95);
         }
       }
 
       &:backdrop {
         border-color: gtkshade($unfocused_borders, 0.9);
-        background-color: gtkshade($theme_unfocused_bg_color, 0.9);
+        background-color: gtkshade($unfocused_bg_color, 0.9);
       }
 
       &:disabled {

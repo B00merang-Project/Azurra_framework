@@ -4,8 +4,8 @@
     border-width: 1px;
     border-style: solid;
     border-color: gtkshade($borders, 0.8);
-    background-color: $theme_base_color;
-    color: $theme_text_color;
+    background-color: $base_color;
+    color: $text_color;
     caret-color: currentColor;
 
     &:active, &:focus {
@@ -14,26 +14,26 @@
     }
 
     &:selected, &:selected:focus, selection, selection:focus {
-      color: $theme_selected_fg_color;
-      background-color: $theme_selected_bg_color;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
     }
 
     &:disabled {
-      color: $theme_disabled_text_color;
+      color: $disabled_text_color;
 
       &:backdrop {
-        color: $theme_unfocused_disabled_fg_color;
+        color: $unfocused_disabled_fg_color;
         border-color: $unfocused_borders;
       }
     }
 
     &.read-only {
-      background-color: gtkmix($theme_bg_color, $theme_disabled_bg_color, 0.1);
+      background-color: gtkmix($bg_color, $disabled_bg_color, 0.1);
     }
 
     &:backdrop {
-      color: $theme_unfocused_fg_color;
-      background-color: $theme_unfocused_base_color;
+      color: $unfocused_fg_color;
+      background-color: $unfocused_base_color;
     }
 
     > image {

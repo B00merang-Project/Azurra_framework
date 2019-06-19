@@ -6,36 +6,36 @@
     margin: 4px;
     margin-left: -3px;
     margin-right: -3px;
-    border: 3px solid $theme_fg_color;
+    border: 3px solid $fg_color;
     border-radius: 16px;
     background-color: transparent;
     min-width: 42px;
 
     &:checked {
-      border-color: $theme_selected_bg_color;
-      background-color: $theme_selected_bg_color;
+      border-color: $selected_bg_color;
+      background-color: $selected_bg_color;
       box-shadow: none;
 
       &:disabled {
-        border-color: gtkmix($theme_selected_bg_color, $theme_disabled_bg_color, 0.4);
+        border-color: gtkmix($selected_bg_color, $disabled_bg_color, 0.4);
       }
 
       &:backdrop {
-        border-color: gtkshade($theme_selected_bg_color, 0.9);
-        background-color: gtkshade($theme_selected_bg_color, 0.9);
+        border-color: gtkshade($selected_bg_color, 0.9);
+        background-color: gtkshade($selected_bg_color, 0.9);
       }
     }
 
     &:disabled {
-      border-color: $theme_disabled_fg_color;
+      border-color: $disabled_fg_color;
 
       &:backdrop {
-        border-color: $theme_unfocused_disabled_fg_color;
+        border-color: $unfocused_disabled_fg_color;
       }
     }
 
     &:backdrop {
-      border-color: $theme_unfocused_fg_color;
+      border-color: $unfocused_fg_color;
     }
 
     slider {
@@ -44,44 +44,44 @@
       margin: 3px;
       border: none;
       border-radius: 100%;
-      color: $theme_fg_color;
-      background-color: $theme_fg_color;
+      color: $fg_color;
+      background-color: $fg_color;
       margin-left: 4px;
     	margin-right: 4px;
     }
     
     &:checked {
       slider {
-        background-color: $theme_base_color;
+        background-color: $base_color;
       }
       
       &:disabled {
         slider {
-          background-color: $theme_disabled_bg_color;
+          background-color: $disabled_bg_color;
         }
       
         &:backdrop slider {
-          background-color: $theme_unfocused_disabled_bg_color;
+          background-color: $unfocused_disabled_bg_color;
         } 
       }
       
       &:backdrop slider {
-        background-color: $theme_unfocused_bg_color;
+        background-color: $unfocused_bg_color;
       }
     }
 
     &:disabled {
       & slider {
-        background-color: $theme_disabled_fg_color;
+        background-color: $disabled_fg_color;
       }
 
       &:backdrop slider {
-        background-color: $theme_unfocused_disabled_fg_color;
+        background-color: $unfocused_disabled_fg_color;
       }
     }
 
     &:backdrop slider {
-      background-color: $theme_unfocused_fg_color;
+      background-color: $unfocused_fg_color;
     }
   }
 }

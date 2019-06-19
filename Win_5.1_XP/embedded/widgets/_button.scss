@@ -5,7 +5,7 @@
     border-width: 1px;
     border-radius: $button_radius;
     color: $fg;
-    border-color: gtkmix(gtkshade($br, 0.3), $theme_selected_bg_color, 0.25);
+    border-color: gtkmix(gtkshade($br, 0.3), $selected_bg_color, 0.25);
     background-color: $bg;
     background-image: linear-gradient(to bottom, rgba(252,252,252,1) 0%,rgba(235,235,235,1) 50%,rgba(221,221,221,1) 51%,rgba(174,174,174,1) 100%);
     box-shadow: inset 0 0 3px 0px gtkalpha($dark_shadow,0.15);
@@ -13,21 +13,21 @@
 
     &:hover, &:focus {
       box-shadow: inset 0 0 1px 2px #ffc73c;
-      border-color: gtkmix(gtkshade($br, 0.3), $theme_selected_bg_color, 0.3);
+      border-color: gtkmix(gtkshade($br, 0.3), $selected_bg_color, 0.3);
     }
 
     &:active, &:checked {
       border-color: gtkshade($br, 0.3);
-      background-color: gtkshade($theme_bg_color, 0.95);
+      background-color: gtkshade($bg_color, 0.95);
       background-image: linear-gradient(to bottom,gtkshade(#f7f7f7, 0.6),gtkshade(#f7f7f7, 0.7),gtkshade(#f7f7f7, 0.75));
       
       &:backdrop {
       }
       
       &:disabled {
-        color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
-        border-color: gtkmix($fg, $theme_disabled_bg_color, 0.5);
-        background-color: gtkshade($theme_disabled_bg_color, 0.9);
+        color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
+        border-color: gtkmix($fg, $disabled_bg_color, 0.5);
+        background-color: gtkshade($disabled_bg_color, 0.9);
         
         &:backdrop {
         }
@@ -35,9 +35,9 @@
     }
 
     &:disabled {
-      color: $theme_disabled_fg_color;
+      color: $disabled_fg_color;
       border-color: gtkshade($br, 0.75);
-      background-color: $theme_disabled_bg_color;
+      background-color: $disabled_bg_color;
         
       &:backdrop {
       }
@@ -59,7 +59,7 @@
     box-shadow: none;
 
     &:hover {
-      border-color: gtkmix(gtkshade($br, 0.3), $theme_selected_bg_color, 0.3);
+      border-color: gtkmix(gtkshade($br, 0.3), $selected_bg_color, 0.3);
       background-color: $bg;
       background-image: linear-gradient(to bottom, rgba(252,252,252,1) 0%,
                                            rgba(235,235,235,1) 50%,
@@ -70,7 +70,7 @@
 
     &:active, &:checked {
       border-color: gtkshade($br, 0.3);
-      background-color: gtkshade($theme_bg_color, 0.95);
+      background-color: gtkshade($bg_color, 0.95);
       background-image: linear-gradient(to bottom,gtkshade(#f7f7f7, 0.6),gtkshade(#f7f7f7, 0.7),gtkshade(#f7f7f7, 0.75));
       
       &:backdrop {
@@ -93,10 +93,10 @@
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    @include normal_buttons($bg_color, $fg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+      @include flat_buttons($bg_color, $fg_color, $borders);
     }
   }
 }

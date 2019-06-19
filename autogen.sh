@@ -7,6 +7,7 @@
 version=2.1
 description="Azurra Autogen, version $version"
 
+LOCK_ADD=false
 ROOT_DIR="$PWD"
 BASE_THEME='Azurra'
 WIKI=http://github.com/Elbullazul/Azurra_framework/wiki
@@ -158,10 +159,20 @@ gen_sass() {
   
   clean "$gen_sass__theme_dir"
   
-  # sass_args is set in main()  
+  # sass_args is set in main()
   sass $sass_args $gen_sass__theme_dir/gtk.scss $gen_sass__theme_dir/gtk.css
-  has_dark "$gen_sass__theme_dir" && sass $sass_args $gen_sass__theme_dir/gtk-dark.scss $gen_sass__theme_dir/gtk-dark.css
-  has_light "$gen_sass__theme_dir" && sass $sass_args $gen_sass__theme_dir/gtk-light.scss $gen_sass__theme_dir/gtk-light.css
+  [ $? -ne 0 ] && fail "SASS error in stylesheet"
+  # Abort if SASS error
+  
+  if has_dark "$gen_sass__theme_dir"; then
+    sass $sass_args $gen_sass__theme_dir/gtk-dark.scss $gen_sass__theme_dir/gtk-dark.css
+    [ $? -ne 0 ] && fail "SASS error in dark stylesheet"
+  fi
+  
+  if has_light "$gen_sass__theme_dir"; then
+    sass $sass_args $gen_sass__theme_dir/gtk-light.scss $gen_sass__theme_dir/gtk-light.css
+    [ $? -ne 0 ] && fail "SASS error in light stylesheet"
+  fi
   
   unset gen_sass__theme_dir
 }
@@ -272,7 +283,7 @@ while [ "$1" != "" ]; do
     -q | --quiet )          sass_args="$sass_args -q"
                             ;;
     -a | --all )            QUEUE=*/
-                            break
+                            LOCK_ADD=true
                             ;;
     -c | --compile )        OP=$GEN_ONLY
                             ;;
@@ -282,7 +293,7 @@ while [ "$1" != "" ]; do
                             ;;
     -v | --version )        show_version
                             ;;
-    *)                      QUEUE+=("$1")
+    *)                      [ $LOCK_ADD == false ] && QUEUE+=("$1")
                             ;;
   esac
   shift

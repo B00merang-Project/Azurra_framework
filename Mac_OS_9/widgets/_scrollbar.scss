@@ -1,8 +1,8 @@
 @mixin scrollbar() {
   scrollbar {
     border: 1px solid $dark_shadow;
-    background-color: gtkshade($theme_bg_color, 0.8);
-    box-shadow: inset 2px 2px gtkshade($theme_bg_color, 0.6), inset -2px 0 gtkshade($theme_bg_color, 0.95);
+    background-color: gtkshade($bg_color, 0.8);
+    box-shadow: inset 2px 2px gtkshade($bg_color, 0.6), inset -2px 0 gtkshade($bg_color, 0.95);
 
     trough {
       border: none;
@@ -10,10 +10,10 @@
     }
 
     button {
-      box-shadow: inset 1px 1px $light_shadow, inset -1px -1px gtkshade($theme_bg_color, 0.85);
+      box-shadow: inset 1px 1px $light_shadow, inset -1px -1px gtkshade($bg_color, 0.85);
       
       &:active {
-        box-shadow: inset -1px -1px $light_shadow, inset 1px 1px gtkshade($theme_bg_color, 0.85);
+        box-shadow: inset -1px -1px $light_shadow, inset 1px 1px gtkshade($bg_color, 0.85);
       }
       
       &, &:disabled {
@@ -40,12 +40,12 @@
         min-width: 45px;
         min-height: 14px;
         margin: 0;
-        border: 1px solid gtkshade($theme_selected_bg_color, 0.7);
-        border-top-color: gtkmix($theme_selected_bg_color, $light_shadow, 0.7);
-        border-left-color: gtkmix($theme_selected_bg_color, $light_shadow, 0.7);
+        border: 1px solid gtkshade($selected_bg_color, 0.7);
+        border-top-color: gtkmix($selected_bg_color, $light_shadow, 0.7);
+        border-left-color: gtkmix($selected_bg_color, $light_shadow, 0.7);
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
-        background-color: $theme_selected_bg_color;
+        background-color: $selected_bg_color;
         background-position: center center;
         background-image: url('assets/handle-horiz.png');
         background-repeat: no-repeat;
@@ -72,12 +72,12 @@
         min-width: 14px;
         min-height: 45px;
         margin: 0;
-        border: 1px solid gtkshade($theme_selected_bg_color, 0.7);
-        border-top-color: gtkmix($theme_selected_bg_color, $light_shadow, 0.7);
-        border-left-color: gtkmix($theme_selected_bg_color, $light_shadow, 0.7);
+        border: 1px solid gtkshade($selected_bg_color, 0.7);
+        border-top-color: gtkmix($selected_bg_color, $light_shadow, 0.7);
+        border-left-color: gtkmix($selected_bg_color, $light_shadow, 0.7);
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
-        background-color: $theme_selected_bg_color;
+        background-color: $selected_bg_color;
         background-position: center center;
         background-image: url('assets/handle-vert.png');
         background-repeat: no-repeat;

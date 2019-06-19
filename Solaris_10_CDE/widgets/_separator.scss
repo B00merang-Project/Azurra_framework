@@ -3,11 +3,11 @@
     -gtk-icon-source: none;
     min-width: 1px;
     min-height: 1px;
-    background-color: gtkshade($theme_bg_color, 0.7);
-    box-shadow: 1px 1px gtkmix($theme_bg_color, $light_shadow, 0.7);
+    background-color: gtkshade($bg_color, 0.7);
+    box-shadow: 1px 1px gtkmix($bg_color, $light_shadow, 0.7);
 
     &:backdrop {
-      background-color: gtkshade($theme_bg_color, 0.7);
+      background-color: gtkshade($bg_color, 0.7);
     }
 
     button & {
@@ -16,19 +16,19 @@
 
     .sidebar view &, view &, .separator, & {
       border: none;
-      background-color: gtkshade($theme_bg_color, 0.7);
+      background-color: gtkshade($bg_color, 0.7);
 
       &:backdrop {
         border: none;
-        background-color: gtkshade($theme_bg_color, 0.7);
+        background-color: gtkshade($bg_color, 0.7);
       }
     }
 
     .primary-toolbar &, toolbar & {
-      background-color: gtkmix(gtkshade($theme_bg_color, 0.7), $toolbar_bg_color, 0.5);
+      background-color: gtkmix(gtkshade($bg_color, 0.7), $toolbar_bg_color, 0.5);
 
       &:backdrop {
-        background-color: gtkshade($theme_bg_color, 0.7);
+        background-color: gtkshade($bg_color, 0.7);
       }
     }
 
@@ -36,11 +36,11 @@
       -GtkWidget-window-dragging: true;
       margin-top: 4px;
       margin-bottom: 4px;
-      background-color: gtkmix(gtkshade($theme_bg_color, 0.7), $headerbar_bg_color, 0.5);
+      background-color: gtkmix(gtkshade($bg_color, 0.7), $headerbar_bg_color, 0.5);
       box-shadow: none;
 
       &:backdrop {
-        background-color: gtkshade($theme_bg_color, 0.7);
+        background-color: gtkshade($bg_color, 0.7);
       }
     }
 
@@ -50,7 +50,7 @@
       box-shadow: 1px 1px gtkalpha($light_shadow, 0.4);
 
       &:backdrop {
-        background-color: gtkshade($theme_bg_color, 0.7);
+        background-color: gtkshade($bg_color, 0.7);
       }
     }
 
@@ -61,24 +61,24 @@
       box-shadow: 1px 1px gtkalpha($light_shadow, 0.4);
 
       &:backdrop {
-        background-color: gtkshade($theme_bg_color, 0.7);
+        background-color: gtkshade($bg_color, 0.7);
       }
     }
 
     .primary-toolbar button &, toolbar button &, .primary-toolbar:not(.libreoffice-toolbar) & {
-      border-color: gtkshade($theme_bg_color, 0.7);
+      border-color: gtkshade($bg_color, 0.7);
 
       &:backdrop {
-        border-color: gtkshade($theme_bg_color, 0.7);
+        border-color: gtkshade($bg_color, 0.7);
       }
     }
 
     headerbar button & {
-      border-color: gtkmix(gtkshade($theme_bg_color, 0.7), $headerbar_bg_color, 0.5);
+      border-color: gtkmix(gtkshade($bg_color, 0.7), $headerbar_bg_color, 0.5);
       box-shadow: none;
 
       &:backdrop {
-        border-color: gtkshade($theme_bg_color, 0.7);
+        border-color: gtkshade($bg_color, 0.7);
       }
     }
 
@@ -87,14 +87,14 @@
       box-shadow: 1px 1px gtkalpha($light_shadow, 0.4);
 
       &:backdrop {
-        border-color: gtkshade($theme_bg_color, 0.7);
+        border-color: gtkshade($bg_color, 0.7);
       }
     }
 
     menuitem & {
       border-width: 1px;
       border-style: none;
-      color: gtkmix(gtkshade($theme_bg_color, 0.7), $menu_bg_color, 0.5);
+      color: gtkmix(gtkshade($bg_color, 0.7), $menu_bg_color, 0.5);
     }
 
     popover & {

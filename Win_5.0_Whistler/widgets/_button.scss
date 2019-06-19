@@ -28,15 +28,15 @@
       background-image: linear-gradient(to top, gtkshade($color_shadow, 0.95) 5%, gtkshade($color_shadow, 0.9) 20%, gtkshade($color_shadow, 0.9) 70%, gtkshade($color_shadow, 0.85) 90%);
 
       &:disabled {
-        color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.1);
-        border-color: gtkmix($fg, $theme_disabled_bg_color, 0.85);
-        background-color: gtkshade($theme_disabled_bg_color, 0.9);
-        background-image: linear-gradient(to top, gtkshade($theme_disabled_bg_color, 0.85) 5%, gtkshade($theme_disabled_bg_color, 0.8) 20%, gtkshade($theme_disabled_bg_color, 0.8) 70%, gtkshade($theme_disabled_bg_color, 0.75) 90%);
+        color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
+        border-color: gtkmix($fg, $disabled_bg_color, 0.85);
+        background-color: gtkshade($disabled_bg_color, 0.9);
+        background-image: linear-gradient(to top, gtkshade($disabled_bg_color, 0.85) 5%, gtkshade($disabled_bg_color, 0.8) 20%, gtkshade($disabled_bg_color, 0.8) 70%, gtkshade($disabled_bg_color, 0.75) 90%);
       }
     }
 
     &:disabled {
-      color: gtkmix($fg, $theme_unfocused_disabled_fg_color, 0.5);
+      color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
     }
   }
 }
@@ -77,10 +77,10 @@
 
 @mixin button() {
   button {
-    @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+    @include normal_buttons($bg_color, $fg_color, $borders);
     
     &.flat {
-      @include flat_buttons($theme_bg_color, $theme_fg_color, $borders);
+      @include flat_buttons($bg_color, $fg_color, $borders);
     }
   }
 }

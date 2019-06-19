@@ -28,11 +28,11 @@
       background-color: gtkshade($taskbar_bg_color, 1.1);
     }
     &:active, &:checked {
-      color: $theme_selected_fg_color;
+      color: $selected_fg_color;
       border: none;
       box-shadow: none;
       background-image: none;
-      background-color: $theme_selected_bg_color;
+      background-color: $selected_bg_color;
     }
   }
 }
@@ -53,7 +53,7 @@
     }
 
     menubar > menuitem:hover, menubar > menuitem:hover label:backdrop {
-      color: $theme_selected_fg_color;
+      color: $selected_fg_color;
     }
 
     button {
@@ -106,8 +106,8 @@
   
   #XfceNotifyWindow {
     &.osd {
-      background-color: $theme_bg_color;
-      color: $theme_fg_color;
+      background-color: $bg_color;
+      color: $fg_color;
       border-radius: $roundness;
       border: none;
       
@@ -118,7 +118,7 @@
       }
       
       button {
-        @include normal_buttons($theme_bg_color, $theme_fg_color, $borders);
+        @include normal_buttons($bg_color, $fg_color, $borders);
       }
     }
   }
@@ -147,8 +147,8 @@
 
     menubar menuitem {
       &:hover, &:active {
-        color: $theme_selected_fg_color;
-        background-color: $theme_selected_bg_color;
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
       }
     }
 
@@ -158,10 +158,10 @@
     }
 
     GtkMenu .label {
-      color: $theme_fg_color;
+      color: $fg_color;
       font-style: normal;
 
-      &:disabled { color: $theme_disabled_fg_color; }
+      &:disabled { color: $disabled_fg_color; }
     }
 
     .button:not(#tasklist-button) { 
@@ -175,9 +175,9 @@
         background-color: gtkshade($taskbar_bg_color, 1.1);
       }
       &:active, &:checked {
-        color: $theme_selected_fg_color;
+        color: $selected_fg_color;
         border: none;
-        background-color: $theme_selected_bg_color;
+        background-color: $selected_bg_color;
       }
     }
 
@@ -204,12 +204,12 @@
         background-image: none;
         border-radius: $entry_radius;
         box-shadow: none;
-        border-color: gtkshade($theme_selected_bg_color, 0.6);
-        background-color: $theme_base_color;
+        border-color: gtkshade($selected_bg_color, 0.6);
+        background-color: $base_color;
       
         &:selected {
-          color: $theme_selected_fg_color;
-          background-color: $theme_selected_bg_color;
+          color: $selected_fg_color;
+          background-color: $selected_bg_color;
         }
       }
     }
@@ -217,8 +217,8 @@
 
   .mintmenu:hover { background-color: gtkshade($taskbar_bg_color, 1.1); }
   .mintmenu:selected {
-    color: $theme_selected_fg_color;
-    background-color: $theme_selected_bg_color;
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
   }
 
   .wnck-pager {
@@ -234,13 +234,13 @@
     .nemo-window-pane widget.entry {
       border: 1px solid;
       border-radius: 3px;
-      border-color: $theme_selected_bg_color;
-      color: $theme_fg_color;
-      background-color: $theme_base_color;
+      border-color: $selected_bg_color;
+      color: $fg_color;
+      background-color: $base_color;
         
       &:selected, &:selected:focus {
-        color: $theme_selected_fg_color;
-        background-color: $theme_selected_bg_color;
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
       }
     }
     
@@ -253,16 +253,16 @@
         background-color: transparent;
 
         &.cell:selected {
-          border-color: $theme_selected_bg_color;
-          color: $theme_selected_fg_color;
-          background-color: $theme_selected_bg_color;
+          border-color: $selected_bg_color;
+          color: $selected_fg_color;
+          background-color: $selected_bg_color;
         }
 
         &.expander {
-          color: $theme_fg_color;
+          color: $fg_color;
 
           &:hover {
-            color: $theme_selected_bg_color;
+            color: $selected_bg_color;
           }
         }
       }
@@ -287,7 +287,7 @@
     -UnityDecoration-inactive-shadow-radius: 5px;
 
     -UnityDecoration-glow-size: 10px;
-    -UnityDecoration-glow-color: $theme_selected_bg_color;
+    -UnityDecoration-glow-color: $selected_bg_color;
 
     -UnityDecoration-title-indent: 10px;
     -UnityDecoration-title-fade: 35px;
@@ -302,7 +302,7 @@
       text-shadow: none;
 
       &:backdrop {
-        background-color: $theme_unfocused_bg_color;
+        background-color: $unfocused_bg_color;
         color: gtkmix($titlebar_fg_color, $titlebar_bg_color, 0.4);
       }
     }
@@ -320,8 +320,8 @@
       border-radius: 0;
 
       &:hover, *:hover {
-        background-color: $theme_selected_bg_color;
-        color: $theme_selected_fg_color;
+        background-color: $selected_bg_color;
+        color: $selected_fg_color;
       }
     }
   }
@@ -348,6 +348,6 @@
   .menu IdoPlaybackMenuItem.menuitem:active {
     -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
     animation: playbackmenuitem_spinner 1s infinite linear;
-    color: $theme_selected_bg_color;
+    color: $selected_bg_color;
   }
 }

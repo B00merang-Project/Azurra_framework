@@ -39,29 +39,29 @@
     highlight {
       border: none;
       border-radius: 4px;
-      background-color: $theme_selected_bg_color;
-      background-image: linear-gradient(to bottom, gtkshade($theme_selected_bg_color, 1.2), gtkshade($theme_selected_bg_color, 1.55));
+      background-color: $selected_bg_color;
+      background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.2), gtkshade($selected_bg_color, 1.55));
 
       &:disabled {
         background-image: none;
-        background-color: $theme_disabled_bg_color;
+        background-color: $disabled_bg_color;
 
         &:backdrop {
-          background-color: $theme_unfocused_disabled_bg_color;
+          background-color: $unfocused_disabled_bg_color;
         }
       }
 
       &:backdrop {
-        background-color: $theme_unfocused_selected_bg_color;
+        background-color: $unfocused_selected_bg_color;
       }
     }
     
     &.vertical highlight {
-      background-image: linear-gradient(to right, gtkshade($theme_selected_bg_color, 1.2), gtkshade($theme_selected_bg_color, 1.55));
+      background-image: linear-gradient(to right, gtkshade($selected_bg_color, 1.2), gtkshade($selected_bg_color, 1.55));
       
       &:disabled {
         background-image: none;
-        background-color: $theme_disabled_bg_color;
+        background-color: $disabled_bg_color;
       }
     }
 
@@ -139,28 +139,28 @@
       border: 1px solid gtkshade($borders, 0.85);
       border-radius: 100%;
       box-shadow: 0 1px 2px 1px gtkalpha($dark_shadow, 0.09);
-      color: $theme_fg_color;
-      background-color: $theme_base_color;
-      background-image: linear-gradient(to bottom, gtkshade($theme_base_color, 0.9), $theme_base_color);
+      color: $fg_color;
+      background-color: $base_color;
+      background-image: linear-gradient(to bottom, gtkshade($base_color, 0.9), $base_color);
 
       &:hover {
-        color: $theme_fg_color;
-        background-color: $theme_base_color;
+        color: $fg_color;
+        background-color: $base_color;
       }
 
       &:disabled {
-        background-color: $theme_disabled_base_color;
+        background-color: $disabled_base_color;
         -gtk-icon-shadow: none;
 
         &:backdrop {
-          background-color: $theme_unfocused_disabled_bg_color;
+          background-color: $unfocused_disabled_bg_color;
           -gtk-icon-shadow: none;
         }
       }
 
       &:backdrop {
-        color: $theme_unfocused_fg_color;
-        background-color: $theme_unfocused_base_color;
+        color: $unfocused_fg_color;
+        background-color: $unfocused_base_color;
       }
     }
 

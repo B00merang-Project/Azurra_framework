@@ -1,7 +1,7 @@
 @mixin scrollbar() {
   scrollbar {
     border: none;
-    background-color: gtkshade($theme_bg_color, 0.9);
+    background-color: gtkshade($bg_color, 0.9);
 
     trough {
       border: none;
@@ -9,7 +9,7 @@
     }
 
     &:backdrop {
-      background-color: gtkshade($theme_bg_color, 0.9);
+      background-color: gtkshade($bg_color, 0.9);
     }
     
     button {
@@ -43,23 +43,23 @@
         border: 1px solid gtkshade($dark_bg_color, 0.75);
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
-        background-color: gtkshade($theme_bg_color, 0.6);
+        background-color: gtkshade($bg_color, 0.6);
         background: url("assets/handle-vert.png") no-repeat center center, linear-gradient(to bottom, $dark_bg_color 50%, gtkshade($dark_bg_color, 0.95) 51%, gtkshade($dark_bg_color, 0.94));
 
         &:hover {
-          border-color: gtkshade($theme_selected_bg_color, 0.7);
-          background-color: gtkshade($theme_bg_color, 0.6);
-          background: url("assets/handle-horiz-hover.png") no-repeat center center linear-gradient(to bottom, gtkshade($theme_selected_bg_color, 1.12), $theme_selected_bg_color 50%, gtkshade($theme_selected_bg_color, 0.95) 51%);
+          border-color: gtkshade($selected_bg_color, 0.7);
+          background-color: gtkshade($bg_color, 0.6);
+          background: url("assets/handle-horiz-hover.png") no-repeat center center linear-gradient(to bottom, gtkshade($selected_bg_color, 1.12), $selected_bg_color 50%, gtkshade($selected_bg_color, 0.95) 51%);
 
           &:active {
-            border-color: gtkshade($theme_selected_bg_color, 0.6);
-            background-color: gtkshade($theme_bg_color, 0.55);
-            background: url("assets/handle-horiz-hover.png") no-repeat center center, linear-gradient(to bottom, gtkshade($theme_selected_bg_color, 1.07), gtkshade($theme_selected_bg_color, 0.95) 50%, gtkshade($theme_selected_bg_color, 0.9) 51%);
+            border-color: gtkshade($selected_bg_color, 0.6);
+            background-color: gtkshade($bg_color, 0.55);
+            background: url("assets/handle-horiz-hover.png") no-repeat center center, linear-gradient(to bottom, gtkshade($selected_bg_color, 1.07), gtkshade($selected_bg_color, 0.95) 50%, gtkshade($selected_bg_color, 0.9) 51%);
           }
         }
 
         &:backdrop {
-          background-color: gtkshade($theme_bg_color, 0.55);
+          background-color: gtkshade($bg_color, 0.55);
         }
 
         &:disabled {
@@ -99,23 +99,23 @@
         border: 1px solid gtkshade($dark_bg_color, 0.75);
         border-radius: $scrollbar_radius;
         background-clip: padding-box;
-        background-color: gtkshade($theme_bg_color, 0.6);
+        background-color: gtkshade($bg_color, 0.6);
         background: url("assets/handle-vert.png") no-repeat center center, linear-gradient(to right, $dark_bg_color 50%, gtkshade($dark_bg_color, 0.95) 51%, gtkshade($dark_bg_color, 0.94));
 
         &:hover {
-          border-color: gtkshade($theme_selected_bg_color, 0.7);
-          background-color: gtkshade($theme_bg_color, 0.6);
-          background: url("assets/handle-vert-hover.png") no-repeat center center, linear-gradient(to right, gtkshade($theme_selected_bg_color, 1.12), $theme_selected_bg_color 50%, gtkshade($theme_selected_bg_color, 0.95) 51%);
+          border-color: gtkshade($selected_bg_color, 0.7);
+          background-color: gtkshade($bg_color, 0.6);
+          background: url("assets/handle-vert-hover.png") no-repeat center center, linear-gradient(to right, gtkshade($selected_bg_color, 1.12), $selected_bg_color 50%, gtkshade($selected_bg_color, 0.95) 51%);
 
           &:active {
-            border-color: gtkshade($theme_selected_bg_color, 0.6);
-            background-color: gtkshade($theme_bg_color, 0.55);
-            background: url("assets/handle-vert-hover.png") no-repeat center center, linear-gradient(to right, gtkshade($theme_selected_bg_color, 1.07), gtkshade($theme_selected_bg_color, 0.95) 50%, gtkshade($theme_selected_bg_color, 0.9) 51%);
+            border-color: gtkshade($selected_bg_color, 0.6);
+            background-color: gtkshade($bg_color, 0.55);
+            background: url("assets/handle-vert-hover.png") no-repeat center center, linear-gradient(to right, gtkshade($selected_bg_color, 1.07), gtkshade($selected_bg_color, 0.95) 50%, gtkshade($selected_bg_color, 0.9) 51%);
           }
         }
 
         &:backdrop {
-          background-color: gtkshade($theme_bg_color, 0.55);
+          background-color: gtkshade($bg_color, 0.55);
         }
 
         &:disabled {
