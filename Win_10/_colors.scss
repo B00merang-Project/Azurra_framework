@@ -1,24 +1,24 @@
 // Normal colors
-$bg_color : #ECEDEF;
+$bg_color : #FFFFFF;
 $fg_color : #000000;
-$base_color : #F9F9F9;
+$base_color : #FFFFFF;
 $text_color : #000000;
-$selected_bg_color : #DE4815;
-$selected_fg_color : #F9F9F9;
-$selected_base_color : #19B6EE;
-$selected_text_color : #F9F9F9;
+$selected_bg_color : #CCE8FF;
+$selected_fg_color : #000000;
+$selected_base_color : #0078D7;
+$selected_text_color : #FFFFFF;
 $disabled_bg_color : gtkmix($fg_color, $bg_color, 0.95);
 $disabled_fg_color : gtkmix($fg_color, $bg_color, 0.5);
-$disabled_base_color : gtkshade($disabled_bg_color, 0.95);
+$disabled_base_color : $disabled_bg_color;
 $disabled_text_color : $disabled_fg_color;
 
 // Backdrop state colors
 $unfocused_bg_color : $bg_color;
-$unfocused_fg_color : gtkmix($fg_color, $base_color, 0.3);
+$unfocused_fg_color : $fg_color;
 $unfocused_base_color : $base_color;
-$unfocused_text_color : $unfocused_fg_color;
-$unfocused_selected_bg_color : gtkshade($unfocused_bg_color, 0.7);
-$unfocused_selected_fg_color : gtkshade($unfocused_text_color, 0.8);
+$unfocused_text_color : $text_color;
+$unfocused_selected_bg_color : $selected_bg_color;
+$unfocused_selected_fg_color : $selected_fg_color;
 $unfocused_selected_base_color : $selected_base_color;
 $unfocused_selected_text_color : $selected_text_color;
 $unfocused_disabled_bg_color : gtkmix($fg_color, $bg_color, 0.98);
@@ -27,8 +27,8 @@ $unfocused_disabled_base_color : $unfocused_disabled_bg_color;
 $unfocused_disabled_text_color : $unfocused_disabled_fg_color;
 
 // Darker color scheme
-$dark_bg_color : #111111;
-$dark_fg_color : #EEEEEE;
+$dark_bg_color : $bg_color;
+$dark_fg_color : $fg_color;
 
 // Theme colors
 $theme_bg_color : $bg_color;
@@ -77,35 +77,35 @@ $error_fg_color : #FFFFFF;
 $error_bg_color : #FF0000;
 
 // Special foreground colors
-$link_color : $selected_base_color;
-$error_color : #ED3146;
-$success_color : #48B259;
+$link_color : #224BA0;
+$error_color : #CC0000;
+$success_color : #06B025;
 $warning_color : #FF9900;
 
 // Widget colors
-$tooltip_bg_color : $dark_bg_color;
-$tooltip_fg_color : $dark_fg_color;
-$menu_bg_color : $base_color;
-$menu_fg_color : $text_color;
-$menubar_bg_color : $base_color;
-$menubar_fg_color : $text_color;
-$toolbar_bg_color : $base_color;
-$toolbar_fg_color : $text_color;
+$tooltip_bg_color : $bg_color;
+$tooltip_fg_color : $fg_color;
+$menu_bg_color : $bg_color;
+$menu_fg_color : $fg_color;
+$menubar_bg_color : $bg_color;
+$menubar_fg_color : $fg_color;
+$toolbar_bg_color : $bg_color;
+$toolbar_fg_color : $fg_color;
 $sidebar_bg_color : $bg_color;
 $sidebar_fg_color : $fg_color;
-$taskbar_bg_color : $dark_bg_color;
-$taskbar_fg_color : $dark_fg_color;
-$titlebar_bg_color : $dark_bg_color;
-$titlebar_fg_color : $dark_fg_color;
-$headerbar_bg_color : $dark_bg_color;
-$headerbar_fg_color : $dark_fg_color;
-$terminal_bg_color : #0D303A;
-$terminal_fg_color : #EEEEEE;
+$taskbar_bg_color : #000000;
+$taskbar_fg_color : #FFFFFF;
+$titlebar_bg_color : $bg_color;
+$titlebar_fg_color : $fg_color;
+$headerbar_bg_color : $bg_color;
+$headerbar_fg_color : $fg_color;
+$terminal_bg_color : #000000;
+$terminal_fg_color : #FFFFFF;
 
 // OSD
-$osd_fg : $dark_fg_color;
-$osd_bg : $dark_bg_color;
-$osd_base : $dark_bg_color;
+$osd_fg : $fg_color;
+$osd_bg : gtkmix($bg_color, $fg_color, 0.2);
+$osd_base : $bg_color;
 
 // Budgie colors
 $raven_fg_color : $dark_fg_color;

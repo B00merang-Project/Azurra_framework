@@ -9,12 +9,12 @@
       progress {
         border: none;
         border-radius: 0;
-        background-color: $progressbar_bg_color;
+        background-color: $success_color;
         background: -gtk-gradient(radial, left center, 0, left center, 0.6, from(gtkalpha($dark_shadow, 0.2)), to(transparent)) left no-repeat, -gtk-gradient(radial, right center, 0, right center, 0.6, from(gtkalpha($dark_shadow, 0.2)), to(transparent)) right no-repeat, linear-gradient(to bottom, #cdffcd, #a6efb3 45%, #00d020 56%, #1ce233);
         background-size: 40px 100%;  // shadow sizing
         
         &:backdrop {
-          background-color: $progressbar_bg_color;
+          background-color: $success_color;
         }
       }
 
@@ -35,12 +35,12 @@
       progress {
         border: none;
         border-radius: 0;
-        background-color: $progressbar_bg_color;
+        background-color: $success_color;
         background: -gtk-gradient(radial, center top, 0, center top, 0.6, from(gtkalpha($dark_shadow, 0.2)), to(transparent)) top no-repeat, -gtk-gradient(radial, center bottom, 0, center bottom, 0.6, from(gtkalpha($dark_shadow, 0.2)), to(transparent)) bottom no-repeat, linear-gradient(to left, #cdffcd, #a6efb3 45%, #00d020 56%, #1ce233);
         background-size: 100% 40px;
         
         &:backdrop {
-          background-color: $progressbar_bg_color;
+          background-color: $success_color;
         }
       }
 
@@ -73,13 +73,13 @@
       &, &:disabled {
         color: $theme_selected_fg_color;
         border-radius: 0;
-        background-color: $progressbar_bg_color;
+        background-color: $success_color;
       }
 
       &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
         border-radius: 0;
         color: $theme_selected_bg_color;
-        background-color: $progressbar_bg_color;
+        background-color: $success_color;
       }
     }
 

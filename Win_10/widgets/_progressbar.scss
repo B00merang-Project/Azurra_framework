@@ -8,10 +8,10 @@
     progress {
       border: none;
       border-radius: $progressbar_radius;
-      background-color: $progressbar_bg_color;
+      background-color: $success_color;
 
       &:backdrop {
-        background-color: $progressbar_bg_color;
+        background-color: $success_color;
       }
     }
 
@@ -41,13 +41,13 @@
       &, &:disabled {
         color: $theme_selected_fg_color;
         border-radius: 0;
-        background-color: $progressbar_bg_color;
+        background-color: $success_color;
       }
 
       &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
         border-radius: 0;
         color: $theme_selected_bg_color;
-        background-color: $progressbar_bg_color;
+        background-color: $success_color;
       }
     }
 

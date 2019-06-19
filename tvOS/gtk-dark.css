@@ -105,39 +105,28 @@ assistant .sidebar {
   color: #FFFFFF;
   background-color: alpha(#000000, 0.85); }
 
-button:link > label, button:visited > label,
-*:link,
-button:link,
-button:visited {
+button:link > label, button:visited > label, *:link, button:link, button:visited {
   color: #1D8ECE; }
-  button:link > label:visited, button:visited > label:visited,
-  *:link:visited,
-  button:visited {
+  button:link > label:visited, button:visited > label:visited, *:link:visited, button:visited {
     color: mix(#1D8ECE, #FFFFFF, 0.2); }
-    *:selected button:link > label:visited, *:selected button:visited > label:visited, *:selected
-    *:link:visited, *:selected
-    button:visited:link, *:selected
-    button:visited {
+    *:selected button:link > label:visited, *:selected button:visited > label:visited,
+    *:selected *:link:visited,
+    *:selected button:visited:link,
+    *:selected button:visited {
       color: mix(#FFFFFF, alpha(mix(#FFFFFF, #000000, 0.3), 0.3), 0.4); }
-  button:link > label:hover, button:visited > label:hover,
-  *:link:hover,
-  button:hover:link,
-  button:hover:visited {
+  button:link > label:hover, button:visited > label:hover, *:link:hover, button:hover:link, button:hover:visited {
     color: shade(#1D8ECE, 1.1); }
-    *:selected button:link > label:hover, *:selected button:visited > label:hover, *:selected
-    *:link:hover, *:selected
-    button:hover:link, *:selected
-    button:hover:visited {
+    *:selected button:link > label:hover, *:selected button:visited > label:hover,
+    *:selected *:link:hover,
+    *:selected button:hover:link,
+    *:selected button:hover:visited {
       color: mix(#FFFFFF, alpha(mix(#FFFFFF, #000000, 0.3), 0.3), 0.9); }
-  button:link > label:active, button:visited > label:active,
-  *:link:active,
-  button:active:link,
-  button:active:visited {
+  button:link > label:active, button:visited > label:active, *:link:active, button:active:link, button:active:visited {
     color: #1D8ECE; }
-    *:selected button:link > label:active, *:selected button:visited > label:active, *:selected
-    *:link:active, *:selected
-    button:active:link, *:selected
-    button:active:visited {
+    *:selected button:link > label:active, *:selected button:visited > label:active,
+    *:selected *:link:active,
+    *:selected button:active:link,
+    *:selected button:active:visited {
       color: mix(#FFFFFF, alpha(mix(#FFFFFF, #000000, 0.3), 0.3), 0.8); }
   button:link > label:backdrop:backdrop:hover, button:visited > label:backdrop:backdrop:hover, button:link > label:backdrop:backdrop:hover:selected, button:visited > label:backdrop:backdrop:hover:selected, button:link > label:backdrop, button:visited > label:backdrop,
   *:link:backdrop:backdrop:hover,
@@ -153,10 +142,10 @@ button:visited {
   button:link > label:selected, button:visited > label:selected, *:selected button:link > label, *:selected button:visited > label,
   *:link:selected,
   button:selected:link,
-  button:selected:visited, *:selected
-  *:link, *:selected
-  button:link, *:selected
-  button:visited {
+  button:selected:visited,
+  *:selected *:link,
+  *:selected button:link,
+  *:selected button:visited {
     color: mix(#FFFFFF, alpha(mix(#FFFFFF, #000000, 0.3), 0.3), 0.8); }
 
 button:link, button:visited {
@@ -754,7 +743,7 @@ image {
     background-color: transparent; }
 
 .terminal-screen, terminal-window, vte-terminal {
-  background-color: alpha(#000000, 0.85);
+  background-color: #000000;
   color: #FFFFFF; }
 
 .dnd {
@@ -2361,7 +2350,7 @@ messagedialog {
     text-shadow: none; }
 
 panel-toplevel.background, panel-toplevel.background menubar {
-  background-color: alpha(#000000, 0.85);
+  background-color: #000000;
   color: #FFFFFF; }
 panel-toplevel.background menubar, panel-toplevel.background #PanelApplet label, panel-toplevel.background #PanelApplet image {
   color: #FFFFFF; }
@@ -2370,13 +2359,13 @@ panel-toplevel.background menubar > menuitem, panel-toplevel.background menubar 
 panel-toplevel.background menubar > menuitem:hover, panel-toplevel.background menubar > menuitem:hover label:backdrop {
   color: #FFFFFF; }
 panel-toplevel.background button {
-  background-color: alpha(#000000, 0.85);
+  background-color: #000000;
   border: none;
   border-radius: 0;
   box-shadow: none;
   color: #FFFFFF; }
   panel-toplevel.background button:active, panel-toplevel.background button:checked {
-    background-color: shade(alpha(#000000, 0.85), 0.8);
+    background-color: shade(#000000, 0.8);
     border: none;
     box-shadow: none;
     color: #FFFFFF; }
@@ -2399,15 +2388,15 @@ panel-toplevel.background na-tray-applet {
 
 .mate-panel-menu-bar menubar > menuitem {
   color: #FFFFFF;
-  background-color: alpha(#000000, 0.85); }
+  background-color: #000000; }
 
 .mate-panel-menu-bar {
   color: #FFFFFF;
-  background-color: alpha(#000000, 0.85); }
+  background-color: #000000; }
   .mate-panel-menu-bar button, .mate-panel-menu-bar button.flat {
     background-color: transparent; }
   .mate-panel-menu-bar, .mate-panel-menu-bar .menubar {
-    background-color: alpha(#000000, 0.85); }
+    background-color: #000000; }
   .mate-panel-menu-bar menubar, .mate-panel-menu-bar menubar menuitem, .mate-panel-menu-bar togglebutton {
     border-color: transparent;
     background-color: transparent; }
@@ -2426,10 +2415,10 @@ panel-toplevel.background na-tray-applet {
     color: #FFFFFF;
     border-radius: 0;
     border: none;
-    background-color: alpha(#000000, 0.85); }
+    background-color: #000000; }
     .mate-panel-menu-bar .button:not(#tasklist-button):hover {
       border: none;
-      background-color: shade(alpha(#000000, 0.85), 1.1); }
+      background-color: shade(#000000, 1.1); }
     .mate-panel-menu-bar .button:not(#tasklist-button):active, .mate-panel-menu-bar .button:not(#tasklist-button):checked {
       color: #FFFFFF;
       border: none;
@@ -2441,12 +2430,12 @@ panel-toplevel.background na-tray-applet {
     padding-bottom: 0;
     padding-top: 0; }
     .mate-panel-menu-bar #tasklist-button:hover {
-      background-color: shade(alpha(#000000, 0.85), 1.1); }
+      background-color: shade(#000000, 1.1); }
     .mate-panel-menu-bar #tasklist-button:checked, .mate-panel-menu-bar #tasklist-button:active {
       color: #FFFFFF;
       background-color: alpha(mix(#FFFFFF, #000000, 0.3), 0.3); }
   .mate-panel-menu-bar PanelSeparator {
-    color: shade(alpha(#000000, 0.85), 0.7);
+    color: shade(#000000, 0.7);
     padding-top: 4px;
     padding-bottom: 4px; }
   .mate-panel-menu-bar NaTrayApplet {
@@ -2464,7 +2453,7 @@ panel-toplevel.background na-tray-applet {
       background-color: alpha(mix(#FFFFFF, #000000, 0.3), 0.3); }
 
 .mintmenu:hover {
-  background-color: shade(alpha(#000000, 0.85), 1.1); }
+  background-color: shade(#000000, 1.1); }
 
 .mintmenu:selected {
   color: #FFFFFF;
@@ -2478,19 +2467,19 @@ panel-toplevel.background na-tray-applet {
     background-color: alpha(alpha(mix(#FFFFFF, #000000, 0.3), 0.3), 0.2); }
 
 .xfce4-panel.panel {
-  background-color: alpha(#000000, 0.85); }
+  background-color: #000000; }
   .xfce4-panel.panel button.flat, .xfce4-panel.panel button.sidebar-button {
     color: #FFFFFF;
-    background-color: alpha(#000000, 0.85);
+    background-color: #000000;
     border-radius: 0;
     border: none; }
     .xfce4-panel.panel button.flat:hover, .xfce4-panel.panel button.sidebar-button:hover {
       border: none;
-      background-color: shade(alpha(#000000, 0.85), 1.1); }
+      background-color: shade(#000000, 1.1); }
     .xfce4-panel.panel button.flat:active, .xfce4-panel.panel button.flat:checked, .xfce4-panel.panel button.sidebar-button:active, .xfce4-panel.panel button.sidebar-button:checked {
       color: alpha(mix(#FFFFFF, #000000, 0.3), 0.3);
       border: none;
-      background-color: shade(alpha(#000000, 0.85), 0.93); }
+      background-color: shade(#000000, 0.93); }
 
 #XfceNotifyWindow.osd {
   background-color: alpha(#000000, 0.85);
@@ -2591,8 +2580,8 @@ UnityDecoration {
 UnityPanelWidget, .unity-panel {
   border-width: 0 0 1px 0;
   border-style: solid;
-  border-color: alpha(#000000, 0.85);
-  background-color: alpha(#000000, 0.85);
+  border-color: #000000;
+  background-color: #000000;
   color: #FFFFFF; }
   UnityPanelWidget.menuitem, UnityPanelWidget .menuitem, .unity-panel.menuitem, .unity-panel .menuitem {
     border-width: 0 1px;
@@ -2651,12 +2640,12 @@ UnityPanelWidget, .unity-panel {
 read if you used those and something break with a version upgrade you're on your own... */
 @define-color wm_title shade(#FFFFFF, 1.8);
 @define-color wm_unfocused_title #FFFFFF;
-@define-color wm_highlight transparent;
+@define-color wm_highlight rgba(0, 0, 0, 0);
 @define-color wm_borders_edge alpha(#FFFFFF, 0.2);
 @define-color wm_bg_a shade(alpha(#000000, 0.85), 1.2);
 @define-color wm_bg_b alpha(#000000, 0.85);
-@define-color wm_shadow alpha(transparent, 0.35);
-@define-color wm_border alpha(transparent, 0.18);
+@define-color wm_shadow alpha(rgba(0, 0, 0, 0), 0.35);
+@define-color wm_border alpha(rgba(0, 0, 0, 0), 0.18);
 @define-color wm_button_hover_color_a shade(alpha(#000000, 0.85), 1.3);
 @define-color wm_button_hover_color_b alpha(#000000, 0.85);
 @define-color wm_button_active_color_a shade(alpha(#000000, 0.85), 0.85);
