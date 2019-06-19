@@ -4,7 +4,7 @@
 # Author: Christian Medel <cmedelahumada@gmail.com>
 # License: GPLv3
 
-version=0.1
+version=0.2
 description="Azurra Utils, version $version"
 
 BASE_THEME='Azurra'
@@ -47,15 +47,15 @@ show_help() {
 
   echo "  -h   --help         " "Shows help"
   echo "  -v   --version      " "Script version"
-  echo "  -p   --parents      " "List of widgets inherited from other themes Requires <target>"
-  echo "  -c   --children     " "List of themes using resources from a theme. Requires <target>"
-  echo "  -w   --widget       " "Use with -p or -c, restricts search to <widget>"
-  echo "  -n   --new          " "Initialise a new theme directory. Requires <name> and -b <parent>"
+  echo "  -p   --parents      " "List of widgets inherited from other themes Requires <TARGET>"
+  echo "  -c   --children     " "List of themes using resources from a theme. Requires <TARGET>"
+  echo "  -w   --widget       " "Use with -p or -c, restricts search to <WIDGET>"
+  echo "  -n   --new          " "Initialise a new theme directory. Requires <NAME> and -b <PARENT>"
   echo "  -i   --ignore-base  " "Ignore entries for $BASE_THEME"
   echo "  -b   --base         " "Specify new theme's parent (Azurra by default)"
 
   echo
-  echo "More information: <http://github.com/Azurra_Utils/wiki>"
+  echo "More information: <http://github.com/Azurra_framework/wiki>"
 }
 
 show_version() {
@@ -98,32 +98,16 @@ get_arguments() {
   done
 }
 
-can_build() {
-  if [ -f "$1/build.sh" ]; then
-    return 1
-  else
-    return 0
-  fi
-}
-
-has_refs() {
-  if [ -f "$1/refs.scss" ]; then
-    return 1
-  else
-    return 0
-  fi
-}
-
 # 0=true, 1=false
 has_refs() {
-  if [ -f "$1/refs.scss" ]; then
+  if [ -f "$1/_imports.scss" ]; then
      return 0
   fi
   return 1
 }
 
 can_build() {
-  if [ -f "$1/build.sh" ]; then
+  if [ -f "$1/theme.conf" ]; then
     return 0
   fi
   return 1
@@ -162,7 +146,7 @@ get_parents() {
     echo "Parents for $theme_dir"
   fi
   
-  read_parents_from_file $theme_dir/refs.scss $searched_widget
+  read_parents_from_file $theme_dir/_imports.scss $searched_widget
   dependency_count=${RETURNED_VALUE[0]}
   import_count=${RETURNED_VALUE[1]}
   unset RETURNED_VALUE
@@ -182,7 +166,7 @@ pretty_print() {
   printf "\n"
 }
 
-newfound() {
+altfound() {
   output_string=$1
   find_string=$2
   
@@ -261,7 +245,7 @@ read_children_from_file() {
       theme_name="${clean_line%%'/widgets/'*}"
       widget_name="${clean_line#*'/widgets/'}"
       
-      if newfound $clean_line $searched_theme_name && newfound $clean_line $searched_widget; then
+      if altfound $clean_line $searched_theme_name && altfound $clean_line $searched_widget; then
         pretty_print $widget_name $current_theme_name
         childs=$(($childs + 1))
         local_child_widgets=$(($childs + 1))
@@ -284,7 +268,7 @@ get_children() {
   imports=0
   dependencies=0
   
-  [[ ${theme_dir%/} != ${searched_theme%/} ]] && read_children_from_file $theme_dir/refs.scss $theme_dir $searched_theme $searched_widget
+  [[ ${theme_dir%/} != ${searched_theme%/} ]] && read_children_from_file $theme_dir/_imports.scss $theme_dir $searched_theme $searched_widget
 }
 
 #############################################
