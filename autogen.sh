@@ -217,8 +217,8 @@ show_help() {
   echo "  -v   --version      " "Script version"
   echo "  -q   --quiet        " "Silences ALL SASS warnings"
   echo "  -a   --all          " "Generates and deploys all themes with valid configuration"
-  echo "  -d   --deploy       " "[not ready] Deploys current files"
-  echo "  -s   --sass         " "[not ready] Run SASS compiler only (no deploy)"
+  echo "  -d   --deploy       " "Deploys current files"
+  echo "  -c   --compile      " "Run SASS compiler only (no deployment)"
   
   echo
   echo "More information: <http://github.com/Azurra_Utils/wiki>"
