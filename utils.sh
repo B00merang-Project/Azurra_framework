@@ -4,36 +4,21 @@
 # Author: Christian Medel <cmedelahumada@gmail.com>
 # License: GPLv3
 
-version=0.2
+version=0.3
 description="Azurra Utils, version $version"
 
+ROOT_DIR="$PWD"
 BASE_THEME='Azurra'
-IGNORE_BASE_THEME=true
 WIKI=http://github.com/Elbullazul/Azurra_framework/wiki
 
-# Exit codes
-OK=0
-ERROR=1
-INVALID_ARG=2
+IGNORE_BASE=0
 
-# Return buffer for functions
-RETURNED_VALUE[0]=''
-STATIC[0]=0
-STATIC[1]=0
-
-#############################################
-# FUNCTIONS
-#############################################
-clean_string() {
-  string="$1"
-  
-  string="${string//"'"/''}"
-  string="${string//";"/''}"
-  string="${string//'../'/''}"
-  string="${string//'@import '/''}"
-
-  RETURNED_VALUE[0]="$string"
-}
+# Imports from .lib (hidden folder)
+#source '.lib/debug.sh'  # FOR DEBUG
+source '.lib/colors.sh'
+source '.lib/ui.sh'
+source '.lib/files.sh'
+source '.lib/system.sh'
 
 show_help() {
   echo $description
@@ -41,265 +26,292 @@ show_help() {
 
   echo "  -h   --help         " "Shows help"
   echo "  -v   --version      " "Script version"
-  echo "  -p   --parents      " "List of widgets inherited from other themes Requires <TARGET>"
+  echo "  -d   --depends      " "List of widgets inherited from other themes Requires <TARGET>"
   echo "  -c   --children     " "List of themes using resources from a theme. Requires <TARGET>"
   echo "  -w   --widget       " "Use with -p or -c, restricts search to <WIDGET>"
-  echo "  -n   --new          " "Initialise a new theme directory. Requires <NAME> and -b <PARENT>"
-  echo "  -i   --ignore-base  " "Ignore entries for $BASE_THEME"
-  echo "  -b   --base         " "Specify new theme's parent (Azurra by default)"
-
+  echo "  -n   --new          " "Initialise a new theme directory. Requires <NAME> and <SOURCE>"
+  
   echo
   echo "More information: <$WIKI>"
+  
+  exit
 }
 
 show_version() {
   echo $description
   echo "Copyright (c) 2019 The B00merang Group"
   echo "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-}
-
-invalid_argument() {
-  echo "Invalid argument '$1'"
-}
-
-get_arguments() {
-  while [ "$1" != "" ]; do
-    case $1 in
-      -p | --parents )        shift
-                              parent=$1
-                              ;;
-      -c | --children )       shift
-                              child=$1
-                              ;;
-      -w | --widget )         shift
-                              widget=$1
-                              ;;
-      -n | --new )            shift
-                              name=$1
-                              ;;
-      -h | --help )           show_help
-                              exit $OK
-                              ;;
-      -v | --version )        show_version
-                              exit $OK
-                              ;;
-      -s | --show-base)       IGNORE_BASE_THEME=false
-                              ;;
-      -* )                    invalid_argument $1
-                              exit $INVALID_ARG
-    esac
-    shift
-  done
-}
-
-# 0=true, 1=false
-ignore_base_theme() {
-  [[ $IGNORE_BASE_THEME == true ]] && return 1 || return 0
-}
-
-has_refs() {
-  [ -f "$1/_imports.scss" ] && return 0 || return 1
-}
-
-can_build() {
-  [ -f "$1/theme.conf" ] && return 0 || return 1
-}
-
-is_theme_dir() {
-  can_build $1 && has_refs $1 && return 0 || return 1
-}
-
-is_bundle_dir() {
-  [ -f "$1/bundle.conf" ] && return 0 || return 1
-}
-
-get_parents() {
-  theme_dir=$1
-  searched_widget=$2
   
-  display_headers=0
-  
-  if [ ! -z $searched_widget ]; then
-    display_headers=1
-  fi
-  
-  if [ $display_headers ]; then
-    ignore_base_theme && echo -n "All "
-    echo "Parents for $theme_dir"
-  fi
-  
-  read_parents_from_file $theme_dir/_imports.scss $searched_widget
-  dependency_count=${RETURNED_VALUE[0]}
-  import_count=${RETURNED_VALUE[1]}
-  unset RETURNED_VALUE
-  
-  if [ $display_headers ]; then
-    echo ""
-    echo "$dependency_count dependencies found over $import_count imports"
-    echo "------"
-  fi
+  exit
 }
 
-pretty_print() {
-  theme_name=$1
-  widget_name=$2
-
-  printf "%-30s %-5s %-0s" "  $widget_name" "->" "$theme_name"
-  printf "\n"
+# conditional functions
+is_theme() {
+  [ -f "$1"/theme.conf ] && return 0 || return 1
 }
 
-altfound() {
-  output_string=$1
-  find_string=$2
+is_bundle() {
+  [ -f "$1"/bundle.conf ] && return 0 || return 1
+}
+
+is_external() {
+  [[ "$1" != "widgets/"* ]] && return 0 || return 1
+}
+
+# string operations
+get_imports() {
+  get_imports__target="$1"
   
-  if [ ! -z $find_string ]; then
-    if [[ $output_string == *"$BASE_THEME" ]]; then
-      ignore_base_theme && return 1   # don't show if won't show
-    fi
-    
-    [[ $output_string != *$find_string* ]] && return 1  # don't show if not present
-  fi
-  return 0
+  while IFS= read -r line || [ -n "$line" ]; do
+    echo $(clean_line "$line")
+  done < "$get_imports__target"/_imports.scss  
+  
+  unset line
+}
+
+sanitize() {
+  sanitize__string="$1" && echo ${sanitize__string%/} | tr -s /
+}
+
+clean_line() {
+  clean_line__string="$1"
+  
+  clean_line__string="${clean_line__string//"'"/''}"
+  clean_line__string="${clean_line__string//";"/''}"
+  clean_line__string="${clean_line__string//'../'/''}"
+  clean_line__string="${clean_line__string//'@import '/''}"
+  
+  echo "$clean_line__string"
+}
+
+get_widget() {
+  get_widget__line="$1" && echo "${get_widget__line#*'/widgets/'}"
+}
+
+get_theme() {
+  get_theme__line="$1" && echo "${get_theme__line%%'/widgets/'*}"
 }
 
 is_found() {
-  output_string=$1
-  find_string=$2
+  is_found__line="$1"
+  shift
   
-  if [[ "$output_string" != *"$BASE_THEME"* ]]; then
-    # if we search something and don't find it, return false
-    [ ! -z $find_string ] && [[ "$output_string" != *"$find_string"* ]] && return 1
-    return 0
-  elif [[ "$output_string" == *$BASE_THEME* ]] && ignore_base_theme && [ -z "$find_string" ]; then
-    return 0
-  fi
-  return 1
+  search_filters=$@
+  for search_filter in ${search_filters[@]}; do
+    [[ "$is_found__line" == *"$search_filter"* ]] && return 1
+  done
+  
+  return 0
 }
 
-read_parents_from_file() {
-  file=$1
-  searched_widget_name=$2
+filter_from_imports() {
+  filter_from_imports__target="$1"
+  shift
+  
+  filters=$@
+  for import_to_filter in $(get_imports "$filter_from_imports__target"); do
+    if [ -z $filters ]; then
+      echo "$import_to_filter" && continue
+    else
+      ! is_found "$import_to_filter" $filters && echo "$import_to_filter"
+    fi
+  done
+}
+
+# work functions
+get_parents() {
+  get_parents__target=$(sanitize "$1")
+  get_parents__search_args="$2"
+  
+  ! is_theme "$get_parents__target" && fail "Directory '$get_parents__target' is not a theme"
+  display "Dependencies for $(bg blue)$get_parents__target"
   
   # counters
-  imports=0
-  dependencies=0
+  zero=0  # for some reason the first variable that gets assigned 0 is considered empty
+  get_parents__match_count=0
+  get_parents__imports_total=0
   
-  while IFS= read -r line || [ -n "$line" ]; do
-    if [[ "$line" != "@import 'widgets/"* ]]; then    # ignore theme overrides
-      clean_string "$line"
-      
-      clean_line=${RETURNED_VALUE[0]}
-      unset RETURNED_VALUE
-      
-      theme_name="${clean_line%%'/widgets/'*}"
-      widget_name="${clean_line#*'/widgets/'}"
-
-      if is_found $clean_line $searched_widget_name; then
-        pretty_print $theme_name $widget_name
-        dependencies=$(($dependencies + 1))
-      fi
+  for import in $(filter_from_imports "$get_parents__target" "$get_parents__search_args"); do
+    if is_external "$import"; then
+      echo $import
+      get_parents__match_count=$(($get_parents__match_count + 1))
     fi
-    
-    imports=$(($imports + 1))
-  done < $file
+    get_parents__imports_total=$(($get_parents__imports_total + 1))
+  done
   
-  RETURNED_VALUE[0]=$dependencies
-  RETURNED_VALUE[1]=$imports
+  display "$(bg green)Found $get_parents__match_count external imports over $get_parents__imports_total imports"
+  
+  unset import get_parents__match_count get_parents__imports_total
 }
 
-read_children_from_file() {
-  file=$1
-  current_theme_name=$2
-  searched_theme_name=$3
-  searched_widget=$4
+get_theme_children() {
+  get_theme_children__target=$(sanitize "$1")
+  get_theme_children__search_args="$2"
   
-  childs=${STATIC[0]}
-  total=${STATIC[1]}
-  local_child_widgets=0
+  # counters
+  zero=0  # for some reason the first variable that gets assigned 0 is considered empty
+  get_theme_children__match_count=0
+  get_theme_children__imports_total=0
   
-  while IFS= read -r line || [ -n "$line" ]; do
-    if [[ "$line" != "@import 'widgets/"* ]]; then    # ignore theme overrides
-      clean_string "$line"
-      
-      clean_line=${RETURNED_VALUE[0]}
-      unset RETURNED_VALUE
-      
-      theme_name="${clean_line%%'/widgets/'*}"
-      widget_name="${clean_line#*'/widgets/'}"
-      
-      if altfound $clean_line $searched_theme_name && altfound $clean_line $searched_widget; then
-        pretty_print $widget_name $current_theme_name
-        childs=$(($childs + 1))
-        local_child_widgets=$(($childs + 1))
-      fi
+  display "For $get_theme_children__target"
+  
+  for import in $(filter_from_imports "$get_theme_children__target" "$get_theme_children__search_args"); do
+    if is_external "$import"; then
+       echo $import
+      get_theme_children__match_count=$(($get_theme_children__match_count + 1))
     fi
-  done < $file
+    get_theme_children__imports_total=$(($get_theme_children__imports_total + 1))
+  done
   
-  [ $local_child_widgets -gt 0 ] && total=$(($total + 1))
-  
-  STATIC[0]=$childs
-  STATIC[1]=$total
+  return $get_theme_children__match_count
 }
 
 get_children() {
-  theme_dir=$1
-  searched_theme=$2
-  searched_widget=$3
+  get_children__target=$(sanitize "$1")
+  
+  ! is_theme "$get_children__target" && fail "Directory '$get_children__target' is not a theme"
+  display "Children themes for $(bg blue)$get_children__target"
   
   # counters
-  imports=0
-  dependencies=0
+  zero=0  # for some reason the first variable that gets assigned 0 is considered empty
+  get_children__match_count=0
   
-  [[ ${theme_dir%/} != ${searched_theme%/} ]] && read_children_from_file $theme_dir/_imports.scss $theme_dir $searched_theme $searched_widget
+  for DIR in */; do
+    if is_theme "$DIR"; then
+      get_theme_children "$DIR" "$get_children__target"
+      get_children__match_count=$(($get_children__match_count + $?))
+      
+    elif is_bundle "$DIR"; then  # if is a bundle directory
+      for BUNDLE_DIR in "$DIR"/*; do
+        if is_theme "$BUNDLE_DIR"; then
+          get_theme_children "$BUNDLE_DIR" "$get_children__target"
+          get_children__match_count=$(($get_children__match_count + $?))
+        fi
+      done
+    fi
+  done
+  
+  display "$(fg cyan)$get_children__match_count child widgets found"
 }
 
-#############################################
-# MAIN
-#############################################
-get_arguments $@
-
-if [ ! -z $name ]; then
-  cp -a Azurra $name
-  echo "$name theme created. You now have to configure it in theme.conf"
+replace() {
+  replace__string="$1"
+  replace__string_to_remove="$2"
+  replace__string_to_insert="$3"
   
-  exit $OK
-fi
+  echo "${replace__string/$replace__string_to_remove/$replace__string_to_insert}" 
+}
 
-if [ ! -z $parent ]; then
-  OP=get_parents
-  ARGS=($widget)
-  if [[ $parent == 'all' ]]; then
-    QUEUE=*
-  elif [[ $parent == $BASE_THEME ]]; then
-    IGNORE_BASE_THEME=false
-  else
-    QUEUE=$parent
-  fi
-elif [ ! -z $child ]; then
-  OP=get_children
-  ARGS=($child $widget)
-  QUEUE=*
-  
-  if [[ $child == 'all' ]]; then
-    echo "Invalid argument 'all'. Try again with a valid theme name"
-    exit $INVALID_ARG
-  elif [[ $child == $BASE_THEME ]]; then
-    IGNORE_BASE_THEME=false
-  fi
-  
-  echo "Children of $child"
-fi
+make_new() {
+  [ -z "$1" ] && fail "Name is required."
 
-for dir in $QUEUE; do
-  if is_theme_dir $dir; then
-    $OP $dir ${ARGS[@]}
-  elif is_bundle_dir $dir; then
-    for sub_dir in $dir/*; do
-      is_theme_dir $sub_dir && $OP $sub_dir ${ARGS[@]}
+  make_new__theme_name="$1"
+  make_new__theme_dir="$ROOT_DIR/$1"
+  
+  [ ! -z "$2" ] && make_new__source_dir="$2" || make_new__source_dir=$BASE_THEME && BASE=$BASE_THEME
+  make_new__source_dir="$ROOT_DIR"/"$make_new__source_dir"
+  
+  [ ! -d "$make_new__source_dir" ] && fail "Directory '$BASE_THEME' does not exist"
+  
+  display "$(fg cyan)Creating theme $make_new__theme_name"
+  
+  warn $make_new__source_dir
+  
+  # at root
+  mkdir -p "$make_new__theme_dir/widgets"
+  cp -r "$make_new__source_dir/assets" "$make_new__theme_dir"
+  cp "$make_new__source_dir/_vars.scss" "$make_new__theme_dir"
+  
+  make_new__parent_imports=$(get_imports "$make_new__source_dir")
+  
+  # Adjust depth for parent in case of bundle
+  for parent_import in $make_new__parent_imports; do
+    #echo $parent_import
+    [[ "$parent_import" == "widgets/"* ]] && parent_import="$(replace $parent_import widgets $BASE/widgets)"
+
+    #echo "@import '../$parent_import';"
+    
+    echo "@import '../$parent_import';">>"$make_new__theme_dir"/_imports.scss
+  done
+  
+  cp "$make_new__source_dir/_colors.scss" "$make_new__theme_dir"
+  has_dark "$make_new__source_dir" && cp "$make_new__source_dir/_colors_dark.scss" "$make_new__theme_dir"
+  has_light "$make_new__source_dir" && cp "$make_new__source_dir/_colors_light.scss" "$make_new__theme_dir"
+  
+  cp "$make_new__source_dir/gtk.scss" "$make_new__theme_dir"  
+  has_dark "$make_new__source_dir" && cp "$make_new__source_dir/gtk-dark.scss" "$make_new__theme_dir"
+  has_light "$make_new__source_dir" && cp "$make_new__source_dir/gtk-light.scss" "$make_new__theme_dir"
+  
+  cp "$make_new__source_dir/_common.scss" "$make_new__theme_dir/_common.scss" 
+  cp "$make_new__source_dir/_functions.scss" "$make_new__theme_dir/_functions.scss"
+  cp "$make_new__source_dir/_colors_public.scss" "$make_new__theme_dir/_colors_public.scss"
+  
+  gen_config "$make_new__theme_name" "$make_new__theme_dir"
+  
+  display "$(bg forest)Theme $make_new__theme_name created. Don't forget to edit the config"
+}
+
+# Main
+
+# OPS
+OP_PARENTS=get_parents
+OP_CHILDREN=get_children
+OP_NEW=make_new
+
+# What function we run
+OP=''
+
+# process arguments
+while [ "$1" != "" ]; do
+  case $1 in
+    -p | --parents )        shift
+                            TARGET=$1
+                            QUEUE+=("$1")
+                            OP=$OP_PARENTS
+                            ;;
+    -c | --children )       shift
+                            TARGET="$1"
+                            QUEUE+=("$1")
+                            OP=$OP_CHILDREN
+                            ;;
+    -w | --widget )         shift
+                            WIDGET="$1"
+                            ;;
+    -n | --new )            shift
+                            TARGET="$1"
+                            QUEUE+=("$1")
+                            shift
+                            BASE="$1"
+                            OP=$OP_NEW
+                            ;;
+    -h | --help )           show_help
+                            ;;
+    -v | --version )        show_version
+                            ;;
+    -* )                    fail "Invalid_argument '$1'"
+                            ;;
+  esac
+  shift
+done
+
+[ -z $OP ] && fail "Invalid operation. Use --help to see available actions."
+[ -z $TARGET ] && fail "No targets selected. Run again with at least 1 target"
+
+[[ $QUEUE == 'all' ]] && QUEUE=*/
+
+for DIR in ${QUEUE[@]}; do
+  if [[ "$OP" == "$OP_NEW" ]]; then
+    $OP "$TARGET" "$BASE"
+  elif is_theme "$DIR"; then
+    warn 'NO'
+    $OP "$DIR" "$WIDGET"
+  elif is_bundle "$DIR"; then  # if is a bundle directory
+    fail "Bundle support is not available"
+    
+    for BUNDLE_DIR in "$DIR"/*; do
+      if is_theme "$BUNDLE_DIR"; then
+        $OP "$BUNDLE_DIR" "$WIDGET"
+      fi
     done
   fi
 done
-
-[[ $OP == get_children ]] && echo "${STATIC[0]} exports over ${STATIC[1]} themes"
-unset STATIC
-unset RETURN_VALUE

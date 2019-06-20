@@ -20,9 +20,9 @@ SCRIPT=run_script
 
 BUNDLE_DISPLAY=false
 
-# DEBUG: must be run like so: breakpoint $LINENO
+# FOR DEBUG
 breakpoint() {
-  read -p "Breakpoint at $(basename $0), line $1. Continue? " var
+  read -p "Breakpoint at $(basename $0), line $BASH_LINENO. Continue? " var
 }
 
 # Coloring functions
