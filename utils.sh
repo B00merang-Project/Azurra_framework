@@ -30,6 +30,7 @@ show_help() {
   echo "  -c   --children     " "List of themes using resources from a theme. Requires <TARGET>"
   echo "  -w   --widget       " "Use with -p or -c, restricts search to <WIDGET>"
   echo "  -n   --new          " "Initialise a new theme directory. Requires <NAME> and <SOURCE>"
+  echo "  -t   --tree         " "Shows upstream themes inheritance tree"
   
   echo
   echo "More information: <$WIKI>"
@@ -203,8 +204,6 @@ replace() {
 }
 
 make_new() {
-  [ -z "$1" ] && fail "Name is required."
-
   make_new__theme_name="$1"
   make_new__theme_dir="$ROOT_DIR/$1"
   
@@ -212,6 +211,7 @@ make_new() {
   make_new__source_dir="$ROOT_DIR"/"$make_new__source_dir"
   
   [ ! -d "$make_new__source_dir" ] && fail "Directory '$BASE_THEME' does not exist"
+  [ -d "$make_new__theme_dir" ] && fail "Theme already exists"
   
   display "$(fg cyan)Creating theme $make_new__theme_name"
   
@@ -251,6 +251,11 @@ make_new() {
   display "$(bg forest)Theme $make_new__theme_name created. Don't forget to edit the config"
 }
 
+show_tree() {
+  cat .lib/resources/azurra_theme_tree
+  exit
+}
+
 # Main
 
 # OPS
@@ -285,6 +290,8 @@ while [ "$1" != "" ]; do
                             OP=$OP_NEW
                             ;;
     -h | --help )           show_help
+                            ;;
+    -t | --tree )           show_tree
                             ;;
     -v | --version )        show_version
                             ;;
