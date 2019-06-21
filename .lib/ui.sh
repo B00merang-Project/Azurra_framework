@@ -18,8 +18,7 @@ fail() {
   # Show an error message and exit the script
   msg="$@" && echo "$(bg 'red')$(fg 'white')$msg$(dcol)"
 
-  PARENT_COMMAND=$(ps -o comm= $PPID)
-  pkill -f $PARENT_COMMAND
+  exit
 }
 
 table() {
@@ -41,4 +40,6 @@ table() {
   
   printf "$table_format" "${content[@]}"
   printf "\n"
+  
+  unset table_format
 }

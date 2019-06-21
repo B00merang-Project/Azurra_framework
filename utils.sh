@@ -4,7 +4,8 @@
 # Author: Christian Medel <cmedelahumada@gmail.com>
 # License: GPLv3
 
-version=0.3description="Azurra Utils, version $version"
+version=0.3
+description="Azurra Utils, version $version"
 
 ROOT_DIR="$PWD"
 BASE_THEME='Azurra'
@@ -20,14 +21,6 @@ source '.lib/files.sh'
 source '.lib/system.sh'
 
 # conditional functions
-is_theme() {
-  [ -f "$1"/theme.conf ] && return 0 || return 1
-}
-
-is_bundle() {
-  [ -f "$1"/bundle.conf ] && return 0 || return 1
-}
-
 is_external() {
   [[ "$1" != "widgets/"* ]] && return 0 || return 1
 }
@@ -70,6 +63,7 @@ get_theme() {
   get_theme__line="$1" && echo "${get_theme__line%%'/widgets/'*}"
 }
 
+# filter functions
 is_found() {
   is_found__line="$1"
   shift
@@ -100,16 +94,17 @@ filter_from_imports() {
 show_help() {
   echo $description
   echo
-
-  echo "  -h   --help         " "Shows help"
-  echo "  -v   --version      " "Script version"
-  echo "  -d   --depends      " "List of widgets inherited from other themes Requires <TARGET>"
-  echo "  -c   --children     " "List of themes using resources from a theme. Requires <TARGET>"
-  echo "  -w   --widget       " "Use with -p or -c, restricts search to <WIDGET>"
-  echo "  -n   --new          " "Initialise a new theme directory. Requires <NAME> and <SOURCE>"
-  echo "  -t   --tree         " "Shows upstream themes inheritance tree"
-  echo "  -b   --bundle       " "Create new bundle. Requires <NAME>"
-  echo "  -i   --implement    " "Implement widget in theme. Requires <THEME>, <BASE> and <WIDGET>"
+  
+  format=("%-4s" "%-12s" "%-0s")
+  content=('-h' '--help'      'Shows help') && table $format $content
+  content=('-v' '--version'   'Script version') && table $format $content
+  content=('-d' '--depends'   'List of widgets inherited from other themes') && table $format $content
+  content=('-c' '--children'  'List of themes using resources from theme <THEME>') && table $format $content
+  content=('-n' '--widget'    'Restricts operation to <WIDGET>. Use with [-p -c -i]') && table $format $content
+  content=('-w' '--new'       "Initialise a new theme <NAME> based on <SOURCE> ($BASE_THEME by default)") && table $format $content
+  content=('-t' '--tree'      'Shows upstream themes inheritance tree') && table $format $content
+  content=('-b' '--bundle'    'Creates bundle <BUNDLE>') && table $format $content
+  content=('-i' '--implement' 'Implements <WIDGET> in <THEME> from <SOURCE>') && table $format $content
   
   echo
   echo "More information: <$WIKI>"
@@ -151,31 +146,34 @@ get_parents() {
     get_parents__imports_total=$(($get_parents__imports_total + 1))
   done
   
-  success "Found $get_parents__match_count external imports over $get_parents__imports_total imports"
+  display "Found $get_parents__match_count external imports over $get_parents__imports_total imports"
   
   unset import get_parents__match_count get_parents__imports_total
 }
 
-get_theme_children() {
-  get_theme_children__target=$(sanitize "$1")
-  get_theme_children__search_args="$2"
+get_related_dependencies() {
+  get_related_dependencies__target=$(sanitize "$1")
+  get_related_dependencies__search_args="$2"
   
   # counters
   zero=0  # for some reason the first variable that gets assigned 0 is considered empty
-  get_theme_children__match_count=0
-  get_theme_children__imports_total=0
+  get_related_dependencies__match_count=0
+  get_related_dependencies__imports_total=0
   
-  display "For $get_theme_children__target"
+  get_related_dependencies__imports=$(filter_from_imports "$get_related_dependencies__target" "$get_related_dependencies__search_args")
   
-  for import in $(filter_from_imports "$get_theme_children__target" "$get_theme_children__search_args"); do
+  [ ! -z "$get_related_dependencies__imports" ] && display "For theme $get_related_dependencies__target"
+  
+  for import in $get_related_dependencies__imports; do
     if is_external "$import"; then
-      ! hide_if_ignore_base $import && echo $import &&
-      get_theme_children__match_count=$(($get_theme_children__match_count + 1))
+      ! hide_if_ignore_base $import && echo " -$(get_widget "$import")" &&
+      get_related_dependencies__match_count=$(($get_related_dependencies__match_count + 1))
     fi
-    get_theme_children__imports_total=$(($get_theme_children__imports_total + 1))
+    get_related_dependencies__imports_total=$(($get_related_dependencies__imports_total + 1))
   done
   
-  return $get_theme_children__match_count
+  # return child count
+  return $get_related_dependencies__match_count
 }
 
 get_children() {
@@ -189,29 +187,31 @@ get_children() {
   get_children__match_count=0
   
   for DIR in */; do
+    [[ "$DIR" == "$get_children__target" ]] && continue
+  
     if is_theme "$DIR"; then
-      get_theme_children "$DIR" "$get_children__target"
+      get_related_dependencies "$DIR" "$get_children__target"
       get_children__match_count=$(($get_children__match_count + $?))
       
     elif is_bundle "$DIR"; then  # if is a bundle directory
       for BUNDLE_DIR in "$DIR"/*; do
         if is_theme "$BUNDLE_DIR"; then
-          get_theme_children "$BUNDLE_DIR" "$get_children__target"
+          get_related_dependencies "$BUNDLE_DIR" "$get_children__target"
           get_children__match_count=$(($get_children__match_count + $?))
         fi
       done
     fi
   done
   
-  display "$get_children__match_count child widgets found"
+  display "$get_children__match_count children found"
 }
 
-replace() {
-  replace__string="$1"
-  replace__string_to_remove="$2"
-  replace__string_to_insert="$3"
+string_replace() {
+  string_replace__string="$1"
+  string_replace__string_to_remove="$2"
+  string_replace__string_to_insert="$3"
   
-  echo "${replace__string/$replace__string_to_remove/$replace__string_to_insert}" 
+  echo "${string_replace__string/$string_replace__string_to_remove/$string_replace__string_to_insert}" 
 }
 
 make_new() {
@@ -239,7 +239,7 @@ make_new() {
   make_new__parent_imports=$(get_imports "$make_new__source_dir")
   
   for parent_import in $make_new__parent_imports; do
-    [[ "$parent_import" == "widgets/"* ]] && parent_import="$(replace $parent_import widgets $(basename $make_new__source_dir)/widgets)"
+    [[ "$parent_import" == "widgets/"* ]] && parent_import="$(string_replace $parent_import widgets $(basename $make_new__source_dir)/widgets)"
     echo "@import '$PREFIX/$parent_import';">>"$make_new__theme_dir"/_imports.scss
   done
   
@@ -298,10 +298,8 @@ implement_widget() {
   rm "$implement__target"/_imports.scss
   
   for implement__import in $implement__imports; do
-    # parent/widgets/widget
-    # widgets/widget
     if [[ "$implement__import" == 'widgets'* ]]; then
-      warn $implement__import
+      implement__import=$implement__import
     elif [[ "$implement__import" == *"/widgets/$implement__widget" ]]; then
       implement__import="widgets/$implement__widget"
     else
@@ -313,6 +311,13 @@ implement_widget() {
   exit
 }
 
+config_theme() {
+  config_theme__target="$(sanitize $1)"
+  
+  nano "$config_theme__target"/theme.conf
+  exit
+}
+
 # Main
 
 # OPS
@@ -321,6 +326,8 @@ OP_CHILDREN=get_children
 OP_NEW=make_new
 OP_NEW_BUNDLE=make_new_bundle
 OP_IMPLEMENT=implement_widget
+OP_CONFIG=config_theme
+OP_SHELL=utils_shell
 
 # What function we run
 OP=''
@@ -329,13 +336,11 @@ OP=''
 while [ "$1" != "" ]; do
   case $1 in
     -p | --parents )        shift
-                            TARGET=$1
-                            QUEUE+=("$1")
+                            TARGET="$1"
                             OP=$OP_PARENTS
                             ;;
     -c | --children )       shift
                             TARGET="$1"
-                            QUEUE+=("$1")
                             OP=$OP_CHILDREN
                             ;;
     -w | --widget )         shift
@@ -343,7 +348,6 @@ while [ "$1" != "" ]; do
                             ;;
     -n | --new )            shift
                             TARGET="$1"
-                            QUEUE+=("$1")
                             shift
                             BASE="$1"
                             OP=$OP_NEW
@@ -366,6 +370,10 @@ while [ "$1" != "" ]; do
                             shift
                             BASE="$1"
                             ;;
+    --config )              OP=$OP_CONFIG
+                            shift
+                            TARGET="$1"
+                            ;;
     -* )                    fail "Invalid_argument '$1'"
                             ;;
   esac
@@ -375,22 +383,12 @@ done
 [ -z $OP ] && fail "Invalid operation. Use --help to see available actions."
 [ -z $TARGET ] && fail "No targets selected. Run again with at least 1 target"
 
-[[ $QUEUE == 'all' ]] && QUEUE=*/
-
 if [[ "$OP" == "$OP_NEW" || "$OP" == "$OP_NEW_BUNDLE" ]]; then
   $OP "$TARGET" "$BASE"
 elif [[ "$OP" == "$OP_IMPLEMENT" ]]; then
   $OP "$TARGET" "$BASE" "$WIDGET"
+elif [[ "$OP" == "$OP_CONFIG" ]]; then
+  $OP "$TARGET"
+else
+  $OP "$TARGET" "$WIDGET"
 fi
-
-for DIR in ${QUEUE[@]}; do
-  if is_theme "$DIR"; then
-    $OP "$DIR" "$WIDGET"
-  elif is_bundle "$DIR"; then  # if is a bundle directory
-    for BUNDLE_DIR in "$DIR"/*; do
-      if is_theme "$BUNDLE_DIR"; then
-        $OP "$BUNDLE_DIR" "$WIDGET"
-      fi
-    done
-  fi
-done

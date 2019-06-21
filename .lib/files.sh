@@ -22,6 +22,14 @@ has_dark() {
   return $has_dark__ret_val
 }
 
+is_theme() {
+  [ -f "$1"/theme.conf ] && return 0 || return 1
+}
+
+is_bundle() {
+  [ -f "$1"/bundle.conf ] && return 0 || return 1
+}
+
 gen_simple_config() {
   gen_simple_config__name="$1"
   gen_simple_config__target_file="$2"
