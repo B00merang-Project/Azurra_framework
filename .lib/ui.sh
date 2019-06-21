@@ -3,20 +3,20 @@
 # requires 'colors.sh'
 
 display() {
-  msg="$1" && echo "$(bg blue)$(fg white)$msg$(dcol)"
+  msg="$@" && echo "$(bg blue)$(fg white)$msg$(dcol)"
 }
 
 success() {
-  msg="$1" && echo "$(bg forest)$(fg white)$msg$(dcol)"
+  msg="$@" && echo "$(bg forest)$(fg white)$msg$(dcol)"
 }
 
 warn() {
-  msg="$1" && echo "$(bg yellow)$(fg black)$msg$(dcol)"
+  msg="$@" && echo "$(bg yellow)$(fg black)$msg$(dcol)"
 }
 
 fail() {
   # Show an error message and exit the script
-  msg="$1" && echo "$(bg 'red')$(fg 'white')$msg$(dcol)"
+  msg="$@" && echo "$(bg 'red')$(fg 'white')$msg$(dcol)"
 
   PARENT_COMMAND=$(ps -o comm= $PPID)
   pkill -f $PARENT_COMMAND

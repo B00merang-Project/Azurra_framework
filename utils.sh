@@ -109,6 +109,7 @@ show_help() {
   echo "  -n   --new          " "Initialise a new theme directory. Requires <NAME> and <SOURCE>"
   echo "  -t   --tree         " "Shows upstream themes inheritance tree"
   echo "  -b   --bundle       " "Create new bundle. Requires <NAME>"
+  echo "  -i   --implement    " "Implement widget in theme. Requires <THEME>, <BASE> and <WIDGET>"
   
   echo
   echo "More information: <$WIKI>"
@@ -144,7 +145,7 @@ get_parents() {
   
   for import in $(filter_from_imports "$get_parents__target" "$get_parents__search_args"); do
     if is_external "$import"; then
-      ! hide_if_ignore_base $import && echo $import
+      ! hide_if_ignore_base $import && echo $import &&
       get_parents__match_count=$(($get_parents__match_count + 1))
     fi
     get_parents__imports_total=$(($get_parents__imports_total + 1))
@@ -168,7 +169,7 @@ get_theme_children() {
   
   for import in $(filter_from_imports "$get_theme_children__target" "$get_theme_children__search_args"); do
     if is_external "$import"; then
-      ! hide_if_ignore_base $import && echo $import
+      ! hide_if_ignore_base $import && echo $import &&
       get_theme_children__match_count=$(($get_theme_children__match_count + 1))
     fi
     get_theme_children__imports_total=$(($get_theme_children__imports_total + 1))
@@ -202,7 +203,7 @@ get_children() {
     fi
   done
   
-  display "$(fg cyan)$get_children__match_count child widgets found"
+  display "$get_children__match_count child widgets found"
 }
 
 replace() {
@@ -220,26 +221,25 @@ make_new() {
   [ ! -z "$2" ] && make_new__source_dir="$2" || make_new__source_dir=$BASE_THEME && BASE=$BASE_THEME
   make_new__source_dir="$ROOT_DIR"/"$make_new__source_dir"
 
-  [ ! -d "$make_new__source_dir" ] && fail "Directory '$BASE_THEME' does not exist"
+  [ ! -d "$make_new__source_dir" ] && fail "Directory '$make_new__source_dir' does not exist"
   [ -d "$make_new__theme_dir" ] && fail "Theme already exists"
   
-  display "$(fg cyan)Creating theme $make_new__theme_name"
+  display "Creating theme $make_new__theme_name"
   
   # at root
   mkdir -p "$make_new__theme_dir/widgets"
   cp -r "$make_new__source_dir/assets" "$make_new__theme_dir"
   cp "$make_new__source_dir/_vars.scss" "$make_new__theme_dir"
   
-  make_new__parent_imports=$(get_imports "$make_new__source_dir")
-  
   # Adjust depth for parent in case of bundle
   PREFIX='..'
   make_new__eval_source_dir=$(dirname $make_new__theme_dir)
   is_bundle "$make_new__eval_source_dir" && PREFIX='../..'
   
+  make_new__parent_imports=$(get_imports "$make_new__source_dir")
+  
   for parent_import in $make_new__parent_imports; do
-    #echo $parent_import
-    [[ "$parent_import" == "widgets/"* ]] && parent_import="$(replace $parent_import widgets $BASE/widgets)"
+    [[ "$parent_import" == "widgets/"* ]] && parent_import="$(replace $parent_import widgets $(basename $make_new__source_dir)/widgets)"
     echo "@import '$PREFIX/$parent_import';">>"$make_new__theme_dir"/_imports.scss
   done
   
@@ -275,6 +275,44 @@ make_new_bundle() {
   success "Bundle created"
 }
 
+implement_widget() {
+  implement__target="$(sanitize $1)"
+  implement__base="$(sanitize $2)"
+  implement__widget="$3"
+  
+  [ -z "$implement__base" ] && fail 'Missing widget source'
+  [ -z "$implement__widget" ] && fail 'Missing widget to implement'
+  [ ! -d "$implement__target" ] && fail "Target directory '$implement__target' does not exist"
+  ! is_theme "$implement__base" && fail "'$implement__base' is not a theme directory"
+  
+  [ ! -f "$implement__base/widgets/_$implement__widget.scss" ] && fail "Widget '$implement__widget' not found in $implement__base/widgets"
+  cp -r "$implement__base/widgets/_$implement__widget.scss" "$implement__target/widgets"
+  
+    # Adjust depth for parent in case of bundle
+  PREFIX='../'
+  implement__eval_source_dir=$(dirname $implement__target)
+  is_bundle "$implement__eval_source_dir" && PREFIX='../../'
+  
+  # redo imports
+  implement__imports=$(get_imports "$implement__target")
+  rm "$implement__target"/_imports.scss
+  
+  for implement__import in $implement__imports; do
+    # parent/widgets/widget
+    # widgets/widget
+    if [[ "$implement__import" == 'widgets'* ]]; then
+      warn $implement__import
+    elif [[ "$implement__import" == *"/widgets/$implement__widget" ]]; then
+      implement__import="widgets/$implement__widget"
+    else
+      implement__import=$PREFIX$implement__import
+    fi
+    echo "@import '$implement__import';">>"$implement__target"/_imports.scss
+  done
+
+  exit
+}
+
 # Main
 
 # OPS
@@ -282,6 +320,7 @@ OP_PARENTS=get_parents
 OP_CHILDREN=get_children
 OP_NEW=make_new
 OP_NEW_BUNDLE=make_new_bundle
+OP_IMPLEMENT=implement_widget
 
 # What function we run
 OP=''
@@ -321,6 +360,12 @@ while [ "$1" != "" ]; do
                             shift
                             TARGET="$1"
                             ;;
+    -i | --implement )      OP=$OP_IMPLEMENT
+                            shift
+                            TARGET="$1"
+                            shift
+                            BASE="$1"
+                            ;;
     -* )                    fail "Invalid_argument '$1'"
                             ;;
   esac
@@ -334,6 +379,8 @@ done
 
 if [[ "$OP" == "$OP_NEW" || "$OP" == "$OP_NEW_BUNDLE" ]]; then
   $OP "$TARGET" "$BASE"
+elif [[ "$OP" == "$OP_IMPLEMENT" ]]; then
+  $OP "$TARGET" "$BASE" "$WIDGET"
 fi
 
 for DIR in ${QUEUE[@]}; do
