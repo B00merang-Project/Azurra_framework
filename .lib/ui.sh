@@ -2,24 +2,24 @@
 
 # requires 'colors.sh'
 
-fail() {
-  # Show an error message and exit the script
-  msg="$1"
-  
-  bg 'red' && fg 'white'
-  echo "$msg$(dcol)"
-
-  PARENT_COMMAND=$(ps -o comm= $PPID)
-  pkill -f $PARENT_COMMAND
+display() {
+  msg="$1" && echo "$(bg blue)$(fg white)$msg$(dcol)"
 }
 
-display() {
-  # Show message
-  msg="$1" && echo "$msg$(dcol)"
+success() {
+  msg="$1" && echo "$(bg forest)$(fg white)$msg$(dcol)"
 }
 
 warn() {
   msg="$1" && echo "$(bg yellow)$(fg black)$msg$(dcol)"
+}
+
+fail() {
+  # Show an error message and exit the script
+  msg="$1" && echo "$(bg 'red')$(fg 'white')$msg$(dcol)"
+
+  PARENT_COMMAND=$(ps -o comm= $PPID)
+  pkill -f $PARENT_COMMAND
 }
 
 table() {

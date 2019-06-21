@@ -22,21 +22,27 @@ has_dark() {
   return $has_dark__ret_val
 }
 
+gen_simple_config() {
+  gen_simple_config__name="$1"
+  gen_simple_config__target_file="$2"
+  
+  echo "# use BASH syntax">>"$gen_simple_config__target_file"
+  echo "name='$gen_simple_config__name'">>"$gen_simple_config__target_file"
+  echo "author='$(get_full_username)'">>"$gen_simple_config__target_file"
+}
+
 gen_config() {
   gen_config__name="$1"
-  gen_config__target_dir="$1"
-  
-  gen_config__author="$USER"
+  gen_config__target_file="$2"
   gen_config__version='0.1'
   
-  echo "# use BASH syntax">>"$gen_config__target_dir"/theme.conf
-  echo "name='$gen_config__name'">>"$gen_config__target_dir"/theme.conf
-  echo "author='$(get_full_username)'">>"$gen_config__target_dir"/theme.conf
-  echo "version='0.1'">>"$gen_config__target_dir"/theme.conf
-
-  echo "">>"$gen_config__target_dir"/theme.conf
+  gen_simple_config "$gen_config__name" "$gen_config__target_file"
   
-  echo "target_dir=''">>"$gen_config__target_dir"/theme.conf
-  echo "target_dir_dark=''">>"$gen_config__target_dir"/theme.conf
-  echo "target_dir_light=''">>"$gen_config__target_dir"/theme.conf
+  echo "version='0.1'">>"$gen_config__target_file"
+
+  echo "">>"$gen_config__target_file"
+  
+  echo "target_dir=''">>"$gen_config__target_file"
+  echo "target_dir_dark=''">>"$gen_config__target_file"
+  echo "target_dir_light=''">>"$gen_config__target_file"
 }

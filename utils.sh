@@ -4,8 +4,7 @@
 # Author: Christian Medel <cmedelahumada@gmail.com>
 # License: GPLv3
 
-version=0.3
-description="Azurra Utils, version $version"
+version=0.3description="Azurra Utils, version $version"
 
 ROOT_DIR="$PWD"
 BASE_THEME='Azurra'
@@ -20,32 +19,6 @@ source '.lib/ui.sh'
 source '.lib/files.sh'
 source '.lib/system.sh'
 
-show_help() {
-  echo $description
-  echo
-
-  echo "  -h   --help         " "Shows help"
-  echo "  -v   --version      " "Script version"
-  echo "  -d   --depends      " "List of widgets inherited from other themes Requires <TARGET>"
-  echo "  -c   --children     " "List of themes using resources from a theme. Requires <TARGET>"
-  echo "  -w   --widget       " "Use with -p or -c, restricts search to <WIDGET>"
-  echo "  -n   --new          " "Initialise a new theme directory. Requires <NAME> and <SOURCE>"
-  echo "  -t   --tree         " "Shows upstream themes inheritance tree"
-  
-  echo
-  echo "More information: <$WIKI>"
-  
-  exit
-}
-
-show_version() {
-  echo $description
-  echo "Copyright (c) 2019 The B00merang Group"
-  echo "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-  
-  exit
-}
-
 # conditional functions
 is_theme() {
   [ -f "$1"/theme.conf ] && return 0 || return 1
@@ -57,6 +30,10 @@ is_bundle() {
 
 is_external() {
   [[ "$1" != "widgets/"* ]] && return 0 || return 1
+}
+
+hide_if_ignore_base() {
+  [[ "$1" == "$BASE_THEME"/* ]] && [ $IGNORE_BASE -eq 0 ] && return 0 || return 1
 }
 
 # string operations
@@ -119,13 +96,46 @@ filter_from_imports() {
   done
 }
 
+# display functions
+show_help() {
+  echo $description
+  echo
+
+  echo "  -h   --help         " "Shows help"
+  echo "  -v   --version      " "Script version"
+  echo "  -d   --depends      " "List of widgets inherited from other themes Requires <TARGET>"
+  echo "  -c   --children     " "List of themes using resources from a theme. Requires <TARGET>"
+  echo "  -w   --widget       " "Use with -p or -c, restricts search to <WIDGET>"
+  echo "  -n   --new          " "Initialise a new theme directory. Requires <NAME> and <SOURCE>"
+  echo "  -t   --tree         " "Shows upstream themes inheritance tree"
+  echo "  -b   --bundle       " "Create new bundle. Requires <NAME>"
+  
+  echo
+  echo "More information: <$WIKI>"
+  
+  exit
+}
+
+show_version() {
+  echo $description
+  echo "Copyright (c) 2019 The B00merang Group"
+  echo "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
+  
+  exit
+}
+
+show_tree() {
+  cat .lib/resources/azurra_theme_tree
+  exit
+}
+
 # work functions
 get_parents() {
   get_parents__target=$(sanitize "$1")
   get_parents__search_args="$2"
   
   ! is_theme "$get_parents__target" && fail "Directory '$get_parents__target' is not a theme"
-  display "Dependencies for $(bg blue)$get_parents__target"
+  display "Dependencies for $get_parents__target"
   
   # counters
   zero=0  # for some reason the first variable that gets assigned 0 is considered empty
@@ -134,13 +144,13 @@ get_parents() {
   
   for import in $(filter_from_imports "$get_parents__target" "$get_parents__search_args"); do
     if is_external "$import"; then
-      echo $import
+      ! hide_if_ignore_base $import && echo $import
       get_parents__match_count=$(($get_parents__match_count + 1))
     fi
     get_parents__imports_total=$(($get_parents__imports_total + 1))
   done
   
-  display "$(bg green)Found $get_parents__match_count external imports over $get_parents__imports_total imports"
+  success "Found $get_parents__match_count external imports over $get_parents__imports_total imports"
   
   unset import get_parents__match_count get_parents__imports_total
 }
@@ -158,7 +168,7 @@ get_theme_children() {
   
   for import in $(filter_from_imports "$get_theme_children__target" "$get_theme_children__search_args"); do
     if is_external "$import"; then
-       echo $import
+      ! hide_if_ignore_base $import && echo $import
       get_theme_children__match_count=$(($get_theme_children__match_count + 1))
     fi
     get_theme_children__imports_total=$(($get_theme_children__imports_total + 1))
@@ -171,7 +181,7 @@ get_children() {
   get_children__target=$(sanitize "$1")
   
   ! is_theme "$get_children__target" && fail "Directory '$get_children__target' is not a theme"
-  display "Children themes for $(bg blue)$get_children__target"
+  display "Children themes for $get_children__target"
   
   # counters
   zero=0  # for some reason the first variable that gets assigned 0 is considered empty
@@ -209,13 +219,11 @@ make_new() {
   
   [ ! -z "$2" ] && make_new__source_dir="$2" || make_new__source_dir=$BASE_THEME && BASE=$BASE_THEME
   make_new__source_dir="$ROOT_DIR"/"$make_new__source_dir"
-  
+
   [ ! -d "$make_new__source_dir" ] && fail "Directory '$BASE_THEME' does not exist"
   [ -d "$make_new__theme_dir" ] && fail "Theme already exists"
   
   display "$(fg cyan)Creating theme $make_new__theme_name"
-  
-  warn $make_new__source_dir
   
   # at root
   mkdir -p "$make_new__theme_dir/widgets"
@@ -225,13 +233,14 @@ make_new() {
   make_new__parent_imports=$(get_imports "$make_new__source_dir")
   
   # Adjust depth for parent in case of bundle
+  PREFIX='..'
+  make_new__eval_source_dir=$(dirname $make_new__theme_dir)
+  is_bundle "$make_new__eval_source_dir" && PREFIX='../..'
+  
   for parent_import in $make_new__parent_imports; do
     #echo $parent_import
     [[ "$parent_import" == "widgets/"* ]] && parent_import="$(replace $parent_import widgets $BASE/widgets)"
-
-    #echo "@import '../$parent_import';"
-    
-    echo "@import '../$parent_import';">>"$make_new__theme_dir"/_imports.scss
+    echo "@import '$PREFIX/$parent_import';">>"$make_new__theme_dir"/_imports.scss
   done
   
   cp "$make_new__source_dir/_colors.scss" "$make_new__theme_dir"
@@ -246,14 +255,24 @@ make_new() {
   cp "$make_new__source_dir/_functions.scss" "$make_new__theme_dir/_functions.scss"
   cp "$make_new__source_dir/_colors_public.scss" "$make_new__theme_dir/_colors_public.scss"
   
-  gen_config "$make_new__theme_name" "$make_new__theme_dir"
+  gen_config "$make_new__theme_name" "$make_new__theme_dir/theme.conf"
   
-  display "$(bg forest)Theme $make_new__theme_name created. Don't forget to edit the config"
+  success "Theme $make_new__theme_name created. Don't forget to edit the config"
+  exit
 }
 
-show_tree() {
-  cat .lib/resources/azurra_theme_tree
-  exit
+make_new_bundle() {
+  make_new_bundle__name="$1"
+  make_new_bundle__bundle_dir="$ROOT_DIR/$make_new_bundle__name"
+  
+  [ -d $make_new_bundle__bundle_dir ] && fail "Directory '$make_new_bundle__name' exists"
+  
+  display "Creating bundle $make_new_bundle__name"
+  
+  mkdir "$make_new_bundle__bundle_dir"
+  gen_simple_config "$make_new_bundle__name" "$make_new_bundle__bundle_dir/bundle.conf"
+  
+  success "Bundle created"
 }
 
 # Main
@@ -262,6 +281,7 @@ show_tree() {
 OP_PARENTS=get_parents
 OP_CHILDREN=get_children
 OP_NEW=make_new
+OP_NEW_BUNDLE=make_new_bundle
 
 # What function we run
 OP=''
@@ -291,9 +311,15 @@ while [ "$1" != "" ]; do
                             ;;
     -h | --help )           show_help
                             ;;
+    -s | --show-base )      IGNORE_BASE=1
+                            ;;
     -t | --tree )           show_tree
                             ;;
     -v | --version )        show_version
+                            ;;
+    -b | --bundle )         OP=$OP_NEW_BUNDLE
+                            shift
+                            TARGET="$1"
                             ;;
     -* )                    fail "Invalid_argument '$1'"
                             ;;
@@ -306,15 +332,14 @@ done
 
 [[ $QUEUE == 'all' ]] && QUEUE=*/
 
+if [[ "$OP" == "$OP_NEW" || "$OP" == "$OP_NEW_BUNDLE" ]]; then
+  $OP "$TARGET" "$BASE"
+fi
+
 for DIR in ${QUEUE[@]}; do
-  if [[ "$OP" == "$OP_NEW" ]]; then
-    $OP "$TARGET" "$BASE"
-  elif is_theme "$DIR"; then
-    warn 'NO'
+  if is_theme "$DIR"; then
     $OP "$DIR" "$WIDGET"
   elif is_bundle "$DIR"; then  # if is a bundle directory
-    fail "Bundle support is not available"
-    
     for BUNDLE_DIR in "$DIR"/*; do
       if is_theme "$BUNDLE_DIR"; then
         $OP "$BUNDLE_DIR" "$WIDGET"
