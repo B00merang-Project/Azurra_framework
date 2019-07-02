@@ -845,6 +845,15 @@ printdialog paper {
   background: white;
   padding: 0; }
 
+filechooserbutton:drop(active) {
+  box-shadow: none;
+  border-color: transparent; }
+
+:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus {
+  border-color: #2563AE;
+  box-shadow: inset 0 0 0 1px #2563AE;
+  caret-color: #2563AE; }
+
 menu, .menu {
   margin: 4px;
   padding: 0;
@@ -1224,13 +1233,17 @@ levelbar block {
   border: none;
   padding: 2px;
   border-radius: 6px;
-  background-color: #2563AE; }
+  background-color: #2563AE;
+  background-image: linear-gradient(to bottom, shade(mix(#2563AE, #FFFFFF, 0.45), 1.1), shade(mix(#2563AE, #FFFFFF, 0.45), 0.9) 50%, shade(#2563AE, 1.15) 51%, shade(#2563AE, 1.01)); }
   levelbar block.high {
-    background-color: shade(#4ED464, 0.9); }
+    background-color: shade(#4ED464, 0.9);
+    background-image: linear-gradient(to bottom, shade(mix(#4ED464, white, 0.45), 1.1), shade(mix(#4ED464, white, 0.45), 0.9) 50%, shade(#4ED464, 1.15) 51%, shade(#4ED464, 1.01)); }
   levelbar block.low {
-    background-color: shade(#FF9900, 0.9); }
+    background-color: shade(#FF9900, 0.9);
+    background-image: linear-gradient(to bottom, shade(mix(#FF9900, white, 0.45), 1.1), shade(mix(#FF9900, white, 0.45), 0.9) 50%, shade(#FF9900, 1.15) 51%, shade(#FF9900, 1.01)); }
   levelbar block.empty {
-    background-color: alpha(black, 0.1); }
+    background-color: alpha(black, 0.1);
+    background-image: linear-gradient(to top, #FFFFFF, shade(#EDEDED, 1.05) 50%, shade(#EDEDED, 1.02) 51%, shade(#EDEDED, 0.85)); }
 
 scale {
   min-height: 10px;
@@ -2114,6 +2127,14 @@ treeview {
   treeview.view:selected, treeview.view:selected:focus {
     color: #FFFFFF;
     background-color: #2563AE; }
+  treeview.view:drop(active) {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: #2563AE; }
+    treeview.view:drop(active).after {
+      border-top-style: none; }
+    treeview.view:drop(active).before {
+      border-bottom-style: none; }
   treeview header button {
     border-width: 0 1px 1px 0;
     border-radius: 0; }

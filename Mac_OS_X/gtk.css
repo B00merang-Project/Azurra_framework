@@ -849,6 +849,15 @@ printdialog paper {
   background: white;
   padding: 0; }
 
+filechooserbutton:drop(active) {
+  box-shadow: none;
+  border-color: transparent; }
+
+:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus {
+  border-color: #3B82D6;
+  box-shadow: inset 0 0 0 1px #3B82D6;
+  caret-color: #3B82D6; }
+
 menu, .menu {
   margin: 4px;
   padding: 0;
@@ -1301,14 +1310,26 @@ levelbar.vertical.discrete block {
 levelbar block {
   border: none;
   padding: 2px;
+  min-width: 32px;
+  min-height: 16px;
   border-radius: 0px;
-  background-color: #3B82D6; }
+  background-image: linear-gradient(to bottom, #c9c9c9, #ebebeb 25%, #ebebeb 25%, #cecece 55%, #e9e9e9);
+  box-shadow: inset 0px 1px alpha(black, 0.2), inset 1px 0px alpha(black, 0.05), inset -1px 0px alpha(black, 0.05), inset 0px -1px alpha(black, 0.2); }
+  levelbar block:not(.empty) {
+    background-image: linear-gradient(to bottom, #8bc257, #c9ecab 25%, #c9ecab 25%, #72c022 55%, #a0e460);
+    box-shadow: inset 0px 1px alpha(black, 0.2), inset 1px 0px alpha(black, 0.05), inset -1px 0px alpha(black, 0.05), inset 0px -1px alpha(black, 0.2); }
   levelbar block.high {
-    background-color: shade(#4ED464, 0.9); }
+    border-color: #206AD9;
+    background-color: #206AD9; }
   levelbar block.low {
-    background-color: shade(#FF9900, 0.9); }
+    border-color: #F27835;
+    background-color: #F27835; }
+  levelbar block.full {
+    border-color: #73d216;
+    background-color: #73d216; }
   levelbar block.empty {
-    background-color: alpha(black, 0.1); }
+    background-color: rgba(92, 97, 108, 0.2);
+    border-color: rgba(92, 97, 108, 0.2); }
 
 scale {
   min-height: 10px;
@@ -2207,6 +2228,14 @@ treeview {
   treeview.view:selected, treeview.view:selected:focus {
     color: #FFFFFF;
     background-color: #3B82D6; }
+  treeview.view:drop(active) {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: #3B82D6; }
+    treeview.view:drop(active).after {
+      border-top-style: none; }
+    treeview.view:drop(active).before {
+      border-bottom-style: none; }
   treeview header button {
     border-width: 0 1px 1px 0;
     border-radius: 0; }
