@@ -1,0 +1,27 @@
+@mixin background() {
+  .background {
+    color: $fg_color;
+    background-color: transparent;
+    background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.1), gtkshade($bg_color, 0.9));
+
+    &:backdrop {
+      color: $unfocused_fg_color; 
+      background-color: $unfocused_bg_color;
+    }
+  }
+  
+  window.background {
+    border-bottom-left-radius: $csd_radius;
+    border-bottom-right-radius: $csd_radius;
+  }
+  
+  // HACK: for rounded menus this has to override the .background definition
+  window.background.csd.popup {
+    border-radius: $csd_radius;
+  }
+  
+  // transparency for popovers and menus
+  .background.popup {
+    background-color: transparent;
+  }
+}
