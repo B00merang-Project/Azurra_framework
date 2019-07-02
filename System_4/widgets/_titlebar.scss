@@ -7,13 +7,20 @@
       padding-left: 12px;
       padding-right: 12px;
       font-weight: bold;
+      background-color: $titlebar_bg_color;
     }
 
     .subtitle {
       font-size: smaller;
       padding-left: 12px;
       padding-right: 12px;
+      background-color: $titlebar_bg_color;
       color: gtkalpha(currentColor, 0.7);
+    }
+    
+    // otherwise button is not very visible
+    button, button.flat {
+      margin-bottom: 2px;
     }
 
     .titlebutton {
@@ -22,6 +29,7 @@
         min-height: 17px;
         min-width: 17px;
         border: none;
+        box-shadow: 0 0 0 1px $titlebar_bg_color;
         border-radius: 0;
         color: transparent;
         background-color: transparent;
@@ -32,6 +40,7 @@
         
         &:backdrop {
           background: none;
+          box-shadow: none;
         }
       }
       
@@ -57,10 +66,14 @@
     min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
+    background-size: 100% 3px;
+    background-image: linear-gradient(to bottom, transparent 35%, $borders 40%, $borders 64%, transparent 85%);
+    box-shadow: inset 0 0 0 4px $titlebar_bg_color;
 
     &:backdrop {
       color: $unfocused_fg_color;
       background-color: $unfocused_bg_color;
+      background-image: none;
     }
   }
 }
