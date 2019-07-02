@@ -1,0 +1,75 @@
+@mixin titlebar() {
+  .titlebar {
+    border-bottom: none;
+    border-radius: $csd_radius $csd_radius 0px 0px;
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    .titlebutton:not(separator) {
+      padding: 0;
+      min-width: 16px;
+      min-height: 16px;
+      border: none;
+      border-radius: 20px;
+      -gtk-icon-shadow: none;
+      
+      &.close {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
+        
+        &:hover {
+          background-color: gtkshade($selected_bg_color, 1.05);
+        }
+        
+        &:active {
+          background-color: gtkshade($selected_bg_color, 0.85);
+        }
+      }
+      
+      &.maximize, &.minimize {
+        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.3);
+        
+        &:hover {
+          background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.2);
+        }
+        
+        &:active {
+          background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.4);
+        }
+      }
+      
+      &:backdrop {
+        color: gtkalpha($titlebar_fg_color, 0.8);
+        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.15);
+      }
+    }
+
+    .tiled &:not(headerbar), .tiled &:backdrop:not(headerbar), .maximized &:not(headerbar), .maximized &:backdrop:not(headerbar) {
+      border-radius: 0;
+    }
+  }
+
+  .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    box-shadow: 0 1px gtkshade($titlebar_bg_color, 0.85);
+
+    &:backdrop {
+      color: gtkalpha($titlebar_fg_color, 0.8);
+      background-color: gtkmix($titlebar_bg_color, $unfocused_bg_color, 0.1);
+      box-shadow: 0 1px gtkshade($titlebar_bg_color, 0.95);
+    }
+  }
+}
