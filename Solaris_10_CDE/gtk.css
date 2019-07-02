@@ -199,7 +199,7 @@ button {
       background-color: shade(mix(#000000, #AEB2C3, 0.95), 0.9); }
   button:disabled {
     color: mix(#000000, mix(#000000, #AEB2C3, 0.5), 0.5);
-    text-shadow: 1px 1px alpha(white, 0.7); }
+    text-shadow: 1px 1px alpha(white, 0.85); }
 button.flat {
   border-color: transparent;
   border-radius: 0px;
@@ -1567,7 +1567,7 @@ headerbar, headerbar:not(.titlebar) {
         background-color: shade(mix(#000000, #AEB2C3, 0.95), 0.9); }
     headerbar button:disabled, headerbar:not(.titlebar) button:disabled {
       color: mix(#000000, mix(#000000, #AEB2C3, 0.5), 0.5);
-      text-shadow: 1px 1px alpha(white, 0.7); }
+      text-shadow: 1px 1px alpha(white, 0.85); }
   headerbar entry, headerbar:not(.titlebar) entry {
     padding: 4px 8px; }
 
@@ -1659,7 +1659,7 @@ toolbar {
         background-color: shade(mix(#000000, #AEB2C3, 0.95), 0.9); }
     .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled {
       color: mix(#000000, mix(#000000, #AEB2C3, 0.5), 0.5);
-      text-shadow: 1px 1px alpha(white, 0.7); }
+      text-shadow: 1px 1px alpha(white, 0.85); }
 
 .inline-toolbar toolbar {
   -GtkToolbar-button-relief: normal;
@@ -1702,7 +1702,7 @@ toolbar {
         background-color: shade(mix(#000000, #AEB2C3, 0.95), 0.9); }
     .inline-toolbar toolbar button:disabled {
       color: mix(#000000, mix(#000000, #AEB2C3, 0.5), 0.5);
-      text-shadow: 1px 1px alpha(white, 0.7); }
+      text-shadow: 1px 1px alpha(white, 0.85); }
 
 .linked button, .linked .raised button {
   border-radius: 0;
@@ -1759,6 +1759,14 @@ treeview {
   treeview.view:selected, treeview.view:selected:focus {
     color: #FFFFFF;
     background-color: #000000; }
+  treeview.view:drop(active) {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: #000000; }
+    treeview.view:drop(active).after {
+      border-top-style: none; }
+    treeview.view:drop(active).before {
+      border-bottom-style: none; }
   treeview header button {
     border-radius: 0;
     outline-color: transparent; }
@@ -2306,7 +2314,7 @@ panel-toplevel.background na-tray-applet {
         background-color: shade(mix(#000000, #AEB2C3, 0.95), 0.9); }
     #XfceNotifyWindow.osd button:disabled {
       color: mix(#000000, mix(#000000, #AEB2C3, 0.5), 0.5);
-      text-shadow: 1px 1px alpha(white, 0.7); }
+      text-shadow: 1px 1px alpha(white, 0.85); }
 
 .nemo-window .nemo-window-pane widget.entry {
   border: 1px solid;

@@ -774,23 +774,23 @@ infobar {
 .error {
   border-width: 1px;
   border-style: solid;
-  border-color: shade(#FF000, 0.8);
-  background-color: #FF000;
+  border-color: shade(#FF0000, 0.8);
+  background-color: #FF0000;
   background-image: none;
   color: #FFFFFF; }
   .error button {
-    border-color: shade(#FF000, 0.8);
+    border-color: shade(#FF0000, 0.8);
     color: #FFFFFF;
     background-image: none;
-    background-color: shade(#FF000, 1.08); }
+    background-color: shade(#FF0000, 1.08); }
     .error button:hover {
-      border-color: shade(#FF000, 0.85);
-      background-color: shade(#FF000, 1.1); }
+      border-color: shade(#FF0000, 0.85);
+      background-color: shade(#FF0000, 1.1); }
     .error button:active {
-      border-color: shade(#FF000, 0.6);
-      background-color: shade(#FF000, 0.95); }
+      border-color: shade(#FF0000, 0.6);
+      background-color: shade(#FF0000, 0.95); }
       .error button:active:hover {
-        border-color: shade(#FF000, 0.85); }
+        border-color: shade(#FF0000, 0.85); }
     .error button.close {
       color: #FFFFFF; }
       .error button.close:hover {
@@ -901,6 +901,15 @@ printdialog paper {
   border: 1px solid #FFFFFF;
   background: white;
   padding: 0; }
+
+filechooserbutton:drop(active) {
+  box-shadow: none;
+  border-color: transparent; }
+
+:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus {
+  border-color: #3E65FF;
+  box-shadow: inset 0 0 0 1px #3E65FF;
+  caret-color: #3E65FF; }
 
 menu, .menu {
   margin: 4px;
@@ -1602,6 +1611,14 @@ placessidebar row {
     padding-right: 2px; }
   placessidebar row label.sidebar-label:dir(rtl) {
     padding-left: 2px; }
+  placessidebar row.sidebar-new-bookmark-row {
+    color: #3E65FF; }
+    placessidebar row.sidebar-new-bookmark-row:drop(active):not(:disabled) {
+      color: #3E65FF;
+      box-shadow: inset 0 1px #3E65FF, inset 0 -1px #3E65FF; }
+      placessidebar row.sidebar-new-bookmark-row:drop(active):not(:disabled):selected {
+        color: #000000;
+        background-color: #3E65FF; }
 
 button.sidebar-button, button.sidebar-button:backdrop {
   min-width: 22px;
@@ -2116,6 +2133,14 @@ treeview {
   treeview.view:selected, treeview.view:selected:focus {
     color: #000000;
     background-color: #3E65FF; }
+  treeview.view:drop(active) {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: #3E65FF; }
+    treeview.view:drop(active).after {
+      border-top-style: none; }
+    treeview.view:drop(active).before {
+      border-bottom-style: none; }
   treeview header button {
     border-width: 0 1px 1px 0;
     border-radius: 0; }

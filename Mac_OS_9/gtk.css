@@ -2030,6 +2030,14 @@ treeview {
   treeview.view:selected, treeview.view:selected:focus {
     color: #FFFFFF;
     background-color: #9999FF; }
+  treeview.view:drop(active) {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: #9999FF; }
+    treeview.view:drop(active).after {
+      border-top-style: none; }
+    treeview.view:drop(active).before {
+      border-bottom-style: none; }
   treeview header button {
     outline-style: none;
     box-shadow: none;

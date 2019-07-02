@@ -21,8 +21,12 @@ find_in_file() {
   [[ ! -z $res ]] && echo "$1 contains string"
 }
 
+replace_in_imports() {
+  sed -i 's/iOS_12/iOS/g' $1/_imports.scss
+}
+
 invoke() {
-  find_in_file $@
+  replace_in_imports $@
 }
 
 for dir in *; do

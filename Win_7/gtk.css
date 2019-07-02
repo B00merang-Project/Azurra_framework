@@ -945,6 +945,15 @@ printdialog paper {
   background: white;
   padding: 0; }
 
+filechooserbutton:drop(active) {
+  box-shadow: none;
+  border-color: transparent; }
+
+:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus {
+  border-color: #CCE8FF;
+  box-shadow: inset 0 0 0 1px #CCE8FF;
+  caret-color: #CCE8FF; }
+
 menu, .menu {
   margin: 4px;
   padding: 0;
@@ -1681,6 +1690,14 @@ placessidebar row {
     padding-right: 2px; }
   placessidebar row label.sidebar-label:dir(rtl) {
     padding-left: 2px; }
+  placessidebar row.sidebar-new-bookmark-row {
+    color: #CCE8FF; }
+    placessidebar row.sidebar-new-bookmark-row:drop(active):not(:disabled) {
+      color: #CCE8FF;
+      box-shadow: inset 0 1px #CCE8FF, inset 0 -1px #CCE8FF; }
+      placessidebar row.sidebar-new-bookmark-row:drop(active):not(:disabled):selected {
+        color: #000000;
+        background-color: #CCE8FF; }
 
 button.sidebar-button, button.sidebar-button:backdrop {
   min-width: 22px;
@@ -2224,6 +2241,14 @@ treeview {
     color: #000000;
     background-color: #CCE8FF;
     background-image: linear-gradient(to bottom, shade(#CCE8FF, 1.02), shade(#CCE8FF, 0.98)); }
+  treeview.view:drop(active) {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: #CCE8FF; }
+    treeview.view:drop(active).after {
+      border-top-style: none; }
+    treeview.view:drop(active).before {
+      border-bottom-style: none; }
   treeview header button {
     border-width: 0 1px 1px 0;
     border-radius: 0; }
