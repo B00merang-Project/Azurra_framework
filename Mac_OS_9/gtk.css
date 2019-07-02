@@ -819,6 +819,15 @@ printdialog paper {
   background: white;
   padding: 0; }
 
+filechooserbutton:drop(active) {
+  box-shadow: none;
+  border-color: transparent; }
+
+:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus {
+  border-color: #9999FF;
+  box-shadow: inset 0 0 0 1px #9999FF;
+  caret-color: #9999FF; }
+
 menu, .menu {
   margin: 4px;
   padding: 0;
@@ -1318,6 +1327,8 @@ scale {
     color: alpha(currentColor, 0.35); }
   scale marks {
     color: alpha(currentColor, 0.35); }
+    scale marks mark {
+      box-shadow: 1px 1px white; }
     scale marks.top {
       margin-bottom: 6px;
       margin-top: -12px; }
@@ -1522,6 +1533,14 @@ placessidebar row {
     padding-right: 2px; }
   placessidebar row label.sidebar-label:dir(rtl) {
     padding-left: 2px; }
+  placessidebar row.sidebar-new-bookmark-row {
+    color: #9999FF; }
+    placessidebar row.sidebar-new-bookmark-row:drop(active):not(:disabled) {
+      color: #9999FF;
+      box-shadow: inset 0 1px #9999FF, inset 0 -1px #9999FF; }
+      placessidebar row.sidebar-new-bookmark-row:drop(active):not(:disabled):selected {
+        color: #FFFFFF;
+        background-color: #9999FF; }
 
 button.sidebar-button, button.sidebar-button:backdrop {
   min-width: 22px;

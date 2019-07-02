@@ -2,10 +2,25 @@
   treeview {
     -treeview-vertical-separator: 0;
 
-    &.view:selected, &.view:selected:focus {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-      background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.02), gtkshade($selected_bg_color, 0.98));
+    &.view {
+      &:selected, &:selected:focus {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
+        background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.02), gtkshade($selected_bg_color, 0.98));
+      }
+    
+      &:drop(active) {
+        border-style: solid none;
+        border-width: 1px;
+        border-color: $selected_bg_color;
+        
+        &.after {
+          border-top-style: none;
+        }
+        &.before {
+          border-bottom-style: none;
+        }
+      }
     }
 
     header {
