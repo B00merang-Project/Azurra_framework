@@ -19,12 +19,12 @@
     }
 
     &:disabled {
-      border-color: $disabled_bg_color;
-      background-color: $disabled_bg_color;
+      border-color: gtkshade($disabled_bg_color, 0.95);
+      background-color: gtkshade($disabled_bg_color, 0.95);
 
       &:backdrop {
-        border-color: $unfocused_disabled_bg_color;
-        background-color: $unfocused_disabled_bg_color;
+        border-color: gtkshade($unfocused_disabled_bg_color, 0.95);
+        background-color: gtkshade($unfocused_disabled_bg_color, 0.95);
       }
     }
 
