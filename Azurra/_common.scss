@@ -24,16 +24,7 @@
   -gtk-outline-radius: 0;
 }
 
-// base states 
-.background {
-  color: $fg_color;
-  background-color: gtkalpha($bg_color, 0.999);
-
-  &:backdrop {
-    color: $unfocused_fg_color; 
-    background-color: $unfocused_bg_color;
-  }
-}
+@include background();
 
 // Image effects 
 * {
