@@ -270,6 +270,12 @@ check, radio {
   min-width: 24px;
   margin: -8px;
   padding: 8px; }
+  check:hover, radio:hover {
+    box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08); }
+    check:hover:focus, radio:hover:focus {
+      box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.12); }
+  check:focus, radio:focus {
+    box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.16); }
   check:checked, check:indeterminate, radio:checked, radio:indeterminate {
     color: #4D94FF; }
     check:checked:disabled, check:indeterminate:disabled, radio:checked:disabled, radio:indeterminate:disabled {
@@ -296,7 +302,9 @@ radio {
     radio:checked:not(:indeterminate):disabled {
       border-image-source: -gtk-gradient(radial, center center, 0, center center, 0.125, to(alpha(black, 0.26)), to(transparent)); }
 
-popover modelbutton.flat check:hover, popover modelbutton.flat check:focus, popover modelbutton.flat check:focus:hover, popover modelbutton.flat check:active, popover modelbutton.flat check:disabled, popover modelbutton.flat radio:hover, popover modelbutton.flat radio:focus, popover modelbutton.flat radio:focus:hover, popover modelbutton.flat radio:active, popover modelbutton.flat radio:disabled {
+popover modelbutton.flat check:focus, popover modelbutton.flat radio:focus {
+  box-shadow: none; }
+popover modelbutton.flat check:hover, popover modelbutton.flat check:focus:hover, popover modelbutton.flat check:active, popover modelbutton.flat check:disabled, popover modelbutton.flat radio:hover, popover modelbutton.flat radio:focus:hover, popover modelbutton.flat radio:active, popover modelbutton.flat radio:disabled {
   transition: none;
   box-shadow: none;
   background-image: none;
@@ -354,7 +362,7 @@ entry {
     border-color: #4D94FF; }
   entry:selected, entry:selected:focus, entry selection, entry selection:focus {
     color: #000000;
-    background-color: #4C2200; }
+    background-color: #cfeaff; }
   entry:disabled {
     color: mix(#000000, #FFFFFF, 0.5);
     border-color: mix(#000000, #FFFFFF, 0.95); }
@@ -1095,12 +1103,14 @@ scale {
     padding-top: 10px;
     padding-bottom: 10px;
     min-height: 14px; }
+    scale.fine-tune.horizontal slider {
+      border-top-width: 20px; }
   scale.fine-tune.vertical {
     padding-left: 10px;
     padding-right: 10px;
     min-width: 14px; }
-  scale.fine-tune slider {
-    margin: -6px; }
+    scale.fine-tune.vertical slider {
+      border-right-width: 20px; }
   scale.fine-tune fill, scale.fine-tune trough, scale.fine-tune highlight {
     border-radius: 0;
     -gtk-outline-radius: 0; }

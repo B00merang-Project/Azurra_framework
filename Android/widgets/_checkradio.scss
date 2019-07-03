@@ -108,7 +108,11 @@
   
   popover modelbutton.flat {
     check, radio {
-      &:hover, &:focus, &:focus:hover, &:active, &:disabled {
+      &:focus {
+        box-shadow: none;
+      }
+    
+      &:hover, &:focus:hover, &:active, &:disabled {
         transition: none;
         box-shadow: none;
         background-image: none;

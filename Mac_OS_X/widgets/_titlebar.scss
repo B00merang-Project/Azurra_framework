@@ -87,6 +87,11 @@
       border-radius: 0;
     }
   }
+  
+  // nautilus bg transparency
+  .nautilus-window.csd.background:backdrop {
+    background-color: transparent;
+  }
 
   .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
     min-height: 30px;
@@ -97,13 +102,10 @@
 
     &:backdrop {
       color: $unfocused_fg_color;
+      background: transparent;
+      background-size: 100% 5px;
       background-image: linear-gradient(to bottom, transparent 35%, gtkalpha($unfocused_borders, 0.5) 40%, gtkalpha($unfocused_borders, 0.5) 64%, transparent 85%);
       background-color: gtkalpha($titlebar_bg_color, 0.6);
     }
-  }
-  
-  // unsupported backdrop transparency
-  headerbar.titlebar:backdrop {
-    background-color: gtkshade($titlebar_bg_color, 0.9);
   }
 }

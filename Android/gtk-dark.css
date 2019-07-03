@@ -303,7 +303,9 @@ radio {
     radio:checked:not(:indeterminate):disabled {
       border-image-source: -gtk-gradient(radial, center center, 0, center center, 0.125, to(alpha(black, 0.26)), to(transparent)); }
 
-popover modelbutton.flat check:hover, popover modelbutton.flat check:focus, popover modelbutton.flat check:focus:hover, popover modelbutton.flat check:active, popover modelbutton.flat check:disabled, popover modelbutton.flat radio:hover, popover modelbutton.flat radio:focus, popover modelbutton.flat radio:focus:hover, popover modelbutton.flat radio:active, popover modelbutton.flat radio:disabled {
+popover modelbutton.flat check:focus, popover modelbutton.flat radio:focus {
+  box-shadow: none; }
+popover modelbutton.flat check:hover, popover modelbutton.flat check:focus:hover, popover modelbutton.flat check:active, popover modelbutton.flat check:disabled, popover modelbutton.flat radio:hover, popover modelbutton.flat radio:focus:hover, popover modelbutton.flat radio:active, popover modelbutton.flat radio:disabled {
   transition: none;
   box-shadow: none;
   background-image: none;
