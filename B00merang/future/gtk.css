@@ -5,7 +5,7 @@
   -GtkScrollbar-has-secondary-forward-stepper: false;
   -GtkScrolledwindow-scrollbar-spacing: 0;
   -GtkScrolledwindow-scrollbars-within-bevel: 1;
-  -GtkTextView-error-underline-color: #5E000D;
+  -GtkTextView-error-underline-color: #FC6592;
   -GtkToolbutton-icon-spacing: 6;
   -GtkToolItemGroup-expander-size: 11;
   -GtkWidget-text-handle-width: 20;
@@ -22,11 +22,11 @@
 
 .background {
   color: #000000;
-  background-color: transparent;
+  background-color: alpha(#FFFFFF, 0.999);
   background-image: linear-gradient(to bottom, shade(#FFFFFF, 1.1), shade(#FFFFFF, 0.9)); }
   .background:backdrop {
     color: #000000;
-    background-color: #FFFFFF; }
+    background-color: alpha(#FFFFFF, 0.999); }
 
 window.background {
   border-bottom-left-radius: 4px;
@@ -34,9 +34,6 @@ window.background {
 
 window.background.csd.popup {
   border-radius: 4px; }
-
-.background.popup {
-  background-color: transparent; }
 
 *:disabled {
   -gtk-icon-effect: dim; }
@@ -464,53 +461,37 @@ infobar {
   border: none; }
 
 .info {
-  border-width: 1px;
-  border-style: solid;
-  border-color: shade(#0055FF, 0.8);
-  color: #FFFFFF;
+  color: #000000;
   background-image: none;
-  background-color: #0055FF; }
+  background-color: #F0F7FC; }
   .info button {
-    border-color: shade(#0055FF, 0.8);
-    color: #FFFFFF;
+    color: #000000;
     background-image: none;
-    background-color: shade(#0055FF, 1.08); }
+    background-color: shade(#F0F7FC, 1.08); }
     .info button:hover {
-      border-color: shade(#0055FF, 0.85);
-      background-color: shade(#0055FF, 1.1); }
+      background-color: shade(#F0F7FC, 1.1); }
     .info button:active {
-      border-color: shade(#0055FF, 0.6);
-      background-color: shade(#0055FF, 0.95); }
-      .info button:active:hover {
-        border-color: shade(#0055FF, 0.85); }
+      background-color: shade(#F0F7FC, 0.95); }
     .info button.close {
-      color: #FFFFFF; }
+      color: #000000; }
       .info button.close:hover {
         background-color: alpha(white, 0.2); }
       .info button.close:active {
-        color: #FFFFFF;
+        color: #000000;
         background-color: alpha(black, 0.1); }
 
 .warning {
-  border-width: 1px;
-  border-style: solid;
-  border-color: shade(#F9A88C, 0.8);
   color: #FFFFFF;
   background-image: none;
   background-color: #F9A88C; }
   .warning button {
-    border-color: shade(#F9A88C, 0.8);
     color: #FFFFFF;
     background-image: none;
     background-color: shade(#F9A88C, 1.08); }
     .warning button:hover {
-      border-color: shade(#F9A88C, 0.85);
       background-color: shade(#F9A88C, 1.1); }
     .warning button:active {
-      border-color: shade(#F9A88C, 0.6);
       background-color: shade(#F9A88C, 0.95); }
-      .warning button:active:hover {
-        border-color: shade(#F9A88C, 0.85); }
     .warning button.close {
       color: #FFFFFF; }
       .warning button.close:hover {
@@ -520,25 +501,17 @@ infobar {
         background-color: alpha(black, 0.1); }
 
 .question {
-  border-width: 1px;
-  border-style: solid;
-  border-color: shade(#2C2C2C, 0.8);
   color: #FFFFFF;
   background-image: none;
   background-color: #2C2C2C; }
   .question button {
-    border-color: shade(#2C2C2C, 0.8);
     color: #FFFFFF;
     background-image: none;
     background-color: shade(#2C2C2C, 1.08); }
     .question button:hover {
-      border-color: shade(#2C2C2C, 0.85);
       background-color: shade(#2C2C2C, 1.1); }
     .question button:active {
-      border-color: shade(#2C2C2C, 0.6);
       background-color: shade(#2C2C2C, 0.95); }
-      .question button:active:hover {
-        border-color: shade(#2C2C2C, 0.85); }
     .question button.close {
       color: #FFFFFF; }
       .question button.close:hover {
@@ -548,25 +521,17 @@ infobar {
         background-color: alpha(black, 0.1); }
 
 .error {
-  border-width: 1px;
-  border-style: solid;
-  border-color: shade(#5E000D, 0.8);
-  background-color: #5E000D;
+  background-color: #FC6592;
   background-image: none;
   color: #FFFFFF; }
   .error button {
-    border-color: shade(#5E000D, 0.8);
     color: #FFFFFF;
     background-image: none;
-    background-color: shade(#5E000D, 1.08); }
+    background-color: shade(#FC6592, 1.08); }
     .error button:hover {
-      border-color: shade(#5E000D, 0.85);
-      background-color: shade(#5E000D, 1.1); }
+      background-color: shade(#FC6592, 1.1); }
     .error button:active {
-      border-color: shade(#5E000D, 0.6);
-      background-color: shade(#5E000D, 0.95); }
-      .error button:active:hover {
-        border-color: shade(#5E000D, 0.85); }
+      background-color: shade(#FC6592, 0.95); }
     .error button.close {
       color: #FFFFFF; }
       .error button.close:hover {
@@ -1182,16 +1147,14 @@ scale {
 
 scrollbar {
   border: none;
-  background-color: shade(#FFFFFF, 1.2); }
+  background-color: transparent; }
   scrollbar trough {
     border: none;
     border-radius: 0; }
-  scrollbar:backdrop {
-    background-color: #FFFFFF; }
   scrollbar slider {
     min-width: 8px;
     min-height: 8px;
-    margin: 2px;
+    margin: 0;
     border: none;
     border-radius: 0px;
     background-clip: padding-box;
@@ -1233,22 +1196,18 @@ scrollbar {
       min-height: 40px; }
   scrollbar.overlay-indicator.dragging, scrollbar.overlay-indicator.hovering {
     opacity: 1; }
-  scrollbar.horizontal {
-    border-top: 1px solid shade(#FFFFFF, 0.9); }
-    scrollbar.horizontal slider {
-      min-width: 40px; }
-    scrollbar.horizontal button.down {
-      -gtk-icon-source: -gtk-icontheme("pan-right-symbolic"); }
-    scrollbar.horizontal button.up {
-      -gtk-icon-source: -gtk-icontheme("pan-left-symbolic"); }
-  scrollbar.vertical {
-    border-left: 1px solid shade(#FFFFFF, 0.9); }
-    scrollbar.vertical slider {
-      min-height: 40px; }
-    scrollbar.vertical button.down {
-      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
-    scrollbar.vertical button.up {
-      -gtk-icon-source: -gtk-icontheme("pan-up-symbolic"); }
+  scrollbar.horizontal slider {
+    min-width: 40px; }
+  scrollbar.horizontal button.down {
+    -gtk-icon-source: -gtk-icontheme("pan-right-symbolic"); }
+  scrollbar.horizontal button.up {
+    -gtk-icon-source: -gtk-icontheme("pan-left-symbolic"); }
+  scrollbar.vertical slider {
+    min-height: 40px; }
+  scrollbar.vertical button.down {
+    -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
+  scrollbar.vertical button.up {
+    -gtk-icon-source: -gtk-icontheme("pan-up-symbolic"); }
   treeview ~ scrollbar.vertical {
     border-top: 1px solid shade(#FFFFFF, 0.9);
     margin-top: -1px; }
@@ -1755,7 +1714,8 @@ tooltip {
     color: #FFFFFF; }
 
 treeview {
-  -treeview-vertical-separator: 0; }
+  -treeview-vertical-separator: 0;
+  background-color: transparent; }
   treeview.view:selected, treeview.view:selected:focus {
     color: #FFFFFF;
     background-color: #4D94FF; }
@@ -1787,7 +1747,9 @@ treeview {
 
 .view {
   color: #000000;
-  background-color: transparent; }
+  background-color: #FFFFFF; }
+  .view.horizontal, .view.vertical {
+    background-color: transparent; }
   .view:not(treeview) {
     border-radius: 3px;
     -gtk-outline-radius: 3px; }
@@ -1804,6 +1766,9 @@ treeview {
     .view:selected:backdrop, .view:selected:focus:backdrop, .view text:selected:backdrop, .view text:selected:focus:backdrop, .view text selection:backdrop, .view text selection:focus:backdrop {
       color: #FFFFFF;
       background-color: #4D94FF; }
+
+.gedit-view {
+  background-color: transparent; }
 
 actionbar {
   padding: 4px;
@@ -1965,15 +1930,15 @@ searchbar {
     outline-color: transparent; }
 
 button.destructive-action {
-  color: mix(#FFFFFF, #5E000D, 0.1);
-  background-color: #5E000D; }
+  color: mix(#FFFFFF, #FC6592, 0.1);
+  background-color: #FC6592; }
   button.destructive-action:hover {
-    background-color: mix(#5E000D, #FFFFFF, 0.2); }
+    background-color: mix(#FC6592, #FFFFFF, 0.2); }
   button.destructive-action:active {
-    background-color: mix(#5E000D, #000000, 0.1); }
+    background-color: mix(#FC6592, #000000, 0.1); }
   button.destructive-action:backdrop {
-    color: mix(#FFFFFF, #5E000D, 0.1);
-    background-color: mix(#5E000D, #FFFFFF, 0.3); }
+    color: mix(#FFFFFF, #FC6592, 0.1);
+    background-color: mix(#FC6592, #FFFFFF, 0.3); }
 
 button.suggested-action {
   border-radius: 0px;
@@ -2437,7 +2402,7 @@ UnityPanelWidget, .unity-panel {
 @define-color unfocused_borders shade(#FFFFFF, 0.9);
 /* these are pretty self explicative */
 @define-color warning_color #F9A88C;
-@define-color error_color #5E000D;
+@define-color error_color #FC6592;
 @define-color success_color #39E4A3;
 /* these colors are exported for the window manager and shouldn't be used in applications,
 read if you used those and something break with a version upgrade you're on your own... */

@@ -5,6 +5,13 @@
     box-shadow: 10px 10px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
     margin: 10px;
 
+    @if $palette == 'light' {
+      box-shadow: 10px 10px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
+    }
+    @else {
+      box-shadow: 0 0 0 1px $wm_shadow;
+    }
+
     &:backdrop {
     }
 

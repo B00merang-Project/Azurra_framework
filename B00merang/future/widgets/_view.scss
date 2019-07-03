@@ -1,8 +1,12 @@
 @mixin view() {
   .view {
     color: $text_color;
-    background-color: transparent;
-
+    background-color: $base_color;
+    
+    &.horizontal, &.vertical {
+      background-color: transparent;
+    }
+    
     &:not(treeview) {
       border-radius: $view_radius;
       -gtk-outline-radius: $view_radius;
@@ -32,5 +36,9 @@
         }
       }
     }
+  }
+  
+  .gedit-view {
+    background-color: transparent;
   }
 }
