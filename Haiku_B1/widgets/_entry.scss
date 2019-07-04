@@ -1,0 +1,77 @@
+@mixin entry() {
+  entry {
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gtkshade($borders, 0.8);
+    background-color: $base_color;
+    color: $text_color;
+    caret-color: currentColor;
+
+    &:active, &:focus {
+      border-right-color: gtkshade($borders, 1.05);
+      box-shadow: inset 0 0 0 1px #0000dd;
+    }
+
+    &:selected, &:selected:focus, selection, selection:focus {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+    }
+
+    &:disabled {
+      color: $disabled_text_color;
+
+      &:backdrop {
+        color: $unfocused_disabled_fg_color;
+        border-color: $unfocused_borders;
+      }
+    }
+
+    &.read-only {
+      background-color: gtkmix($bg_color, $disabled_bg_color, 0.1);
+    }
+
+    &:backdrop {
+      color: $unfocused_fg_color;
+      background-color: $unfocused_base_color;
+    }
+
+    > image {
+      &.left {
+        padding-right: 5px;
+      }
+      
+      &.right {
+        padding-left: 5px;
+      }
+    }
+
+    progress {
+      margin: -4px -4px;
+      border-width: 0 0 2px;
+      border-radius: 0;
+      border-style: solid;
+      border-color: #3196ff;
+      background-color: transparent;
+    }
+
+    &.flat, &.flat:focus {
+      min-height: 0;
+      padding: 3px;
+      border-radius: 0;
+      box-shadow: none;
+      background-image: none;
+      border-color: transparent;
+    }
+
+    &.search {
+      border-radius: 40px;
+    }
+    
+    // gedit search entry
+    entry {
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+}

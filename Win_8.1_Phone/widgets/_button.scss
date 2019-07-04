@@ -1,0 +1,105 @@
+@mixin normal_buttons($bg, $fg, $br) {
+  & {
+    padding: 4px 8px;
+    border-style: solid;
+    border-color: $br;
+    border-width: $button_border_width;
+    border-radius: $button_radius;
+    color: $fg;
+    background-color: $bg;
+
+    &:hover {
+      color: $fg;
+      border-color: $br;
+      background-color: $bg;
+    }
+
+    &:active, &:checked {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+
+      &:backdrop {
+        color: $unfocused_selected_fg_color;
+        background-color: $unfocused_selected_bg_color;
+      }
+    }
+
+    &:disabled {
+      color: $disabled_fg_color;
+      border-color: $disabled_fg_color;
+      background-color: $disabled_bg_color;
+      
+      &:backdrop {
+        color: $unfocused_disabled_fg_color;
+        border-color: $unfocused_disabled_fg_color;
+        background-color: transparent;
+      }
+    }
+
+    &:backdrop {
+      color: $unfocused_fg_color;
+      border-color: $unfocused_fg_color;
+      background-color: transparent;
+    }
+  }
+}
+
+@mixin flat_buttons($bg, $fg, $br)
+{
+  & {
+    border-color: transparent;
+    border-radius: $button_radius;
+    color: $fg;
+    background-color: transparent;
+
+    &:hover {
+      color: $fg;
+      border-color: $br;
+      background-color: $bg;
+    }
+
+    &:hover {
+      color: $fg;
+      border-color: $fg;
+      background-color: $bg;
+    }
+
+    &:active, &:checked {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+
+      &:backdrop {
+        color: $unfocused_selected_fg_color;
+        background-color: $unfocused_selected_bg_color;
+      }
+    }
+
+    &:disabled {
+      color: $disabled_fg_color;
+      border-color: transparent;
+      background-color: transparent;
+      
+      &:backdrop {
+        color: gtkalpha($fg, 0.7);
+        border-color: transparent;
+        background-color: transparent;
+      }
+    }
+
+    &:backdrop {
+      color: $unfocused_disabled_fg_color;
+      border-color: transparent;
+      background-color: transparent;
+    }
+  }
+}
+
+@mixin button() {
+  button {
+    @include normal_buttons($bg_color, $fg_color, $borders);
+    
+    &.flat {
+      @include flat_buttons($bg_color, $fg_color, $borders);
+    }
+  }
+}

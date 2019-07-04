@@ -1,0 +1,101 @@
+@mixin scrollbar() {
+  scrollbar {
+    border: none;
+    background-color: gtkmix($bg_color, $fg_color, 0.1);
+
+    trough {
+      border: none;
+      border-radius: 0;
+    }
+
+    &:backdrop {
+      background-color: $unfocused_base_color;
+    }
+
+    slider {
+      min-width: 4px;
+      min-height: 4px;
+      margin: 0;
+      border: none;
+      border-radius: $scrollbar_radius;
+      background-clip: padding-box;
+      background-color: $success_color;
+
+      &:hover {
+
+        &:active {
+        }
+      }
+
+      &:backdrop {
+      }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+
+    &.fine-tune {
+      slider {
+        min-width: 6px;
+        min-height: 6px;
+        border-radius: $scrollbar_radius;
+      }
+
+      &.horizontal slider {
+        margin-top: 1px;
+        margin-bottom: 1px;
+      }
+
+      &.vertical slider {
+        margin-left: 1px;
+        margin-right: 1px;
+      }
+    }
+
+    &.overlay-indicator {
+      // not implemented
+    }
+
+    &.horizontal {
+      border: none;
+      
+      slider {
+        min-width: 40px;
+      }
+
+      button {
+        &.down {
+          -gtk-icon-source: -gtk-icontheme("pan-right-symbolic");
+        }
+
+        &.up {
+          -gtk-icon-source: -gtk-icontheme("pan-left-symbolic");
+        }
+      }
+    }
+
+    &.vertical {
+      border: none;
+      
+      slider {
+        min-height: 40px;
+      }
+
+      button {
+        &.down {
+          -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+        }
+
+        &.up {
+          -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+        }
+      }
+    }
+
+    treeview ~ &.vertical {
+      border-top: 1px solid $borders;
+      margin-top: -1px;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@mixin list() {
+  list {
+    color: $fg_color;
+    background-color: transparent;
+
+    row {
+      padding: 2px;
+
+      &:hover {
+        color: $selected_bg_color;
+      }
+      
+      &:backdrop {
+        color: $unfocused_fg_color;
+      }
+
+      &:selected {
+        &, &:hover, &:focus {
+          color: $selected_bg_color;
+          background-color: transparent;
+        }
+
+        &:disabled {
+          color: gtkmix($disabled_fg_color, $selected_bg_color, 0.5);
+        }
+        
+        &:backdrop {
+          color: $unfocused_selected_bg_color;
+        }
+      }
+    }
+  }
+}

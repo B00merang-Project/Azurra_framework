@@ -1,0 +1,205 @@
+@mixin notebook() {
+  notebook {
+    padding: 0;
+
+    &.frame {
+      margin: -1px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $borders;
+
+      > header {
+        margin: -1px;
+
+        &.top {
+          margin-bottom: 0;
+        }
+
+        &.bottom {
+          margin-top: 0;
+        }
+
+        &.left {
+          margin-right: 0;
+        }
+
+        &.right {
+          margin-left: 0;
+        }
+
+        &.top, &.bottom {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        &.left, &.right {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+
+    > stack:not(:only-child) {
+      background-color: $base_color;
+    }
+
+    tab {
+      padding: 6px 20px;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 0;
+      border-color: $borders;
+      color: $fg_color;
+      background-color: $bg_color;
+      background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.1), gtkshade($bg_color, 0.985) 50%, gtkshade($bg_color, 0.95) 51%, gtkshade($bg_color, 0.94));
+      
+      &:hover {
+        border-color: gtkshade($selected_bg_color, 0.7);
+        background-color: $selected_bg_color;
+        background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.12), $selected_bg_color 50%, gtkshade($selected_bg_color, 0.95) 51%);
+      }
+
+      &:checked {
+        border-color: $borders;
+        background-color: $base_color;
+        background-image: none;
+        
+        &:hover {
+          background-color: $base_color;
+        }
+
+        &:backdrop {
+          border-color: $unfocused_borders;
+          background-color: $unfocused_base_color;
+        }
+      }
+
+      &:backdrop {
+        background-color: $unfocused_bg_color;
+      }
+    }
+
+    > header {
+      padding-top: 2px;
+      background-color: $bg_color;
+      
+      &:backdrop {
+        background-color: $unfocused_bg_color;
+      }
+
+      &.top {
+        box-shadow: 0 1px $borders;
+
+        > tabs > tab {
+          border-bottom: none;
+          margin-top: 2px;
+
+          &:checked {
+            border-top-left-radius: $tab_radius;
+            border-top-right-radius: $tab_radius;
+            margin-top: 0;
+            margin-bottom: -1px;
+          }
+        }
+      }
+
+      &.bottom {
+        padding-top: 0;
+        box-shadow: 0 -1px $borders;
+
+        > tabs > tab {
+          border-top: none;
+          margin-bottom: 2px;
+
+          &:checked {
+            border-bottom-left-radius: $tab_radius;
+            border-bottom-right-radius: $tab_radius;
+            margin-bottom: 0;
+            margin-top: -1px;
+          }
+        }
+      }
+
+      &.right {
+        box-shadow: -1px 0 $borders;
+
+        > tabs > tab {
+          border-left: none;
+          margin-right: 2px;
+
+          &:checked {
+            border-top-right-radius: $tab_radius;
+            border-bottom-right-radius: $tab_radius;
+            margin-right: 0;
+            margin-left: -1px;
+          }
+        }
+      }
+
+      &.left {
+        box-shadow: 1px 0 $borders;
+
+        > tabs > tab {
+          border-right: none;
+          margin-left: 2px;
+
+          &:checked {
+            border-top-left-radius: $tab_radius;
+            border-bottom-left-radius: $tab_radius;
+            margin-left: 0;
+            margin-right: -1px;
+          }
+        }
+      }
+    }
+
+    // alignments
+    > header.top > tabs > arrow.up, > header.bottom > tabs > arrow.up {
+      -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+
+      &:last-child {
+        margin-left: 2px;
+      }
+    }
+
+    > header.top > tabs > arrow.down, > header.bottom > tabs > arrow.down {
+      -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
+
+      &:first-child {
+        margin-right: 2px;
+      }
+    }
+
+    > header.left > tabs > arrow.up, > header.right > tabs > arrow.up {
+      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+
+      &:last-child {
+        margin-top: 2px;
+      }
+    }
+
+    > header.left > tabs > arrow.down, > header.right > tabs > arrow.down {
+      -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+
+      &:first-child {
+        margin-bottom: 2px;
+      }
+    }
+
+    > header > tabs > arrow {
+      color: $fg_color;
+
+      &:hover {
+        color: gtkshade($fg_color, 1.2);
+      }
+
+      &:active {
+        color: gtkshade($fg_color, 0.8);
+      }
+
+      &:disabled {
+        color: gtkshade($bg_color, 0.6);
+      }
+    }
+  }
+}

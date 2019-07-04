@@ -1,0 +1,90 @@
+@mixin scrollbar() {
+  scrollbar {
+    border: none;
+    background-color: gtkshade($bg_color, 0.95);
+
+    trough {
+      border: none;
+      border-radius: 0;
+    }
+
+    button {
+      &, &:active, &:disabled {
+        &, &:backdrop {
+          color: transparent;
+          padding: 0;
+          border-color: gtkshade($bg_color, 0.95);
+          background-color: gtkshade($bg_color, 0.95);
+          box-shadow: none;
+          background-size: auto;
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+
+    &.fine-tune {
+    }
+
+    &.overlay-indicator {
+      opacity: 1;
+    }
+
+    &.horizontal {
+      slider {
+        min-width: 45px;
+        min-height: 14px;
+        margin: 0;
+        border: 1px solid gtkshade($bg_color, 0.8);
+        border-radius: $scrollbar_radius;
+        background-clip: padding-box;
+        background: url("assets/handle.png") no-repeat center center;
+        background-color: $base_color;
+      }
+
+      button {
+        min-height: 14px;
+        min-width: 14px;
+      
+        &.down {
+          background-image: url('assets/arrow-right.png');
+        }
+
+        &.up {
+          background-image: url('assets/arrow-left.png');
+        }
+      }
+    }
+
+    &.vertical {
+      slider {
+        min-width: 14px;
+        min-height: 45px;
+        margin: 0;
+        border: 1px solid gtkshade($bg_color, 0.8);
+        border-radius: $scrollbar_radius;
+        background-clip: padding-box;
+        background: url("assets/handle-vert.png") no-repeat center center;
+        background-color: $base_color;
+      }
+
+      button {
+        min-height: 14px;
+        min-width: 14px;
+
+        &.down {
+          background-image: url('assets/arrow-down.png');
+        }
+
+        &.up {
+          background-image: url('assets/arrow-up.png');
+        }
+      }
+    }
+
+    treeview ~ &.vertical {
+      border-top: 1px solid $borders;
+      margin-top: -1px;
+    }
+  }
+}

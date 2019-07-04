@@ -1,0 +1,67 @@
+@mixin switch() {
+  switch {
+    outline-offset: -4px;
+    margin: 5px;
+    border: 1px solid gtkshade($borders, 0.9);
+    border-radius: 0;
+    background-color: gtkshade($borders, 0.9);
+
+    &:checked {
+
+      &:backdrop {
+      }
+    }
+
+    &:disabled {
+      color: $disabled_fg_color;
+      border-color: $disabled_bg_color;
+      background-color: gtkshade($disabled_bg_color, 1.2);
+
+      &:backdrop {
+        color: $unfocused_disabled_fg_color;
+        border-color: $unfocused_disabled_bg_color;
+        background-color: gtkshade($unfocused_disabled_bg_color, 1.2);
+      }
+    }
+
+    &:backdrop {
+      color: $unfocused_fg_color;
+      border-color: $unfocused_borders;
+      background-color: $unfocused_borders;
+    }
+
+    slider {
+      min-width: 30px;
+      min-height: 20px;
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      color: $fg_color;
+      background-color: gtkmix($fg_color, $bg_color, 0.6);
+    }
+
+    &:checked {
+      slider {
+        background-color: $selected_bg_color;
+      }
+      
+      &:backdrop slider {
+        background-color: $unfocused_selected_bg_color;
+      }
+    }
+
+    &:disabled {
+      slider {
+        background-color: $disabled_base_color;
+      }
+
+      &:backdrop slider {
+        background-color: $unfocused_disabled_base_color;
+      }
+    }
+
+    &:backdrop slider {
+      background-color: gtkshade($unfocused_base_color, 0.95);
+    }
+  }
+}

@@ -1,0 +1,104 @@
+@mixin progressbar() {
+  progressbar {
+    padding: 0;
+    border: none;
+    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+    background-color: transparent;
+
+    &.horizontal {
+      progress {
+        border: none;
+        border-radius: 0;
+        background-color: $success_color;
+        background: -gtk-gradient(radial, left center, 0, left center, 0.6, from(gtkalpha($dark_shadow, 0.2)), to(transparent)) left no-repeat, -gtk-gradient(radial, right center, 0, right center, 0.6, from(gtkalpha($dark_shadow, 0.2)), to(transparent)) right no-repeat, linear-gradient(to bottom, #cdffcd, #a6efb3 45%, #00d020 56%, #1ce233);
+        background-size: 40px 100%;  // shadow sizing
+        
+        &:backdrop {
+          background-color: $success_color;
+        }
+      }
+
+      trough {
+        border: 1px solid #7d7d7d;
+        border-radius: $progressbar_radius;
+        background-image: linear-gradient(to bottom, $light_shadow 20%, #c9cacb 65%, $light_shadow 98%);
+        box-shadow: inset -6px 0 4px 0 gtkalpha($dark_shadow, 0.08),
+                    inset 6px 0 4px 0 gtkalpha($dark_shadow, 0.08);
+
+        &:backdrop {
+          background-color: gtkshade($unfocused_bg_color, 0.95);
+        }
+      }
+    }
+    
+    &.vertical {
+      progress {
+        border: none;
+        border-radius: 0;
+        background-color: $success_color;
+        background: -gtk-gradient(radial, center top, 0, center top, 0.6, from(gtkalpha($dark_shadow, 0.2)), to(transparent)) top no-repeat, -gtk-gradient(radial, center bottom, 0, center bottom, 0.6, from(gtkalpha($dark_shadow, 0.2)), to(transparent)) bottom no-repeat, linear-gradient(to right, #cdffcd, #a6efb3 45%, #00d020 56%, #1ce233);
+        background-size: 100% 40px;
+        
+        &:backdrop {
+          background-color: $success_color;
+        }
+      }
+
+      trough {
+        border: 1px solid #7d7d7d;
+        border-radius: $progressbar_radius;
+        background-image: linear-gradient(to right, $light_shadow 20%, #c9cacb 65%, $light_shadow 98%);
+        box-shadow: inset -6px 0 4px 0 gtkalpha($dark_shadow, 0.08),
+                    inset 6px 0 4px 0 gtkalpha($dark_shadow, 0.08);
+
+        &:backdrop {
+          background-color: gtkshade($unfocused_bg_color, 0.95);
+        }
+      }
+    }
+
+    &.horizontal trough,
+    &.horizontal progress {
+      min-height: 16px;
+    }
+
+    &.vertical trough,
+    &.vertical progress {
+      min-width: 16px;
+    }
+  }
+
+  treeview.view {
+    &.progressbar {
+      &, &:disabled {
+        color: $selected_fg_color;
+        border-radius: 0;
+        background-color: $success_color;
+      }
+
+      &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
+        border-radius: 0;
+        color: $selected_bg_color;
+        background-color: $success_color;
+      }
+    }
+
+    &.trough {
+      color: $fg_color;
+      background-color: gtkalpha($dark_shadow, 0.1);
+      border-radius: 0;
+      border: none;
+
+      &:selected, &:selected:focus {
+        color: $selected_fg_color;
+        background-color: gtkalpha($dark_shadow, 0.1);
+        border-radius: 0;
+        border: none;
+      }
+    }
+
+    infobar & trough, row:selected & trough {
+      background-color: gtkalpha($dark_shadow, 0.1);
+    }
+  }
+}

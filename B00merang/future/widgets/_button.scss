@@ -1,0 +1,98 @@
+@mixin normal_buttons($bg, $fg, $br) {
+  & {
+    padding: 8px;
+    border: none;
+    border-radius: $button_radius;
+    color: $fg;
+    background-color: gtkalpha($dark_shadow, 0.03);
+
+    &:hover {
+      color: $selected_bg_color;
+    }
+
+    &:active, &:checked {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+
+      &:backdrop {
+        color: $unfocused_selected_fg_color;
+        background-color: $unfocused_selected_bg_color;
+      }
+      
+      &:disabled {
+        color: $disabled_fg_color;
+        background-color: $disabled_bg_color;
+        
+        &:backdrop {
+          color: $unfocused_disabled_fg_color;
+          background-color: $unfocused_disabled_bg_color;
+        }
+      }
+    }
+
+    &:disabled {
+      color: $disabled_fg_color;
+      
+      &:backdrop {
+        color: $unfocused_disabled_fg_color;
+      }
+    }
+
+    &:backdrop {
+      color: $unfocused_fg_color;
+    }
+  }
+}
+
+@mixin flat_buttons($bg, $fg, $br)
+{
+    color: $fg;
+    background-color: transparent;
+
+    &:hover {
+      color: $selected_bg_color;
+      background-color: gtkalpha($dark_shadow, 0.03);
+    }
+
+    &:active, &:checked {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+
+      &:backdrop {
+        color: $unfocused_selected_fg_color;
+        background-color: $unfocused_selected_bg_color;
+      }
+      
+      &:disabled {
+        color: $disabled_fg_color;
+        background-color: $disabled_bg_color;
+        
+        &:backdrop {
+          color: $unfocused_disabled_fg_color;
+          background-color: $unfocused_disabled_bg_color;
+        }
+      }
+    }
+
+    &:disabled {
+      color: $disabled_fg_color;
+      
+      &:backdrop {
+        color: $unfocused_disabled_fg_color;
+      }
+    }
+
+    &:backdrop {
+      color: $unfocused_fg_color;
+    }
+}
+
+@mixin button() {
+  button {
+    @include normal_buttons($bg_color, $fg_color, $borders);
+    
+    &.flat {
+      @include flat_buttons($bg_color, $fg_color, $borders);
+    }
+  }
+}

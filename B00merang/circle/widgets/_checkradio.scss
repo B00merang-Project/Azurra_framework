@@ -1,0 +1,136 @@
+@mixin checkradio() {
+  checkbutton.text-button, radiobutton.text-button {
+    padding: 4px;
+    outline-width: 0;
+  }
+
+  checkbutton {
+    padding: 4px;
+    
+    &:hover, &:active:hover {
+      padding: 4px;
+      border-style: none;
+      background-color: transparent;
+    }
+    &:selected {
+      padding: 4px;
+      border-style: none;
+      background-color: transparent;
+      &:focus {
+        padding: 4px;
+        border-style: none;
+        background-color: transparent;
+      }
+    }
+  }
+  check {
+    border-radius: 4px;
+  }
+  
+  radio {
+    border-radius: 100%;
+  }
+  
+  view.content-view check, .content-view.view check {
+    background-color: transparent;
+    &:active {
+      background-color: transparent;
+    }
+  }
+
+  view.content-view check {
+    &:hover, &:disabled, &:selected {
+      background-color: transparent;
+    }
+  }
+
+  check, radio {
+    min-height: 24px;
+    min-width: 24px;
+    margin: -8px;
+    padding: 8px;
+    
+    &:hover {
+      box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0.08);
+      
+      &:focus {
+        box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0.12);
+      }
+    }
+    
+    &:focus {
+      box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0.16);
+    }
+    
+    &:checked, &:indeterminate {
+      color: $selected_bg_color;
+      
+      &:disabled {
+        color: gtkalpha($dark_shadow, 0.26);
+      }
+    }
+    
+    &:disabled {
+      color: gtkalpha($dark_shadow, 0.1);
+    }
+  }
+  
+  check {
+    -gtk-icon-source: -gtk-recolor(url("assets/checkbox-unchecked-symbolic.svg"));
+
+    &:checked {
+      -gtk-icon-source: -gtk-recolor(url("assets/checkbox-checked-symbolic.svg"));
+    }
+
+    &:indeterminate {
+      -gtk-icon-source: -gtk-recolor(url("assets/checkbox-mixed-symbolic.svg"));
+    }
+  }
+
+  radio {
+      -gtk-icon-source: -gtk-recolor(url("assets/radio-unchecked-symbolic.svg"));
+      border-image-slice: 20;
+      border-image-width: 20px;
+      border-image-source: -gtk-gradient(radial, center center, 0, center center, 0.001, to($selected_bg_color), to(transparent));
+
+    &:indeterminate {
+      -gtk-icon-source: -gtk-recolor(url("assets/radio-mixed-symbolic.svg"));
+    }
+
+    &:checked:not(:indeterminate) {
+      border-image-source: -gtk-gradient(radial, center center, 0, center center, 0.125, to($selected_bg_color), to(transparent));
+    
+      &:disabled {
+        border-image-source: -gtk-gradient(radial, center center, 0, center center, 0.125, to(gtkalpha($dark_shadow, 0.26)), to(transparent));
+      }
+    }
+  }
+  
+  popover modelbutton.flat {
+    check, radio {
+      &:hover, &:focus, &:focus:hover, &:active, &:disabled {
+        transition: none;
+        box-shadow: none;
+        background-image: none;
+        color: gtkalpha($light_shadow, 0.54);
+      }
+      
+      &:not(:checked):not(:indeterminate):not(:disabled) {
+        color: gtkalpha($dark_shadow, 0.54);
+      }
+    }
+  }
+
+  menu menuitem {
+    check, radio {
+      &, &:hover, &:checked:hover, &:disabled {
+        box-shadow: none;
+        color: gtkalpha($light_shadow, 0.54);
+      }
+      
+      &:not(:checked):not(:indeterminate):not(:disabled) {
+        color: gtkalpha($dark_shadow, 0.54);
+      }
+    }
+  }
+}

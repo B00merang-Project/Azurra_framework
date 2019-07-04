@@ -1,0 +1,96 @@
+@mixin headerbar_buttons($bg, $fg, $br)
+{
+  & {
+    padding: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: $button_radius;
+    color: $fg;
+    border-color: $br;
+    border-top-color: gtkshade($br, 1.1);
+    border-left-color: gtkshade($br, 1.05);
+    border-right-color: gtkshade($br, 1.05);
+    background-color: $bg;
+    -gtk-outline-radius: $button_radius;
+
+    &:hover {
+      color: $fg;
+      background-color: gtkshade($bg, 1.1);
+    }
+
+    &:active, &:checked {
+      color: $selected_fg_color;
+      border-color: gtkshade($br, 0.9);
+      background-color: gtkmix($bg, $fg, 0.2);
+
+      &:backdrop {
+      }
+      
+      &:disabled {
+        color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
+        border-color: gtkmix($fg, $disabled_bg_color, 0.85);
+        background-color: gtkshade($disabled_bg_color, 0.9);
+        
+        &:backdrop {
+        }
+      }
+    }
+
+    &:disabled {
+      color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
+      
+      &:backdrop {
+      }
+    }
+
+    &:backdrop {
+    }
+  }
+}
+
+@mixin headerbar() {
+  headerbar, headerbar:not(.titlebar) {
+    padding: 4px 8px;
+    border-width: 0;
+    border-style: solid;
+    border-color: gtkmix($borders, $headerbar_bg_color, 0.5);
+    border-bottom-width: 1px;
+    box-shadow: 0 1px $borders;
+    color: $headerbar_fg_color;
+    background-color: $headerbar_bg_color;
+
+    &:backdrop {
+      color: gtkalpha($headerbar_fg_color, 0.8);
+      background-color: $headerbar_bg_color;
+    }
+
+    .titlebar &, .titlebar &:backdrop {
+      background-color: transparent;
+    }
+
+    .tiled &, .tiled &:backdrop, .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    button {
+      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, gtkshade($headerbar_fg_color, 0.3));
+    }
+
+    entry {
+      padding: 4px 8px;
+    }
+  }
+}

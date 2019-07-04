@@ -1,0 +1,45 @@
+@mixin list() {
+  list {
+    color: $fg_color;
+    background-color: $base_color;
+
+    row {
+      padding: 2px;
+
+      &:hover {
+        background-color: gtkmix($bg_color, $fg_color, 0.1);
+      }
+      
+      &:backdrop {
+        color: $unfocused_fg_color;
+      }
+
+      &:selected {
+        &, &:hover, &:focus {
+          border: none;
+          color: $selected_fg_color;
+          background-color: $selected_bg_color;
+          border-color: gtkshade($selected_bg_color, 1.25);
+          background-image: linear-gradient(gtkshade($selected_bg_color, 1.45), gtkshade($selected_bg_color, 1.2));
+          
+          switch:checked {
+          }
+        }
+
+        &:disabled {
+          color: gtkalpha($selected_fg_color, 0.7);
+          background-color: $selected_bg_color;
+        }
+        
+        &:backdrop {
+          color: $unfocused_selected_fg_color;
+          background-image: none;
+          background-color: $unfocused_selected_bg_color;
+        }
+      }
+    }
+    separator, separator:backdrop {
+      background: none; // no lines on sidebar
+    }
+  }
+}

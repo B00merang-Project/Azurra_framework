@@ -1,0 +1,99 @@
+@mixin titlebar() {
+  .titlebar {
+    border-bottom: none;
+    border-radius: $csd_radius $csd_radius 0px 0px;
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        padding: 2px 2px;
+        border: none;
+        color: transparent;
+        background-color: transparent;
+        -gtk-icon-shadow: none;
+        
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      
+      &.close {
+        background: url('assets/close-normal.svg') 100% 100%;
+
+        &:hover {
+          background: url('assets/close-hover.svg') 100% 100%;
+        }
+
+        &:active {
+          background: url('assets/close-active.svg') 100% 100%;
+        }
+
+        &:backdrop {
+          background: url('assets/close-backdrop.svg') 100% 100%;
+        }
+      }
+
+      &.minimize {
+        background: url('assets/minimize-normal.svg') 100% 100%;
+
+        &:hover {
+          background: url('assets/minimize-hover.svg') 100% 100%;
+        }
+
+        &:active {
+          background: url('assets/minimize-active.svg') 100% 100%;
+        }
+
+        &:backdrop {
+          background: url('assets/minimize-backdrop.svg') 100% 100%;
+        }
+      }
+
+      &.maximize {
+        background: url('assets/maximize-normal.svg') 100% 100%;
+
+        &:hover {
+          background: url('assets/maximize-hover.svg') 100% 100%;
+        }
+
+        &:active {
+          background: url('assets/maximize-active.svg') 100% 100%;
+        }
+
+        &:backdrop {
+          background: url('assets/maximize-backdrop.svg') 100% 100%;
+        }
+      }
+    }
+
+    .tiled &:not(headerbar), .tiled &:backdrop:not(headerbar), .maximized &:not(headerbar), .maximized &:backdrop:not(headerbar) {
+      border-radius: 0;
+    }
+  }
+
+  .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 0.965), gtkshade($titlebar_bg_color, 0.9));
+    box-shadow: 0 1px $borders;
+
+    &:backdrop {
+      color: $unfocused_fg_color;
+      background-image: none;
+      background-color: $unfocused_bg_color;
+      box-shadow: 0 1px $unfocused_borders;
+    }
+  }
+}

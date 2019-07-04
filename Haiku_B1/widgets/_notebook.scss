@@ -1,0 +1,188 @@
+@mixin notebook() {
+  notebook {
+    padding: 0;
+
+    &.frame {
+      margin: -1px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: gtkshade($borders, 0.8);
+      box-shadow: inset 0 0 0 1px gtkshade($bg_color, 1.05), inset -1px -1px 0 0 gtkshade($bg_color, 0.95);
+      background-color: transparent;
+
+      > header {
+        margin: -1px;
+
+        &.top {
+          margin-bottom: 0;
+        }
+
+        &.bottom {
+          margin-top: 0;
+        }
+
+        &.left {
+          margin-right: 0;
+        }
+
+        &.right {
+          margin-left: 0;
+        }
+
+        &.top, &.bottom {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        &.left, &.right {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+
+    > stack:not(:only-child) {
+      background-color: transparent;
+    }
+
+    tab {
+      padding: 2px 6px;
+      border-width: 6px;
+      border-style: solid;
+      border-radius: 0;
+      border-color: transparent;
+      color: $fg_color;
+      outline-color: transparent;
+      background-color: gtkshade($bg_color, 0.92);
+
+      &:checked {
+        background-color: $bg_color;
+
+        &:backdrop {
+        }
+      }
+
+      &:backdrop {
+      }
+    }
+
+    > header {
+      padding-top: 2px;
+      background-color: $bg_color;
+      
+      &:backdrop {
+        background-color: $unfocused_bg_color;
+      }
+
+      &.top {
+        box-shadow: 0 1px gtkshade($borders, 0.8);
+
+        > tabs > tab {
+          border-image: url('assets/tab-top.png') 6 6 6 6 stretch;
+          margin-top: 2px;
+
+          &:checked {
+            border-image: url('assets/tab-top-active.png') 6 6 6 6 stretch;
+            margin-top: 0;
+            margin-bottom: -1px;
+          }
+        }
+      }
+
+      &.bottom {
+        padding-top: 0;
+        box-shadow: 0 -1px gtkshade($borders, 0.8);
+
+        > tabs > tab {
+          border-image: url('assets/tab-bottom.png') 6 6 6 6 stretch;
+          margin-bottom: 2px;
+
+          &:checked {
+            border-image: url('assets/tab-bottom-active.png') 6 6 6 6 stretch;
+            margin-bottom: 0;
+            margin-top: -1px;
+          }
+        }
+      }
+
+      &.right {
+        box-shadow: -1px 0 gtkshade($borders, 0.8);
+
+        > tabs > tab {
+          border-image: url('assets/tab-right.png') 6 6 6 6 stretch;
+          margin-right: 2px;
+
+          &:checked {
+            border-image: url('assets/tab-right-active.png') 6 6 6 6 stretch;
+            margin-right: 0;
+            margin-left: -1px;
+          }
+        }
+      }
+
+      &.left {
+        box-shadow: 1px 0 gtkshade($borders, 0.8);
+
+        > tabs > tab {
+          border-image: url('assets/tab-left.png') 6 6 6 6 stretch;
+          margin-left: 2px;
+
+          &:checked {
+            border-image: url('assets/tab-left-active.png') 6 6 6 6 stretch;
+            margin-left: 0;
+            margin-right: -1px;
+          }
+        }
+      }
+    }
+
+    // alignments
+    > header.top > tabs > arrow.up, > header.bottom > tabs > arrow.up {
+      -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+
+      &:last-child {
+        margin-left: 2px;
+      }
+    }
+
+    > header.top > tabs > arrow.down, > header.bottom > tabs > arrow.down {
+      -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
+
+      &:first-child {
+        margin-right: 2px;
+      }
+    }
+
+    > header.left > tabs > arrow.up, > header.right > tabs > arrow.up {
+      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+
+      &:last-child {
+        margin-top: 2px;
+      }
+    }
+
+    > header.left > tabs > arrow.down, > header.right > tabs > arrow.down {
+      -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+
+      &:first-child {
+        margin-bottom: 2px;
+      }
+    }
+
+    > header > tabs > arrow {
+      color: $fg_color;
+
+      &:hover {
+        color: gtkshade($fg_color, 1.2);
+      }
+
+      &:active {
+        color: gtkshade($fg_color, 0.8);
+      }
+
+      &:disabled {
+        color: gtkshade($bg_color, 0.6);
+      }
+    }
+  }
+}
