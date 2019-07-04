@@ -4,7 +4,7 @@
     border-width: 0px;
     margin: 10px;
 
-    @if $palette == 'light' {
+    @if $variant == 'light' {
       box-shadow: 19px 20px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
     }
     @else {
@@ -19,7 +19,7 @@
     }
 
     .popup & {
-      @if $palette == 'light' {
+      @if $variant == 'light' {
         box-shadow: 10px 10px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
       }
       @else {
@@ -31,7 +31,7 @@
 
     .ssd & {
       border-radius: $csd_radius $csd_radius 0 0;
-      @if $palette == 'light' {
+      @if $variant == 'light' {
         box-shadow: 19px 20px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
       }
       @else {

@@ -25,8 +25,14 @@ replace_in_imports() {
   sed -i 's/iOS_12/iOS/g' $1/_imports.scss
 }
 
+replace_in_base_files() {
+  [ -f $1/gtk.scss ] && sed -i 's/palette/variant/g' $1/gtk.scss
+  [ -f $1/gtk-light.scss ] && sed -i 's/palette/variant/g' $1/gtk-light.scss
+  [ -f $1/gtk-dark.scss ] && sed -i 's/palette/variant/g' $1/gtk-dark.scss
+}
+
 invoke() {
-  replace_in_imports $@
+  replace_in_base_files $@
 }
 
 for dir in *; do
