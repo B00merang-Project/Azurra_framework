@@ -1,0 +1,36 @@
+@mixin actionbar() {
+  actionbar {
+    padding: 4px;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-color: $borders;
+    color: $fg_color;
+    background-color: $bg_color;
+
+    &:backdrop {
+      border-color: $unfocused_borders;
+      color: $unfocused_fg_color;
+      background-color: $unfocused_bg_color;
+    }
+
+    button {
+      &.text-button {
+        padding: 4px;
+      }
+
+      .image-button {
+        padding: 6px;
+      }
+    }
+
+    .title {
+      font-weight: bold;
+      padding: 0 12px;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding: 0 12px;
+    }
+  }
+}

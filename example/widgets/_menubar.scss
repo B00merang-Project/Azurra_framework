@@ -1,0 +1,14 @@
+@mixin menubar() {
+  menubar, .menubar {
+    -GtkWidget-window-dragging: true;
+    padding: 0;
+    border-style: none;
+    background-color: $menubar_bg_color;
+    color: $menubar_fg_color;
+
+    &:backdrop {
+      color: $unfocused_fg_color;
+      background-color: $unfocused_bg_color;
+    }
+  }
+}

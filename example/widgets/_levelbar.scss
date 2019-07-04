@@ -1,0 +1,35 @@
+@mixin levelbar() {
+  levelbar {
+    trough {
+      padding: 1px;
+      border-radius: 0;
+    }
+
+    &.horizontal.discrete block {
+      margin: 0 1px;
+    }
+
+    &.vertical.discrete block {
+      margin: 1px 0;
+    }
+
+    block {
+      border: none;
+      padding: 2px;
+      border-radius: $progressbar_radius;
+      background-color: $selected_bg_color;
+
+      &.high {
+        background-color: gtkshade($success_color, 0.9);
+      }
+
+      &.low {
+        background-color: gtkshade($warning_color, 0.9);
+      }
+
+      &.empty {
+        background-color: gtkalpha($dark_shadow, 0.1);
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@mixin background() {
+  .background {
+    color: $fg_color;
+    background-color: gtkalpha($bg_color, 0.999);
+
+    &:backdrop {
+      color: $unfocused_fg_color; 
+      background-color: $unfocused_bg_color;
+    }
+  }
+}

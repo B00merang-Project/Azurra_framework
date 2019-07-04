@@ -1,0 +1,21 @@
+@mixin paned() {
+  paned {
+    > separator {
+      border: none;
+      color: transparent;
+      background-color: $borders;
+
+      &:backdrop {
+        background-color: $unfocused_borders;
+      }
+
+      &:selected {
+        background-color: $borders;
+      }
+    }
+
+    .sidebar.left, .sidebar.right, .sidebar.left:dir(rtl), .sidebar:dir(rtl), .sidebar:dir(ltr), .sidebar {
+      border-style: none;
+    }
+  }
+}
