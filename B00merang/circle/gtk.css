@@ -883,8 +883,8 @@ notebook {
       notebook > header.top > tabs > tab {
         border-bottom: none; }
         notebook > header.top > tabs > tab:checked {
-          border-top-left-radius: 40px;
-          border-top-right-radius: 40px;
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
           margin-bottom: -1px; }
     notebook > header.bottom {
       padding-top: 0;
@@ -892,24 +892,24 @@ notebook {
       notebook > header.bottom > tabs > tab {
         border-top: none; }
         notebook > header.bottom > tabs > tab:checked {
-          border-bottom-left-radius: 40px;
-          border-bottom-right-radius: 40px;
+          border-bottom-left-radius: 20px;
+          border-bottom-right-radius: 20px;
           margin-top: -1px; }
     notebook > header.right {
       box-shadow: -1px 0 shade(#FFFEFD, 0.8); }
       notebook > header.right > tabs > tab {
         border-left: none; }
         notebook > header.right > tabs > tab:checked {
-          border-top-right-radius: 40px;
-          border-bottom-right-radius: 40px;
+          border-top-right-radius: 20px;
+          border-bottom-right-radius: 20px;
           margin-left: -1px; }
     notebook > header.left {
       box-shadow: 1px 0 shade(#FFFEFD, 0.8); }
       notebook > header.left > tabs > tab {
         border-right: none; }
         notebook > header.left > tabs > tab:checked {
-          border-top-left-radius: 40px;
-          border-bottom-left-radius: 40px;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
           margin-right: -1px; }
   notebook > header.top > tabs > arrow.up, notebook > header.bottom > tabs > arrow.up {
     -gtk-icon-source: -gtk-icontheme("pan-end-symbolic"); }
@@ -1193,7 +1193,7 @@ scrollbar {
     min-height: 10px;
     margin: 2px;
     border: none;
-    border-radius: 40px;
+    border-radius: 20px;
     background-clip: padding-box;
     background-color: mix(#6E3F00, #FFFEFD, 0.1); }
     scrollbar slider:hover {
@@ -1207,7 +1207,7 @@ scrollbar {
   scrollbar.fine-tune slider {
     min-width: 6px;
     min-height: 6px;
-    border-radius: 40px; }
+    border-radius: 20px; }
   scrollbar.fine-tune.horizontal slider {
     margin-top: 1px;
     margin-bottom: 1px; }
@@ -1930,8 +1930,8 @@ treeview {
   color: #333333;
   background-color: #FFFFFF; }
   .view:not(treeview) {
-    border-radius: 40px;
-    -gtk-outline-radius: 40px; }
+    border-radius: 20px;
+    -gtk-outline-radius: 20px; }
   .view:disabled {
     color: shade(#FFFEFD, 0.5);
     background-color: shade(#FFFEFD, 0.95); }
@@ -2247,7 +2247,7 @@ headerbar.selection-mode, toolbar.selection-mode {
       color: shade(#FFA400, 0.7); }
 
 decoration {
-  border-radius: 40px 40px 0 0;
+  border-radius: 20px 20px 0 0;
   border-width: 0px;
   box-shadow: 0 8px 8px 0 alpha(#412500, 0.1), 0 0 0 1px alpha(#412500, 0.3);
   margin: 10px; }
@@ -2259,12 +2259,12 @@ decoration {
     box-shadow: 0 0 0 1px alpha(#412500, 0.1);
     border-radius: 0; }
   .ssd decoration {
-    border-radius: 40px 40px 0 0;
+    border-radius: 20px 20px 0 0;
     box-shadow: 0 0 0 1px alpha(#412500, 0.1); }
     .ssd decoration.maximized {
       border-radius: 0; }
   tooltip.csd decoration {
-    border-radius: 40px;
+    border-radius: 20px;
     box-shadow: none; }
   .solid-csd decoration {
     margin: 1px;
@@ -2273,16 +2273,16 @@ decoration {
     box-shadow: none; }
 
 messagedialog {
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px; }
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px; }
   messagedialog .background.csd {
-    border-radius: 40px;
+    border-radius: 20px;
     color: #6E3F00;
     background-color: #FFFEFD; }
   messagedialog decoration {
-    border-radius: 40px;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
+    border-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     box-shadow: 0 1px 2px alpha(#412500, 0.2); }
   messagedialog .titlebar.horizontal {
     background-image: none;
@@ -2294,19 +2294,19 @@ messagedialog {
     messagedialog.csd .dialog-action-area button:last-child {
       border-right-width: 0;
       border-radius: 0px;
-      border-bottom-right-radius: 40px; }
+      border-bottom-right-radius: 20px; }
     messagedialog.csd .dialog-action-area button:first-child {
       border-left-width: 0;
       border-radius: 0px;
-      border-bottom-left-radius: 40px; }
+      border-bottom-left-radius: 20px; }
     messagedialog.csd .dialog-action-area button:only-child {
       border-radius: 0px;
-      border-bottom-left-radius: 40px;
-      border-bottom-right-radius: 40px; }
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px; }
 
 .titlebar {
   border-bottom: none;
-  border-radius: 40px 40px 0px 0px; }
+  border-radius: 20px 20px 0px 0px; }
   .titlebar .title {
     padding-left: 12px;
     padding-right: 12px;
@@ -2327,14 +2327,10 @@ messagedialog {
   .titlebar .titlebutton.close {
     color: shade(#CC0000, 0.8); }
   .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
-    border-radius: 0;
-    padding-left: 0;
-    padding-right: 0; }
+    border-radius: 0; }
 
 .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
   min-height: 30px;
-  padding-right: 15px;
-  padding-left: 15px;
   color: #FFFFFF;
   background-color: #EA8400; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
