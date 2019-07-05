@@ -1,0 +1,106 @@
+@mixin scrollbar() {
+  scrollbar {
+    border: none;
+    background-color: gtkshade($bg_color, 0.95);
+
+    trough {
+      border: none;
+      border-radius: 0;
+    }
+
+    &:backdrop {
+    }
+
+    slider {
+      min-width: 8px;
+      min-height: 8px;
+      margin: 0;
+      border: none;
+      border-radius: $scrollbar_radius;
+      background-clip: padding-box;
+      background-color: gtkshade($bg_color, 0.6);
+
+      &:hover {
+        background-color: gtkshade($bg_color, 0.8);
+
+        &:active {
+          background-color: $selected_bg_color;
+        }
+      }
+
+      &:backdrop {
+        background-color: gtkshade($bg_color, 0.55);
+      }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+
+    &.fine-tune {
+      slider {
+        min-width: 6px;
+        min-height: 6px;
+        margin: 1px;
+        border-radius: $scrollbar_radius;
+      }
+
+      &.horizontal slider {
+        margin-top: 1px;
+        margin-bottom: 1px;
+      }
+
+      &.vertical slider {
+        margin-left: 1px;
+        margin-right: 1px;
+      }
+    }
+
+    &.overlay-indicator {
+      &:not(.dragging):not(.hovering) {
+        opacity: 1;
+      }
+      
+      &.dragging, &.hovering {
+        opacity: 1;
+      }
+    }
+
+    &.horizontal {
+      slider {
+        min-width: 40px;
+      }
+
+      button {
+        &.down {
+          -gtk-icon-source: -gtk-icontheme("pan-right-symbolic");
+        }
+
+        &.up {
+          -gtk-icon-source: -gtk-icontheme("pan-left-symbolic");
+        }
+      }
+    }
+
+    &.vertical {
+      slider {
+        min-height: 40px;
+      }
+
+      button {
+        &.down {
+          -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+        }
+
+        &.up {
+          -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+        }
+      }
+    }
+
+    treeview ~ &.vertical {
+      border-top: 1px solid $borders;
+      margin-top: -1px;
+    }
+  }
+}
