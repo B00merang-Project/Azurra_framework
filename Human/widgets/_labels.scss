@@ -1,0 +1,12 @@
+@mixin labels() {
+  label {
+    selection {
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+    }
+
+    &.dim-label, &.separator, popover &.separator, popover.background &.separator, &:disabled {
+      opacity: 0.55;
+    }
+  }
+}

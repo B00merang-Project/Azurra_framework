@@ -12,6 +12,10 @@
     caret-color: $selected_base_color;
     background-color: $base_color;
 
+    &:focus {
+      box-shadow: inset 0 0 0 1px $selected_bg_color;
+    }
+
     &:selected, &:selected:focus, selection, selection:focus {
       color: $selected_text_color;
       background-color: $selected_base_color;
@@ -19,6 +23,7 @@
 
     &:disabled {
       color: $disabled_text_color;
+      background-color: $bg_color;
 
       &:backdrop {
         color: $unfocused_disabled_fg_color;

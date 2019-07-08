@@ -26,21 +26,6 @@
     }
 
     highlight {
-      border: none;
-      border-radius: 4px;
-      background-color: $selected_base_color;
-
-      &:disabled {
-        background-color: $disabled_bg_color;
-
-        &:backdrop {
-          background-color: $unfocused_disabled_bg_color;
-        }
-      }
-
-      &:backdrop {
-        background-color: $selected_base_color;
-      }
     }
 
     &.horizontal {
@@ -111,9 +96,9 @@
     }
 
     slider {
-      min-height: 18px;
-      min-width: 8px;
-      margin: -7px;
+      min-height: 13px;
+      min-width: 29px;
+      margin: -6px;
       margin-left: 0;
       margin-right: 0;
       border: 1px solid $borders;
@@ -123,6 +108,7 @@
       background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.2), gtkshade($bg_color, 0.98));
 
       &:hover {
+        background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.2), gtkshade($selected_bg_color, 0.98));
       }
 
       &:disabled {
@@ -142,14 +128,18 @@
     }
     
     &.vertical slider {
-      min-height: 8px;
-      min-width: 18px;
+      min-height: 29px;
+      min-width: 13px;
       
-      margin: -7px;
+      margin: -6px;
       margin-top: 0;
       margin-bottom: 0;
       
       background-image: linear-gradient(to right, gtkshade($bg_color, 1.2), gtkshade($bg_color, 0.98));
+      
+      &:hover {
+        background-image: linear-gradient(to right, gtkshade($selected_bg_color, 1.2), gtkshade($selected_bg_color, 0.98));
+      }
     }
 
     value {

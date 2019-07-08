@@ -1,7 +1,8 @@
 @mixin scrollbar() {
   scrollbar {
-    border: none;
-    background-color: gtkshade($bg_color, 0.95);
+    border: 1px solid gtkshade($bg_color, 0.75);
+    border-radius: 4px;
+    background-color: gtkshade($bg_color, 0.9);
 
     trough {
       border: none;
@@ -9,51 +10,56 @@
     }
 
     &:backdrop {
+      background-color: gtkshade($unfocused_bg_color, 0.9);
+    }
+    
+    button {
+      padding: 2px;
+      margin: -1px;
+      min-height: 11px;
+      min-width: 11px;
     }
 
     slider {
-      min-width: 8px;
-      min-height: 8px;
-      margin: 0;
-      border: none;
+      min-width: 45px;
+      min-height: 15px;
+      margin: -1px;
+      border: 1px solid $borders;
       border-radius: $scrollbar_radius;
       background-clip: padding-box;
-      background-color: gtkshade($bg_color, 0.6);
+      background-color: $bg_color;
+      background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.15), gtkshade($bg_color, 0.98));
 
       &:hover {
-        background-color: gtkshade($bg_color, 0.8);
+        background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.2), gtkshade($bg_color, 0.999));
 
         &:active {
-          background-color: $selected_bg_color;
         }
       }
 
       &:backdrop {
-        background-color: gtkshade($bg_color, 0.55);
       }
 
       &:disabled {
         background-color: transparent;
+        background-image: none;
+      }
+    }
+    
+    &.vertical slider {
+      min-width: 15px;
+      min-height: 45px;
+    }
+    
+    &.vertical slider, &.vertical button {      
+      background-image: linear-gradient(to right, gtkshade($bg_color, 1.15), gtkshade($bg_color, 0.98));
+
+      &:hover {
+        background-image: linear-gradient(to right, gtkshade($bg_color, 1.2), gtkshade($bg_color, 0.999));
       }
     }
 
     &.fine-tune {
-      slider {
-        min-width: 6px;
-        min-height: 6px;
-        margin: 1px;
-        border-radius: $scrollbar_radius;
-      }
-
-      &.horizontal slider {
-        margin-top: 1px;
-        margin-bottom: 1px;
-      }
-
-      &.vertical slider {
-        margin-left: 1px;
-        margin-right: 1px;
-      }
     }
 
     &.overlay-indicator {
@@ -70,14 +76,32 @@
       slider {
         min-width: 40px;
       }
+    }
+
+    &.vertical {
+      slider {
+        min-height: 40px;
+      }
+    }
+    
+    &.horizontal {
+      slider {
+        min-width: 40px;
+      }
 
       button {
         &.down {
-          -gtk-icon-source: -gtk-icontheme("pan-right-symbolic");
+          margin-bottom: 0;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
         }
 
         &.up {
-          -gtk-icon-source: -gtk-icontheme("pan-left-symbolic");
+          margin-top: 0;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
         }
       }
     }
@@ -89,10 +113,14 @@
 
       button {
         &.down {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
           -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
         }
 
         &.up {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
           -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
         }
       }

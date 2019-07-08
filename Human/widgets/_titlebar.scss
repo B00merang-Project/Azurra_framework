@@ -3,30 +3,6 @@
     border-bottom: none;
     border-radius: $csd_radius $csd_radius 0px 0px;
 
-    .title {
-      padding-left: 12px;
-      padding-right: 12px;
-      font-weight: bold;
-      color: $titlebar_fg_color;
-      text-shadow: 1px 1px $dark_shadow;
-      
-      &:backdrop {
-        color: $unfocused_fg_color;
-        text-shadow: none;
-      }
-    }
-
-    .subtitle {
-      font-size: smaller;
-      padding-left: 12px;
-      padding-right: 12px;
-      color: gtkalpha($titlebar_fg_color, 0.7);
-      
-      &:backdrop {
-        color: gtkalpha($unfocused_fg_color, 0.7);
-      }
-    }
-
     .titlebutton {
       &.close, &.maximize, &.minimize, &:not(separator) {
         min-width: 18px;
