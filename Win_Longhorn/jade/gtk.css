@@ -1383,15 +1383,15 @@ scale {
   scale fill, scale trough {
     border: 1px solid shade(#E8ECF6, 0.9);
     border-radius: 0;
-    background-color: alpha(black, 0.1);
+    background-color: alpha(#000000, 0.1);
     outline-offset: 2px;
     -gtk-outline-radius: 0; }
     scale fill:disabled, scale trough:disabled {
-      background-color: alpha(black, 0.05); }
+      background-color: alpha(#000000, 0.05); }
       scale fill:disabled:backdrop, scale trough:disabled:backdrop {
-        background-color: alpha(black, 0.05); }
+        background-color: alpha(#000000, 0.05); }
     scale fill:backdrop, scale trough:backdrop {
-      background-color: alpha(black, 0.1); }
+      background-color: alpha(#000000, 0.1); }
   scale highlight {
     border: none;
     border-radius: 4px;
@@ -1460,6 +1460,16 @@ scale {
     scale slider:backdrop {
       color: #000000;
       background-image: url("assets/slider-horiz-insensitive.png"); }
+  scale.horizontal.marks-before slider {
+    background-image: url("assets/slider-horiz-top.png"); }
+    scale.horizontal.marks-before slider:hover {
+      background-image: url("assets/slider-horiz-top-hover.png"); }
+    scale.horizontal.marks-before slider:disabled {
+      background-image: url("assets/slider-horiz-top-insensitive.png"); }
+      scale.horizontal.marks-before slider:disabled:backdrop {
+        background-image: url("assets/slider-horiz-top-insensitive.png"); }
+    scale.horizontal.marks-before slider:backdrop {
+      background-image: url("assets/slider-horiz-top-insensitive.png"); }
   scale.vertical slider {
     min-height: 11px;
     min-width: 19px;
@@ -1474,6 +1484,16 @@ scale {
         background-image: url("assets/slider-vert-insensitive.png"); }
     scale.vertical slider:backdrop {
       background-image: url("assets/slider-vert-insensitive.png"); }
+  scale.vertical.marks-before {
+    background-image: url("assets/slider-vert-left.png"); }
+    scale.vertical.marks-before:hover {
+      background-image: url("assets/slider-vert-left-hover.png"); }
+    scale.vertical.marks-before:disabled {
+      background-image: url("assets/slider-vert-left-insensitive.png"); }
+      scale.vertical.marks-before:disabled:backdrop {
+        background-image: url("assets/slider-vert-left-insensitive.png"); }
+    scale.vertical.marks-before:backdrop {
+      background-image: url("assets/slider-vert-left-insensitive.png"); }
   scale value {
     color: alpha(currentColor, 0.35); }
   scale marks {
