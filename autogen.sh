@@ -284,6 +284,7 @@ while [ "$1" != "" ]; do
                             ;;
     -a | --all )            QUEUE=*/
                             LOCK_ADD=true
+                            sass_args="$sass_args -q"
                             ;;
     -c | --compile )        OP=$GEN_ONLY
                             ;;
