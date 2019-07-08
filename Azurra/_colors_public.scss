@@ -66,9 +66,7 @@
 //@define-color destructive_color #{$error_bg_color}
 
 //WM
-$_wm_highlight: if($variant=='light', $light_shadow, // Sass gets mad if this is
-                  transparentize($dark_shadow,1));   // done directly in the
-                                                     // color definition
+$_wm_highlight: $wm_shadow;
 
 /* these colors are exported for the window manager and shouldn't be used in applications,
 read if you used those and something break with a version upgrade you're on your own... */

@@ -2,11 +2,11 @@
   decoration {
     border-radius: $csd_radius $csd_radius 0 0;
     border-width: 0px;
-    box-shadow: 0 3px 9px 1px gtkalpha($dark_shadow, 0.3), 0 0 0 1px gtkalpha($dark_shadow, 0.25);
+    box-shadow: 0 3px 9px 1px gtkalpha($dark_shadow, 0.3), 0 0 0 1px gtkalpha($wm_shadow, 0.25);
     margin: 10px;
 
     &:backdrop {
-      box-shadow: 0 3px 9px 1px transparent, 0 2px 6px 2px gtkalpha($dark_shadow, 0.2), 0 0 0 1px gtkalpha($dark_shadow, 0.25);
+      box-shadow: 0 3px 9px 1px transparent, 0 2px 6px 2px gtkalpha($wm_shadow, 0.2), 0 0 0 1px gtkalpha($wm_shadow, 0.25);
     }
 
     .fullscreen &, .tiled & {
@@ -14,13 +14,13 @@
     }
 
     .popup & {
-      box-shadow: 2px 2px 2px 1px gtkalpha($dark_shadow, 0.3), 0 0 0 1px $borders;
+      box-shadow: 2px 2px 2px 1px gtkalpha($borders, 0.3), 0 0 0 1px $borders;
       border-radius: 0;
     }
 
     .ssd & {
       border-radius: $csd_radius $csd_radius 0 0;
-      box-shadow: 0 0 0 1px gtkalpha($dark_shadow, 0.1), gtkshade($borders, 0.7);
+      box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.1);
 
       &.maximized {
         border-radius: 0;
