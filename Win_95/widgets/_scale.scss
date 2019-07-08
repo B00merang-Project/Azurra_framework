@@ -137,6 +137,28 @@
       }
     }
     
+    &.horizontal.marks-before {
+      slider {
+        background-image: url('assets/slider-horiz-top.png');
+
+        &:hover {
+          background-image: url('assets/slider-horiz-top.png');
+        }
+
+        &:disabled {
+          background-image: url('assets/slider-horiz-top-insensitive.png');
+
+          &:backdrop {
+            background-image: url('assets/slider-horiz-top-insensitive.png');
+          }
+        }
+
+        &:backdrop {
+          background-image: url('assets/slider-horiz-top-insensitive.png');
+        }
+      }
+    }
+    
     &.vertical {
       slider {
         min-height: 15px;
@@ -159,6 +181,26 @@
 
         &:backdrop {
           background-image: url('assets/slider-vert-insensitive.png');
+        }
+      }
+      
+      &.marks-before {
+        background-image: url('assets/slider-vert-left.png');
+
+        &:hover {
+          background-image: url('assets/slider-vert-left.png');
+        }
+
+        &:disabled {
+          background-image: url('assets/slider-vert-left-insensitive.png');
+
+          &:backdrop {
+            background-image: url('assets/slider-vert-left-insensitive.png');
+          }
+        }
+
+        &:backdrop {
+          background-image: url('assets/slider-vert-left-insensitive.png');
         }
       }
     }
