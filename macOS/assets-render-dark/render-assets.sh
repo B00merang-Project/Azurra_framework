@@ -20,7 +20,6 @@ do
         name=${i%".$extension"}
         echo $ASSETS_DIR
         rm $ASSETS_DIR/$name.png
-        rm $DARK_ASSETS_DIR/$name.png
         
         if [ -f $ASSETS_DIR/$name@2.png ]; then
           rm $ASSETS_DIR/$name@2.png

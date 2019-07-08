@@ -16,6 +16,7 @@ WIKI=http://github.com/Elbullazul/Azurra_framework/wiki
 GEN_AND_DEPLOY=build
 GEN_ONLY=just_sass
 DEPLOY_ONLY=just_deploy
+RENDER=just_render
 SCRIPT=run_script
 
 BUNDLE_DISPLAY=false
@@ -71,6 +72,7 @@ show_help() {
   echo "  -a   --all          " "Generates and deploys all themes with valid configuration"
   echo "  -d   --deploy       " "Deploys current files"
   echo "  -c   --compile      " "Run SASS compiler only (no deployment)"
+  echo "  -r   --render       " "Run asset generation script if found"
   
   echo
   echo "More information: <$WIKI>"
@@ -271,6 +273,26 @@ just_deploy() {
   display "Done." 'last'
 }
 
+just_render() {
+  cd $1
+  
+  # check
+  [ -d 'assets-render' ] || [ -d 'assets-render-light' ] || [ -d 'assets-render-dark' ] || fail "$1 has no asset generation module"
+  
+  # run
+  [ -d 'assets-render' ] && cd 'assets-render' && ./render-assets.sh && cd ..
+  [ -d 'assets-render-dark' ] && cd 'assets-render-dark' && ./render-assets.sh && cd ..
+  [ -d 'assets-render-light' ] && cd 'assets-render-light' && ./render-assets.sh && cd ..
+  
+  # deploy
+  cp -R 'assets-render/assets/'* 'assets'
+  [ -d 'assets-render-dark' ] && cp -R 'assets-render-dark/assets/'* 'assets-dark'
+  [ -d 'assets-render-light' ] && cp -R 'assets-render-light/assets/'* 'assets-light'
+  
+  # return
+  cd "$ROOT_DIR"
+}
+
 # Main
 OP=$GEN_AND_DEPLOY
 sass_args="-C --sourcemap=none"
@@ -290,6 +312,8 @@ while [ "$1" != "" ]; do
                             ;;
     -d | --deploy )         OP=$DEPLOY_ONLY
                             ;;
+    -r | --render )         OP=$RENDER
+                            ;;
     -h | --help )           show_help
                             ;;
     -v | --version )        show_version
@@ -299,6 +323,8 @@ while [ "$1" != "" ]; do
   esac
   shift
 done
+
+[ -z ${QUEUE[@]} ] && fail 'Missing target'
 
 for dir in ${QUEUE[@]}; do
   # ignore base theme
