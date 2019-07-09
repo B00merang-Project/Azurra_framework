@@ -809,21 +809,17 @@ filechooserbutton:drop(active) {
   box-shadow: inset 0 0 0 1px #0375F8;
   caret-color: #0375F8; }
 
-.background.popup {
-  background-color: transparent; }
-
 menu, .menu {
   margin: 4px;
   padding: 0;
-  border-radius: 0;
+  border-radius: 4px;
   border-style: none;
   color: #FFFFFF;
-  background-color: transparent; }
-  .csd menu, .csd.background menu, .csd .menu, .csd.background .menu {
-    padding: 4px 1px;
-    border-radius: 0;
-    border: 1px solid shade(#3B3B3B, 0.9);
-    background-color: mix(#1D1E22, #3B3B3B, 0.5); }
+  background-color: mix(#1D1E22, #3B3B3B, 0.5); }
+  .csd menu, .csd .menu {
+    padding: 4px 0px;
+    border-radius: 4px;
+    border: none; }
   menu > arrow, .menu > arrow {
     padding: 4px;
     border-color: transparent;
@@ -902,7 +898,7 @@ popover, popover.background {
   border-radius: 4px;
   color: #FFFFFF;
   background-clip: border-box;
-  background-color: mix(#1D1E22, #3B3B3B, 0.5);
+  background-color: #3B3B3B;
   box-shadow: none; }
   .csd popover, popover, .csd popover.background, popover.background {
     border: 1px solid shade(#3B3B3B, 0.9); }
@@ -923,8 +919,6 @@ popover:backdrop {
   color: #8C8C8C;
   background-color: #545454;
   box-shadow: none; }
-popover .view {
-  background-color: transparent; }
 
 modelbutton.flat, menuitem.button.flat, .menuitem.button.flat {
   padding: 2px 8px;
@@ -2399,7 +2393,7 @@ decoration {
   .fullscreen decoration, .tiled decoration {
     border-radius: 0; }
   .popup decoration {
-    box-shadow: 0 0 0 1px alpha(#000000, 0.1);
+    box-shadow: 0 6px 5px 1px alpha(#000000, 0.2), 0 0 0 1px alpha(#000000, 0.1);
     border-radius: 4px; }
   .ssd decoration {
     border-radius: 4px 4px 0 0;

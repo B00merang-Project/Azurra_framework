@@ -809,34 +809,30 @@ filechooserbutton:drop(active) {
   box-shadow: inset 0 0 0 1px #0375F8;
   caret-color: #0375F8; }
 
-.background.popup {
-  background-color: transparent; }
-
 menu, .menu {
   margin: 4px;
   padding: 0;
-  border-radius: 0;
+  border-radius: 4px;
   border-style: none;
   color: #000000;
-  background-color: transparent; }
-  .csd menu, .csd.background menu, .csd .menu, .csd.background .menu {
-    padding: 4px 1px;
-    border-radius: 0;
-    border: 1px solid shade(#F5F5F5, 0.9);
-    background-color: alpha(mix(#FFFFFF, #F5F5F5, 0.5), 0.8); }
+  background-color: mix(#FFFFFF, #F5F5F5, 0.5); }
+  .csd menu, .csd .menu {
+    padding: 4px 0px;
+    border-radius: 4px;
+    border: none; }
   menu > arrow, .menu > arrow {
     padding: 4px;
     border-color: transparent;
-    background-color: alpha(mix(#FFFFFF, #F5F5F5, 0.5), 0.8);
+    background-color: mix(#FFFFFF, #F5F5F5, 0.5);
     min-width: 16px;
     min-height: 16px; }
     menu > arrow.top, .menu > arrow.top {
       margin-top: -6px;
-      border-bottom: 1px solid shade(alpha(mix(#FFFFFF, #F5F5F5, 0.5), 0.8), 0.9);
+      border-bottom: 1px solid shade(mix(#FFFFFF, #F5F5F5, 0.5), 0.9);
       -gtk-icon-source: -gtk-icontheme("pan-up-symbolic"); }
     menu > arrow.bottom, .menu > arrow.bottom {
       margin-bottom: -6px;
-      border-top: 1px solid shade(alpha(mix(#FFFFFF, #F5F5F5, 0.5), 0.8), 0.9);
+      border-top: 1px solid shade(mix(#FFFFFF, #F5F5F5, 0.5), 0.9);
       -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
 
 menubar, .menubar {
@@ -871,12 +867,12 @@ menu menuitem, .menu menuitem {
   border: none;
   border-radius: 0;
   color: #000000;
-  background-color: alpha(mix(#FFFFFF, #F5F5F5, 0.5), 0.8); }
+  background-color: mix(#FFFFFF, #F5F5F5, 0.5); }
   menu menuitem:hover, .menu menuitem:hover {
     color: #FFFFFF;
     background-color: #0375F8; }
   menu menuitem:disabled, .menu menuitem:disabled {
-    color: mix(#000000, alpha(mix(#FFFFFF, #F5F5F5, 0.5), 0.8), 0.5); }
+    color: mix(#000000, mix(#FFFFFF, #F5F5F5, 0.5), 0.5); }
   menu menuitem arrow, .menu menuitem arrow {
     min-width: 16px;
     min-height: 16px; }
@@ -902,7 +898,7 @@ popover, popover.background {
   border-radius: 4px;
   color: #000000;
   background-clip: border-box;
-  background-color: alpha(mix(#FFFFFF, #F5F5F5, 0.5), 0.8);
+  background-color: #F5F5F5;
   box-shadow: none; }
   .csd popover, popover, .csd popover.background, popover.background {
     border: 1px solid shade(#F5F5F5, 0.9); }
@@ -923,8 +919,6 @@ popover:backdrop {
   color: #8C8C8C;
   background-color: #E4E4E4;
   box-shadow: none; }
-popover .view {
-  background-color: transparent; }
 
 modelbutton.flat, menuitem.button.flat, .menuitem.button.flat {
   padding: 2px 8px;
@@ -1410,7 +1404,7 @@ separator {
   menuitem separator {
     border-width: 1px;
     border-style: none;
-    color: mix(shade(#F5F5F5, 0.9), alpha(mix(#FFFFFF, #F5F5F5, 0.5), 0.8), 0.5); }
+    color: mix(shade(#F5F5F5, 0.9), mix(#FFFFFF, #F5F5F5, 0.5), 0.5); }
   popover separator {
     border: 0;
     color: alpha(currentColor, 0.5);
@@ -2399,7 +2393,7 @@ decoration {
   .fullscreen decoration, .tiled decoration {
     border-radius: 0; }
   .popup decoration {
-    box-shadow: 0 0 0 1px alpha(#000000, 0.1);
+    box-shadow: 0 6px 5px 1px alpha(#000000, 0.2), 0 0 0 1px alpha(#000000, 0.1);
     border-radius: 4px; }
   .ssd decoration {
     border-radius: 4px 4px 0 0;
