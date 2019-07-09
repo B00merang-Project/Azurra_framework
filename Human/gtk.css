@@ -872,11 +872,13 @@ menubar, .menubar {
 
 menubar > menuitem, .menubar > menuitem {
   padding: 3px 5px;
-  border: none;
+  border: 1px solid transparent;
   color: #202020;
   background-color: transparent; }
   menubar > menuitem:hover, .menubar > menuitem:hover {
     color: #FFFFFF;
+    border-radius: 3px 3px 0 0;
+    border-color: shade(#A86B4C, 0.8);
     background-color: #A86B4C;
     background-image: linear-gradient(to bottom, shade(#A86B4C, 1.1), shade(#A86B4C, 0.9)); }
   menubar > menuitem:disabled, .menubar > menuitem:disabled {
