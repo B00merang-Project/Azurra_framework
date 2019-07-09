@@ -14,3 +14,7 @@
 @function gtkshade($c,$s) {
   @return unquote("shade(#{$c}, #{$s})");
 }
+
+@function gtkscale($name, $type) {
+  @return -gtk-scaled(url($name + $type), url($name + "-@2" + $type));
+}
