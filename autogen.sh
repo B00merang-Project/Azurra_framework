@@ -348,8 +348,8 @@ for dir in ${QUEUE[@]}; do
       BUNDLE_DISPLAY=false
       echo "Bundle $bundle_name completed"
       echo
-#    else
-#      fail "Not a valid directory '$dir'"
+    else
+      fail "Not a valid directory '$dir'"
     fi
   
   fi
