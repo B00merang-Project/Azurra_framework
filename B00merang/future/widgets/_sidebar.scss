@@ -1,60 +1,69 @@
-@mixin sidebar() {
-  filechooser {
-    &.csd.background, placessidebar list {
-      background-color: $sidebar_bg_color;
+@mixin common_sidebar() {
+  border-radius: $csd_radius;
+  background-color: $sidebar_bg_color;
+
+  row, view row, row.sidebar-row, .view, iconview {
+    &, &:focus {
+      border: none;
+      color: $sidebar_fg_color;
+      background-color: transparent;
+
+      &:hover {
+        color: $selected_bg_color;
+      }
+      
+      &:active {
+        color: gtkshade($selected_bg_color, 0.7);
+      }
+      
+      &:selected {
+        color: gtkshade($selected_bg_color, 0.85);
+        
+        &:hover {
+        }
+        
+        &:active {
+        }
+      }
     }
 
-    placessidebar.sidebar row, placessidebar.sidebar view row, placessidebar.sidebar row.sidebar-row {
-      border: none;
+    &.expander {
       color: $sidebar_fg_color;
 
       &:hover {
         color: $selected_bg_color;
       }
-
-      &:selected, &:selected:hover, &:selected:focus {
-        color: gtkshade($selected_bg_color, 0.9);
-      }
     }
   }
 
-  .nautilus-window.csd.background, .nautilus-window placessidebar list {
-    background-color: $sidebar_bg_color;
+  frame, &.frame {
+    border: none;
   }
   
-  .nautilus-window placessidebar.sidebar {
+  separator, separator:backdrop {
     background-color: transparent;
-    border-radius: 13px;
   }
-
-  .nautilus-window placessidebar.sidebar row.sidebar-row {
+  
+  paned &.left, paned &.right, paned &.left:dir(rtl), paned &:dir(rtl), paned &:dir(ltr), paned & {
     border: none;
-    color: $sidebar_fg_color;
-    
-    &:hover {
-      color: $selected_bg_color;
+  }
+}
+
+@mixin sidebar() {
+  filechooser, .nautilus-window, .nemo-window {
+    &.csd.background, placessidebar list {
+      background-color: $sidebar_bg_color;
     }
     
-    &:checked, &:selected {
-      color: gtkshade($selected_bg_color, 0.9);
+    .sidebar {
+      @include common_sidebar();
     }
   }
 
-  .sidebar {
-    frame, &.frame {
-      border: none;
-    }
-
-    paned &.left,
-    paned &.right,
-    paned &.left:dir(rtl),
-    paned &:dir(rtl),
-    paned &:dir(ltr),
-    paned & {
-      border: none;
-    }
+  .caja-navigation-window .caja-side-pane {
+    @include common_sidebar();
   }
-
+  
   stacksidebar row {
     padding: 10px 4px;
 

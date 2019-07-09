@@ -1,8 +1,7 @@
 @mixin treeview() {
   treeview {
     -treeview-vertical-separator: 0;
-    background-color: transparent;
-    
+
     &.view {
       &:selected, &:selected:focus {
         color: $selected_fg_color;
@@ -14,12 +13,8 @@
         border-width: 1px;
         border-color: $selected_bg_color;
         
-        &.after {
-          border-top-style: none;
-        }
-        &.before {
-          border-bottom-style: none;
-        }
+        &.after { border-top-style: none; }
+        &.before { border-bottom-style: none; }
       }
     }
 
@@ -27,19 +22,22 @@
       button {
         border-width: 0 1px 1px 0;
         border-radius: 0;
-
-        &, &:active, &:focus, &:active:focus {
-          background-image: none;
-          background-color: $bg_color;
+        outline-style: none;
+        
+        &:last-child {
+          border-width: 0 0 1px 0;
         }
-
-        &:hover, &:active:hover, &:hover:focus, &:active:hover:focus {
-          color: $selected_fg_color;
-          background-color: $selected_bg_color;
+        
+        &, &:focus {
+          &:hover {
+            background-image: none;
+          }
+          
+          &:active {
+            color: $selected_fg_color;
+            background-color: $selected_bg_color;
+          }
         }
-      }
-      &:last-child button {
-        border-width: 0 0 1px 0;
       }
     }
 

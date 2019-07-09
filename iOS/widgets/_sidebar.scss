@@ -1,68 +1,85 @@
+@mixin common_sidebar() {
+  background-color: $sidebar_bg_color;
+  
+  &:backdrop {    
+    background-color: $unfocused_bg_color;
+  }
+
+  row, view row, row.sidebar-row, .view, iconview {
+    &, &:focus {
+      border: none;
+      border-bottom: 1px solid $borders;
+      color: $sidebar_fg_color;
+      background-color: transparent;
+
+      &:hover {
+        color: $sidebar_fg_color;
+        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.05);
+      }
+      
+      &:active {
+      }
+      
+      &:selected {
+        color: $sidebar_fg_color;
+        background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.10);
+        
+        &:hover {
+        }
+        
+        &:active {
+        }
+        
+        &:backdrop {
+          color: $sidebar_fg_color;
+          background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.10);
+        }
+      }
+    }
+
+    &.expander {
+      color: $sidebar_fg_color;
+
+      &:hover {
+        color: $selected_bg_color;
+      }
+    }
+  }
+
+  frame, &.frame {
+    border: none;
+  }
+  
+  separator, separator:backdrop {
+    background-color: transparent;
+  }
+  
+  paned &.left, paned &.right, paned &.left:dir(rtl), paned &:dir(rtl), paned &:dir(ltr), paned & {
+    border: none;
+  }
+}
+
 @mixin sidebar() {
-  filechooser {
+  filechooser, .nautilus-window, .nemo-window {
     &.csd.background, placessidebar list {
       background-color: $sidebar_bg_color;
-
-      &:backdrop {    
+      
+      &:backdrop {
         background-color: $unfocused_bg_color;
       }
     }
-
-    placessidebar.sidebar row, placessidebar.sidebar view row, placessidebar.sidebar row.sidebar-row {
-      border: none;
-      color: $sidebar_fg_color;
-
-      &:hover, &:selected:hover {
-        color: $sidebar_fg_color;
-        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.15);
-      }
-
-      &:selected, &:selected:hover, &:selected:focus {
-        color: $sidebar_fg_color;
-        background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.15);
-      }
-    }
-  }
-
-  .nautilus-window.csd.background, .nautilus-window placessidebar list {
-    background-color: $sidebar_bg_color;
     
-    &:backdrop {
-      background-color: $unfocused_bg_color;
+    .sidebar {
+      @include common_sidebar();
     }
   }
-
-  .nautilus-window placessidebar.sidebar row.sidebar-row {
-    border: none;
-    color: $sidebar_fg_color;
-    
-    &:checked, &:selected {
-      color: $selected_fg_color;
-    }
-  }
-
-  .sidebar {
-    frame, &.frame {
-      border: none;
-    }
-
-    paned &.left,
-    paned &.right,
-    paned &.left:dir(rtl),
-    paned &:dir(rtl),
-    paned &:dir(ltr),
-    paned & {
-      border: none;
-    }
+  
+  .caja-navigation-window .caja-side-pane {
+    @include common_sidebar();
   }
 
   stacksidebar row {
     padding: 10px 4px;
-
-    &:selected {
-      color: $selected_fg_color;
-      background-color: gtkalpha($dark_shadow, 0.4);
-    }
 
     > label {
       padding-left: 6px;

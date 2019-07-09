@@ -9,7 +9,7 @@ $selected_base_color : #3399FF;
 $selected_text_color : #FFFFFF;
 $disabled_bg_color : gtkmix($fg_color, $bg_color, 0.95);
 $disabled_fg_color : gtkmix($fg_color, $bg_color, 0.5);
-$disabled_base_color : gtkshade($disabled_bg_color, 0.95);
+$disabled_base_color : gtkshade($disabled_bg_color, 1.1);
 $disabled_text_color : $disabled_fg_color;
 
 // Backdrop state colors
@@ -17,7 +17,7 @@ $unfocused_bg_color : $bg_color;
 $unfocused_fg_color : $fg_color;
 $unfocused_base_color : $base_color;
 $unfocused_text_color : $text_color;
-$unfocused_selected_bg_color : $selected_bg_color;
+$unfocused_selected_bg_color : #E5E5E5;
 $unfocused_selected_fg_color : $selected_fg_color;
 $unfocused_selected_base_color : $selected_base_color;
 $unfocused_selected_text_color : $selected_text_color;
@@ -32,14 +32,14 @@ $dark_fg_color : #000000;
 
 // Shadows
 $dark_shadow : rgb(0, 0, 0);
-$color_shadow : $selected_bg_color;
+$color_shadow : #88E1FC;
 $light_shadow : rgb(255, 255, 255);
 $wm_shadow : #000000;
 
 // Borders
-$borders : gtkshade($bg_color, 0.9);
+$borders : gtkshade($bg_color, 0.75);
 $outline_color : gtkshade($bg_color, 0.75);
-$unfocused_borders : gtkshade($unfocused_bg_color, 0.9);
+$unfocused_borders : gtkshade($unfocused_bg_color, 0.75);
 
 // Notification header backgrounds
 $info_fg_color : #FFFFFF;

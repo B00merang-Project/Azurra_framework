@@ -10,6 +10,16 @@
         background-color: gtkmix($bg_color, $fg_color, 0.1);
       }
       
+      &:hover {
+        color: $selected_fg_color;
+        background-color: gtkshade($selected_bg_color, 1.05);
+      }
+      
+      &:active {
+        color: $selected_fg_color;
+        background-color: gtkshade($selected_bg_color, 0.96);
+      }
+      
       &:backdrop {
         color: $unfocused_fg_color;
       }
@@ -20,19 +30,27 @@
           color: $selected_fg_color;
           background-color: $selected_bg_color;
           
-          switch:checked {
+          &:hover {
+            color: $selected_fg_color;
+            background-color: gtkshade($selected_bg_color, 1.02);
+          }
+          
+          &:active {
+            color: $selected_fg_color;
+            background-color: gtkshade($selected_bg_color, 0.98);
+          }
+
+          &:disabled {
+            color: gtkalpha($selected_fg_color, 0.7);
+            background-color: $selected_bg_color;
+          }
+          
+          &:backdrop {
+            color: $unfocused_selected_fg_color;
+            background-color: $unfocused_selected_bg_color;
           }
         }
 
-        &:disabled {
-          color: gtkalpha($selected_fg_color, 0.7);
-          background-color: $selected_bg_color;
-        }
-        
-        &:backdrop {
-          color: $unfocused_selected_fg_color;
-          background-color: $unfocused_selected_bg_color;
-        }
       }
     }
     separator, separator:backdrop {

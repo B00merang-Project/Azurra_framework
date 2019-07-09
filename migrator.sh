@@ -1,7 +1,7 @@
 #!/bin/bash
 
 str_replace_in() {
-  sed -i "s/$1/$2/g" $3
+  sed -i "s@$1@$2@g" "$3"
 }
 
 replace_in_widgets() {
@@ -24,7 +24,7 @@ find_in_colors() {
 
 replace_in_imports() {
   # replace 'iOS_12' by 'iOS' in all _imports files
-  str_replace_in 'iOS_12' 'iOS' $1/_imports.scss
+  str_replace_in 'Android_4.4/widgets/treeview' 'Android/widgets/treeview' $1/_imports.scss
 }
 
 replace_in_base_files() {
@@ -35,7 +35,7 @@ replace_in_base_files() {
 }
 
 invoke() {
-  replace_in_base_files $@
+  replace_in_imports $@
 }
 
 for dir in *; do

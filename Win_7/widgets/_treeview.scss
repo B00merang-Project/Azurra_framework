@@ -5,6 +5,7 @@
     &.view {
       &:selected, &:selected:focus {
         color: $selected_fg_color;
+        box-shadow: inset 0 0 1px 0 gtkshade($selected_bg_color, 0.87);
         background-color: $selected_bg_color;
         background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.02), gtkshade($selected_bg_color, 0.98));
       }
@@ -14,12 +15,8 @@
         border-width: 1px;
         border-color: $selected_bg_color;
         
-        &.after {
-          border-top-style: none;
-        }
-        &.before {
-          border-bottom-style: none;
-        }
+        &.after { border-top-style: none; }
+        &.before { border-bottom-style: none; }
       }
     }
 
@@ -27,6 +24,10 @@
       button {
         border-width: 0 1px 1px 0;
         border-radius: 0;
+        
+        &:last-child {
+          border-width: 0 0 1px 0;
+        }
 
         &, &:focus {
           background-image: none;
@@ -44,9 +45,6 @@
             }
           }
         }
-      }
-      &:last-child button {
-        border-width: 0 0 1px 0;
       }
     }
     

@@ -13,12 +13,8 @@
         border-width: 1px;
         border-color: $selected_bg_color;
         
-        &.after {
-          border-top-style: none;
-        }
-        &.before {
-          border-bottom-style: none;
-        }
+        &.after { border-top-style: none; }
+        &.before { border-bottom-style: none; }
       }
     }
 
@@ -26,20 +22,23 @@
       button {
         border-width: 0 1px 1px 0;
         border-radius: 0;
-
-        &, &:active, &:focus, &:active:focus {
-          background-image: none;
-          background-color: $bg_color;
+        
+        &:last-child {
+          border-width: 0 0 1px 0;
         }
 
-        &:hover, &:active:hover, &:hover:focus, &:active:hover:focus {
-          color: $selected_fg_color;
-          background-color: $selected_base_color;
+        &, &:focus {
+          &:hover {
+            background-image: none;
+            background-color: $bg_color;
+          }
+        
+          &:active {
+            color: $selected_fg_color;
+            background-image: none;
+            background-color: $selected_bg_color;
+          }
         }
-      }
-      
-      &:last-child button {
-        border-width: 0 0 1px 0;
       }
     }
     
