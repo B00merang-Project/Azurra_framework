@@ -809,17 +809,21 @@ filechooserbutton:drop(active) {
   box-shadow: inset 0 0 0 1px #0375F8;
   caret-color: #0375F8; }
 
+.background.popup {
+  background-color: transparent; }
+
 menu, .menu {
   margin: 4px;
   padding: 0;
-  border-radius: 4px;
+  border-radius: 0;
   border-style: none;
   color: #FFFFFF;
-  background-color: mix(#1D1E22, #3B3B3B, 0.5); }
-  .csd menu, .csd .menu {
-    padding: 4px 0px;
-    border-radius: 4px;
-    border: none; }
+  background-color: transparent; }
+  .csd menu, .csd.background menu, .csd .menu, .csd.background .menu {
+    padding: 4px 1px;
+    border-radius: 0;
+    border: 1px solid shade(#3B3B3B, 0.9);
+    background-color: mix(#1D1E22, #3B3B3B, 0.5); }
   menu > arrow, .menu > arrow {
     padding: 4px;
     border-color: transparent;
@@ -898,7 +902,7 @@ popover, popover.background {
   border-radius: 4px;
   color: #FFFFFF;
   background-clip: border-box;
-  background-color: #3B3B3B;
+  background-color: mix(#1D1E22, #3B3B3B, 0.5);
   box-shadow: none; }
   .csd popover, popover, .csd popover.background, popover.background {
     border: 1px solid shade(#3B3B3B, 0.9); }
@@ -919,6 +923,8 @@ popover:backdrop {
   color: #8C8C8C;
   background-color: #545454;
   box-shadow: none; }
+popover .view {
+  background-color: transparent; }
 
 modelbutton.flat, menuitem.button.flat, .menuitem.button.flat {
   padding: 2px 8px;
@@ -2463,32 +2469,32 @@ messagedialog {
     color: transparent;
     background-color: transparent;
     -gtk-icon-shadow: none;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat; }
   .titlebar .titlebutton.close {
-    background: url("assets/close-normal.svg") 100% 100%; }
+    background-image: url("assets/close-normal.svg"); }
     .titlebar .titlebutton.close:hover {
-      background: url("assets/close-hover.svg") 100% 100%; }
+      background-image: url("assets/close-hover.svg"); }
     .titlebar .titlebutton.close:active {
-      background: url("assets/close-active.svg") 100% 100%; }
+      background-image: url("assets/close-active.svg"); }
     .titlebar .titlebutton.close:backdrop {
-      background: url("assets/close-backdrop.svg") 100% 100%; }
+      background-image: url("assets/close-backdrop.svg"); }
   .titlebar .titlebutton.minimize {
-    background: url("assets/minimize-normal.svg") 100% 100%; }
+    background-image: url("assets/minimize-normal.svg"); }
     .titlebar .titlebutton.minimize:hover {
-      background: url("assets/minimize-hover.svg") 100% 100%; }
+      background-image: url("assets/minimize-hover.svg"); }
     .titlebar .titlebutton.minimize:active {
-      background: url("assets/minimize-active.svg") 100% 100%; }
+      background-image: url("assets/minimize-active.svg"); }
     .titlebar .titlebutton.minimize:backdrop {
-      background: url("assets/minimize-backdrop.svg") 100% 100%; }
+      background-image: url("assets/minimize-backdrop.svg"); }
   .titlebar .titlebutton.maximize {
-    background: url("assets/maximize-normal.svg") 100% 100%; }
+    background-image: url("assets/maximize-normal.svg"); }
     .titlebar .titlebutton.maximize:hover {
-      background: url("assets/maximize-hover.svg") 100% 100%; }
+      background-image: url("assets/maximize-hover.svg"); }
     .titlebar .titlebutton.maximize:active {
-      background: url("assets/maximize-active.svg") 100% 100%; }
+      background-image: url("assets/maximize-active.svg"); }
     .titlebar .titlebutton.maximize:backdrop {
-      background: url("assets/maximize-backdrop.svg") 100% 100%; }
+      background-image: url("assets/maximize-backdrop.svg"); }
   .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
     border-radius: 0; }
 
