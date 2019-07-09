@@ -324,7 +324,7 @@ while [ "$1" != "" ]; do
   shift
 done
 
-[ -z "${QUEUE[@]}" ] && fail 'Missing target'
+[ ${#QUEUE[@]} -eq 0 ] && fail 'Missing target'
 
 for dir in ${QUEUE[@]}; do
   # ignore base theme
