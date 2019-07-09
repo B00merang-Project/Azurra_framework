@@ -1,0 +1,24 @@
+@mixin iconview() {
+  iconview {
+    &:selected, &:selected:focus, & text:selected, & text selection, & text:selected:focus, & text selection:focus {
+      border-width: 1px;
+      border-style: solid;
+      border-color: $selected_bg_color;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+    }
+
+    &:selected:backdrop, & selection:backdrop, & text:selected:backdrop, & text selection:backdrop {
+      color: $unfocused_selected_fg_color;
+      background-color: $unfocused_selected_bg_color;
+    }
+  }
+
+  rubberband, flowbox rubberband, treeview.view rubberband, .content-view rubberband, .rubberband, view rubberband, .view.rubberband, .rubberband {
+    border-width: 1px;
+    border-style: solid;
+    border-color: $selected_bg_color;
+    background: none;
+    background-color: gtkalpha($selected_bg_color, 0.3);
+  }
+}

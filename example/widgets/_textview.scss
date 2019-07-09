@@ -1,0 +1,13 @@
+@mixin textview() {
+  textview {
+    color: $text_color;
+    background-color: $base_color;
+
+    text {
+      &:selected, selection, &:selected:focus, selection:focus {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
+      }
+    }
+  }
+}

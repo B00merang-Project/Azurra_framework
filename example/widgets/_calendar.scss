@@ -1,0 +1,33 @@
+@mixin calendar() {
+  calendar {
+    padding: 2px;
+    border-width: 1px;
+    border-radius: $roundness;
+    border-style: solid;
+    border-color: $borders;
+    color: $fg_color;
+
+    &.header {
+      border: none;
+      color: $selected_bg_color;
+    }
+
+    &.button {
+      color: $selected_bg_color;
+    }
+
+    &:selected {
+      border-radius: 0;
+      color: $selected_fg_color; 
+      background-color: $selected_bg_color;
+    }
+
+    &:indeterminate {
+      color: gtkalpha(currentColor, 0.55);
+    }
+
+    &.highlight {
+      color: $selected_bg_color;
+    }
+  }
+}

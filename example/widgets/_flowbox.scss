@@ -1,0 +1,12 @@
+@mixin flowbox() {
+  flowbox flowboxchild {
+    padding: 3px;
+    border-radius: $roundness;
+
+    &:selected {
+      outline-offset: -2px;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+    }
+  }
+}
