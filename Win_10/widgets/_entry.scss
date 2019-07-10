@@ -7,7 +7,7 @@
     border-radius: $entry_radius;
     color: $text_color;
     caret-color: currentColor;
-    background-color: $bg_color;
+    background-color: $base_color;
 
     &:active, &:focus {
       border-color: shade($selected_bg_color, 0.6);
@@ -21,22 +21,22 @@
     &:disabled {
       color: $disabled_text_color;
       border-color: gtkmix($bg_color, $disabled_bg_color, 0.6);
-      background-color: gtkmix($bg_color, $disabled_bg_color, 0.1);
+      background-color: gtkmix($base_color, $disabled_bg_color, 0.1);
 
       &:backdrop {
         color: $unfocused_disabled_fg_color;
         border-color: $unfocused_borders;
-        background-color: $unfocused_disabled_bg_color;
+        background-color: $unfocused_disabled_base_color;
       }
     }
 
     &.read-only {
-      background-color: gtkmix($bg_color, $disabled_bg_color, 0.1);
+      background-color: gtkmix($base_color, $disabled_bg_color, 0.1);
     }
 
     &:backdrop {
       color: $unfocused_fg_color;
-      background-color: $unfocused_bg_color;
+      background-color: $unfocused_base_color;
     }
 
     > image {
