@@ -34,6 +34,10 @@ replace_in_base_files() {
   [ -f $1/gtk-dark.scss ] && str_replace_in 'palette' 'variant' $1/gtk-dark.scss
 }
 
+add_config() {
+  echo 'can_render=false' >>$1/theme.conf
+}
+
 invoke() {
   replace_in_imports $@
 }
