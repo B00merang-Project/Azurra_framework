@@ -53,10 +53,6 @@
   separator, separator:backdrop {
     background-color: transparent;
   }
-  
-  paned &.left, paned &.right, paned &.left:dir(rtl), paned &:dir(rtl), paned &:dir(ltr), paned & {
-    border: none;
-  }
 }
 
 @mixin sidebar() {
@@ -77,6 +73,8 @@
   .caja-navigation-window .caja-side-pane {
     @include common_sidebar();
   }
+  
+  .nautilus-window .sidebar row { margin-top: -2px; }
 
   stacksidebar row {
     padding: 10px 4px;

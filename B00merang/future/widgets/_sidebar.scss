@@ -14,10 +14,12 @@
       
       &:active {
         color: gtkshade($selected_bg_color, 0.7);
+        background-image: none;
       }
       
       &:selected {
         color: gtkshade($selected_bg_color, 0.85);
+        background-image: none;
         
         &:hover {
         }
@@ -42,10 +44,6 @@
   
   separator, separator:backdrop {
     background-color: transparent;
-  }
-  
-  paned &.left, paned &.right, paned &.left:dir(rtl), paned &:dir(rtl), paned &:dir(ltr), paned & {
-    border: none;
   }
 }
 
