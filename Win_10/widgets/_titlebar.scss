@@ -147,12 +147,14 @@
     min-height: 32px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    box-shadow: 0 1px $borders;
+    border-bottom: 1px solid $borders;
+    
+    headerbar { border-bottom: none; }    // no inset borders
 
     &:backdrop {
       background-color: $unfocused_bg_color;
       color: $unfocused_fg_color;
-      box-shadow: 0 1px $unfocused_borders;
+      border-bottom-color: $unfocused_borders;
     }
   }
 }

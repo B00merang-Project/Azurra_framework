@@ -2553,12 +2553,14 @@ messagedialog {
   color: #FFFFFF;
   background-color: #3B3B3B;
   background-image: linear-gradient(to bottom, shade(#3B3B3B, 0.965), shade(#3B3B3B, 0.9));
-  box-shadow: 0 1px shade(shade(#3B3B3B, 0.9), 0.9); }
+  border-bottom: 1px solid shade(shade(#3B3B3B, 0.9), 0.9); }
+  .titlebar .titlebar, .titlebar:not(headerbar) .titlebar, headerbar.default-decoration .titlebar, .csd headerbar.default-decoration .titlebar, .default-decoration.titlebar:not(headerbar) .titlebar, .csd .default-decoration.titlebar:not(headerbar) .titlebar {
+    border-bottom: none; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: #8C8C8C;
     background-image: none;
     background-color: #545454;
-    box-shadow: 0 1px shade(#545454, 0.9); }
+    border-color: shade(#545454, 0.9); }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;

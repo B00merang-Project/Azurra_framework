@@ -88,10 +88,14 @@
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
     background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 0.95), gtkshade($titlebar_bg_color, 0.85));
+    border-bottom: 1px solid gtkshade($titlebar_bg_color, 0.75);
+    
+    headerbar { border-bottom: none; }    // no inset borders
 
     &:backdrop {
       color: $unfocused_fg_color;
       background-image: linear-gradient(to bottom, gtkshade($unfocused_bg_color, 1.05), gtkshade($unfocused_bg_color, 0.95));
+      border-bottom-color: $unfocused_borders;
       background-color: $unfocused_bg_color;
     }
   }

@@ -13,16 +13,16 @@ $disabled_base_color : $disabled_bg_color;
 $disabled_text_color : $disabled_fg_color;
 
 // Backdrop state colors
-$unfocused_bg_color : #E4E4E4;
-$unfocused_fg_color : #8C8C8C;
+$unfocused_bg_color : $bg_color;
+$unfocused_fg_color : gtkalpha($fg_color, 0.8);
 $unfocused_base_color : $base_color;
-$unfocused_text_color : #8C8C8C;
-$unfocused_selected_bg_color : gtkshade($unfocused_bg_color, 0.7);
-$unfocused_selected_fg_color : gtkshade($unfocused_text_color, 0.8);
+$unfocused_text_color : gtkalpha($text_color, 0.8);
+$unfocused_selected_bg_color : $selected_bg_color;
+$unfocused_selected_fg_color : $selected_fg_color;
 $unfocused_selected_base_color : $selected_base_color;
 $unfocused_selected_text_color : $selected_text_color;
-$unfocused_disabled_bg_color : gtkmix($fg_color, $bg_color, 0.98);
-$unfocused_disabled_fg_color : gtkmix($fg_color, $bg_color, 0.75);
+$unfocused_disabled_bg_color : $disabled_bg_color;
+$unfocused_disabled_fg_color : $disabled_fg_color;
 $unfocused_disabled_base_color : $unfocused_disabled_bg_color;
 $unfocused_disabled_text_color : $unfocused_disabled_fg_color;
 

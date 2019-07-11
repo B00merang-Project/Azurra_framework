@@ -6,17 +6,12 @@
 @mixin headerbar() {
   headerbar, headerbar:not(.titlebar) {
     padding: 4px 8px;
-    border-width: 0;
-    border-style: solid;
-    border-color: gtkmix($borders, $headerbar_bg_color, 0.5);
-    border-bottom-width: 1px;
-    box-shadow: 0 1px $borders;
+    border: none;
     color: $headerbar_fg_color;
     background-color: $headerbar_bg_color;
 
     &:backdrop {
       border-color: $unfocused_borders;
-      color: $unfocused_fg_color;
       background-color: $unfocused_bg_color;
     }
 

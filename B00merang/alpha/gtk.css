@@ -1635,14 +1635,10 @@ colorchooser #add-color-button {
 
 headerbar, headerbar:not(.titlebar) {
   padding: 4px 8px;
-  border-width: 0;
-  border-style: solid;
-  border-color: mix(shade(#E6E2E6, 0.9), #E6E2E6, 0.5);
-  border-bottom-width: 1px;
+  border: none;
   color: #000000;
   background-color: #E6E2E6; }
   headerbar:backdrop, headerbar:not(.titlebar):backdrop {
-    border-color: shade(#E6E2E6, 0.9);
     color: #000000;
     background-color: #E6E2E6; }
   .titlebar headerbar, .titlebar headerbar:backdrop, .titlebar headerbar:not(.titlebar), .titlebar headerbar:not(.titlebar):backdrop {
@@ -2544,9 +2540,13 @@ messagedialog.csd .dialog-action-area button {
 .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
   min-height: 30px;
   color: #000000;
-  background-color: #E6E2E6; }
+  background-color: #E6E2E6;
+  border-bottom: 1px solid shade(#E6E2E6, 0.9); }
+  .titlebar headerbar, .titlebar:not(headerbar) headerbar, headerbar.default-decoration headerbar, .csd headerbar.default-decoration headerbar, .default-decoration.titlebar:not(headerbar) headerbar, .csd .default-decoration.titlebar:not(headerbar) headerbar {
+    border-bottom: none; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     background-color: #E6E2E6;
+    border-bottom-color: shade(#E6E2E6, 0.9);
     color: #000000; }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {

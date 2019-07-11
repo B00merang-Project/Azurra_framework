@@ -17,14 +17,14 @@
   outline-width: 1px;
   outline-offset: -3px;
   outline-style: dashed;
-  outline-color: shade(#000000, 0.75);
+  outline-color: shade(#FFFFFF, 0.35);
   -gtk-outline-radius: 0; }
 
 .background {
   color: #FFFFFF;
   background-color: alpha(#000000, 0.999); }
   .background:backdrop {
-    color: #FFFFFF;
+    color: alpha(#FFFFFF, 0.8);
     background-color: #000000; }
 
 *:disabled {
@@ -197,7 +197,7 @@ button {
     button:disabled:backdrop {
       color: mix(#FFFFFF, #000000, 0.5); }
   button:backdrop {
-    color: #FFFFFF; }
+    color: alpha(#FFFFFF, 0.8); }
 button.flat {
   border-color: transparent;
   border-radius: 4px;
@@ -223,7 +223,7 @@ button.flat {
   button.flat:backdrop {
     border-color: transparent;
     background-color: transparent;
-    color: #FFFFFF; }
+    color: alpha(#FFFFFF, 0.8); }
 
 checkbutton.text-button, radiobutton.text-button {
   padding: 4px;
@@ -455,12 +455,12 @@ entry {
     color: mix(#FFFFFF, #000000, 0.5); }
     entry:disabled:backdrop {
       color: mix(#FFFFFF, #000000, 0.5);
-      border-color: shade(#FFFFFF, 0.1);
+      border-color: shade(alpha(#FFFFFF, 0.8), 0.1);
       background-color: mix(#FFFFFF, #000000, 0.95); }
   entry.read-only {
     background-color: mix(#000000, mix(#FFFFFF, #000000, 0.95), 0.1); }
   entry:backdrop {
-    color: #FFFFFF;
+    color: alpha(#FFFFFF, 0.8);
     background-color: #1F1F1F; }
   entry > image.left {
     padding-right: 5px; }
@@ -503,7 +503,7 @@ list {
     list row:active {
       background-color: mix(#000000, #FFFFFF, 0.2); }
     list row:backdrop {
-      color: #FFFFFF; }
+      color: alpha(#FFFFFF, 0.8); }
     list row:selected, list row:selected:hover, list row:selected:focus {
       border: none;
       color: #FFFFFF;
@@ -818,7 +818,7 @@ menubar, .menubar {
   background-color: #000000;
   color: #FFFFFF; }
   menubar:backdrop, .menubar:backdrop {
-    color: #FFFFFF;
+    color: alpha(#FFFFFF, 0.8);
     background-color: #000000; }
 
 menubar > menuitem, .menubar > menuitem {
@@ -833,7 +833,7 @@ menubar > menuitem, .menubar > menuitem {
     color: mix(#FFFFFF, #000000, 0.5);
     background-color: transparent; }
   menubar > menuitem:backdrop, .menubar > menuitem:backdrop {
-    color: #FFFFFF;
+    color: alpha(#FFFFFF, 0.8);
     background-color: transparent; }
 
 menu menuitem, .menu menuitem {
@@ -895,8 +895,8 @@ popover.osd {
     border-radius: 0;
     background-color: transparent; }
 popover:backdrop {
-  border-color: shade(#FFFFFF, 0.1);
-  color: #FFFFFF;
+  border-color: shade(alpha(#FFFFFF, 0.8), 0.1);
+  color: alpha(#FFFFFF, 0.8);
   background-color: #000000;
   box-shadow: none; }
 
@@ -953,7 +953,7 @@ notebook {
       border-color: #3478F5;
       background-color: #3478F5; }
       notebook tab:checked:backdrop {
-        border-color: shade(#FFFFFF, 0.1);
+        border-color: shade(alpha(#FFFFFF, 0.8), 0.1);
         background-color: #3478F5; }
     notebook tab:backdrop {
       background-color: transparent; }
@@ -1021,7 +1021,7 @@ paned > separator {
   color: transparent;
   background-color: shade(#FFFFFF, 0.1); }
   paned > separator:backdrop {
-    background-color: shade(#FFFFFF, 0.1); }
+    background-color: shade(alpha(#FFFFFF, 0.8), 0.1); }
   paned > separator:selected {
     background-color: shade(#FFFFFF, 0.1); }
 paned .sidebar.left, paned .sidebar.right, paned .sidebar.left:dir(rtl), paned .sidebar:dir(rtl), paned .sidebar:dir(ltr), paned .sidebar {
@@ -1116,7 +1116,7 @@ progressbar {
     border-radius: 10px;
     background-color: mix(#000000, #FFFFFF, 0.1); }
     progressbar trough:backdrop {
-      background-color: mix(#FFFFFF, #000000, 0.95); }
+      background-color: mix(alpha(#FFFFFF, 0.8), #000000, 0.95); }
   progressbar.horizontal trough, progressbar.horizontal progress {
     min-height: 2px; }
   progressbar.vertical trough, progressbar.vertical progress {
@@ -1175,9 +1175,9 @@ scale {
     scale fill:disabled, scale trough:disabled {
       background-color: mix(#000000, #FFFFFF, 0.05); }
       scale fill:disabled:backdrop, scale trough:disabled:backdrop {
-        background-color: mix(#FFFFFF, #000000, 0.95); }
+        background-color: mix(alpha(#FFFFFF, 0.8), #000000, 0.95); }
     scale fill:backdrop, scale trough:backdrop {
-      background-color: mix(#FFFFFF, #000000, 0.95); }
+      background-color: mix(alpha(#FFFFFF, 0.8), #000000, 0.95); }
   scale highlight {
     border: none;
     border-radius: 4px;
@@ -1242,7 +1242,7 @@ scale {
         background-color: mix(#FFFFFF, #000000, 0.95);
         -gtk-icon-shadow: none; }
     scale slider:backdrop {
-      color: #FFFFFF;
+      color: alpha(#FFFFFF, 0.8);
       background-color: #1F1F1F; }
   scale value {
     color: alpha(currentColor, 0.55); }
@@ -1340,7 +1340,7 @@ separator {
   min-height: 1px;
   background-color: shade(#FFFFFF, 0.1); }
   separator:backdrop {
-    background-color: shade(#FFFFFF, 0.1); }
+    background-color: shade(alpha(#FFFFFF, 0.8), 0.1); }
   button separator {
     margin: 4px 1px; }
   .sidebar view separator, view separator, separator .separator, separator {
@@ -1348,41 +1348,41 @@ separator {
     background-color: shade(#FFFFFF, 0.1); }
     .sidebar view separator:backdrop, view separator:backdrop, separator .separator:backdrop, separator:backdrop {
       border: none;
-      background-color: shade(#FFFFFF, 0.1); }
+      background-color: shade(alpha(#FFFFFF, 0.8), 0.1); }
   .primary-toolbar separator, toolbar separator {
     background-color: mix(shade(#FFFFFF, 0.1), #000000, 0.5); }
     .primary-toolbar separator:backdrop, toolbar separator:backdrop {
-      background-color: shade(#FFFFFF, 0.1); }
+      background-color: shade(alpha(#FFFFFF, 0.8), 0.1); }
   headerbar separator {
     -GtkWidget-window-dragging: true;
     margin-top: 4px;
     margin-bottom: 4px;
     background-color: mix(shade(#FFFFFF, 0.1), #000000, 0.5); }
     headerbar separator:backdrop {
-      background-color: shade(#FFFFFF, 0.1); }
+      background-color: shade(alpha(#FFFFFF, 0.8), 0.1); }
   .titlebar separator, .titlebar:not(headerbar) > separator, .titlebar separator.titlebutton, .titlebar:not(headerbar) > separator.titlebutton {
     -GtkWidget-window-dragging: true;
     background-color: mix(shade(#FFFFFF, 0.1), #000000, 0.5); }
     .titlebar separator:backdrop, .titlebar:not(headerbar) > separator:backdrop, .titlebar separator.titlebutton:backdrop, .titlebar:not(headerbar) > separator.titlebutton:backdrop {
-      background-color: shade(#FFFFFF, 0.1); }
+      background-color: shade(alpha(#FFFFFF, 0.8), 0.1); }
   headerbar separator.titlebutton, .titlebar:not(headerbar) separator.titlebutton {
     min-width: 1px;
     min-height: 1px;
     background-color: mix(shade(#FFFFFF, 0.1), #000000, 0.5); }
     headerbar separator.titlebutton:backdrop, .titlebar:not(headerbar) separator.titlebutton:backdrop {
-      background-color: shade(#FFFFFF, 0.1); }
+      background-color: shade(alpha(#FFFFFF, 0.8), 0.1); }
   .primary-toolbar button separator, toolbar button separator, .primary-toolbar:not(.libreoffice-toolbar) separator {
     border-color: shade(#FFFFFF, 0.1); }
     .primary-toolbar button separator:backdrop, toolbar button separator:backdrop, .primary-toolbar:not(.libreoffice-toolbar) separator:backdrop {
-      border-color: shade(#FFFFFF, 0.1); }
+      border-color: shade(alpha(#FFFFFF, 0.8), 0.1); }
   headerbar button separator {
     border-color: mix(shade(#FFFFFF, 0.1), #000000, 0.5); }
     headerbar button separator:backdrop {
-      border-color: shade(#FFFFFF, 0.1); }
+      border-color: shade(alpha(#FFFFFF, 0.8), 0.1); }
   .titlebutton button separator, .titlebutton separator.titlebutton {
     border-color: mix(shade(#FFFFFF, 0.1), #000000, 0.5); }
     .titlebutton button separator:backdrop, .titlebutton separator.titlebutton:backdrop {
-      border-color: shade(#FFFFFF, 0.1); }
+      border-color: shade(alpha(#FFFFFF, 0.8), 0.1); }
   menuitem separator {
     border-width: 1px;
     border-style: none;
@@ -1478,8 +1478,8 @@ switch {
       border-color: mix(#FFFFFF, #000000, 0.95);
       background-color: mix(#FFFFFF, #000000, 0.95); }
   switch:backdrop {
-    border-color: shade(#FFFFFF, 0.1);
-    background-color: shade(#FFFFFF, 0.1); }
+    border-color: shade(alpha(#FFFFFF, 0.8), 0.1);
+    background-color: shade(alpha(#FFFFFF, 0.8), 0.1); }
   switch slider {
     min-width: 20px;
     min-height: 20px;
@@ -1583,8 +1583,8 @@ headerbar, headerbar:not(.titlebar) {
   color: #3478F5;
   background-color: #000000; }
   headerbar:backdrop, headerbar:not(.titlebar):backdrop {
-    border-color: shade(#FFFFFF, 0.1);
-    color: #FFFFFF;
+    border-color: shade(alpha(#FFFFFF, 0.8), 0.1);
+    color: alpha(#FFFFFF, 0.8);
     background-color: #000000; }
   .titlebar headerbar, .titlebar headerbar:backdrop, .titlebar headerbar:not(.titlebar), .titlebar headerbar:not(.titlebar):backdrop {
     background-color: transparent; }
@@ -1624,7 +1624,7 @@ headerbar, headerbar:not(.titlebar) {
     headerbar button:backdrop, headerbar:not(.titlebar) button:backdrop {
       border-color: transparent;
       background-color: transparent;
-      color: #FFFFFF; }
+      color: alpha(#FFFFFF, 0.8); }
   headerbar entry, headerbar:not(.titlebar) entry {
     padding: 4px 8px; }
 
@@ -1634,7 +1634,7 @@ toolbar {
   color: #3478F5;
   background-color: #000000; }
   toolbar:backdrop {
-    color: #FFFFFF;
+    color: alpha(#FFFFFF, 0.8);
     background-color: #000000; }
   toolbar:disabled {
     color: mix(#FFFFFF, #000000, 0.5);
@@ -1664,7 +1664,7 @@ toolbar {
     toolbar button.flat:backdrop {
       border-color: transparent;
       background-color: transparent;
-      color: #FFFFFF; }
+      color: alpha(#FFFFFF, 0.8); }
   toolbar menubar {
     -GtkToolbar-button-relief: normal; }
 
@@ -1678,7 +1678,7 @@ toolbar {
   background-color: #000000; }
   .primary-toolbar:backdrop {
     border-color: #000000;
-    color: #FFFFFF;
+    color: alpha(#FFFFFF, 0.8);
     background-color: #000000; }
   .primary-toolbar button, .primary-toolbar .raised button {
     padding: 4px 8px;
@@ -1707,7 +1707,7 @@ toolbar {
       .primary-toolbar button:disabled:backdrop, .primary-toolbar .raised button:disabled:backdrop {
         color: mix(#FFFFFF, #000000, 0.5); }
     .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop {
-      color: #FFFFFF; }
+      color: alpha(#FFFFFF, 0.8); }
 
 .inline-toolbar toolbar {
   -GtkToolbar-button-relief: normal;
@@ -1747,7 +1747,7 @@ toolbar {
       .inline-toolbar toolbar button:disabled:backdrop {
         color: mix(#FFFFFF, #000000, 0.5); }
     .inline-toolbar toolbar button:backdrop {
-      color: #FFFFFF; }
+      color: alpha(#FFFFFF, 0.8); }
 
 .linked button, .linked .raised button, .linked button:hover, .linked .raised button:hover, .inline-toolbar .linked button, .inline-toolbar .linked .raised button, .inline-toolbar .linked button:hover, .inline-toolbar .linked .raised button:hover {
   border-color: #1F1F1F;
@@ -2109,8 +2109,8 @@ actionbar {
   color: #FFFFFF;
   background-color: #000000; }
   actionbar:backdrop {
-    border-color: shade(#FFFFFF, 0.1);
-    color: #FFFFFF;
+    border-color: shade(alpha(#FFFFFF, 0.8), 0.1);
+    color: alpha(#FFFFFF, 0.8);
     background-color: #000000; }
   actionbar button.text-button {
     padding: 4px; }
@@ -2280,7 +2280,7 @@ button.destructive-action {
     border-color: mix(#CC0000, #FFFFFF, 0.3);
     background-color: mix(#CC0000, #FFFFFF, 0.1); }
   button.destructive-action:backdrop {
-    border-color: mix(#CC0000, #FFFFFF, 0.2);
+    border-color: mix(#CC0000, alpha(#FFFFFF, 0.8), 0.2);
     color: mix(#FFFFFF, #CC0000, 0.1);
     background-color: mix(#CC0000, #000000, 0.3); }
 
@@ -2365,7 +2365,7 @@ headerbar.selection-mode, toolbar.selection-mode {
         background-color: mix(#3478F5, #FFFFFF, 0.45); }
     headerbar.selection-mode button:backdrop, toolbar.selection-mode button:backdrop {
       border-color: mix(#3478F5, #FFFFFF, 0.75);
-      color: mix(#3478F5, #FFFFFF, 0.3);
+      color: mix(#3478F5, alpha(#FFFFFF, 0.8), 0.3);
       background-color: mix(#3478F5, #FFFFFF, 0.75); }
   headerbar.selection-mode button.suggested-action, toolbar.selection-mode button.suggested-action {
     border-width: 1px;
@@ -2513,7 +2513,7 @@ messagedialog {
   color: #FFFFFF;
   background-color: #000000; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
-    color: #FFFFFF;
+    color: alpha(#FFFFFF, 0.8);
     background-color: #000000; }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
@@ -2691,7 +2691,7 @@ panel-toplevel.background na-tray-applet {
       #XfceNotifyWindow.osd button:disabled:backdrop {
         color: mix(#FFFFFF, #000000, 0.5); }
     #XfceNotifyWindow.osd button:backdrop {
-      color: #FFFFFF; }
+      color: alpha(#FFFFFF, 0.8); }
 
 .nemo-window .nemo-window-pane widget.entry {
   border: 1px solid;
@@ -2775,7 +2775,7 @@ UnityPanelWidget, .unity-panel {
 /* insensitive text widgets and the like base background color */
 @define-color insensitive_base_color #1F1F1F;
 /* widget text/foreground color on backdrop windows */
-@define-color theme_unfocused_fg_color #FFFFFF;
+@define-color theme_unfocused_fg_color alpha(#FFFFFF, 0.8);
 /* text color for entries, views and content in general on backdrop windows */
 @define-color theme_unfocused_text_color #FFFFFF;
 /* widget base background color on backdrop windows */
@@ -2791,7 +2791,7 @@ UnityPanelWidget, .unity-panel {
 /* widgets main borders color */
 @define-color borders shade(#FFFFFF, 0.1);
 /* widgets main borders color on backdrop windows */
-@define-color unfocused_borders shade(#FFFFFF, 0.1);
+@define-color unfocused_borders shade(alpha(#FFFFFF, 0.8), 0.1);
 /* these are pretty self explicative */
 @define-color warning_color #FF9900;
 @define-color error_color #CC0000;
@@ -2799,7 +2799,7 @@ UnityPanelWidget, .unity-panel {
 /* these colors are exported for the window manager and shouldn't be used in applications,
 read if you used those and something break with a version upgrade you're on your own... */
 @define-color wm_title shade(#FFFFFF, 1.8);
-@define-color wm_unfocused_title #FFFFFF;
+@define-color wm_unfocused_title alpha(#FFFFFF, 0.8);
 @define-color wm_highlight #4C4C4C;
 @define-color wm_borders_edge shade(#FFFFFF, 0.1);
 @define-color wm_bg_a shade(#000000, 1.2);

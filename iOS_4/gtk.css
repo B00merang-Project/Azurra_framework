@@ -1620,17 +1620,12 @@ colorchooser #add-color-button {
 
 headerbar, headerbar:not(.titlebar) {
   padding: 4px 8px;
-  border-width: 0;
-  border-style: solid;
-  border-color: mix(shade(#EDEDED, 0.9), #8699B2, 0.5);
-  border-bottom-width: 1px;
-  box-shadow: 0 1px black;
+  border: none;
   color: #FFFFFF;
   background-color: #8699B2; }
   headerbar:backdrop, headerbar:not(.titlebar):backdrop {
     border-color: shade(#EDEDED, 0.9);
     color: #8C8C8C;
-    box-shadow: 0 1px #8C8C8C;
     background-color: #EDEDED; }
   .titlebar headerbar, .titlebar headerbar:backdrop, .titlebar headerbar:not(.titlebar), .titlebar headerbar:not(.titlebar):backdrop {
     background-color: transparent; }
@@ -2563,11 +2558,15 @@ messagedialog {
   min-height: 30px;
   color: #FFFFFF;
   background-color: #8699B2;
-  background-image: linear-gradient(to bottom, shade(#8699B2, 1.25), shade(#8699B2, 1.01) 50%, shade(#8699B2, 0.97) 51%, shade(#8699B2, 0.92)); }
+  background-image: linear-gradient(to bottom, shade(#8699B2, 1.25), shade(#8699B2, 1.01) 50%, shade(#8699B2, 0.97) 51%, shade(#8699B2, 0.92));
+  border-bottom: 1px solid shade(#8699B2, 0.6); }
+  .titlebar headerbar, .titlebar:not(headerbar) headerbar, headerbar.default-decoration headerbar, .csd headerbar.default-decoration headerbar, .default-decoration.titlebar:not(headerbar) headerbar, .csd .default-decoration.titlebar:not(headerbar) headerbar {
+    border-bottom: none; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: #8C8C8C;
     background-image: linear-gradient(to bottom, shade(#EDEDED, 1.25), shade(#EDEDED, 1.01) 50%, shade(#EDEDED, 0.99) 51%, shade(#EDEDED, 0.95));
-    background-color: #EDEDED; }
+    background-color: #EDEDED;
+    border-color: shade(#EDEDED, 0.7); }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;

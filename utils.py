@@ -157,8 +157,8 @@ def get_children(target, source, widget):
 
 
 def get_subdirs(source: str):
-    return [name for name in os.listdir(source) if
-            os.path.isdir(os.path.join(source, name)) and not name.startswith('.')]
+    return sorted([name for name in os.listdir(source) if
+            os.path.isdir(os.path.join(source, name)) and not name.startswith('.')])
 
 
 def children(target: str, widget: Any):

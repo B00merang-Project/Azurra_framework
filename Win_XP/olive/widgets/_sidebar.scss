@@ -9,26 +9,26 @@
 
       &:hover {
         color: $sidebar_fg_color;
-        background-color: gtkshade($sidebar_bg_color, 0.95);
+        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.15);
       }
       
       &:active {
         color: $sidebar_fg_color;
-        background-color: gtkshade($sidebar_bg_color, 0.9);
+        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.1);
       }
       
       &:selected {
-        color: $sidebar_fg_color;
-        background-color: gtkshade($sidebar_bg_color, 0.8);
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
         
         &:hover {
-          color: $sidebar_fg_color;
-          background-color: gtkshade($sidebar_bg_color, 0.85);
+          color: $selected_fg_color;
+          background-color: gtkmix($selected_bg_color, $selected_fg_color, 0.15);
         }
         
         &:active {
-          color: $sidebar_fg_color;
-          background-color: gtkshade($sidebar_bg_color, 0.75);
+          color: $selected_fg_color;
+          background-color: gtkmix($selected_bg_color, $selected_fg_color, 0.1);
         }
       }
     }

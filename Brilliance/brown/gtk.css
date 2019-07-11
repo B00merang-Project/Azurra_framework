@@ -2452,11 +2452,13 @@ messagedialog.csd .dialog-action-area button {
   min-height: 30px;
   color: #DFDFDF;
   background-color: #454545;
-  box-shadow: 0 1px shade(#454545, 0.85); }
+  border-bottom: 1px shade(#454545, 0.85); }
+  .titlebar headerbar, .titlebar:not(headerbar) headerbar, headerbar.default-decoration headerbar, .csd headerbar.default-decoration headerbar, .default-decoration.titlebar:not(headerbar) headerbar, .csd .default-decoration.titlebar:not(headerbar) headerbar {
+    border-bottom: none; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: alpha(#DFDFDF, 0.8);
     background-color: mix(#454545, #F2F2F2, 0.1);
-    box-shadow: 0 1px shade(#454545, 0.95); }
+    border-bottom-color: shade(#454545, 0.95); }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;

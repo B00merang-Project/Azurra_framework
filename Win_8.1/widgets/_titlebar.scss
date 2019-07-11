@@ -138,10 +138,14 @@
     min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
+    border-bottom: 1px solid gtkshade($titlebar_bg_color, 0.9);
+    
+    headerbar { border-bottom: none; }    // no inset borders
 
     &:backdrop {
-      background-color: gtkshade($unfocused_bg_color, 0.95);
       color: $unfocused_fg_color;
+      background-color: gtkshade($unfocused_bg_color, 0.95);
+      border-bottom-color: gtkshade($unfocused_bg_color, 0.85);
     }
   }
 }

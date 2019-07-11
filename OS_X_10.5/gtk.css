@@ -1657,15 +1657,10 @@ colorchooser #add-color-button {
 
 headerbar, headerbar:not(.titlebar) {
   padding: 4px 8px;
-  border-width: 0;
-  border-style: solid;
-  border-color: mix(shade(#EDEDED, 0.9), #EDEDED, 0.5);
-  border-bottom-width: 1px;
-  box-shadow: 0 1px shade(#EDEDED, 0.9);
+  border: none;
   color: #000000;
   background-color: #EDEDED; }
   headerbar:backdrop, headerbar:not(.titlebar):backdrop {
-    border-color: shade(#EDEDED, 0.9);
     color: #8C8C8C;
     background-color: #EDEDED; }
   .titlebar headerbar, .titlebar headerbar:backdrop, .titlebar headerbar:not(.titlebar), .titlebar headerbar:not(.titlebar):backdrop {
@@ -2623,11 +2618,15 @@ messagedialog {
   min-height: 30px;
   color: #000000;
   background-color: #E0DEE1;
-  background-image: linear-gradient(to bottom, shade(#E0DEE1, 0.9), shade(#E0DEE1, 0.75)); }
+  background-image: linear-gradient(to bottom, shade(#E0DEE1, 0.9), shade(#E0DEE1, 0.75));
+  border-bottom: 1px solid shade(#E0DEE1, 0.65); }
+  .titlebar headerbar, .titlebar:not(headerbar) headerbar, headerbar.default-decoration headerbar, .csd headerbar.default-decoration headerbar, .default-decoration.titlebar:not(headerbar) headerbar, .csd .default-decoration.titlebar:not(headerbar) headerbar {
+    border-bottom: none; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: #8C8C8C;
     background-image: linear-gradient(to bottom, shade(#EDEDED, 1.05), shade(#EDEDED, 0.95));
-    background-color: #EDEDED; }
+    background-color: #EDEDED;
+    border-color: shade(#EDEDED, 0.9); }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;
