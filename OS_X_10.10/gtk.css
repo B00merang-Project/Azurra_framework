@@ -937,7 +937,7 @@ notebook {
   padding: 0; }
   notebook.frame {
     margin: -1px;
-    border-width: 1px;
+    border-width: 0;
     border-style: solid;
     border-color: shade(#F5F5F5, 0.9); }
     notebook.frame > header {
@@ -1580,11 +1580,7 @@ colorchooser #add-color-button {
 
 headerbar, headerbar:not(.titlebar) {
   padding: 4px 8px;
-  border-width: 0;
-  border-style: solid;
-  border-color: mix(shade(#F5F5F5, 0.9), #F5F5F5, 0.5);
-  border-bottom-width: 1px;
-  box-shadow: 0 1px shade(#F5F5F5, 0.9);
+  border: none;
   color: #000000;
   background-color: #F5F5F5; }
   headerbar:backdrop, headerbar:not(.titlebar):backdrop {
@@ -2029,8 +2025,6 @@ filechooser .sidebar, .nautilus-window .sidebar, .nemo-window .sidebar {
     border: none; }
   filechooser .sidebar separator, filechooser .sidebar separator:backdrop, .nautilus-window .sidebar separator, .nautilus-window .sidebar separator:backdrop, .nemo-window .sidebar separator, .nemo-window .sidebar separator:backdrop {
     background-color: transparent; }
-  paned filechooser .sidebar.left, paned filechooser .sidebar.right, paned filechooser .sidebar.left:dir(rtl), paned filechooser .sidebar:dir(rtl), paned filechooser .sidebar:dir(ltr), paned filechooser .sidebar, paned .nautilus-window .sidebar.left, paned .nautilus-window .sidebar.right, paned .nautilus-window .sidebar.left:dir(rtl), paned .nautilus-window .sidebar:dir(rtl), paned .nautilus-window .sidebar:dir(ltr), paned .nautilus-window .sidebar, paned .nemo-window .sidebar.left, paned .nemo-window .sidebar.right, paned .nemo-window .sidebar.left:dir(rtl), paned .nemo-window .sidebar:dir(rtl), paned .nemo-window .sidebar:dir(ltr), paned .nemo-window .sidebar {
-    border: none; }
 
 .caja-navigation-window .caja-side-pane {
   background-color: alpha(#F5F5F5, 0.85); }
@@ -2066,8 +2060,6 @@ filechooser .sidebar, .nautilus-window .sidebar, .nemo-window .sidebar {
     border: none; }
   .caja-navigation-window .caja-side-pane separator, .caja-navigation-window .caja-side-pane separator:backdrop {
     background-color: transparent; }
-  paned .caja-navigation-window .caja-side-pane.left, paned .caja-navigation-window .caja-side-pane.right, paned .caja-navigation-window .caja-side-pane.left:dir(rtl), paned .caja-navigation-window .caja-side-pane:dir(rtl), paned .caja-navigation-window .caja-side-pane:dir(ltr), paned .caja-navigation-window .caja-side-pane {
-    border: none; }
 
 stacksidebar row {
   padding: 10px 4px; }
@@ -2144,6 +2136,9 @@ searchbar {
   border-style: solid;
   border-color: shade(#F5F5F5, 0.9);
   background-color: #F5F5F5; }
+
+.nautilus-window .searchbar-container {
+  margin-top: -1px; }
 
 .app-notification {
   border-style: solid;
@@ -2523,12 +2518,14 @@ messagedialog {
   color: #000000;
   background-color: #F5F5F5;
   background-image: linear-gradient(to bottom, shade(#F5F5F5, 0.965), shade(#F5F5F5, 0.9));
-  box-shadow: 0 1px shade(#F5F5F5, 0.9); }
+  border-bottom: 1px solid shade(shade(#F5F5F5, 0.9), 0.9); }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: #8C8C8C;
     background-image: none;
     background-color: #E4E4E4;
-    box-shadow: 0 1px shade(#E4E4E4, 0.9); }
+    border-bottom-color: shade(#E4E4E4, 0.9); }
+  .titlebar .titlebar, .titlebar:not(headerbar) .titlebar, headerbar.default-decoration .titlebar, .csd headerbar.default-decoration .titlebar, .default-decoration.titlebar:not(headerbar) .titlebar, .csd .default-decoration.titlebar:not(headerbar) .titlebar {
+    border-bottom: none; }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;

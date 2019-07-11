@@ -2139,12 +2139,6 @@ filechooser .sidebar, .nautilus-window .sidebar, .nemo-window .sidebar {
     border: none; }
   filechooser .sidebar separator, filechooser .sidebar separator:backdrop, .nautilus-window .sidebar separator, .nautilus-window .sidebar separator:backdrop, .nemo-window .sidebar separator, .nemo-window .sidebar separator:backdrop {
     background-color: transparent; }
-  paned filechooser .sidebar.left, paned filechooser .sidebar.right, paned filechooser .sidebar.left:dir(rtl), paned filechooser .sidebar:dir(rtl), paned filechooser .sidebar:dir(ltr), paned filechooser .sidebar, paned .nautilus-window .sidebar.left, paned .nautilus-window .sidebar.right, paned .nautilus-window .sidebar.left:dir(rtl), paned .nautilus-window .sidebar:dir(rtl), paned .nautilus-window .sidebar:dir(ltr), paned .nautilus-window .sidebar, paned .nemo-window .sidebar.left, paned .nemo-window .sidebar.right, paned .nemo-window .sidebar.left:dir(rtl), paned .nemo-window .sidebar:dir(rtl), paned .nemo-window .sidebar:dir(ltr), paned .nemo-window .sidebar {
-    border: none; }
-  filechooser .sidebar scrollbar, .nautilus-window .sidebar scrollbar, .nemo-window .sidebar scrollbar {
-    background-color: transparent; }
-    filechooser .sidebar scrollbar slider, filechooser .sidebar scrollbar slider:hover, filechooser .sidebar scrollbar slider:active, filechooser .sidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider, .nautilus-window .sidebar scrollbar slider, .nautilus-window .sidebar scrollbar slider:hover, .nautilus-window .sidebar scrollbar slider:active, .nautilus-window .sidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider, .nemo-window .sidebar scrollbar slider, .nemo-window .sidebar scrollbar slider:hover, .nemo-window .sidebar scrollbar slider:active, .nemo-window .sidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider {
-      background-color: alpha(#000000, 0.3); }
 
 .caja-navigation-window .caja-side-pane {
   background-color: #FFFFFF; }
@@ -2175,12 +2169,6 @@ filechooser .sidebar, .nautilus-window .sidebar, .nemo-window .sidebar {
     border: none; }
   .caja-navigation-window .caja-side-pane separator, .caja-navigation-window .caja-side-pane separator:backdrop {
     background-color: transparent; }
-  paned .caja-navigation-window .caja-side-pane.left, paned .caja-navigation-window .caja-side-pane.right, paned .caja-navigation-window .caja-side-pane.left:dir(rtl), paned .caja-navigation-window .caja-side-pane:dir(rtl), paned .caja-navigation-window .caja-side-pane:dir(ltr), paned .caja-navigation-window .caja-side-pane {
-    border: none; }
-  .caja-navigation-window .caja-side-pane scrollbar {
-    background-color: transparent; }
-    .caja-navigation-window .caja-side-pane scrollbar slider, .caja-navigation-window .caja-side-pane scrollbar slider:hover, .caja-navigation-window .caja-side-pane scrollbar slider:active, .caja-navigation-window .caja-side-pane scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider {
-      background-color: alpha(#000000, 0.3); }
 
 stacksidebar row {
   padding: 10px 4px; }
@@ -2260,6 +2248,9 @@ searchbar {
   border-style: solid;
   border-color: shade(#EEF2FB, 0.9);
   background-color: #EEF2FB; }
+
+.nautilus-window .searchbar-container {
+  margin-top: -1px; }
 
 .app-notification {
   border-style: solid;

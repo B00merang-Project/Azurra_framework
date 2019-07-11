@@ -1478,10 +1478,7 @@ colorchooser #add-color-button {
 
 headerbar, headerbar:not(.titlebar) {
   padding: 4px 8px;
-  border-width: 0;
-  border-style: solid;
-  border-color: mix(shade(#FFFFFF, 0.9), #FFFFFF, 0.5);
-  border-bottom-width: 1px;
+  border: none;
   color: #000000;
   background-color: #FFFFFF; }
   headerbar:backdrop, headerbar:not(.titlebar):backdrop {
@@ -1775,8 +1772,6 @@ filechooser .sidebar, .nautilus-window .sidebar, .nemo-window .sidebar {
     border: none; }
   filechooser .sidebar separator, filechooser .sidebar separator:backdrop, .nautilus-window .sidebar separator, .nautilus-window .sidebar separator:backdrop, .nemo-window .sidebar separator, .nemo-window .sidebar separator:backdrop {
     background-color: transparent; }
-  paned filechooser .sidebar.left, paned filechooser .sidebar.right, paned filechooser .sidebar.left:dir(rtl), paned filechooser .sidebar:dir(rtl), paned filechooser .sidebar:dir(ltr), paned filechooser .sidebar, paned .nautilus-window .sidebar.left, paned .nautilus-window .sidebar.right, paned .nautilus-window .sidebar.left:dir(rtl), paned .nautilus-window .sidebar:dir(rtl), paned .nautilus-window .sidebar:dir(ltr), paned .nautilus-window .sidebar, paned .nemo-window .sidebar.left, paned .nemo-window .sidebar.right, paned .nemo-window .sidebar.left:dir(rtl), paned .nemo-window .sidebar:dir(rtl), paned .nemo-window .sidebar:dir(ltr), paned .nemo-window .sidebar {
-    border: none; }
   filechooser .sidebar scrollbar, .nautilus-window .sidebar scrollbar, .nemo-window .sidebar scrollbar {
     background-color: transparent; }
     filechooser .sidebar scrollbar slider, filechooser .sidebar scrollbar slider:hover, filechooser .sidebar scrollbar slider:active, filechooser .sidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider, .nautilus-window .sidebar scrollbar slider, .nautilus-window .sidebar scrollbar slider:hover, .nautilus-window .sidebar scrollbar slider:active, .nautilus-window .sidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider, .nemo-window .sidebar scrollbar slider, .nemo-window .sidebar scrollbar slider:hover, .nemo-window .sidebar scrollbar slider:active, .nemo-window .sidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider {
@@ -1814,8 +1809,6 @@ filechooser .sidebar, .nautilus-window .sidebar, .nemo-window .sidebar {
     border: none; }
   .caja-navigation-window .caja-side-pane separator, .caja-navigation-window .caja-side-pane separator:backdrop {
     background-color: transparent; }
-  paned .caja-navigation-window .caja-side-pane.left, paned .caja-navigation-window .caja-side-pane.right, paned .caja-navigation-window .caja-side-pane.left:dir(rtl), paned .caja-navigation-window .caja-side-pane:dir(rtl), paned .caja-navigation-window .caja-side-pane:dir(ltr), paned .caja-navigation-window .caja-side-pane {
-    border: none; }
   .caja-navigation-window .caja-side-pane scrollbar {
     background-color: transparent; }
     .caja-navigation-window .caja-side-pane scrollbar slider, .caja-navigation-window .caja-side-pane scrollbar slider:hover, .caja-navigation-window .caja-side-pane scrollbar slider:active, .caja-navigation-window .caja-side-pane scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider {
@@ -1896,6 +1889,9 @@ searchbar {
   border-style: solid;
   border-color: shade(#FFFFFF, 0.9);
   background-color: #FFFFFF; }
+
+.nautilus-window .searchbar-container {
+  margin-top: -1px; }
 
 .app-notification {
   border-style: solid;
@@ -2149,7 +2145,7 @@ decoration {
   box-shadow: 8px 8px 10px 0 alpha(#000000, 0.3);
   margin: 10px; }
   decoration:backdrop {
-    box-shadow: 8px 8px 10px 0 transparent, 0 5px 5px 0 alpha(#000000, 0.2); }
+    box-shadow: 8px 8px 10px 0 transparent, 5px 5px 5px 0 alpha(#000000, 0.2); }
   .fullscreen decoration, .tiled decoration {
     border-radius: 0; }
   .popup decoration {
@@ -2204,7 +2200,7 @@ messagedialog {
       border-bottom-right-radius: 4px; }
 
 .titlebar {
-  border-bottom: none;
+  border-bottom: 1px solid shade(#FFFFFF, 0.9);
   border-radius: 0px 0px 0px 0px; }
   .titlebar .title {
     padding-left: 12px;
@@ -2226,10 +2222,14 @@ messagedialog {
 .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
   min-height: 30px;
   color: #000000;
-  background-color: #FFFFFF; }
+  background-color: #FFFFFF;
+  border-bottom: 1px solid shade(#FFFFFF, 0.9); }
+  .titlebar .titlebar, .titlebar:not(headerbar) .titlebar, headerbar.default-decoration .titlebar, .csd headerbar.default-decoration .titlebar, .default-decoration.titlebar:not(headerbar) .titlebar, .csd .default-decoration.titlebar:not(headerbar) .titlebar {
+    border-bottom: none; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     background-color: #FFFFFF;
-    color: #000000; }
+    color: #000000;
+    border-bottom-color: shade(#FFFFFF, 0.9); }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;
