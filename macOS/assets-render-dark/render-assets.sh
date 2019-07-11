@@ -13,21 +13,6 @@ do
     -g|--gtk-2.0)
       HIDPI=0
     ;;
-    -c|--clear)
-      for i in *.svg
-      do
-        extension="${i##*.}"
-        name=${i%".$extension"}
-        echo $ASSETS_DIR
-        rm $ASSETS_DIR/$name.png
-        
-        if [ -f $ASSETS_DIR/$name@2.png ]; then
-          rm $ASSETS_DIR/$name@2.png
-        fi
-      done
-
-      exit 0
-    ;;
   esac
 done
 
