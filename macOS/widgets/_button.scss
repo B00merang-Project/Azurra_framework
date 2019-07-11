@@ -83,11 +83,13 @@
 
     &:active, &:checked {
       color: $fg;
+      border-color: gtkshade($br, 0.9);
       background-image: none;
       background-color: gtkshade($bg, 0.5);
       
       &:backdrop {
         color: $unfocused_selected_fg_color;
+        border-color: gtkshade($unfocused_bg_color, 0.85);
         background-color: gtkshade($unfocused_selected_bg_color, 0.6);
       }
     }
