@@ -18,11 +18,6 @@
       color: gtkalpha(currentColor, 0.7);
     }
     
-    // otherwise button is not very visible
-    button, button.flat {
-      margin-bottom: 2px;
-    }
-
     .titlebutton {
       &.close, &.maximize, &.minimize, &:not(separator) {
         padding: 0;
@@ -68,12 +63,16 @@
     background-color: $titlebar_bg_color;
     background-size: 100% 3px;
     background-image: linear-gradient(to bottom, transparent 35%, $borders 40%, $borders 64%, transparent 85%);
-    box-shadow: inset 0 0 0 4px $titlebar_bg_color;
-
+    box-shadow: inset 0 0 0 3px $titlebar_bg_color;
+    border-bottom: 1px solid $borders;
+    
+    .titlebar { border-bottom: none; }    // no double borders on tweak tool
+    
     &:backdrop {
       color: $unfocused_fg_color;
       background-color: $unfocused_bg_color;
       background-image: none;
+      border-color: $unfocused_borders;
     }
   }
 }

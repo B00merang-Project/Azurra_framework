@@ -1,6 +1,6 @@
 @mixin titlebar() {
   .titlebar {
-    border-bottom: none;
+    border-bottom: 1px solid $borders;
     border-radius: $csd_radius $csd_radius 0px 0px;
 
     .title {
@@ -36,10 +36,14 @@
     min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
+    border-bottom: 1px solid $borders;
+    
+    .titlebar { border-bottom: none; }    // no double borders on tweak tool
 
     &:backdrop {
       background-color: $unfocused_bg_color;
       color: $unfocused_fg_color;
+      border-bottom-color: $unfocused_borders;
     }
   }
 }
