@@ -284,7 +284,7 @@ just_render() {
   [ -d 'assets-render-dark' ] && cd 'assets-render-dark' && ./render-assets.sh && cd ..
   [ -d 'assets-render-light' ] && cd 'assets-render-light' && ./render-assets.sh && cd ..
   
-  # deploy
+  # local deploy
   cp -R 'assets-render/assets/'* 'assets'
   [ -d 'assets-render-dark' ] && cp -R 'assets-render-dark/assets/'* 'assets-dark'
   [ -d 'assets-render-light' ] && cp -R 'assets-render-light/assets/'* 'assets-light'
