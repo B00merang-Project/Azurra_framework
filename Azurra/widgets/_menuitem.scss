@@ -11,6 +11,14 @@
     &:hover {
       color: $selected_fg_color;
       background-color: $selected_bg_color;
+      
+      switch slider, scale highlight, scale slider {
+        background-color: $selected_fg_color;
+      }
+      
+      scale trough, switch {
+        background-color: gtkalpha($selected_fg_color, 0.75);
+      }
     }
 
     &:disabled {

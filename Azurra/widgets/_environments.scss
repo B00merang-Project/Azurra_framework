@@ -1,5 +1,3 @@
-// TODO: Separate taskbar styles for reuse
-
 @mixin desktop_icons() {
   .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
     color: $desktop_item_fg;
@@ -16,7 +14,7 @@
   }
 }
 
-@mixin taskbutton() {
+@mixin tasklist_button() {
   & {
     color: $taskbar_fg_color;
     background-color: $taskbar_bg_color;
@@ -25,8 +23,10 @@
 
     &:hover {
       border: none;
+      color: $taskbar_fg_color;
       background-color: gtkshade($taskbar_bg_color, 1.1);
     }
+    
     &:active, &:checked {
       color: $selected_fg_color;
       border: none;
@@ -35,6 +35,10 @@
       background-color: $selected_bg_color;
     }
   }
+}
+
+@mixin panel_button() {
+  @include tasklist_button();
 }
 
 @mixin gnome_flashback() {
@@ -57,35 +61,23 @@
     }
 
     button {
-      background-color: $taskbar_bg_color;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-      color: $taskbar_fg_color;
-
-      &:active, &:checked {
-        background-color: gtkshade($taskbar_bg_color, 0.8);
-        border: none;
-        box-shadow: none;
-        color: $taskbar_fg_color;
-      }
+      @include panel_button();
     }
   }
 
-  #tasklist-button, #tasklist-button label {
-    color: gtkalpha($taskbar_fg_color, 0.7);
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    background-color: transparent;
-
-    &:hover {
+  #tasklist-button {
+    @include tasklist_button();
+  
+    label {
       color: gtkalpha($taskbar_fg_color, 0.7);
-      background-color: transparent;
-    }
 
-    &:checked {
-      color: $taskbar_fg_color;
+      &:hover {
+        color: gtkalpha($taskbar_fg_color, 0.7);
+      }
+
+      &:checked {
+        color: $taskbar_fg_color;
+      }
     }
   }
 
@@ -100,7 +92,11 @@
     background-color: $taskbar_bg_color;
 
     button.flat, button.sidebar-button {
-      @include taskbutton();
+      @include panel_button();
+    }
+    
+    .tasklist button {
+      @include tasklist_button();
     }
   }
   
@@ -165,24 +161,11 @@
     }
 
     .button:not(#tasklist-button) { 
-      color: $taskbar_fg_color;
-      border-radius: 0;
-      border: none;
-      background-color: $taskbar_bg_color;
-
-      &:hover {
-        border: none;
-        background-color: gtkshade($taskbar_bg_color, 1.1);
-      }
-      &:active, &:checked {
-        color: $selected_fg_color;
-        border: none;
-        background-color: $selected_bg_color;
-      }
+      @include panel_button();
     }
 
     #tasklist-button {
-      @include taskbutton();
+      @include tasklist_button();
     }
 
     PanelSeparator {
@@ -241,34 +224,6 @@
       &:selected, &:selected:focus {
         color: $selected_fg_color;
         background-color: $selected_bg_color;
-      }
-    }
-    
-    .sidebar {
-      color: $sidebar_fg_color;
-      background-color: $sidebar_bg_color;
-
-      .view, iconview, row {
-        color: $sidebar_fg_color;
-        background-color: transparent;
-
-        &.cell:selected {
-          border-color: $selected_bg_color;
-          color: $selected_fg_color;
-          background-color: $selected_bg_color;
-        }
-
-        &.expander {
-          color: $fg_color;
-
-          &:hover {
-            color: $selected_bg_color;
-          }
-        }
-      }
-
-      separator, separator:backdrop {
-        background-color: transparent;
       }
     }
   }
