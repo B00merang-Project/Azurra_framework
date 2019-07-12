@@ -24,7 +24,7 @@ find_in_colors() {
 
 replace_in_imports() {
   # replace 'iOS_12' by 'iOS' in all _imports files
-  str_replace_in 'Android_4.4/widgets/treeview' 'Android/widgets/treeview' $1/_imports.scss
+  str_replace_in 'macOS/widgets/menu' 'OS_X_10.10/widgets/menu' $1/_imports.scss
 }
 
 replace_in_base_files() {

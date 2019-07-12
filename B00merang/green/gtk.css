@@ -808,21 +808,17 @@ filechooserbutton:drop(active) {
   box-shadow: inset 0 0 0 1px #17544F;
   caret-color: #17544F; }
 
-.background.popup {
-  background-color: transparent; }
-
 menu, .menu {
   margin: 4px;
   padding: 0;
   border-radius: 0;
   border-style: none;
   color: #326B65;
-  background-color: transparent; }
-  .csd menu, .csd.background menu, .csd .menu, .csd.background .menu {
-    padding: 4px 0;
+  background-color: #123D38; }
+  .csd menu, .csd .menu {
+    padding: 4px 0px;
     border-radius: 0;
-    border: none;
-    background-color: #123D38; }
+    border: none; }
   menu > arrow, .menu > arrow {
     padding: 4px;
     border-color: transparent;
@@ -2390,10 +2386,10 @@ headerbar.selection-mode, toolbar.selection-mode {
 decoration {
   border-radius: 0px 0px 0 0;
   border-width: 0px;
-  box-shadow: 0 8px 8px 0 alpha(#000000, 0.1), 0 0 0 1px alpha(#000000, 0.3);
+  box-shadow: 0 8px 8px 0 alpha(#000000, 0.2), 0 0 0 1px #17544F;
   margin: 10px; }
   decoration:backdrop {
-    box-shadow: 0 8px 8px 0 transparent, 0 5px 5px 0 alpha(#000000, 0.1), 0 0 0 1px alpha(#000000, 0.2); }
+    box-shadow: 0 8px 8px 0 transparent, 0 5px 5px 0 alpha(#000000, 0.2), 0 0 0 1px shade(#123D38, 0.85); }
   .fullscreen decoration, .tiled decoration {
     border-radius: 0; }
   .popup decoration {

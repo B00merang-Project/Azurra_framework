@@ -803,6 +803,9 @@ filechooserbutton:drop(active) {
   box-shadow: inset 0 0 0 1px #006CD4;
   caret-color: #006CD4; }
 
+.background.popup {
+  background-color: transparent; }
+
 menu, .menu {
   margin: 4px;
   padding: 0;
@@ -828,6 +831,10 @@ menu, .menu {
       margin-bottom: -6px;
       border-top: 1px solid shade(mix(#FFFFFF, #F5F5F5, 0.5), 0.9);
       -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
+      
+menubar .csd menu, menubar .popup decoration {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0; }
 
 menubar, .menubar {
   -GtkWidget-window-dragging: true;
