@@ -803,7 +803,7 @@ filechooserbutton:drop(active) {
   box-shadow: none;
   border-color: transparent; }
 
-:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus {
+:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus, combobox:drop(active) button.combo {
   border-color: #17544F;
   box-shadow: inset 0 0 0 1px #17544F;
   caret-color: #17544F; }
@@ -1973,12 +1973,8 @@ treeview {
       color: #3A7F79;
       background-color: #17544F; }
 
-.sidebar, .caja-side-pane {
-  background-color: #032D29; }
-  .sidebar list, .sidebar row, .sidebar view row, .sidebar row.sidebar-row, .sidebar .view, .sidebar iconview, .caja-side-pane list, .caja-side-pane row, .caja-side-pane view row, .caja-side-pane row.sidebar-row, .caja-side-pane .view, .caja-side-pane iconview {
-    background-color: #032D29; }
-  .sidebar frame, .sidebar.frame, .caja-side-pane frame, .caja-side-pane.frame {
-    border: none; }
+.sidebar frame, .sidebar.frame {
+  border: none; }
 
 stacksidebar row {
   padding: 10px 4px; }

@@ -707,7 +707,7 @@ filechooserbutton:drop(active) {
   box-shadow: none;
   border-color: transparent; }
 
-:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus {
+:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus, combobox:drop(active) button.combo {
   border-color: #0080DD;
   box-shadow: inset 0 0 0 1px #0080DD;
   caret-color: #0080DD; }
@@ -1738,15 +1738,8 @@ treeview {
       color: #FFFFFF;
       background-color: #0080DD; }
 
-.sidebar, .caja-side-pane {
-  background-color: shade(#000000, 1.02); }
-
-.nemo-window, .caja-side-pane {
-  background-color: shade(#000000, 1.02); }
-  .nemo-window list, .nemo-window row, .nemo-window view row, .nemo-window row.sidebar-row, .nemo-window .view, .nemo-window iconview, .caja-side-pane list, .caja-side-pane row, .caja-side-pane view row, .caja-side-pane row.sidebar-row, .caja-side-pane .view, .caja-side-pane iconview {
-    background-color: shade(#000000, 1.02); }
-  .nemo-window frame, .nemo-window.frame, .caja-side-pane frame, .caja-side-pane.frame {
-    border: none; }
+.sidebar frame, .sidebar.frame {
+  border: none; }
 
 stacksidebar row {
   padding: 10px 4px; }

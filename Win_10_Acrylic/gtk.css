@@ -645,9 +645,9 @@ list {
   list row {
     padding: 2px; }
     list row:hover {
-      background-color: mix(#F1F1F1, #000000, 0.05); }
+      background-color: mix(#F1F1F1, #000000, 0.1); }
     list row:active {
-      background-color: mix(#F1F1F1, #000000, 0.15); }
+      background-color: mix(#F1F1F1, #000000, 0.2); }
     list row:backdrop {
       color: #000000; }
     list row:selected {
@@ -933,7 +933,7 @@ filechooserbutton:drop(active) {
   box-shadow: none;
   border-color: transparent; }
 
-:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus {
+:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus, combobox:drop(active) button.combo {
   border-color: #1BA0E1;
   box-shadow: inset 0 0 0 1px #1BA0E1;
   caret-color: #1BA0E1; }

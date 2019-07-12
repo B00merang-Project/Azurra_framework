@@ -707,7 +707,7 @@ filechooserbutton:drop(active) {
   box-shadow: none;
   border-color: transparent; }
 
-:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus {
+:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus, combobox:drop(active) button.combo {
   border-color: #E3AD89;
   box-shadow: inset 0 0 0 1px #E3AD89;
   caret-color: #E3AD89; }
@@ -1735,13 +1735,8 @@ treeview {
       color: #FFFFFF;
       background-color: #E3AD89; }
 
-.nemo-window .sidebar, .caja-side-pane {
-  background-color: shade(#332E2C, 1.02); }
-  .nemo-window .sidebar frame, .nemo-window .sidebar.frame, .caja-side-pane frame, .caja-side-pane.frame {
-    border: none; }
-
-.sidebar treeview {
-  background-color: shade(#332E2C, 1.02); }
+.sidebar frame, .sidebar.frame {
+  border: none; }
 
 stacksidebar row {
   padding: 10px 4px; }
