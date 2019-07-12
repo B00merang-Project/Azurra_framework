@@ -1,10 +1,4 @@
 @mixin common_sidebar() {
-  background-color: $sidebar_bg_color;
-  
-  &:backdrop {
-    background-color: $unfocused_bg_color;
-  }
-
   row, view row, row.sidebar-row, .view, iconview {
     &, &:focus {
       border: none;
@@ -17,8 +11,8 @@
       }
       
       &:active {
-        color: $selected_fg_color;
-        background-color: $selected_bg_color;
+        color: $sidebar_fg_color;
+        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.15);
       }
       
       &:backdrop {
@@ -30,11 +24,13 @@
         background-color: $selected_bg_color;
         
         &:hover {
-          background-color: gtkshade($selected_bg_color, 1.1);
+          color: $selected_fg_color;
+          background-color: gtkshade($selected_bg_color, 1.05);
         }
         
         &:active {
-          background-color: gtkshade($selected_bg_color, 0.9);
+          color: $selected_fg_color;
+          background-color: gtkshade($selected_bg_color, 0.95);
         }
         
         &:backdrop {
@@ -66,6 +62,10 @@
   filechooser, .nautilus-window, .nemo-window {
     &.csd.background, placessidebar list {
       background-color: $sidebar_bg_color;
+      
+      &:backdrop {
+        background-color: $unfocused_bg_color;
+      }
     }
     
     .sidebar {
@@ -76,9 +76,14 @@
   .caja-navigation-window .caja-side-pane {
     @include common_sidebar();
   }
-  
+
   stacksidebar row {
     padding: 10px 4px;
+
+    &:selected {
+      color: $selected_fg_color;
+      background-color: gtkalpha($dark_shadow, 0.4);
+    }
 
     > label {
       padding-left: 6px;
@@ -124,7 +129,8 @@
           padding-left: 2px;
         }
       }
-
+      
+      
       &.sidebar-new-bookmark-row {
         color: $selected_bg_color;
         
