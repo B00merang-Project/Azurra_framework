@@ -19,21 +19,21 @@
       
       &:selected {
         color: $sidebar_fg_color;
-        background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.10);
+        background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.15);
         
         &:hover {
           color: $sidebar_fg_color;
-          background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.15);
+          background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.1);
         }
         
         &:active {
           color: $sidebar_fg_color;
-          background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.25);
+          background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.2);
         }
         
         &:backdrop {
           color: $sidebar_fg_color;
-          background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.10);
+          background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.15);
         }
       }
     }
@@ -150,15 +150,20 @@
       min-height: 22px;
       margin-top: 2px;
       margin-bottom: 2px;
+
       padding: 0;
       border-radius: 100%;
       color: $sidebar_fg_color;
+      border-color: transparent;
+      background-color: transparent;
+      background-image: none;
+      
       -gtk-outline-radius: 100%;
+      outline-color: transparent;
     }
 
-    &:hover, &:active {
-      color: $fg_color;
-    }
+    &:hover { color: $sidebar_fg_color; }
+    &:active { color: gtkmix($sidebar_fg_color, $sidebar_bg_color, 0.2); }
 
     &:not(:hover):not(:active) > image {
       opacity: 0.5;
