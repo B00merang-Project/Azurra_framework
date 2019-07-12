@@ -104,39 +104,28 @@ assistant .sidebar {
   color: #000000;
   background-color: #FFFFFF; }
 
-button:link > label, button:visited > label,
-*:link,
-button:link,
-button:visited {
+button:link > label, button:visited > label, *:link, button:link, button:visited {
   color: #1D8ECE; }
-  button:link > label:visited, button:visited > label:visited,
-  *:link:visited,
-  button:visited {
+  button:link > label:visited, button:visited > label:visited, *:link:visited, button:visited {
     color: mix(#1D8ECE, #000000, 0.2); }
-    *:selected button:link > label:visited, *:selected button:visited > label:visited, *:selected
-    *:link:visited, *:selected
-    button:visited:link, *:selected
-    button:visited {
+    *:selected button:link > label:visited, *:selected button:visited > label:visited,
+    *:selected *:link:visited,
+    *:selected button:visited:link,
+    *:selected button:visited {
       color: mix(#FFFFFF, #000000, 0.4); }
-  button:link > label:hover, button:visited > label:hover,
-  *:link:hover,
-  button:hover:link,
-  button:hover:visited {
+  button:link > label:hover, button:visited > label:hover, *:link:hover, button:hover:link, button:hover:visited {
     color: shade(#1D8ECE, 1.1); }
-    *:selected button:link > label:hover, *:selected button:visited > label:hover, *:selected
-    *:link:hover, *:selected
-    button:hover:link, *:selected
-    button:hover:visited {
+    *:selected button:link > label:hover, *:selected button:visited > label:hover,
+    *:selected *:link:hover,
+    *:selected button:hover:link,
+    *:selected button:hover:visited {
       color: mix(#FFFFFF, #000000, 0.9); }
-  button:link > label:active, button:visited > label:active,
-  *:link:active,
-  button:active:link,
-  button:active:visited {
+  button:link > label:active, button:visited > label:active, *:link:active, button:active:link, button:active:visited {
     color: #1D8ECE; }
-    *:selected button:link > label:active, *:selected button:visited > label:active, *:selected
-    *:link:active, *:selected
-    button:active:link, *:selected
-    button:active:visited {
+    *:selected button:link > label:active, *:selected button:visited > label:active,
+    *:selected *:link:active,
+    *:selected button:active:link,
+    *:selected button:active:visited {
       color: mix(#FFFFFF, #000000, 0.8); }
   button:link > label:backdrop:backdrop:hover, button:visited > label:backdrop:backdrop:hover, button:link > label:backdrop:backdrop:hover:selected, button:visited > label:backdrop:backdrop:hover:selected, button:link > label:backdrop, button:visited > label:backdrop,
   *:link:backdrop:backdrop:hover,
@@ -152,10 +141,10 @@ button:visited {
   button:link > label:selected, button:visited > label:selected, *:selected button:link > label, *:selected button:visited > label,
   *:link:selected,
   button:selected:link,
-  button:selected:visited, *:selected
-  *:link, *:selected
-  button:link, *:selected
-  button:visited {
+  button:selected:visited,
+  *:selected *:link,
+  *:selected button:link,
+  *:selected button:visited {
     color: mix(#FFFFFF, #000000, 0.8); }
 
 button:link, button:visited {
@@ -2280,27 +2269,41 @@ panel-toplevel.background menubar > menuitem, panel-toplevel.background menubar 
 panel-toplevel.background menubar > menuitem:hover, panel-toplevel.background menubar > menuitem:hover label:backdrop {
   color: #FFFFFF; }
 panel-toplevel.background button {
+  color: #000000;
   background-color: #FFFFFF;
-  border: none;
   border-radius: 0;
-  box-shadow: none;
-  color: #000000; }
+  border: none; }
+  panel-toplevel.background button:hover {
+    border: none;
+    color: #000000;
+    background-color: shade(#FFFFFF, 1.1); }
   panel-toplevel.background button:active, panel-toplevel.background button:checked {
-    background-color: shade(#FFFFFF, 0.8);
+    color: #FFFFFF;
     border: none;
     box-shadow: none;
-    color: #000000; }
+    background-image: none;
+    background-color: #000000; }
 
-#tasklist-button, #tasklist-button label {
-  color: alpha(#000000, 0.7);
+#tasklist-button {
+  color: #000000;
+  background-color: #FFFFFF;
   border-radius: 0;
-  border: none;
-  box-shadow: none;
-  background-color: transparent; }
-  #tasklist-button:hover, #tasklist-button label:hover {
-    color: alpha(#000000, 0.7);
-    background-color: transparent; }
-  #tasklist-button:checked, #tasklist-button label:checked {
+  border: none; }
+  #tasklist-button:hover {
+    border: none;
+    color: #000000;
+    background-color: shade(#FFFFFF, 1.1); }
+  #tasklist-button:active, #tasklist-button:checked {
+    color: #FFFFFF;
+    border: none;
+    box-shadow: none;
+    background-image: none;
+    background-color: #000000; }
+#tasklist-button label {
+  color: alpha(#000000, 0.7); }
+  #tasklist-button label:hover {
+    color: alpha(#000000, 0.7); }
+  #tasklist-button label:checked {
     color: #000000; }
 
 panel-toplevel.background na-tray-applet {
@@ -2334,26 +2337,33 @@ panel-toplevel.background na-tray-applet {
       color: #4C4C4C; }
   .mate-panel-menu-bar .button:not(#tasklist-button) {
     color: #000000;
+    background-color: #FFFFFF;
     border-radius: 0;
-    border: none;
-    background-color: #FFFFFF; }
+    border: none; }
     .mate-panel-menu-bar .button:not(#tasklist-button):hover {
       border: none;
+      color: #000000;
       background-color: shade(#FFFFFF, 1.1); }
     .mate-panel-menu-bar .button:not(#tasklist-button):active, .mate-panel-menu-bar .button:not(#tasklist-button):checked {
       color: #FFFFFF;
       border: none;
+      box-shadow: none;
+      background-image: none;
       background-color: #000000; }
   .mate-panel-menu-bar #tasklist-button {
     color: #000000;
+    background-color: #FFFFFF;
     border-radius: 0;
-    border: none;
-    padding-bottom: 0;
-    padding-top: 0; }
+    border: none; }
     .mate-panel-menu-bar #tasklist-button:hover {
+      border: none;
+      color: #000000;
       background-color: shade(#FFFFFF, 1.1); }
-    .mate-panel-menu-bar #tasklist-button:checked, .mate-panel-menu-bar #tasklist-button:active {
+    .mate-panel-menu-bar #tasklist-button:active, .mate-panel-menu-bar #tasklist-button:checked {
       color: #FFFFFF;
+      border: none;
+      box-shadow: none;
+      background-image: none;
       background-color: #000000; }
   .mate-panel-menu-bar PanelSeparator {
     color: shade(#FFFFFF, 0.7);
@@ -2396,11 +2406,29 @@ panel-toplevel.background na-tray-applet {
     border: none; }
     .xfce4-panel.panel button.flat:hover, .xfce4-panel.panel button.sidebar-button:hover {
       border: none;
+      color: #000000;
       background-color: shade(#FFFFFF, 1.1); }
     .xfce4-panel.panel button.flat:active, .xfce4-panel.panel button.flat:checked, .xfce4-panel.panel button.sidebar-button:active, .xfce4-panel.panel button.sidebar-button:checked {
-      color: #000000;
+      color: #FFFFFF;
       border: none;
-      background-color: shade(#FFFFFF, 0.93); }
+      box-shadow: none;
+      background-image: none;
+      background-color: #000000; }
+  .xfce4-panel.panel .tasklist button {
+    color: #000000;
+    background-color: #FFFFFF;
+    border-radius: 0;
+    border: none; }
+    .xfce4-panel.panel .tasklist button:hover {
+      border: none;
+      color: #000000;
+      background-color: shade(#FFFFFF, 1.1); }
+    .xfce4-panel.panel .tasklist button:active, .xfce4-panel.panel .tasklist button:checked {
+      color: #FFFFFF;
+      border: none;
+      box-shadow: none;
+      background-image: none;
+      background-color: #000000; }
 
 #XfceNotifyWindow.osd {
   background-color: #FFFFFF;
@@ -2415,8 +2443,8 @@ panel-toplevel.background na-tray-applet {
     border-width: 1px;
     border-radius: 4px;
     color: #000000;
-    border-color: transparent;
-    background-color: transparent;
+    border-color: #000000;
+    background-color: #FFFFFF;
     outline-offset: 1px;
     outline-width: 3px;
     outline-style: solid;
