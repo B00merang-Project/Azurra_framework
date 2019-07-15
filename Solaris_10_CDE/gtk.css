@@ -654,7 +654,7 @@ menu, .menu {
   color: #000000;
   background-color: #AEB2C3; }
   .csd menu, .csd .menu {
-    padding: 4px 4px;
+    padding: 4px 1px;
     border-radius: 0px;
     border: 1px solid shade(#AEB2C3, 0.7);
     border-top-color: mix(#AEB2C3, white, 0.7);
@@ -705,17 +705,15 @@ menu menuitem, .menu menuitem {
   min-height: 16px;
   min-width: 40px;
   padding: 4px;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 0;
   color: #000000;
   background-color: #AEB2C3; }
   menu menuitem:hover, .menu menuitem:hover {
-    color: #FFFFFF;
-    background-color: #000000; }
-    menu menuitem:hover switch slider, menu menuitem:hover scale highlight, menu menuitem:hover scale slider, .menu menuitem:hover switch slider, .menu menuitem:hover scale highlight, .menu menuitem:hover scale slider {
-      background-color: #FFFFFF; }
-    menu menuitem:hover scale trough, menu menuitem:hover switch, .menu menuitem:hover scale trough, .menu menuitem:hover switch {
-      background-color: alpha(#FFFFFF, 0.75); }
+    background-color: shade(#AEB2C3, 0.8);
+    border-color: shade(#AEB2C3, 0.7);
+    border-right-color: mix(#AEB2C3, white, 0.7);
+    border-bottom-color: mix(#AEB2C3, white, 0.7); }
   menu menuitem:disabled, .menu menuitem:disabled {
     color: mix(#000000, #AEB2C3, 0.5); }
   menu menuitem arrow, .menu menuitem arrow {
