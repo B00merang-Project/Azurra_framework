@@ -1,53 +1,51 @@
 @mixin normal_buttons($bg, $fg, $br) {
-  & {
-    padding: 4px 8px;
-    border: none;
-    border-radius: $button_radius;
-    color: $fg;
-    border-color: $br;
-    background-color: $bg;
-    
-    outline-style: solid;
-    outline-width: 2px;
-    outline-offset: 0;
-    -gtk-outline-radius: 4px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: $button_radius;
+  color: $fg;
+  border-color: $br;
+  background-color: $bg;
+  
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 0;
+  -gtk-outline-radius: 4px;
 
-    &:hover {
-    }
+  &:hover {
+  }
 
-    &:active, &:checked {
-      outline-color: gtkshade($selected_bg_color, 1.4);
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-
-      &:disabled {
-        color: gtkmix($selected_fg_color, $disabled_fg_color, 0.4);
-        background-color: gtkmix($selected_bg_color, $disabled_bg_color, 0.3);
-      
-        &:backdrop {
-          color: gtkmix($selected_fg_color, $unfocused_disabled_fg_color, 0.4);
-        background-color: gtkmix($selected_bg_color, $unfocused_disabled_bg_color, 0.3);
-        }
-      }
-
-      &:backdrop {
-        color: $unfocused_selected_fg_color;
-        background-color: $unfocused_selected_bg_color;
-      }
-    }
+  &:active, &:checked {
+    outline-color: gtkshade($selected_bg_color, 1.4);
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
 
     &:disabled {
-      color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
-      
+      color: gtkmix($selected_fg_color, $disabled_fg_color, 0.4);
+      background-color: gtkmix($selected_bg_color, $disabled_bg_color, 0.3);
+    
       &:backdrop {
-        color: $unfocused_disabled_fg_color;
+        color: gtkmix($selected_fg_color, $unfocused_disabled_fg_color, 0.4);
+      background-color: gtkmix($selected_bg_color, $unfocused_disabled_bg_color, 0.3);
       }
     }
 
     &:backdrop {
-      color: $unfocused_fg_color;
-      background-color: $bg;
+      color: $unfocused_selected_fg_color;
+      background-color: $unfocused_selected_bg_color;
     }
+  }
+
+  &:disabled {
+    color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
+    
+    &:backdrop {
+      color: $unfocused_disabled_fg_color;
+    }
+  }
+
+  &:backdrop {
+    color: $unfocused_fg_color;
+    background-color: $bg;
   }
 }
 
