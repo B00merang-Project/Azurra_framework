@@ -15,53 +15,49 @@
 }
 
 @mixin tasklist_button() {
-  & {
-    color: $taskbar_fg_color;
-    text-shadow: 1px 1px $dark_shadow;
-    border-radius: 2px;
-    border: 1px solid gtkalpha($light_shadow, 0.3);
-    padding-bottom: 0;
-    padding-top: 0;
-    background: -gtk-gradient(radial, left top, 0.55, right bottom, 0.6, from(gtkalpha($light_shadow, 0.8)), to(transparent));
+  color: $taskbar_fg_color;
+  text-shadow: 1px 1px $dark_shadow;
+  border-radius: 2px;
+  border: 1px solid gtkalpha($light_shadow, 0.3);
+  padding-bottom: 0;
+  padding-top: 0;
+  background: -gtk-gradient(radial, left top, 0.55, right bottom, 0.6, from(gtkalpha($light_shadow, 0.8)), to(transparent));
 
+  &:hover {
+    border: 1px solid gtkalpha($light_shadow, 0.4);
+    background: -gtk-gradient(radial, left top, 0.55, right bottom, 0.6, from(gtkalpha($light_shadow, 0.9)), to(transparent));
+  }
+
+  &:checked, &:active {
+    border: 1px solid gtkalpha($light_shadow, 0.45);
+    background: -gtk-gradient(radial, left top, 0.55, right bottom, 0.6, from(gtkalpha($light_shadow, 0.9)), to(transparent)), -gtk-gradient(radial, center bottom, 0.25, center bottom, 0.85, from(gtkalpha($light_shadow, 0.35)), to(transparent));
+    
     &:hover {
-      border: 1px solid gtkalpha($light_shadow, 0.4);
-      background: -gtk-gradient(radial, left top, 0.55, right bottom, 0.6, from(gtkalpha($light_shadow, 0.9)), to(transparent));
-    }
-
-    &:checked, &:active {
-      border: 1px solid gtkalpha($light_shadow, 0.45);
-      background: -gtk-gradient(radial, left top, 0.55, right bottom, 0.6, from(gtkalpha($light_shadow, 0.9)), to(transparent)), -gtk-gradient(radial, center bottom, 0.25, center bottom, 0.85, from(gtkalpha($light_shadow, 0.35)), to(transparent));
-      
-      &:hover {
-        border: 1px solid gtkalpha($light_shadow, 0.55);
-        background: -gtk-gradient(radial, left top, 0.55, right bottom, 0.6, from(gtkalpha($light_shadow, 0.99)), to(transparent)), -gtk-gradient(radial, center bottom, 0.25, center bottom, 0.85, from(gtkalpha($light_shadow, 0.5)), to(transparent));
-      }
+      border: 1px solid gtkalpha($light_shadow, 0.55);
+      background: -gtk-gradient(radial, left top, 0.55, right bottom, 0.6, from(gtkalpha($light_shadow, 0.99)), to(transparent)), -gtk-gradient(radial, center bottom, 0.25, center bottom, 0.85, from(gtkalpha($light_shadow, 0.5)), to(transparent));
     }
   }
 }
 
 @mixin panel_button() {
-  & {
-    color: $taskbar_fg_color;
-    text-shadow: 1px 1px $dark_shadow;
-    background-image: none;
-    background-color: gtkalpha($dark_shadow, 0.25);
-    border-radius: 0;
-    border: none;
-    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.3);
+  color: $taskbar_fg_color;
+  text-shadow: 1px 1px $dark_shadow;
+  background-image: none;
+  background-color: gtkalpha($dark_shadow, 0.25);
+  border-radius: 0;
+  border: none;
+  box-shadow: inset 0 1px gtkalpha($light_shadow, 0.3);
 
-    &:hover {
-      border: none;
-      background-image: none;
-      background-color: gtkmix($taskbar_bg_color, $taskbar_fg_color, 0.25);
-    }
-    &:active, &:checked {
-      color: $taskbar_fg_color;
-      border: none;
-      background-image: none;
-      background-color: gtkmix($taskbar_bg_color, $taskbar_fg_color, 0.15);
-    }
+  &:hover {
+    border: none;
+    background-image: none;
+    background-color: gtkmix($taskbar_bg_color, $taskbar_fg_color, 0.25);
+  }
+  &:active, &:checked {
+    color: $taskbar_fg_color;
+    border: none;
+    background-image: none;
+    background-color: gtkmix($taskbar_bg_color, $taskbar_fg_color, 0.15);
   }
 }
 
