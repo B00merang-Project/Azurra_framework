@@ -235,18 +235,10 @@ checkbutton.text-button, radiobutton.text-button {
 
 checkbutton {
   padding: 4px; }
-  checkbutton:hover, checkbutton:active:hover {
+  checkbutton:hover, checkbutton:active:hover, checkbutton:selected, checkbutton:focus {
     padding: 4px;
     border-style: none;
     background-color: transparent; }
-  checkbutton:selected {
-    padding: 4px;
-    border-style: none;
-    background-color: transparent; }
-    checkbutton:selected:focus {
-      padding: 4px;
-      border-style: none;
-      background-color: transparent; }
 
 check {
   border-radius: 4px; }
@@ -256,11 +248,8 @@ radio {
 
 view.content-view check, .content-view.view check {
   background-color: transparent; }
-  view.content-view check:active, .content-view.view check:active {
+  view.content-view check:hover, view.content-view check:disabled, view.content-view check:selected, view.content-view check:active, .content-view.view check:hover, .content-view.view check:disabled, .content-view.view check:selected, .content-view.view check:active {
     background-color: transparent; }
-
-view.content-view check:hover, view.content-view check:disabled, view.content-view check:selected {
-  background-color: transparent; }
 
 check, radio {
   min-height: 24px;
@@ -2142,12 +2131,12 @@ panel-toplevel.background button {
     box-shadow: none;
     background-image: none;
     background-color: #4D94FF; }
-#tasklist-button label {
-  color: alpha(#FFFFFF, 0.7); }
-  #tasklist-button label:hover {
+  #tasklist-button label {
     color: alpha(#FFFFFF, 0.7); }
-  #tasklist-button label:checked {
-    color: #FFFFFF; }
+    #tasklist-button label:hover {
+      color: alpha(#FFFFFF, 0.7); }
+    #tasklist-button label:checked {
+      color: #FFFFFF; }
 
 panel-toplevel.background na-tray-applet {
   -NaTrayApplet-icon-padding: 0;

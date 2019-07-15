@@ -200,36 +200,36 @@ button {
   button:disabled {
     color: mix(#000000, mix(#000000, #AEB2C3, 0.5), 0.5);
     text-shadow: 1px 1px alpha(white, 0.85); }
-button.flat {
-  border-color: transparent;
-  border-radius: 0px;
-  color: #000000;
-  box-shadow: none;
-  background-color: transparent; }
-  button.flat:hover {
-    color: #000000;
-    background-color: #AEB2C3;
-    border-color: shade(#AEB2C3, 0.7);
-    border-top-color: mix(#AEB2C3, white, 0.7);
-    border-left-color: mix(#AEB2C3, white, 0.7);
-    background-color: #AEB2C3; }
-  button.flat:active, button.flat:checked {
-    color: #000000;
-    border-top-color: shade(#AEB2C3, 0.7);
-    border-left-color: shade(#AEB2C3, 0.7);
-    border-bottom-color: mix(#AEB2C3, white, 0.7);
-    border-right-color: mix(#AEB2C3, white, 0.7);
-    background-color: shade(#AEB2C3, 0.9);
-    background-image: none; }
-    button.flat:active:disabled, button.flat:checked:disabled {
-      color: mix(#000000, mix(#000000, #AEB2C3, 0.5), 0.1);
-      text-shadow: 1px 1px alpha(white, 0.7);
-      background-color: shade(mix(#000000, #AEB2C3, 0.95), 0.9); }
-  button.flat:disabled {
+  button.flat {
     border-color: transparent;
-    color: alpha(#000000, 0.8);
-    text-shadow: 1px 1px alpha(white, 0.7);
+    border-radius: 0px;
+    color: #000000;
+    box-shadow: none;
     background-color: transparent; }
+    button.flat:hover {
+      color: #000000;
+      background-color: #AEB2C3;
+      border-color: shade(#AEB2C3, 0.7);
+      border-top-color: mix(#AEB2C3, white, 0.7);
+      border-left-color: mix(#AEB2C3, white, 0.7);
+      background-color: #AEB2C3; }
+    button.flat:active, button.flat:checked {
+      color: #000000;
+      border-top-color: shade(#AEB2C3, 0.7);
+      border-left-color: shade(#AEB2C3, 0.7);
+      border-bottom-color: mix(#AEB2C3, white, 0.7);
+      border-right-color: mix(#AEB2C3, white, 0.7);
+      background-color: shade(#AEB2C3, 0.9);
+      background-image: none; }
+      button.flat:active:disabled, button.flat:checked:disabled {
+        color: mix(#000000, mix(#000000, #AEB2C3, 0.5), 0.1);
+        text-shadow: 1px 1px alpha(white, 0.7);
+        background-color: shade(mix(#000000, #AEB2C3, 0.95), 0.9); }
+    button.flat:disabled {
+      border-color: transparent;
+      color: alpha(#000000, 0.8);
+      text-shadow: 1px 1px alpha(white, 0.7);
+      background-color: transparent; }
 
 checkbutton.text-button, radiobutton.text-button {
   padding: 4px;
@@ -237,26 +237,15 @@ checkbutton.text-button, radiobutton.text-button {
 
 checkbutton {
   padding: 4px; }
-  checkbutton:hover, checkbutton:active:hover {
+  checkbutton:hover, checkbutton:active:hover, checkbutton:selected, checkbutton:focus {
     padding: 4px;
     border-style: none;
     background-color: transparent; }
-  checkbutton:selected {
-    padding: 4px;
-    border-style: none;
-    background-color: transparent; }
-    checkbutton:selected:focus {
-      padding: 4px;
-      border-style: none;
-      background-color: transparent; }
 
 view.content-view check, .content-view.view check {
   background-color: transparent; }
-  view.content-view check:active, .content-view.view check:active {
+  view.content-view check:hover, view.content-view check:active, view.content-view check:disabled, view.content-view check:selected, .content-view.view check:hover, .content-view.view check:active, .content-view.view check:disabled, .content-view.view check:selected {
     background-color: transparent; }
-
-view.content-view check:hover, view.content-view check:disabled, view.content-view check:selected {
-  background-color: transparent; }
 
 check, radio, check:disabled, radio:disabled {
   min-height: 11px;
@@ -267,21 +256,21 @@ check, radio, check:disabled, radio:disabled {
 
 check, .check {
   -gtk-icon-source: url("assets/checkbox-unchecked.png"); }
+  check:disabled, .check:disabled {
+    -gtk-icon-source: url("assets/checkbox-unchecked-disabled.png"); }
   check:checked, .check:checked {
     -gtk-icon-source: url("assets/checkbox-checked.png"); }
     check:checked:disabled, .check:checked:disabled {
       -gtk-icon-source: url("assets/checkbox-checked-disabled.png"); }
-  check:disabled, .check:disabled {
-    -gtk-icon-source: url("assets/checkbox-unchecked-disabled.png"); }
 
 radio, .radio {
   -gtk-icon-source: url("assets/radio-unchecked.png"); }
+  radio:disabled, .radio:disabled {
+    -gtk-icon-source: url("assets/radio-unchecked-disabled.png"); }
   radio:checked, .radio:checked {
     -gtk-icon-source: url("assets/radio-checked.png"); }
     radio:checked:disabled, .radio:checked:disabled {
       -gtk-icon-source: url("assets/radio-checked-disabled.png"); }
-  radio:disabled, .radio:disabled {
-    -gtk-icon-source: url("assets/radio-unchecked-disabled.png"); }
 
 .content-view.view {
   background-color: #FFF7E9; }
@@ -2189,12 +2178,12 @@ panel-toplevel.background button {
     box-shadow: none;
     background-image: none;
     background-color: #000000; }
-#tasklist-button label {
-  color: alpha(#000000, 0.7); }
-  #tasklist-button label:hover {
+  #tasklist-button label {
     color: alpha(#000000, 0.7); }
-  #tasklist-button label:checked {
-    color: #000000; }
+    #tasklist-button label:hover {
+      color: alpha(#000000, 0.7); }
+    #tasklist-button label:checked {
+      color: #000000; }
 
 panel-toplevel.background na-tray-applet {
   -NaTrayApplet-icon-padding: 0;
