@@ -4,7 +4,7 @@
 # Author: Christian Medel <cmedelahumada@gmail.com>
 # License: GPLv3
 
-version=3.0-dev
+version=3.0
 description="Azurra Autogen, version $version"
 base_theme='Azurra'
 ROOT_DIR="$PWD"
