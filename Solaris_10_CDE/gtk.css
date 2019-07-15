@@ -5,7 +5,7 @@
   -GtkScrollbar-has-secondary-forward-stepper: false;
   -GtkScrolledwindow-scrollbar-spacing: 0;
   -GtkScrolledwindow-scrollbars-within-bevel: 1;
-  -GtkTextView-error-underline-color: #CC0000;
+  -GtkTextView-error-underline-color: #A74949;
   -GtkToolbutton-icon-spacing: 6;
   -GtkToolItemGroup-expander-size: 11;
   -GtkWidget-text-handle-width: 20;
@@ -110,11 +110,11 @@ button:link > label, button:visited > label,
 *:link,
 button:link,
 button:visited {
-  color: #1D72E9; }
+  color: #495DA7; }
   button:link > label:visited, button:visited > label:visited,
   *:link:visited,
   button:visited {
-    color: mix(#1D72E9, #000000, 0.2); }
+    color: mix(#495DA7, #000000, 0.2); }
     *:selected button:link > label:visited, *:selected button:visited > label:visited, *:selected
     *:link:visited, *:selected
     button:visited:link, *:selected
@@ -124,7 +124,7 @@ button:visited {
   *:link:hover,
   button:hover:link,
   button:hover:visited {
-    color: shade(#1D72E9, 1.1); }
+    color: shade(#495DA7, 1.1); }
     *:selected button:link > label:hover, *:selected button:visited > label:hover, *:selected
     *:link:hover, *:selected
     button:hover:link, *:selected
@@ -134,7 +134,7 @@ button:visited {
   *:link:active,
   button:active:link,
   button:active:visited {
-    color: #1D72E9; }
+    color: #495DA7; }
     *:selected button:link > label:active, *:selected button:visited > label:active, *:selected
     *:link:active, *:selected
     button:active:link, *:selected
@@ -150,7 +150,7 @@ button:visited {
   *:link:backdrop,
   button:backdrop:link,
   button:backdrop:visited {
-    color: mix(#1D72E9, #000000, 0.3); }
+    color: mix(#495DA7, #000000, 0.3); }
   button:link > label:selected, button:visited > label:selected, *:selected button:link > label, *:selected button:visited > label,
   *:link:selected,
   button:selected:link,
@@ -503,23 +503,23 @@ infobar {
 .error {
   border-width: 1px;
   border-style: solid;
-  border-color: shade(#FF0000, 0.8);
-  background-color: #FF0000;
+  border-color: shade(#A74949, 0.8);
+  background-color: #A74949;
   background-image: none;
   color: #FFFFFF; }
   .error button {
-    border-color: shade(#FF0000, 0.8);
+    border-color: shade(#A74949, 0.8);
     color: #FFFFFF;
     background-image: none;
-    background-color: shade(#FF0000, 1.08); }
+    background-color: shade(#A74949, 1.08); }
     .error button:hover {
-      border-color: shade(#FF0000, 0.85);
-      background-color: shade(#FF0000, 1.1); }
+      border-color: shade(#A74949, 0.85);
+      background-color: shade(#A74949, 1.1); }
     .error button:active {
-      border-color: shade(#FF0000, 0.6);
-      background-color: shade(#FF0000, 0.95); }
+      border-color: shade(#A74949, 0.6);
+      background-color: shade(#A74949, 0.95); }
       .error button:active:hover {
-        border-color: shade(#FF0000, 0.85); }
+        border-color: shade(#A74949, 0.85); }
     .error button.close {
       color: #FFFFFF; }
       .error button.close:hover {
@@ -1040,9 +1040,9 @@ levelbar block {
   border-radius: 0px;
   background-color: #000000; }
   levelbar block.high {
-    background-color: shade(#39E4A3, 0.9); }
+    background-color: shade(#4992A7, 0.9); }
   levelbar block.low {
-    background-color: shade(#FF9900, 0.9); }
+    background-color: shade(#A77549, 0.9); }
   levelbar block.empty {
     background-color: alpha(black, 0.1); }
 
@@ -1963,22 +1963,22 @@ searchbar {
 button.destructive-action {
   border-width: 1px;
   border-style: solid;
-  border-color: mix(#CC0000, white, 0.4);
-  border-right-color: mix(#CC0000, black, 0.4);
-  border-bottom-color: mix(#CC0000, black, 0.4);
+  border-color: mix(#A74949, white, 0.4);
+  border-right-color: mix(#A74949, black, 0.4);
+  border-bottom-color: mix(#A74949, black, 0.4);
   border-radius: 0px;
-  color: mix(#FFFFFF, #CC0000, 0.1);
-  background-color: #CC0000; }
+  color: mix(#FFFFFF, #A74949, 0.1);
+  background-color: #A74949; }
   button.destructive-action:hover {
-    background-color: mix(#CC0000, #FFFFFF, 0.2); }
+    background-color: mix(#A74949, #FFFFFF, 0.2); }
   button.destructive-action:active {
-    border-color: mix(#CC0000, white, 0.4);
-    border-top-color: mix(#CC0000, black, 0.4);
-    border-right-color: mix(#CC0000, black, 0.4);
-    background-color: mix(#CC0000, #000000, 0.1); }
+    border-color: mix(#A74949, white, 0.4);
+    border-top-color: mix(#A74949, black, 0.4);
+    border-right-color: mix(#A74949, black, 0.4);
+    background-color: mix(#A74949, #000000, 0.1); }
   button.destructive-action:backdrop {
-    color: mix(#FFFFFF, #CC0000, 0.1);
-    background-color: mix(#CC0000, #AEB2C3, 0.3); }
+    color: mix(#FFFFFF, #A74949, 0.1);
+    background-color: mix(#A74949, #AEB2C3, 0.3); }
 
 toolbar.selection-mode {
   padding: 4px; }
@@ -2444,9 +2444,9 @@ UnityPanelWidget, .unity-panel {
 /* widgets main borders color on backdrop windows */
 @define-color unfocused_borders shade(#AEB2C3, 0.7);
 /* these are pretty self explicative */
-@define-color warning_color #FF9900;
-@define-color error_color #CC0000;
-@define-color success_color #39E4A3;
+@define-color warning_color #A77549;
+@define-color error_color #A74949;
+@define-color success_color #4992A7;
 /* these colors are exported for the window manager and shouldn't be used in applications,
 read if you used those and something break with a version upgrade you're on your own... */
 @define-color wm_title shade(#000000, 1.8);
