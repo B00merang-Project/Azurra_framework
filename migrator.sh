@@ -5,14 +5,12 @@ str_replace_in() {
 }
 
 replace_in_widgets() {
-  theme_dir="$1"
+  local theme_dir="$1"
   
   # replace 'theme_' by ''
   for F in "$theme_dir"/widgets/*.scss; do
     [ -f $F ] && str_replace_in 'theme_' '' $F
   done
-  
-  unset theme_dir
 }
 
 find_in_colors() {
@@ -20,6 +18,17 @@ find_in_colors() {
   
   # find '#FF000' in all _colors files
   [[ ! -z $res ]] && echo "$1 contains string"
+}
+
+find_in_widgets() {
+  local theme_dir="$1"
+
+  for F in "$theme_dir"/widgets/*; do
+    res=$(grep '& {' "$F")
+  
+    # find '& {' widget files
+    [[ ! -z $res ]] && echo "$F contains string"
+  done
 }
 
 replace_in_imports() {
@@ -39,7 +48,7 @@ add_config() {
 }
 
 invoke() {
-  replace_in_imports $@
+  find_in_widgets $@
 }
 
 for dir in *; do
