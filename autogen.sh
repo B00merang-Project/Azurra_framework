@@ -4,67 +4,17 @@
 # Author: Christian Medel <cmedelahumada@gmail.com>
 # License: GPLv3
 
-version=2.1
+version=3.0-dev
 description="Azurra Autogen, version $version"
-
-LOCK_ADD=false
+base_theme='Azurra'
 ROOT_DIR="$PWD"
-BASE_THEME='Azurra'
-WIKI=http://github.com/Elbullazul/Azurra_framework/wiki
 
-# OPS
-GEN_AND_DEPLOY=build
-GEN_ONLY=just_sass
-DEPLOY_ONLY=just_deploy
-RENDER=just_render
-SCRIPT=run_script
-
-BUNDLE_DISPLAY=false
-
-# FOR DEBUG
-breakpoint() {
-  read -p "Breakpoint at $(basename $0), line $BASH_LINENO. Continue? " var
-}
-
-# Coloring functions
-cyan() {
-  [ -z $1 ] && tput setab 12 || tput setaf 12
-}
-
-blue() {
-  [ -z $1 ] && tput setab 4 || tput setaf 4
-}
-
-green() {
-  [ -z $1 ] && tput setab 2 || tput setaf 2
-}
-
-red() {
-  [ -z $1 ] && tput setab 1 || tput setaf 1
-}
-
-reset() {
-  tput sgr 0
-}
-
-white() {
-  [ -z $1 ] && tput setab 7 || tput setaf 7
-}
-
-gray() {
-  [ -z $1 ] && tput setab 237 || tput setaf 237
-}
-
-# Support functions
 show_help() {
-  echo $description
-  echo
+  echo -e "$description\n"
   
-  echo "Usage:  ./autogen.sh <ARGUMENTS> <TARGETS>"
-  echo
+  echo -e "Usage:  ./autogen.sh <ARGUMENTS> <TARGETS>\n"
   
-  echo "Generates and deploys CSS and asset files"
-  echo
+  echo -e "Generates and deploys CSS and asset files\n"
   
   echo "  -h   --help         " "Shows help"
   echo "  -v   --version      " "Script version"
@@ -73,246 +23,136 @@ show_help() {
   echo "  -d   --deploy       " "Deploys current files"
   echo "  -c   --compile      " "Run SASS compiler only (no deployment)"
   echo "  -r   --render       " "Run asset generation script if found"
+  echo "  -e   --empty-assets " "Removes previously rendered assets. Run before rendering after changes"
   
-  echo
-  echo "More information: <$WIKI>"
-  
-  exit
+  echo -e "\nMore information: <http://github.com/Elbullazul/Azurra_framework/wiki>" && exit
 }
 
 show_version() {
   echo $description
-  echo "Copyright (c) 2019 The B00merang Group"
-  echo "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-  
-  exit
+  echo "Copyright (c) 2019 The b00merang Group"
+  echo "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>" && exit
 }
 
-# Functions for reusability & recursion
-fail() {
-  msg="$1"
-  end="$2"
-  
-  red
-  echo "$msg$(reset)"
-  
-  exit
+fail() { tput setaf 1 && echo 'ERROR: '$@ && exit 1; }
+warn() { tput setaf 220 && echo 'WARNING: '$@ && tput sgr 0; }
+highlight() { tput setaf 33 && echo $@ && tput sgr 0; }
+
+is_theme() { [ -f "$1/theme.conf" ] && return 0 || return 1; }
+is_bundle() { [ -f "$1/bundle.conf" ] && return 0 || return 1; }
+load_conf() { source $1/*.conf; }
+has_dark() { [ -z $target_dir_dark ] && return 1 || return 0; }
+has_light() { [ -z $target_dir_light ] && return 1 || return 0; }
+has_render() {
+  [ -d "$1/assets-render" ] || [ -d "$1/assets-render-light" ] || [ -d "$1/assets-render-dark" ] && return 0
+  return 1
 }
 
-display() {
-  msg="$1"
-  end="$2"
-  
-  if [[ $BUNDLE_DISPLAY == true ]]; then
-    [ ! -z $end ] && echo -n "└─ " || echo -n "├─ "
-  fi
-  echo "$msg"
-  
-  unset msg
-}
-
-has_light() {
-  has_light__theme_dir="$1"
-  ret_val=1
-  
-  [ -f "$has_light__theme_dir"/gtk-light.scss ] && ret_val=0
-  
-  unset has_light__theme_dir
-  return $ret_val
-}
-
-has_dark() {
-  has_dark__theme_dir="$1"
-  ret_val=1
-  
-  [ -f "$has_dark__theme_dir"/gtk-dark.scss ] && ret_val=0
-  
-  unset has_dark__theme_dir
-  return $ret_val
-}
-
-clean() {
-  clean__theme_dir="$1"
-  
-  [ -f "$clean__theme_dir"/gtk.css ] && rm "$clean__theme_dir"/gtk.css
-  [ -f "$clean__theme_dir"/gtk-dark.css ]  && rm "$clean__theme_dir"/gtk-dark.css
-  [ -f "$clean__theme_dir"/gtk-light.css ] && rm "$clean__theme_dir"/gtk-light.css
-  
-  # Remove previous files
-  [ -f "$clean__theme_dir"/gtk-widgets.css ] && echo "Force-cleaning $clean__theme_dir" && rm "$clean__theme_dir"/gtk-widgets.css
-  
-  unset clean__theme_dir
-}
-
-load_config() {
-  # Load variables
-  # <name, author, version, target_dir, target_dir_dark, target_dir_light>
-  # from theme config
-
-  load_config__dir="$1"
-  source "$load_config__dir"/theme.conf
-  
-  # check if all required variables are set
-  [ -z "$name" ] || [ -z "$version" ] || [ -z "$target_dir" ] && fail "For '$build__theme_dir': config file incomplete or empty"
-}
-
-gen_sass() {
-  gen_sass__theme_dir="$1"
-  
-  clean "$gen_sass__theme_dir"
-  
-  # sass_args is set in main()
-  sass $sass_args $gen_sass__theme_dir/gtk.scss $gen_sass__theme_dir/gtk.css
-  [ $? -ne 0 ] && fail "SASS error in stylesheet"
-  # Abort if SASS error
-  
-  if has_dark "$gen_sass__theme_dir"; then
-    sass $sass_args $gen_sass__theme_dir/gtk-dark.scss $gen_sass__theme_dir/gtk-dark.css
-    [ $? -ne 0 ] && fail "SASS error in dark stylesheet"
-  fi
-  
-  if has_light "$gen_sass__theme_dir"; then
-    sass $sass_args $gen_sass__theme_dir/gtk-light.scss $gen_sass__theme_dir/gtk-light.css
-    [ $? -ne 0 ] && fail "SASS error in light stylesheet"
-  fi
-  
-  unset gen_sass__theme_dir
+recursive() {
+  for dir in $@; do
+    is_theme $dir && $OP "$dir" || is_bundle $dir && recursive "$dir"/*
+  done
 }
 
 deploy() {
-  deploy__theme_dir="$1"
-  
-  target="$2"
-  target_dark="$3"
-  target_light="$4"
-  
-  # verify files are OK
-  [ ! -f "$deploy__theme_dir"/gtk.css ] && fail "Stylesheet missing. Aborting"
-  [ ! -z $target_dark ] && [ ! -f "$deploy__theme_dir"/gtk-dark.css ] && fail "Dark stylesheet missing. Aborting"
-  [ ! -z $target_light ] && [ ! -f "$deploy__theme_dir"/gtk-light.css ] && fail "Light stylesheet missing. Aborting"
+  load_conf $1
+  [ -z "$target_dir" ] && warn "Empty target for $name, skipping deployment" && return
 
-  # remove previously generated files. always back up your work!
-  clean "$target"
-  [ ! -z "$target_dark" ] && clean "$target_dark"
-  [ ! -z "$target_light" ] && clean "$target_light"
-
-  # copy CSS files
-  cp "$deploy__theme_dir"/gtk.css "$target"
-  has_dark "$deploy__theme_dir" && cp "$deploy__theme_dir"/gtk-dark.css "$target"
-  has_light "$deploy__theme_dir" && cp "$deploy__theme_dir"/gtk-light.css "$target"
+  echo -n "Deploying $(highlight -n $name), "
   
-  # clean old assets and copy new ones
-  rm -rf "$target"/assets/ && cp -r "$deploy__theme_dir"/assets "$target"
+  # Stylesheets
+  rm -rf "$target_dir"/*.css
+  has_dark && rm -rf "$target_dir_dark"/*.css
+  has_light && rm -rf "$target_dir_light"/*.css
   
-  # if there are dark source and target dirs, copy corresponding resources
-  if [ ! -z "$target_dark" ]; then
-    [ -d "$deploy__theme_dir"/assets-dark ] && src="$deploy__theme_dir"/assets-dark || src="$deploy__theme_dir"/assets
-    rm -rf "$target_dark"/assets/ && cp -r "$src" "$target_dark"/assets
-    cp "$deploy__theme_dir"/gtk-dark.css "$target_dark"/gtk.css
+  cp $1/gtk*.css "$target_dir"
+  has_dark && cp $1/gtk-dark.css "$target_dir_dark/gtk.css"
+  has_light && cp $1/gtk-light.css "$target_dir_light/gtk.css"
+  
+  # Assets
+  rm -rf "$target_dir/assets"
+  has_dark && rm -rf "$target_dir_dark/assets"
+  has_light && rm -rf "$target_dir_light/assets"
+  
+  cp -r $1/assets "$target_dir"
+  if has_dark; then
+    [ -d $1/assets-dark ] && cp -r $1/assets-dark "$target_dir_dark/assets" || cp -r $1/assets "$target_dir_dark"
+  fi
+  if has_light; then
+    [ -d $1/assets-dark ] && cp -r $1/assets-light "$target_dir_light/assets" || cp -r $1/assets "$target_dir_light"
   fi
   
-  # if there are light source and target dirs, copy corresponding resources
-  if [ ! -z "$target_light" ]; then
-    [ -d "$deploy__theme_dir"/assets-light ] && src="$deploy__theme_dir"/assets-light || src="$deploy__theme_dir"/assets
-    rm -rf "$target_light"/assets/ && cp -r "$src" "$target_light"/assets
-    cp "$deploy__theme_dir"/gtk-light.css "$target_light"/gtk.css
-  fi
-  
-  # verify deployment
-  
-  # test main target
-  [ ! -d "$target"/assets ] && fail "Failed to deploy assets to '$target'"
-  [ ! -f "$target"/gtk.css ] && fail "Failed to deploy stylesheet to '$target'"
-  has_dark "$deploy__theme_dir" && [ ! -f "$target"/gtk-dark.css ] && fail "Failed to deploy $(gray)dark$(red) stylesheet to '$target'"
-  has_light "$deploy__theme_dir" && [ ! -f "$target"/gtk-light.css ] && fail "Failed to deploy $(white)light$(red) stylesheet to '$target'"
-
-  # test secondary targets
-  [ ! -z "$target_dark" ] && [ ! -d "$target_dark"/assets ] && fail "Failed to deploy assets to '$target_dark'"
-  [ ! -z "$target_dark" ] && [ ! -f "$target_dark"/gtk.css ] && fail "Failed to deploy $(gray)dark$(red) stylesheet to '$target_dark'"
-  
-  [ ! -z "$target_light" ] && [ ! -d "$target_light"/assets ] && fail "Failed to deploy assets to '$target_light'"
-  [ ! -z "$target_light" ] && [ ! -f "$target_light"/gtk.css ] && fail "Failed to deploy $(white)light$(red) stylesheet to '$target_light'"
-  
-  unset deploy__theme_dir target target_dark target_light
+  echo 'done'
 }
 
-# Work meta-functions
-build() {
-  build__theme_dir="$1"
-  
-  load_config "$build__theme_dir"
-  
-  display "Generating files for $(cyan fg)$name$(reset)"
-  
-  gen_sass "$build__theme_dir"
+compile() {
+  load_conf $1
+  [ $LOCK_ADD == true ] && echo -n "Compiling $(highlight -n $name), " || echo "Compiling $(highlight $name)"
 
-  # imported from config
-  deploy "$build__theme_dir" "$target_dir" "$target_dir_dark" "$target_dir_light"
+  for sass_file in $1/gtk*.scss; do
+    local filename=${sass_file%".scss"}
+    sass $sass_args $sass_file $filename.css
+    
+    [ $? -ne 0 ] && fail "SASS exited unexpectedly, aborting"
+  done
   
-  display "Deployment for $name $(green)successful$(reset)" 'end'
-
-  unset build__theme_dir
+  echo 'done'
 }
 
-just_sass() {
-  display "Compiling $1"
-  
-  gen_sass $@
-  
-  display "Done." 'last'
-}
-
-just_deploy() {
-  display "Deploying $1"
-  
-  load_config $@
-
-  # imported from config
-  deploy "$1" "$target_dir" "$target_dir_dark" "$target_dir_light"
-  
-  display "Done." 'last'
-}
-
-just_render() {
-  cd $1
-  
-  # check
-  [ -d 'assets-render' ] || [ -d 'assets-render-light' ] || [ -d 'assets-render-dark' ] || fail "$1 has no asset generation module"
-  
+render() {
+  has_render $1 || warn "$1 has no asset generation module"
+  ! has_render $1 && return
+    
   # run
-  [ -d 'assets-render' ] && cd 'assets-render' && ./render-assets.sh && cd ..
-  [ -d 'assets-render-dark' ] && cd 'assets-render-dark' && ./render-assets.sh && cd ..
-  [ -d 'assets-render-light' ] && cd 'assets-render-light' && ./render-assets.sh && cd ..
+  [ -d "$1/assets-render" ] && (cd "$1/assets-render" && ./render-assets.sh && cd ..)
+  [ -d "$1/assets-render-dark" ] && (cd "$1/assets-render-dark" && ./render-assets.sh && cd ..)
+  [ -d "$1/assets-render-light" ] && (cd "$1/assets-render-light" && ./render-assets.sh && cd ..)
   
   # local deploy
-  cp -R 'assets-render/assets/'* 'assets'
-  [ -d 'assets-render-dark' ] && cp -R 'assets-render-dark/assets/'* 'assets-dark'
-  [ -d 'assets-render-light' ] && cp -R 'assets-render-light/assets/'* 'assets-light'
-  
-  # return
-  cd "$ROOT_DIR"
+  cp -R "$1/assets-render/assets/"* "$1/assets"
+  [ -d "$1/assets-render-dark" ] && cp -R "$1/assets-render-dark/assets/"* "$1/assets-dark"
+  [ -d "$1/assets-render-light" ] && cp -R "$1/assets-render-light/assets/"* "$1/assets-light"
 }
 
-# Main
-OP=$GEN_AND_DEPLOY
+empty_assets() {
+  has_render $1 || warn "$1 has no asset generation module"
+  ! has_render $1 && return
+  
+  # run
+  [ -d "$1/assets-render" ] && rm -rf "$1/assets-render/assets/"*
+  [ -d "$1/assets-render-dark" ] && rm -rf "$1/assets-render-dark/assets/"*
+  [ -d "$1/assets-render-light" ] && rm -rf "$1/assets-render-light/assets/"*
+}
+
+make() {
+  compile $1
+  deploy $1
+  
+  echo
+}
+
+# Program vars
+OP="make"
+LOCK_ADD=false
 sass_args="-C --sourcemap=none"
 
 declare -a QUEUE
 
-# process arguments
 while [ "$1" != "" ]; do
   case $1 in
-    -q | --quiet )          sass_args="$sass_args -q"
-                            ;;
     -a | --all )            QUEUE=*/
                             LOCK_ADD=true
                             sass_args="$sass_args -q"
                             ;;
-    -c | --compile )        OP=$GEN_ONLY
+    -q | --quiet )          sass_args="$sass_args -q"
                             ;;
-    -d | --deploy )         OP=$DEPLOY_ONLY
+    -c | --compile )        OP='compile'
                             ;;
-    -r | --render )         OP=$RENDER
+    -d | --deploy )         OP='deploy'
+                            ;;
+    -r | --render )         OP='render'
+                            ;;
+    -e | --empty-assets )   OP='empty_assets'
                             ;;
     -h | --help )           show_help
                             ;;
@@ -324,33 +164,5 @@ while [ "$1" != "" ]; do
   shift
 done
 
-[ ${#QUEUE[@]} -eq 0 ] && fail 'Missing target'
-
-for dir in ${QUEUE[@]}; do
-  # ignore base theme
-  if [[ "$dir" != "$BASE_THEME"* ]]; then
-
-    if [ -f "$dir"/theme.conf ]; then     # if has valid configuration
-      $OP "$dir"
-      echo
-    elif [ -f "$dir"/bundle.conf ]; then  # if is a bundle directory
-      source "$dir"/bundle.conf
-      
-      bundle_name=$name
-      
-      echo "Processing $bundle_name bundle"
-      BUNDLE_DISPLAY=true
-      
-      for bundle_dir in "$dir"/*; do
-        [ -f "$bundle_dir"/theme.conf ] && $OP "$bundle_dir"
-      done
-      
-      BUNDLE_DISPLAY=false
-      echo "Bundle $bundle_name completed"
-      echo
-    else
-      fail "Not a valid directory '$dir'"
-    fi
-  
-  fi
-done
+[ ${#QUEUE[@]} -eq 0 ] && fail 'Missing target(s), aborting'
+recursive "${QUEUE[@]}"
