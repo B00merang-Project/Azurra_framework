@@ -2088,6 +2088,9 @@ treeview {
   treeview.view:selected, treeview.view:selected:focus {
     color: #FFFFFF;
     background-color: #3B82D6; }
+    treeview.view:selected:backdrop, treeview.view:selected:focus:backdrop {
+      color: shade(#8C8C8C, 0.8);
+      background-color: shade(#F8F8F8, 0.7); }
   treeview.view:drop(active) {
     border-style: solid none;
     border-width: 1px;
@@ -2121,6 +2124,9 @@ treeview {
 .view {
   color: #000000;
   background-color: #FFFFFF; }
+  .view:backdrop {
+    color: #8C8C8C;
+    background-color: #FCFCFC; }
   .view:not(treeview) {
     border-radius: 3px;
     -gtk-outline-radius: 3px; }

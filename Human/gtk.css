@@ -1914,6 +1914,9 @@ treeview {
   treeview.view:selected, treeview.view:selected:focus {
     color: #FFFFFF;
     background-color: #A86B4C; }
+    treeview.view:selected:backdrop, treeview.view:selected:focus:backdrop {
+      color: shade(mix(#202020, #FFFFFF, 0.3), 0.8);
+      background-color: shade(#EFEBE7, 0.7); }
   treeview.view:drop(active) {
     border-style: solid none;
     border-width: 1px;
@@ -2187,10 +2190,11 @@ button.destructive-action {
   border-radius: 3px;
   color: mix(#FFFFFF, #ED3146, 0.1);
   background-color: #ED3146;
-  background-image: none; }
+  background-image: linear-gradient(to bottom, #ED3146, shade(#ED3146, 0.85)); }
   button.destructive-action:hover {
     border-color: mix(#ED3146, #202020, 0.3);
-    background-color: mix(#ED3146, #FFFFFF, 0.2); }
+    background-color: mix(#ED3146, #FFFFFF, 0.2);
+    background-image: linear-gradient(to bottom, #ED3146, shade(#ED3146, 0.9)); }
   button.destructive-action:active {
     border-color: mix(#ED3146, #202020, 0.3);
     background-color: mix(#ED3146, #202020, 0.1);
@@ -2198,7 +2202,8 @@ button.destructive-action {
   button.destructive-action:backdrop {
     border-color: mix(#ED3146, mix(#202020, #FFFFFF, 0.3), 0.2);
     color: mix(shade(mix(#202020, #FFFFFF, 0.3), 0.8), #ED3146, 0.1);
-    background-color: mix(#ED3146, #EFEBE7, 0.3); }
+    background-color: mix(#ED3146, #EFEBE7, 0.3);
+    background-image: none; }
 
 button.suggested-action {
   border-width: 1px;

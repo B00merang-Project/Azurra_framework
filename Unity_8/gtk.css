@@ -1807,6 +1807,9 @@ treeview {
   treeview.view:selected, treeview.view:selected:focus {
     color: #F9F9F9;
     background-color: #D44D1F; }
+    treeview.view:selected:backdrop, treeview.view:selected:focus:backdrop {
+      color: shade(mix(#000000, #F9F9F9, 0.3), 0.8);
+      background-color: shade(#ECEDEF, 0.7); }
   treeview.view:drop(active) {
     border-style: solid none;
     border-width: 1px;
