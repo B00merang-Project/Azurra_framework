@@ -1,0 +1,180 @@
+@mixin notebook() {
+  notebook {
+    padding: 0;
+
+    &.frame {
+      margin: -1px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $borders;
+
+      > header {
+        margin: -1px;
+
+        &.top {
+          margin-bottom: 0;
+        }
+
+        &.bottom {
+          margin-top: 0;
+        }
+
+        &.left {
+          margin-right: 0;
+        }
+
+        &.right {
+          margin-left: 0;
+        }
+
+        &.top, &.bottom {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        &.left, &.right {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+
+    > stack:not(:only-child) {
+      background-color: $base_color;
+      
+      &:backdrop {
+        background-color: $unfocused_base_color;
+      }
+    }
+
+    tab {
+      border-radius: $tab_radius;
+      color: $fg_color;
+      border: 1px solid gtkshade($borders, 1.05);
+      padding: 4px 6px;
+      background-color: transparent;
+      
+      &:checked {
+        border-color: gtkshade($borders, 0.9);
+        background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.05), gtkshade($bg_color, 0.975));
+        
+        &:backdrop {
+          background-image: none;
+        }
+      }
+    }
+
+    > header {
+      background-color: $bg_color;
+      
+      &:backdrop {
+        background-color: $unfocused_bg_color;
+      }
+      
+      &.top {
+        box-shadow: 0 1px $borders;
+
+        > tabs > tab {
+          border-bottom: none;
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
+
+          &:checked {
+            border-bottom: none;
+          }
+        }
+      }
+
+      &.bottom {
+        box-shadow: 0 -1px $borders;
+
+        > tabs > tab {
+          border-top: none;
+          border-top-right-radius: 0;
+          border-top-left-radius: 0;
+
+          &:checked {
+            border-top: none;
+          }
+        }
+      }
+
+      &.right {
+        box-shadow: -1px 0 $borders;
+
+        > tabs > tab {
+          border-left: none;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+
+          &:checked {
+            border-left: none;
+          }
+        }
+      }
+
+      &.left {
+        box-shadow: 1px 0 $borders;
+
+        > tabs > tab {
+          border-right: none;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+
+          &:checked {
+            border-right: none;
+          }
+        }
+      }
+    }
+
+    // alignments
+    > header.top > tabs > arrow.up, > header.bottom > tabs > arrow.up {
+      -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+
+      &:last-child {
+        margin-left: 2px;
+      }
+    }
+
+    > header.top > tabs > arrow.down, > header.bottom > tabs > arrow.down {
+      -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
+
+      &:first-child {
+        margin-right: 2px;
+      }
+    }
+
+    > header.left > tabs > arrow.up, > header.right > tabs > arrow.up {
+      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+
+      &:last-child {
+        margin-top: 2px;
+      }
+    }
+
+    > header.left > tabs > arrow.down, > header.right > tabs > arrow.down {
+      -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+
+      &:first-child {
+        margin-bottom: 2px;
+      }
+    }
+
+    > header > tabs > arrow {
+      color: $fg_color;
+
+      &:hover {
+        color: gtkshade($fg_color, 1.2);
+      }
+
+      &:active {
+        color: gtkshade($fg_color, 0.8);
+      }
+
+      &:disabled {
+        color: gtkshade($bg_color, 0.6);
+      }
+    }
+  }
+}

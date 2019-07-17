@@ -1,0 +1,104 @@
+@mixin titlebar() {
+  .titlebar {
+    border-bottom: none;
+    border-radius: $csd_radius $csd_radius 0px 0px;
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        min-width: 16px;
+        min-height: 16px;
+        padding: 0;
+        border: 1px solid gtkshade($titlebar_bg_color, 0.8);
+        -gtk-icon-shadow: none;
+        border-radius: 100%;
+        
+        @if $variant != 'light' {
+          color: gtkshade($titlebar_bg_color, 0.8);
+        }
+        @else {
+          color: $titlebar_fg_color;
+        }
+        
+        background-color: transparent;
+        
+        @if $variant != 'light' {
+          background-image: linear-gradient(to bottom, gtkshade($light_shadow, 0.55), gtkshade($light_shadow, 0.35));
+        }
+        @else {
+          background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.15), $titlebar_bg_color);
+        }
+        
+        &:hover, &:backdrop:hover {
+          box-shadow: none;
+          
+          @if $variant != 'light' {
+            background-image: linear-gradient(to bottom, gtkshade($light_shadow, 0.75), gtkshade($light_shadow, 0.55));
+          }
+          
+          @else {
+            background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.6), gtkshade($titlebar_bg_color, 1.2));
+          }
+        }
+
+        &:active {
+          background-color: gtkalpha($base_color, 0.2);
+        }
+        
+        &:backdrop {
+          color: gtkshade($titlebar_bg_color, 0.85);
+          background-color: gtkalpha($light_shadow, 0.125);
+          background-image: linear-gradient(to bottom, transparent, gtkalpha($light_shadow, 0.1));
+        }
+      }
+      
+      &.close {
+        background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.1), gtkshade($selected_bg_color, 0.8));
+
+        &:hover {
+          box-shadow: none;
+          background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.25), gtkshade($selected_bg_color, 0.85));
+        }
+        
+        &:active {
+          background-image: none;
+          background-color: $selected_bg_color;
+        }
+      }
+    }
+
+    .tiled &:not(headerbar), .tiled &:backdrop:not(headerbar), .maximized &:not(headerbar), .maximized &:backdrop:not(headerbar) {
+      border-radius: 0;
+    }
+  }
+
+  .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    
+    @if $variant != 'light' {
+      background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.6), $titlebar_bg_color);
+    }
+    @else {
+      background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.15), $titlebar_bg_color);
+    }
+
+    &:backdrop {
+      color: gtkalpha($titlebar_fg_color, 0.8);
+      background-image: none;
+    }
+  }
+}

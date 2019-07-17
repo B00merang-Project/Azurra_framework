@@ -1,0 +1,29 @@
+@mixin suggested_button() {
+  button.suggested-action {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: $button_radius;
+    border-color: $success_color;
+    color: $selected_fg_color;
+    background-color: $success_color;
+    background-image: linear-gradient(to bottom, gtkshade($success_color, 1.2), gtkshade($success_color, 0.9));
+
+    &:active, &:checked {
+      background-color: gtkshade($success_color, 0.9);
+      background-image: none;
+
+      &:backdrop {
+        color: $unfocused_selected_fg_color;
+        border-color: gtkshade($unfocused_selected_bg_color, 0.85);
+        background-color: gtkshade($unfocused_selected_bg_color, 0.9);
+      }
+    }
+
+    &:backdrop {
+      color: $unfocused_selected_fg_color;
+      border-color: gtkshade($unfocused_selected_bg_color, 0.85);
+      background-color: $unfocused_selected_bg_color;
+      background-image: none;
+    }
+  }
+}

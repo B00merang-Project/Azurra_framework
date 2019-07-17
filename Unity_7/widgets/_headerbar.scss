@@ -1,0 +1,138 @@
+@mixin headerbar_buttons($bg, $fg, $br)
+{
+  padding: 5px 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: $button_radius;
+  color: $fg;
+  border-color: $br;
+  border-top-color: gtkshade($br, 1.1);
+  border-left-color: gtkshade($br, 1.05);
+  border-right-color: gtkshade($br, 1.05);
+  background-color: transparent;
+  background-image: none;
+  box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.08);
+  -gtk-outline-radius: $button_radius;
+
+  &:hover {
+    color: $fg;
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
+    background-color: gtkshade($bg, 1.1);
+  }
+  
+  &:active, &:checked:active {
+    color: $fg;
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
+    background-color: gtkshade($bg, 1.1);
+    border-color: gtkshade($br, 0.9);
+    background-image: none;
+  }
+
+  &:checked {
+    color: $fg;
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
+    background-color: gtkshade($bg, 1.1);
+    border-color: gtkshade($br, 0.9);
+    background-image: none;
+    
+    @if $variant != 'light' {
+      box-shadow: inset 2px 2px gtkalpha($dark_shadow, 0.4), inset -2px -2px gtkalpha($light_shadow, 0.1);
+    }
+    @else {
+      box-shadow: inset 2px 2px gtkalpha($dark_shadow, 0.08), inset -2px -2px gtkalpha($light_shadow, 0.1);
+    }
+
+    &:backdrop {
+      background-image: none;
+      
+      &:hover {
+        background-color: gtkshade($bg, 1.1);
+      }
+    }
+    
+    &:disabled {
+      color: gtkmix($fg, $disabled_fg_color, 0.1);
+      border-color: gtkmix($fg, $disabled_bg_color, 0.85);
+      background-image: none;
+      
+      &:backdrop {
+        color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
+        background-image: none;
+      }
+    }
+  }
+
+  &:disabled {
+    border-color: $br;
+    border-top-color: gtkshade($br, 1.1);
+    border-left-color: gtkshade($br, 1.05);
+    border-right-color: gtkshade($br, 1.05);
+    color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
+    background-image: none;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.05);
+    
+    &:backdrop {
+      border-color: $br;
+      border-top-color: gtkshade($br, 1.1);
+      border-left-color: gtkshade($br, 1.05);
+      border-right-color: gtkshade($br, 1.05);
+      color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
+      background-image: none;
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.04);
+    }
+  }
+
+  &:backdrop {
+    color: gtkmix($fg, $unfocused_fg_color, 0.2);
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
+    
+    &:hover {
+      background-color: gtkshade($bg, 1.1);
+    }
+  }
+}
+
+@mixin headerbar() {
+  headerbar, headerbar:not(.titlebar) {
+    padding: 4px 8px;
+    border: none;
+    color: $headerbar_fg_color;
+    background-color: $headerbar_bg_color;
+
+    &:backdrop {
+      color: gtkalpha($headerbar_fg_color, 0.8);
+      background-color: $headerbar_bg_color;
+    }
+
+    .titlebar &, .titlebar &:backdrop {
+      background-color: transparent;
+    }
+
+    .tiled &, .tiled &:backdrop, .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    button {
+      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, gtkshade($headerbar_bg_color, 0.8));
+    }
+
+    entry {
+      padding: 4px 8px;
+    }
+  }
+}
