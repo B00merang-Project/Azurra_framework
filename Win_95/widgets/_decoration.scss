@@ -1,13 +1,13 @@
 // decoration
 @mixin decoration() {
   decoration {
+    background-color: $bg_color;
     border-radius: $csd_radius $csd_radius 0 0;
-    border-width: 0px;
-    box-shadow: 0 3px 9px 1px gtkalpha($wm_shadow, 0.3), 0 0 0 1px gtkalpha($wm_shadow, 0.25);
-    margin: 10px;
+    border-style: solid;
+    padding: 2px;
+    box-shadow: inset -2px -2px gtkshade($bg_color, 0.85), inset 2px 2px gtkmix($bg_color, $light_shadow, 0.55), inset -1px -1px $borders, inset 1px 1px gtkmix($bg_color, $light_shadow, 0.7);
 
     &:backdrop {
-      box-shadow: 0 3px 9px 1px transparent, 0 2px 6px 2px gtkalpha($wm_shadow, 0.2), 0 0 0 1px gtkalpha($wm_shadow, 0.25);
     }
 
     .fullscreen &, .tiled & {
@@ -17,11 +17,13 @@
     .popup & {
       box-shadow: none;
       border-radius: $csd_radius;
+      border: none;
+      box-shadow: none;
+      padding: 0;
     }
 
     .ssd & {
       border-radius: $csd_radius $csd_radius 0 0;
-      box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.1);
 
       &.maximized {
         border-radius: 0;

@@ -33,10 +33,12 @@
 
       &.minimize {
         background-image: url('assets/minimize.png');
+        margin-right: -6px;
       }
 
       &.maximize {
         background-image: url('assets/maximize.png');
+        margin-right: -4px;
       }
       
       .maximized &.maximize {
@@ -50,7 +52,7 @@
   }
 
   .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
-    min-height: 34px;
+    min-height: 26px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
     background-image: linear-gradient(to right, #0a246a, #a2c6ed);
@@ -66,5 +68,13 @@
   .titlebar headerbar:backdrop {
     background-color: transparent;
     background-image: none;
+  }
+  
+  window.ssd headerbar,
+  window.ssd .titlebar {
+      padding: 0px;
+      margin: 0px;
+      border: 3px solid transparent;
+      border-bottom: none;
   }
 }
