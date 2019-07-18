@@ -70,11 +70,21 @@
     background-image: none;
   }
   
-  window.ssd headerbar,
-  window.ssd .titlebar {
+  window.ssd {
+    headerbar, .titlebar {
       padding: 0px;
       margin: 0px;
       border: 3px solid transparent;
       border-bottom: none;
+    }
+
+    &.maximized {
+      headerbar, .titlebar {
+        border: 0px;
+        border-bottom: 1px solid transparent;
+        box-shadow: none;
+        margin: 0px;
+      }
+    }
   }
 }

@@ -1,6 +1,5 @@
-// decoration
 @mixin decoration() {
-  decoration {
+  window decoration {
     background-color: $bg_color;
     border-radius: $csd_radius $csd_radius 0 0;
     border-style: solid;
@@ -12,13 +11,16 @@
 
     .fullscreen &, .tiled & {
       border-radius: 0;
+      border: 0px;
+      margin: 0px;
     }
+  }
 
+  decoration {
     .popup & {
       box-shadow: none;
       border-radius: $csd_radius;
       border: none;
-      box-shadow: none;
       padding: 0;
     }
 
@@ -27,6 +29,7 @@
 
       &.maximized {
         border-radius: 0;
+        padding: 0;
       }
     }
 
