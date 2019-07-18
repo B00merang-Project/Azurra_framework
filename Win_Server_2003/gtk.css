@@ -485,30 +485,23 @@ expander arrow {
 list {
   color: #000000;
   background-color: #FFFFFF; }
+  list:backdrop {
+    color: #000000;
+    background-color: #FFFFFF; }
   list row {
     padding: 2px; }
-    list row:hover {
-      background-color: mix(#D6D3CE, #000000, 0.1); }
-    list row:active {
-      background-color: mix(#D6D3CE, #000000, 0.2); }
     list row:backdrop {
       color: #000000; }
     list row:selected, list row:selected:hover, list row:selected:focus {
       border: none;
       color: #FFFFFF;
       background-color: #000082; }
-      list row:selected:hover, list row:selected:hover:hover, list row:selected:focus:hover {
-        background-color: shade(#000082, 1.05); }
-      list row:selected:active, list row:selected:hover:active, list row:selected:focus:active {
-        background-color: shade(#000082, 0.95); }
-      list row:selected:disabled, list row:selected:hover:disabled, list row:selected:focus:disabled {
-        color: alpha(#FFFFFF, 0.7);
-        background-color: #000082; }
-      list row:selected:backdrop, list row:selected:hover:backdrop, list row:selected:focus:backdrop {
-        color: #FFFFFF;
-        background-color: #000082; }
-  list separator, list separator:backdrop {
-    background: none; }
+    list row:selected:disabled {
+      color: alpha(#FFFFFF, 0.7);
+      background-color: alpha(#000082, 0.9); }
+    list row:selected:backdrop {
+      color: #FFFFFF;
+      background-color: #000082; }
 
 frame > border {
   border-width: 1px;
