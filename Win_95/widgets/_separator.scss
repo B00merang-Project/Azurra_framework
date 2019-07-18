@@ -90,10 +90,10 @@
       }
     }
 
-    menuitem & {
-      border-width: 1px;
-      border-style: none;
-      color: gtkmix(gtkshade($bg_color, 0.65), $menu_bg_color, 0.5);
+    menu & {
+      min-height: 2px;
+      background-color: gtkshade($bg_color, 0.65);
+      background-image: linear-gradient(to bottom, gtkshade($bg_color, 0.65) 50%, $light_shadow 50%);
     }
 
     popover & {

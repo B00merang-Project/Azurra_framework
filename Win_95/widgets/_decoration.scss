@@ -1,5 +1,5 @@
 @mixin decoration() {
-  window decoration {
+  decoration {
     background-color: $bg_color;
     border-radius: $csd_radius $csd_radius 0 0;
     border-style: solid;
@@ -14,9 +14,7 @@
       border: 0px;
       margin: 0px;
     }
-  }
-
-  decoration {
+    
     .popup & {
       box-shadow: none;
       border-radius: $csd_radius;
@@ -36,6 +34,7 @@
     tooltip.csd & {
       border-radius: $csd_radius;
       box-shadow: none;
+      padding: 0;
     }
 
     .solid-csd & {
