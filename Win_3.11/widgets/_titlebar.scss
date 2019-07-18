@@ -33,10 +33,12 @@
 
       &.minimize {
         background-image: url('assets/minimize.svg');
+        margin-right: -6px;
       }
 
       &.maximize {
         background-image: url('assets/maximize.svg');
+        margin-right: -6px;
       }
       
       .maximized &.maximize {
@@ -50,14 +52,36 @@
   }
 
   .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
-    min-height: 34px;
+    min-height: 26px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
+    border-bottom: 1px solid $borders;
+
+    headerbar { border-bottom: none; }
 
     &:backdrop {
       color: $unfocused_fg_color;
       background-image: none;
-      background-color: $unfocused_bg_color;
+      background-color: gtkshade($unfocused_bg_color, 1.6);
+      border-bottom-color: $unfocused_borders;
+    }
+  }
+
+  window.ssd {
+    headerbar, .titlebar {
+      padding: 0px;
+      margin: 0px;
+      border: 3px solid transparent;
+      border-bottom: none;
+    }
+
+    &.maximized {
+      headerbar, .titlebar {
+        border: 0px;
+        border-bottom: 1px solid transparent;
+        box-shadow: none;
+        margin: 0px;
+      }
     }
   }
 }
