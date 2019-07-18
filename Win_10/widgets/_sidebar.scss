@@ -1,11 +1,44 @@
+@mixin common_sidebar() {
+  background-color: $sidebar_bg_color;
+
+  .view:not(:selected), iconview {
+    border: none;
+    color: $sidebar_fg_color;
+    background-color: transparent;
+  }
+
+  frame > border, .frame {
+    border: none;
+  }
+  
+  row:not(:selected), view row:not(:selected), row.sidebar-row:not(:selected) {
+    color: $sidebar_fg_color;
+  }
+  
+  .expander {
+    color: $sidebar_fg_color;
+
+    &:hover {
+      color: $selected_bg_color;
+    }
+  }
+}
+
 @mixin sidebar() {
-  // act as normal list  
-  .sidebar {
-    frame, &.frame {
-      border: none;
+  filechooser, .nautilus-window, .nemo-window {
+    &.csd.background, placessidebar list {
+      background-color: $sidebar_bg_color;
+    }
+    
+    .sidebar {
+      @include common_sidebar();
     }
   }
   
+  .caja-navigation-window .caja-side-pane {
+    @include common_sidebar();
+  }
+
   stacksidebar row {
     padding: 10px 4px;
 
