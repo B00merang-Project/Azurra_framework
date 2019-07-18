@@ -1301,32 +1301,32 @@ scale {
 
 scrollbar {
   border: none;
-  background-color: #FFFFFF; }
+  background-color: transparent; }
   scrollbar trough {
     border: none;
     border-radius: 0; }
   scrollbar:backdrop {
-    background-color: #F2F1F0; }
+    background-color: transparent; }
   scrollbar slider {
-    min-width: 8px;
-    min-height: 8px;
-    margin: 2px;
+    min-width: 10px;
+    min-height: 10px;
+    margin: 0;
     border: none;
-    border-radius: 0px;
+    border-radius: 2px;
     background-clip: padding-box;
-    background-color: shade(#F2F1F0, 0.6); }
+    background-color: shade(#F07746, 1.15); }
     scrollbar slider:hover {
-      background-color: shade(#F2F1F0, 0.6); }
+      background-color: #F07746; }
       scrollbar slider:hover:active {
-        background-color: shade(#F2F1F0, 0.55); }
+        background-color: shade(#F07746, 0.9); }
     scrollbar slider:backdrop {
-      background-color: shade(#F2F1F0, 0.55); }
+      background-color: shade(shade(#F2F1F0, 0.9), 0.85); }
     scrollbar slider:disabled {
       background-color: transparent; }
   scrollbar.fine-tune slider {
     min-width: 6px;
     min-height: 6px;
-    border-radius: 0px; }
+    border-radius: 2px; }
   scrollbar.fine-tune.horizontal slider {
     margin-top: 1px;
     margin-bottom: 1px; }
@@ -1340,10 +1340,11 @@ scrollbar {
     background-color: transparent; }
     scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider {
       margin: 0;
-      min-width: 1px;
-      min-height: 1px;
-      background-color: shade(#F2F1F0, 0.6);
-      border: none; }
+      min-width: 4px;
+      min-height: 4px;
+      background-color: #F07746;
+      border: none;
+      border-radius: 1px; }
     scrollbar.overlay-indicator:not(.dragging):not(.hovering).horizontal slider {
       margin: 0;
       min-width: 40px; }
