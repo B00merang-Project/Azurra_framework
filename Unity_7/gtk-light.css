@@ -798,20 +798,23 @@ menubar, .menubar {
   -GtkWidget-window-dragging: true;
   padding: 0;
   border-style: none;
-  background-color: #FFFFFF;
-  color: #3C3C3C; }
+  background-color: #DFD7CF;
+  color: #4C4C4C; }
   menubar:backdrop, .menubar:backdrop {
     color: mix(#4C4C4C, #FFFFFF, 0.3);
     background-color: #F2F1F0; }
 
 menubar > menuitem, .menubar > menuitem {
   padding: 3px 5px;
-  border: none;
-  color: #3C3C3C;
+  border: 1px solid transparent;
+  color: #4C4C4C;
   background-color: transparent; }
   menubar > menuitem:hover, .menubar > menuitem:hover {
-    color: #FFFFFF;
-    background-color: #F07746; }
+    color: #4C4C4C;
+    border-radius: 6px 6px 0 0;
+    border-color: shade(#DFD7CF, 0.8);
+    background-color: #DFD7CF;
+    background-image: linear-gradient(to bottom, shade(#DFD7CF, 1.15), #DFD7CF); }
   menubar > menuitem:disabled, .menubar > menuitem:disabled {
     color: mix(#4C4C4C, #F2F1F0, 0.5);
     background-color: transparent; }
