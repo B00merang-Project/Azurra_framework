@@ -1489,7 +1489,7 @@ toolbar {
     -gtk-outline-radius: 3px; }
     .primary-toolbar button:active, .primary-toolbar button:checked, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked {
       color: #000000;
-      border-color: #FFFFFF;
+      border-color: transparent;
       background-color: #FFFFFF; }
       .primary-toolbar button:active:backdrop, .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:active:backdrop, .primary-toolbar .raised button:checked:backdrop {
         color: #000000; }
@@ -1778,6 +1778,12 @@ filechooser .sidebar, .nautilus-window .sidebar, .nemo-window .sidebar {
 .nautilus-window .sidebar row {
   margin-top: -2px; }
 
+stacksidebar.sidebar:dir(ltr) list, stacksidebar.sidebar.left list, stacksidebar.sidebar.left:dir(rtl) list {
+  border-right: 1px solid #FFFFFF;
+  border-left-style: none; }
+stacksidebar.sidebar:dir(rtl) list, stacksidebar.sidebar.right list {
+  border-left: 1px solid #FFFFFF;
+  border-right-style: none; }
 stacksidebar row {
   padding: 10px 4px; }
   stacksidebar row > label {
@@ -2386,7 +2392,7 @@ panel-toplevel.background na-tray-applet {
     -gtk-outline-radius: 3px; }
     #XfceNotifyWindow.osd button:active, #XfceNotifyWindow.osd button:checked {
       color: #000000;
-      border-color: #FFFFFF;
+      border-color: transparent;
       background-color: #FFFFFF; }
       #XfceNotifyWindow.osd button:active:backdrop, #XfceNotifyWindow.osd button:checked:backdrop {
         color: #000000; }

@@ -184,7 +184,7 @@ button {
   -gtk-outline-radius: 3px; }
   button:active, button:checked {
     color: #FFFFFF;
-    border-color: #0000A9;
+    border-color: #000000;
     background-color: #0000A9; }
     button:active:backdrop, button:checked:backdrop {
       color: #FFFFFF; }
@@ -792,7 +792,7 @@ notebook {
     background-color: transparent; }
     notebook tab:checked {
       color: #FFFFFF;
-      border-color: #0000A9;
+      border-color: #000000;
       background-color: #0000A9; }
       notebook tab:checked:backdrop {
         border-color: #000000;
@@ -1419,7 +1419,7 @@ headerbar, headerbar:not(.titlebar) {
     -gtk-outline-radius: 3px; }
     headerbar button:active, headerbar button:checked, headerbar:not(.titlebar) button:active, headerbar:not(.titlebar) button:checked {
       color: #FFFFFF;
-      border-color: #0000A9;
+      border-color: #000000;
       background-color: #0000A9; }
       headerbar button:active:backdrop, headerbar button:checked:backdrop, headerbar:not(.titlebar) button:active:backdrop, headerbar:not(.titlebar) button:checked:backdrop {
         color: #FFFFFF; }
@@ -1489,7 +1489,7 @@ toolbar {
     -gtk-outline-radius: 3px; }
     .primary-toolbar button:active, .primary-toolbar button:checked, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked {
       color: #FFFFFF;
-      border-color: #0000A9;
+      border-color: transparent;
       background-color: #0000A9; }
       .primary-toolbar button:active:backdrop, .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:active:backdrop, .primary-toolbar .raised button:checked:backdrop {
         color: #FFFFFF; }
@@ -1525,7 +1525,7 @@ toolbar {
     -gtk-outline-radius: 3px; }
     .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
       color: #FFFFFF;
-      border-color: #0000A9;
+      border-color: #000000;
       background-color: #0000A9; }
       .inline-toolbar toolbar button:active:backdrop, .inline-toolbar toolbar button:checked:backdrop {
         color: #FFFFFF; }
@@ -1778,6 +1778,12 @@ filechooser .sidebar, .nautilus-window .sidebar, .nemo-window .sidebar {
 .nautilus-window .sidebar row {
   margin-top: -2px; }
 
+stacksidebar.sidebar:dir(ltr) list, stacksidebar.sidebar.left list, stacksidebar.sidebar.left:dir(rtl) list {
+  border-right: 1px solid #000000;
+  border-left-style: none; }
+stacksidebar.sidebar:dir(rtl) list, stacksidebar.sidebar.right list {
+  border-left: 1px solid #000000;
+  border-right-style: none; }
 stacksidebar row {
   padding: 10px 4px; }
   stacksidebar row > label {
@@ -2386,7 +2392,7 @@ panel-toplevel.background na-tray-applet {
     -gtk-outline-radius: 3px; }
     #XfceNotifyWindow.osd button:active, #XfceNotifyWindow.osd button:checked {
       color: #FFFFFF;
-      border-color: #0000A9;
+      border-color: transparent;
       background-color: #0000A9; }
       #XfceNotifyWindow.osd button:active:backdrop, #XfceNotifyWindow.osd button:checked:backdrop {
         color: #FFFFFF; }
