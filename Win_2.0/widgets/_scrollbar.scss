@@ -1,0 +1,127 @@
+@mixin scrollbar() {
+  scrollbar {
+    border: none;
+    box-shadow: inset 0 0 0 1px $borders;
+    background-color: $base_color;
+    background-image: linear-gradient(to bottom left, $base_color 33%, $fg_color 34%, $fg_color 66%, $base_color 67%);
+    background-size: 3px 3px, auto;
+
+    trough {
+      border: none;
+      border-radius: 0;
+    }
+
+    &:backdrop {
+    }
+
+    slider {
+      min-width: 14px;
+      min-height: 14px;
+      margin: 0;
+      border: 1px solid $borders;
+      border-radius: $scrollbar_radius;
+      background-color: $bg_color;
+
+      &:hover {
+
+        &:active {
+          background-color: $selected_bg_color;
+        }
+      }
+
+      &:backdrop {
+      }
+
+      &:disabled {
+        background-color: $disabled_bg_color;
+      }
+    }
+
+    &.fine-tune {
+    }
+
+    &.overlay-indicator {
+      &:not(.dragging):not(.hovering) {
+        opacity: 1;
+      }
+
+      &.dragging, &.hovering {
+        opacity: 1;
+      }
+    }
+
+    button {
+      padding: 0;
+      border-radius: 0;
+      
+      &, &:active, &:disabled {
+        &, &:backdrop {
+          color: transparent;
+        }
+      }
+    }
+
+    &.horizontal {
+      slider {
+        min-width: 40px;
+        margin-left: -1px;
+        margin-right: -1px;
+      }
+
+      button {
+        min-height: 14px;
+        min-width: 14px;
+        
+        &.down {
+          background-image: url('assets/arrow-right.png');
+          
+          &:active {
+            background-image: url('assets/arrow-right-active.png');
+          }
+        }
+
+        &.up {
+          background-image: url('assets/arrow-left.png');
+          
+          &:active {
+            background-image: url('assets/arrow-left-active.png');
+          }
+        }
+      }
+    }
+
+    &.vertical {
+      slider {
+        min-height: 40px;
+        margin-top: -1px;
+        margin-bottom: -1px;
+      }
+
+      button {
+        min-height: 14px;
+        min-width: 14px;
+        
+        &.down {
+          background-image: url('assets/arrow-down.png');
+          
+          &:active {
+            background-image: url('assets/arrow-down-active.png');
+          }
+        }
+
+        &.up {
+          background-image: url('assets/arrow-up.png');
+          
+          &:active {
+            background-image: url('assets/arrow-up-active.png');
+          }
+        }
+      }
+    }
+
+    treeview ~ &.vertical {
+      border-top: 1px solid $borders;
+      margin-top: -1px;
+    }
+  }
+}
