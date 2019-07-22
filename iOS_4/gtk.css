@@ -2481,11 +2481,13 @@ messagedialog {
     border-bottom-right-radius: 4px;
     box-shadow: 0 0 0 3px #FFFFFF, 0 3px 2px alpha(black, 0.2); }
   messagedialog .titlebar.horizontal, messagedialog .titlebar.horizontal:backdrop {
+    border: none;
     background: #202F50, linear-gradient(to bottom, alpha(#FFFFFF, 0.6), alpha(#FFFFFF, 0.1) 65%, transparent 66%); }
   messagedialog.csd .dialog-action-area button {
     padding: 10px;
     border-radius: 0;
     border-bottom-style: none;
+    -gtk-outline-radius: 0;
     color: #FFFFFF;
     background-image: linear-gradient(to bottom, shade(#202F50, 1.1) 40%, shade(#202F50, 0.75) 60%); }
     messagedialog.csd .dialog-action-area button:focus {
@@ -2493,15 +2495,18 @@ messagedialog {
     messagedialog.csd .dialog-action-area button:last-child {
       border-right-width: 0;
       border-radius: 0px;
-      border-bottom-right-radius: 4px; }
+      border-bottom-right-radius: 4px;
+      -gtk-outline-radius: 0 0 4px 0; }
     messagedialog.csd .dialog-action-area button:first-child {
       border-left-width: 0;
       border-radius: 0px;
-      border-bottom-left-radius: 4px; }
+      border-bottom-left-radius: 4px;
+      -gtk-outline-radius: 0 0 0 4px; }
     messagedialog.csd .dialog-action-area button:only-child {
       border-radius: 0px;
       border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px; }
+      border-bottom-right-radius: 4px;
+      -gtk-outline-radius: 0 0 4px 4px; }
 
 .titlebar {
   border-bottom: none;
