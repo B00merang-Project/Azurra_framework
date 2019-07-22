@@ -3,11 +3,14 @@
     button, .raised button {
       border-radius: 0;
       border-left-width: 0;
+      -gtk-outline-radius: 0;
 
       &:first-child {
         border-left-width: 1px;
         border-top-left-radius: $button_radius;
         border-bottom-left-radius: $button_radius;
+        
+        -gtk-outline-radius: $button_radius 0 0 $button_radius;
       }
 
       &:last-child {
@@ -16,11 +19,14 @@
         border-bottom-left-radius: 0;
         border-top-right-radius: $button_radius;
         border-bottom-right-radius: $button_radius;
+        
+        -gtk-outline-radius: 0 $button_radius $button_radius 0;
       }
 
       &:only-child {
         border-width: 1px;
         border-radius: $button_radius;
+        -gtk-outline-radius: $button_radius;
       }
     }
     
@@ -60,12 +66,16 @@
       box.linked button {
         border-radius: 0;
         border-left-width: 0;
+        
+        -gtk-outline-radius: 0;
       }
 
       &:first-child box.linked button {
         border-left-width: 1px;
         border-top-left-radius: $button_radius;
         border-bottom-left-radius: $button_radius;
+        
+        -gtk-outline-radius: $button_radius 0 0 $button_radius;
       }
 
       &:last-child box.linked button {
@@ -74,11 +84,15 @@
         border-bottom-left-radius: 0;
         border-top-right-radius: $button_radius;
         border-bottom-right-radius: $button_radius;
+        
+        -gtk-outline-radius: 0 $button_radius $button_radius 0;
       }
 
       &:only-child box.linked button {
         border-width: 1px;
         border-radius: $button_radius;
+        
+        -gtk-outline-radius: $button_radius;
       }
     }
   }
@@ -88,6 +102,8 @@
       border-left-width: 1px;
       border-top-width: 0;
       border-radius: 0;
+      
+      -gtk-outline-radius: 0;
 
       &:first-child {
         border-top-width: 1px;
@@ -95,6 +111,8 @@
         border-top-right-radius: $button_radius;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+        
+        -gtk-outline-radius: $button_radius $button_radius 0 0;
       }
 
       &:last-child {
@@ -103,10 +121,14 @@
         border-top-right-radius: 0;
         border-bottom-left-radius: $button_radius;
         border-bottom-right-radius: $button_radius;
+        
+        -gtk-outline-radius: 0 0 $button_radius $button_radius;
       }
 
       &:only-child {
         border-top-width: 1px;
+        
+        -gtk-outline-radius: $button_radius;
       }
     }
     
@@ -149,6 +171,8 @@
         border-left-width: 1px;
         border-top-width: 0;
         border-radius: 0;
+        
+        -gtk-outline-radius: 0;
       }
 
       &:first-child box.linked button {
@@ -157,6 +181,8 @@
         border-top-right-radius: $button_radius;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+        
+        -gtk-outline-radius: $button_radius $button_radius 0 0;
       }
 
       &:last-child box.linked button {
@@ -165,10 +191,14 @@
         border-top-right-radius: 0;
         border-bottom-left-radius: $button_radius;
         border-bottom-right-radius: $button_radius;
+        
+        -gtk-outline-radius: 0 0 $button_radius $button_radius;
       }
 
       &:only-child box.linked button {
         border-top-width: 1px;
+        
+        -gtk-outline-radius: $button_radius;
       }
     }
     
