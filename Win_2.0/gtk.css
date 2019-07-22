@@ -1147,7 +1147,7 @@ scale {
       border-color: #000000;
       background-color: mix(#000000, #FFFFFF, 0.95); }
       scale fill:disabled:backdrop, scale trough:disabled:backdrop {
-        background-color: gtkalpha mix(#000000, #FFFFFF, 0.95); }
+        background-color: mix(#000000, #FFFFFF, 0.95); }
     scale fill:backdrop, scale trough:backdrop {
       background-color: #FFFFFF; }
   scale highlight {
@@ -2073,16 +2073,13 @@ button.suggested-action {
       background-color: #FFFFFF; }
   button.suggested-action:disabled {
     border-color: mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2);
-    color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2);
-    background-image: linear-gradient(to bottom, shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 1.2), shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 1.05)); }
+    color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2); }
     button.suggested-action:disabled:backdrop {
       border-color: mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2);
-      color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2);
-      background-image: linear-gradient(to bottom, shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 1.1), shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 0.95)); }
+      color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2); }
   button.suggested-action:backdrop {
     border-color: #FC5252;
-    color: #FFFFFF;
-    background-image: linear-gradient(to bottom, shade(#FC5252, 1.2), shade(#FC5252, 1.05)); }
+    color: #FFFFFF; }
 
 headerbar button.suggested-action {
   border-width: 1px;
@@ -2099,16 +2096,13 @@ headerbar button.suggested-action {
       background-color: #FFFFFF; }
   headerbar button.suggested-action:disabled {
     border-color: mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2);
-    color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2);
-    background-image: linear-gradient(to bottom, shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 1.2), shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 1.05)); }
+    color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2); }
     headerbar button.suggested-action:disabled:backdrop {
       border-color: mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2);
-      color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2);
-      background-image: linear-gradient(to bottom, shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 1.1), shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 0.95)); }
+      color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2); }
   headerbar button.suggested-action:backdrop {
     border-color: #FC5252;
-    color: #FFFFFF;
-    background-image: linear-gradient(to bottom, shade(#FC5252, 1.2), shade(#FC5252, 1.05)); }
+    color: #FFFFFF; }
 
 toolbar.selection-mode {
   padding: 4px; }
@@ -2156,16 +2150,13 @@ headerbar.selection-mode, toolbar.selection-mode {
         background-color: #FFFFFF; }
     headerbar.selection-mode button.suggested-action:disabled, toolbar.selection-mode button.suggested-action:disabled {
       border-color: mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2);
-      color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2);
-      background-image: linear-gradient(to bottom, shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 1.2), shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 1.05)); }
+      color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2); }
       headerbar.selection-mode button.suggested-action:disabled:backdrop, toolbar.selection-mode button.suggested-action:disabled:backdrop {
         border-color: mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2);
-        color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2);
-        background-image: linear-gradient(to bottom, shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 1.1), shade(mix(#FC5252, mix(#000000, #FFFFFF, 0.95), 0.2), 0.95)); }
+        color: mix(#FFFFFF, mix(#000000, #FFFFFF, 0.5), 0.2); }
     headerbar.selection-mode button.suggested-action:backdrop, toolbar.selection-mode button.suggested-action:backdrop {
       border-color: #FC5252;
-      color: #FFFFFF;
-      background-image: linear-gradient(to bottom, shade(#FC5252, 1.2), shade(#FC5252, 1.05)); }
+      color: #FFFFFF; }
   headerbar.selection-mode .selection-menu button, toolbar.selection-mode .selection-menu button {
     border-style: none;
     background-color: transparent;
@@ -2176,12 +2167,10 @@ headerbar.selection-mode, toolbar.selection-mode {
 decoration {
   border-radius: 0px 0px 0 0;
   border-width: 0px;
-  box-shadow: 0 3px 9px 1px alpha(#000000, 0.3), 0 0 0 1px alpha(#000000, 0.25), inset 0 0 0 3px #FFFFFF, inset 0 0 0 1px #000000;
+  box-shadow: inset 0 0 0 3px #FFFFFF, inset 0 0 0 1px #000000;
   margin: 10px;
   background-color: #000000;
   padding: 4px; }
-  decoration:backdrop {
-    box-shadow: 0 3px 9px 1px transparent, 0 2px 6px 2px alpha(#000000, 0.2), 0 0 0 1px alpha(#000000, 0.25), inset 0 0 0 3px #FFFFFF, inset 0 0 0 1px #000000; }
   .fullscreen decoration, .tiled decoration {
     border-radius: 0; }
   .popup decoration {
@@ -2189,8 +2178,9 @@ decoration {
     box-shadow: 0 0 0 1px #000000;
     border-radius: 0px; }
   .ssd decoration {
+    padding: 0;
     border-radius: 0px 0px 0 0;
-    box-shadow: 0 0 0 1px alpha(#000000, 0.1); }
+    box-shadow: 0 0 0 1px #000000; }
     .ssd decoration.maximized {
       border-radius: 0; }
   tooltip.csd decoration {
@@ -2258,13 +2248,13 @@ messagedialog {
   .titlebar .titlebutton.close {
     background-image: url("assets/close.svg"); }
   .titlebar .titlebutton.minimize {
-    background-image: url("assets/minimize.svg");
-    margin-right: -6px; }
+    background-image: url("assets/minimize.svg"); }
   .titlebar .titlebutton.maximize {
-    background-image: url("assets/maximize.svg");
-    margin-right: -6px; }
+    background-image: url("assets/maximize.svg"); }
   .maximized .titlebar .titlebutton.maximize {
     background-image: url("assets/restore.svg"); }
+  .titlebar .horizontal.right .titlebutton.minimize {
+    margin-left: -7px; }
   .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
     border-radius: 0; }
 
@@ -2282,14 +2272,9 @@ messagedialog {
     border-bottom-color: #000000; }
 
 window.ssd headerbar, window.ssd .titlebar {
-  padding: 0px;
   margin: 0px;
-  border: 3px solid transparent;
-  border-bottom: none; }
+  border: none; }
 window.ssd.maximized headerbar, window.ssd.maximized .titlebar {
-  border: 0px;
-  border-bottom: 1px solid transparent;
-  box-shadow: none;
   margin: 0px; }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
