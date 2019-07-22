@@ -15,7 +15,7 @@
       padding-right: 12px;
       color: gtkalpha(currentColor, 0.7);
     }
-
+    
     .titlebutton {
       &.close, &.maximize, &.minimize, &:not(separator) {
         color: transparent;
@@ -33,16 +33,20 @@
 
       &.minimize {
         background-image: url('assets/minimize.svg');
-        margin-right: -6px;
       }
 
       &.maximize {
         background-image: url('assets/maximize.svg');
-        margin-right: -6px;
       }
       
       .maximized &.maximize {
         background-image: url('assets/restore.svg');
+      }
+    }
+    
+    .horizontal.right {
+      .titlebutton.minimize {
+        margin-left: -7px;
       }
     }
 
@@ -69,17 +73,12 @@
 
   window.ssd {
     headerbar, .titlebar {
-      padding: 0px;
       margin: 0px;
-      border: 3px solid transparent;
-      border-bottom: none;
+      border: none;
     }
-
+    
     &.maximized {
       headerbar, .titlebar {
-        border: 0px;
-        border-bottom: 1px solid transparent;
-        box-shadow: none;
         margin: 0px;
       }
     }

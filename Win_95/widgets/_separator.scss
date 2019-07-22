@@ -96,6 +96,12 @@
       background-image: linear-gradient(to bottom, gtkshade($bg_color, 0.65) 50%, $light_shadow 50%);
     }
 
+    menu menuitem & {
+      color: $bg_color;
+      background-image: none;
+      background-color: gtkshade($bg_color, 0.6);
+    }
+
     popover & {
       border: 0;
       color: gtkalpha(currentColor, 0.5);
