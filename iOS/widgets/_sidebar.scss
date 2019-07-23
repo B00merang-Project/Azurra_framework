@@ -4,11 +4,14 @@
   &:backdrop {    
     background-color: $unfocused_bg_color;
   }
+  
+  row {
+    border: none;
+    border-bottom: 1px solid $borders;
+  }
 
   row, view row, row.sidebar-row, .view, iconview {
     &, &:focus {
-      border: none;
-      border-bottom: 1px solid $borders;
       color: $sidebar_fg_color;
       background-color: transparent;
 
