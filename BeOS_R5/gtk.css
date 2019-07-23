@@ -1415,38 +1415,36 @@ separator {
   combobox separator {
     border: none; }
 
-spinbutton:not(.vertical) selection, spinbutton:not(.vertical) selection:focus {
-  color: #FFFFFF;
-  background-color: #989898; }
-spinbutton button:disabled, spinbutton entry:disabled {
-  color: mix(#000000, #D8D8D8, 0.5); }
-  spinbutton button:disabled:backdrop, spinbutton entry:disabled:backdrop {
-    color: mix(#000000, #D8D8D8, 0.5); }
 spinbutton.horizontal entry {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  padding: 7px 15px; }
-  spinbutton.horizontal entry:focus {
-    box-shadow: none; }
+  padding: 7px 15px;
+  border-left-width: 1px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px; }
 spinbutton.horizontal button.down {
-  border-right-width: 0;
-  border-left-width: 0;
-  border-radius: 0; }
+  border-radius: 0;
+  border-left-width: 0; }
 spinbutton.horizontal button.up {
+  border-left-width: 0;
   border-top-left-radius: 0;
-  border-bottom-left-radius: 0; }
-spinbutton.vertical entry {
-  border-radius: 0; }
-  spinbutton.vertical entry:focus {
-    box-shadow: none; }
-spinbutton.vertical button.up {
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-width: 0; }
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px; }
+spinbutton.vertical entry {
+  border-left-width: 1px;
+  border-top-width: 0;
+  border-radius: 0; }
+spinbutton.vertical button.up {
+  border-top-width: 1px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; }
 spinbutton.vertical button.down {
   border-top-width: 0;
   border-top-left-radius: 0;
-  border-top-right-radius: 0; }
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px; }
 
 @keyframes spin {
   to {
@@ -1862,8 +1860,7 @@ toolbar {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0; }
 
-.stack-switcher button {
-  min-height: 20px;
+stackswitcher button.text-button {
   min-width: 80px; }
 
 tooltip {
