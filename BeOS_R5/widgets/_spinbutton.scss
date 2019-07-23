@@ -1,0 +1,25 @@
+// mixins predefined in linked_widgets
+
+@mixin spinbutton() {
+  spinbutton {
+    &.horizontal {
+      entry {
+        padding: 7px 15px;
+        @include linked_first($entry_radius);
+      }
+      
+      button {
+        &.down { @include linked_middle($button_radius); }
+        &.up { @include linked_last($button_radius); }
+      }
+    }
+
+    &.vertical {
+      entry { @include linked_v_middle($entry_radius); }
+      button {
+        &.up { @include linked_v_first($button_radius); }
+        &.down { @include linked_v_last($button_radius); }
+      }
+    }
+  }
+}
