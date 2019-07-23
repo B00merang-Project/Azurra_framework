@@ -13,27 +13,27 @@
 
     .sidebar view &, view &, .separator, & {
       border: none;
-      background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.1);
+      background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.2);
 
       &:backdrop {
         border: none;
-        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.075);
+        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.1);
       }
     }
 
     .primary-toolbar &, toolbar & {
-      background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
+      background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.2);
 
       &:backdrop {
-        background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.075);
+        background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
       }
     }
     
     .primary-toolbar button &, toolbar button &, .primary-toolbar:not(.libreoffice-toolbar) & {
-      background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
+      background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.2);
 
       &:backdrop {
-        background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.075);
+        background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
       }
     }
 
@@ -41,24 +41,24 @@
       -GtkWidget-window-dragging: true;
       margin-top: 4px;
       margin-bottom: 4px;
-      background-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.1);
+      background-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.2);
 
       &:backdrop {
-        background-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.075);
+        background-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.1);
       }
     }
     
     headerbar button & {
-      border-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.1);
+      border-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.2);
 
       &:backdrop {
-        border-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.075);
+        border-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.1);
       }
     }
 
     .titlebar &, .titlebar:not(headerbar) > &, .titlebar &.titlebutton, .titlebar:not(headerbar) > &.titlebutton {
       -GtkWidget-window-dragging: true;
-      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
+      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.3);
 
       &:backdrop {
         background-color: $unfocused_borders;
@@ -68,7 +68,7 @@
     headerbar &.titlebutton, .titlebar:not(headerbar) &.titlebutton {
       min-width: 1px;
       min-height: 1px;
-      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
+      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.3);
 
       &:backdrop {
         background-color: $unfocused_borders;
@@ -76,7 +76,7 @@
     }
     
     .titlebutton button &, .titlebutton &.titlebutton {
-      border-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
+      border-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.3);
 
       &:backdrop {
         border-color: $unfocused_borders;
@@ -84,7 +84,7 @@
     }
 
     menu & {
-      background-color: gtkmix($menu_bg_color, $menu_fg_color, 0.1);
+      background-color: gtkmix($menu_bg_color, $menu_fg_color, 0.2);
     }
     
     menuitem & {

@@ -1288,44 +1288,46 @@ separator {
     margin: 4px 1px; }
   .sidebar view separator, view separator, separator .separator, separator {
     border: none;
-    background-color: #3C3D3F; }
+    background-color: mix(#111111, #FFFFFF, 0.1); }
     .sidebar view separator:backdrop, view separator:backdrop, separator .separator:backdrop, separator:backdrop {
       border: none;
-      background-color: #2D2E2F; }
+      background-color: mix(#111111, #FFFFFF, 0.075); }
   .primary-toolbar separator, toolbar separator {
-    background-color: mix(#3C3D3F, #002E3D, 0.5); }
+    background-color: mix(#002E3D, #FFFFFF, 0.1); }
     .primary-toolbar separator:backdrop, toolbar separator:backdrop {
-      background-color: #2D2E2F; }
+      background-color: mix(#002E3D, #FFFFFF, 0.075); }
+  .primary-toolbar button separator, toolbar button separator, .primary-toolbar:not(.libreoffice-toolbar) separator {
+    background-color: mix(#002E3D, #FFFFFF, 0.1); }
+    .primary-toolbar button separator:backdrop, toolbar button separator:backdrop, .primary-toolbar:not(.libreoffice-toolbar) separator:backdrop {
+      background-color: mix(#002E3D, #FFFFFF, 0.075); }
   headerbar separator {
     -GtkWidget-window-dragging: true;
     margin-top: 4px;
     margin-bottom: 4px;
-    background-color: mix(#3C3D3F, #324D60, 0.5); }
+    background-color: mix(#324D60, #FFFFFF, 0.1); }
     headerbar separator:backdrop {
-      background-color: #2D2E2F; }
+      background-color: mix(#324D60, #FFFFFF, 0.075); }
+  headerbar button separator {
+    border-color: mix(#324D60, #FFFFFF, 0.1); }
+    headerbar button separator:backdrop {
+      border-color: mix(#324D60, #FFFFFF, 0.075); }
   .titlebar separator, .titlebar:not(headerbar) > separator, .titlebar separator.titlebutton, .titlebar:not(headerbar) > separator.titlebutton {
     -GtkWidget-window-dragging: true;
-    background-color: mix(#3C3D3F, #324D60, 0.5); }
+    background-color: mix(#324D60, #FFFFFF, 0.1); }
     .titlebar separator:backdrop, .titlebar:not(headerbar) > separator:backdrop, .titlebar separator.titlebutton:backdrop, .titlebar:not(headerbar) > separator.titlebutton:backdrop {
       background-color: #2D2E2F; }
   headerbar separator.titlebutton, .titlebar:not(headerbar) separator.titlebutton {
     min-width: 1px;
     min-height: 1px;
-    background-color: mix(#3C3D3F, #324D60, 0.5); }
+    background-color: mix(#324D60, #FFFFFF, 0.1); }
     headerbar separator.titlebutton:backdrop, .titlebar:not(headerbar) separator.titlebutton:backdrop {
       background-color: #2D2E2F; }
-  .primary-toolbar button separator, toolbar button separator, .primary-toolbar:not(.libreoffice-toolbar) separator {
-    border-color: #3C3D3F; }
-    .primary-toolbar button separator:backdrop, toolbar button separator:backdrop, .primary-toolbar:not(.libreoffice-toolbar) separator:backdrop {
-      border-color: #2D2E2F; }
-  headerbar button separator {
-    border-color: mix(#3C3D3F, #324D60, 0.5); }
-    headerbar button separator:backdrop {
-      border-color: #2D2E2F; }
   .titlebutton button separator, .titlebutton separator.titlebutton {
-    border-color: mix(#3C3D3F, #324D60, 0.5); }
+    border-color: mix(#324D60, #FFFFFF, 0.1); }
     .titlebutton button separator:backdrop, .titlebutton separator.titlebutton:backdrop {
       border-color: #2D2E2F; }
+  menu separator {
+    background-color: mix(#282828, #FFFFFF, 0.1); }
   menuitem separator {
     border-width: 1px;
     border-style: none;

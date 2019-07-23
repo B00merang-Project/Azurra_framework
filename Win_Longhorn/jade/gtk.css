@@ -1455,44 +1455,46 @@ separator {
     margin: 4px 1px; }
   .sidebar view separator, view separator, separator .separator, separator {
     border: none;
-    background-color: shade(#E8ECF6, 0.75); }
+    background-color: mix(#FFFFFF, #000000, 0.2); }
     .sidebar view separator:backdrop, view separator:backdrop, separator .separator:backdrop, separator:backdrop {
       border: none;
-      background-color: shade(#E8ECF6, 0.75); }
+      background-color: mix(#FFFFFF, #000000, 0.1); }
   .primary-toolbar separator, toolbar separator {
-    background-color: mix(shade(#E8ECF6, 0.75), #F0F0F0, 0.5); }
+    background-color: mix(#F0F0F0, #000000, 0.2); }
     .primary-toolbar separator:backdrop, toolbar separator:backdrop {
-      background-color: shade(#E8ECF6, 0.75); }
+      background-color: mix(#F0F0F0, #000000, 0.1); }
+  .primary-toolbar button separator, toolbar button separator, .primary-toolbar:not(.libreoffice-toolbar) separator {
+    background-color: mix(#F0F0F0, #000000, 0.2); }
+    .primary-toolbar button separator:backdrop, toolbar button separator:backdrop, .primary-toolbar:not(.libreoffice-toolbar) separator:backdrop {
+      background-color: mix(#F0F0F0, #000000, 0.1); }
   headerbar separator {
     -GtkWidget-window-dragging: true;
     margin-top: 4px;
     margin-bottom: 4px;
-    background-color: mix(shade(#E8ECF6, 0.75), #E8ECF6, 0.5); }
+    background-color: mix(#E8ECF6, #000000, 0.2); }
     headerbar separator:backdrop {
-      background-color: shade(#E8ECF6, 0.75); }
+      background-color: mix(#E8ECF6, #000000, 0.1); }
+  headerbar button separator {
+    border-color: mix(#E8ECF6, #000000, 0.2); }
+    headerbar button separator:backdrop {
+      border-color: mix(#E8ECF6, #000000, 0.1); }
   .titlebar separator, .titlebar:not(headerbar) > separator, .titlebar separator.titlebutton, .titlebar:not(headerbar) > separator.titlebutton {
     -GtkWidget-window-dragging: true;
-    background-color: mix(shade(#E8ECF6, 0.75), #F0F0F0, 0.5); }
+    background-color: mix(#F0F0F0, #000000, 0.2); }
     .titlebar separator:backdrop, .titlebar:not(headerbar) > separator:backdrop, .titlebar separator.titlebutton:backdrop, .titlebar:not(headerbar) > separator.titlebutton:backdrop {
-      background-color: shade(#E8ECF6, 0.75); }
+      background-color: mix(#F0F0F0, #000000, 0.1); }
   headerbar separator.titlebutton, .titlebar:not(headerbar) separator.titlebutton {
     min-width: 1px;
     min-height: 1px;
-    background-color: mix(shade(#E8ECF6, 0.75), #F0F0F0, 0.5); }
+    background-color: mix(#F0F0F0, #000000, 0.2); }
     headerbar separator.titlebutton:backdrop, .titlebar:not(headerbar) separator.titlebutton:backdrop {
-      background-color: shade(#E8ECF6, 0.75); }
-  .primary-toolbar button separator, toolbar button separator, .primary-toolbar:not(.libreoffice-toolbar) separator {
-    border-color: shade(#E8ECF6, 0.75); }
-    .primary-toolbar button separator:backdrop, toolbar button separator:backdrop, .primary-toolbar:not(.libreoffice-toolbar) separator:backdrop {
-      border-color: shade(#E8ECF6, 0.75); }
-  headerbar button separator {
-    border-color: mix(shade(#E8ECF6, 0.75), #E8ECF6, 0.5); }
-    headerbar button separator:backdrop {
-      border-color: shade(#E8ECF6, 0.75); }
+      background-color: mix(#F0F0F0, #000000, 0.1); }
   .titlebutton button separator, .titlebutton separator.titlebutton {
-    border-color: mix(shade(#E8ECF6, 0.75), #E8ECF6, 0.5); }
+    border-color: mix(#F0F0F0, #000000, 0.2); }
     .titlebutton button separator:backdrop, .titlebutton separator.titlebutton:backdrop {
-      border-color: shade(#E8ECF6, 0.75); }
+      border-color: mix(#F0F0F0, #000000, 0.1); }
+  menu separator {
+    background-color: mix(#F0F0F0, #000000, 0.2); }
   menuitem separator {
     border-width: 1px;
     border-style: none;
@@ -2548,14 +2550,17 @@ messagedialog.csd .dialog-action-area button {
   min-height: 30px;
   color: #000000;
   background-color: #F0F0F0;
-  box-shadow: inset 1px 0 alpha(white, 0.6), inset -1px 0 alpha(white, 0.6), inset 0 1px alpha(white, 0.6);
   background-image: url("assets/titlebar.png");
-  background-size: 100% 100%; }
+  background-size: 100% 100%;
+  box-shadow: inset 0 1px alpha(white, 0.6); }
+  .titlebar .titlebar, .titlebar:not(headerbar) .titlebar, headerbar.default-decoration .titlebar, .csd headerbar.default-decoration .titlebar, .default-decoration.titlebar:not(headerbar) .titlebar, .csd .default-decoration.titlebar:not(headerbar) .titlebar {
+    background-image: none;
+    box-shadow: none; }
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: #000000;
     background-color: shade(#E8ECF6, 0.95);
     background-image: url("assets/titlebar-backdrop.png");
-    box-shadow: inset 1px 0 alpha(white, 0.3), inset -1px 0 alpha(white, 0.3), inset 0 1px alpha(white, 0.3); }
+    box-shadow: inset 0 1px alpha(white, 0.3); }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;

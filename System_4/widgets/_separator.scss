@@ -1,0 +1,40 @@
+@mixin separator() {
+  separator {
+    -gtk-icon-source: none;
+    min-width: 1px;
+    min-height: 1px;
+    border-color: $borders;
+    background-color: $borders;
+
+    &:backdrop {
+      border-color: $unfocused_borders;
+      background-color: $unfocused_borders;
+    }
+
+    button & { margin: 4px 1px; }
+    
+    headerbar & {
+      -GtkWidget-window-dragging: true;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+    
+    .titlebar &, .titlebar:not(headerbar) > &, .titlebar &.titlebutton, .titlebar:not(headerbar) > &.titlebutton {
+      -GtkWidget-window-dragging: true;
+    }
+
+    menuitem & {
+      border-width: 1px;
+      border-style: none;
+      color: $selected_fg_color;
+    }
+
+    popover & {
+      border: 0;
+      color: $selected_fg_color;
+      background-color: transparent;
+    }
+
+    combobox & { border: none; }
+  }
+}

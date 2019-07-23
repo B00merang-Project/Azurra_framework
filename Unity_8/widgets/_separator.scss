@@ -58,28 +58,28 @@
 
     .titlebar &, .titlebar:not(headerbar) > &, .titlebar &.titlebutton, .titlebar:not(headerbar) > &.titlebutton {
       -GtkWidget-window-dragging: true;
-      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
+      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.3);
 
       &:backdrop {
-        background-color: $unfocused_borders;
+        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.15);
       }
     }
 
     headerbar &.titlebutton, .titlebar:not(headerbar) &.titlebutton {
       min-width: 1px;
       min-height: 1px;
-      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
+      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.3);
 
       &:backdrop {
-        background-color: $unfocused_borders;
+        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.15);
       }
     }
     
     .titlebutton button &, .titlebutton &.titlebutton {
-      border-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
+      border-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.3);
 
       &:backdrop {
-        border-color: $unfocused_borders;
+        border-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.15);
       }
     }
 
