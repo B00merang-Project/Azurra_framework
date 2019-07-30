@@ -1395,13 +1395,13 @@ separator {
       border: none;
       background-color: mix(#F2F1F0, #4C4C4C, 0.075); }
   .primary-toolbar separator, toolbar separator {
-    background-color: mix(#FFFFFF, #3C3C3C, 0.1); }
+    background-color: mix(#F2F1F0, #4C4C4C, 0.1); }
     .primary-toolbar separator:backdrop, toolbar separator:backdrop {
-      background-color: mix(#FFFFFF, #3C3C3C, 0.075); }
+      background-color: mix(#F2F1F0, #4C4C4C, 0.075); }
   .primary-toolbar button separator, toolbar button separator, .primary-toolbar:not(.libreoffice-toolbar) separator {
-    background-color: mix(#FFFFFF, #3C3C3C, 0.1); }
+    background-color: mix(#F2F1F0, #4C4C4C, 0.1); }
     .primary-toolbar button separator:backdrop, toolbar button separator:backdrop, .primary-toolbar:not(.libreoffice-toolbar) separator:backdrop {
-      background-color: mix(#FFFFFF, #3C3C3C, 0.075); }
+      background-color: mix(#F2F1F0, #4C4C4C, 0.075); }
   headerbar separator {
     -GtkWidget-window-dragging: true;
     margin-top: 4px;
@@ -1723,8 +1723,8 @@ headerbar, headerbar:not(.titlebar) {
 toolbar {
   padding: 4px;
   border: none;
-  color: #3C3C3C;
-  background-color: #FFFFFF; }
+  color: #4C4C4C;
+  background-color: #F2F1F0; }
   toolbar:backdrop {
     color: mix(#4C4C4C, #FFFFFF, 0.3);
     background-color: #F2F1F0; }
@@ -1734,20 +1734,20 @@ toolbar {
   toolbar button.flat {
     border-color: transparent;
     border-radius: 6px;
-    color: #3C3C3C;
+    color: #4C4C4C;
     background-color: transparent;
     background-image: none;
     box-shadow: none; }
     toolbar button.flat:hover {
       border-color: shade(#F2F1F0, 0.9);
-      color: #3C3C3C;
-      background-color: #FFFFFF; }
+      color: #4C4C4C;
+      background-color: #F2F1F0; }
     toolbar button.flat:active, toolbar button.flat:checked {
       color: #4C4C4C;
       background-color: mix(#F2F1F0, #4C4C4C, 0.1); }
     toolbar button.flat:disabled {
       border-color: transparent;
-      color: alpha(#3C3C3C, 0.8);
+      color: alpha(#4C4C4C, 0.8);
       background-color: transparent;
       background-image: none; }
       toolbar button.flat:disabled:backdrop {
@@ -1766,80 +1766,86 @@ toolbar {
   padding: 4px;
   border-width: 0 0 1px 0;
   border-style: solid;
-  border-color: mix(shade(#F2F1F0, 0.9), #FFFFFF, 0.5);
-  color: #3C3C3C;
-  background-color: #FFFFFF; }
+  border-color: shade(#DFD7CF, 0.8);
+  color: #4C4C4C;
+  background-color: #DFD7CF; }
   .primary-toolbar:backdrop {
-    border-color: #F2F1F0;
-    color: mix(#4C4C4C, #FFFFFF, 0.3);
-    background-color: #F2F1F0; }
+    color: alpha(#4C4C4C, 0.8);
+    background-color: #DFD7CF; }
   .primary-toolbar button, .primary-toolbar .raised button {
     padding: 5px 6px;
     border-style: solid;
     border-width: 1px;
     border-radius: 6px;
-    color: #3C3C3C;
-    border-color: shade(shade(#F2F1F0, 0.9), 0.95);
-    border-left-color: shade(shade(#F2F1F0, 0.9), 0.925);
-    border-right-color: shade(shade(#F2F1F0, 0.9), 0.925);
-    border-bottom-color: shade(shade(#F2F1F0, 0.9), 0.78);
-    background-color: #FFFFFF;
-    background-image: linear-gradient(to bottom, shade(#FFFFFF, 1.05), shade(#FFFFFF, 0.975));
-    -gtk-outline-radius: 6px;
-    box-shadow: inset 0 0 0 1px alpha(white, 0.3);
-    outline-offset: -1px;
-    outline-style: solid;
-    outline-color: shade(#F07746, 0.9);
+    color: #4C4C4C;
+    border-color: shade(#DFD7CF, 0.8);
+    border-top-color: shade(shade(#DFD7CF, 0.8), 1.1);
+    border-left-color: shade(shade(#DFD7CF, 0.8), 1.05);
+    border-right-color: shade(shade(#DFD7CF, 0.8), 1.05);
+    background-color: transparent;
+    background-image: none;
+    box-shadow: inset 0 0 0 1px alpha(white, 0.08);
     -gtk-outline-radius: 6px; }
     .primary-toolbar button:hover, .primary-toolbar .raised button:hover {
-      box-shadow: 0 1px alpha(black, 0.085), 1px 0 alpha(black, 0.055), -1px 0 alpha(black, 0.055); }
-      .primary-toolbar button:hover:focus:not(:checked), .primary-toolbar .raised button:hover:focus:not(:checked) {
-        box-shadow: 0 1px alpha(#F07746, 0.3), 1px 0 alpha(#F07746, 0.25), -1px 0 alpha(#F07746, 0.25); }
+      color: #4C4C4C;
+      box-shadow: inset 0 0 0 1px alpha(white, 0.06);
+      background-color: shade(#DFD7CF, 1.1); }
     .primary-toolbar button:active, .primary-toolbar button:checked:active, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked:active {
-      background-image: linear-gradient(to bottom, shade(#FFFFFF, 0.92), shade(#FFFFFF, 0.975)); }
-    .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop {
-      background-image: none;
-      box-shadow: inset 0 0 0 1px alpha(white, 0.25); }
-      .primary-toolbar button:backdrop:hover, .primary-toolbar .raised button:backdrop:hover {
-        background-color: shade(#FFFFFF, 1.065); }
+      color: #4C4C4C;
+      box-shadow: inset 0 0 0 1px alpha(white, 0.06);
+      background-color: shade(#DFD7CF, 1.1);
+      border-color: shade(shade(#DFD7CF, 0.8), 0.9);
+      background-image: none; }
     .primary-toolbar button:checked, .primary-toolbar .raised button:checked {
-      border-color: shade(shade(#F2F1F0, 0.9), 0.8);
-      border-left-color: shade(shade(#F2F1F0, 0.9), 0.725);
-      border-right-color: shade(shade(#F2F1F0, 0.9), 0.725);
-      border-top-color: shade(shade(#F2F1F0, 0.9), 0.65);
-      background-color: mix(#FFFFFF, #3C3C3C, 0.1);
-      background-image: linear-gradient(to bottom, shade(#FFFFFF, 0.8), shade(#FFFFFF, 0.95));
-      box-shadow: inset 0 2px 2px 0 alpha(black, 0.1); }
-      .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:checked:backdrop {
-        box-shadow: inset 0 2px 2px 0 alpha(black, 0.075);
-        background-image: linear-gradient(to bottom, shade(#FFFFFF, 0.8), shade(#FFFFFF, 0.95)); }
-        .primary-toolbar button:checked:backdrop:hover, .primary-toolbar .raised button:checked:backdrop:hover {
-          background-color: shade(#FFFFFF, 1.065);
-          background-image: none; }
-      .primary-toolbar button:checked:disabled, .primary-toolbar .raised button:checked:disabled {
-        color: mix(#3C3C3C, mix(#4C4C4C, #F2F1F0, 0.75), 0.1);
-        border-color: mix(#3C3C3C, shade(#F2F1F0, 1.02), 0.85);
-        background-color: shade(shade(#F2F1F0, 1.02), 0.9);
-        box-shadow: inset 0 2px 2px 0 alpha(black, 0.025);
-        background-image: linear-gradient(to bottom, shade(shade(#F2F1F0, 1.02), 0.95), shade(shade(#F2F1F0, 1.02), 0.99)); }
-    .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled {
-      color: mix(#3C3C3C, mix(#4C4C4C, #F2F1F0, 0.75), 0.5);
-      background-color: shade(shade(#F2F1F0, 1.02), 0.98);
+      color: #4C4C4C;
+      box-shadow: inset 0 0 0 1px alpha(white, 0.06);
+      background-color: shade(#DFD7CF, 1.1);
+      border-color: shade(shade(#DFD7CF, 0.8), 0.9);
       background-image: none;
-      box-shadow: none;
-      border-color: shade(shade(#F2F1F0, 0.9), 0.96); }
+      box-shadow: inset 2px 2px alpha(black, 0.08), inset -2px -2px alpha(white, 0.1); }
+      .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:checked:backdrop {
+        background-image: none; }
+        .primary-toolbar button:checked:backdrop:hover, .primary-toolbar .raised button:checked:backdrop:hover {
+          background-color: shade(#DFD7CF, 1.1); }
+      .primary-toolbar button:checked:disabled, .primary-toolbar .raised button:checked:disabled {
+        color: mix(#4C4C4C, mix(#4C4C4C, #F2F1F0, 0.5), 0.1);
+        border-color: mix(#4C4C4C, shade(#F2F1F0, 1.02), 0.85);
+        background-image: none; }
+        .primary-toolbar button:checked:disabled:backdrop, .primary-toolbar .raised button:checked:disabled:backdrop {
+          color: mix(#4C4C4C, mix(#4C4C4C, #F2F1F0, 0.75), 0.1);
+          background-image: none; }
+    .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled {
+      border-color: shade(#DFD7CF, 0.8);
+      border-top-color: shade(shade(#DFD7CF, 0.8), 1.1);
+      border-left-color: shade(shade(#DFD7CF, 0.8), 1.05);
+      border-right-color: shade(shade(#DFD7CF, 0.8), 1.05);
+      color: mix(#4C4C4C, mix(#4C4C4C, #F2F1F0, 0.75), 0.5);
+      background-image: none;
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1px alpha(white, 0.05); }
       .primary-toolbar button:disabled:backdrop, .primary-toolbar .raised button:disabled:backdrop {
-        background-color: shade(shade(#F2F1F0, 1.02), 0.96);
-        border-color: shade(#F2F1F0, 0.9); }
+        border-color: shade(#DFD7CF, 0.8);
+        border-top-color: shade(shade(#DFD7CF, 0.8), 1.1);
+        border-left-color: shade(shade(#DFD7CF, 0.8), 1.05);
+        border-right-color: shade(shade(#DFD7CF, 0.8), 1.05);
+        color: mix(#4C4C4C, mix(#4C4C4C, #F2F1F0, 0.75), 0.5);
+        background-image: none;
+        background-color: transparent;
+        box-shadow: inset 0 0 0 1px alpha(white, 0.04); }
+    .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop {
+      color: mix(#4C4C4C, mix(#4C4C4C, #FFFFFF, 0.3), 0.2);
+      box-shadow: inset 0 0 0 1px alpha(white, 0.06); }
+      .primary-toolbar button:backdrop:hover, .primary-toolbar .raised button:backdrop:hover {
+        background-color: shade(#DFD7CF, 1.1); }
 
 .inline-toolbar toolbar {
   -GtkToolbar-button-relief: normal;
   padding: 1px;
   border-width: 1px;
   border-style: solid;
-  border-color: mix(shade(#F2F1F0, 0.9), #FFFFFF, 0.5);
+  border-color: mix(shade(#F2F1F0, 0.9), #F2F1F0, 0.5);
   border-radius: 0;
-  background-color: #FFFFFF; }
+  background-color: #F2F1F0; }
   .inline-toolbar toolbar:last-child {
     border-width: 0 1px 1px 1px;
     border-radius: 0; }
@@ -1848,13 +1854,13 @@ toolbar {
     border-style: solid;
     border-width: 1px;
     border-radius: 6px;
-    color: #3C3C3C;
+    color: #4C4C4C;
     border-color: shade(shade(#F2F1F0, 0.9), 0.95);
     border-left-color: shade(shade(#F2F1F0, 0.9), 0.925);
     border-right-color: shade(shade(#F2F1F0, 0.9), 0.925);
     border-bottom-color: shade(shade(#F2F1F0, 0.9), 0.78);
-    background-color: #FFFFFF;
-    background-image: linear-gradient(to bottom, shade(#FFFFFF, 1.05), shade(#FFFFFF, 0.975));
+    background-color: #F2F1F0;
+    background-image: linear-gradient(to bottom, shade(#F2F1F0, 1.05), shade(#F2F1F0, 0.975));
     -gtk-outline-radius: 6px;
     box-shadow: inset 0 0 0 1px alpha(white, 0.3);
     outline-offset: -1px;
@@ -1866,34 +1872,34 @@ toolbar {
       .inline-toolbar toolbar button:hover:focus:not(:checked) {
         box-shadow: 0 1px alpha(#F07746, 0.3), 1px 0 alpha(#F07746, 0.25), -1px 0 alpha(#F07746, 0.25); }
     .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked:active {
-      background-image: linear-gradient(to bottom, shade(#FFFFFF, 0.92), shade(#FFFFFF, 0.975)); }
+      background-image: linear-gradient(to bottom, shade(#F2F1F0, 0.92), shade(#F2F1F0, 0.975)); }
     .inline-toolbar toolbar button:backdrop {
       background-image: none;
       box-shadow: inset 0 0 0 1px alpha(white, 0.25); }
       .inline-toolbar toolbar button:backdrop:hover {
-        background-color: shade(#FFFFFF, 1.065); }
+        background-color: shade(#F2F1F0, 1.065); }
     .inline-toolbar toolbar button:checked {
       border-color: shade(shade(#F2F1F0, 0.9), 0.8);
       border-left-color: shade(shade(#F2F1F0, 0.9), 0.725);
       border-right-color: shade(shade(#F2F1F0, 0.9), 0.725);
       border-top-color: shade(shade(#F2F1F0, 0.9), 0.65);
-      background-color: mix(#FFFFFF, #3C3C3C, 0.1);
-      background-image: linear-gradient(to bottom, shade(#FFFFFF, 0.8), shade(#FFFFFF, 0.95));
+      background-color: mix(#F2F1F0, #4C4C4C, 0.1);
+      background-image: linear-gradient(to bottom, shade(#F2F1F0, 0.8), shade(#F2F1F0, 0.95));
       box-shadow: inset 0 2px 2px 0 alpha(black, 0.1); }
       .inline-toolbar toolbar button:checked:backdrop {
         box-shadow: inset 0 2px 2px 0 alpha(black, 0.075);
-        background-image: linear-gradient(to bottom, shade(#FFFFFF, 0.8), shade(#FFFFFF, 0.95)); }
+        background-image: linear-gradient(to bottom, shade(#F2F1F0, 0.8), shade(#F2F1F0, 0.95)); }
         .inline-toolbar toolbar button:checked:backdrop:hover {
-          background-color: shade(#FFFFFF, 1.065);
+          background-color: shade(#F2F1F0, 1.065);
           background-image: none; }
       .inline-toolbar toolbar button:checked:disabled {
-        color: mix(#3C3C3C, mix(#4C4C4C, #F2F1F0, 0.75), 0.1);
-        border-color: mix(#3C3C3C, shade(#F2F1F0, 1.02), 0.85);
+        color: mix(#4C4C4C, mix(#4C4C4C, #F2F1F0, 0.75), 0.1);
+        border-color: mix(#4C4C4C, shade(#F2F1F0, 1.02), 0.85);
         background-color: shade(shade(#F2F1F0, 1.02), 0.9);
         box-shadow: inset 0 2px 2px 0 alpha(black, 0.025);
         background-image: linear-gradient(to bottom, shade(shade(#F2F1F0, 1.02), 0.95), shade(shade(#F2F1F0, 1.02), 0.99)); }
     .inline-toolbar toolbar button:disabled {
-      color: mix(#3C3C3C, mix(#4C4C4C, #F2F1F0, 0.75), 0.5);
+      color: mix(#4C4C4C, mix(#4C4C4C, #F2F1F0, 0.75), 0.5);
       background-color: shade(shade(#F2F1F0, 1.02), 0.98);
       background-image: none;
       box-shadow: none;
