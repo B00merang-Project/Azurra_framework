@@ -1,0 +1,47 @@
+@mixin decoration() {
+  decoration {
+    border-radius: $csd_radius $csd_radius 0 0;
+    border-width: 0px;
+    box-shadow: 0 0 0 2px $wm_shadow;
+    padding: 3px;
+    background-color: gtkmix($bg_color, $light_shadow, 0.2);
+    margin: 10px;
+
+    &:backdrop {
+    }
+
+    .fullscreen &, .tiled & {
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .popup & {
+      box-shadow: none;
+      padding: 0;
+      border-radius: $csd_radius;
+    }
+
+    .ssd & {
+      padding: 0;
+      border-radius: $csd_radius $csd_radius 0 0;
+      box-shadow: 0 0 0 2px $wm_shadow;
+
+      &.maximized {
+        border-radius: 0;
+      }
+    }
+
+    tooltip.csd & {
+      border-radius: $csd_radius;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    .solid-csd & {
+      margin: 1px;
+      border-radius: 0px;
+      background-color: gtkalpha($light_shadow, 0.95);
+      box-shadow: none;
+    }
+  }
+}
