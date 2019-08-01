@@ -1,0 +1,67 @@
+@mixin decoration() {
+  decoration {
+    border-radius: $csd_radius $csd_radius 0 0;
+    border-width: 0px;
+    margin: 10px;
+
+    @if $variant == 'light' {
+      box-shadow: 19px 20px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
+    }
+    @else {
+      box-shadow: 0 0 0 1px $wm_shadow;
+    }
+
+    &:backdrop {
+    }
+
+    .fullscreen &, .tiled & {
+      border-radius: 0;
+    }
+
+    .popup & {
+      @if $variant == 'light' {
+        box-shadow: 10px 10px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
+      }
+      @else {
+        box-shadow: 0 0 0 1px $wm_shadow;
+      }
+      
+      border-radius: $csd_radius;
+    }
+
+    .ssd & {
+      border-radius: $csd_radius $csd_radius 0 0;
+      @if $variant == 'light' {
+        box-shadow: 19px 20px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
+      }
+      @else {
+        box-shadow: 0 0 0 1px $wm_shadow;
+      }
+
+      &.maximized {
+        border-radius: 0;
+      }
+    }
+
+    tooltip.csd & {
+      border-radius: $csd_radius;
+      box-shadow: none;
+    }
+
+    .solid-csd & {
+      margin: 1px;
+      border-radius: 0px;
+      background-color: gtkalpha($light_shadow, 0.95);
+      box-shadow: none;
+    }
+  }
+
+  // HACK: for rounded menus this has to override the .background definition
+  window.background.csd.popup {
+    border-radius: 0;
+  }
+  
+  popover.background {
+    box-shadow: 10px 10px gtkshade($wm_shadow, 0.35);
+  }
+}
