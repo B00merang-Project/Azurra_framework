@@ -181,11 +181,11 @@ button {
   border-top-color: mix(#7287c0, white, 0.7);
   border-left-color: mix(#7287c0, white, 0.7);
   background-color: #7287c0;
-  -gtk-outline-radius: 0px;
   outline-color: #000000;
+  outline-width: 2px;
   outline-offset: 2px;
   outline-style: solid;
-  outline-width: 2px; }
+  -gtk-outline-radius: 0px; }
   button:active, button:checked {
     color: #000000;
     border-top-color: shade(#7287c0, 0.7);
@@ -691,13 +691,17 @@ menubar, .menubar {
 menubar > menuitem, .menubar > menuitem {
   margin-left: 2px;
   margin-right: 2px;
-  padding: 3px 8px;
+  padding: 3px 20px 3px 8px;
   border: 1px solid shade(shade(#7287c0, 0.7), 0.8);
   border-top-color: mix(#7287c0, white, 0.7);
   border-left-color: mix(#7287c0, white, 0.7);
   border-radius: 40px;
   color: #000000;
-  background-color: transparent; }
+  background-color: transparent;
+  background-image: url("assets/menuitem_arrow.png");
+  background-size: 14px 9px;
+  background-position: right center;
+  background-repeat: no-repeat; }
   menubar > menuitem:hover, .menubar > menuitem:hover {
     border-color: shade(shade(#7287c0, 0.7), 0.8);
     border-bottom-color: mix(#7287c0, white, 0.7);
@@ -1487,11 +1491,11 @@ headerbar, headerbar:not(.titlebar) {
     border-top-color: mix(#7287c0, white, 0.7);
     border-left-color: mix(#7287c0, white, 0.7);
     background-color: #7287c0;
-    -gtk-outline-radius: 0px;
     outline-color: #000000;
+    outline-width: 2px;
     outline-offset: 2px;
     outline-style: solid;
-    outline-width: 2px; }
+    -gtk-outline-radius: 0px; }
     headerbar button:active, headerbar button:checked, headerbar:not(.titlebar) button:active, headerbar:not(.titlebar) button:checked {
       color: #000000;
       border-top-color: shade(#7287c0, 0.7);
@@ -1580,11 +1584,11 @@ toolbar {
     border-top-color: mix(#7287c0, white, 0.7);
     border-left-color: mix(#7287c0, white, 0.7);
     background-color: #7287c0;
-    -gtk-outline-radius: 0px;
     outline-color: #000000;
+    outline-width: 2px;
     outline-offset: 2px;
     outline-style: solid;
-    outline-width: 2px; }
+    -gtk-outline-radius: 0px; }
     .primary-toolbar button:active, .primary-toolbar button:checked, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked {
       color: #000000;
       border-top-color: shade(#7287c0, 0.7);
@@ -1624,11 +1628,11 @@ toolbar {
     border-top-color: mix(#7287c0, white, 0.7);
     border-left-color: mix(#7287c0, white, 0.7);
     background-color: #7287c0;
-    -gtk-outline-radius: 0px;
     outline-color: #000000;
+    outline-width: 2px;
     outline-offset: 2px;
     outline-style: solid;
-    outline-width: 2px; }
+    -gtk-outline-radius: 0px; }
     .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
       color: #000000;
       border-top-color: shade(#7287c0, 0.7);
@@ -2334,11 +2338,11 @@ panel-toplevel.background na-tray-applet {
     border-top-color: mix(#7287c0, white, 0.7);
     border-left-color: mix(#7287c0, white, 0.7);
     background-color: #7287c0;
-    -gtk-outline-radius: 0px;
     outline-color: #000000;
+    outline-width: 2px;
     outline-offset: 2px;
     outline-style: solid;
-    outline-width: 2px; }
+    -gtk-outline-radius: 0px; }
     #XfceNotifyWindow.osd button:active, #XfceNotifyWindow.osd button:checked {
       color: #000000;
       border-top-color: shade(#7287c0, 0.7);
