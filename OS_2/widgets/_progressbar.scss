@@ -8,23 +8,20 @@
     progress {
       border: none;
       border-radius: $progressbar_radius;
-      background-image: linear-gradient(to right, transparent, transparent 37.5%, $bg_color 37.5%, $bg_color 50%, transparent 50%, transparent 87.5%, $bg_color 87.5%, $bg_color 100%), image($selected_bg_color);
-    background-size: 20px 16px, auto;
+      background-image: linear-gradient(to bottom, $dark_shadow, $borders 10%, $light_shadow, $borders 90%, $dark_shadow);
     }
     
     &.vertical progress {
-      background-image: linear-gradient(to bottom, transparent, transparent 37.5%, $bg_color 37.5%, $bg_color 50%, transparent 50%, transparent 87.5%, $bg_color 87.5%, $bg_color 100%), image($selected_bg_color);
-      background-size: 16px 20px, auto;
+      background-image: linear-gradient(to right, $dark_shadow, $borders 10%, $light_shadow, $borders 90%, $dark_shadow);
     }
 
     trough {
-      padding: 2px;
       border: 1px solid $borders;
       border-radius: $progressbar_radius;
       background-color: $bg_color;
-      border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-      border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
-      box-shadow: inset 1px 0 gtkshade($bg_color, 0.65), inset 0 1px gtkshade($bg_color, 0.65), inset -1px 0 gtkmix($bg_color, $light_shadow, 0.7), inset 0 -1px gtkmix($bg_color, $light_shadow, 0.7);
+      border-bottom-color: $light_shadow;
+      border-right-color: $light_shadow;
+      box-shadow: inset 1px 0 $borders, inset 0 1px $borders, inset -1px 0 $light_shadow, inset 0 -1px $light_shadow;
     }
 
     &.horizontal trough,

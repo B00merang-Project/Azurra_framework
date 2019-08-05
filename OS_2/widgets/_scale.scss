@@ -9,9 +9,9 @@
       border-radius: 0;
       background-color: $bg_color;
       outline-offset: 2px;
-      border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-      border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
-      box-shadow: inset 1px 0 gtkshade($bg_color, 0.65), inset 0 1px gtkshade($bg_color, 0.65), inset -1px 0 gtkmix($bg_color, $light_shadow, 0.7), inset 0 -1px gtkmix($bg_color, $light_shadow, 0.7);
+      border-bottom-color: $light_shadow;
+      border-right-color: $light_shadow;
+      box-shadow: inset 2px 2px $borders, inset -1px -1px $borders;
       -gtk-outline-radius: 0;
 
       &:disabled {
@@ -73,7 +73,7 @@
       }
 
       slider {
-        margin-top: -6px;
+        margin-top: -5px;
         margin-bottom: -9px;
       }
 
@@ -106,10 +106,10 @@
     }
 
     slider {
-      min-height: 21px;
-      min-width: 11px;
-      margin-top: -6px;
-      margin-bottom: -10px;
+      min-height: 20px;
+      min-width: 12px;
+      margin-top: -5px;
+      margin-bottom: -5px;
       border: none;
       border-radius: 0;
       color: $selected_fg_color;
@@ -137,35 +137,13 @@
       }
     }
     
-    &.horizontal.marks-before {
-      slider {
-        background-image: url('assets/slider-horiz-top.png');
-
-        &:hover {
-          background-image: url('assets/slider-horiz-top.png');
-        }
-
-        &:disabled {
-          background-image: url('assets/slider-horiz-top-insensitive.png');
-
-          &:backdrop {
-            background-image: url('assets/slider-horiz-top-insensitive.png');
-          }
-        }
-
-        &:backdrop {
-          background-image: url('assets/slider-horiz-top-insensitive.png');
-        }
-      }
-    }
-    
     &.vertical {
       slider {
-        min-height: 11px;
-        min-width: 21px;
+        min-height: 12px;
+        min-width: 20px;
         margin: 0;
-        margin-left: -6px;
-        margin-right: -10px;
+        margin-left: -5px;
+        margin-right: -5px;
         background-image: url('assets/slider-vert.png');
 
         &:hover {
@@ -182,26 +160,6 @@
 
         &:backdrop {
           background-image: url('assets/slider-vert-insensitive.png');
-        }
-      }
-      
-      &.marks-before {
-        background-image: url('assets/slider-vert-left.png');
-
-        &:hover {
-          background-image: url('assets/slider-vert-left.png');
-        }
-
-        &:disabled {
-          background-image: url('assets/slider-vert-left-insensitive.png');
-
-          &:backdrop {
-            background-image: url('assets/slider-vert-left-insensitive.png');
-          }
-        }
-
-        &:backdrop {
-          background-image: url('assets/slider-vert-left-insensitive.png');
         }
       }
     }

@@ -5,14 +5,12 @@
   border-radius: $button_radius;
   color: $fg;
   border-color: $br;
-  border-top-color: gtkmix($bg, $light_shadow, 0.7);
-  border-left-color: gtkmix($bg, $light_shadow, 0.7);
+  border-bottom-color: $light_shadow;
+  border-right-color: $light_shadow;
   background-color: $bg;
-  box-shadow: inset -1px 0 gtkshade($bg, 0.65), inset 0 -1px gtkshade($bg, 0.65), inset 1px 0 gtkmix($bg, $light_shadow, 0.7), inset 0 1px gtkmix($bg, $light_shadow, 0.7);
-  -gtk-outline-radius: $button_radius;
-  outline-color: $fg;
-  outline-offset: 0;
-  outline-style: solid;
+  box-shadow: inset -2px -2px $borders, inset 2px 2px $light_shadow;
+
+  outline-style: none;
 
   &:hover {
   }
@@ -20,9 +18,11 @@
   &:active, &:checked {
     color: $fg;
     border-color: $br;
+    border-top-color: $light_shadow;
+    border-left-color: $light_shadow;
     background-color: $bg;
     background-image: none;
-    box-shadow: inset 1px 0 gtkshade($bg, 0.65), inset 0 1px gtkshade($bg, 0.65), inset -1px 0 gtkmix($bg, $light_shadow, 0.7), inset 0 -1px gtkmix($bg, $light_shadow, 0.7);
+    box-shadow: inset 2px 2px $borders, inset -2px -2px $light_shadow;
 
     &:disabled {
       color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
@@ -47,18 +47,20 @@
   &:hover {
     color: $fg;
     border-color: $br;
+    border-bottom-color: $light_shadow;
+    border-right-color: $light_shadow;
     background-color: $bg;
-    border-top-color: gtkmix($bg, $light_shadow, 0.7);
-    border-left-color: gtkmix($bg, $light_shadow, 0.7);
-    box-shadow: inset -1px 0 gtkshade($bg, 0.65), inset 0 -1px gtkshade($bg, 0.65), inset 1px 0 gtkmix($bg, $light_shadow, 0.7), inset 0 1px gtkmix($bg, $light_shadow, 0.7);
+    box-shadow: inset -2px -2px $borders, inset 2px 2px $light_shadow;
   }
 
   &:active, &:checked {
     color: $fg;
     border-color: $br;
+    border-top-color: $light_shadow;
+    border-left-color: $light_shadow;
     background-color: $bg;
     background-image: none;
-    box-shadow: inset 1px 0 gtkshade($bg, 0.65), inset 0 1px gtkshade($bg, 0.65), inset -1px 0 gtkmix($bg, $light_shadow, 0.7), inset 0 -1px gtkmix($bg, $light_shadow, 0.7);
+    box-shadow: inset 2px 2px $borders, inset -2px -2px $light_shadow;
   }
 
   &:disabled {
