@@ -33,16 +33,21 @@
 
       &.minimize {
         background-image: url('assets/minimize.png');
-        margin-right: -6px;
       }
 
       &.maximize {
         background-image: url('assets/maximize.png');
-        margin-right: -4px;
       }
       
       .maximized &.maximize {
         background-image: url('assets/restore.png');
+      }
+    }
+    
+    .horizontal.right {
+      .titlebutton.maximize {
+        margin-left: -6px;
+        margin-right: -4px;
       }
     }
 

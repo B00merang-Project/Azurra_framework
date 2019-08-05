@@ -1,10 +1,10 @@
 @mixin checkradio() {
   check, radio {
+    min-width: $check_size;
+    min-height: $check_size;
     padding: 4px;
     border-style: none;
     background-color: transparent;
-    min-height: 21px;
-    min-width: 21px;
   }
 
   checkbutton, radiobutton {
@@ -20,7 +20,7 @@
 
   view.content-view check, .content-view.view check {
     background-color: transparent;
-    
+
     &:hover, &:active, &:disabled, &:selected {
       background-color: transparent;
     }
