@@ -2058,8 +2058,8 @@ decoration {
   .fullscreen decoration, .tiled decoration {
     border-radius: 0; }
   .popup decoration {
-    box-shadow: 0 0 0 1px white;
-    border-radius: 0px; }
+    border-radius: 0px;
+    box-shadow: 0 0 0 1px white; }
   .ssd decoration {
     border-radius: 0px 0px 0 0;
     box-shadow: 0 0 0 1px white; }
@@ -2077,46 +2077,30 @@ decoration {
 window.background.csd.popup {
   border-radius: 0; }
 
-popover.background {
-  box-shadow: 10px 10px shade(white, 0.35); }
-
-messagedialog {
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px; }
-  messagedialog .background.csd {
-    border-radius: 0px;
-    color: #FFFFFF;
-    background-color: #000000; }
-  messagedialog decoration {
-    border-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    box-shadow: 0 1px 2px alpha(black, 0.2); }
-  messagedialog .titlebar.horizontal {
-    border: none;
-    background-image: none;
-    background-color: #000000; }
-  messagedialog.csd .dialog-action-area button {
-    padding: 10px;
-    border-radius: 0;
-    border-bottom-style: none;
-    background-image: none;
-    -gtk-outline-radius: 0; }
-    messagedialog.csd .dialog-action-area button:last-child {
-      border-right-width: 0;
-      border-radius: 0px;
-      border-bottom-right-radius: 0px;
-      -gtk-outline-radius: 0 0 0px 0; }
-    messagedialog.csd .dialog-action-area button:first-child {
-      border-left-width: 0;
-      border-radius: 0px;
-      border-bottom-left-radius: 0px;
-      -gtk-outline-radius: 0 0 0 0px; }
-    messagedialog.csd .dialog-action-area button:only-child {
-      border-radius: 0px;
-      border-bottom-left-radius: 0px;
-      border-bottom-right-radius: 0px;
-      -gtk-outline-radius: 0 0 0px 0px; }
+messagedialog .background.csd {
+  border-radius: 0px 0px 0 0;
+  color: #FFFFFF;
+  background-color: #000000; }
+messagedialog decoration {
+  border-radius: 0px 0px 0 0;
+  box-shadow: 0 0 0 1px white; }
+messagedialog .titlebar.horizontal {
+  border: none;
+  background-color: #000000; }
+messagedialog.csd .dialog-action-area button {
+  margin: 0;
+  padding: 10px;
+  border-radius: 0;
+  border-bottom-style: none;
+  -gtk-outline-radius: 0; }
+  messagedialog.csd .dialog-action-area button:last-child {
+    border-right-width: 0;
+    border-radius: 0px; }
+  messagedialog.csd .dialog-action-area button:first-child {
+    border-left-width: 0;
+    border-radius: 0px; }
+  messagedialog.csd .dialog-action-area button:only-child {
+    border-radius: 0px; }
 
 .titlebar {
   border-bottom: none;

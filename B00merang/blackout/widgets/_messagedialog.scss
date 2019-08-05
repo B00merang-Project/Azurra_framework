@@ -1,0 +1,42 @@
+@mixin messagedialog() {
+  messagedialog {
+    .background.csd {
+	    border-radius: $csd_radius $csd_radius 0 0;
+	    color: $fg_color;
+      background-color: $bg_color;
+    }
+
+    decoration {
+      border-radius: $csd_radius $csd_radius 0 0;
+      box-shadow: 0 0 0 1px $wm_shadow;
+    }
+
+    .titlebar.horizontal {
+      border: none;
+      background-color: $bg_color;
+    }
+
+    &.csd .dialog-action-area button {
+      margin: 0;
+      padding: 10px;
+      border-radius: 0;
+      border-bottom-style: none;
+
+      -gtk-outline-radius: 0;
+
+      &:last-child {
+        border-right-width: 0;
+        border-radius: 0px;
+      }
+
+      &:first-child {
+        border-left-width: 0;
+        border-radius: 0px;
+      }
+
+      &:only-child {
+        border-radius: 0px;
+      }
+    }
+  }
+}
