@@ -229,29 +229,29 @@ view.content-view check, .content-view.view check {
     background-color: transparent; }
 
 check, radio, check:disabled, radio:disabled {
+  min-height: 12px;
+  min-width: 12px;
   margin: 4px;
   border-style: none;
-  background-color: transparent;
-  min-height: 12px;
-  min-width: 12px; }
+  background-color: transparent; }
 
 check, .check {
-  -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked.png"), url("assets/checkbox-unchecked-@2.png")); }
+  -gtk-icon-source: url("assets/checkbox-unchecked.png"); }
   check:disabled, .check:disabled {
-    opacity: 0.35; }
-  check:active, check:checked, .check:active, .check:checked {
-    -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked.png"), url("assets/checkbox-checked-@2.png")); }
-  check:indeterminate, .check:indeterminate {
-    -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed.png"), url("assets/checkbox-mixed-@2.png")); }
+    -gtk-icon-source: url("assets/checkbox-unchecked-disabled.png"); }
+  check:checked, .check:checked {
+    -gtk-icon-source: url("assets/checkbox-checked.png"); }
+    check:checked:disabled, .check:checked:disabled {
+      -gtk-icon-source: url("assets/checkbox-checked-disabled.png"); }
 
 radio, .radio {
-  -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked.png"), url("assets/radio-unchecked-@2.png")); }
+  -gtk-icon-source: url("assets/radio-unchecked.png"); }
   radio:disabled, .radio:disabled {
-    opacity: 0.35; }
-  radio:active, radio:checked, .radio:active, .radio:checked {
-    -gtk-icon-source: -gtk-scaled(url("assets/radio-checked.png"), url("assets/radio-checked-@2.png")); }
-  radio:indeterminate, .radio:indeterminate {
-    -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed.png"), url("assets/radio-mixed-@2.png")); }
+    -gtk-icon-source: url("assets/radio-unchecked-disabled.png"); }
+  radio:checked, .radio:checked {
+    -gtk-icon-source: url("assets/radio-checked.png"); }
+    radio:checked:disabled, .radio:checked:disabled {
+      -gtk-icon-source: url("assets/radio-checked-disabled.png"); }
 
 .content-view.view {
   background-color: #A9A9A9; }
