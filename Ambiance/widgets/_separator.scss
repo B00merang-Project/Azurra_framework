@@ -23,7 +23,23 @@
       }
     }
 
-    .primary-toolbar &, toolbar & {
+    toolbar & {
+      background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
+
+      &:backdrop {
+        background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.075);
+      }
+    }
+
+    .primary-toolbar &, toolbar.primary-toolbar & {
+      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
+
+      &:backdrop {
+        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.075);
+      }
+    }
+
+    toolbar button & {
       background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
 
       &:backdrop {
@@ -31,11 +47,11 @@
       }
     }
     
-    .primary-toolbar button &, toolbar button &, .primary-toolbar:not(.libreoffice-toolbar) & {
-      background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
+    .primary-toolbar button &, .primary-toolbar:not(.libreoffice-toolbar) & {
+      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
 
       &:backdrop {
-        background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.075);
+        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.075);
       }
     }
 

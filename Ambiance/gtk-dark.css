@@ -1394,13 +1394,21 @@ separator {
     .sidebar view separator:backdrop, view separator:backdrop, separator .separator:backdrop, separator:backdrop {
       border: none;
       background-color: mix(#3C3B37, #DFDBD2, 0.075); }
-  .primary-toolbar separator, toolbar separator {
+  toolbar separator {
     background-color: mix(#3C3B37, #DFDBD2, 0.1); }
-    .primary-toolbar separator:backdrop, toolbar separator:backdrop {
+    toolbar separator:backdrop {
       background-color: mix(#3C3B37, #DFDBD2, 0.075); }
-  .primary-toolbar button separator, toolbar button separator, .primary-toolbar:not(.libreoffice-toolbar) separator {
+  .primary-toolbar separator, toolbar.primary-toolbar separator {
     background-color: mix(#3C3B37, #DFDBD2, 0.1); }
-    .primary-toolbar button separator:backdrop, toolbar button separator:backdrop, .primary-toolbar:not(.libreoffice-toolbar) separator:backdrop {
+    .primary-toolbar separator:backdrop, toolbar.primary-toolbar separator:backdrop {
+      background-color: mix(#3C3B37, #DFDBD2, 0.075); }
+  toolbar button separator {
+    background-color: mix(#3C3B37, #DFDBD2, 0.1); }
+    toolbar button separator:backdrop {
+      background-color: mix(#3C3B37, #DFDBD2, 0.075); }
+  .primary-toolbar button separator, .primary-toolbar:not(.libreoffice-toolbar) separator {
+    background-color: mix(#3C3B37, #DFDBD2, 0.1); }
+    .primary-toolbar button separator:backdrop, .primary-toolbar:not(.libreoffice-toolbar) separator:backdrop {
       background-color: mix(#3C3B37, #DFDBD2, 0.075); }
   headerbar separator {
     -GtkWidget-window-dragging: true;
@@ -1761,7 +1769,7 @@ toolbar {
   toolbar menubar {
     -GtkToolbar-button-relief: normal; }
 
-.primary-toolbar {
+.primary-toolbar, toolbar.primary-toolbar {
   -GtkWidget-window-dragging: true;
   padding: 4px;
   border-width: 0 0 1px 0;
@@ -1769,10 +1777,10 @@ toolbar {
   border-color: shade(#3C3B37, 0.8);
   color: #DFDBD2;
   background-color: #3C3B37; }
-  .primary-toolbar:backdrop {
+  .primary-toolbar:backdrop, toolbar.primary-toolbar:backdrop {
     color: alpha(#DFDBD2, 0.8);
     background-color: #3C3B37; }
-  .primary-toolbar button, .primary-toolbar .raised button {
+  .primary-toolbar button, .primary-toolbar .raised button, toolbar.primary-toolbar button, toolbar.primary-toolbar .raised button {
     padding: 5px 6px;
     border-style: solid;
     border-width: 1px;
@@ -1786,35 +1794,35 @@ toolbar {
     background-image: none;
     box-shadow: inset 0 0 0 1px alpha(white, 0.08);
     -gtk-outline-radius: 6px; }
-    .primary-toolbar button:hover, .primary-toolbar .raised button:hover {
+    .primary-toolbar button:hover, .primary-toolbar .raised button:hover, toolbar.primary-toolbar button:hover, toolbar.primary-toolbar .raised button:hover {
       color: #DFDBD2;
       box-shadow: inset 0 0 0 1px alpha(white, 0.06);
       background-color: shade(#3C3B37, 1.1); }
-    .primary-toolbar button:active, .primary-toolbar button:checked:active, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked:active {
+    .primary-toolbar button:active, .primary-toolbar button:checked:active, .primary-toolbar .raised button:active, .primary-toolbar .raised button:checked:active, toolbar.primary-toolbar button:active, toolbar.primary-toolbar button:checked:active, toolbar.primary-toolbar .raised button:active, toolbar.primary-toolbar .raised button:checked:active {
       color: #DFDBD2;
       box-shadow: inset 0 0 0 1px alpha(white, 0.06);
       background-color: shade(#3C3B37, 1.1);
       border-color: shade(shade(#3C3B37, 0.8), 0.9);
       background-image: none; }
-    .primary-toolbar button:checked, .primary-toolbar .raised button:checked {
+    .primary-toolbar button:checked, .primary-toolbar .raised button:checked, toolbar.primary-toolbar button:checked, toolbar.primary-toolbar .raised button:checked {
       color: #DFDBD2;
       box-shadow: inset 0 0 0 1px alpha(white, 0.06);
       background-color: shade(#3C3B37, 1.1);
       border-color: shade(shade(#3C3B37, 0.8), 0.9);
       background-image: none;
       box-shadow: inset 2px 2px alpha(black, 0.4), inset -2px -2px alpha(white, 0.1); }
-      .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:checked:backdrop {
+      .primary-toolbar button:checked:backdrop, .primary-toolbar .raised button:checked:backdrop, toolbar.primary-toolbar button:checked:backdrop, toolbar.primary-toolbar .raised button:checked:backdrop {
         background-image: none; }
-        .primary-toolbar button:checked:backdrop:hover, .primary-toolbar .raised button:checked:backdrop:hover {
+        .primary-toolbar button:checked:backdrop:hover, .primary-toolbar .raised button:checked:backdrop:hover, toolbar.primary-toolbar button:checked:backdrop:hover, toolbar.primary-toolbar .raised button:checked:backdrop:hover {
           background-color: shade(#3C3B37, 1.1); }
-      .primary-toolbar button:checked:disabled, .primary-toolbar .raised button:checked:disabled {
+      .primary-toolbar button:checked:disabled, .primary-toolbar .raised button:checked:disabled, toolbar.primary-toolbar button:checked:disabled, toolbar.primary-toolbar .raised button:checked:disabled {
         color: mix(#DFDBD2, mix(#DFDBD2, #3C3B37, 0.5), 0.1);
         border-color: mix(#DFDBD2, shade(#3C3B37, 1.02), 0.85);
         background-image: none; }
-        .primary-toolbar button:checked:disabled:backdrop, .primary-toolbar .raised button:checked:disabled:backdrop {
+        .primary-toolbar button:checked:disabled:backdrop, .primary-toolbar .raised button:checked:disabled:backdrop, toolbar.primary-toolbar button:checked:disabled:backdrop, toolbar.primary-toolbar .raised button:checked:disabled:backdrop {
           color: mix(#DFDBD2, mix(#DFDBD2, #3C3B37, 0.75), 0.1);
           background-image: none; }
-    .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled {
+    .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled, toolbar.primary-toolbar button:disabled, toolbar.primary-toolbar .raised button:disabled {
       border-color: shade(#3C3B37, 0.8);
       border-top-color: shade(shade(#3C3B37, 0.8), 1.1);
       border-left-color: shade(shade(#3C3B37, 0.8), 1.05);
@@ -1823,7 +1831,7 @@ toolbar {
       background-image: none;
       background-color: transparent;
       box-shadow: inset 0 0 0 1px alpha(white, 0.05); }
-      .primary-toolbar button:disabled:backdrop, .primary-toolbar .raised button:disabled:backdrop {
+      .primary-toolbar button:disabled:backdrop, .primary-toolbar .raised button:disabled:backdrop, toolbar.primary-toolbar button:disabled:backdrop, toolbar.primary-toolbar .raised button:disabled:backdrop {
         border-color: shade(#3C3B37, 0.8);
         border-top-color: shade(shade(#3C3B37, 0.8), 1.1);
         border-left-color: shade(shade(#3C3B37, 0.8), 1.05);
@@ -1832,10 +1840,10 @@ toolbar {
         background-image: none;
         background-color: transparent;
         box-shadow: inset 0 0 0 1px alpha(white, 0.04); }
-    .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop {
+    .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop, toolbar.primary-toolbar button:backdrop, toolbar.primary-toolbar .raised button:backdrop {
       color: mix(#DFDBD2, mix(#DFDBD2, #504f4a, 0.3), 0.2);
       box-shadow: inset 0 0 0 1px alpha(white, 0.06); }
-      .primary-toolbar button:backdrop:hover, .primary-toolbar .raised button:backdrop:hover {
+      .primary-toolbar button:backdrop:hover, .primary-toolbar .raised button:backdrop:hover, toolbar.primary-toolbar button:backdrop:hover, toolbar.primary-toolbar .raised button:backdrop:hover {
         background-color: shade(#3C3B37, 1.1); }
 
 .inline-toolbar toolbar {
