@@ -3,43 +3,28 @@
     border-radius: $csd_radius $csd_radius 0 0;
     border-width: 0px;
     margin: 10px;
-
-    @if $variant == 'light' {
-      box-shadow: 19px 20px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
-    }
-    @else {
-      box-shadow: 0 0 0 1px $wm_shadow;
-    }
+    box-shadow: 19px 20px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
 
     &:backdrop {
     }
 
     .fullscreen &, .tiled & {
       border-radius: 0;
+      box-shadow:  0 0 0 1px $wm_shadow;
     }
 
     .popup & {
-      @if $variant == 'light' {
-        box-shadow: 10px 10px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
-      }
-      @else {
-        box-shadow: 0 0 0 1px $wm_shadow;
-      }
-      
       border-radius: $csd_radius;
+      box-shadow: 10px 10px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
     }
 
     .ssd & {
       border-radius: $csd_radius $csd_radius 0 0;
-      @if $variant == 'light' {
-        box-shadow: 19px 20px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
-      }
-      @else {
-        box-shadow: 0 0 0 1px $wm_shadow;
-      }
+      box-shadow: 19px 20px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
 
       &.maximized {
         border-radius: 0;
+        box-shadow: 0 0 0 1px $wm_shadow;
       }
     }
 
