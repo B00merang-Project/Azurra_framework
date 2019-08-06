@@ -1803,6 +1803,7 @@ textview {
 treeview {
   -treeview-vertical-separator: 0; }
   treeview.view:selected, treeview.view:selected:focus {
+    border-radius: 0;
     color: #F9F9F9;
     background-color: #D44D1F; }
     treeview.view:selected:backdrop, treeview.view:selected:focus:backdrop {
@@ -1841,14 +1842,13 @@ treeview {
 .view {
   color: #000000;
   background-color: #F9F9F9; }
-  .view:not(treeview) {
-    border-radius: 3px; }
   .view:disabled {
     color: mix(#000000, #ECEDEF, 0.5);
     background-color: mix(#000000, #ECEDEF, 0.95); }
   .view:selected, .view:selected:focus, .view text:selected, .view text:selected:focus, .view text selection, .view text selection:focus {
     color: #F9F9F9;
-    background-color: #19B6EE; }
+    background-color: #19B6EE;
+    border-radius: 3px; }
     .view:selected:disabled, .view:selected:focus:disabled, .view text:selected:disabled, .view text:selected:focus:disabled, .view text selection:disabled, .view text selection:focus:disabled {
       color: mix(#F9F9F9, mix(#000000, #ECEDEF, 0.5), 0.5);
       background-color: #19B6EE; }
