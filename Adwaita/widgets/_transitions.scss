@@ -63,8 +63,12 @@
     &:backdrop { transition: 200ms ease-out; }
 
     &:checked:not(:backdrop), &:indeterminate:not(:backdrop) { transition: 400ms; }
-
-    menu menuitem & { transition: none; }
+  }
+  
+  menu menuitem check, menu menuitem radio {
+    transition: none;
+  
+    &:checked:not(:backdrop), &:indeterminate:not(:backdrop) { transition: none; }
   }
 
   scale {
