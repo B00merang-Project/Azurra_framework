@@ -1,159 +1,140 @@
 @mixin scrollbar() {
   scrollbar {
-    border: 1px solid $borders;
     background-color: $bg_color;
 
-    trough {
-      border: none;
-      border-radius: 0;
-    }
-
     &:backdrop {
+      border-color: $unfocused_borders;
       background-color: $unfocused_bg_color;
     }
 
+    &.top { border-bottom: 1px solid $borders; }
+    &.bottom { border-top: 1px solid $borders; }
+    &.left { border-right: 1px solid $borders; }
+    &.right { border-left: 1px solid $borders; }
+
     slider {
-      min-width: 10px;
-      min-height: 10px;
-      margin: 2px;
-      border: none;
+      min-width: 6px;
+      min-height: 6px;
+      margin: -1px;
+      border: 4px solid transparent;
       border-radius: $scrollbar_radius;
       background-clip: padding-box;
-      background-color: gtkmix($fg_color, $bg_color, 0.1);
+      background-color: gtkmix($fg_color, $bg_color, 0.15);
 
-      &:hover {
-        background-color: gtkmix($fg_color, $bg_color, 0.1);
-
-        &:active {
-          background-color: $fg_color;
-        }
-      }
-
-      &:backdrop {
-        background-color: gtkmix($unfocused_fg_color, $unfocused_bg_color, 0.1);
-      }
-
-      &:disabled {
-        background-color: transparent;
-      }
+      &:hover { background-color: gtkmix($fg_color, $bg_color, 0.2); }
+      &:hover:active { background-color: $selected_bg_color; }
+      &:backdrop { background-color: gtkmix($unfocused_fg_color, $unfocused_bg_color, 0.1); }
+      &:disabled { background-color: transparent; }
     }
 
     &.fine-tune {
-      & slider {
-        min-width: 6px;
-        min-height: 6px;
-        border-radius: $scrollbar_radius;
-      }
-
-      &.horizontal slider {
-        margin-top: 1px;
-        margin-bottom: 1px;
-      }
-
-      &.vertical slider {
-        margin-left: 1px;
-        margin-right: 1px;
-      }
-    }
-
-    &.overlay-indicator:not(.dragging):not(.hovering) {
-      border: none;
-      opacity: 0.7;
-      margin: 0;
-      background-color: transparent;
-
-      button {
-        padding: 0;
-        color: transparent;
-        border: none;
-        min-width: 0;
-        min-height: 0;
-        box-shadow: none;
-      }
-
       slider {
-        margin: 0;
-        min-width: 1px;
-        min-height: 1px;
-        background-color: gtkmix($fg_color, $bg_color, 0.1);
-        border: none;
+        min-width: 4px;
+        min-height: 4px;
       }
 
-      &.horizontal {
-        slider {
-          margin: 0;
-          min-width: 40px;
-        }
-      }
-
-      &.vertical {
-        slider {
-          margin: 0;
-          min-height: 40px;
-        }
-      }
+      &.horizontal slider { border-width: 5px 4px; }
+      &.vertical slider { border-width: 4px 5px; }
     }
 
     &.overlay-indicator {
-      &.dragging, &.hovering {
-        opacity: 1;
+      &:not(.dragging):not(.hovering) {
+        border-color: transparent;
+        opacity: 0.4;
+        background-color: transparent;
+
+        slider {
+          margin: 0;
+          min-width: 3px;
+          min-height: 3px;
+          background-color: $fg_color;
+          border: 1px solid $fg_color;
+        }
+
+        button {
+          min-width: 5px;
+          min-height: 5px;
+          background-color: $fg_color;
+          background-clip: padding-box;
+          border-radius: 100%;
+          border: 1px solid $borders;
+          -gtk-icon-source: none;
+        }
+
+        &.horizontal {
+          slider {
+            margin: 0 2px;
+            min-width: 40px;
+          }
+
+          button {
+            margin: 1px 2px;
+            min-width: 5px;
+          }
+        }
+
+        &.vertical {
+          slider {
+            margin: 2px 0;
+            min-height: 40px;
+          }
+
+          button {
+            margin: 2px 1px;
+            min-height: 5px;
+          }
+        }
       }
+
+      &.dragging, &.hovering { opacity: 0.8; }
     }
 
+    &.horizontal slider { min-width: 40px; }
+    &.vertical slider { min-height: 40px; }
+
     button {
-      &, &:disabled {
-        &, &:backdrop {
-          padding: 0;
-          border: none;
-          color: $fg_color;
-          box-shadow: none;
-          background-color: transparent;
-          background-image: none;
-        }
+      padding: 0;
+      border: none;
+      min-width: 12px;
+      min-height: 12px;
+      border-radius: 0;
+    }
+
+    // button icons
+    &.vertical {
+      button {
+        &.down { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+
+        &.up { -gtk-icon-source: -gtk-icontheme('pan-up-symbolic'); }
       }
     }
 
     &.horizontal {
-      slider {
-        min-width: 40px;
-      }
-
       button {
-        min-height: 14px;
-        min-width: 14px;
-      
-        &.down {
-          -gtk-icon-source: -gtk-icontheme("pan-right-symbolic");
-        }
+        &.down { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic'); }
 
-        &.up {
-          -gtk-icon-source: -gtk-icontheme("pan-left-symbolic");
-        }
+        &.up { -gtk-icon-source: -gtk-icontheme('pan-start-symbolic'); }
       }
     }
+  }
+  
+  treeview ~ scrollbar.vertical {
+    border-top: 1px solid $borders;
+    margin-top: -1px;
+  }
+  
+  scrolledwindow {
+    junction {
+      border-color: transparent;
+      border-image: linear-gradient(to bottom, $borders 1px, transparent 1px) 0 0 0 1 / 0 1px stretch;
+      background-color: $bg_color;
 
-    &.vertical {
-      slider {
-        min-height: 40px;
+      &:dir(rtl) { border-image-slice: 0 1 0 0; }
+
+      &:backdrop {
+        border-image-source: linear-gradient(to bottom, $borders 1px, transparent 1px);
+        background-color: $unfocused_bg_color;
       }
-
-      button {
-        min-height: 14px;
-        min-width: 14px;
-      
-        &.down {
-          -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-        }
-
-        &.up {
-          -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
-        }
-      }
-    }
-
-    treeview ~ &.vertical {
-      border-top: 1px solid $borders;
-      margin-top: -1px;
     }
   }
 }

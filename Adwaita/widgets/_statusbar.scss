@@ -1,0 +1,9 @@
+@mixin statusbar() {
+  statusbar {
+    color: $fg_color;
+    
+    &:backdrop { color: $unfocused_fg_color; }
+
+    frame > border { border: none; }
+  }
+}

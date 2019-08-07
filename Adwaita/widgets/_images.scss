@@ -1,0 +1,14 @@
+@mixin images() {
+  image {
+    color: currentColor;
+
+    &:hover { color: currentColor; }
+    &:selected, &:selected:hover { color: $selected_fg_color; }
+    &:disabled { color: $disabled_fg_color; }
+    view &, view &:hover {
+      color: currentColor;
+
+      &:selected { color: $selected_fg_color; }
+    }
+  }
+}

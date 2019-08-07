@@ -1,0 +1,152 @@
+@mixin osd_button() {
+  min-width: 26px;
+  min-height: 32px;
+  padding: 0 2px;
+  border-color: $osd_borders;
+  border-bottom-color: gtkshade($osd_borders, 0.75);
+  color: $osd_text;
+  background-color: $osd_base;
+  background-image: linear-gradient(to bottom, gtkshade($osd_base, 1.01), gtkshade($osd_base, 0.92));
+  box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15), inset 0 -1px gtkalpha($dark_shadow, 0.35);
+  text-shadow: 0 1px $light_shadow;
+  -gtk-icon-shadow: 0 1px $light_shadow;
+
+  -gtk-outline-radius: $button_radius + 2px;
+
+  &:hover {
+    border-color: $osd_borders;
+    background-image: linear-gradient(to bottom, gtkshade($osd_base, 1.075), gtkshade($osd_base, 0.945));
+    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15), inset 0 -1px gtkalpha($dark_shadow, 0.35);
+  }
+
+  &:active, &:checked {
+    border-color: $osd_borders;
+    background-color: gtkshade($osd_base, 0.9);
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
+  }
+  
+  &:backdrop {
+    border-color: gtkalpha($osd_borders, 0.7);
+    color: gtkalpha($osd_fg, 0.7);
+    background-color: $osd_base;
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
+  }
+}
+
+@mixin osd() {
+  .osd {
+    &.background {
+      color: $osd_fg;
+      background-color: $osd_bg;
+    }
+
+    frame {
+      background-clip: border-box;
+      background-origin: border-box;
+    }
+    
+    button {
+      @include osd_button();
+      
+      &.flat {
+        @include flat_buttons($osd_base, $osd_text, $osd_borders);
+      }
+    }
+    
+    @include linked_widgets();
+    
+    @at-root toolbar.osd {
+      padding: 13px;
+      border: none;
+      border-radius: $button_radius + 2px;
+      color: $osd_fg;
+      background-color: $osd_bg;
+      
+      -GtkToolbar-button-relief: normal;
+      
+      button { @include osd_button(); }
+
+      separator { background-color: $osd_borders; }
+    }
+    
+    scale {
+      trough {
+        border-color: $osd_borders;
+        background-color: $osd_bg;
+      }
+      
+      slider {
+        border-color: $osd_borders;
+        background-color: $osd_base;
+        background-image: linear-gradient(to bottom, gtkshade($osd_base, 1.03), gtkshade($osd_base, 0.94));
+        box-shadow: inset 0 1px gtkalpha($light_shadow, 0.05), inset 0 -1px gtkalpha($dark_shadow, 0.3), 0 1px gtkalpha($dark_shadow, 0.1);
+
+        &:hover {
+          border-color: $osd_borders;
+          background-image: linear-gradient(to bottom, gtkshade($osd_base, 1.08), gtkshade($osd_base, 0.99));
+
+          &:active {
+            border: 1px solid gtkshade($selected_bg_color, 0.5);
+          }
+        }
+
+        &:disabled {
+          background-image: none;
+          box-shadow: none;
+
+          &:backdrop {
+            background-image: none;
+            box-shadow: none;
+          }
+        }
+
+        &:backdrop {
+          background-image: none;
+          box-shadow: none;
+        }
+      }
+    }
+    
+    progressbar {
+      trough {
+        border-color: $osd_borders;
+        background-color: $osd_base;
+      }
+    
+      progress {
+        border-color: gtkshade($osd_fg, 0.9);
+        background-color: $osd_fg;
+      }
+    }
+    
+    scrollbar {
+      border-color: $osd_borders;
+      background-color: $osd_base;
+      
+      slider {
+        background-color: gtkshade($osd_fg, 0.8);
+        
+        &:hover { background-color: gtkshade($osd_fg, 0.9); }
+      }
+    }
+    
+    view, &.view, {
+      color: $osd_text;
+      background-color: $osd_base;
+      
+      &:selected, &:selected:focus {
+        border-color: $osd_fg;
+        color: $osd_base;
+        background-color: $osd_fg;
+        border-radius: $view_radius;
+        outline-color: gtkalpha($osd_fg, 0.5);
+      }
+    }
+  }
+}

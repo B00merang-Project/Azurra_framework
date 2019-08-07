@@ -22,6 +22,7 @@
   }
 
   &:active, &:checked {
+    border-color: $br;
     background-color: gtkshade($bg, 0.9);
     background-image: none;
     box-shadow: none;
@@ -105,6 +106,7 @@
   }
 
   &:active, &:checked {
+    border-color: $br;
     background-color: gtkshade($bg, 0.9);
     background-image: none;
     box-shadow: none;
@@ -114,6 +116,7 @@
     &:backdrop {
       border-color: gtkshade($unfocused_bg_color, 0.85);
       background-color: gtkshade($unfocused_bg_color, 0.95);
+      background-image: none;
       box-shadow: none;
       text-shadow: none;
       -gtk-icon-shadow: none;
@@ -155,8 +158,12 @@
   button {
     @include normal_buttons($bg_color, $fg_color, $borders);
 
-    &.flat {
-      @include flat_buttons($bg_color, $fg_color, $borders);
+    &.flat { @include flat_buttons($bg_color, $fg_color, $borders); }
+
+    &:drop(active) {
+      color: gtkshade($success_color, 0.8);
+      border-color: gtkshade($success_color, 0.8);
+      box-shadow: inset 0 0 0 1px gtkshade($success_color, 0.8);
     }
   }
 }

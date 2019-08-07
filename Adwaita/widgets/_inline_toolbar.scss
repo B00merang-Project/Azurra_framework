@@ -1,0 +1,28 @@
+@mixin inline_toolbar() {
+  .inline-toolbar {
+    padding: 3px;
+    border-width: 0 1px 1px;
+    border-style: solid;
+    border-color: $borders;
+    background-color: gtkmix($toolbar_bg_color, $borders, 0.3);
+    border-radius: 0  0 5px 5px;
+
+    &:backdrop {
+      border-color: $unfocused_borders;
+      background-color: gtkshade($unfocused_bg_color, 0.95);
+      box-shadow: none;
+    }
+
+    toolbutton > button {
+      @include normal_buttons($toolbar_bg_color, $toolbar_fg_color, $borders);
+    }
+  }
+
+  // linked buttons
+  toolbar.inline-toolbar toolbutton, toolbar.inline-toolbar toolbutton:backdrop {
+    > button.flat { @include linked_middle($button_radius); }
+    &:first-child > button.flat { @include linked_first($button_radius); }
+    &:last-child > button.flat { @include linked_last($button_radius); }
+    &:only-child > button.flat { @include linked_only($button_radius); }
+  }
+}

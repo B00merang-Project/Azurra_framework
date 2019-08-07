@@ -1,0 +1,53 @@
+@mixin messagedialog() {
+  messagedialog {
+    .titlebar {
+      min-height: 20px;
+      border: none;
+      border-top-left-radius: $csd_radius + 2px;
+      border-top-right-radius: $csd_radius + 2px;
+      background-image: none;
+      background-color: $bg_color;
+      box-shadow: none;
+    }
+
+    &.csd {
+      &.background {
+        border-bottom-left-radius: $csd_radius + 2px;
+        border-bottom-right-radius: $csd_radius + 2px;
+      }
+
+      .dialog-action-area button {
+        padding: 10px;
+        border-radius: 0;
+        border-bottom-style: none;
+        background-image: none;
+
+        -gtk-outline-radius: 0;
+
+        &:last-child {
+          border-right-width: 0;
+          border-radius: 0px;
+          border-bottom-right-radius: $csd_radius;
+
+          -gtk-outline-radius: 0 0 $csd_radius 0;
+        }
+
+        &:first-child {
+          border-left-width: 0;
+          border-radius: 0px;
+          border-bottom-left-radius: $csd_radius;
+
+          -gtk-outline-radius: 0 0 0 $csd_radius;
+        }
+
+        &:only-child {
+          border-radius: 0px;
+          border-bottom-left-radius: $csd_radius;
+          border-bottom-right-radius: $csd_radius;
+
+          -gtk-outline-radius: 0 0 $csd_radius $csd_radius;
+        }
+      }
+    }
+  }
+}

@@ -1,15 +1,9 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  @include normal_buttons($bg, $fg, $br);
-}
+@mixin headerbar_buttons($bg, $fg, $br) { @include normal_buttons($bg, $fg, $br); }
 
 @mixin headerbar() {
   headerbar, headerbar:not(.titlebar) {
-    padding: 4px 8px;
-    border-width: 0;
-    border-style: solid;
-    border-color: gtkmix($borders, $headerbar_bg_color, 0.5);
-    border-bottom-width: 1px;
+    padding: 5px 6px;
+    border: none;
     color: $headerbar_fg_color;
     background-color: $headerbar_bg_color;
 
@@ -19,12 +13,19 @@
       background-color: $unfocused_bg_color;
     }
 
-    .titlebar &, .titlebar &:backdrop {
-      background-color: transparent;
-    }
+    // gedit has a special double-titlebar
+    .titlebar &, .titlebar &:backdrop { background-color: transparent; }
 
-    .tiled &, .tiled &:backdrop, .maximized &, .maximized &:backdrop {
-      border-radius: 0;
+    .tiled &,
+    .tiled-top &,
+    .tiled-right &,
+    .tiled-bottom &,
+    .tiled-left &,
+    .maximized &,
+    .fullscreen & {
+      &:backdrop, & {
+        border-radius: 0;
+      }
     }
 
     .title {
@@ -40,12 +41,6 @@
       color: gtkalpha(currentColor, 0.7);
     }
 
-    button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $borders);
-    }
-
-    entry {
-      padding: 4px 8px;
-    }
+    button { @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $borders); }
   }
 }

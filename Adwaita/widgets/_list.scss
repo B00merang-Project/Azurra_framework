@@ -6,51 +6,23 @@
     row {
       padding: 2px;
 
-      &:hover {
-        background-color: gtkmix($bg_color, $fg_color, 0.1);
-      }
-      
-      &:active {
-        background-color: gtkmix($bg_color, $fg_color, 0.2);
-      }
-      
-      &:backdrop {
-        color: $unfocused_fg_color;
-      }
-      
+      &:hover { background-color: gtkmix($bg_color, $fg_color, 0.1); }
+      &:active { background-color: gtkmix($bg_color, $fg_color, 0.2); }
+      &:backdrop { color: $unfocused_fg_color; }
+
       &:selected {
         border: none;
         color: $selected_fg_color;
         background-color: $selected_bg_color;
-        
-        switch:checked {
-          background-color: $selected_fg_color;
-          border-color: $selected_fg_color;
-          
-          slider {
-            color: $selected_bg_color;
-          }
-        }
-        
-        scale {
-          highlight, slider {
-            background-color: $selected_fg_color;
-          }
-        }
-        
-        &:hover {
-          background-color: gtkshade($selected_bg_color, 1.05);
-        }
-        
-        &:active {
-          background-color: gtkshade($selected_bg_color, 0.9);
-        }
-        
+
+        &:hover { background-color: gtkshade($selected_bg_color, 1.05); }
+        &:active { background-color: gtkshade($selected_bg_color, 0.9); }
+
         &:disabled {
           color: gtkalpha($selected_fg_color, 0.7);
           background-color: $selected_bg_color;
         }
-        
+
         &:backdrop {
           color: $unfocused_selected_fg_color;
           background-color: $unfocused_selected_bg_color;
@@ -58,8 +30,6 @@
       }
     }
 
-    separator, separator:backdrop {
-      background: none; // no lines on sidebar
-    }
+    separator { background-color: gtkshade($base_color, 0.9); }
   }
 }
