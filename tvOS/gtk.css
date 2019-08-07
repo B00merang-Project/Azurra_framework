@@ -1724,6 +1724,7 @@ textview {
 treeview {
   -treeview-vertical-separator: 0; }
   treeview.view:selected, treeview.view:selected:focus {
+    border-radius: 0;
     color: #000000;
     background-color: alpha(mix(#000000, #FFFFFF, 0.3), 0.3); }
   treeview.view:drop(active) {
@@ -1758,15 +1759,14 @@ treeview {
   .view:backdrop {
     color: #000000;
     background-color: #FFFFFF; }
-  .view:not(treeview) {
-    border-radius: 3px;
-    -gtk-outline-radius: 3px; }
   .view:disabled {
     color: mix(#000000, alpha(#FFFFFF, 0.85), 0.5);
     background-color: mix(#000000, alpha(#FFFFFF, 0.85), 0.95); }
   .view:selected, .view:selected:focus, .view text:selected, .view text:selected:focus, .view text selection, .view text selection:focus {
     color: #000000;
-    background-color: alpha(mix(#000000, #FFFFFF, 0.3), 0.3); }
+    background-color: alpha(mix(#000000, #FFFFFF, 0.3), 0.3);
+    border-radius: 3px;
+    -gtk-outline-radius: 3px; }
     .view:selected:disabled, .view:selected:focus:disabled, .view text:selected:disabled, .view text:selected:focus:disabled, .view text selection:disabled, .view text selection:focus:disabled {
       color: mix(#000000, mix(#000000, alpha(#FFFFFF, 0.85), 0.5), 0.5);
       background-color: alpha(mix(#000000, #FFFFFF, 0.3), 0.3); }
@@ -1877,12 +1877,12 @@ placessidebar row {
     padding-left: 2px; }
   placessidebar row.sidebar-new-bookmark-row {
     color: alpha(mix(#000000, #FFFFFF, 0.3), 0.3); }
-    placessidebar row.sidebar-new-bookmark-row:drop(active):not(:disabled) {
-      color: alpha(mix(#000000, #FFFFFF, 0.3), 0.3);
-      box-shadow: inset 0 1px alpha(mix(#000000, #FFFFFF, 0.3), 0.3), inset 0 -1px alpha(mix(#000000, #FFFFFF, 0.3), 0.3); }
-      placessidebar row.sidebar-new-bookmark-row:drop(active):not(:disabled):selected {
-        color: #000000;
-        background-color: alpha(mix(#000000, #FFFFFF, 0.3), 0.3); }
+  placessidebar row:drop(active):not(:disabled) {
+    color: alpha(mix(#000000, #FFFFFF, 0.3), 0.3);
+    box-shadow: inset 0 1px alpha(mix(#000000, #FFFFFF, 0.3), 0.3), inset 0 -1px alpha(mix(#000000, #FFFFFF, 0.3), 0.3); }
+    placessidebar row:drop(active):not(:disabled):selected {
+      color: #000000;
+      background-color: alpha(mix(#000000, #FFFFFF, 0.3), 0.3); }
 
 button.sidebar-button, button.sidebar-button:backdrop {
   min-width: 22px;
