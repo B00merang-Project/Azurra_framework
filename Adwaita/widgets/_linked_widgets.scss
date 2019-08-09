@@ -18,11 +18,6 @@
   border-bottom-right-radius: $radius;
 }
 
-@mixin linked_only($radius) {
-  border-width: 1px;
-  border-radius: $radius;
-}
-
 // vertical
 @mixin linked_v_first($radius) {
   border-top-width: 1px;
@@ -46,13 +41,14 @@
   border-bottom-right-radius: $radius;
 }
 
-@mixin linked_v_only($radius) {
-  border-top-width: 1px;
+// only-child
+@mixin linked_only($radius) {
+  border-width: 1px;
+  border-radius: $radius;
 }
 
 @mixin linked_widgets() {
-  .linked, .inline-toolbar .linked, .primary-toolbar .linked {
-
+  .linked, .primary-toolbar .linked {
     button, .raised button { @include linked_middle($button_radius);
       &:first-child { @include linked_first($button_radius); }
       &:last-child { @include linked_last($button_radius); }
@@ -63,51 +59,52 @@
       &:first-child { @include linked_first($entry_radius); }
       &:last-child { @include linked_last($entry_radius); }
       &:only-child { @include linked_only($entry_radius); }
-
-      &:focus, &:last-child:focus { box-shadow: -1px 0 $selected_bg_color, inset 0 0 0 1px $selected_bg_color; }
-      &:first-child:focus, &:only-child:focus { box-shadow: inset 0 0 0 1px $selected_bg_color; }
     }
 
-    combobox {
-      box.linked button { @include linked_middle($button_radius); }
+    combobox { box.linked button { @include linked_middle($button_radius); }
       &:first-child box.linked button { @include linked_first($button_radius); }
       &:last-child box.linked button { @include linked_last($button_radius); }
       &:only-child box.linked button { @include linked_only($button_radius); }
     }
+    
+    spinbutton { @include linked_middle($button_radius);
+      &:first-child { @include linked_first($button_radius); }
+      &:last-child { @include linked_last($button_radius); }
+      &:only-child { @include linked_only($button_radius); }
+    }
+    
+    &.vertical {
+      button { @include linked_v_middle($button_radius);
+        &:first-child { @include linked_v_first($button_radius); }
+        &:last-child { @include linked_v_last($button_radius); }
+        &:only-child { @include linked_only($button_radius); }
+      }
+
+      entry { @include linked_v_middle($entry_radius);
+        &:first-child { @include linked_v_first($entry_radius); }
+        &:last-child { @include linked_v_last($entry_radius); }
+        &:only-child { @include linked_only($entry_radius); }
+      }
+
+      combobox { box.linked button { @include linked_v_middle($button_radius); }
+        &:first-child box.linked button { @include linked_v_first($button_radius); }
+        &:last-child box.linked button { @include linked_v_last($button_radius); }
+        &:only-child box.linked button { @include linked_only($button_radius); }
+      }
+
+      spinbutton { @include linked_v_middle($button_radius);
+        &:first-child { @include linked_v_first($button_radius); }
+        &:last-child { @include linked_v_last($button_radius); }
+        &:only-child { @include linked_only($button_radius); }
+      }
+    }
   }
-
-  .vertical.linked {
-    button { @include linked_v_middle($button_radius);
-      &:first-child { @include linked_v_first($button_radius); }
-      &:last-child { @include linked_v_last($button_radius); }
-      &:only-child { @include linked_v_only($button_radius); }
-    }
-
-    entry { @include linked_v_middle($entry_radius);
-      &:first-child { @include linked_v_first($entry_radius); }
-      &:last-child { @include linked_v_last($entry_radius); }
-      &:only-child { @include linked_v_only($entry_radius); }
-
-      &:focus, &:last-child:focus { box-shadow: -1px 0 $selected_bg_color, inset 0 0 0 1px $selected_bg_color; }
-      &:first-child:focus, &:only-child:focus { box-shadow: inset 0 0 0 1px $selected_bg_color; }
-    }
-
-    combobox {
-      box.linked button { @include linked_v_middle($button_radius); }
-      &:first-child box.linked button { @include linked_v_first($button_radius); }
-      &:last-child box.linked button { @include linked_v_last($button_radius); }
-      &:only-child box.linked button { @include linked_v_only($button_radius); }
-    }
-
-    spinbutton { @include linked_v_middle($button_radius);
-      &:first-child { @include linked_v_first($button_radius); }
-      &:last-child { @include linked_v_last($button_radius); }
-      &:only-child { @include linked_v_only($button_radius); }
-    }
-  }
-
-  stackswitcher button.text-button {
-    min-height: 24px;
-    min-width: 100px;
+  
+  // inline toolbar is a bit different
+  toolbar.inline-toolbar toolbutton, toolbar.inline-toolbar toolbutton:backdrop {
+    > button.flat { @include linked_middle($button_radius); }
+    &:first-child > button.flat { @include linked_first($button_radius); }
+    &:last-child > button.flat { @include linked_last($button_radius); }
+    &:only-child > button.flat { @include linked_only($button_radius); }
   }
 }

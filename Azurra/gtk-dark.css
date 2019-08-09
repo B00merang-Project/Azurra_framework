@@ -512,8 +512,6 @@ entry {
       color: mix(#FFFFFF, #484848, 0.75);
       border-color: shade(#484848, 0.9);
       background-color: mix(#FFFFFF, #484848, 0.98); }
-  entry.read-only {
-    background-color: mix(#484848, mix(#FFFFFF, #484848, 0.95), 0.1); }
   entry:backdrop {
     color: #FFFFFF;
     background-color: #1F1F1F; }
@@ -1784,17 +1782,16 @@ toolbar {
       background-color: #484848; }
 
 .inline-toolbar toolbar {
-  -GtkToolbar-button-relief: normal;
   padding: 1px;
   border-width: 1px;
   border-style: solid;
   border-color: mix(shade(#484848, 0.9), #484848, 0.5);
   border-radius: 0;
   background-color: #484848; }
-  .inline-toolbar toolbar:last-child {
-    border-width: 0 1px 1px 1px;
-    border-radius: 0; }
-  .inline-toolbar toolbar button {
+  .inline-toolbar toolbar:backdrop {
+    border-color: shade(#484848, 0.9);
+    background-color: #484848; }
+  .inline-toolbar toolbar toolbutton > button {
     padding: 4px 8px;
     border-style: solid;
     border-width: 1px;
@@ -1802,35 +1799,35 @@ toolbar {
     color: #FFFFFF;
     border-color: shade(#484848, 0.9);
     background-color: #484848; }
-    .inline-toolbar toolbar button:hover {
+    .inline-toolbar toolbar toolbutton > button:hover {
       color: #FFFFFF;
       border-color: shade(#484848, 0.9);
       background-color: shade(#484848, 1.1); }
-    .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
+    .inline-toolbar toolbar toolbutton > button:active, .inline-toolbar toolbar toolbutton > button:checked {
       color: #FFFFFF;
       border-color: shade(shade(#484848, 0.9), 0.9);
       background-color: shade(#484848, 0.85); }
-      .inline-toolbar toolbar button:active:backdrop, .inline-toolbar toolbar button:checked:backdrop {
+      .inline-toolbar toolbar toolbutton > button:active:backdrop, .inline-toolbar toolbar toolbutton > button:checked:backdrop {
         color: #FFFFFF;
         border-color: shade(#484848, 0.85);
         background-color: shade(#484848, 0.85); }
-      .inline-toolbar toolbar button:active:disabled, .inline-toolbar toolbar button:checked:disabled {
+      .inline-toolbar toolbar toolbutton > button:active:disabled, .inline-toolbar toolbar toolbutton > button:checked:disabled {
         color: mix(#FFFFFF, mix(#FFFFFF, #484848, 0.5), 0.1);
         border-color: mix(shade(#484848, 0.85), mix(#FFFFFF, #484848, 0.95), 0.6);
         background-color: mix(shade(#484848, 0.85), mix(#FFFFFF, #484848, 0.95), 0.1); }
-        .inline-toolbar toolbar button:active:disabled:backdrop, .inline-toolbar toolbar button:checked:disabled:backdrop {
+        .inline-toolbar toolbar toolbutton > button:active:disabled:backdrop, .inline-toolbar toolbar toolbutton > button:checked:disabled:backdrop {
           color: mix(#FFFFFF, mix(#FFFFFF, #484848, 0.5), 0.1);
           border-color: mix(shade(#484848, 0.85), mix(#FFFFFF, #484848, 0.98), 0.6);
           background-color: mix(shade(#484848, 0.85), mix(#FFFFFF, #484848, 0.98), 0.1); }
-    .inline-toolbar toolbar button:disabled {
+    .inline-toolbar toolbar toolbutton > button:disabled {
       color: mix(#FFFFFF, mix(#FFFFFF, #484848, 0.75), 0.1);
       border-color: mix(#484848, mix(#FFFFFF, #484848, 0.95), 0.6);
       background-color: mix(#484848, mix(#FFFFFF, #484848, 0.95), 0.1); }
-      .inline-toolbar toolbar button:disabled:backdrop {
+      .inline-toolbar toolbar toolbutton > button:disabled:backdrop {
         color: mix(#FFFFFF, #484848, 0.75);
         border-color: shade(#484848, 0.9);
         background-color: mix(#FFFFFF, #484848, 0.98); }
-    .inline-toolbar toolbar button:backdrop {
+    .inline-toolbar toolbar toolbutton > button:backdrop {
       border-color: shade(#484848, 0.9);
       color: #FFFFFF;
       background-color: #484848; }
@@ -1867,10 +1864,6 @@ toolbar {
   .linked entry:only-child, .inline-toolbar .linked entry:only-child, .primary-toolbar .linked entry:only-child {
     border-width: 1px;
     border-radius: 0px; }
-  .linked entry:focus, .linked entry:last-child:focus, .inline-toolbar .linked entry:focus, .inline-toolbar .linked entry:last-child:focus, .primary-toolbar .linked entry:focus, .primary-toolbar .linked entry:last-child:focus {
-    box-shadow: -1px 0 #1D8ECE; }
-  .linked entry:first-child:focus, .inline-toolbar .linked entry:first-child:focus, .primary-toolbar .linked entry:first-child:focus {
-    box-shadow: none; }
 .linked combobox box.linked button, .inline-toolbar .linked combobox box.linked button, .primary-toolbar .linked combobox box.linked button {
   border-radius: 0;
   border-left-width: 0; }
@@ -1905,7 +1898,8 @@ toolbar {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px; }
   .vertical.linked button:only-child {
-    border-top-width: 1px; }
+    border-top-width: 1px;
+    border-radius: 0px; }
 .vertical.linked entry {
   border-left-width: 1px;
   border-top-width: 0;
@@ -1923,11 +1917,8 @@ toolbar {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px; }
   .vertical.linked entry:only-child {
-    border-top-width: 1px; }
-  .vertical.linked entry:focus, .vertical.linked entry:last-child:focus {
-    box-shadow: 0 -1px #1D8ECE; }
-  .vertical.linked entry:first-child:focus {
-    box-shadow: none; }
+    border-top-width: 1px;
+    border-radius: 0px; }
 .vertical.linked combobox box.linked button {
   border-left-width: 1px;
   border-top-width: 0;
@@ -1945,7 +1936,17 @@ toolbar {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px; }
 .vertical.linked combobox:only-child box.linked button {
-  border-top-width: 1px; }
+  border-top-width: 1px;
+  border-radius: 0px; }
+
+.linked entry:focus, .linked entry:last-child:focus {
+  box-shadow: -1px 0 #1D8ECE; }
+.linked entry:only-child:focus, .linked entry:first-child:focus {
+  box-shadow: none; }
+.linked.vertical entry:focus, .linked.vertical entry:last-child:focus {
+  box-shadow: 0 -1px #1D8ECE; }
+.linked.vertical entry:only-child:focus, .linked.vertical entry:first-child:focus {
+  box-shadow: none; }
 
 stackswitcher button.text-button {
   min-width: 80px; }

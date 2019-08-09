@@ -53,13 +53,8 @@
         border-radius: $entry_radius;
       }
       
-      &:focus, &:last-child:focus {
-        box-shadow: -1px 0 gtkshade($selected_bg_color, 1.15);
-      }
-        
-      &:first-child:focus {
-        box-shadow: none;
-      }
+      &:focus, &:last-child:focus { box-shadow: -1px 0 gtkshade($selected_bg_color, 1.15); }
+      &:first-child:focus { box-shadow: none; }
     }
 
     combobox {
@@ -155,6 +150,7 @@
 
       &:only-child {
         border-top-width: 1px;
+        border-radius: $entry_radius;
       }
       
       &:focus, &:last-child:focus {

@@ -46,14 +46,6 @@
         border-width: 1px;
         border-radius: $entry_radius;
       }
-      
-      &:focus, &:last-child:focus {
-        box-shadow: -1px 0 $selected_bg_color;
-      }
-        
-      &:first-child:focus {
-        box-shadow: none;
-      }
     }
 
     combobox {
@@ -107,6 +99,7 @@
 
       &:only-child {
         border-top-width: 1px;
+        border-radius: $button_radius;
       }
     }
     
@@ -133,14 +126,7 @@
 
       &:only-child {
         border-top-width: 1px;
-      }
-      
-      &:focus, &:last-child:focus {
-        box-shadow: 0 -1px $selected_bg_color;
-      }
-
-      &:first-child:focus {
-        box-shadow: none;
+        border-radius: $entry_radius;
       }
     }
 
@@ -169,11 +155,8 @@
 
       &:only-child box.linked button {
         border-top-width: 1px;
+        border-radius: $button_radius;
       }
     }
-  }
-  
-  stackswitcher button.text-button {
-    min-width: 80px;
   }
 }
