@@ -1,26 +1,4 @@
-@mixin linked_widgets() {
-  .linked, .inline-toolbar .linked, .primary-toolbar .linked {
-    button, .raised button {
-      margin: 1px;
-    }
-    
-    entry {
-      margin: 1px;
-    }
-
-    combobox {
-      margin: 1px;
-    }
-    
-    spinbutton {
-      margin: 1px;
-      
-      entry, button {
-        margin: 0;
-      }
-    }
-  }
-  
+@mixin linked_styles() {
   combobox {
     button:not(:only-child) {
       border-bottom-left-radius: 0;
@@ -36,8 +14,6 @@
       box-shadow: inset 0 1px 0 0 gtkalpha($light_shadow, 0.3);
     }
     
-    entry:not(:only-child) {
-      border-right-width: 0;
-    }
+    entry:not(:only-child) { border-right-width: 0; }
   }
 }

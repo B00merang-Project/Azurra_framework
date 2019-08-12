@@ -13,7 +13,6 @@
     background-color: $base_color;
 
     &:active, &:focus {
-      border-color: $borders;
       box-shadow: 0 0 0 4px $selected_base_color;
     }
 
@@ -24,16 +23,19 @@
 
     &:disabled {
       color: $disabled_text_color;
+      border-color: $unfocused_borders;
+      background-color: $disabled_base_color;
 
       &:backdrop {
         color: $unfocused_disabled_fg_color;
         border-color: $unfocused_borders;
-        background-color: $unfocused_disabled_bg_color;
+        background-color: $unfocused_disabled_base_color;
       }
     }
 
     &:backdrop {
       color: $unfocused_fg_color;
+      border-color: $unfocused_borders;
       background-color: $unfocused_base_color;
     }
 

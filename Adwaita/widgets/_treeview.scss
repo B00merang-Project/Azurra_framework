@@ -3,6 +3,10 @@
     -treeview-vertical-separator: 0;
 
     &.view {
+      border-bottom: 1px solid gtkalpha($borders, 0.5);
+      
+      &:backdrop { border-color: gtkalpha($unfocused_borders, 0.5); }
+    
       &:selected, &:selected:focus {
         border-radius: 0;
         color: $selected_fg_color;

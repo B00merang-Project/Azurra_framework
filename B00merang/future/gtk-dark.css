@@ -358,8 +358,6 @@ entry {
   entry:backdrop {
     color: #FFFFFF;
     border-color: shade(#FFFFFF, 0.2); }
-  entry.read-only {
-    color: mix(#FFFFFF, #303030, 0.5); }
   entry > image.left {
     padding-right: 5px; }
   entry > image.right {
@@ -1271,9 +1269,6 @@ separator {
   combobox separator {
     border: none; }
 
-spinbutton:not(.vertical) selection, spinbutton:not(.vertical) selection:focus {
-  color: #FFFFFF;
-  background-color: #4D94FF; }
 spinbutton:focus {
   box-shadow: 0 0 0 2px #4D94FF; }
 spinbutton button, spinbutton entry {
@@ -1570,42 +1565,41 @@ toolbar {
     .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop {
       color: #FFFFFF; }
 
-.inline-toolbar toolbar {
-  -GtkToolbar-button-relief: normal;
+.inline-toolbar {
   padding: 1px;
   border-width: 1px;
   border-style: solid;
   border-color: mix(shade(#FFFFFF, 0.2), shade(#303030, 1.1), 0.5);
   border-radius: 0;
   background-color: shade(#303030, 1.1); }
-  .inline-toolbar toolbar:last-child {
-    border-width: 0 1px 1px 1px;
-    border-radius: 0; }
-  .inline-toolbar toolbar button {
+  .inline-toolbar:backdrop {
+    border-color: shade(#FFFFFF, 0.2);
+    background-color: shade(#303030, 1.1); }
+  .inline-toolbar toolbutton > button {
     padding: 8px;
     border: none;
     border-radius: 0px;
     color: #FFFFFF;
     background-color: alpha(black, 0.03); }
-    .inline-toolbar toolbar button:hover {
+    .inline-toolbar toolbutton > button:hover {
       color: #4D94FF; }
-    .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
+    .inline-toolbar toolbutton > button:active, .inline-toolbar toolbutton > button:checked {
       color: #FFFFFF;
       background-color: #4D94FF; }
-      .inline-toolbar toolbar button:active:backdrop, .inline-toolbar toolbar button:checked:backdrop {
+      .inline-toolbar toolbutton > button:active:backdrop, .inline-toolbar toolbutton > button:checked:backdrop {
         color: #FFFFFF;
         background-color: #4D94FF; }
-      .inline-toolbar toolbar button:active:disabled, .inline-toolbar toolbar button:checked:disabled {
+      .inline-toolbar toolbutton > button:active:disabled, .inline-toolbar toolbutton > button:checked:disabled {
         color: mix(#FFFFFF, #303030, 0.5);
         background-color: mix(#FFFFFF, #303030, 0.95); }
-        .inline-toolbar toolbar button:active:disabled:backdrop, .inline-toolbar toolbar button:checked:disabled:backdrop {
+        .inline-toolbar toolbutton > button:active:disabled:backdrop, .inline-toolbar toolbutton > button:checked:disabled:backdrop {
           color: mix(#FFFFFF, #303030, 0.75);
           background-color: mix(#FFFFFF, #303030, 0.98); }
-    .inline-toolbar toolbar button:disabled {
+    .inline-toolbar toolbutton > button:disabled {
       color: mix(#FFFFFF, #303030, 0.5); }
-      .inline-toolbar toolbar button:disabled:backdrop {
+      .inline-toolbar toolbutton > button:disabled:backdrop {
         color: mix(#FFFFFF, #303030, 0.75); }
-    .inline-toolbar toolbar button:backdrop {
+    .inline-toolbar toolbutton > button:backdrop {
       color: #FFFFFF; }
 
 stackswitcher button.text-button {
@@ -2060,29 +2054,6 @@ decoration {
     background-color: alpha(white, 0.95);
     box-shadow: none; }
 
-messagedialog {
-  border-radius: 0 0 4px 4px; }
-  messagedialog .background.csd {
-    border-radius: 4px;
-    color: #FFFFFF;
-    background-color: #303030; }
-  messagedialog decoration {
-    border-radius: 4px;
-    box-shadow: 0 1px 2px alpha(black, 0.2); }
-  messagedialog .titlebar.horizontal {
-    border: none;
-    background-color: #303030; }
-  messagedialog.csd .dialog-action-area button {
-    padding: 10px;
-    border-radius: 0; }
-    messagedialog.csd .dialog-action-area button:last-child {
-      border-bottom-right-radius: 4px; }
-    messagedialog.csd .dialog-action-area button:first-child {
-      border-bottom-left-radius: 4px; }
-    messagedialog.csd .dialog-action-area button:only-child {
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px; }
-
 .titlebar {
   border-bottom: 1px solid shade(#FFFFFF, 0.2);
   border-radius: 4px 4px 0px 0px; }
@@ -2117,6 +2088,29 @@ messagedialog {
     border-bottom-color: shade(#FFFFFF, 0.2); }
   window.ssd .titlebar, window.ssd .titlebar:not(headerbar), window.ssd headerbar.default-decoration, window.ssd .csd headerbar.default-decoration, window.ssd .default-decoration.titlebar:not(headerbar), window.ssd .csd .default-decoration.titlebar:not(headerbar) {
     border-bottom: none; }
+
+messagedialog {
+  border-radius: 0 0 4px 4px; }
+  messagedialog .background.csd {
+    border-radius: 4px;
+    color: #FFFFFF;
+    background-color: #303030; }
+  messagedialog decoration {
+    border-radius: 4px;
+    box-shadow: 0 1px 2px alpha(black, 0.2); }
+  messagedialog .titlebar.horizontal {
+    border: none;
+    background-color: #303030; }
+  messagedialog.csd .dialog-action-area button {
+    padding: 10px;
+    border-radius: 0; }
+    messagedialog.csd .dialog-action-area button:last-child {
+      border-bottom-right-radius: 4px; }
+    messagedialog.csd .dialog-action-area button:first-child {
+      border-bottom-left-radius: 4px; }
+    messagedialog.csd .dialog-action-area button:only-child {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px; }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;

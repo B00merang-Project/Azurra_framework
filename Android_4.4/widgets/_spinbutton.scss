@@ -1,0 +1,47 @@
+@mixin spinbutton() {
+  spinbutton {
+    &.horizontal {
+      border: 1px solid $borders;
+      border-radius: $entry_radius;
+      border-image: linear-gradient(to bottom, transparent 80%, $borders 81%) 1 1 1 1;
+      
+      &:disabled { color: $disabled_fg_color;
+        &:backdrop { color: $unfocused_disabled_fg_color; }
+      }
+      
+      &:focus { border-image: linear-gradient(to bottom, transparent 80%, $selected_bg_color 81%) 1 1 1 1; }
+      &:backdrop, &:disabled { border-color: $unfocused_borders; }
+    
+      entry {
+        border: none;
+        background: none;
+        padding: 7px 15px;
+        border-radius: $entry_radius 0 0 $entry_radius;
+      }
+      
+      button {
+        border: none;
+        border-radius: 0;
+        background: none;
+        
+        &.up { border-radius: 0 $entry_radius $entry_radius 0; }
+        
+        &:disabled { background: none; }
+      }
+    }
+
+    &.vertical {
+      button { padding: 7px 2px; background: none;
+        &:disabled { background: none; }
+      }
+      entry {
+        padding: 7px 2px;
+        border: 0 solid $borders;
+        border-top-width: 2px;
+        border-bottom-width: 2px;
+        
+        &:focus { border-color: $selected_bg_color; }
+      }
+    }
+  }
+}

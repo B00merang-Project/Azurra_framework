@@ -1366,67 +1366,26 @@ separator {
     border: none; }
 
 spinbutton.horizontal {
-  border: 1px solid #000000;
-  background-color: #FFFFFF;
-  border-radius: 0px; }
-  spinbutton.horizontal:backdrop {
-    border-color: #000000;
-    background-color: #FFFFFF; }
-  spinbutton.horizontal:disabled {
-    border-color: #000000;
-    color: mix(#000000, #C0C0C0, 0.5);
-    background-color: #FFFFFF; }
-    spinbutton.horizontal:disabled:backdrop {
-      border-color: #000000;
-      color: mix(#000000, #C0C0C0, 0.5);
-      background-color: mix(#000000, #C0C0C0, 0.95); }
+  border: 1px solid #000000; }
   spinbutton.horizontal:focus {
-    border-color: #0000AA;
-    box-shadow: 0 0 0 1px #0000AA; }
+    border-color: #0000AA; }
   spinbutton.horizontal entry {
     border: none;
-    background: none;
-    padding: 6px;
-    padding-top: 0;
-    padding-bottom: 0;
-    min-width: 34px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0; }
-    spinbutton.horizontal entry:focus {
-      box-shadow: none; }
+    padding: 7px 15px; }
   spinbutton.horizontal button {
     border: none;
-    min-height: 16px;
-    border-color: shade(#000000, 1.1);
-    background: none;
-    box-shadow: -1px 0 #C0C0C0;
-    text-shadow: none;
-    -gtk-icon-shadow: none; }
-    spinbutton.horizontal button:backdrop {
-      box-shadow: -1px 0 #C0C0C0; }
-    spinbutton.horizontal button.down {
-      border-radius: 0; }
-    spinbutton.horizontal button.up {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0; }
-spinbutton.vertical entry {
-  border-radius: 0;
-  min-height: 32px;
-  min-width: 32px;
-  padding: 0;
-  border-radius: 0; }
-spinbutton.vertical button {
-  min-height: 32px;
-  min-width: 32px;
-  padding: 0; }
-  spinbutton.vertical button.up {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-width: 0; }
-  spinbutton.vertical button.down {
-    border-top-width: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0; }
+    border-radius: 0;
+    box-shadow: -1px 0 #000000; }
+    spinbutton.horizontal button:disabled, spinbutton.horizontal button:backdrop {
+      box-shadow: -1px 0 #000000; }
+spinbutton.vertical button.up {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-width: 0; }
+spinbutton.vertical button.down {
+  border-top-width: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0; }
 
 @keyframes spin {
   to {

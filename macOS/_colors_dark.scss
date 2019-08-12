@@ -15,15 +15,15 @@ $disabled_text_color : $disabled_fg_color;
 // Backdrop state colors
 $unfocused_bg_color : #545454;
 $unfocused_fg_color : #8C8C8C;
-$unfocused_base_color : $base_color;
-$unfocused_text_color : #535353;
+$unfocused_base_color : gtkshade($unfocused_bg_color, 0.9);
+$unfocused_text_color : #aeaeae;
 $unfocused_selected_bg_color : gtkshade($unfocused_bg_color, 1.3);
 $unfocused_selected_fg_color : gtkshade($unfocused_text_color, 0.8);
 $unfocused_selected_base_color : $selected_base_color;
 $unfocused_selected_text_color : $selected_text_color;
 $unfocused_disabled_bg_color : gtkmix($fg_color, $bg_color, 0.98);
 $unfocused_disabled_fg_color : gtkmix($fg_color, $bg_color, 0.75);
-$unfocused_disabled_base_color : gtkshade($unfocused_disabled_bg_color, 1.05);
+$unfocused_disabled_base_color : gtkshade($unfocused_bg_color, 1.05);
 $unfocused_disabled_text_color : $unfocused_disabled_fg_color;
 
 // Darker color scheme

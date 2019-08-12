@@ -1,56 +1,66 @@
 @mixin spinbutton() {
   spinbutton {
-    &:not(.vertical) selection, &:not(.vertical) selection:focus {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-    }
-    
-    button, entry {
+    &.horizontal {
+      border-radius: $entry_radius;
+      border: 1px solid $borders;
+      border-top-color: gtkshade($borders, 0.6);
+      border-left-color: gtkshade($borders, 0.8);
+      border-right-color: gtkshade($borders, 0.8);
+      background-color: $base_color;
+      box-shadow: inset 0 1px gtkalpha($dark_shadow, 0.6);
+      
       &:disabled {
         color: $disabled_fg_color;
-        
+        border-color: $unfocused_borders;
+        background-color: $disabled_base_color;
+
         &:backdrop {
           color: $unfocused_disabled_fg_color;
+          border-color: $unfocused_borders;
+          background-color: $unfocused_disabled_base_color;
         }
       }
-    }
+      
+      &:backdrop {
+        border-color: $unfocused_borders;
+        background-color: $unfocused_base_color;
+        border-color: $unfocused_borders;
+      }
 
-    &.horizontal {
       entry {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
         padding: 7px 15px;
+        border: none;
+        background: none;
+        border-radius: $entry_radius 0 0 $entry_radius;
         
-        &:focus {
-          box-shadow: none;
-        }
+        &:focus { box-shadow: none; }
+        
+        &:disabled { background: none; }
       }
+      
       button {
+        border: none;
+        border-radius: 0;
+        background: none;
+        box-shadow: -1px 0 $borders;
         
-        &.down {
-          border-right-width: 0;
-          border-left-width: 0;
-          border-radius: 0;
-        }
-
-        &.up {
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-        }
+        &:disabled, &:backdrop { box-shadow: -1px 0 $unfocused_borders; background: none; }
+        &.up { border-radius: 0 $entry_radius $entry_radius 0; }
       }
     }
 
     &.vertical {
       entry {
+        padding: 8px 2px;
         border-radius: 0;
-        box-shadow: none;
+        border-color: $borders;
         
-        &:focus {
-          box-shadow: none;
-        }
+        &:focus { box-shadow: inset 0 0 0 4px $selected_base_color; }
       }
-
       button {
+        padding: 8px 2px;
+        border-color: $borders;
+
         &.up {
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;

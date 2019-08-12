@@ -379,15 +379,11 @@ calendar {
 
 entry {
   padding: 5px;
-  border-width: 0;
-  border-style: solid;
-  border-color: #000000;
-  border-radius: 0px;
+  border: none;
   color: #FFFFFF;
   caret-color: currentColor;
   background-color: alpha(alpha(#000000, 0.85), 0.25); }
   entry:active, entry:focus {
-    border-color: alpha(mix(#FFFFFF, #000000, 0.3), 0.3);
     background-color: #000000;
     box-shadow: 0 9px 6px 0 alpha(black, 0.3); }
   entry:selected, entry:selected:focus, entry selection, entry selection:focus {
@@ -396,10 +392,7 @@ entry {
   entry:disabled {
     color: mix(#FFFFFF, alpha(#000000, 0.85), 0.5); }
     entry:disabled:backdrop {
-      color: mix(#FFFFFF, alpha(#000000, 0.85), 0.5);
-      border-color: alpha(#FFFFFF, 0.2); }
-  entry.read-only {
-    background-color: mix(alpha(#000000, 0.85), mix(#FFFFFF, alpha(#000000, 0.85), 0.95), 0.1); }
+      color: mix(#FFFFFF, alpha(#000000, 0.85), 0.5); }
   entry:backdrop {
     color: #FFFFFF; }
   entry > image.left {
@@ -1256,10 +1249,8 @@ separator {
 
 spinbutton:focus {
   box-shadow: 0 9px 6px 0 alpha(black, 0.3); }
-spinbutton:not(.vertical) selection, spinbutton:not(.vertical) selection:focus {
-  color: #FFFFFF;
-  background-color: alpha(mix(#FFFFFF, #000000, 0.3), 0.3); }
 spinbutton button, spinbutton entry {
+  border-radius: 0;
   border-color: #000000;
   background-color: #000000; }
   spinbutton button:active, spinbutton button:focus, spinbutton entry:active, spinbutton entry:focus {
@@ -1280,8 +1271,6 @@ spinbutton.horizontal entry {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   padding: 7px 15px; }
-  spinbutton.horizontal entry:focus {
-    box-shadow: none; }
 spinbutton.horizontal button.down {
   border-right-width: 0;
   border-left-width: 0;
@@ -1291,8 +1280,6 @@ spinbutton.horizontal button.up {
   border-bottom-left-radius: 0; }
 spinbutton.vertical entry {
   border-radius: 0; }
-  spinbutton.vertical entry:focus {
-    box-shadow: none; }
 spinbutton.vertical button.up {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -1578,18 +1565,17 @@ toolbar {
     .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop {
       color: #FFFFFF; }
 
-.inline-toolbar toolbar {
-  -GtkToolbar-button-relief: normal;
+.inline-toolbar {
   padding: 1px;
   border-width: 1px;
   border-style: solid;
   border-color: mix(alpha(#FFFFFF, 0.2), alpha(#000000, 0.85), 0.5);
   border-radius: 0;
   background-color: alpha(#000000, 0.85); }
-  .inline-toolbar toolbar:last-child {
-    border-width: 0 1px 1px 1px;
-    border-radius: 0; }
-  .inline-toolbar toolbar button {
+  .inline-toolbar:backdrop {
+    border-color: alpha(#FFFFFF, 0.2);
+    background-color: alpha(#000000, 0.85); }
+  .inline-toolbar toolbutton > button {
     padding: 4px 8px;
     border: none;
     border-radius: 4px;
@@ -1597,107 +1583,188 @@ toolbar {
     background-color: alpha(alpha(#000000, 0.85), 0.5);
     outline-style: none;
     -gtk-outline-radius: 4px; }
-    .inline-toolbar toolbar button:focus {
+    .inline-toolbar toolbutton > button:focus {
       background-color: #000000;
       color: #FFFFFF;
       box-shadow: 0 9px 6px 0 alpha(black, 0.3); }
-    .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
+    .inline-toolbar toolbutton > button:active, .inline-toolbar toolbutton > button:checked {
       color: #FFFFFF;
       background-color: alpha(mix(#FFFFFF, #000000, 0.3), 0.3); }
-      .inline-toolbar toolbar button:active:backdrop, .inline-toolbar toolbar button:checked:backdrop {
+      .inline-toolbar toolbutton > button:active:backdrop, .inline-toolbar toolbutton > button:checked:backdrop {
         color: #FFFFFF;
         background-color: alpha(mix(#FFFFFF, #000000, 0.3), 0.3); }
-      .inline-toolbar toolbar button:active:disabled, .inline-toolbar toolbar button:checked:disabled {
+      .inline-toolbar toolbutton > button:active:disabled, .inline-toolbar toolbutton > button:checked:disabled {
         color: mix(#FFFFFF, alpha(#000000, 0.85), 0.5);
         background-color: shade(mix(#FFFFFF, alpha(#000000, 0.85), 0.95), 0.9); }
-        .inline-toolbar toolbar button:active:disabled:backdrop, .inline-toolbar toolbar button:checked:disabled:backdrop {
+        .inline-toolbar toolbutton > button:active:disabled:backdrop, .inline-toolbar toolbutton > button:checked:disabled:backdrop {
           color: mix(#FFFFFF, alpha(#000000, 0.85), 0.5);
           background-color: shade(mix(#FFFFFF, alpha(#000000, 0.85), 0.95), 0.9); }
-    .inline-toolbar toolbar button:disabled {
+    .inline-toolbar toolbutton > button:disabled {
       color: mix(#FFFFFF, mix(#FFFFFF, alpha(#000000, 0.85), 0.5), 0.5); }
-      .inline-toolbar toolbar button:disabled:backdrop {
+      .inline-toolbar toolbutton > button:disabled:backdrop {
         color: mix(#FFFFFF, alpha(#000000, 0.85), 0.5); }
-    .inline-toolbar toolbar button:backdrop {
+    .inline-toolbar toolbutton > button:backdrop {
       color: #FFFFFF; }
 
-.linked button, .linked .raised button, .inline-toolbar .linked button, .inline-toolbar .linked .raised button, .primary-toolbar .linked button, .primary-toolbar .linked .raised button, .osd .linked button, .osd .linked .raised button, .inline-toolbar .osd .linked button, .inline-toolbar .osd .linked .raised button, .primary-toolbar .osd .linked button, .primary-toolbar .osd .linked .raised button {
-  border-radius: 0; }
-  .linked button:first-child, .linked .raised button:first-child, .inline-toolbar .linked button:first-child, .inline-toolbar .linked .raised button:first-child, .primary-toolbar .linked button:first-child, .primary-toolbar .linked .raised button:first-child, .osd .linked button:first-child, .osd .linked .raised button:first-child, .inline-toolbar .osd .linked button:first-child, .inline-toolbar .osd .linked .raised button:first-child, .primary-toolbar .osd .linked button:first-child, .primary-toolbar .osd .linked .raised button:first-child {
+.linked button, .linked .raised button, .primary-toolbar .linked button, .primary-toolbar .linked .raised button {
+  border-radius: 0;
+  border-left-width: 0; }
+  .linked button:first-child, .linked .raised button:first-child, .primary-toolbar .linked button:first-child, .primary-toolbar .linked .raised button:first-child {
+    border-left-width: 1px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px; }
-  .linked button:last-child, .linked .raised button:last-child, .inline-toolbar .linked button:last-child, .inline-toolbar .linked .raised button:last-child, .primary-toolbar .linked button:last-child, .primary-toolbar .linked .raised button:last-child, .osd .linked button:last-child, .osd .linked .raised button:last-child, .inline-toolbar .osd .linked button:last-child, .inline-toolbar .osd .linked .raised button:last-child, .primary-toolbar .osd .linked button:last-child, .primary-toolbar .osd .linked .raised button:last-child {
+  .linked button:last-child, .linked .raised button:last-child, .primary-toolbar .linked button:last-child, .primary-toolbar .linked .raised button:last-child {
+    border-left-width: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px; }
-  .linked button:only-child, .linked .raised button:only-child, .inline-toolbar .linked button:only-child, .inline-toolbar .linked .raised button:only-child, .primary-toolbar .linked button:only-child, .primary-toolbar .linked .raised button:only-child, .osd .linked button:only-child, .osd .linked .raised button:only-child, .inline-toolbar .osd .linked button:only-child, .inline-toolbar .osd .linked .raised button:only-child, .primary-toolbar .osd .linked button:only-child, .primary-toolbar .osd .linked .raised button:only-child {
+  .linked button:only-child, .linked .raised button:only-child, .primary-toolbar .linked button:only-child, .primary-toolbar .linked .raised button:only-child {
+    border-width: 1px;
     border-radius: 4px; }
-.linked entry, .inline-toolbar .linked entry, .primary-toolbar .linked entry, .osd .linked entry, .inline-toolbar .osd .linked entry, .primary-toolbar .osd .linked entry {
+.linked entry, .primary-toolbar .linked entry {
   border-radius: 0;
-  border-color: #000000; }
-  .linked entry:first-child, .inline-toolbar .linked entry:first-child, .primary-toolbar .linked entry:first-child, .osd .linked entry:first-child, .inline-toolbar .osd .linked entry:first-child, .primary-toolbar .osd .linked entry:first-child {
+  border-left-width: 0; }
+  .linked entry:first-child, .primary-toolbar .linked entry:first-child {
+    border-left-width: 1px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px; }
-  .linked entry:last-child, .inline-toolbar .linked entry:last-child, .primary-toolbar .linked entry:last-child, .osd .linked entry:last-child, .inline-toolbar .osd .linked entry:last-child, .primary-toolbar .osd .linked entry:last-child {
+  .linked entry:last-child, .primary-toolbar .linked entry:last-child {
+    border-left-width: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px; }
-  .linked entry:only-child, .inline-toolbar .linked entry:only-child, .primary-toolbar .linked entry:only-child, .osd .linked entry:only-child, .inline-toolbar .osd .linked entry:only-child, .primary-toolbar .osd .linked entry:only-child {
+  .linked entry:only-child, .primary-toolbar .linked entry:only-child {
+    border-width: 1px;
     border-radius: 0px; }
-.linked combobox box.linked button, .inline-toolbar .linked combobox box.linked button, .primary-toolbar .linked combobox box.linked button, .osd .linked combobox box.linked button, .inline-toolbar .osd .linked combobox box.linked button, .primary-toolbar .osd .linked combobox box.linked button {
-  border-radius: 0; }
-.linked combobox:first-child box.linked button, .inline-toolbar .linked combobox:first-child box.linked button, .primary-toolbar .linked combobox:first-child box.linked button, .osd .linked combobox:first-child box.linked button, .inline-toolbar .osd .linked combobox:first-child box.linked button, .primary-toolbar .osd .linked combobox:first-child box.linked button {
+.linked combobox box.linked button, .primary-toolbar .linked combobox box.linked button {
+  border-radius: 0;
+  border-left-width: 0; }
+.linked combobox:first-child box.linked button, .primary-toolbar .linked combobox:first-child box.linked button {
+  border-left-width: 1px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px; }
-.linked combobox:last-child box.linked button, .inline-toolbar .linked combobox:last-child box.linked button, .primary-toolbar .linked combobox:last-child box.linked button, .osd .linked combobox:last-child box.linked button, .inline-toolbar .osd .linked combobox:last-child box.linked button, .primary-toolbar .osd .linked combobox:last-child box.linked button {
+.linked combobox:last-child box.linked button, .primary-toolbar .linked combobox:last-child box.linked button {
+  border-left-width: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px; }
-.linked combobox:only-child box.linked button, .inline-toolbar .linked combobox:only-child box.linked button, .primary-toolbar .linked combobox:only-child box.linked button, .osd .linked combobox:only-child box.linked button, .inline-toolbar .osd .linked combobox:only-child box.linked button, .primary-toolbar .osd .linked combobox:only-child box.linked button {
+.linked combobox:only-child box.linked button, .primary-toolbar .linked combobox:only-child box.linked button {
+  border-width: 1px;
   border-radius: 4px; }
-
-.vertical.linked button, .osd .vertical.linked button {
+.linked spinbutton, .primary-toolbar .linked spinbutton {
+  border-radius: 0;
+  border-left-width: 0; }
+  .linked spinbutton:first-child, .primary-toolbar .linked spinbutton:first-child {
+    border-left-width: 1px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px; }
+  .linked spinbutton:last-child, .primary-toolbar .linked spinbutton:last-child {
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px; }
+  .linked spinbutton:only-child, .primary-toolbar .linked spinbutton:only-child {
+    border-width: 1px;
+    border-radius: 4px; }
+.linked.vertical button, .primary-toolbar .linked.vertical button {
+  border-left-width: 1px;
+  border-top-width: 0;
   border-radius: 0; }
-  .vertical.linked button:first-child, .osd .vertical.linked button:first-child {
+  .linked.vertical button:first-child, .primary-toolbar .linked.vertical button:first-child {
+    border-top-width: 1px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0; }
-  .vertical.linked button:last-child, .osd .vertical.linked button:last-child {
+  .linked.vertical button:last-child, .primary-toolbar .linked.vertical button:last-child {
+    border-top-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px; }
-.vertical.linked entry, .osd .vertical.linked entry {
-  border-radius: 0;
-  border-color: #000000; }
-  .vertical.linked entry:first-child, .osd .vertical.linked entry:first-child {
+  .linked.vertical button:only-child, .primary-toolbar .linked.vertical button:only-child {
+    border-width: 1px;
+    border-radius: 4px; }
+.linked.vertical entry, .primary-toolbar .linked.vertical entry {
+  border-left-width: 1px;
+  border-top-width: 0;
+  border-radius: 0; }
+  .linked.vertical entry:first-child, .primary-toolbar .linked.vertical entry:first-child {
+    border-top-width: 1px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0; }
-  .vertical.linked entry:last-child, .osd .vertical.linked entry:last-child {
+  .linked.vertical entry:last-child, .primary-toolbar .linked.vertical entry:last-child {
+    border-top-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px; }
-.vertical.linked combobox box.linked button, .osd .vertical.linked combobox box.linked button {
+  .linked.vertical entry:only-child, .primary-toolbar .linked.vertical entry:only-child {
+    border-width: 1px;
+    border-radius: 0px; }
+.linked.vertical combobox box.linked button, .primary-toolbar .linked.vertical combobox box.linked button {
+  border-left-width: 1px;
+  border-top-width: 0;
   border-radius: 0; }
-.vertical.linked combobox:first-child box.linked button, .osd .vertical.linked combobox:first-child box.linked button {
+.linked.vertical combobox:first-child box.linked button, .primary-toolbar .linked.vertical combobox:first-child box.linked button {
+  border-top-width: 1px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0; }
-.vertical.linked combobox:last-child box.linked button, .osd .vertical.linked combobox:last-child box.linked button {
+.linked.vertical combobox:last-child box.linked button, .primary-toolbar .linked.vertical combobox:last-child box.linked button {
+  border-top-width: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px; }
+.linked.vertical combobox:only-child box.linked button, .primary-toolbar .linked.vertical combobox:only-child box.linked button {
+  border-width: 1px;
+  border-radius: 4px; }
+.linked.vertical spinbutton, .primary-toolbar .linked.vertical spinbutton {
+  border-left-width: 1px;
+  border-top-width: 0;
+  border-radius: 0; }
+  .linked.vertical spinbutton:first-child, .primary-toolbar .linked.vertical spinbutton:first-child {
+    border-top-width: 1px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .linked.vertical spinbutton:last-child, .primary-toolbar .linked.vertical spinbutton:last-child {
+    border-top-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px; }
+  .linked.vertical spinbutton:only-child, .primary-toolbar .linked.vertical spinbutton:only-child {
+    border-width: 1px;
+    border-radius: 4px; }
 
-.stack-switcher button {
-  min-height: 20px;
+toolbar.inline-toolbar toolbutton > button.flat, toolbar.inline-toolbar toolbutton:backdrop > button.flat {
+  border-radius: 0;
+  border-left-width: 0; }
+toolbar.inline-toolbar toolbutton:first-child > button.flat, toolbar.inline-toolbar toolbutton:backdrop:first-child > button.flat {
+  border-left-width: 1px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px; }
+toolbar.inline-toolbar toolbutton:last-child > button.flat, toolbar.inline-toolbar toolbutton:backdrop:last-child > button.flat {
+  border-left-width: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px; }
+toolbar.inline-toolbar toolbutton:only-child > button.flat, toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat {
+  border-width: 1px;
+  border-radius: 4px; }
+
+stackswitcher button.text-button {
   min-width: 80px; }
 
 tooltip {
@@ -2216,6 +2283,42 @@ decoration {
 window.background.csd.popup {
   border-radius: 4px; }
 
+.titlebar {
+  border-bottom: none;
+  border-radius: 4px 4px 0px 0px; }
+  .titlebar .title {
+    padding-left: 12px;
+    padding-right: 12px;
+    font-weight: bold; }
+  .titlebar .subtitle {
+    font-size: smaller;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: alpha(currentColor, 0.7); }
+  .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
+    padding: 0;
+    border: none;
+    border-radius: 100%;
+    color: #FFFFFF;
+    background-color: alpha(#FFFFFF, 0.2);
+    -gtk-icon-shadow: none;
+    background-position: center;
+    background-repeat: no-repeat; }
+  .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
+    border-radius: 0; }
+
+.titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
+  min-height: 30px;
+  color: #FFFFFF;
+  background-color: alpha(#000000, 0.85);
+  border-bottom: 1px solid alpha(#FFFFFF, 0.2); }
+  .titlebar headerbar, .titlebar:not(headerbar) headerbar, headerbar.default-decoration headerbar, .csd headerbar.default-decoration headerbar, .default-decoration.titlebar:not(headerbar) headerbar, .csd .default-decoration.titlebar:not(headerbar) headerbar {
+    border-bottom: none; }
+  .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
+    color: #FFFFFF;
+    border-bottom-color: alpha(#FFFFFF, 0.2);
+    background-color: alpha(#000000, 0.85); }
+
 messagedialog {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px; }
@@ -2253,42 +2356,6 @@ messagedialog {
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px;
       -gtk-outline-radius: 0 0 4px 4px; }
-
-.titlebar {
-  border-bottom: none;
-  border-radius: 4px 4px 0px 0px; }
-  .titlebar .title {
-    padding-left: 12px;
-    padding-right: 12px;
-    font-weight: bold; }
-  .titlebar .subtitle {
-    font-size: smaller;
-    padding-left: 12px;
-    padding-right: 12px;
-    color: alpha(currentColor, 0.7); }
-  .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
-    padding: 0;
-    border: none;
-    border-radius: 100%;
-    color: #FFFFFF;
-    background-color: alpha(#FFFFFF, 0.2);
-    -gtk-icon-shadow: none;
-    background-position: center;
-    background-repeat: no-repeat; }
-  .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
-    border-radius: 0; }
-
-.titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
-  min-height: 30px;
-  color: #FFFFFF;
-  background-color: alpha(#000000, 0.85);
-  border-bottom: 1px solid alpha(#FFFFFF, 0.2); }
-  .titlebar headerbar, .titlebar:not(headerbar) headerbar, headerbar.default-decoration headerbar, .csd headerbar.default-decoration headerbar, .default-decoration.titlebar:not(headerbar) headerbar, .csd .default-decoration.titlebar:not(headerbar) headerbar {
-    border-bottom: none; }
-  .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
-    color: #FFFFFF;
-    border-bottom-color: alpha(#FFFFFF, 0.2);
-    background-color: alpha(#000000, 0.85); }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;

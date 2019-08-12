@@ -1,16 +1,12 @@
 @mixin entry() {
   entry {
     padding: 5px;
-    border-width: 0;
-    border-style: solid;
-    border-color: $base_color;
-    border-radius: $entry_radius;
+    border: none;
     color: $text_color;
     caret-color: currentColor;
     background-color: gtkalpha($bg_color, 0.25);
 
     &:active, &:focus {
-      border-color: $selected_bg_color;
       background-color: $base_color;
       box-shadow: 0 9px 6px 0 gtkalpha($dark_shadow, 0.3);
     }
@@ -25,7 +21,6 @@
 
       &:backdrop {
         color: $unfocused_disabled_fg_color;
-        border-color: $unfocused_borders;
       }
     }
 

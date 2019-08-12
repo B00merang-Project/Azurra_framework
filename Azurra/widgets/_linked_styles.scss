@@ -10,8 +10,15 @@
         &:focus, &:last-child:focus { box-shadow: 0 -1px $selected_bg_color; }
         &:only-child:focus, &:first-child:focus { box-shadow: none; }
       }
+
+      // restore spinbutton behaviour
+      spinbutton {
+        button:first-child, button:last-child { border-radius: 0; }
+        entry:focus { box-shadow: none; }
+      }
     }
   }
-  
+
+  // only stretch text buttons  
   stackswitcher button.text-button { min-width: 80px; }
 }

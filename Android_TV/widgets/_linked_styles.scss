@@ -1,12 +1,9 @@
-@mixin linked_widgets() {
+@mixin linked_styles() {
   .linked button:not(:only-child) {
     border-color: transparent;
     background-color: transparent;
     
-    &:hover {
-      background-color: gtkmix($bg_color, $light_shadow, 0.2);
-    }
-    
+    &:hover { background-color: gtkmix($bg_color, $light_shadow, 0.2); }
     &:active, &:checked {
       color: $selected_fg_color;
       background-color: $selected_bg_color;
@@ -18,7 +15,5 @@
     }
   }
   
-  stackswitcher button.text-button {
-    min-width: 80px;
-  }
+  stackswitcher button.text-button { min-width: 80px; }
 }

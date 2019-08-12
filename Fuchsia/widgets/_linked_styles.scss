@@ -1,0 +1,11 @@
+@mixin linked_styles() {
+  .primary-toolbar {
+    button, .raised button {
+      &, &:first-child, &:last-child {
+        border-radius: $button_radius;
+      }
+    }
+  }
+
+  stackswitcher button.text-button { min-width: 80px; }
+}

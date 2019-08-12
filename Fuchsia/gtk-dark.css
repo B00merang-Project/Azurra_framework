@@ -175,7 +175,7 @@ button {
   border: none;
   border-radius: 3px;
   color: #FFFFFF;
-  border-color: transparent;
+  border-color: #000000;
   background-color: #000000;
   outline-style: solid;
   outline-width: 2px;
@@ -340,9 +340,7 @@ calendar {
 
 entry {
   padding: 5px;
-  border-width: 0;
-  border-style: solid;
-  border-color: alpha(#FFFFFF, 0.3);
+  border: none;
   border-radius: 3px;
   color: #FFFFFF;
   caret-color: currentColor;
@@ -351,13 +349,9 @@ entry {
     color: #000000;
     background-color: #D6204D; }
   entry:disabled {
-    color: mix(#FFFFFF, #171817, 0.5);
-    border-color: mix(#FFFFFF, #171817, 0.95); }
+    color: mix(#FFFFFF, #171817, 0.5); }
     entry:disabled:backdrop {
-      color: mix(#FFFFFF, #171817, 0.75);
-      border-color: shade(#171817, 0.9); }
-  entry.read-only {
-    background-color: mix(#171817, mix(#FFFFFF, #171817, 0.95), 0.1); }
+      color: mix(#FFFFFF, #171817, 0.75); }
   entry:backdrop {
     color: #FFFFFF;
     background-color: #000000; }
@@ -1295,34 +1289,49 @@ separator {
   combobox separator {
     border: none; }
 
-spinbutton:not(.vertical) selection, spinbutton:not(.vertical) selection:focus {
-  color: #000000;
-  background-color: #D6204D; }
-spinbutton button:disabled, spinbutton entry:disabled {
-  color: mix(#FFFFFF, #171817, 0.5); }
-  spinbutton button:disabled:backdrop, spinbutton entry:disabled:backdrop {
-    color: mix(#FFFFFF, #171817, 0.75); }
-spinbutton.horizontal entry {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  padding: 7px 15px; }
-spinbutton.horizontal button.down {
-  border-right-width: 0;
-  border-left-width: 0;
-  border-radius: 0; }
-spinbutton.horizontal button.up {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0; }
+spinbutton.horizontal {
+  border: 0px solid #000000;
+  border-radius: 3px;
+  background-color: #000000; }
+  spinbutton.horizontal:disabled {
+    color: mix(#FFFFFF, #171817, 0.5);
+    background-color: mix(#FFFFFF, #171817, 0.95); }
+    spinbutton.horizontal:disabled:backdrop {
+      color: mix(#FFFFFF, #171817, 0.75);
+      background-color: mix(#FFFFFF, #171817, 0.98); }
+  spinbutton.horizontal:backdrop {
+    background-color: #000000; }
+  spinbutton.horizontal entry {
+    border: none;
+    padding: 7px 15px;
+    background: none;
+    border-radius: 3px 0 0 3px; }
+  spinbutton.horizontal button {
+    border: none;
+    border-radius: 0;
+    background: none; }
+    spinbutton.horizontal button:disabled {
+      color: mix(#FFFFFF, #171817, 0.5);
+      background: none; }
+    spinbutton.horizontal button.up {
+      border-radius: 0 3px 3px 0; }
+spinbutton.vertical button {
+  padding: 7px 2px;
+  background-color: #000000; }
+  spinbutton.vertical button:disabled {
+    color: mix(#FFFFFF, #171817, 0.5); }
+  spinbutton.vertical button.up {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-width: 0; }
+  spinbutton.vertical button.down {
+    border-top-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
 spinbutton.vertical entry {
+  padding: 7px 2px;
+  border-width: 0;
   border-radius: 0; }
-spinbutton.vertical button.up {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-width: 0; }
-spinbutton.vertical button.down {
-  border-top-width: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0; }
 
 @keyframes spin {
   to {
@@ -1611,18 +1620,17 @@ toolbar {
       color: #FFFFFF;
       background-color: transparent; }
 
-.inline-toolbar toolbar {
-  -GtkToolbar-button-relief: normal;
+.inline-toolbar {
   padding: 1px;
   border-width: 1px;
   border-style: solid;
   border-color: mix(shade(#171817, 0.9), #171817, 0.5);
   border-radius: 0;
   background-color: #171817; }
-  .inline-toolbar toolbar:last-child {
-    border-width: 0 1px 1px 1px;
-    border-radius: 0; }
-  .inline-toolbar toolbar button {
+  .inline-toolbar:backdrop {
+    border-color: shade(#171817, 0.9);
+    background-color: #171817; }
+  .inline-toolbar toolbutton > button {
     padding: 4px 8px;
     border: none;
     border-radius: 3px;
@@ -1633,118 +1641,190 @@ toolbar {
     outline-width: 2px;
     outline-offset: 0;
     -gtk-outline-radius: 4px; }
-    .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
+    .inline-toolbar toolbutton > button:active, .inline-toolbar toolbutton > button:checked {
       outline-color: shade(#D6204D, 1.4);
       color: #000000;
       background-color: #D6204D; }
-      .inline-toolbar toolbar button:active:disabled, .inline-toolbar toolbar button:checked:disabled {
+      .inline-toolbar toolbutton > button:active:disabled, .inline-toolbar toolbutton > button:checked:disabled {
         color: mix(#000000, mix(#FFFFFF, #171817, 0.5), 0.4);
         background-color: mix(#D6204D, mix(#FFFFFF, #171817, 0.95), 0.3); }
-        .inline-toolbar toolbar button:active:disabled:backdrop, .inline-toolbar toolbar button:checked:disabled:backdrop {
+        .inline-toolbar toolbutton > button:active:disabled:backdrop, .inline-toolbar toolbutton > button:checked:disabled:backdrop {
           color: mix(#000000, mix(#FFFFFF, #171817, 0.75), 0.4);
           background-color: mix(#D6204D, mix(#FFFFFF, #171817, 0.98), 0.3); }
-      .inline-toolbar toolbar button:active:backdrop, .inline-toolbar toolbar button:checked:backdrop {
+      .inline-toolbar toolbutton > button:active:backdrop, .inline-toolbar toolbutton > button:checked:backdrop {
         color: #000000;
         background-color: #D6204D; }
-    .inline-toolbar toolbar button:disabled {
+    .inline-toolbar toolbutton > button:disabled {
       color: mix(#FFFFFF, mix(#FFFFFF, #171817, 0.75), 0.1); }
-      .inline-toolbar toolbar button:disabled:backdrop {
+      .inline-toolbar toolbutton > button:disabled:backdrop {
         color: mix(#FFFFFF, #171817, 0.75); }
-    .inline-toolbar toolbar button:backdrop {
+    .inline-toolbar toolbutton > button:backdrop {
       color: #FFFFFF;
       background-color: transparent; }
 
-.linked button, .linked .raised button, .inline-toolbar .linked button, .inline-toolbar .linked .raised button {
-  border-radius: 0; }
-  .linked button:first-child, .linked .raised button:first-child, .inline-toolbar .linked button:first-child, .inline-toolbar .linked .raised button:first-child {
+.linked button, .linked .raised button, .primary-toolbar .linked button, .primary-toolbar .linked .raised button {
+  border-radius: 0;
+  border-left-width: 0; }
+  .linked button:first-child, .linked .raised button:first-child, .primary-toolbar .linked button:first-child, .primary-toolbar .linked .raised button:first-child {
+    border-left-width: 1px;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px; }
-  .linked button:last-child, .linked .raised button:last-child, .inline-toolbar .linked button:last-child, .inline-toolbar .linked .raised button:last-child {
+  .linked button:last-child, .linked .raised button:last-child, .primary-toolbar .linked button:last-child, .primary-toolbar .linked .raised button:last-child {
+    border-left-width: 0;
     border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px; }
-  .linked button:only-child, .linked .raised button:only-child, .inline-toolbar .linked button:only-child, .inline-toolbar .linked .raised button:only-child {
+  .linked button:only-child, .linked .raised button:only-child, .primary-toolbar .linked button:only-child, .primary-toolbar .linked .raised button:only-child {
+    border-width: 1px;
     border-radius: 3px; }
-.linked entry, .inline-toolbar .linked entry {
-  border-radius: 0; }
-  .linked entry:first-child, .inline-toolbar .linked entry:first-child {
+.linked entry, .primary-toolbar .linked entry {
+  border-radius: 0;
+  border-left-width: 0; }
+  .linked entry:first-child, .primary-toolbar .linked entry:first-child {
+    border-left-width: 1px;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px; }
-  .linked entry:last-child, .inline-toolbar .linked entry:last-child {
+  .linked entry:last-child, .primary-toolbar .linked entry:last-child {
+    border-left-width: 0;
     border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px; }
-  .linked entry:only-child, .inline-toolbar .linked entry:only-child {
+  .linked entry:only-child, .primary-toolbar .linked entry:only-child {
+    border-width: 1px;
     border-radius: 3px; }
-.linked combobox box.linked button, .inline-toolbar .linked combobox box.linked button {
-  border-radius: 0; }
-.linked combobox:first-child box.linked button, .inline-toolbar .linked combobox:first-child box.linked button {
+.linked combobox box.linked button, .primary-toolbar .linked combobox box.linked button {
+  border-radius: 0;
+  border-left-width: 0; }
+.linked combobox:first-child box.linked button, .primary-toolbar .linked combobox:first-child box.linked button {
+  border-left-width: 1px;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px; }
-.linked combobox:last-child box.linked button, .inline-toolbar .linked combobox:last-child box.linked button {
+.linked combobox:last-child box.linked button, .primary-toolbar .linked combobox:last-child box.linked button {
+  border-left-width: 0;
   border-top-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px; }
-.linked combobox:only-child box.linked button, .inline-toolbar .linked combobox:only-child box.linked button {
+.linked combobox:only-child box.linked button, .primary-toolbar .linked combobox:only-child box.linked button {
+  border-width: 1px;
   border-radius: 3px; }
-
-.vertical.linked button {
+.linked spinbutton, .primary-toolbar .linked spinbutton {
+  border-radius: 0;
+  border-left-width: 0; }
+  .linked spinbutton:first-child, .primary-toolbar .linked spinbutton:first-child {
+    border-left-width: 1px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  .linked spinbutton:last-child, .primary-toolbar .linked spinbutton:last-child {
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; }
+  .linked spinbutton:only-child, .primary-toolbar .linked spinbutton:only-child {
+    border-width: 1px;
+    border-radius: 3px; }
+.linked.vertical button, .primary-toolbar .linked.vertical button {
+  border-left-width: 1px;
+  border-top-width: 0;
   border-radius: 0; }
-  .vertical.linked button:first-child {
+  .linked.vertical button:first-child, .primary-toolbar .linked.vertical button:first-child {
+    border-top-width: 1px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0; }
-  .vertical.linked button:last-child {
+  .linked.vertical button:last-child, .primary-toolbar .linked.vertical button:last-child {
+    border-top-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px; }
-.vertical.linked entry {
+  .linked.vertical button:only-child, .primary-toolbar .linked.vertical button:only-child {
+    border-width: 1px;
+    border-radius: 3px; }
+.linked.vertical entry, .primary-toolbar .linked.vertical entry {
+  border-left-width: 1px;
+  border-top-width: 0;
   border-radius: 0; }
-  .vertical.linked entry:first-child {
+  .linked.vertical entry:first-child, .primary-toolbar .linked.vertical entry:first-child {
+    border-top-width: 1px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0; }
-  .vertical.linked entry:last-child {
+  .linked.vertical entry:last-child, .primary-toolbar .linked.vertical entry:last-child {
+    border-top-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px; }
-.vertical.linked combobox box.linked button {
+  .linked.vertical entry:only-child, .primary-toolbar .linked.vertical entry:only-child {
+    border-width: 1px;
+    border-radius: 3px; }
+.linked.vertical combobox box.linked button, .primary-toolbar .linked.vertical combobox box.linked button {
+  border-left-width: 1px;
+  border-top-width: 0;
   border-radius: 0; }
-.vertical.linked combobox:first-child box.linked button {
+.linked.vertical combobox:first-child box.linked button, .primary-toolbar .linked.vertical combobox:first-child box.linked button {
+  border-top-width: 1px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0; }
-.vertical.linked combobox:last-child box.linked button {
+.linked.vertical combobox:last-child box.linked button, .primary-toolbar .linked.vertical combobox:last-child box.linked button {
+  border-top-width: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px; }
-.vertical.linked spinbutton button:first-child {
+.linked.vertical combobox:only-child box.linked button, .primary-toolbar .linked.vertical combobox:only-child box.linked button {
   border-width: 1px;
-  border-top-width: 0;
-  border-left-width: 1px; }
-.vertical.linked spinbutton button:last-child {
-  border-width: 0;
+  border-radius: 3px; }
+.linked.vertical spinbutton, .primary-toolbar .linked.vertical spinbutton {
   border-left-width: 1px;
-  border-right-width: 1px;
-  border-bottom-width: 1px;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0; }
+  border-top-width: 0;
+  border-radius: 0; }
+  .linked.vertical spinbutton:first-child, .primary-toolbar .linked.vertical spinbutton:first-child {
+    border-top-width: 1px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .linked.vertical spinbutton:last-child, .primary-toolbar .linked.vertical spinbutton:last-child {
+    border-top-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px; }
+  .linked.vertical spinbutton:only-child, .primary-toolbar .linked.vertical spinbutton:only-child {
+    border-width: 1px;
+    border-radius: 3px; }
 
-stackswitcher button.text-button {
-  min-width: 80px; }
+toolbar.inline-toolbar toolbutton > button.flat, toolbar.inline-toolbar toolbutton:backdrop > button.flat {
+  border-radius: 0;
+  border-left-width: 0; }
+toolbar.inline-toolbar toolbutton:first-child > button.flat, toolbar.inline-toolbar toolbutton:backdrop:first-child > button.flat {
+  border-left-width: 1px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px; }
+toolbar.inline-toolbar toolbutton:last-child > button.flat, toolbar.inline-toolbar toolbutton:backdrop:last-child > button.flat {
+  border-left-width: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px; }
+toolbar.inline-toolbar toolbutton:only-child > button.flat, toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat {
+  border-width: 1px;
+  border-radius: 3px; }
 
 .primary-toolbar button, .primary-toolbar button:first-child, .primary-toolbar button:last-child, .primary-toolbar .raised button, .primary-toolbar .raised button:first-child, .primary-toolbar .raised button:last-child {
   border-radius: 3px; }
+
+stackswitcher button.text-button {
+  min-width: 80px; }
 
 tooltip {
   border-radius: 0px;
@@ -2219,38 +2299,6 @@ decoration {
 window.background.csd.popup {
   border-radius: 8px; }
 
-messagedialog {
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px; }
-  messagedialog .background.csd {
-    border-radius: 4px;
-    color: #FFFFFF;
-    background-color: #171817; }
-  messagedialog decoration {
-    border-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    box-shadow: 0 1px 2px alpha(black, 0.2); }
-  messagedialog .titlebar.horizontal {
-    border: none;
-    border-radius: 4px 4px 0 0;
-    background-image: none;
-    background-color: #171817; }
-  messagedialog.csd .dialog-action-area button {
-    padding: 10px;
-    border-radius: 0;
-    outline-offset: -2px; }
-    messagedialog.csd .dialog-action-area button:last-child {
-      border-radius: 0px;
-      border-bottom-right-radius: 4px; }
-    messagedialog.csd .dialog-action-area button:first-child {
-      border-radius: 0px;
-      border-bottom-left-radius: 4px; }
-    messagedialog.csd .dialog-action-area button:only-child {
-      border-radius: 0px;
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px; }
-
 .titlebar {
   border-bottom: 1px solid shade(#171817, 0.9);
   border-radius: 0px 0px 0px 0px; }
@@ -2285,6 +2333,38 @@ messagedialog {
     border-bottom-color: shade(#171817, 0.9); }
   window.ssd .titlebar, window.ssd .titlebar:not(headerbar), window.ssd headerbar.default-decoration, window.ssd .csd headerbar.default-decoration, window.ssd .default-decoration.titlebar:not(headerbar), window.ssd .csd .default-decoration.titlebar:not(headerbar) {
     border-bottom: none; }
+
+messagedialog {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; }
+  messagedialog .background.csd {
+    border-radius: 4px;
+    color: #FFFFFF;
+    background-color: #171817; }
+  messagedialog decoration {
+    border-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 1px 2px alpha(black, 0.2); }
+  messagedialog .titlebar.horizontal {
+    border: none;
+    border-radius: 4px 4px 0 0;
+    background-image: none;
+    background-color: #171817; }
+  messagedialog.csd .dialog-action-area button {
+    padding: 10px;
+    border-radius: 0;
+    outline-offset: -2px; }
+    messagedialog.csd .dialog-action-area button:last-child {
+      border-radius: 0px;
+      border-bottom-right-radius: 4px; }
+    messagedialog.csd .dialog-action-area button:first-child {
+      border-radius: 0px;
+      border-bottom-left-radius: 4px; }
+    messagedialog.csd .dialog-action-area button:only-child {
+      border-radius: 0px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px; }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;

@@ -25,7 +25,7 @@
     
       &:backdrop {
         color: gtkmix($selected_fg_color, $unfocused_disabled_fg_color, 0.4);
-      background-color: gtkmix($selected_bg_color, $unfocused_disabled_bg_color, 0.3);
+        background-color: gtkmix($selected_bg_color, $unfocused_disabled_bg_color, 0.3);
       }
     }
 
@@ -56,7 +56,7 @@
 
 @mixin button() {
   button {
-    @include normal_buttons($base_color, $fg_color, transparent);
+    @include normal_buttons($base_color, $fg_color, $base_color);
     
     &.flat {
       @include flat_buttons(transparent, $fg_color, transparent);

@@ -1,0 +1,67 @@
+@mixin spinbutton() {
+  spinbutton {
+    &:disabled { color: $disabled_fg_color; }
+  
+    &.horizontal {
+      border-radius: $entry_radius;
+      border: 1px solid $borders;
+      border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
+      border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+      background-color: $base_color;
+      
+      &:disabled {
+        color: $disabled_fg_color;
+        background-color: $disabled_base_color;
+        
+        &:backdrop {
+          color: $unfocused_disabled_fg_color;
+          background-color: $unfocused_disabled_base_color;
+        }
+      }
+      
+      &:backdrop { background-color: $unfocused_base_color; }
+    
+      entry {
+        border: none;
+        box-shadow: none;
+        padding: 7px 15px;
+        background: none;
+        border-radius: $entry_radius 0 0 $entry_radius;
+        
+        &:disabled { background: none; }
+        
+        &:focus { box-shadow: none; }
+      }
+      
+      button {
+        border: none;
+        border-radius: 0;
+        background: none;
+        box-shadow: -1px 0 $borders;
+        
+        &:disabled, &:backdrop { box-shadow: -1px 0 $unfocused_borders; }
+        &:disabled { color: $disabled_fg_color; }
+        &.up { border-radius: 0 $entry_radius $entry_radius 0; }
+      }
+    }
+
+    &.vertical {
+      entry { border-radius: 0;
+        &:focus { box-shadow: inset 0 0 0 2px $selected_bg_color; }
+      }
+      button {
+        &.up {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          border-bottom-width: 0;
+        }
+
+        &.down {
+          border-top-width: 0;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+    }
+  }
+}

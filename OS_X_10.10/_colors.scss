@@ -9,8 +9,8 @@ $selected_base_color : #96C4F5;
 $selected_text_color : #000000;
 $disabled_bg_color : gtkmix($fg_color, $bg_color, 0.95);
 $disabled_fg_color : gtkmix($fg_color, $bg_color, 0.5);
-$disabled_base_color : $disabled_bg_color;
-$disabled_text_color : $disabled_fg_color;
+$disabled_base_color : gtkshade($base_color, 0.975);
+$disabled_text_color : gtkmix($disabled_fg_color, $base_color, 0.1);
 
 // Backdrop state colors
 $unfocused_bg_color : #E4E4E4;

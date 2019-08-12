@@ -1,0 +1,38 @@
+@mixin spinbutton() {
+  spinbutton {
+    &.horizontal {
+      border: 1px solid $borders;
+      
+      &:backdrop { border-color: $unfocused_borders; }
+      
+      entry {
+        border: none;
+        padding: 7px 15px;
+      }
+      
+      button {
+        border: none;
+        border-radius: 0;
+        box-shadow: -1px 0 $borders;
+        
+        &:disabled, &:backdrop { box-shadow: -1px 0 $unfocused_borders; }
+      }
+    }
+
+    &.vertical {
+      button {
+        &.up {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          border-bottom-width: 0;
+        }
+
+        &.down {
+          border-top-width: 0;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+    }
+  }
+}

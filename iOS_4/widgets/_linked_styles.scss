@@ -1,0 +1,17 @@
+@mixin linked_styles() {
+  .linked, .inline-toolbar .linked {
+  }
+  
+  stackswitcher button.text-button { min-width: 80px; }
+  
+  combobox button { background-image: none; }
+  
+  .primary-toolbar {
+    button, .raised button {
+      &, &:first-child, &:last-child {
+        border-width: 1px;
+        border-radius: $button_radius;
+      }
+    }
+  }
+}

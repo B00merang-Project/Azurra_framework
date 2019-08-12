@@ -1,47 +1,49 @@
 @mixin spinbutton() {
   spinbutton {
-    &:not(.vertical) selection, &:not(.vertical) selection:focus {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-    }
-    
-    button, entry {
-      &:disabled {
-        color: $disabled_fg_color;
-        
-        &:backdrop {
-          color: $unfocused_disabled_fg_color;
-        }
-      }
-    }
-
     &.horizontal {
-      entry {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-        padding: 7px 15px;
+      border: 0px solid $base_color;
+      border-radius: $entry_radius;
+      background-color: $base_color;
+      
+      &:disabled {
+        color: $disabled_text_color;
+        background-color: $disabled_base_color;
+
+        &:backdrop {
+          color: $unfocused_disabled_text_color;
+          background-color: $unfocused_disabled_base_color;
+        }
       }
       
-      button {        
-        &.down {
-          border-right-width: 0;
-          border-left-width: 0;
-          border-radius: 0;
-        }
-
-        &.up {
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-        }
+      &:backdrop {
+        background-color: $unfocused_base_color;
+      }
+    
+      entry {
+        border: none;
+        padding: 7px 15px;
+        background: none;
+        border-radius: $entry_radius 0 0 $entry_radius;
+      }
+      
+      button {
+        border: none;
+        border-radius: 0;
+        background: none;
+        
+        &:disabled { color: $disabled_text_color; background: none; }
+        
+        &.up { border-radius: 0 $entry_radius $entry_radius 0; }
       }
     }
 
     &.vertical {
-      entry {
-        border-radius: 0;
-      }
-
       button {
+        padding: 7px 2px;
+        background-color: $base_color;
+
+        &:disabled { color: $disabled_text_color; }
+        
         &.up {
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
@@ -53,6 +55,11 @@
           border-top-left-radius: 0;
           border-top-right-radius: 0;
         }
+      }
+      entry {
+        padding: 7px 2px;
+        border-width: 0;
+        border-radius: 0;
       }
     }
   }

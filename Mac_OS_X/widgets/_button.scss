@@ -35,26 +35,31 @@
       border-color: gtkmix($fg, $disabled_bg_color, 0.85);
       background-image: linear-gradient(to bottom, $base_color 20%, $unfocused_bg_color 40%, $base_color 75%);
       background-color: gtkshade($disabled_bg_color, 0.9);
+      box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.2), inset 0 1px gtkshade($bg_color, 0.55);
       
       &:backdrop {
         color: $unfocused_disabled_fg_color;
         border-color: $unfocused_borders;
         background-color: gtkshade($unfocused_disabled_bg_color, 0.9);
+        box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.15), inset 0 1px gtkshade($bg_color, 0.55);
       }
     }
   }
 
   &:disabled {
     color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
+    box-shadow: 0 2px 3px 0px gtkalpha($dark_shadow, 0.2), inset 0 0 0 1px gtkalpha($light_shadow, 0.3), inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.2), inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.2), inset 0 6px 3px -2px $light_shadow;
     
     &:backdrop {
       color: $unfocused_disabled_fg_color;
+      box-shadow: 0 2px 3px 0px gtkalpha($dark_shadow, 0.15), inset 0 0 0 1px gtkalpha($light_shadow, 0.3), inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.2), inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.2), inset 0 6px 3px -2px $light_shadow;
     }
   }
 
   &:backdrop {
     color: $unfocused_fg_color;
     background-color: $unfocused_base_color;
+    box-shadow: 0 2px 3px 0px gtkalpha($dark_shadow, 0.1), inset 0 0 0 1px gtkalpha($light_shadow, 0.3), inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.2), inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.2), inset 0 6px 3px -2px $light_shadow;
   }
 }
 

@@ -26,8 +26,10 @@
     &:disabled {
       background-color: $disabled_bg_color;
       color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
+      box-shadow: inset -3px -3px gtkshade($base_color, 0.9), inset -1px -1px gtkshade($bg_color, 0.95), inset 2px 2px gtkshade($bg_color, 0.85), inset 1px 1px gtkshade($bg_color, 0.65);
       
       &:backdrop {
+        box-shadow: inset -3px -3px gtkshade($base_color, 0.9), inset -1px -1px gtkshade($bg_color, 0.95), inset 2px 2px gtkshade($bg_color, 0.85), inset 1px 1px gtkshade($bg_color, 0.65);
       }
     }
   }
@@ -41,6 +43,7 @@
   }
 
   &:backdrop {
+    box-shadow: inset 3px 3px $light_shadow, inset 1px 1px $bg_color, inset -2px -2px gtkshade($bg_color, 0.85), inset -1px -1px gtkshade($bg_color, 0.65);
   }
 }
 

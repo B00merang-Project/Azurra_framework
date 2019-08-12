@@ -14,7 +14,6 @@
     background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.4), gtkmix(gtkshade($bg_color, 1.2), $dark_shadow, 0.02));
 
     &:active, &:focus {
-      border-color: $borders;
       box-shadow: 0 0 0 4px $selected_base_color;
     }
 
@@ -30,14 +29,14 @@
         color: $unfocused_disabled_fg_color;
         border-color: $unfocused_borders;
         background-image: none;
-        background-color: $unfocused_disabled_bg_color;
+        background-color: $unfocused_disabled_base_color;
       }
     }
 
     &:backdrop {
       color: $unfocused_fg_color;
       border-color: $unfocused_borders;
-      background-color: $unfocused_bg_color;
+      background-color: $unfocused_base_color;
       background-image: none;
     }
 

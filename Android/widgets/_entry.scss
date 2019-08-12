@@ -21,11 +21,13 @@
 
     &:disabled {
       color: $disabled_text_color;
-      border-color: $disabled_bg_color;
+      border-color: $unfocused_borders;
+      background-color: $disabled_base_color;
 
       &:backdrop {
-        color: $unfocused_disabled_fg_color;
+        color: $unfocused_disabled_text_color;
         border-color: $unfocused_borders;
+        background-color: $unfocused_disabled_base_color;
       }
     }
 

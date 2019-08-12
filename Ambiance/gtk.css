@@ -439,8 +439,6 @@ entry {
       border-color: shade(#F2F1F0, 0.9);
       background-color: shade(#F2F1F0, 1.02);
       background-image: none; }
-  entry.read-only {
-    background-color: mix(#F2F1F0, shade(#F2F1F0, 1.02), 0.1); }
   entry:backdrop {
     color: mix(#4C4C4C, #FFFFFF, 0.3);
     background-color: #F2F1F0;
@@ -1446,30 +1444,34 @@ separator {
   combobox separator {
     border: none; }
 
-spinbutton:not(.vertical) selection, spinbutton:not(.vertical) selection:focus {
-  color: #FFFFFF;
-  background-color: #F07746; }
-spinbutton button:disabled, spinbutton entry:disabled {
-  color: mix(#4C4C4C, #F2F1F0, 0.5); }
-  spinbutton button:disabled:backdrop, spinbutton entry:disabled:backdrop {
-    color: mix(#4C4C4C, #F2F1F0, 0.75); }
-spinbutton.horizontal entry {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  padding: 7px 15px; }
-  spinbutton.horizontal entry:focus {
-    box-shadow: none; }
-spinbutton.horizontal button.down {
-  border-right-width: 0;
-  border-left-width: 0;
-  border-radius: 0; }
-spinbutton.horizontal button.up {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0; }
+spinbutton.horizontal {
+  border: 1px solid shade(#F2F1F0, 0.9);
+  border-radius: 6px;
+  box-shadow: inset 0 1px alpha(black, 0.05), inset 1px 0 alpha(black, 0.035), inset -1px 0 alpha(black, 0.05), 0 1px alpha(white, 0.3), -1px 0 alpha(white, 0.3), 1px 0 alpha(white, 0.3); }
+  spinbutton.horizontal:focus {
+    border-color: #F07746; }
+  spinbutton.horizontal:backdrop, spinbutton.horizontal:disabled {
+    border-color: shade(#F2F1F0, 0.9); }
+  spinbutton.horizontal:disabled {
+    color: mix(#4C4C4C, #F2F1F0, 0.5); }
+    spinbutton.horizontal:disabled:backdrop {
+      color: mix(#4C4C4C, #F2F1F0, 0.75); }
+  spinbutton.horizontal entry {
+    border: none;
+    padding: 7px 15px;
+    border-radius: 6px 0 0 6px; }
+  spinbutton.horizontal button {
+    border: none;
+    border-radius: 0;
+    box-shadow: -1px 0 shade(#F2F1F0, 0.9);
+    background-image: none;
+    box-shadow: inset 0 1px alpha(black, 0.05), inset 1px 0 alpha(black, 0.035), inset -1px 0 alpha(black, 0.05), 0 1px alpha(white, 0.3), -1px 0 alpha(white, 0.3), 1px 0 alpha(white, 0.3); }
+    spinbutton.horizontal button:disabled, spinbutton.horizontal button:backdrop {
+      box-shadow: -1px 0 shade(#F2F1F0, 0.9); }
+    spinbutton.horizontal button.up {
+      border-radius: 0 6px 6px 0; }
 spinbutton.vertical entry {
   border-radius: 0; }
-  spinbutton.vertical entry:focus {
-    box-shadow: none; }
 spinbutton.vertical button.up {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -1843,18 +1845,17 @@ toolbar {
       .primary-toolbar button:backdrop:hover, .primary-toolbar .raised button:backdrop:hover, toolbar.primary-toolbar button:backdrop:hover, toolbar.primary-toolbar .raised button:backdrop:hover {
         background-color: shade(#3C3B37, 1.1); }
 
-.inline-toolbar toolbar {
-  -GtkToolbar-button-relief: normal;
+.inline-toolbar {
   padding: 1px;
   border-width: 1px;
   border-style: solid;
   border-color: mix(shade(#F2F1F0, 0.9), #F2F1F0, 0.5);
   border-radius: 0;
   background-color: #F2F1F0; }
-  .inline-toolbar toolbar:last-child {
-    border-width: 0 1px 1px 1px;
-    border-radius: 0; }
-  .inline-toolbar toolbar button {
+  .inline-toolbar:backdrop {
+    border-color: shade(#F2F1F0, 0.9);
+    background-color: #F2F1F0; }
+  .inline-toolbar toolbutton > button {
     padding: 5px 6px;
     border-style: solid;
     border-width: 1px;
@@ -1872,18 +1873,18 @@ toolbar {
     outline-style: solid;
     outline-color: shade(#F07746, 0.9);
     -gtk-outline-radius: 6px; }
-    .inline-toolbar toolbar button:hover {
+    .inline-toolbar toolbutton > button:hover {
       box-shadow: 0 1px alpha(black, 0.085), 1px 0 alpha(black, 0.055), -1px 0 alpha(black, 0.055); }
-      .inline-toolbar toolbar button:hover:focus:not(:checked) {
+      .inline-toolbar toolbutton > button:hover:focus:not(:checked) {
         box-shadow: 0 1px alpha(#F07746, 0.3), 1px 0 alpha(#F07746, 0.25), -1px 0 alpha(#F07746, 0.25); }
-    .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked:active {
+    .inline-toolbar toolbutton > button:active, .inline-toolbar toolbutton > button:checked:active {
       background-image: linear-gradient(to bottom, shade(#F2F1F0, 0.92), shade(#F2F1F0, 0.975)); }
-    .inline-toolbar toolbar button:backdrop {
+    .inline-toolbar toolbutton > button:backdrop {
       background-image: none;
       box-shadow: inset 0 0 0 1px alpha(white, 0.25); }
-      .inline-toolbar toolbar button:backdrop:hover {
+      .inline-toolbar toolbutton > button:backdrop:hover {
         background-color: shade(#F2F1F0, 1.065); }
-    .inline-toolbar toolbar button:checked {
+    .inline-toolbar toolbutton > button:checked {
       border-color: shade(shade(#F2F1F0, 0.9), 0.8);
       border-left-color: shade(shade(#F2F1F0, 0.9), 0.725);
       border-right-color: shade(shade(#F2F1F0, 0.9), 0.725);
@@ -1891,167 +1892,234 @@ toolbar {
       background-color: mix(#F2F1F0, #4C4C4C, 0.1);
       background-image: linear-gradient(to bottom, shade(#F2F1F0, 0.8), shade(#F2F1F0, 0.95));
       box-shadow: inset 0 2px 2px 0 alpha(black, 0.1); }
-      .inline-toolbar toolbar button:checked:backdrop {
+      .inline-toolbar toolbutton > button:checked:backdrop {
         box-shadow: inset 0 2px 2px 0 alpha(black, 0.075);
         background-image: linear-gradient(to bottom, shade(#F2F1F0, 0.8), shade(#F2F1F0, 0.95)); }
-        .inline-toolbar toolbar button:checked:backdrop:hover {
+        .inline-toolbar toolbutton > button:checked:backdrop:hover {
           background-color: shade(#F2F1F0, 1.065);
           background-image: none; }
-      .inline-toolbar toolbar button:checked:disabled {
+      .inline-toolbar toolbutton > button:checked:disabled {
         color: mix(#4C4C4C, mix(#4C4C4C, #F2F1F0, 0.75), 0.1);
         border-color: mix(#4C4C4C, shade(#F2F1F0, 1.02), 0.85);
         background-color: shade(shade(#F2F1F0, 1.02), 0.9);
         box-shadow: inset 0 2px 2px 0 alpha(black, 0.025);
         background-image: linear-gradient(to bottom, shade(shade(#F2F1F0, 1.02), 0.95), shade(shade(#F2F1F0, 1.02), 0.99)); }
-    .inline-toolbar toolbar button:disabled {
+    .inline-toolbar toolbutton > button:disabled {
       color: mix(#4C4C4C, mix(#4C4C4C, #F2F1F0, 0.75), 0.5);
       background-color: shade(shade(#F2F1F0, 1.02), 0.98);
       background-image: none;
       box-shadow: none;
       border-color: shade(shade(#F2F1F0, 0.9), 0.96); }
-      .inline-toolbar toolbar button:disabled:backdrop {
+      .inline-toolbar toolbutton > button:disabled:backdrop {
         background-color: shade(shade(#F2F1F0, 1.02), 0.96);
         border-color: shade(#F2F1F0, 0.9); }
 
-.linked button, .linked .raised button, .inline-toolbar .linked button, .inline-toolbar .linked .raised button, .primary-toolbar .linked button, .primary-toolbar .linked .raised button {
-  border-radius: 0;
-  border-left-width: 0;
-  -gtk-outline-radius: 0; }
-  .linked button:first-child, .linked .raised button:first-child, .inline-toolbar .linked button:first-child, .inline-toolbar .linked .raised button:first-child, .primary-toolbar .linked button:first-child, .primary-toolbar .linked .raised button:first-child {
-    border-left-width: 1px;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    -gtk-outline-radius: 6px 0 0 6px; }
-  .linked button:last-child, .linked .raised button:last-child, .inline-toolbar .linked button:last-child, .inline-toolbar .linked .raised button:last-child, .primary-toolbar .linked button:last-child, .primary-toolbar .linked .raised button:last-child {
-    border-left-width: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    -gtk-outline-radius: 0 6px 6px 0; }
-  .linked button:only-child, .linked .raised button:only-child, .inline-toolbar .linked button:only-child, .inline-toolbar .linked .raised button:only-child, .primary-toolbar .linked button:only-child, .primary-toolbar .linked .raised button:only-child {
-    border-width: 1px;
-    border-radius: 6px;
-    -gtk-outline-radius: 6px; }
-.linked entry, .inline-toolbar .linked entry, .primary-toolbar .linked entry {
+.linked button, .linked .raised button, .primary-toolbar .linked button, .primary-toolbar .linked .raised button {
   border-radius: 0;
   border-left-width: 0; }
-  .linked entry:first-child, .inline-toolbar .linked entry:first-child, .primary-toolbar .linked entry:first-child {
+  .linked button:first-child, .linked .raised button:first-child, .primary-toolbar .linked button:first-child, .primary-toolbar .linked .raised button:first-child {
     border-left-width: 1px;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px; }
-  .linked entry:last-child, .inline-toolbar .linked entry:last-child, .primary-toolbar .linked entry:last-child {
+  .linked button:last-child, .linked .raised button:last-child, .primary-toolbar .linked button:last-child, .primary-toolbar .linked .raised button:last-child {
     border-left-width: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px; }
-  .linked entry:only-child, .inline-toolbar .linked entry:only-child, .primary-toolbar .linked entry:only-child {
+  .linked button:only-child, .linked .raised button:only-child, .primary-toolbar .linked button:only-child, .primary-toolbar .linked .raised button:only-child {
     border-width: 1px;
     border-radius: 6px; }
-  .linked entry:focus, .linked entry:last-child:focus, .inline-toolbar .linked entry:focus, .inline-toolbar .linked entry:last-child:focus, .primary-toolbar .linked entry:focus, .primary-toolbar .linked entry:last-child:focus {
-    box-shadow: -1px 0 shade(#F07746, 1.15); }
-  .linked entry:first-child:focus, .inline-toolbar .linked entry:first-child:focus, .primary-toolbar .linked entry:first-child:focus {
-    box-shadow: none; }
-.linked combobox box.linked button, .inline-toolbar .linked combobox box.linked button, .primary-toolbar .linked combobox box.linked button {
+.linked entry, .primary-toolbar .linked entry {
   border-radius: 0;
-  border-left-width: 0;
-  -gtk-outline-radius: 0; }
-.linked combobox:first-child box.linked button, .inline-toolbar .linked combobox:first-child box.linked button, .primary-toolbar .linked combobox:first-child box.linked button {
+  border-left-width: 0; }
+  .linked entry:first-child, .primary-toolbar .linked entry:first-child {
+    border-left-width: 1px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px; }
+  .linked entry:last-child, .primary-toolbar .linked entry:last-child {
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px; }
+  .linked entry:only-child, .primary-toolbar .linked entry:only-child {
+    border-width: 1px;
+    border-radius: 6px; }
+.linked combobox box.linked button, .primary-toolbar .linked combobox box.linked button {
+  border-radius: 0;
+  border-left-width: 0; }
+.linked combobox:first-child box.linked button, .primary-toolbar .linked combobox:first-child box.linked button {
   border-left-width: 1px;
   border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  -gtk-outline-radius: 6px 0 0 6px; }
-.linked combobox:last-child box.linked button, .inline-toolbar .linked combobox:last-child box.linked button, .primary-toolbar .linked combobox:last-child box.linked button {
+  border-bottom-left-radius: 6px; }
+.linked combobox:last-child box.linked button, .primary-toolbar .linked combobox:last-child box.linked button {
   border-left-width: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-  -gtk-outline-radius: 0 6px 6px 0; }
-.linked combobox:only-child box.linked button, .inline-toolbar .linked combobox:only-child box.linked button, .primary-toolbar .linked combobox:only-child box.linked button {
+  border-bottom-right-radius: 6px; }
+.linked combobox:only-child box.linked button, .primary-toolbar .linked combobox:only-child box.linked button {
   border-width: 1px;
-  border-radius: 6px;
-  -gtk-outline-radius: 6px; }
-
-.vertical.linked button {
-  border-left-width: 1px;
-  border-top-width: 0;
+  border-radius: 6px; }
+.linked spinbutton, .primary-toolbar .linked spinbutton {
   border-radius: 0;
-  -gtk-outline-radius: 0; }
-  .vertical.linked button:first-child {
-    border-top-width: 1px;
+  border-left-width: 0; }
+  .linked spinbutton:first-child, .primary-toolbar .linked spinbutton:first-child {
+    border-left-width: 1px;
     border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    -gtk-outline-radius: 6px 6px 0 0; }
-  .vertical.linked button:last-child {
-    border-top-width: 0;
+    border-bottom-left-radius: 6px; }
+  .linked spinbutton:last-child, .primary-toolbar .linked spinbutton:last-child {
+    border-left-width: 0;
     border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-    -gtk-outline-radius: 0 0 6px 6px; }
-  .vertical.linked button:only-child {
-    border-top-width: 1px;
-    -gtk-outline-radius: 6px; }
-.vertical.linked entry {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px; }
+  .linked spinbutton:only-child, .primary-toolbar .linked spinbutton:only-child {
+    border-width: 1px;
+    border-radius: 6px; }
+.linked.vertical button, .primary-toolbar .linked.vertical button {
   border-left-width: 1px;
   border-top-width: 0;
   border-radius: 0; }
-  .vertical.linked entry:first-child {
+  .linked.vertical button:first-child, .primary-toolbar .linked.vertical button:first-child {
     border-top-width: 1px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0; }
-  .vertical.linked entry:last-child {
+  .linked.vertical button:last-child, .primary-toolbar .linked.vertical button:last-child {
     border-top-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px; }
-  .vertical.linked entry:only-child {
-    border-top-width: 1px; }
-  .vertical.linked entry:focus, .vertical.linked entry:last-child:focus {
-    box-shadow: 0 -1px shade(#F07746, 1.15); }
-  .vertical.linked entry:first-child:focus {
-    box-shadow: none; }
-.vertical.linked combobox box.linked button {
+  .linked.vertical button:only-child, .primary-toolbar .linked.vertical button:only-child {
+    border-width: 1px;
+    border-radius: 6px; }
+.linked.vertical entry, .primary-toolbar .linked.vertical entry {
   border-left-width: 1px;
   border-top-width: 0;
-  border-radius: 0;
-  -gtk-outline-radius: 0; }
-.vertical.linked combobox:first-child box.linked button {
+  border-radius: 0; }
+  .linked.vertical entry:first-child, .primary-toolbar .linked.vertical entry:first-child {
+    border-top-width: 1px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .linked.vertical entry:last-child, .primary-toolbar .linked.vertical entry:last-child {
+    border-top-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px; }
+  .linked.vertical entry:only-child, .primary-toolbar .linked.vertical entry:only-child {
+    border-width: 1px;
+    border-radius: 6px; }
+.linked.vertical combobox box.linked button, .primary-toolbar .linked.vertical combobox box.linked button {
+  border-left-width: 1px;
+  border-top-width: 0;
+  border-radius: 0; }
+.linked.vertical combobox:first-child box.linked button, .primary-toolbar .linked.vertical combobox:first-child box.linked button {
   border-top-width: 1px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  -gtk-outline-radius: 6px 6px 0 0; }
-.vertical.linked combobox:last-child box.linked button {
+  border-bottom-right-radius: 0; }
+.linked.vertical combobox:last-child box.linked button, .primary-toolbar .linked.vertical combobox:last-child box.linked button {
   border-top-width: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  -gtk-outline-radius: 0 0 6px 6px; }
-.vertical.linked combobox:only-child box.linked button {
-  border-top-width: 1px;
-  -gtk-outline-radius: 6px; }
-.vertical.linked spinbutton button:first-child {
+  border-bottom-right-radius: 6px; }
+.linked.vertical combobox:only-child box.linked button, .primary-toolbar .linked.vertical combobox:only-child box.linked button {
   border-width: 1px;
-  border-top-width: 0;
-  border-left-width: 1px; }
-.vertical.linked spinbutton button:last-child {
-  border-width: 0;
+  border-radius: 6px; }
+.linked.vertical spinbutton, .primary-toolbar .linked.vertical spinbutton {
   border-left-width: 1px;
-  border-right-width: 1px;
-  border-bottom-width: 1px;
-  border-top-right-radius: 0;
+  border-top-width: 0;
+  border-radius: 0; }
+  .linked.vertical spinbutton:first-child, .primary-toolbar .linked.vertical spinbutton:first-child {
+    border-top-width: 1px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .linked.vertical spinbutton:last-child, .primary-toolbar .linked.vertical spinbutton:last-child {
+    border-top-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px; }
+  .linked.vertical spinbutton:only-child, .primary-toolbar .linked.vertical spinbutton:only-child {
+    border-width: 1px;
+    border-radius: 6px; }
+
+toolbar.inline-toolbar toolbutton > button.flat, toolbar.inline-toolbar toolbutton:backdrop > button.flat {
+  border-radius: 0;
+  border-left-width: 0; }
+toolbar.inline-toolbar toolbutton:first-child > button.flat, toolbar.inline-toolbar toolbutton:backdrop:first-child > button.flat {
+  border-left-width: 1px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
+toolbar.inline-toolbar toolbutton:last-child > button.flat, toolbar.inline-toolbar toolbutton:backdrop:last-child > button.flat {
+  border-left-width: 0;
+  border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0; }
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px; }
+toolbar.inline-toolbar toolbutton:only-child > button.flat, toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat {
+  border-width: 1px;
+  border-radius: 6px; }
+
+.linked button, .linked .raised button {
+  -gtk-outline-radius: 0; }
+  .linked button:first-child, .linked .raised button:first-child {
+    -gtk-outline-radius: 6px 0 0 6px; }
+  .linked button:last-child, .linked .raised button:last-child {
+    -gtk-outline-radius: 0 6px 6px 0; }
+  .linked button:only-child, .linked .raised button:only-child {
+    -gtk-outline-radius: 6px; }
+.linked entry:focus, .linked entry:last-child:focus {
+  box-shadow: -1px 0 shade(#F07746, 1.15); }
+.linked entry:first-child:focus, .linked entry:only-child {
+  box-shadow: none; }
+.linked combobox box.linked button {
+  -gtk-outline-radius: 0; }
+.linked combobox:first-child box.linked button {
+  -gtk-outline-radius: 6px 0 0 6px; }
+.linked combobox:last-child box.linked button {
+  -gtk-outline-radius: 0 6px 6px 0; }
+.linked combobox:only-child box.linked button {
+  -gtk-outline-radius: 6px; }
+.linked.vertical button {
+  -gtk-outline-radius: 0; }
+  .linked.vertical button:first-child {
+    -gtk-outline-radius: 6px 6px 0 0; }
+  .linked.vertical button:last-child {
+    -gtk-outline-radius: 0 0 6px 6px; }
+  .linked.vertical button:only-child {
+    -gtk-outline-radius: 6px; }
+.linked.vertical entry:focus, .linked.vertical entry:last-child:focus {
+  box-shadow: 0 -1px shade(#F07746, 1.15); }
+.linked.vertical entry:first-child:focus, .linked.vertical entry:only-child {
+  box-shadow: none; }
+.linked.vertical combobox box.linked button {
+  -gtk-outline-radius: 0; }
+.linked.vertical combobox:first-child box.linked button {
+  -gtk-outline-radius: 6px 6px 0 0; }
+.linked.vertical combobox:last-child box.linked button {
+  -gtk-outline-radius: 0 0 6px 6px; }
+.linked.vertical combobox:only-child box.linked button {
+  -gtk-outline-radius: 6px; }
+.linked.vertical spinbutton:focus, .linked.vertical spinbutton:last-child:focus {
+  box-shadow: 0 -1px #F07746, inset 0 0 0 1px #F07746; }
+.linked.vertical spinbutton:first-child:focus, .linked.vertical spinbutton:only-child:focus {
+  box-shadow: none; }
+.linked.vertical spinbutton button:first-child, .linked.vertical spinbutton button:last-child {
+  border-radius: 0; }
+.linked.vertical spinbutton entry:focus {
+  box-shadow: none; }
 
 stackswitcher button.text-button {
   min-width: 80px; }
@@ -2574,44 +2642,6 @@ decoration {
     background-color: alpha(white, 0.95);
     box-shadow: none; }
 
-messagedialog {
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px; }
-  messagedialog .background.csd {
-    border-radius: 4px;
-    color: #4C4C4C;
-    background-color: #F2F1F0; }
-  messagedialog decoration {
-    border-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    box-shadow: 0 1px 2px alpha(black, 0.2); }
-  messagedialog .titlebar.horizontal {
-    border: none;
-    background-image: none;
-    background-color: #F2F1F0; }
-  messagedialog.csd .dialog-action-area button {
-    padding: 10px;
-    border-radius: 0;
-    border-bottom-style: none;
-    background-image: none;
-    -gtk-outline-radius: 0; }
-    messagedialog.csd .dialog-action-area button:last-child {
-      border-right-width: 0;
-      border-radius: 0px;
-      border-bottom-right-radius: 4px;
-      -gtk-outline-radius: 0 0 4px 0; }
-    messagedialog.csd .dialog-action-area button:first-child {
-      border-left-width: 0;
-      border-radius: 0px;
-      border-bottom-left-radius: 4px;
-      -gtk-outline-radius: 0 0 0 4px; }
-    messagedialog.csd .dialog-action-area button:only-child {
-      border-radius: 0px;
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
-      -gtk-outline-radius: 0 0 4px 4px; }
-
 .titlebar {
   border-bottom: none;
   border-radius: 4px 4px 0px 0px; }
@@ -2662,6 +2692,44 @@ messagedialog {
   .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: alpha(#DFDBD2, 0.8);
     background-image: none; }
+
+messagedialog {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; }
+  messagedialog .background.csd {
+    border-radius: 4px;
+    color: #4C4C4C;
+    background-color: #F2F1F0; }
+  messagedialog decoration {
+    border-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 1px 2px alpha(black, 0.2); }
+  messagedialog .titlebar.horizontal {
+    border: none;
+    background-image: none;
+    background-color: #F2F1F0; }
+  messagedialog.csd .dialog-action-area button {
+    padding: 10px;
+    border-radius: 0;
+    border-bottom-style: none;
+    background-image: none;
+    -gtk-outline-radius: 0; }
+    messagedialog.csd .dialog-action-area button:last-child {
+      border-right-width: 0;
+      border-radius: 0px;
+      border-bottom-right-radius: 4px;
+      -gtk-outline-radius: 0 0 4px 0; }
+    messagedialog.csd .dialog-action-area button:first-child {
+      border-left-width: 0;
+      border-radius: 0px;
+      border-bottom-left-radius: 4px;
+      -gtk-outline-radius: 0 0 0 4px; }
+    messagedialog.csd .dialog-action-area button:only-child {
+      border-radius: 0px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      -gtk-outline-radius: 0 0 4px 4px; }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;

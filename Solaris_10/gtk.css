@@ -432,11 +432,11 @@ entry {
     color: #FFFFFF;
     background-color: #594FBF; }
   entry:disabled {
-    color: mix(#000000, #E6E6E6, 0.5); }
+    color: mix(#000000, #E6E6E6, 0.5);
+    background-color: mix(#000000, #E6E6E6, 0.95); }
     entry:disabled:backdrop {
-      color: mix(#000000, #E6E6E6, 0.5); }
-  entry.read-only {
-    background-color: mix(#E6E6E6, mix(#000000, #E6E6E6, 0.95), 0.1); }
+      color: mix(#000000, #E6E6E6, 0.5);
+      background-color: mix(#000000, #E6E6E6, 0.95); }
   entry:backdrop {
     color: #000000;
     background-color: #FFFFFF; }
@@ -1424,39 +1424,62 @@ separator {
   combobox separator {
     border: none; }
 
-spinbutton:not(.vertical) selection, spinbutton:not(.vertical) selection:focus {
-  color: #FFFFFF;
-  background-color: #594FBF; }
-spinbutton button:disabled, spinbutton entry:disabled {
-  color: mix(#000000, #E6E6E6, 0.5); }
-  spinbutton button:disabled:backdrop, spinbutton entry:disabled:backdrop {
-    color: mix(#000000, #E6E6E6, 0.5); }
-spinbutton.horizontal entry {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  padding: 7px 15px; }
-  spinbutton.horizontal entry:focus {
-    box-shadow: none; }
-spinbutton.horizontal button.down {
-  border-right-width: 0;
-  border-left-width: 0;
-  border-radius: 0; }
-spinbutton.horizontal button.up {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0; }
+spinbutton.horizontal {
+  border-radius: 40px;
+  border: 1px solid shade(#E6E6E6, 0.9);
+  border-top-color: shade(shade(#E6E6E6, 0.9), 0.6);
+  border-left-color: shade(shade(#E6E6E6, 0.9), 0.8);
+  border-right-color: shade(shade(#E6E6E6, 0.9), 0.8);
+  background-color: #FFFFFF;
+  box-shadow: inset 0 1px alpha(black, 0.6); }
+  spinbutton.horizontal:disabled {
+    color: mix(#000000, #E6E6E6, 0.5);
+    border-color: shade(#E6E6E6, 0.9);
+    background-color: mix(#000000, #E6E6E6, 0.95); }
+    spinbutton.horizontal:disabled:backdrop {
+      color: mix(#000000, #E6E6E6, 0.5);
+      border-color: shade(#E6E6E6, 0.9);
+      background-color: mix(#000000, #E6E6E6, 0.95); }
+  spinbutton.horizontal:backdrop {
+    border-color: shade(#E6E6E6, 0.9);
+    background-color: #FFFFFF;
+    border-color: shade(#E6E6E6, 0.9); }
+  spinbutton.horizontal entry {
+    padding: 7px 15px;
+    border: none;
+    background: none;
+    border-radius: 40px 0 0 40px; }
+    spinbutton.horizontal entry:focus {
+      box-shadow: none; }
+    spinbutton.horizontal entry:disabled {
+      background: none; }
+  spinbutton.horizontal button {
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: -1px 0 shade(#E6E6E6, 0.9); }
+    spinbutton.horizontal button:disabled, spinbutton.horizontal button:backdrop {
+      box-shadow: -1px 0 shade(#E6E6E6, 0.9);
+      background: none; }
+    spinbutton.horizontal button.up {
+      border-radius: 0 40px 40px 0; }
 spinbutton.vertical entry {
+  padding: 8px 2px;
   border-radius: 0;
-  box-shadow: none; }
+  border-color: shade(#E6E6E6, 0.9); }
   spinbutton.vertical entry:focus {
-    box-shadow: none; }
-spinbutton.vertical button.up {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-width: 0; }
-spinbutton.vertical button.down {
-  border-top-width: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0; }
+    box-shadow: inset 0 0 0 4px #594FBF; }
+spinbutton.vertical button {
+  padding: 8px 2px;
+  border-color: shade(#E6E6E6, 0.9); }
+  spinbutton.vertical button.up {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-width: 0; }
+  spinbutton.vertical button.down {
+    border-top-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
 
 @keyframes spin {
   to {
@@ -1756,18 +1779,17 @@ toolbar {
       color: #000000;
       background-color: #FFFFFF; }
 
-.inline-toolbar toolbar {
-  -GtkToolbar-button-relief: normal;
+.inline-toolbar {
   padding: 1px;
   border-width: 1px;
   border-style: solid;
   border-color: mix(shade(#E6E6E6, 0.9), #E6E6E6, 0.5);
   border-radius: 0;
   background-color: #E6E6E6; }
-  .inline-toolbar toolbar:last-child {
-    border-width: 0 1px 1px 1px;
-    border-radius: 0; }
-  .inline-toolbar toolbar button {
+  .inline-toolbar:backdrop {
+    border-color: shade(#E6E6E6, 0.9);
+    background-color: #E6E6E6; }
+  .inline-toolbar toolbutton > button {
     padding: 4px 4px;
     border-style: solid;
     border-width: 1px;
@@ -1781,45 +1803,45 @@ toolbar {
     outline-offset: 0;
     outline-style: solid;
     outline-color: shade(shade(#E6E6E6, 0.9), 0.5); }
-    .inline-toolbar toolbar button:hover {
+    .inline-toolbar toolbutton > button:hover {
       outline-color: #594FBF;
       color: #594FBF;
       border-color: #594FBF; }
-    .inline-toolbar toolbar button:active, .inline-toolbar toolbar button:checked {
+    .inline-toolbar toolbutton > button:active, .inline-toolbar toolbutton > button:checked {
       color: #000000;
       border-color: shade(shade(#E6E6E6, 0.9), 0.7);
       outline-color: shade(shade(#E6E6E6, 0.9), 0.7);
       background-color: mix(#E6E6E6, #594FBF, 0.3);
       background-image: none; }
-      .inline-toolbar toolbar button:active:backdrop, .inline-toolbar toolbar button:checked:backdrop {
+      .inline-toolbar toolbutton > button:active:backdrop, .inline-toolbar toolbutton > button:checked:backdrop {
         color: #000000;
         border-color: shade(shade(#E6E6E6, 0.9), 0.9);
         background-color: mix(#E6E6E6, #594FBF, 0.3); }
-      .inline-toolbar toolbar button:active:disabled, .inline-toolbar toolbar button:checked:disabled {
+      .inline-toolbar toolbutton > button:active:disabled, .inline-toolbar toolbutton > button:checked:disabled {
         color: mix(#000000, mix(#000000, #E6E6E6, 0.5), 0.1);
         border-color: mix(#000000, mix(#000000, #E6E6E6, 0.95), 0.85);
         background-color: shade(mix(#000000, #E6E6E6, 0.95), 0.9); }
-        .inline-toolbar toolbar button:active:disabled:backdrop, .inline-toolbar toolbar button:checked:disabled:backdrop {
+        .inline-toolbar toolbutton > button:active:disabled:backdrop, .inline-toolbar toolbutton > button:checked:disabled:backdrop {
           color: mix(#000000, #E6E6E6, 0.5);
           border-color: shade(#E6E6E6, 0.9);
           background-color: shade(mix(#000000, #E6E6E6, 0.95), 0.9); }
-    .inline-toolbar toolbar button:disabled {
+    .inline-toolbar toolbutton > button:disabled {
       color: mix(#000000, mix(#000000, #E6E6E6, 0.5), 0.5); }
-      .inline-toolbar toolbar button:disabled:backdrop {
+      .inline-toolbar toolbutton > button:disabled:backdrop {
         color: mix(#000000, #E6E6E6, 0.5); }
-    .inline-toolbar toolbar button:backdrop {
+    .inline-toolbar toolbutton > button:backdrop {
       color: #000000;
       background-color: #FFFFFF; }
 
-.linked button, .linked .raised button, .inline-toolbar .linked button, .inline-toolbar .linked .raised button, .primary-toolbar .linked button, .primary-toolbar .linked .raised button {
+.linked button, .linked .raised button {
   margin: 1px; }
-.linked entry, .inline-toolbar .linked entry, .primary-toolbar .linked entry {
+.linked entry {
   margin: 1px; }
-.linked combobox, .inline-toolbar .linked combobox, .primary-toolbar .linked combobox {
+.linked combobox {
   margin: 1px; }
-.linked spinbutton, .inline-toolbar .linked spinbutton, .primary-toolbar .linked spinbutton {
+.linked spinbutton {
   margin: 1px; }
-  .linked spinbutton entry, .linked spinbutton button, .inline-toolbar .linked spinbutton entry, .inline-toolbar .linked spinbutton button, .primary-toolbar .linked spinbutton entry, .primary-toolbar .linked spinbutton button {
+  .linked spinbutton entry, .linked spinbutton button {
     margin: 0; }
 
 combobox button:not(:only-child) {
@@ -2329,30 +2351,6 @@ decoration {
     background-color: alpha(white, 0.95);
     box-shadow: none; }
 
-messagedialog .background.csd {
-  border-radius: 6px 6px 0 0;
-  color: #000000;
-  background-color: #E6E6E6; }
-messagedialog decoration {
-  border-radius: 6px 6px 0 0;
-  box-shadow: 0 1px 2px alpha(#000000, 0.2); }
-messagedialog .titlebar.horizontal {
-  background-color: #E6E6E6; }
-messagedialog.csd .dialog-action-area button {
-  margin: 0;
-  padding: 10px;
-  border-radius: 0;
-  border-bottom-style: none;
-  -gtk-outline-radius: 0; }
-  messagedialog.csd .dialog-action-area button:last-child {
-    border-right-width: 0;
-    border-radius: 0px; }
-  messagedialog.csd .dialog-action-area button:first-child {
-    border-left-width: 0;
-    border-radius: 0px; }
-  messagedialog.csd .dialog-action-area button:only-child {
-    border-radius: 0px; }
-
 .titlebar {
   border-bottom: none;
   border-radius: 6px 6px 0px 0px; }
@@ -2442,6 +2440,30 @@ messagedialog.csd .dialog-action-area button {
     background-image: none;
     background-color: shade(#594FBF, 0.9);
     background-image: linear-gradient(to bottom, shade(#594FBF, 1.2) 10%, shade(#594FBF, 1.01) 30%, shade(#594FBF, 0.8) 80%, shade(#594FBF, 0.7) 90%); }
+
+messagedialog .background.csd {
+  border-radius: 6px 6px 0 0;
+  color: #000000;
+  background-color: #E6E6E6; }
+messagedialog decoration {
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 1px 2px alpha(#000000, 0.2); }
+messagedialog .titlebar.horizontal {
+  background-color: #E6E6E6; }
+messagedialog.csd .dialog-action-area button {
+  margin: 0;
+  padding: 10px;
+  border-radius: 0;
+  border-bottom-style: none;
+  -gtk-outline-radius: 0; }
+  messagedialog.csd .dialog-action-area button:last-child {
+    border-right-width: 0;
+    border-radius: 0px; }
+  messagedialog.csd .dialog-action-area button:first-child {
+    border-left-width: 0;
+    border-radius: 0px; }
+  messagedialog.csd .dialog-action-area button:only-child {
+    border-radius: 0px; }
 
 .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;
