@@ -9,12 +9,13 @@
     &:backdrop {
     }
 
-    .fullscreen &, .tiled &, .maximized > & {
-      border-radius: 0;
-      margin: 0px;
-      padding: 0;
-      box-shadow: none;
-    }
+    .maximized &,
+    .fullscreen &,
+    .tiled &,
+    .tiled-top &,
+    .tiled-right &,
+    .tiled-bottom &,
+    .tiled-left & { border-radius: 0; }
     
     .popup & {
       box-shadow: none;

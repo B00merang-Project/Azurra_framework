@@ -9,9 +9,13 @@
       box-shadow: 0 3px 9px 1px transparent, 0 2px 6px 2px gtkalpha($wm_shadow, 0.2), 0 0 0 1px gtkalpha($wm_shadow, 0.25);
     }
 
-    .fullscreen &, .tiled & {
-      border-radius: 0;
-    }
+    .maximized &,
+    .fullscreen &,
+    .tiled &,
+    .tiled-top &,
+    .tiled-right &,
+    .tiled-bottom &,
+    .tiled-left & { border-radius: 0; }
 
     .popup & {
       box-shadow: 0 0 0 1px gtkshade($borders, 0.9);
