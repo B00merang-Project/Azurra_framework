@@ -11,11 +11,11 @@
       }
       
       button {
-        border: none;
+        border-width: 0;
         border-radius: 0;
-        box-shadow: -1px 0 $borders;
+        border-left-width: 1px;
         
-        &:disabled, &:backdrop { box-shadow: -1px 0 $unfocused_borders; }
+        &:focus { box-shadow: none; }
       }
     }
 

@@ -1449,43 +1449,26 @@ separator {
     border: none; }
 
 spinbutton.horizontal {
-  border: 1px solid shade(#FFFFFF, 0.2);
-  border-radius: 0px;
-  background-color: #202020; }
-  spinbutton.horizontal:disabled {
-    border-color: shade(#FFFFFF, 0.2);
-    color: mix(#FFFFFF, #191919, 0.5);
-    background-color: mix(#FFFFFF, #191919, 0.95); }
-    spinbutton.horizontal:disabled:backdrop {
-      border-color: shade(#FFFFFF, 0.2);
-      color: mix(#FFFFFF, #191919, 0.75);
-      background-color: mix(#FFFFFF, #191919, 0.98); }
+  border: 1px solid shade(#FFFFFF, 0.2); }
   spinbutton.horizontal:backdrop {
-    background-color: #202020;
     border-color: shade(#FFFFFF, 0.2); }
   spinbutton.horizontal:focus {
-    border-color: #4D4D4D; }
+    border-color: shade(#4D4D4D, 0.6); }
   spinbutton.horizontal entry {
-    padding: 7px 15px;
     border: none;
-    background: none;
-    border-radius: 0px 0 0 0px; }
-    spinbutton.horizontal entry:focus {
-      box-shadow: none; }
-    spinbutton.horizontal entry:disabled {
-      background: none; }
+    padding: 7px 15px; }
   spinbutton.horizontal button {
-    border: none;
+    border-width: 0;
     border-radius: 0;
-    background: none;
-    box-shadow: -1px 0 shade(#FFFFFF, 0.2); }
-    spinbutton.horizontal button:disabled, spinbutton.horizontal button:backdrop {
-      box-shadow: -1px 0 shade(#FFFFFF, 0.2);
-      background: none; }
-    spinbutton.horizontal button.up {
-      border-radius: 0 0px 0px 0; }
-spinbutton.vertical entry {
-  border-radius: 0; }
+    border-left-width: 1px; }
+    spinbutton.horizontal button:hover, spinbutton.horizontal button:active, spinbutton.horizontal button:checked {
+      border-color: shade(#FFFFFF, 0.2);
+      background-color: #191919; }
+      spinbutton.horizontal button:hover:backdrop, spinbutton.horizontal button:active:backdrop, spinbutton.horizontal button:checked:backdrop {
+        border-color: shade(#FFFFFF, 0.2);
+        background-color: #191919; }
+    spinbutton.horizontal button:focus {
+      border-color: shade(#4D4D4D, 0.6); }
 spinbutton.vertical button.up {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -1987,6 +1970,8 @@ toolbar {
   .linked.vertical spinbutton:only-child, .primary-toolbar .linked.vertical spinbutton:only-child {
     border-width: 1px;
     border-radius: 0px; }
+  .linked.vertical spinbutton button:first-child, .linked.vertical spinbutton button:last-child, .primary-toolbar .linked.vertical spinbutton button:first-child, .primary-toolbar .linked.vertical spinbutton button:last-child {
+    border-radius: 0; }
 
 toolbar.inline-toolbar toolbutton > button.flat, toolbar.inline-toolbar toolbutton:backdrop > button.flat {
   border-radius: 0;
@@ -2045,6 +2030,8 @@ toolbar.inline-toolbar toolbutton:only-child > button.flat, toolbar.inline-toolb
   box-shadow: none; }
   .linked.vertical combobox:first-child box.linked button:focus:backdrop, .linked.vertical combobox:first-child box.linked button:hover:backdrop, .linked.vertical combobox:first-child box.linked button:active:backdrop, .linked.vertical combobox:first-child box.linked button:checked:backdrop, .linked.vertical combobox:only-child box.linked button:focus:backdrop, .linked.vertical combobox:only-child box.linked button:hover:backdrop, .linked.vertical combobox:only-child box.linked button:active:backdrop, .linked.vertical combobox:only-child box.linked button:checked:backdrop {
     box-shadow: none; }
+.linked.vertical spinbutton:focus {
+  box-shadow: 0 -1px shade(#4D4D4D, 0.6); }
 
 stackswitcher button.text-button {
   min-width: 80px; }

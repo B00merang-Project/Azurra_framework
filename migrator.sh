@@ -33,7 +33,7 @@ find_in_widgets() {
 
 replace_in_imports() {
   # replace 'arg 1' by 'arg 2' in all _imports files
-  str_replace_in 'Solaris_10_CDE' 'Solaris_9' $1/_imports.scss
+  str_replace_in 'Adwaita/widgets/linked_widgets' 'Azurra/widgets/linked_widgets' $1/_imports.scss
 }
 
 replace_in_base_files() {
@@ -48,7 +48,7 @@ add_config() {
 }
 
 invoke() {
-  find_in_widgets $@
+  replace_in_imports $@
 }
 
 for dir in *; do

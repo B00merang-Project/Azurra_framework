@@ -1324,25 +1324,38 @@ separator {
 
 spinbutton.horizontal {
   border: 1px solid shade(#FFFEFD, 0.8);
-  border-radius: 40px; }
+  border-radius: 40px;
+  background-color: #FFFFFF; }
   spinbutton.horizontal:disabled {
-    color: shade(#FFFEFD, 0.5); }
+    border-color: shade(#FFFEFD, 0.8);
+    color: shade(#FFFEFD, 0.5);
+    background-color: shade(#FFFEFD, 0.95); }
     spinbutton.horizontal:disabled:backdrop {
-      color: mix(#6E3F00, #FFFEFD, 0.5); }
+      border-color: shade(#FFFEFD, 0.8);
+      color: mix(#6E3F00, #FFFEFD, 0.5);
+      background-color: mix(#6E3F00, #FFFEFD, 0.98); }
+  spinbutton.horizontal:backdrop {
+    background-color: #FFFFFF;
+    border-color: shade(#FFFEFD, 0.8); }
   spinbutton.horizontal:focus {
     border-color: #FFA400; }
-  spinbutton.horizontal:backdrop, spinbutton.horizontal:disabled {
-    border-color: shade(#FFFEFD, 0.8); }
   spinbutton.horizontal entry {
-    border: none;
     padding: 7px 15px;
+    border: none;
+    background: none;
     border-radius: 40px 0 0 40px; }
+    spinbutton.horizontal entry:focus {
+      box-shadow: none; }
+    spinbutton.horizontal entry:disabled {
+      background: none; }
   spinbutton.horizontal button {
     border: none;
     border-radius: 0;
+    background: none;
     box-shadow: -1px 0 shade(#FFFEFD, 0.8); }
     spinbutton.horizontal button:disabled, spinbutton.horizontal button:backdrop {
-      box-shadow: -1px 0 shade(#FFFEFD, 0.8); }
+      box-shadow: -1px 0 shade(#FFFEFD, 0.8);
+      background: none; }
     spinbutton.horizontal button.up {
       border-radius: 0 40px 40px 0; }
 spinbutton.vertical entry {
@@ -1823,6 +1836,8 @@ toolbar {
   .linked.vertical spinbutton:only-child, .primary-toolbar .linked.vertical spinbutton:only-child {
     border-width: 1px;
     border-radius: 40px; }
+  .linked.vertical spinbutton button:first-child, .linked.vertical spinbutton button:last-child, .primary-toolbar .linked.vertical spinbutton button:first-child, .primary-toolbar .linked.vertical spinbutton button:last-child {
+    border-radius: 0; }
 
 toolbar.inline-toolbar toolbutton > button.flat, toolbar.inline-toolbar toolbutton:backdrop > button.flat {
   border-radius: 0;

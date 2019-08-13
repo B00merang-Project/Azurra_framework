@@ -12,10 +12,7 @@
       }
 
       // restore spinbutton behaviour
-      spinbutton {
-        button:first-child, button:last-child { border-radius: 0; }
-        entry:focus { box-shadow: none; }
-      }
+      spinbutton:focus { box-shadow: inset 0 0 0 1px $selected_bg_color; }
     }
   }
   

@@ -65,8 +65,15 @@ deploy() {
   has_light && rm -rf "$target_dir_light"/*.css
 
   cp $1/gtk*.css "$target_dir"
-  has_dark && cp $1/gtk-dark.css "$target_dir_dark/gtk.css"
-  has_light && cp $1/gtk-light.css "$target_dir_light/gtk.css"
+  
+  # Specific deploys
+  for stylesheet in $1/*.css; do
+    stylesheet=$(basename $stylesheet)
+    case $stylesheet in
+      *dark*) cp $1/$stylesheet "$target_dir_dark/${stylesheet/'-dark'/''}" ;;
+      *light*) cp $1/$stylesheet "$target_dir_light/${stylesheet/'-light'/''}" ;;
+    esac
+  done
 
   # Assets
   rm -rf "$target_dir/assets"

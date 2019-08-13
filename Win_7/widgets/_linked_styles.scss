@@ -1,0 +1,54 @@
+@mixin linked_styles() {
+  .linked {
+    button, .raised button {
+      &:focus, &:hover, &:active, &:checked { box-shadow: -1px 0 gtkshade($selected_bg_color, 0.6);
+        &:backdrop { box-shadow: -1px 0 gtkshade($unfocused_bg_color, 0.85); }
+      }
+      
+      &:first-child, &:only-child {
+        &:focus, &:hover, &:active, &:checked { box-shadow: none;
+          &:backdrop { box-shadow: none; }
+        }
+      }
+    }
+    combobox {
+      box.linked button {
+        &:focus, &:hover, &:active, &:checked { box-shadow: -1px 0 gtkshade($selected_bg_color, 0.6);
+          &:backdrop { box-shadow: -1px 0 gtkshade($unfocused_bg_color, 0.85); }
+        }
+      }
+      &:first-child box.linked button, &:only-child box.linked button {
+        &:focus, &:hover, &:active, &:checked { box-shadow: none;
+          &:backdrop { box-shadow: none; }
+        }
+      }
+    }
+    
+    &.vertical {
+      button {
+        &:focus, &:hover, &:active, &:checked { box-shadow: 0 -1px gtkshade($selected_bg_color, 0.6);
+          &:backdrop { box-shadow: 0 -1px gtkshade($unfocused_bg_color, 0.85); }
+        }
+        &:first-child, &:only-child {
+          &:focus, &:hover, &:active, &:checked { box-shadow: none;
+            &:backdrop { box-shadow: none; }
+          }
+        }
+      }
+      combobox {
+        box.linked button {
+          &:focus, &:hover, &:active, &:checked { box-shadow: 0 -1px gtkshade($selected_bg_color, 0.6);
+            &:backdrop { box-shadow: 0 -1px gtkshade($unfocused_bg_color, 0.85); }
+          }
+        }
+        &:first-child box.linked button, &:only-child box.linked button {
+          &:focus, &:hover, &:active, &:checked { box-shadow: none;
+            &:backdrop { box-shadow: none; }
+          }
+        }
+      }
+    }
+  }
+
+  stackswitcher button.text-button { min-width: 80px; }
+}

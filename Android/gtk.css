@@ -767,7 +767,7 @@ menu menuitem, .menu menuitem {
     menu menuitem:hover scale trough, menu menuitem:hover switch, .menu menuitem:hover scale trough, .menu menuitem:hover switch {
       background-color: alpha(#FFFFFF, 0.75); }
   menu menuitem:disabled, .menu menuitem:disabled {
-    color: mix(#000000, #FFFFFF, 0.75); }
+    color: mix(#000000, #FFFFFF, 0.5); }
   menu menuitem arrow, .menu menuitem arrow {
     min-width: 16px;
     min-height: 16px; }
@@ -783,7 +783,7 @@ menuitem accelerator {
   menuitem accelerator:hover {
     color: alpha(#FFFFFF, 0.8); }
   menuitem accelerator:disabled {
-    color: mix(#000000, #FFFFFF, 0.75); }
+    color: mix(#000000, #FFFFFF, 0.5); }
 
 popover, popover.background {
   padding: 2px;
@@ -1299,7 +1299,7 @@ separator {
     border: none; }
 
 spinbutton.horizontal {
-  border: 0px solid shade(#FFFFFF, 0.9);
+  border: 0px solid alpha(#000000, 0.3);
   border-bottom-width: 2px;
   border-radius: 0px;
   background-color: #FFFFFF; }
@@ -1313,8 +1313,7 @@ spinbutton.horizontal {
   spinbutton.horizontal:focus {
     border-color: #1D72E9; }
   spinbutton.horizontal:backdrop {
-    background-color: #FFFFFF;
-    border-color: shade(#FFFFFF, 0.9); }
+    background-color: #FFFFFF; }
   spinbutton.horizontal entry {
     border: none;
     padding: 7px 15px;
@@ -1338,6 +1337,7 @@ spinbutton.vertical button {
 spinbutton.vertical entry {
   padding: 7px 2px;
   border-width: 0;
+  border-radius: 0;
   border-top-width: 2px;
   border-bottom-width: 2px; }
 

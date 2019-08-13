@@ -1479,25 +1479,38 @@ separator {
 
 spinbutton.horizontal {
   border: 1px solid mix(#454545, #FCFCFC, 0.1);
-  border-radius: 3px; }
+  border-radius: 3px;
+  background-color: #454545; }
   spinbutton.horizontal:disabled {
-    color: shade(#454545, 0.5); }
+    border-color: mix(#454545, #FCFCFC, 0.1);
+    color: shade(#454545, 0.5);
+    background-color: shade(#454545, 0.95); }
     spinbutton.horizontal:disabled:backdrop {
-      color: mix(#FCFCFC, #454545, 0.5); }
+      border-color: mix(#454545, #FCFCFC, 0.1);
+      color: mix(#FCFCFC, #454545, 0.5);
+      background-color: mix(#FCFCFC, #454545, 0.98); }
+  spinbutton.horizontal:backdrop {
+    background-color: #454545;
+    border-color: mix(#454545, #FCFCFC, 0.1); }
   spinbutton.horizontal:focus {
     border-color: #600B0B; }
-  spinbutton.horizontal:backdrop, spinbutton.horizontal:disabled {
-    border-color: mix(#454545, #FCFCFC, 0.1); }
   spinbutton.horizontal entry {
-    border: none;
     padding: 7px 15px;
+    border: none;
+    background: none;
     border-radius: 3px 0 0 3px; }
+    spinbutton.horizontal entry:focus {
+      box-shadow: none; }
+    spinbutton.horizontal entry:disabled {
+      background: none; }
   spinbutton.horizontal button {
     border: none;
     border-radius: 0;
+    background: none;
     box-shadow: -1px 0 mix(#454545, #FCFCFC, 0.1); }
     spinbutton.horizontal button:disabled, spinbutton.horizontal button:backdrop {
-      box-shadow: -1px 0 mix(#454545, #FCFCFC, 0.1); }
+      box-shadow: -1px 0 mix(#454545, #FCFCFC, 0.1);
+      background: none; }
     spinbutton.horizontal button.up {
       border-radius: 0 3px 3px 0; }
 spinbutton.vertical entry {
@@ -1992,6 +2005,8 @@ toolbar {
   .linked.vertical spinbutton:only-child, .primary-toolbar .linked.vertical spinbutton:only-child {
     border-width: 1px;
     border-radius: 3px; }
+  .linked.vertical spinbutton button:first-child, .linked.vertical spinbutton button:last-child, .primary-toolbar .linked.vertical spinbutton button:first-child, .primary-toolbar .linked.vertical spinbutton button:last-child {
+    border-radius: 0; }
 
 toolbar.inline-toolbar toolbutton > button.flat, toolbar.inline-toolbar toolbutton:backdrop > button.flat {
   border-radius: 0;
@@ -2018,8 +2033,6 @@ toolbar.inline-toolbar toolbutton:only-child > button.flat, toolbar.inline-toolb
   box-shadow: 0 -1px #600B0B; }
 .linked.vertical entry:only-child:focus, .linked.vertical entry:first-child:focus {
   box-shadow: none; }
-.linked.vertical spinbutton button:first-child, .linked.vertical spinbutton button:last-child {
-  border-radius: 0; }
 .linked.vertical spinbutton entry:focus {
   box-shadow: none; }
 

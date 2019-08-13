@@ -1167,25 +1167,38 @@ separator {
 
 spinbutton.horizontal {
   border: 1px solid #FFFFFF;
-  border-radius: 0px; }
+  border-radius: 0px;
+  background-color: #000000; }
   spinbutton.horizontal:disabled {
-    color: #8C8C8C; }
+    border-color: #FFFFFF;
+    color: #8C8C8C;
+    background-color: #000000; }
     spinbutton.horizontal:disabled:backdrop {
-      color: #8C8C8C; }
+      border-color: #FFFFFF;
+      color: #8C8C8C;
+      background-color: #000000; }
+  spinbutton.horizontal:backdrop {
+    background-color: #000000;
+    border-color: #FFFFFF; }
   spinbutton.horizontal:focus {
     border-color: #FFFFFF; }
-  spinbutton.horizontal:backdrop, spinbutton.horizontal:disabled {
-    border-color: #FFFFFF; }
   spinbutton.horizontal entry {
-    border: none;
     padding: 7px 15px;
+    border: none;
+    background: none;
     border-radius: 0px 0 0 0px; }
+    spinbutton.horizontal entry:focus {
+      box-shadow: none; }
+    spinbutton.horizontal entry:disabled {
+      background: none; }
   spinbutton.horizontal button {
     border: none;
     border-radius: 0;
+    background: none;
     box-shadow: -1px 0 #FFFFFF; }
     spinbutton.horizontal button:disabled, spinbutton.horizontal button:backdrop {
-      box-shadow: -1px 0 #FFFFFF; }
+      box-shadow: -1px 0 #FFFFFF;
+      background: none; }
     spinbutton.horizontal button.up {
       border-radius: 0 0px 0px 0; }
 spinbutton.vertical entry {
@@ -1617,6 +1630,8 @@ toolbar {
   .linked.vertical spinbutton:only-child, .primary-toolbar .linked.vertical spinbutton:only-child {
     border-width: 1px;
     border-radius: 0px; }
+  .linked.vertical spinbutton button:first-child, .linked.vertical spinbutton button:last-child, .primary-toolbar .linked.vertical spinbutton button:first-child, .primary-toolbar .linked.vertical spinbutton button:last-child {
+    border-radius: 0; }
 
 toolbar.inline-toolbar toolbutton > button.flat, toolbar.inline-toolbar toolbutton:backdrop > button.flat {
   border-radius: 0;

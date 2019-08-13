@@ -1369,25 +1369,38 @@ separator {
 
 spinbutton.horizontal {
   border: 1px solid shade(#EFEBE7, 0.5);
-  border-radius: 3px; }
+  border-radius: 3px;
+  background-color: #FFFFFF; }
   spinbutton.horizontal:disabled {
-    color: mix(#202020, #EFEBE7, 0.5); }
+    border-color: shade(#EFEBE7, 0.65);
+    color: mix(#202020, #EFEBE7, 0.5);
+    background-color: shade(mix(#202020, #EFEBE7, 0.95), 0.95); }
     spinbutton.horizontal:disabled:backdrop {
-      color: mix(#202020, #EFEBE7, 0.75); }
+      border-color: shade(#EFEBE7, 0.65);
+      color: mix(#202020, #EFEBE7, 0.75);
+      background-color: mix(#202020, #EFEBE7, 0.98); }
+  spinbutton.horizontal:backdrop {
+    background-color: #EFEBE7;
+    border-color: shade(#EFEBE7, 0.65); }
   spinbutton.horizontal:focus {
     border-color: #A86B4C; }
-  spinbutton.horizontal:backdrop, spinbutton.horizontal:disabled {
-    border-color: shade(#EFEBE7, 0.65); }
   spinbutton.horizontal entry {
-    border: none;
     padding: 7px 15px;
+    border: none;
+    background: none;
     border-radius: 3px 0 0 3px; }
+    spinbutton.horizontal entry:focus {
+      box-shadow: none; }
+    spinbutton.horizontal entry:disabled {
+      background: none; }
   spinbutton.horizontal button {
     border: none;
     border-radius: 0;
+    background: none;
     box-shadow: -1px 0 shade(#EFEBE7, 0.5); }
     spinbutton.horizontal button:disabled, spinbutton.horizontal button:backdrop {
-      box-shadow: -1px 0 shade(#EFEBE7, 0.65); }
+      box-shadow: -1px 0 shade(#EFEBE7, 0.65);
+      background: none; }
     spinbutton.horizontal button.up {
       border-radius: 0 3px 3px 0; }
 spinbutton.vertical entry {
@@ -1857,6 +1870,8 @@ toolbar {
   .linked.vertical spinbutton:only-child, .primary-toolbar .linked.vertical spinbutton:only-child {
     border-width: 1px;
     border-radius: 3px; }
+  .linked.vertical spinbutton button:first-child, .linked.vertical spinbutton button:last-child, .primary-toolbar .linked.vertical spinbutton button:first-child, .primary-toolbar .linked.vertical spinbutton button:last-child {
+    border-radius: 0; }
 
 toolbar.inline-toolbar toolbutton > button.flat, toolbar.inline-toolbar toolbutton:backdrop > button.flat {
   border-radius: 0;

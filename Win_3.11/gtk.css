@@ -790,7 +790,7 @@ menu menuitem, .menu menuitem {
     menu menuitem:hover scale trough, menu menuitem:hover switch, .menu menuitem:hover scale trough, .menu menuitem:hover switch {
       background-color: alpha(#FFFFFF, 0.75); }
   menu menuitem:disabled, .menu menuitem:disabled {
-    color: mix(#000000, #C0C0C0, 0.5); }
+    color: mix(#000000, #FFFFFF, 0.5); }
   menu menuitem arrow, .menu menuitem arrow {
     min-width: 16px;
     min-height: 16px; }
@@ -806,7 +806,7 @@ menuitem accelerator {
   menuitem accelerator:hover {
     color: alpha(#FFFFFF, 0.8); }
   menuitem accelerator:disabled {
-    color: mix(#000000, #C0C0C0, 0.5); }
+    color: mix(#000000, #FFFFFF, 0.5); }
 
 popover, popover.background {
   padding: 2px;
@@ -1367,17 +1367,17 @@ separator {
 
 spinbutton.horizontal {
   border: 1px solid #000000; }
-  spinbutton.horizontal:focus {
-    border-color: #0000AA; }
+  spinbutton.horizontal:backdrop {
+    border-color: #000000; }
   spinbutton.horizontal entry {
     border: none;
     padding: 7px 15px; }
   spinbutton.horizontal button {
-    border: none;
+    border-width: 0;
     border-radius: 0;
-    box-shadow: -1px 0 #000000; }
-    spinbutton.horizontal button:disabled, spinbutton.horizontal button:backdrop {
-      box-shadow: -1px 0 #000000; }
+    border-left-width: 1px; }
+    spinbutton.horizontal button:focus {
+      box-shadow: none; }
 spinbutton.vertical button.up {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -1840,6 +1840,8 @@ toolbar {
   .linked.vertical spinbutton:only-child, .primary-toolbar .linked.vertical spinbutton:only-child {
     border-width: 1px;
     border-radius: 2px; }
+  .linked.vertical spinbutton button:first-child, .linked.vertical spinbutton button:last-child, .primary-toolbar .linked.vertical spinbutton button:first-child, .primary-toolbar .linked.vertical spinbutton button:last-child {
+    border-radius: 0; }
 
 toolbar.inline-toolbar toolbutton > button.flat, toolbar.inline-toolbar toolbutton:backdrop > button.flat {
   border-radius: 0;

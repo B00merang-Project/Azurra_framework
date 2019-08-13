@@ -25,13 +25,8 @@
     entry {
       border-color: $base_color;
 
-      &:disabled, &:backdrop {
-        border-color: $base_color;
-      }
-
-      &:checked, &:active {
-        border-color: $selected_bg_color;
-      }
+      &:disabled, &:backdrop { border-color: $base_color; }
+      &:checked, &:active { border-color: $selected_bg_color; }
 
       &:focus, &:last-child:focus {
         border-color: $selected_bg_color;
@@ -56,6 +51,8 @@
           border-color: $selected_bg_color;
         }
       }
+      
+      spinbutton:focus { box-shadow: 0 -1px $selected_bg_color; }
     }
   }
   

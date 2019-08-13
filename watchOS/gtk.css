@@ -1769,6 +1769,8 @@ toolbar {
   .linked.vertical spinbutton:only-child, .primary-toolbar .linked.vertical spinbutton:only-child {
     border-width: 1px;
     border-radius: 4px; }
+  .linked.vertical spinbutton button:first-child, .linked.vertical spinbutton button:last-child, .primary-toolbar .linked.vertical spinbutton button:first-child, .primary-toolbar .linked.vertical spinbutton button:last-child {
+    border-radius: 0; }
 
 toolbar.inline-toolbar toolbutton > button.flat, toolbar.inline-toolbar toolbutton:backdrop > button.flat {
   border-radius: 0;
@@ -1786,6 +1788,9 @@ toolbar.inline-toolbar toolbutton:last-child > button.flat, toolbar.inline-toolb
 toolbar.inline-toolbar toolbutton:only-child > button.flat, toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat {
   border-width: 1px;
   border-radius: 4px; }
+
+.vertical.linked spinbutton:focus {
+  box-shadow: 0 -1px #3478F5; }
 
 stackswitcher button.text-button {
   min-width: 80px; }

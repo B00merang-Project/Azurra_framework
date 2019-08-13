@@ -1379,11 +1379,11 @@ spinbutton.horizontal {
     border: none;
     padding: 7px 15px; }
   spinbutton.horizontal button {
-    border: none;
+    border-width: 0;
     border-radius: 0;
-    box-shadow: -1px 0 shade(#123D38, 0.85); }
-    spinbutton.horizontal button:disabled, spinbutton.horizontal button:backdrop {
-      box-shadow: -1px 0 shade(#123D38, 0.85); }
+    border-left-width: 1px; }
+    spinbutton.horizontal button:focus {
+      box-shadow: none; }
 spinbutton.vertical button.up {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -1860,6 +1860,8 @@ toolbar {
   .linked.vertical spinbutton:only-child, .primary-toolbar .linked.vertical spinbutton:only-child {
     border-width: 1px;
     border-radius: 2px; }
+  .linked.vertical spinbutton button:first-child, .linked.vertical spinbutton button:last-child, .primary-toolbar .linked.vertical spinbutton button:first-child, .primary-toolbar .linked.vertical spinbutton button:last-child {
+    border-radius: 0; }
 
 toolbar.inline-toolbar toolbutton > button.flat, toolbar.inline-toolbar toolbutton:backdrop > button.flat {
   border-radius: 0;

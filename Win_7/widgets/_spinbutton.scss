@@ -1,0 +1,42 @@
+@mixin spinbutton() {
+  spinbutton {
+    &.horizontal {
+      border: 1px solid $borders;
+      
+      &:backdrop { border-color: $unfocused_borders; }
+      
+      entry {
+        border: none;
+        padding: 7px 15px;
+      }
+      
+      button {
+        border-width: 0;
+        border-radius: 0;
+        border-left-width: 1px;
+        
+        &:disabled { color: $disabled_fg_color; }
+        &:disabled:backdrop { color: $unfocused_disabled_fg_color; }
+      }
+    }
+
+    &.vertical {
+      button {
+        &.up {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          border-bottom-width: 0;
+          
+          &:disabled { color: $disabled_fg_color; }
+          &:disabled:backdrop { color: $unfocused_disabled_fg_color; }
+        }
+
+        &.down {
+          border-top-width: 0;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+    }
+  }
+}
