@@ -70,8 +70,8 @@ deploy() {
   for stylesheet in $1/*.css; do
     stylesheet=$(basename $stylesheet)
     case $stylesheet in
-      *dark*) cp $1/$stylesheet "$target_dir_dark/${stylesheet/'-dark'/''}" ;;
-      *light*) cp $1/$stylesheet "$target_dir_light/${stylesheet/'-light'/''}" ;;
+      *dark*) has_dark && cp $1/$stylesheet "$target_dir_dark/${stylesheet/'-dark'/''}" ;;
+      *light*) has_light && cp $1/$stylesheet "$target_dir_light/${stylesheet/'-light'/''}" ;;
     esac
   done
 

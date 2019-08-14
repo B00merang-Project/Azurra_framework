@@ -18,10 +18,12 @@
     .tiled-bottom &,
     .tiled-left & { border-radius: 0; }
 
-    .popup & {
+    .popup & { box-shadow: none; }
+
+    .csd.popup & {
+      border-radius: $menu_radius;
+      box-shadow: 0 0 0 1px $wm_shadow;
       padding: 0;
-      box-shadow: 0 0 0 1px $borders;
-      border-radius: $csd_radius;
     }
 
     .ssd & {

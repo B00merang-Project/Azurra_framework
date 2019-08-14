@@ -761,7 +761,7 @@ filechooserbutton:drop(active) {
 menu, .menu {
   margin: 4px;
   padding: 0;
-  border-radius: 4px;
+  border-radius: 0px;
   border-style: none;
   color: #000000;
   background-color: #F5F5F5;
@@ -769,7 +769,7 @@ menu, .menu {
   background-image: linear-gradient(to bottom, #FFFFFF 35%, alpha(shade(#F5F5F5, 0.9), 0.7) 40%, alpha(shade(#F5F5F5, 0.9), 0.7) 64%, #FFFFFF 85%); }
   .csd menu, .csd .menu {
     padding: 4px 0px;
-    border-radius: 4px;
+    border-radius: 0px;
     border: none; }
   menu > arrow, .menu > arrow {
     padding: 4px;
@@ -2586,8 +2586,10 @@ decoration {
   .maximized decoration, .fullscreen decoration, .tiled decoration, .tiled-top decoration, .tiled-right decoration, .tiled-bottom decoration, .tiled-left decoration {
     border-radius: 0; }
   .popup decoration {
-    box-shadow: 0 6px 5px 1px alpha(#000000, 0.2), 0 0 0 1px alpha(#000000, 0.1);
-    border-radius: 4px; }
+    box-shadow: none; }
+  .csd.popup decoration {
+    border-radius: 0px;
+    box-shadow: 0 6px 5px 1px alpha(#000000, 0.2), 0 0 0 1px alpha(#000000, 0.1); }
   .ssd decoration {
     border-radius: 4px 4px 0 0;
     box-shadow: 0 0 0 1px alpha(#000000, 0.1); }

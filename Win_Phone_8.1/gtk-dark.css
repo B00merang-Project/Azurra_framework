@@ -744,13 +744,13 @@ filechooserbutton:drop(active) {
 menu, .menu {
   margin: 4px;
   padding: 0;
-  border-radius: 0;
+  border-radius: 0px;
   border-style: none;
   color: #FFFFFF;
   background-color: #1F1F1F; }
   .csd menu, .csd .menu {
     padding: 4px 0px;
-    border-radius: 0;
+    border-radius: 0px;
     border: none; }
   menu > arrow, .menu > arrow {
     padding: 4px;
@@ -2390,8 +2390,10 @@ decoration {
   .maximized decoration, .fullscreen decoration, .tiled decoration, .tiled-top decoration, .tiled-right decoration, .tiled-bottom decoration, .tiled-left decoration {
     border-radius: 0; }
   .popup decoration {
-    box-shadow: 0 0 0 1px #8C8C8C;
-    border-radius: 0; }
+    box-shadow: none; }
+  .csd.popup decoration {
+    border-radius: 0px;
+    box-shadow: 0 0 0 1px #8C8C8C; }
   .ssd decoration {
     border-radius: 0px 0px 0 0;
     box-shadow: 0 0 0 1px alpha(#8C8C8C, 0.1); }

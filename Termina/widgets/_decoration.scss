@@ -16,8 +16,10 @@
     .tiled-bottom &,
     .tiled-left & { border-radius: 0; }
 
-    .popup & {
-      border-radius: $csd_radius;
+    .popup & { box-shadow: none; }
+
+    .csd.popup & {
+      border-radius: $menu_radius;
       box-shadow: 10px 10px gtkshade($wm_shadow, 0.35), 0 0 0 1px $wm_shadow;
     }
 

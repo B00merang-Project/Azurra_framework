@@ -16,10 +16,11 @@
     .tiled-right &,
     .tiled-bottom &,
     .tiled-left & { border-radius: 0; }
+    .popup & { box-shadow: none; }
 
-    .popup & {
+    .csd.popup & {
+      border-radius: $menu_radius;
       box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.1);
-      border-radius: 0;
     }
 
     .ssd & {
