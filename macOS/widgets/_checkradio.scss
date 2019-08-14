@@ -45,51 +45,17 @@
     outline-offset: 0;
   }
 
-  checkbutton {
-    padding: 4px;
-    
-    &:hover, &:active:hover, &:selected, &:focus {
-      padding: 4px;
-      border-style: none;
-      background-color: transparent;
-    }
-  }
-  
-  view.content-view check, .content-view.view check {
-    background-color: transparent;
-    
-    &:hover, &:active, &:disabled, &:selected {
-      background-color: transparent;
-    }
-  }
-
-  check, radio, check:disabled, radio:disabled {
+  check, .check, radio, .radio {
     margin: 4px;
-    border-style: none;
-    background-color: transparent;
+    min-height: $check_size;
+    min-width: $check_size;    
   }
   
-  check, .check {
-    min-height: $check_size;
-    min-width: $check_size;
-
-    @include check();
-  }
-  
-  radio, .radio {
-    min-height: $check_size;
-    min-width: $check_size;
-
-    @include radio();
-  }
+  check, .check { @include check(); }
+  radio, .radio { @include radio(); }
   
   menuitem, .menuitem, menuitem.button.flat, .menuitem.button.flat, modelbutton.flat, menuitem.button.flat {
-    check {
-      @include check();
-    }
-    
-    radio {
-      @include radio();
-    }
+    check { @include check(); }
+    radio { @include radio(); }
   }
 }

@@ -4,28 +4,10 @@
     outline-offset: 0;
   }
 
-  checkbutton {
-    padding: 4px;
-    
-    &:hover, &:active:hover, &:selected, &:focus {
-      padding: 4px;
-      border-style: none;
-      background-color: transparent;
-    }
-  }
-
-  view.content-view check, .content-view.view check {
-    background-color: transparent;
-    
-    &:hover, &:active, &:disabled, &:selected {
-      background-color: transparent;
-    }
-  }
-
-  check, radio, check:disabled, radio:disabled {
+  check, .check, radio, .radio {
+    margin: 4px;
     min-height: $check_size;
     min-width: $check_size;
-    margin: 4px;
     border-style: none;
     background-color: transparent;
   }

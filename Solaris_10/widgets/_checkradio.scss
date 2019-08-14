@@ -1,31 +1,15 @@
 @mixin checkradio() {
-  check, radio {
-    min-width: $check_size;
-    min-height: $check_size;
-    padding: 4px;
-    border-style: none;
-    background-color: transparent;
-  }
-
   checkbutton, radiobutton {
     padding: 4px;
-    border: none;
-    background-color: transparent;
     outline-offset: 0;
-
-    &:hover, &:active:hover, &:selected, &:focus {
-      padding: 4px;
-    }
   }
 
-  view.content-view check, .content-view.view check {
-    background-color: transparent;
-
-    &:hover, &:active, &:disabled, &:selected {
-      background-color: transparent;
-    }
+  check, .check, radio, .radio {
+    margin: 4px;
+    min-width: $check_size;
+    min-height: $check_size;
   }
-  
+
   .check, check {
     -gtk-icon-source: gtkscale("assets/checkbox-unchecked", ".png");
     transition: 0.2s;
@@ -129,21 +113,13 @@
           border-color: gtkshade($selected_bg_color, 0.6);
         }
         
-        &:disabled {
-          color: $disabled_fg_color;
-
-          &:backdrop {
-            color: gtkshade($unfocused_fg_color, 1.1);
-          }
+        &:disabled { color: $disabled_fg_color;
+          &:backdrop { color: gtkshade($unfocused_fg_color, 1.1); }
         }
       }
 
-      &:backdrop {
-        color: $disabled_fg_color;
-
-        &:selected {
-          color: $disabled_fg_color;
-        }
+      &:backdrop { color: $disabled_fg_color;
+        &:selected { color: $disabled_fg_color; }
       }
     }
   }

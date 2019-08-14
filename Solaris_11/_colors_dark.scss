@@ -1,6 +1,6 @@
 // Normal colors
-$bg_color : #2A3D69;
-$fg_color : #FFFFFF;
+$bg_color : #B9D0E4;
+$fg_color : #000000;
 $base_color : #B9D0E4;
 $text_color : #000000;
 $selected_bg_color : #607B8B;
@@ -27,8 +27,13 @@ $unfocused_disabled_base_color : $unfocused_disabled_bg_color;
 $unfocused_disabled_text_color : $unfocused_disabled_fg_color;
 
 // Darker color scheme
-$dark_bg_color : $bg_color;
-$dark_fg_color : $fg_color;
+$dark_bg_color : #2A3D69;
+$dark_fg_color : #FFFFFF;
+
+// lighter scheme for buttons
+$light_bg_color : #E8E9ED;
+$light_fg_color : #000000;
+$light_borders : gtkshade($light_bg_color, 0.9);
 
 // Shadows
 $dark_shadow : rgb(0, 0, 0);
@@ -64,16 +69,16 @@ $menu_bg_color : $bg_color;
 $menu_fg_color : $fg_color;
 $menubar_bg_color : $bg_color;
 $menubar_fg_color : $fg_color;
-$toolbar_bg_color : $bg_color;
-$toolbar_fg_color : $fg_color;
+$toolbar_bg_color : $dark_bg_color;
+$toolbar_fg_color : $dark_fg_color;
 $sidebar_bg_color : $base_color;
 $sidebar_fg_color : $text_color;
-$taskbar_bg_color : $bg_color;
-$taskbar_fg_color : $fg_color;
-$titlebar_bg_color : $bg_color;
-$titlebar_fg_color : $fg_color;
-$headerbar_bg_color : $bg_color;
-$headerbar_fg_color : $fg_color;
+$taskbar_bg_color : $dark_bg_color;
+$taskbar_fg_color : $dark_fg_color;
+$titlebar_bg_color : $dark_bg_color;
+$titlebar_fg_color : $dark_fg_color;
+$headerbar_bg_color : $dark_bg_color;
+$headerbar_fg_color : $dark_fg_color;
 $terminal_bg_color : $base_color;
 $terminal_fg_color : $text_color;
 

@@ -7,7 +7,7 @@
 
     &:backdrop {
       color: $unfocused_fg_color;
-      background-color: $unfocused_bg_color;
+      background-color: $toolbar_bg_color;
     }
 
     &:disabled {
@@ -16,7 +16,7 @@
     }
 
     button.flat {
-      @include flat_buttons($toolbar_bg_color, $toolbar_fg_color, $borders);
+      @include flat_buttons($toolbar_bg_color, $toolbar_fg_color, gtkshade($toolbar_bg_color, 0.9));
     }
 
     // menubar toolbars 

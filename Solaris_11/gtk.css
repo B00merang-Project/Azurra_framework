@@ -241,25 +241,14 @@ button {
     button.flat:backdrop {
       color: #000000; }
 
-check, radio {
-  min-width: 14px;
-  min-height: 14px;
-  padding: 4px;
-  border-style: none;
-  background-color: transparent; }
-
 checkbutton, radiobutton {
   padding: 4px;
-  border: none;
-  background-color: transparent;
   outline-offset: 0; }
-  checkbutton:hover, checkbutton:active:hover, checkbutton:selected, checkbutton:focus, radiobutton:hover, radiobutton:active:hover, radiobutton:selected, radiobutton:focus {
-    padding: 4px; }
 
-view.content-view check, .content-view.view check {
-  background-color: transparent; }
-  view.content-view check:hover, view.content-view check:active, view.content-view check:disabled, view.content-view check:selected, .content-view.view check:hover, .content-view.view check:active, .content-view.view check:disabled, .content-view.view check:selected {
-    background-color: transparent; }
+check, .check, radio, .radio {
+  margin: 4px;
+  min-width: 14px;
+  min-height: 14px; }
 
 .check, check {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked.png"), url("assets/checkbox-unchecked-@2.png"));
@@ -1291,10 +1280,7 @@ scrollbar {
     border: none;
     border-radius: 0; }
   scrollbar.overlay-indicator:not(.dragging):not(.hovering) {
-    border: none;
-    opacity: 1;
-    margin: 0;
-    background-color: transparent; }
+    opacity: 1; }
   scrollbar.overlay-indicator.dragging, scrollbar.overlay-indicator.hovering {
     opacity: 1; }
   scrollbar.horizontal {
@@ -1426,6 +1412,7 @@ separator {
 spinbutton.horizontal {
   border: 1px solid shade(shade(#E8E9ED, 0.9), 0.85);
   border-radius: 0px;
+  color: #000000;
   background-color: #FFFFFF;
   box-shadow: inset 0 0 2px 0 alpha(black, 0.08), inset 0 1px shade(#E8E9ED, 0.8); }
   spinbutton.horizontal:disabled {
@@ -1640,19 +1627,19 @@ headerbar, headerbar:not(.titlebar) {
     border-width: 1px;
     border-radius: 5px;
     color: #000000;
-    border-color: shade(shade(shade(#E8E9ED, 0.9), 0.9), 0.6);
-    border-top-color: shade(shade(shade(#E8E9ED, 0.9), 0.9), 0.9);
-    border-left-color: shade(shade(shade(#E8E9ED, 0.9), 0.9), 0.85);
-    border-right-color: shade(shade(shade(#E8E9ED, 0.9), 0.9), 0.85);
+    border-color: shade(shade(#E8E9ED, 0.9), 0.6);
+    border-top-color: shade(shade(#E8E9ED, 0.9), 0.9);
+    border-left-color: shade(shade(#E8E9ED, 0.9), 0.85);
+    border-right-color: shade(shade(#E8E9ED, 0.9), 0.85);
     background-color: #E8E9ED;
     background-image: linear-gradient(to bottom, shade(#E8E9ED, 1.15), #E8E9ED, shade(#E8E9ED, 1.05));
     box-shadow: inset 0 1px 0 0 alpha(white, 0.7);
     -gtk-outline-radius: 5px; }
     headerbar button:hover, headerbar:not(.titlebar) button:hover {
-      border-color: shade(shade(shade(#E8E9ED, 0.9), 0.9), 0.5);
-      border-top-color: shade(shade(shade(#E8E9ED, 0.9), 0.9), 0.85);
-      border-left-color: shade(shade(shade(#E8E9ED, 0.9), 0.9), 0.75);
-      border-right-color: shade(shade(shade(#E8E9ED, 0.9), 0.9), 0.75);
+      border-color: shade(shade(#E8E9ED, 0.9), 0.5);
+      border-top-color: shade(shade(#E8E9ED, 0.9), 0.85);
+      border-left-color: shade(shade(#E8E9ED, 0.9), 0.75);
+      border-right-color: shade(shade(#E8E9ED, 0.9), 0.75);
       color: #000000;
       background-color: shade(#E8E9ED, 1.1);
       box-shadow: inset 0 -9px 4px 0 alpha(white, 0.8), inset 0 1px 0 0 alpha(white, 0.7), inset 0 8px 4px 0 alpha(white, 0.4); }
@@ -1778,7 +1765,7 @@ toolbar {
   border-radius: 0;
   background-color: #E8E9ED; }
   .inline-toolbar:backdrop {
-    border-color: shade(#E8E9ED, 0.9);
+    border-color: mix(shade(#E8E9ED, 0.9), #E8E9ED, 0.5);
     background-color: #E8E9ED; }
   .inline-toolbar toolbutton > button {
     padding: 4px 8px;
