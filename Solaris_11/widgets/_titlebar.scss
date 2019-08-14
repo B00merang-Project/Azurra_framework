@@ -137,9 +137,15 @@
     min-height: 32px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 0.95), gtkshade($titlebar_bg_color, 0.85));
     border-bottom: 1px solid gtkshade($titlebar_bg_color, 0.75);
     
+    @if $variant != 'dark' {
+      background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 0.95), gtkshade($titlebar_bg_color, 0.85));
+    }
+    @else {
+      background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.3), gtkshade($titlebar_bg_color, 0.85), $titlebar_bg_color);
+    }
+
     headerbar { border-bottom: none; }    // no inset borders
 
     &:backdrop {
