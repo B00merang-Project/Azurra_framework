@@ -206,6 +206,8 @@ button {
     color: #FFFFFF; }
   button:disabled {
     color: mix(#000000, mix(#000000, #E8E9ED, 0.5), 0.5); }
+  button:backdrop {
+    color: #000000; }
   button.flat {
     border-color: transparent;
     border-radius: 5px;
@@ -245,7 +247,7 @@ checkbutton, radiobutton {
   padding: 4px;
   outline-offset: 0; }
 
-check, .check, radio, .radio {
+check, radio {
   margin: 4px;
   min-width: 14px;
   min-height: 14px; }
@@ -1358,46 +1360,46 @@ separator {
     margin: 4px 1px; }
   .sidebar view separator, view separator, separator .separator, separator {
     border: none;
-    background-color: mix(#FFFFFF, #000000, 0.2); }
+    background-color: shade(#E8E9ED, 0.9); }
     .sidebar view separator:backdrop, view separator:backdrop, separator .separator:backdrop, separator:backdrop {
       border: none;
-      background-color: mix(#FFFFFF, #000000, 0.1); }
+      background-color: shade(#E8E9ED, 0.9); }
   .primary-toolbar separator, toolbar separator {
-    background-color: mix(#E8E9ED, #000000, 0.2); }
+    background-color: shade(#E8E9ED, 0.9); }
     .primary-toolbar separator:backdrop, toolbar separator:backdrop {
-      background-color: mix(#E8E9ED, #000000, 0.1); }
+      background-color: shade(#E8E9ED, 0.9); }
   .primary-toolbar button separator, toolbar button separator, .primary-toolbar:not(.libreoffice-toolbar) separator {
-    background-color: mix(#E8E9ED, #000000, 0.2); }
+    background-color: shade(#E8E9ED, 0.9); }
     .primary-toolbar button separator:backdrop, toolbar button separator:backdrop, .primary-toolbar:not(.libreoffice-toolbar) separator:backdrop {
-      background-color: mix(#E8E9ED, #000000, 0.1); }
+      background-color: shade(#E8E9ED, 0.9); }
   headerbar separator {
     -GtkWidget-window-dragging: true;
     margin-top: 4px;
     margin-bottom: 4px;
-    background-color: mix(#E8E9ED, #000000, 0.2); }
+    background-color: shade(#E8E9ED, 0.9); }
     headerbar separator:backdrop {
-      background-color: mix(#E8E9ED, #000000, 0.1); }
+      background-color: shade(#E8E9ED, 0.9); }
   headerbar button separator {
-    border-color: mix(#E8E9ED, #000000, 0.2); }
+    background-color: shade(#E8E9ED, 0.9); }
     headerbar button separator:backdrop {
-      border-color: mix(#E8E9ED, #000000, 0.1); }
+      border-color: shade(#E8E9ED, 0.9); }
   .titlebar separator, .titlebar:not(headerbar) > separator, .titlebar separator.titlebutton, .titlebar:not(headerbar) > separator.titlebutton {
     -GtkWidget-window-dragging: true;
-    background-color: mix(#FFFFFF, #000000, 0.2); }
+    background-color: shade(#E8E9ED, 0.9); }
     .titlebar separator:backdrop, .titlebar:not(headerbar) > separator:backdrop, .titlebar separator.titlebutton:backdrop, .titlebar:not(headerbar) > separator.titlebutton:backdrop {
-      background-color: mix(#FFFFFF, #000000, 0.1); }
+      background-color: shade(#E8E9ED, 0.9); }
   headerbar separator.titlebutton, .titlebar:not(headerbar) separator.titlebutton {
     min-width: 1px;
     min-height: 1px;
-    background-color: mix(#FFFFFF, #000000, 0.2); }
+    background-color: shade(#E8E9ED, 0.9); }
     headerbar separator.titlebutton:backdrop, .titlebar:not(headerbar) separator.titlebutton:backdrop {
-      background-color: mix(#FFFFFF, #000000, 0.1); }
+      background-color: shade(#E8E9ED, 0.9); }
   .titlebutton button separator, .titlebutton separator.titlebutton {
-    border-color: mix(#FFFFFF, #000000, 0.2); }
+    border-color: shade(#E8E9ED, 0.9); }
     .titlebutton button separator:backdrop, .titlebutton separator.titlebutton:backdrop {
-      border-color: mix(#FFFFFF, #000000, 0.1); }
+      border-color: shade(#E8E9ED, 0.9); }
   menu separator {
-    background-color: mix(#E8E9ED, #000000, 0.2); }
+    background-color: shade(#E8E9ED, 0.9); }
   menuitem separator {
     border-width: 1px;
     border-style: none;
@@ -1657,6 +1659,8 @@ headerbar, headerbar:not(.titlebar) {
       color: #FFFFFF; }
     headerbar button:disabled, headerbar:not(.titlebar) button:disabled {
       color: mix(#000000, mix(#000000, #E8E9ED, 0.5), 0.5); }
+    headerbar button:backdrop, headerbar:not(.titlebar) button:backdrop {
+      color: #000000; }
   headerbar entry, headerbar:not(.titlebar) entry {
     padding: 5px 8px; }
 
@@ -1756,16 +1760,18 @@ toolbar {
       color: #FFFFFF; }
     .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled {
       color: mix(#000000, mix(#000000, #E8E9ED, 0.5), 0.5); }
+    .primary-toolbar button:backdrop, .primary-toolbar .raised button:backdrop {
+      color: #000000; }
 
 .inline-toolbar {
   padding: 1px;
   border-width: 1px;
   border-style: solid;
-  border-color: mix(shade(#E8E9ED, 0.9), #E8E9ED, 0.5);
+  border-color: shade(#E8E9ED, 0.6);
   border-radius: 0;
   background-color: #E8E9ED; }
   .inline-toolbar:backdrop {
-    border-color: mix(shade(#E8E9ED, 0.9), #E8E9ED, 0.5);
+    border-color: shade(#E8E9ED, 0.6);
     background-color: #E8E9ED; }
   .inline-toolbar toolbutton > button {
     padding: 4px 8px;
@@ -1803,6 +1809,8 @@ toolbar {
       color: #FFFFFF; }
     .inline-toolbar toolbutton > button:disabled {
       color: mix(#000000, mix(#000000, #E8E9ED, 0.5), 0.5); }
+    .inline-toolbar toolbutton > button:backdrop {
+      color: #000000; }
 
 .linked button, .linked .raised button {
   margin: 1px; }
@@ -2641,6 +2649,8 @@ panel-toplevel.background na-tray-applet {
       color: #FFFFFF; }
     #XfceNotifyWindow.osd button:disabled {
       color: mix(#000000, mix(#000000, #E8E9ED, 0.5), 0.5); }
+    #XfceNotifyWindow.osd button:backdrop {
+      color: #000000; }
 
 .nemo-window .nemo-window-pane widget.entry {
   border: 1px solid;
