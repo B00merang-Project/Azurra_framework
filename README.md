@@ -11,25 +11,24 @@ The Azurra Framework is a handy tool for creating and managing GTK themes.
 ---
 
 **Dependencies**
-- `ruby-sass`, installable in ubuntu by running `sudo apt install sass`
-- `bash 4` or higher, for the autogen script
+- `ruby-sass`, installable in Ubuntu by running `sudo apt install sass`
+- `bash 4` or higher, required for the autogen script
 - `python 3.6` or higher, for utils.py
 
 ---
 
 ## Getting started
 
-
 Included files:
 `Azurra`: Source theme you can use to create your own derivative. Find more base themes on the [b00merang Azurra repository](https://github.com/B00merang-Project/Azurra_framework)
 
-`example`: This is a plain theme who mirrors the Azurra base theme. You can start by editing this empty example, starting by the colors and then importing the widgets you want to customize.
+`example`: This is a plain theme that mirrors the Azurra base theme. You can start by editing this empty example by adding/editing the colors and then importing the widgets you want to customize.
 
 `autogen.sh`: This script runs the SASS compiler on the target theme and deploys the rendered file to the target specified in theme.conf. Run `./autogen.sh --help` for more details.
 
 <br>
 
-In the **example** theme, you find the following folders:
+In the **example** theme, you can find the following folders:
 - `assets`: This folder will be copied to the target directory once deployed. Place image and other resources here.
 
 - `widgets`: You can copy a widget file from Azurra/widgets here and edit the SASS code to change the ruleset for that particular widget. You **have** to manually update the import line in `_imports.scss` to point to `widgets/<WIDGET>` instead.
@@ -49,11 +48,11 @@ And the following files:
 
 - `_vars.scss`: Contains variables reused in multiple widget source files.
 
-- `gtk.scss`: The file that gets generated to gtk.css. Manages imports and sets variant variables for conditional rules
+- `gtk.scss`: The file that gets generated to gtk.css. Manages imports and sets various variables for conditional rules
 
-- `gtk.css`: The CSS stylesheet that GNOME will read. You should run `./autogen.sh example` after any you have done changes before using it.
+- `gtk.css`: The CSS stylesheet that GNOME will read. You should run `./autogen.sh example` after any changes you have done before using it.
 
 - `theme.conf`: Contains a theme's name, author and target directory. Dynamic versioning is coming in a future release.
 
 ---
-More documentation is coming soon on the [wiki](https://github.com/Elbullazul/Azurra_framework/wiki)
+More documentation will be available soon on the [wiki](https://github.com/Elbullazul/Azurra_framework/wiki)
