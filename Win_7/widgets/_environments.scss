@@ -3,9 +3,7 @@
     color: $desktop_item_fg;
     text-shadow: 1px 1px $desktop_item_text_shadow;
 
-    &:active {
-      color: $desktop_item_fg;
-    }
+    &:active { color: $desktop_item_fg; }
 
     &:selected {
       color: $desktop_item_selected_fg;
@@ -111,16 +109,10 @@
 @mixin xfce() {
   .xfce4-panel.panel {
     background-color: transparent;
-    background-image: url('../cinnamon/panel.png');
-    background-size: 100% 100%;
 
-    button.flat, button.sidebar-button {
-      @include panel_button();
-    }
+    button.flat, button.sidebar-button { @include panel_button(); }
     
-    .tasklist button {
-      @include tasklist_button();
-    }
+    .tasklist button { @include tasklist_button(); }
   }
   
   #XfceNotifyWindow {
@@ -130,15 +122,9 @@
       border-radius: $roundness;
       border: none;
 
-      label {
-        &#summary {
-          font-weight: bold;
-        }
-      }
+      label#summary { font-weight: bold; }
       
-      button {
-        @include normal_buttons($bg_color, $fg_color, $borders);
-      }
+      button { @include normal_buttons($bg_color, $fg_color, $borders); }
     }
   }
 }
@@ -146,18 +132,22 @@
 @mixin mate() {
   .mate-panel-menu-bar menubar > menuitem {
     color: $taskbar_fg_color;
-    background-color: $taskbar_bg_color;  
+    background-color: transparent;
+  }
+  
+  .mate-panel-menu-bar menubar {
+    background: transparent;
   }
 
   .mate-panel-menu-bar {
     color: $taskbar_fg_color;
-    background-color: $taskbar_bg_color;
+    background-color: transparent;
+    background-image: url('../cinnamon/panel.png');
+    background-size: 100% 100%;
 
-    button, button.flat {
-      background-color: transparent;
-    }
+    button, button.flat { @include panel_button(); }
 
-    &, .menubar { background-color: $taskbar_bg_color; }
+    &, .menubar { background-color: transparent; }
 
     menubar, menubar menuitem, togglebutton {
       border-color: transparent;
