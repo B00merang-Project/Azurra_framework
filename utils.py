@@ -2,7 +2,7 @@
 
 # Azurra Utils, a management script to create, edit and manage Azurra-based themes
 # Author: Christian Medel <cmedelahumada@gmail.com>
-# This was
+# This deprecates the previously used Bash scripts
 
 import argparse, os, sys
 
