@@ -3,9 +3,7 @@
     color: $desktop_item_fg;
     text-shadow: 1px 1px $desktop_item_text_shadow;
 
-    &:active {
-      color: $desktop_item_fg;
-    }
+    &:active { color: $desktop_item_fg; }
 
     &:selected {
       color: $desktop_item_selected_fg;
@@ -21,17 +19,11 @@
       color: $taskbar_fg_color;
     }
 
-    menubar, #PanelApplet label, #PanelApplet image {
-      color: $taskbar_fg_color;
-    }
+    menubar, #PanelApplet label, #PanelApplet image { color: $taskbar_fg_color; }
 
-    menubar > menuitem, menubar > menuitem label:backdrop {
-      color: $taskbar_fg_color;
-    }
+    menubar > menuitem, menubar > menuitem label:backdrop { color: $taskbar_fg_color; }
 
-    menubar > menuitem:hover, menubar > menuitem:hover label:backdrop {
-      color: $selected_fg_color;
-    }
+    menubar > menuitem:hover, menubar > menuitem:hover label:backdrop { color: $selected_fg_color; }
 
     button {
       background-color: $taskbar_bg_color;
@@ -61,9 +53,7 @@
       background-color: transparent;
     }
 
-    &:checked {
-      color: $taskbar_fg_color;
-    }
+    &:checked { color: $taskbar_fg_color; }
   }
 
   panel-toplevel.background na-tray-applet {
@@ -101,15 +91,9 @@
       border-radius: $roundness;
       border: none;
 
-      label {
-        &#summary {
-          font-weight: bold;
-        }
-      }
-      
-      button {
-        @include normal_buttons(transparent, $fg_color, transparent);
-      }
+      label #summary { font-weight: bold; }
+
+      button { @include normal_buttons(transparent, $fg_color, transparent); }
     }
   }
 }
@@ -123,10 +107,6 @@
   .mate-panel-menu-bar {
     color: $taskbar_fg_color;
     background-color: $taskbar_bg_color;
-
-    button, button.flat {
-      background-color: transparent;
-    }
 
     &, .menubar { background-color: $taskbar_bg_color; }
 
@@ -153,8 +133,10 @@
 
       &:disabled { color: $disabled_fg_color; }
     }
+    
+    button, button.flat { background-color: transparent; }
 
-    .button:not(#tasklist-button) { 
+    > .button:not(#tasklist-button) { 
       color: $taskbar_fg_color;
       border-radius: 0;
       border: none;
@@ -164,6 +146,7 @@
         border: none;
         background-color: gtkshade($taskbar_bg_color, 1.1);
       }
+
       &:active, &:checked {
         color: $selected_fg_color;
         border: none;
@@ -193,13 +176,9 @@
       padding-bottom: 4px;
     }
 
-    NaTrayApplet {
-      -NaTrayApplet-icon-padding: 2;
-    }
+    NaTrayApplet { -NaTrayApplet-icon-padding: 2; }
     
-    #PanelApplet label {
-      color: $taskbar_fg_color;
-    }
+    #PanelApplet label { color: $taskbar_fg_color; }
 
     .caja-desktop, .caja-navigation-window .view {
       &.entry {
@@ -284,9 +263,7 @@
     .left, .right, &.bottom {
       background-color: $titlebar_bg_color;
 
-      &:backdrop {
-        background-color: $titlebar_bg_color;
-      }
+      &:backdrop { background-color: $titlebar_bg_color; }
     }
 
     // new menubar function in unity 7.5
@@ -314,9 +291,7 @@
   }
 
   @keyframes playbackmenuitem_spinner {
-    to {
-      -gtk-icon-transform: rotate(1turn);
-    }
+    to { -gtk-icon-transform: rotate(1turn); }
   }
 
   .menu IdoPlaybackMenuItem.menuitem:active {

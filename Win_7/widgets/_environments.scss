@@ -51,6 +51,7 @@
     background-image: none;
     background-color: gtkalpha(gtkmix($taskbar_bg_color, $light_shadow, 0.2), 0.6);
   }
+
   &:active, &:checked {
     color: $taskbar_fg_color;
     border: none;
@@ -83,7 +84,6 @@
       text-shadow: 1px 1px $dark_shadow;
 
       &:hover { color: $taskbar_fg_color; }
-
       &:checked { color: $taskbar_fg_color; }
     }
   }
@@ -169,7 +169,7 @@
 
     button, button.flat { @include panel_button(); }
 
-    .button:not(#tasklist-button) { @include panel_button(); }
+    > .button:not(#tasklist-button) { @include panel_button(); }
 
     #tasklist-button { @include tasklist_button(); }
 

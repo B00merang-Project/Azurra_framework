@@ -58,7 +58,6 @@
       color: gtkalpha($taskbar_fg_color, 0.7);
 
       &:hover { color: gtkalpha($taskbar_fg_color, 0.7); }
-
       &:checked { color: $taskbar_fg_color; }
     }
   }
@@ -102,8 +101,6 @@
     color: $taskbar_fg_color;
     background-color: $taskbar_bg_color;
 
-    button, button.flat { background-color: transparent; }
-
     &, .menubar { background-color: $taskbar_bg_color; }
 
     menubar, menubar menuitem, togglebutton {
@@ -130,7 +127,9 @@
       &:disabled { color: $disabled_fg_color; }
     }
 
-    .button:not(#tasklist-button) { @include panel_button(); }
+    button, button.flat { background-color: transparent; }
+
+    > .button:not(#tasklist-button) { @include panel_button(); }
 
     #tasklist-button { @include tasklist_button(); }
 

@@ -2218,8 +2218,6 @@ panel-toplevel.background na-tray-applet {
 .mate-panel-menu-bar {
   color: #000000;
   background-color: #AEB2C3; }
-  .mate-panel-menu-bar button, .mate-panel-menu-bar button.flat {
-    background-color: transparent; }
   .mate-panel-menu-bar, .mate-panel-menu-bar .menubar {
     background-color: #AEB2C3; }
   .mate-panel-menu-bar menubar, .mate-panel-menu-bar menubar menuitem, .mate-panel-menu-bar togglebutton {
@@ -2236,20 +2234,22 @@ panel-toplevel.background na-tray-applet {
     font-style: normal; }
     .mate-panel-menu-bar GtkMenu .label:disabled {
       color: mix(#000000, #AEB2C3, 0.5); }
-  .mate-panel-menu-bar .button:not(#tasklist-button) {
+  .mate-panel-menu-bar button, .mate-panel-menu-bar button.flat {
+    background-color: transparent; }
+  .mate-panel-menu-bar > .button:not(#tasklist-button) {
     border-color: transparent;
     border-radius: 0px;
     color: #000000;
     box-shadow: none;
     background-color: transparent; }
-    .mate-panel-menu-bar .button:not(#tasklist-button):hover {
+    .mate-panel-menu-bar > .button:not(#tasklist-button):hover {
       color: #000000;
       background-color: #AEB2C3;
       border-color: shade(#AEB2C3, 0.7);
       border-top-color: mix(#AEB2C3, white, 0.7);
       border-left-color: mix(#AEB2C3, white, 0.7);
       background-color: #AEB2C3; }
-    .mate-panel-menu-bar .button:not(#tasklist-button):active, .mate-panel-menu-bar .button:not(#tasklist-button):checked {
+    .mate-panel-menu-bar > .button:not(#tasklist-button):active, .mate-panel-menu-bar > .button:not(#tasklist-button):checked {
       color: #000000;
       border-top-color: shade(#AEB2C3, 0.7);
       border-left-color: shade(#AEB2C3, 0.7);
@@ -2257,11 +2257,11 @@ panel-toplevel.background na-tray-applet {
       border-right-color: mix(#AEB2C3, white, 0.7);
       background-color: shade(#AEB2C3, 0.9);
       background-image: none; }
-      .mate-panel-menu-bar .button:not(#tasklist-button):active:disabled, .mate-panel-menu-bar .button:not(#tasklist-button):checked:disabled {
+      .mate-panel-menu-bar > .button:not(#tasklist-button):active:disabled, .mate-panel-menu-bar > .button:not(#tasklist-button):checked:disabled {
         color: mix(#000000, mix(#000000, #AEB2C3, 0.5), 0.1);
         text-shadow: 1px 1px alpha(white, 0.7);
         background-color: shade(mix(#000000, #AEB2C3, 0.95), 0.9); }
-    .mate-panel-menu-bar .button:not(#tasklist-button):disabled {
+    .mate-panel-menu-bar > .button:not(#tasklist-button):disabled {
       border-color: transparent;
       color: alpha(#000000, 0.8);
       text-shadow: 1px 1px alpha(white, 0.7);
@@ -2394,7 +2394,7 @@ panel-toplevel.background na-tray-applet {
   color: #000000;
   border-radius: 0px;
   border: none; }
-  #XfceNotifyWindow.osd label#summary {
+  #XfceNotifyWindow.osd label #summary {
     font-weight: bold; }
   #XfceNotifyWindow.osd button {
     padding: 4px 8px;

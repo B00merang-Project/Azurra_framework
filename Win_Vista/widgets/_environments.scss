@@ -82,7 +82,6 @@
       text-shadow: 1px 1px $dark_shadow;
 
       &:hover { color: $taskbar_fg_color; }
-
       &:checked { color: $taskbar_fg_color; }
     }
   }
@@ -136,8 +135,6 @@
     color: $taskbar_fg_color;
     background-color: $taskbar_bg_color;
 
-    button, button.flat { background-color: transparent; }
-
     &, .menubar { background-color: $taskbar_bg_color; }
 
     menubar, menubar menuitem, togglebutton {
@@ -163,6 +160,8 @@
 
       &:disabled { color: $disabled_fg_color; }
     }
+
+    > button, > button.flat { background-color: transparent; }
 
     .button:not(#tasklist-button) { @include panel_button(); }
 
