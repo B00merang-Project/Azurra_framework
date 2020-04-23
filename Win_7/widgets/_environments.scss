@@ -141,8 +141,6 @@
     background-image: url('../cinnamon/panel.png');
     background-size: 100% 100%;
 
-    button, button.flat { @include panel_button(); }
-
     &, .menubar { background-color: transparent; }
 
     menubar, menubar menuitem, togglebutton {
@@ -168,6 +166,8 @@
 
       &:disabled { color: $disabled_fg_color; }
     }
+
+    button, button.flat { @include panel_button(); }
 
     .button:not(#tasklist-button) { @include panel_button(); }
 
