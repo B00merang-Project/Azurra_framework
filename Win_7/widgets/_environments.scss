@@ -82,13 +82,9 @@
       color: $taskbar_fg_color;
       text-shadow: 1px 1px $dark_shadow;
 
-      &:hover {
-        color: $taskbar_fg_color;
-      }
+      &:hover { color: $taskbar_fg_color; }
 
-      &:checked {
-        color: $taskbar_fg_color;
-      }
+      &:checked { color: $taskbar_fg_color; }
     }
   }
 
@@ -137,9 +133,7 @@
     background-color: transparent;
   }
   
-  .mate-panel-menu-bar menubar {
-    background: transparent;
-  }
+  .mate-panel-menu-bar menubar { background: transparent; }
 
   .mate-panel-menu-bar {
     color: $taskbar_fg_color;
@@ -175,13 +169,9 @@
       &:disabled { color: $disabled_fg_color; }
     }
 
-    .button:not(#tasklist-button) { 
-      @include panel_button();
-    }
+    .button:not(#tasklist-button) { @include panel_button(); }
 
-    #tasklist-button {
-      @include tasklist_button();
-    }
+    #tasklist-button { @include tasklist_button(); }
 
     PanelSeparator {
       color: gtkshade($taskbar_bg_color, 0.7);
@@ -189,13 +179,9 @@
       padding-bottom: 4px;
     }
 
-    NaTrayApplet {
-      -NaTrayApplet-icon-padding: 2;
-    }
+    NaTrayApplet { -NaTrayApplet-icon-padding: 2; }
     
-    #PanelApplet label {
-      color: $taskbar_fg_color;
-    }
+    #PanelApplet label { color: $taskbar_fg_color; }
 
     .caja-desktop, .caja-navigation-window .view {
       &.entry {
@@ -280,9 +266,7 @@
     .left, .right, &.bottom {
       background-color: $titlebar_bg_color;
 
-      &:backdrop {
-        background-color: $titlebar_bg_color;
-      }
+      &:backdrop { background-color: $titlebar_bg_color; }
     }
 
     // new menubar function in unity 7.5
@@ -310,9 +294,7 @@
   }
 
   @keyframes playbackmenuitem_spinner {
-    to {
-      -gtk-icon-transform: rotate(1turn);
-    }
+    to { -gtk-icon-transform: rotate(1turn); }
   }
 
   .menu IdoPlaybackMenuItem.menuitem:active {
