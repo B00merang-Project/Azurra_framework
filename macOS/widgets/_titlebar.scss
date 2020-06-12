@@ -31,49 +31,25 @@
       &.close {
         background-image: url('assets/close-normal.svg');
 
-        &:hover {
-          background-image: url('assets/close-hover.svg');
-        }
-
-        &:active {
-          background-image: url('assets/close-active.svg');
-        }
-
-        &:backdrop {
-          background-image: url('assets/close-backdrop.svg');
-        }
+        &:hover { background-image: url('assets/close-hover.svg'); }
+        &:active { background-image: url('assets/close-active.svg'); }
+        &:backdrop { background-image: url('assets/close-backdrop.svg'); }
       }
 
       &.minimize {
         background-image: url('assets/minimize-normal.svg');
 
-        &:hover {
-          background-image: url('assets/minimize-hover.svg');
-        }
-
-        &:active {
-          background-image: url('assets/minimize-active.svg');
-        }
-
-        &:backdrop {
-          background-image: url('assets/minimize-backdrop.svg');
-        }
+        &:hover { background-image: url('assets/minimize-hover.svg'); }
+        &:active { background-image: url('assets/minimize-active.svg'); }
+        &:backdrop { background-image: url('assets/minimize-backdrop.svg'); }
       }
 
       &.maximize {
         background-image: url('assets/maximize-normal.svg');
 
-        &:hover {
-          background-image: url('assets/maximize-hover.svg');
-        }
-
-        &:active {
-          background-image: url('assets/maximize-active.svg');
-        }
-
-        &:backdrop {
-          background-image: url('assets/maximize-backdrop.svg');
-        }
+        &:hover { background-image: url('assets/maximize-hover.svg'); }
+        &:active { background-image: url('assets/maximize-active.svg'); }
+        &:backdrop { background-image: url('assets/maximize-backdrop.svg'); }
       }
     }
 
@@ -82,15 +58,13 @@
     }
   }
 
-  .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
+  .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar), headerbar .titlebar {
     min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
     background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 0.965), gtkshade($titlebar_bg_color, 0.9));
     border-bottom: 1px solid gtkshade($borders, 0.9);
     
-    .titlebar { border-bottom: none; }    // no double borders on tweak tool
-
     &:backdrop {
       color: $unfocused_fg_color;
       background-image: none;
