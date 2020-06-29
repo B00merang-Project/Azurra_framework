@@ -2517,19 +2517,28 @@ window.background.csd.popup {
       background-image: url("assets/maximize-backdrop.svg"); }
   .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
     border-radius: 0; }
+  .titlebar headerbar {
+    background-image: linear-gradient(to bottom, shade(#F5F5F5, 0.965), shade(#F5F5F5, 0.9)); }
+    .titlebar headerbar:backdrop {
+      background-image: none;
+      background-color: #E4E4E4; }
+    .titlebar headerbar:first-child {
+      border-top-left-radius: 4px; }
+    .titlebar headerbar:last-child {
+      border-top-right-radius: 4px; }
 
-.titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar), headerbar .titlebar {
+.titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
   min-height: 30px;
   color: #000000;
   background-color: #F5F5F5;
   background-image: linear-gradient(to bottom, shade(#F5F5F5, 0.965), shade(#F5F5F5, 0.9));
   border-bottom: 1px solid shade(shade(#F5F5F5, 0.9), 0.9); }
-  .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop, headerbar .titlebar:backdrop {
+  .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
     color: #8C8C8C;
     background-image: none;
     background-color: #E4E4E4;
     border-color: shade(#E4E4E4, 0.9); }
-  window.ssd .titlebar, window.ssd .titlebar:not(headerbar), window.ssd headerbar.default-decoration, window.ssd .csd headerbar.default-decoration, window.ssd .default-decoration.titlebar:not(headerbar), window.ssd .csd .default-decoration.titlebar:not(headerbar), window.ssd headerbar .titlebar {
+  window.ssd .titlebar, window.ssd .titlebar:not(headerbar), window.ssd headerbar.default-decoration, window.ssd .csd headerbar.default-decoration, window.ssd .default-decoration.titlebar:not(headerbar), window.ssd .csd .default-decoration.titlebar:not(headerbar) {
     border-bottom: none;
     min-height: 20px; }
 

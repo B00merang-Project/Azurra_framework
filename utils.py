@@ -10,9 +10,11 @@ import argparse, os, sys
 from typing import Any
 import os.path
 
-VERSION = 0.1
+VERSION = 0.3
 ROOT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
+FILTER_MODE_MATCH = 0
+FILTER_MODE_RESTRICT = 1
 
 # Console colors
 class colors:
@@ -37,8 +39,10 @@ def main():
 
     # operational arguments
     ops.add_argument("-p", "--parents", type=str, help='Shows external dependencies for <TARGET> theme')
-    ops.add_argument("-c", "--children", type=str, help='Shows shows themes depending on <TARGET> theme')
+    ops.add_argument("-c", "--children", type=str, help='Shows themes depending on <TARGET> theme')
+    ops.add_argument("-s", "--singletons", type=str, help='Shows unique widgets for <TARGET>')
     ops.add_argument("-n", "--new", type=str, help='Initiates new resource <NEW>')
+    ops.add_argument("-x", "--cross-dependency", type=str, help='Detect if theme is cross-dependent on any child')
 
     # optional arguments
     optargs.add_argument("-w", "--widget", type=str, help='Filter dependencies to <WIDGET>')
@@ -48,23 +52,30 @@ def main():
     parser.add_argument("-i", "--ignore-base", action='store_true', help='Ignore entries for base theme (Azurra)')
 
     # pretty args
-    parser.add_argument("-v", "--version", action='version', version='Azurra Utils, version 1.0 alpha',
+    parser.add_argument("-v", "--version", action='version', version='Azurra Utils, version 0.3 beta',
                         help='Shows script version and exists')
     args = parser.parse_args()
-
+    
     if args.parents:
         parents(args.parents, args.widget, args.ignore_base)
 
     elif args.children:
         children(args.children, args.widget)
 
+    elif args.singletons:
+        singletons(args.singletons)
+
     elif args.new:
         new(args.new, args.base, args.bundle)
+    
+    elif args.cross_dependency:
+        conflicts(args.cross_dependency, args.widget, args.ignore_base)
 
 
-def read_file(target: str):
+# Utility methods
+def read_file(filename: str):
     try:
-        with open(f"{target}/_imports.scss", "r") as file:
+        with open(filename, "r") as file:
             imports = file.readlines()
 
         return imports
@@ -73,88 +84,168 @@ def read_file(target: str):
         exit(2)
 
 
-def contains_filters(line: str, filters):
-    for filter in filters:
-        if filter in line:
-            return True
-    return False
+def read_imports(target: str):
+    return read_file(f"{target}/_imports.scss")
 
 
-def not_in(line: str, filters):
-    for filter in filters:
-        if filter not in line:
-            return True
-    return False
+def read_conf(folder):
+    conf = read_file(f"{folder}/theme.conf")
+
+    # ignore 1st line
+    name = clean(conf[1]).strip("name=").strip('"')
+    author = clean(conf[2]).strip("author=").strip('"')
+    version = clean(conf[3]).strip("version=")
+    
+    return [name, author, version]
 
 
-def read_parents(target: str, filters: Any, ignore_base: bool):
-    count = 0
-    total = 0
-    imports = []
-    lines = read_file(target)
-
-    for line in lines:
-        if "'widgets/" not in line:
-            line = line.rstrip()
-            if not (ignore_base and 'Azurra' in line):
-                if None not in filters:
-                    if not not_in(line, filters):
-                        imports += [clean_string(line)]
-                        count += 1
-                else:
-                    imports += [clean_string(line)]
-                    count += 1
-
-        total += 1
-
-    return [imports, count, total]
-
-
-def parents(target: str, widget: Any, ignore_base: bool):
-    print(colors.OKBLUE + f"Getting parents for '{target}'" + colors.ENDC)
-
-    returned = read_parents(target, [widget], ignore_base)
-    imports = returned[0]
-    count = returned[1]
-    total = returned[2]
-
-    for line in imports:
-        print(line)
-
-    if count > 0:
-        print(colors.OKGREEN + f"Found {count} children imports over {total} imports" + colors.ENDC)
-    else:
-        print(colors.FAIL + f"Found {count} children imports over {total} imports" + colors.ENDC)
-
-
-def clean_string(input: str) -> str:
+def clean(input: str) -> str:
     string = input.strip("@import '")
     string = string.strip('../')
     string = string.strip("';")
-    string = f" - {string}"
+    string = string.strip("\n")
 
     return string
 
 
-def get_children(target, source, widget):
-    if widget is None:
-        filters = [source]
-    else:
-        filters = [source, widget]
+def filter(list, filters, mode):
+    matching = []
 
-    returned = read_parents(target, filters, False)
+    for filter in filters:
+        for item in list:
+            if filter in item:
+                matching += [item]
+
+    if mode == FILTER_MODE_RESTRICT:
+        return [x for x in list if x not in matching]
+    else:
+        return matching
+
+
+# --- Processing ---
+
+# Detect parents
+def parents(target: str, widget: Any, ignore_base: bool):
+    print(colors.OKBLUE + f"Getting parents for '{target}'" + colors.ENDC)
+       
+    returned = get_parents(target, ignore_base)
+    
+    display = returned[0]
+    parents = returned[1]
+    total_imports = returned[2]
+    
+    if widget:
+        filters = [widget]
+        display = filter(display, filters, FILTER_MODE_MATCH)
+    
+    if ignore_base:
+        filters = ['Azurra']
+        display = filter(display, filters, FILTER_MODE_RESTRICT)
+
+    parent_imports = len(display)
+
+    for line in display:
+        print(line)
+
+    if parent_imports > 0:
+        print(colors.OKGREEN + f"Found {parent_imports} parent imports over {total_imports} imports" + colors.ENDC)
+    else:
+        print(colors.FAIL + f"Found {parent_imports} parent imports over {total_imports} imports" + colors.ENDC)
+
+
+def get_parents(target: str, ignore_base: bool):
+    console = []
+    parent_names = []
+
+    lines = read_imports(target)
+
+    for line in lines:
+        if "'widgets/" not in line:
+            line = line.rstrip()
+            clean_line = clean(line)
+
+            console += [clean_line]
+            name = line.split('/')[1]
+
+            if name not in parent_names:
+                parent_names.append(name)
+
+    return [console, parent_names, len(lines)]
+
+
+# find children
+def children(target: str, widget: Any):
+    print(colors.OKBLUE + f"Children for '{target}'" + colors.ENDC)
+    
+    resultset = get_children(target)
+    
+    display = resultset[0]
+    children_count = resultset[1]
+    names = resultset[2]
+    
+    if widget:
+        filters = [widget]
+        display = filter(display, filters, FILTER_MODE_MATCH)
+    
+    # display
+    for item in display:
+        print(item)
+    
+    children_imports = len(display)
+
+    if children_imports > 0:
+        print(colors.OKBLUE + f"Found {children_imports} children over {children_count} themes" + colors.ENDC)
+    else:
+        print(colors.FAIL + f"Found {children_imports} children over {children_count} themes" + colors.ENDC)
+
+
+def get_children(target: str):
+    console = []
+    child_count = 0
+    child_names = []
+
+    resources = get_subdirs(ROOT_DIRECTORY)
+    for theme in resources:
+        if os.path.isfile(f"{ROOT_DIRECTORY}/{theme}/theme.conf"):
+            display = get_children_for(theme, target)
+            
+            if len(display) > 0:
+                child_count += 1
+                child_names += [theme]
+                
+                console.extend(display)
+
+        for bundle in get_subdirs(f"{ROOT_DIRECTORY}/{theme}"):
+            if os.path.isfile(f"{ROOT_DIRECTORY}/{theme}/bundle.conf"):
+                display = get_children_for(f"{theme}/{bundle}", target)
+            
+                if len(display) > 0:
+                    child_count += 1
+                    child_names += [bundle]
+                    
+                    console.extend(display)
+
+    return [console, child_count, child_names]
+
+
+def get_children_for(theme, target):
+    returned = get_parents(theme, False)
 
     imports = returned[0]
-    count = returned[1]
-
-#    if count > 0:
-#        print(f"Parents for {target}")
+    
+    filters = [target]
+    imports = filter(imports, filters, FILTER_MODE_MATCH)
+    
+    resultset = []
+    display = []
 
     for line in imports:
-        target = target.split('/')[-1]
-        print(line.replace(source, f'[{target}]').replace('/', '').replace('widgets', ' '))
+        theme = theme.split('/')[-1]
+        
+        widget = line.split('/')[-1]
+        display.append(f"[{theme}] {widget}")
 
-    return count
+    return display
 
 
 def get_subdirs(source: str):
@@ -162,37 +253,72 @@ def get_subdirs(source: str):
             os.path.isdir(os.path.join(source, name)) and not name.startswith('.')])
 
 
-def children(target: str, widget: Any):
-    print(f"Children for {target}")
-    count = 0
-    children = 0
+# find singleton widgets
+def singletons(target: str):
+    print(colors.OKBLUE + f"Unique widgets for '{target}'" + colors.ENDC)
+    display = get_singletons(target)
 
-    dirs = get_subdirs(ROOT_DIRECTORY)
-    for dir in dirs:
-        if os.path.isfile(f"{ROOT_DIRECTORY}/{dir}/theme.conf"):
-            child_count = get_children(dir, target, widget)
-            if child_count > 0:
-                count += child_count
-                children += 1
+    for line in display:
+        print(line)
 
-        for subdir in get_subdirs(f"{ROOT_DIRECTORY}/{dir}"):
-            if os.path.isfile(f"{ROOT_DIRECTORY}/{dir}/bundle.conf"):
-                child_count = get_children(f"{dir}/{subdir}", target, widget)
-                if child_count > 0:
-                    count += child_count
-                    children += 1
-
-    if count > 0:
-        print(colors.OKBLUE + f"Found {count} parents over {children} themes" + colors.ENDC)
+    if len(display) > 0:
+        print(colors.OKGREEN + f"Found {len(display)} unique widgets for theme {target}" + colors.ENDC)
     else:
-        print(colors.FAIL + f"Found {count} parents over {children} themes" + colors.ENDC)
+        print(colors.FAIL + f"Found no unique widgets for theme {target}" + colors.ENDC)
 
 
+def get_singletons(target):
+    console = []
+    lines = read_imports(target)
+
+    for line in lines:
+        if "'widgets/" in line:
+            line = line.rstrip()
+            line = clean(line)
+
+            console += [line.split('/')[-1]]
+
+    return console
+
+
+# create new resources
 def new(target: str, source: str, bundle: bool):
     print(f"Creating new resource '{target}' based on '{source}'")
 
-    if bundle:
+    if bundle: 
         print("Initializing new bundle")
+
+
+# detect cross-dependencies
+def conflicts(target: str, widget: Any, ignore_base: bool):
+    print(colors.WARNING + "WARNING: bundled themes are not fully supported. Try using without bundle name prefixed. [WIP]" + colors.ENDC)
+
+    parents = get_parents(target, ignore_base)[1]
+    
+    # child search requires last part in file path (ex. needs only 'dark' in 'B00merang/dark')
+    target = clean_target(target)
+    
+    children = get_children(target)[2]
+    
+    found = False
+    
+    for parent in parents:
+        if parent in children:
+            print(colors.FAIL + f"CRITICAL: {parent} is also a child!" + colors.ENDC)
+            found = True
+
+    if not found:
+        print(colors.OKBLUE + "No cross-dependencies found"+  colors.ENDC)
+
+
+def clean_target(target: str):
+    if target.endswith("/"):    # remove trailing slash
+        target = target.split('/')[-2]
+    
+    if '/' in target:
+        target = target.split('/')[-1]
+
+    return target
 
 
 if __name__ == "__main__": main()

@@ -56,9 +56,17 @@
     .tiled &:not(headerbar), .tiled &:backdrop:not(headerbar), .maximized &:not(headerbar), .maximized &:backdrop:not(headerbar) {
       border-radius: 0;
     }
+    
+    headerbar {
+      background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 0.965), gtkshade($titlebar_bg_color, 0.9));
+      
+      &:backdrop { background-image: none; background-color: $unfocused_bg_color; }
+      &:first-child { border-top-left-radius: $csd_radius; }
+      &:last-child { border-top-right-radius: $csd_radius; }
+    }
   }
 
-  .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar), headerbar .titlebar {
+  .titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
     min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
