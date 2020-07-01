@@ -42,7 +42,7 @@
     color: #FFFFFF;
     background-color: shade(#2B2E30, 0.9); }
   .gtkstyle-fallback:disabled {
-    color: shade(#2B2E30, 0.55);
+    color: shade(#FFFFFF, 0.55);
     background-color: shade(#2B2E30, 1.05); }
   .gtkstyle-fallback:selected {
     color: #FFFFFF;
@@ -257,7 +257,7 @@ button {
       text-shadow: none;
       -gtk-icon-shadow: none; }
     button:active:disabled, button:checked:disabled {
-      color: shade(#2B2E30, 0.55);
+      color: shade(#FFFFFF, 0.55);
       background-color: shade(shade(#2B2E30, 1.05), 0.9);
       box-shadow: none;
       text-shadow: none;
@@ -269,7 +269,7 @@ button {
         text-shadow: none;
         -gtk-icon-shadow: none; }
   button:disabled {
-    color: shade(#2B2E30, 0.55);
+    color: shade(#FFFFFF, 0.55);
     border-color: shade(#2B2E30, 0.8);
     background-color: shade(#2B2E30, 1.05);
     background-image: none;
@@ -324,7 +324,7 @@ button {
         -gtk-icon-shadow: none; }
     button.flat:disabled {
       border-color: transparent;
-      color: shade(#2B2E30, 0.55);
+      color: shade(#FFFFFF, 0.55);
       background-color: transparent;
       background-image: none;
       box-shadow: none;
@@ -386,7 +386,7 @@ check, radio {
       background-color: #2B2E30;
       box-shadow: none; }
     check:checked:disabled, radio:checked:disabled {
-      color: shade(#2B2E30, 0.55);
+      color: shade(#FFFFFF, 0.55);
       background-color: shade(#2B2E30, 1.05);
       box-shadow: none; }
       check:checked:disabled:backdrop, radio:checked:disabled:backdrop {
@@ -394,7 +394,7 @@ check, radio {
         background-color: mix(#FFFFFF, #2B2E30, 1.05);
         box-shadow: none; }
   check:disabled, radio:disabled {
-    color: shade(#2B2E30, 0.55);
+    color: shade(#FFFFFF, 0.55);
     border-color: shade(#2B2E30, 0.8);
     background-color: shade(#2B2E30, 1.05);
     background-image: none; }
@@ -435,7 +435,7 @@ treeview.view check:selected:focus, treeview.view check:selected, treeview.view 
   background-color: #2B2E30;
   border-color: shade(shade(#2B2E30, 0.8), 0.8); }
 treeview.view check:selected:disabled, treeview.view radio:selected:disabled {
-  color: shade(#2B2E30, 0.55); }
+  color: shade(#FFFFFF, 0.55); }
   treeview.view check:selected:disabled:backdrop, treeview.view radio:selected:disabled:backdrop {
     color: mix(#FFFFFF, #2B2E30, 0.25); }
 treeview.view check:backdrop:selected, treeview.view check:backdrop, treeview.view radio:backdrop:selected, treeview.view radio:backdrop {
@@ -475,7 +475,7 @@ calendar {
     calendar.button:backdrop {
       color: alpha(mix(#2B2E30, #FFFFFF, 0.5), 0.45); }
     calendar.button:disabled {
-      color: alpha(shade(#2B2E30, 0.55), 0.45); }
+      color: alpha(shade(#FFFFFF, 0.55), 0.45); }
   calendar:selected {
     border-radius: 4px;
     color: #FFFFFF;
@@ -486,7 +486,7 @@ calendar {
   calendar:indeterminate {
     color: alpha(currentColor, 0.1); }
   calendar.highlight {
-    color: shade(#2B2E30, 0.55); }
+    color: shade(#FFFFFF, 0.55); }
     calendar.highlight:backdrop {
       color: mix(#FFFFFF, #2B2E30, 0.25); }
   calendar:backdrop {
@@ -511,7 +511,7 @@ entry {
     color: #FFFFFF;
     background-color: #4A90D9; }
   entry:disabled {
-    color: shade(#2B2E30, 0.55);
+    color: shade(#FFFFFF, 0.55);
     border-color: shade(#2B2E30, 0.85);
     background-color: shade(#2B2E30, 1.05); }
     entry:disabled:backdrop {
@@ -679,7 +679,7 @@ image {
   image:selected, image:selected:hover {
     color: #FFFFFF; }
   image:disabled {
-    color: shade(#2B2E30, 0.55); }
+    color: shade(#FFFFFF, 0.55); }
   view image, view image:hover {
     color: currentColor; }
     view image:selected, view image:hover:selected {
@@ -841,7 +841,7 @@ menubar > menuitem, .menubar > menuitem {
     color: #4A90D9;
     box-shadow: inset 0 -3px #4A90D9; }
   menubar > menuitem:disabled, .menubar > menuitem:disabled {
-    color: shade(#2B2E30, 0.55); }
+    color: shade(#FFFFFF, 0.55); }
   menubar > menuitem:backdrop, .menubar > menuitem:backdrop {
     color: mix(#2B2E30, #FFFFFF, 0.5); }
 
@@ -861,7 +861,7 @@ menu menuitem, .menu menuitem {
     menu menuitem:hover scale trough, menu menuitem:hover switch, .menu menuitem:hover scale trough, .menu menuitem:hover switch {
       background-color: alpha(#FFFFFF, 0.75); }
   menu menuitem:disabled, .menu menuitem:disabled {
-    color: shade(#2B2E30, 0.55); }
+    color: shade(#FFFFFF, 0.55); }
   menu menuitem arrow, .menu menuitem arrow {
     min-width: 16px;
     min-height: 16px; }
@@ -877,7 +877,7 @@ menuitem accelerator {
   menuitem accelerator:hover {
     color: alpha(#FFFFFF, 0.8); }
   menuitem accelerator:disabled {
-    color: shade(#2B2E30, 0.55); }
+    color: shade(#FFFFFF, 0.55); }
 
 popover.background {
   padding: 2px;
@@ -979,11 +979,11 @@ notebook {
       border-width: 1px;
       border-color: transparent;
       font-weight: bold;
-      color: shade(#2B2E30, 0.55);
+      color: shade(#FFFFFF, 0.55);
       background-color: transparent;
       outline-offset: -6px; }
       notebook > header tab:hover {
-        color: mix(shade(#2B2E30, 0.55), #FFFFFF, 0.5); }
+        color: mix(shade(#FFFFFF, 0.55), #FFFFFF, 0.5); }
         notebook > header tab:hover.reorderable-page {
           border-color: alpha(shade(#2B2E30, 0.8), 0.3);
           background-color: alpha(#2B2E30, 0.3); }
@@ -1067,7 +1067,7 @@ notebook {
       notebook > header > tabs > arrow:active {
         color: shade(#FFFFFF, 0.8); }
       notebook > header > tabs > arrow:disabled {
-        color: shade(#2B2E30, 0.55); }
+        color: shade(#FFFFFF, 0.55); }
 
 paned > separator {
   border: none;
@@ -1547,7 +1547,7 @@ spinbutton.horizontal {
     background-color: shade(#3D4244, 1.05); }
   spinbutton.horizontal:disabled {
     border-color: shade(#2B2E30, 0.85);
-    color: shade(#2B2E30, 0.55);
+    color: shade(#FFFFFF, 0.55);
     background-color: shade(#2B2E30, 1.05); }
     spinbutton.horizontal:disabled:backdrop {
       border-color: shade(#2B2E30, 0.85);
@@ -1641,7 +1641,7 @@ switch {
       background-color: shade(#2B2E30, 0.85);
       text-shadow: none; }
   switch:disabled {
-    color: shade(#2B2E30, 0.55);
+    color: shade(#FFFFFF, 0.55);
     border-color: shade(#2B2E30, 0.85);
     background-color: shade(#2B2E30, 1.05); }
     switch:disabled:backdrop {
@@ -1825,7 +1825,7 @@ headerbar {
         text-shadow: none;
         -gtk-icon-shadow: none; }
       headerbar button:active:disabled, headerbar button:checked:disabled {
-        color: shade(#2B2E30, 0.55);
+        color: shade(#FFFFFF, 0.55);
         background-color: shade(shade(#2B2E30, 1.05), 0.9);
         box-shadow: none;
         text-shadow: none;
@@ -1837,7 +1837,7 @@ headerbar {
           text-shadow: none;
           -gtk-icon-shadow: none; }
     headerbar button:disabled {
-      color: shade(#2B2E30, 0.55);
+      color: shade(#FFFFFF, 0.55);
       border-color: shade(#2B2E30, 0.8);
       background-color: shade(#2B2E30, 1.05);
       background-image: none;
@@ -1894,7 +1894,7 @@ headerbar {
         -gtk-icon-shadow: none; }
     headerbar .titlebutton.close:disabled, headerbar .titlebutton.maximize:disabled, headerbar .titlebutton.minimize:disabled, headerbar .titlebutton:not(separator):disabled {
       border-color: transparent;
-      color: shade(#2B2E30, 0.55);
+      color: shade(#FFFFFF, 0.55);
       background-color: transparent;
       background-image: none;
       box-shadow: none;
@@ -1926,7 +1926,7 @@ toolbar {
     color: mix(#2B2E30, #FFFFFF, 0.5);
     background-color: #2B2E30; }
   toolbar:disabled {
-    color: shade(#2B2E30, 0.55);
+    color: shade(#FFFFFF, 0.55);
     background-color: shade(#2B2E30, 1.05); }
   toolbar button.flat {
     border-color: transparent;
@@ -1962,7 +1962,7 @@ toolbar {
         -gtk-icon-shadow: none; }
     toolbar button.flat:disabled {
       border-color: transparent;
-      color: shade(#2B2E30, 0.55);
+      color: shade(#FFFFFF, 0.55);
       background-color: transparent;
       background-image: none;
       box-shadow: none;
@@ -2032,7 +2032,7 @@ toolbar {
         text-shadow: none;
         -gtk-icon-shadow: none; }
       .primary-toolbar button:active:disabled, .primary-toolbar button:checked:disabled, .primary-toolbar .raised button:active:disabled, .primary-toolbar .raised button:checked:disabled {
-        color: shade(#2B2E30, 0.55);
+        color: shade(#FFFFFF, 0.55);
         background-color: shade(shade(#2B2E30, 1.05), 0.9);
         box-shadow: none;
         text-shadow: none;
@@ -2044,7 +2044,7 @@ toolbar {
           text-shadow: none;
           -gtk-icon-shadow: none; }
     .primary-toolbar button:disabled, .primary-toolbar .raised button:disabled {
-      color: shade(#2B2E30, 0.55);
+      color: shade(#FFFFFF, 0.55);
       border-color: shade(#2B2E30, 0.8);
       background-color: shade(#2B2E30, 1.05);
       background-image: none;
@@ -2110,7 +2110,7 @@ toolbar {
         text-shadow: none;
         -gtk-icon-shadow: none; }
       .inline-toolbar toolbutton > button:active:disabled, .inline-toolbar toolbutton > button:checked:disabled {
-        color: shade(#2B2E30, 0.55);
+        color: shade(#FFFFFF, 0.55);
         background-color: shade(shade(#2B2E30, 1.05), 0.9);
         box-shadow: none;
         text-shadow: none;
@@ -2122,7 +2122,7 @@ toolbar {
           text-shadow: none;
           -gtk-icon-shadow: none; }
     .inline-toolbar toolbutton > button:disabled {
-      color: shade(#2B2E30, 0.55);
+      color: shade(#FFFFFF, 0.55);
       border-color: shade(#2B2E30, 0.8);
       background-color: shade(#2B2E30, 1.05);
       background-image: none;
@@ -2401,7 +2401,7 @@ treeview {
     color: #FFFFFF;
     background-color: shade(#3D4244, 1.05); }
   .view:disabled {
-    color: shade(#2B2E30, 0.55);
+    color: shade(#FFFFFF, 0.55);
     background-color: shade(#2B2E30, 1.05); }
   .view:selected, .view:selected:focus, .view text:selected, .view text:selected:focus, .view text selection, .view text selection:focus {
     color: #FFFFFF;
@@ -2409,7 +2409,7 @@ treeview {
     border-radius: 3px;
     -gtk-outline-radius: 3px; }
     .view:selected:disabled, .view:selected:focus:disabled, .view text:selected:disabled, .view text:selected:focus:disabled, .view text selection:disabled, .view text selection:focus:disabled {
-      color: mix(#FFFFFF, shade(#2B2E30, 0.55), 0.5);
+      color: mix(#FFFFFF, shade(#FFFFFF, 0.55), 0.5);
       background-color: #4A90D9; }
     .view:selected:backdrop, .view:selected:focus:backdrop, .view text:selected:backdrop, .view text:selected:focus:backdrop, .view text selection:backdrop, .view text selection:focus:backdrop {
       color: #2B2E30;
@@ -2539,7 +2539,7 @@ button.sidebar-button {
       -gtk-icon-shadow: none; }
   button.sidebar-button:disabled {
     border-color: transparent;
-    color: shade(#2B2E30, 0.55);
+    color: shade(#FFFFFF, 0.55);
     background-color: transparent;
     background-image: none;
     box-shadow: none;
@@ -2681,7 +2681,7 @@ searchbar {
         -gtk-icon-shadow: none; }
     .osd button.flat:disabled {
       border-color: transparent;
-      color: shade(#2B2E30, 0.55);
+      color: shade(#FFFFFF, 0.55);
       background-color: transparent;
       background-image: none;
       box-shadow: none;
@@ -2996,7 +2996,7 @@ button.suggested-action {
       -gtk-icon-shadow: none; }
   button.suggested-action:disabled {
     border-color: mix(#4A90D9, shade(#2B2E30, 1.05), 0.2);
-    color: mix(#FFFFFF, shade(#2B2E30, 0.55), 0.2);
+    color: mix(#FFFFFF, shade(#FFFFFF, 0.55), 0.2);
     background-color: mix(#4A90D9, shade(#2B2E30, 1.05), 0.2);
     background-image: none;
     text-shadow: none;
@@ -3040,7 +3040,7 @@ headerbar button.suggested-action {
       -gtk-icon-shadow: none; }
   headerbar button.suggested-action:disabled {
     border-color: mix(#4A90D9, shade(#2B2E30, 1.05), 0.2);
-    color: mix(#FFFFFF, shade(#2B2E30, 0.55), 0.2);
+    color: mix(#FFFFFF, shade(#FFFFFF, 0.55), 0.2);
     background-color: mix(#4A90D9, shade(#2B2E30, 1.05), 0.2);
     background-image: none;
     text-shadow: none;
@@ -3272,7 +3272,7 @@ panel-toplevel.background na-tray-applet {
     color: #FFFFFF;
     font-style: normal; }
     .mate-panel-menu-bar GtkMenu .label:disabled {
-      color: shade(#2B2E30, 0.55); }
+      color: shade(#FFFFFF, 0.55); }
   .mate-panel-menu-bar button, .mate-panel-menu-bar button.flat {
     background-color: transparent; }
   .mate-panel-menu-bar > .button:not(#tasklist-button) {
@@ -3410,7 +3410,7 @@ panel-toplevel.background na-tray-applet {
         text-shadow: none;
         -gtk-icon-shadow: none; }
       #XfceNotifyWindow.osd button:active:disabled, #XfceNotifyWindow.osd button:checked:disabled {
-        color: shade(#2B2E30, 0.55);
+        color: shade(#FFFFFF, 0.55);
         background-color: shade(shade(#2B2E30, 1.05), 0.9);
         box-shadow: none;
         text-shadow: none;
@@ -3422,7 +3422,7 @@ panel-toplevel.background na-tray-applet {
           text-shadow: none;
           -gtk-icon-shadow: none; }
     #XfceNotifyWindow.osd button:disabled {
-      color: shade(#2B2E30, 0.55);
+      color: shade(#FFFFFF, 0.55);
       border-color: shade(#2B2E30, 0.8);
       background-color: shade(#2B2E30, 1.05);
       background-image: none;
@@ -3522,7 +3522,7 @@ UnityPanelWidget, .unity-panel {
 /* base background color of insensitive widgets */
 @define-color insensitive_bg_color shade(#2B2E30, 1.05);
 /* text foreground color of insensitive widgets */
-@define-color insensitive_fg_color shade(#2B2E30, 0.55);
+@define-color insensitive_fg_color shade(#FFFFFF, 0.55);
 /* insensitive text widgets and the like base background color */
 @define-color insensitive_base_color #3D4244;
 /* widget text/foreground color on backdrop windows */
