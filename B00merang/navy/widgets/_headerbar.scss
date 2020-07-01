@@ -1,0 +1,118 @@
+@mixin headerbar_buttons($bg, $fg, $br)
+{
+  @include normal_buttons($bg, $fg, $br);
+}
+
+@mixin headerbar() {
+  headerbar {
+    padding: 4px 8px;
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    border-bottom: 1px solid gtkshade($titlebar_bg_color, 0.9);
+
+    &:backdrop {
+      background-color: $unfocused_bg_color;
+      border-bottom-color: $unfocused_borders;
+      color: $unfocused_fg_color;
+    }
+    
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    button { @include headerbar_buttons($base_color, $headerbar_fg_color, $borders); }
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $csd_radius $csd_radius 0px 0px; }
+    
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        padding: 0;
+        min-height: 15px;
+        min-width: 15px;
+        border: 1px solid $titlebar_bg_color;
+        border-radius: 100%;
+        color: transparent;
+        background-color: $selected_bg_color;
+        -gtk-icon-shadow: none;
+        
+        &:hover { background-color: gtkshade($selected_bg_color, 1.1); }
+        &:active { background-color: gtkshade($selected_bg_color, 0.8); }
+        
+        &.close {
+          background-color: $error_bg_color;
+          
+          &:hover { background-color: gtkshade($error_bg_color, 1.1); }
+          &:active { background-color: gtkshade($error_bg_color, 0.8); }
+        }
+        
+        &.maximize {
+          background-color: $success_color;
+          
+          &:hover { background-color: gtkshade($success_color, 1.1); }
+          &:active { background-color: gtkshade($success_color, 0.8); }
+        }
+        
+        &.minimize {
+          background-color: $warning_color;
+          
+          &:hover { background-color: gtkshade($warning_color, 1.1); }
+          &:active { background-color: gtkshade($warning_color, 0.8); }
+        }
+        
+        &:backdrop { background-color: gtkshade($titlebar_bg_color, 1.4); }
+      }
+    }
+  }
+
+  .titlebar:not(headerbar) {
+    window > &,
+    window.csd > & {
+      &, &:backdrop {
+        padding: 0;
+        background: none;
+        border: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  window.ssd .titlebar {
+    border-bottom: none;
+    min-height: 20px;
+  }
+}

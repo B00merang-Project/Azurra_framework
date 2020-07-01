@@ -1,30 +1,43 @@
 @mixin headerbar_buttons($bg, $fg, $br) { @include normal_buttons($bg, $fg, $br); }
 
 @mixin headerbar() {
-  headerbar, headerbar:not(.titlebar) {
+  headerbar {
+    min-height: 30px;
     padding: 5px 6px;
-    border: none;
-    color: $headerbar_fg_color;
-    background-color: $headerbar_bg_color;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    border-bottom: 1px solid gtkshade($borders, 0.65);
+    box-shadow: inset 0 -2px gtkalpha($dark_shadow, 0.045);
 
     &:backdrop {
-      border-color: $unfocused_borders;
       color: $unfocused_fg_color;
+      border-bottom-color: $unfocused_borders;
       background-color: $unfocused_bg_color;
+      box-shadow: none;
     }
 
-    // gedit has a special double-titlebar
-    .titlebar &, .titlebar &:backdrop { background-color: transparent; }
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $csd_radius;
 
-    .tiled &,
-    .tiled-top &,
-    .tiled-right &,
-    .tiled-bottom &,
-    .tiled-left &,
-    .maximized &,
-    .fullscreen & {
-      &:backdrop, & {
-        border-radius: 0;
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
       }
     }
 
@@ -42,5 +55,12 @@
     }
 
     button { @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $borders); }
+    &.titlebar, .titlebar & { border-radius: $csd_radius $csd_radius 0px 0px; }
+    
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        @include flat_buttons($bg_color, $fg_color, $borders);
+      }
+    }
   }
 }

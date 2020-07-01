@@ -95,30 +95,46 @@
 }
 
 @mixin headerbar() {
-  headerbar, headerbar:not(.titlebar) {
+  headerbar {
     padding: 4px 8px;
-    border: none;
-    color: $headerbar_fg_color;
-    background-color: $headerbar_bg_color;
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    
+    @if $variant != 'light' {
+      background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.6), $titlebar_bg_color);
+    }
+    @else {
+      background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.15), $titlebar_bg_color);
+    }
 
     &:backdrop {
-      color: gtkalpha($headerbar_fg_color, 0.8);
-      background-color: $headerbar_bg_color;
+      color: gtkalpha($titlebar_fg_color, 0.8);
+      background-image: none;
+    }
+    
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
     }
 
-    .titlebar &, .titlebar &:backdrop {
-      background-color: transparent;
-    }
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $csd_radius;
 
-    .tiled &,
-    .tiled-top &,
-    .tiled-right &,
-    .tiled-bottom &,
-    .tiled-left &,
-    .maximized &,
-    .fullscreen & {
-      &:backdrop, & {
-        border-radius: 0;
+        .maximized &,
+        .tiled & { border-radius: 0; }
       }
     }
 
@@ -139,8 +155,70 @@
       @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, gtkshade($headerbar_bg_color, 0.8));
     }
 
-    entry {
-      padding: 4px 8px;
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $csd_radius $csd_radius 0px 0px; }
+    
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        min-width: 16px;
+        min-height: 16px;
+        padding: 0;
+        border: 1px solid gtkshade($titlebar_bg_color, 0.8);
+        -gtk-icon-shadow: none;
+        border-radius: 100%;
+        
+        @if $variant != 'light' {
+          color: gtkshade($titlebar_bg_color, 0.8);
+        }
+        @else {
+          color: $titlebar_fg_color;
+        }
+        
+        background-color: transparent;
+        
+        @if $variant != 'light' {
+          background-image: linear-gradient(to bottom, gtkshade($light_shadow, 0.55), gtkshade($light_shadow, 0.35));
+        }
+        @else {
+          background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.15), $titlebar_bg_color);
+        }
+        
+        &:hover, &:backdrop:hover {
+          box-shadow: none;
+          
+          @if $variant != 'light' {
+            background-image: linear-gradient(to bottom, gtkshade($light_shadow, 0.75), gtkshade($light_shadow, 0.55));
+          }
+          
+          @else {
+            background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.6), gtkshade($titlebar_bg_color, 1.2));
+          }
+        }
+
+        &:active {
+          background-color: gtkalpha($base_color, 0.2);
+        }
+        
+        &:backdrop {
+          color: gtkshade($titlebar_bg_color, 0.85);
+          background-color: gtkalpha($light_shadow, 0.125);
+          background-image: linear-gradient(to bottom, transparent, gtkalpha($light_shadow, 0.1));
+        }
+      }
+      
+      &.close {
+        background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.1), gtkshade($selected_bg_color, 0.8));
+
+        &:hover {
+          box-shadow: none;
+          background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.25), gtkshade($selected_bg_color, 0.85));
+        }
+        
+        &:active {
+          background-image: none;
+          background-color: $selected_bg_color;
+        }
+      }
     }
   }
 }

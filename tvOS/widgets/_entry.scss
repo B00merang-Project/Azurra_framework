@@ -8,7 +8,13 @@
 
     &:active, &:focus {
       background-color: $base_color;
-      box-shadow: 0 9px 6px 0 gtkalpha($dark_shadow, 0.3);
+      
+      @if $variant != 'dark' {
+        box-shadow: 0 9px 6px 0 gtkalpha($dark_shadow, 0.3);
+      }
+      @else {
+        box-shadow: 0 9px 6px 0 gtkalpha($light_shadow, 0.3);
+      }
     }
 
     &:selected, &:selected:focus, selection, selection:focus {
@@ -19,23 +25,14 @@
     &:disabled {
       color: $disabled_text_color;
 
-      &:backdrop {
-        color: $unfocused_disabled_fg_color;
-      }
+      &:backdrop { color: $unfocused_disabled_fg_color; }
     }
 
-    &:backdrop {
-      color: $unfocused_fg_color;
-    }
+    &:backdrop { color: $unfocused_fg_color; }
 
     > image {
-      &.left {
-        padding-right: 5px;
-      }
-      
-      &.right {
-        padding-left: 5px;
-      }
+      &.left { padding-right: 5px; }
+      &.right { padding-left: 5px; }
     }
 
     progress {
@@ -55,8 +52,6 @@
       border-color: transparent;
     }
 
-    &.search {
-      border-radius: 40px;
-    }
+    &.search { border-radius: 40px; }
   }
 }

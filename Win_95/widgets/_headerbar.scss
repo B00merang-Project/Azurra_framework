@@ -6,29 +6,38 @@
 @mixin headerbar() {
   headerbar, headerbar:not(.titlebar) {
     padding: 2px;
-    border: none;
-    color: $headerbar_fg_color;
-    background-color: $headerbar_bg_color;
+    min-height: 26px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
 
     &:backdrop {
-      border-color: $unfocused_borders;
       color: $unfocused_fg_color;
-      background-color: $unfocused_bg_color;
+      background-image: none;
+      background-color: gtkshade($unfocused_bg_color, 0.8);
     }
 
-    .titlebar &, .titlebar &:backdrop {
-      background-color: transparent;
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
     }
 
-    .tiled &,
-    .tiled-top &,
-    .tiled-right &,
-    .tiled-bottom &,
-    .tiled-left &,
-    .maximized &,
-    .fullscreen & {
-      &:backdrop, & {
-        border-radius: 0;
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
       }
     }
 
@@ -38,9 +47,7 @@
       font-weight: bold;
       color: $selected_fg_color;
       
-      &:backdrop {
-        color: $unfocused_fg_color;
-      }
+      &:backdrop { color: $unfocused_fg_color; }
     }
 
     .subtitle {
@@ -49,17 +56,50 @@
       padding-right: 12px;
       color: gtkalpha($selected_fg_color, 0.7);
       
-      &:backdrop {
-        color: gtkalpha($unfocused_fg_color, 0.7);
-      }
+      &:backdrop { color: gtkalpha($unfocused_fg_color, 0.7); }
     }
 
     button {
       @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $borders);
     }
 
-    entry {
-      padding: 4px 8px;
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $csd_radius $csd_radius 0px 0px; }
+
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        color: transparent;
+        padding: 0;
+        border-radius: 0;
+        -gtk-icon-shadow: none;
+        
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      
+      &.close { background-image: url('assets/close.png'); }
+      &.minimize { background-image: url('assets/minimize.png'); }
+      &.maximize { background-image: url('assets/maximize.png'); }
+      .maximized &.maximize { background-image: url('assets/restore.png'); }
     }
+    
+    .horizontal.right .titlebutton.maximize {
+      margin-left: -6px;
+      margin-right: -4px;
+    }
+  }
+  
+  window.ssd headerbar, window.ssd .titlebar {
+    padding: 0px;
+    margin: 0px;
+    border: 3px solid transparent;
+    border-bottom: none;
+  }
+
+  window.ssd.maximized headerbar, window.ssd.maximized .titlebar {
+    border: 0px;
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+    margin: 0px;
   }
 }

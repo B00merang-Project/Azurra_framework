@@ -7,13 +7,18 @@
   outline-style: none;
   -gtk-outline-radius: $button_radius;
 
-  &:hover {
-  }
+  &:hover {}
   
   &:focus {
     background-color: $base_color;
     color: $fg;
-    box-shadow: 0 9px 6px 0 gtkalpha($dark_shadow, 0.3);
+    
+    @if $variant != 'dark' {
+      box-shadow: 0 9px 6px 0 gtkalpha($dark_shadow, 0.3);
+    }
+    @else {
+      box-shadow: 0 9px 6px 0 gtkalpha($light_shadow, 0.3);
+    }
   }
 
   &:active, &:checked {
@@ -37,14 +42,11 @@
 
   &:disabled {
     color: gtkmix($fg, $unfocused_disabled_fg_color, 0.5);
-    &:backdrop {
-      color: $unfocused_disabled_fg_color;
-    }
+
+    &:backdrop { color: $unfocused_disabled_fg_color; }
   }
 
-  &:backdrop {
-    color: $unfocused_fg_color;
-  }
+  &:backdrop { color: $unfocused_fg_color; }
 }
 
 @mixin flat_buttons($bg, $fg, $br)
@@ -79,9 +81,7 @@
     }
   }
 
-  &:backdrop {
-    color: $unfocused_fg_color;
-  }
+  &:backdrop { color: $unfocused_fg_color; }
 }
 
 @mixin button() {

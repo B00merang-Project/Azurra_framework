@@ -1,37 +1,44 @@
 @mixin headerbar_buttons($bg, $fg, $br)
 {
-  @include normal_buttons($base_color, $fg, $br);
+  @include normal_buttons($bg, $fg, $br);
 }
 
 @mixin headerbar() {
-  headerbar, headerbar:not(.titlebar) {
+  headerbar {
     padding: 4px 8px;
-    border-width: 0;
-    border-style: solid;
-    border-color: gtkmix($borders, $headerbar_bg_color, 0.5);
-    border-bottom-width: 1px;
-    color: $headerbar_fg_color;
-    background-color: $headerbar_bg_color;
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    border-bottom: 1px solid $borders;
 
     &:backdrop {
-      border-color: $unfocused_borders;
-      color: $unfocused_fg_color;
       background-color: $unfocused_bg_color;
+      color: $unfocused_fg_color;
+      border-bottom-color: $unfocused_borders;
     }
 
-    .titlebar &, .titlebar &:backdrop {
-      background-color: transparent;
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
     }
 
-    .tiled &,
-    .tiled-top &,
-    .tiled-right &,
-    .tiled-bottom &,
-    .tiled-left &,
-    .maximized &,
-    .fullscreen & {
-      &:backdrop, & {
-        border-radius: 0;
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
       }
     }
 
@@ -48,12 +55,20 @@
       color: gtkalpha(currentColor, 0.7);
     }
 
-    button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, transparent);
-    }
+    button { @include headerbar_buttons($base_color, $headerbar_fg_color, transparent); }
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $csd_radius $csd_radius 0px 0px; }
 
-    entry {
-      padding: 4px 8px;
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        padding: 2px 2px;
+        color: $titlebar_fg_color;
+        background-color: transparent;
+        
+        &:active {
+          color: gtkshade($titlebar_fg_color, 0.7);
+        }
+      }
     }
   }
 }

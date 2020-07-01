@@ -687,7 +687,7 @@ image {
 .caja-location-entry {
   padding: 3px 5px; }
 
-scrolledwindow viewport.frame {
+scrolledwindow.frame, scrolledwindow viewport.frame {
   border: none; }
 
 arrow, combobox arrow {
@@ -1594,32 +1594,37 @@ colorchooser #add-color-button {
   padding-left: 0;
   padding-right: 0; }
 
-headerbar, headerbar:not(.titlebar) {
+headerbar {
   padding: 4px 8px;
-  border-width: 0;
-  border-style: solid;
-  border-color: mix(shade(#E6E6E6, 0.9), #E6E6E6, 0.5);
-  border-bottom-width: 1px;
-  box-shadow: 0 1px shade(#E6E6E6, 0.9);
-  color: #000000;
-  background-color: #E6E6E6; }
-  headerbar:backdrop, headerbar:not(.titlebar):backdrop {
-    border-color: shade(#E6E6E6, 0.9);
+  min-height: 32px;
+  color: #FFFFFF;
+  background-color: #594FBF;
+  background-image: linear-gradient(to bottom, shade(#594FBF, 1.4) 10%, shade(#594FBF, 1.2) 30%, shade(#594FBF, 0.9) 80%, shade(#594FBF, 0.8) 90%);
+  box-shadow: inset 0 1px alpha(white, 0.4); }
+  headerbar:backdrop {
     color: #000000;
-    background-color: #E6E6E6; }
-  .titlebar headerbar, .titlebar headerbar:backdrop, .titlebar headerbar:not(.titlebar), .titlebar headerbar:not(.titlebar):backdrop {
-    background-color: transparent; }
-  .tiled headerbar:backdrop, .tiled headerbar, .tiled-top headerbar:backdrop, .tiled-top headerbar, .tiled-right headerbar:backdrop, .tiled-right headerbar, .tiled-bottom headerbar:backdrop, .tiled-bottom headerbar, .tiled-left headerbar:backdrop, .tiled-left headerbar, .maximized headerbar:backdrop, .maximized headerbar, .fullscreen headerbar:backdrop, .fullscreen headerbar, .tiled headerbar:not(.titlebar):backdrop, .tiled headerbar:not(.titlebar), .tiled-top headerbar:not(.titlebar):backdrop, .tiled-top headerbar:not(.titlebar), .tiled-right headerbar:not(.titlebar):backdrop, .tiled-right headerbar:not(.titlebar), .tiled-bottom headerbar:not(.titlebar):backdrop, .tiled-bottom headerbar:not(.titlebar), .tiled-left headerbar:not(.titlebar):backdrop, .tiled-left headerbar:not(.titlebar), .maximized headerbar:not(.titlebar):backdrop, .maximized headerbar:not(.titlebar), .fullscreen headerbar:not(.titlebar):backdrop, .fullscreen headerbar:not(.titlebar) {
+    background-image: none;
+    background-color: shade(#594FBF, 0.9);
+    background-image: linear-gradient(to bottom, shade(#594FBF, 1.2) 10%, shade(#594FBF, 1.01) 30%, shade(#594FBF, 0.8) 80%, shade(#594FBF, 0.7) 90%); }
+  .tiled headerbar, .tiled headerbar:backdrop, .maximized headerbar, .maximized headerbar:backdrop {
     border-radius: 0; }
-  headerbar .title, headerbar:not(.titlebar) .title {
+  separator:first-child + headerbar, separator:first-child + headerbar:backdrop, headerbar:first-child, headerbar:first-child:backdrop {
+    border-top-left-radius: 6px; }
+    .maximized separator:first-child + headerbar, .tiled separator:first-child + headerbar, .maximized separator:first-child + headerbar:backdrop, .tiled separator:first-child + headerbar:backdrop, .maximized headerbar:first-child, .tiled headerbar:first-child, .maximized headerbar:first-child:backdrop, .tiled headerbar:first-child:backdrop {
+      border-radius: 0; }
+  headerbar:last-child, headerbar:last-child:backdrop {
+    border-top-right-radius: 6px; }
+    .maximized headerbar:last-child, .tiled headerbar:last-child, .maximized headerbar:last-child:backdrop, .tiled headerbar:last-child:backdrop {
+      border-radius: 0; }
+  headerbar .title {
     padding-left: 12px;
     padding-right: 12px;
     font-weight: bold; }
-  headerbar .subtitle, headerbar:not(.titlebar) .subtitle {
+  headerbar .subtitle {
     font-size: smaller;
     padding-left: 12px;
     padding-right: 12px; }
-  headerbar button, headerbar:not(.titlebar) button {
+  headerbar button {
     padding: 4px 4px;
     border-style: solid;
     border-width: 1px;
@@ -1633,37 +1638,97 @@ headerbar, headerbar:not(.titlebar) {
     outline-offset: 0;
     outline-style: solid;
     outline-color: shade(shade(shade(#E6E6E6, 0.9), 0.9), 0.5); }
-    headerbar button:hover, headerbar:not(.titlebar) button:hover {
+    headerbar button:hover {
       outline-color: #594FBF;
       color: #594FBF;
       border-color: #594FBF; }
-    headerbar button:active, headerbar button:checked, headerbar:not(.titlebar) button:active, headerbar:not(.titlebar) button:checked {
+    headerbar button:active, headerbar button:checked {
       color: #000000;
       border-color: shade(shade(shade(#E6E6E6, 0.9), 0.9), 0.7);
       outline-color: shade(shade(shade(#E6E6E6, 0.9), 0.9), 0.7);
       background-color: mix(#E6E6E6, #594FBF, 0.3);
       background-image: none; }
-      headerbar button:active:backdrop, headerbar button:checked:backdrop, headerbar:not(.titlebar) button:active:backdrop, headerbar:not(.titlebar) button:checked:backdrop {
+      headerbar button:active:backdrop, headerbar button:checked:backdrop {
         color: #000000;
         border-color: shade(shade(#E6E6E6, 0.9), 0.9);
         background-color: mix(#E6E6E6, #594FBF, 0.3); }
-      headerbar button:active:disabled, headerbar button:checked:disabled, headerbar:not(.titlebar) button:active:disabled, headerbar:not(.titlebar) button:checked:disabled {
+      headerbar button:active:disabled, headerbar button:checked:disabled {
         color: mix(#000000, mix(#000000, #E6E6E6, 0.5), 0.1);
         border-color: mix(#000000, mix(#000000, #E6E6E6, 0.95), 0.85);
         background-color: shade(mix(#000000, #E6E6E6, 0.95), 0.9); }
-        headerbar button:active:disabled:backdrop, headerbar button:checked:disabled:backdrop, headerbar:not(.titlebar) button:active:disabled:backdrop, headerbar:not(.titlebar) button:checked:disabled:backdrop {
+        headerbar button:active:disabled:backdrop, headerbar button:checked:disabled:backdrop {
           color: mix(#000000, #E6E6E6, 0.5);
           border-color: shade(#E6E6E6, 0.9);
           background-color: shade(mix(#000000, #E6E6E6, 0.95), 0.9); }
-    headerbar button:disabled, headerbar:not(.titlebar) button:disabled {
+    headerbar button:disabled {
       color: mix(#000000, mix(#000000, #E6E6E6, 0.5), 0.5); }
-      headerbar button:disabled:backdrop, headerbar:not(.titlebar) button:disabled:backdrop {
+      headerbar button:disabled:backdrop {
         color: mix(#000000, #E6E6E6, 0.5); }
-    headerbar button:backdrop, headerbar:not(.titlebar) button:backdrop {
+    headerbar button:backdrop {
       color: #000000;
       background-color: #FFFFFF; }
-  headerbar entry, headerbar:not(.titlebar) entry {
+  headerbar entry {
     padding: 5px 8px; }
+  headerbar.titlebar, .titlebar headerbar {
+    border-radius: 6px 6px 0px 0px; }
+  headerbar .titlebutton.close, headerbar .titlebutton.maximize, headerbar .titlebutton.minimize, headerbar .titlebutton:not(separator) {
+    min-width: 16px;
+    min-height: 16px;
+    padding: 0;
+    border: none;
+    color: transparent;
+    background-color: transparent;
+    -gtk-icon-shadow: none;
+    background-position: center;
+    background-repeat: no-repeat; }
+  headerbar .titlebutton.close {
+    background: url("assets/close-normal.png") 100% 100%; }
+    headerbar .titlebutton.close:hover {
+      background: url("assets/close-hover.png") 100% 100%; }
+    headerbar .titlebutton.close:active {
+      background: url("assets/close-active.png") 100% 100%; }
+    headerbar .titlebutton.close:backdrop {
+      background: url("assets/close-backdrop.png") 100% 100%; }
+      headerbar .titlebutton.close:backdrop:hover {
+        background: url("assets/close-hover.png") 100% 100%; }
+      headerbar .titlebutton.close:backdrop:active {
+        background: url("assets/close-active.png") 100% 100%; }
+  headerbar .titlebutton.minimize {
+    background: url("assets/minimize-normal.png") 100% 100%; }
+    headerbar .titlebutton.minimize:hover {
+      background: url("assets/minimize-hover.png") 100% 100%; }
+    headerbar .titlebutton.minimize:active {
+      background: url("assets/minimize-active.png") 100% 100%; }
+    headerbar .titlebutton.minimize:backdrop {
+      background: url("assets/minimize-backdrop.png") 100% 100%; }
+      headerbar .titlebutton.minimize:backdrop:hover {
+        background: url("assets/minimize-hover.png") 100% 100%; }
+      headerbar .titlebutton.minimize:backdrop:active {
+        background: url("assets/minimize-active.png") 100% 100%; }
+  headerbar .titlebutton.maximize {
+    background: url("assets/maximize-normal.png") 100% 100%; }
+    headerbar .titlebutton.maximize:hover {
+      background: url("assets/maximize-hover.png") 100% 100%; }
+    headerbar .titlebutton.maximize:active {
+      background: url("assets/maximize-active.png") 100% 100%; }
+    headerbar .titlebutton.maximize:backdrop {
+      background: url("assets/maximize-backdrop.png") 100% 100%; }
+      headerbar .titlebutton.maximize:backdrop:hover {
+        background: url("assets/maximize-hover.png") 100% 100%; }
+      headerbar .titlebutton.maximize:backdrop:active {
+        background: url("assets/maximize-active.png") 100% 100%; }
+  .maximized headerbar .titlebutton.maximize {
+    background: url("assets/restore-normal.png") 100% 100%; }
+    .maximized headerbar .titlebutton.maximize:hover {
+      background: url("assets/restore-hover.png") 100% 100%; }
+    .maximized headerbar .titlebutton.maximize:active {
+      background: url("assets/restore-active.png") 100% 100%; }
+    .maximized headerbar .titlebutton.maximize:backdrop {
+      background: url("assets/restore-backdrop.png") 100% 100%; }
+      .maximized headerbar .titlebutton.maximize:backdrop:hover {
+        background: url("assets/restore-hover.png") 100% 100%; }
+      .maximized headerbar .titlebutton.maximize:backdrop:active {
+        background: url("assets/restore-active.png") 100% 100%; }
 
 toolbar {
   padding: 4px;
@@ -1863,9 +1928,13 @@ tooltip {
 textview {
   color: #000000;
   background-color: #FFFFFF; }
-  textview text:selected, textview text selection, textview text:selected:focus, textview text selection:focus {
-    color: #FFFFFF;
-    background-color: #594FBF; }
+  textview text {
+    background-color: #FFFFFF; }
+    textview text:selected, textview text selection, textview text:selected:focus, textview text selection:focus {
+      color: #FFFFFF;
+      background-color: #594FBF; }
+    textview text:backdrop {
+      background-color: #FFFFFF; }
 
 treeview {
   -treeview-vertical-separator: 0; }
@@ -2330,96 +2399,6 @@ decoration {
     border-radius: 0px;
     background-color: alpha(white, 0.95);
     box-shadow: none; }
-
-.titlebar {
-  border-bottom: none;
-  border-radius: 6px 6px 0px 0px; }
-  .titlebar .title {
-    padding-left: 12px;
-    padding-right: 12px;
-    font-weight: bold;
-    color: #FFFFFF;
-    text-shadow: 1px 1px black; }
-    .titlebar .title:backdrop {
-      color: alpha(#FFFFFF, 0.7);
-      text-shadow: none; }
-  .titlebar .subtitle {
-    font-size: smaller;
-    padding-left: 12px;
-    padding-right: 12px;
-    color: alpha(#FFFFFF, 0.7); }
-  .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
-    min-width: 16px;
-    min-height: 16px;
-    padding: 0;
-    border: none;
-    color: transparent;
-    background-color: transparent;
-    -gtk-icon-shadow: none;
-    background-position: center;
-    background-repeat: no-repeat; }
-  .titlebar .titlebutton.close {
-    background: url("assets/close-normal.png") 100% 100%; }
-    .titlebar .titlebutton.close:hover {
-      background: url("assets/close-hover.png") 100% 100%; }
-    .titlebar .titlebutton.close:active {
-      background: url("assets/close-active.png") 100% 100%; }
-    .titlebar .titlebutton.close:backdrop {
-      background: url("assets/close-backdrop.png") 100% 100%; }
-      .titlebar .titlebutton.close:backdrop:hover {
-        background: url("assets/close-hover.png") 100% 100%; }
-      .titlebar .titlebutton.close:backdrop:active {
-        background: url("assets/close-active.png") 100% 100%; }
-  .titlebar .titlebutton.minimize {
-    background: url("assets/minimize-normal.png") 100% 100%; }
-    .titlebar .titlebutton.minimize:hover {
-      background: url("assets/minimize-hover.png") 100% 100%; }
-    .titlebar .titlebutton.minimize:active {
-      background: url("assets/minimize-active.png") 100% 100%; }
-    .titlebar .titlebutton.minimize:backdrop {
-      background: url("assets/minimize-backdrop.png") 100% 100%; }
-      .titlebar .titlebutton.minimize:backdrop:hover {
-        background: url("assets/minimize-hover.png") 100% 100%; }
-      .titlebar .titlebutton.minimize:backdrop:active {
-        background: url("assets/minimize-active.png") 100% 100%; }
-  .titlebar .titlebutton.maximize {
-    background: url("assets/maximize-normal.png") 100% 100%; }
-    .titlebar .titlebutton.maximize:hover {
-      background: url("assets/maximize-hover.png") 100% 100%; }
-    .titlebar .titlebutton.maximize:active {
-      background: url("assets/maximize-active.png") 100% 100%; }
-    .titlebar .titlebutton.maximize:backdrop {
-      background: url("assets/maximize-backdrop.png") 100% 100%; }
-      .titlebar .titlebutton.maximize:backdrop:hover {
-        background: url("assets/maximize-hover.png") 100% 100%; }
-      .titlebar .titlebutton.maximize:backdrop:active {
-        background: url("assets/maximize-active.png") 100% 100%; }
-  .maximized .titlebar .titlebutton.maximize {
-    background: url("assets/restore-normal.png") 100% 100%; }
-    .maximized .titlebar .titlebutton.maximize:hover {
-      background: url("assets/restore-hover.png") 100% 100%; }
-    .maximized .titlebar .titlebutton.maximize:active {
-      background: url("assets/restore-active.png") 100% 100%; }
-    .maximized .titlebar .titlebutton.maximize:backdrop {
-      background: url("assets/restore-backdrop.png") 100% 100%; }
-      .maximized .titlebar .titlebutton.maximize:backdrop:hover {
-        background: url("assets/restore-hover.png") 100% 100%; }
-      .maximized .titlebar .titlebutton.maximize:backdrop:active {
-        background: url("assets/restore-active.png") 100% 100%; }
-  .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
-    border-radius: 0; }
-
-.titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
-  min-height: 32px;
-  color: #FFFFFF;
-  background-color: #594FBF;
-  background-image: linear-gradient(to bottom, shade(#594FBF, 1.4) 10%, shade(#594FBF, 1.2) 30%, shade(#594FBF, 0.9) 80%, shade(#594FBF, 0.8) 90%);
-  box-shadow: inset 0 1px alpha(white, 0.4); }
-  .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
-    color: #000000;
-    background-image: none;
-    background-color: shade(#594FBF, 0.9);
-    background-image: linear-gradient(to bottom, shade(#594FBF, 1.2) 10%, shade(#594FBF, 1.01) 30%, shade(#594FBF, 0.8) 80%, shade(#594FBF, 0.7) 90%); }
 
 messagedialog .background.csd {
   border-radius: 6px 6px 0 0;

@@ -43,13 +43,14 @@ def main():
     ops.add_argument("-s", "--singletons", type=str, help='Shows unique widgets for <TARGET>')
     ops.add_argument("-n", "--new", type=str, help='Initiates new resource <NEW>')
     ops.add_argument("-x", "--cross-dependency", type=str, help='Detect if theme is cross-dependent on any child')
+    ops.add_argument("-i", "--info", type=str, help='Read <TARGET> configuration file')
 
     # optional arguments
     optargs.add_argument("-w", "--widget", type=str, help='Filter dependencies to <WIDGET>')
     optargs.add_argument("-b", "--base", type=str, default='Azurra',
                          help='Which resource the new resource should be base on (theme only)')
     parser.add_argument("-u", "--bundle", action='store_true', help='Signals to create a new bundle instead of theme')
-    parser.add_argument("-i", "--ignore-base", action='store_true', help='Ignore entries for base theme (Azurra)')
+    parser.add_argument("-g", "--ignore-base", action='store_true', help='Ignore entries for base theme (Azurra)')
 
     # pretty args
     parser.add_argument("-v", "--version", action='version', version='Azurra Utils, version 0.3 beta',
@@ -64,13 +65,15 @@ def main():
 
     elif args.singletons:
         singletons(args.singletons)
-
-    elif args.new:
-        new(args.new, args.base, args.bundle)
     
     elif args.cross_dependency:
         conflicts(args.cross_dependency, args.widget, args.ignore_base)
 
+    elif args.new:
+        new(args.new, args.base, args.bundle)
+
+    elif args.info:
+        info(args.info)
 
 # Utility methods
 def read_file(filename: str):
@@ -95,8 +98,15 @@ def read_conf(folder):
     name = clean(conf[1]).strip("name=").strip('"')
     author = clean(conf[2]).strip("author=").strip('"')
     version = clean(conf[3]).strip("version=")
+
+    # line 4 is empty
+    target = clean(conf[5].strip("target_dir="))
+    dark_target = clean(conf[6].strip("target_dir_dark="))
+    light_target = clean(conf[7].strip("target_dir_light="))
     
-    return [name, author, version]
+    targets = [target, dark_target, light_target]
+    
+    return [name, author, version, targets]
 
 
 def clean(input: str) -> str:
@@ -194,9 +204,9 @@ def children(target: str, widget: Any):
     children_imports = len(display)
 
     if children_imports > 0:
-        print(colors.OKBLUE + f"Found {children_imports} children over {children_count} themes" + colors.ENDC)
+        print(colors.OKBLUE + f"Found {children_imports} children over {children_count} child themes" + colors.ENDC)
     else:
-        print(colors.FAIL + f"Found {children_imports} children over {children_count} themes" + colors.ENDC)
+        print(colors.FAIL + f"Found {children_imports} children over {children_count} child themes" + colors.ENDC)
 
 
 def get_children(target: str):
@@ -320,5 +330,17 @@ def clean_target(target: str):
 
     return target
 
+
+# Theme configuration file
+def info(target: str):
+    conf = read_conf(target)
+    
+    print(f"Theme name: {conf[0]}")
+    print(f"Author: {conf[1]}")
+    print(f"Version: {conf[2]}\n")
+    
+    print(f"Target directory: {conf[3][0]}")
+    print(f"Dark variant target directory: {conf[3][1]}")
+    print(f"Light variant target directory: {conf[3][2]}")
 
 if __name__ == "__main__": main()

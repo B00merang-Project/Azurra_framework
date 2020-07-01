@@ -4,31 +4,45 @@
 }
 
 @mixin headerbar() {
-  headerbar, headerbar:not(.titlebar) {
+  headerbar {
     padding: 2px;
-    border: none;
-    color: $headerbar_fg_color;
-    background-color: $headerbar_bg_color;
+    min-height: 26px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
 
     &:backdrop {
-      border-color: $unfocused_borders;
       color: $unfocused_fg_color;
-      background-color: $unfocused_bg_color;
+      background-image: none;
+      background-color: gtkshade($unfocused_bg_color, 0.8);
     }
 
-    .titlebar &, .titlebar &:backdrop {
-      background-color: transparent;
+    .horizontal.right {
+      background: $bg_color;
+      box-shadow: 0 0 0 2px $bg_color;
     }
 
-    .tiled &,
-    .tiled-top &,
-    .tiled-right &,
-    .tiled-bottom &,
-    .tiled-left &,
-    .maximized &,
-    .fullscreen & {
-      &:backdrop, & {
-        border-radius: 0;
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
       }
     }
 
@@ -38,9 +52,7 @@
       font-weight: bold;
       color: $selected_fg_color;
       
-      &:backdrop {
-        color: $unfocused_fg_color;
-      }
+      &:backdrop { color: $unfocused_fg_color; }
     }
 
     .subtitle {
@@ -49,17 +61,73 @@
       padding-right: 12px;
       color: gtkalpha($selected_fg_color, 0.7);
       
-      &:backdrop {
-        color: gtkalpha($unfocused_fg_color, 0.7);
-      }
+      &:backdrop { color: gtkalpha($unfocused_fg_color, 0.7); }
     }
 
     button {
       @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $borders);
     }
 
-    entry {
-      padding: 4px 8px;
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $csd_radius $csd_radius 0px 0px; }
+    
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        border-color: transparent;
+        color: transparent;
+        box-shadow: none;
+        padding: 0;
+        min-width: 18px;
+        min-height: 18px;
+        border-radius: 0;
+        -gtk-icon-shadow: none;
+        
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      
+      &.close {
+        background-image: url('assets/close.png');
+        
+        &:active { background-image: url('assets/close-active.png'); }
+      }
+
+      &.minimize {
+        background-image: url('assets/minimize.png');
+        
+        &:active { background-image: url('assets/minimize-active.png'); }
+      }
+
+      &.maximize {
+        background-image: url('assets/maximize.png');
+        
+        &:active { background-image: url('assets/maximize-active.png'); }
+      }
+      
+      .maximized &.maximize {
+        background-image: url('assets/restore.png');
+        
+        &:active { background-image: url('assets/restore-active.png'); }
+      }
+    }
+  }
+
+  window.ssd {
+    headerbar, .titlebar {
+      padding: 0px;
+      margin: 0px;
+      border: 3px solid transparent;
+      border-bottom: none;
+      box-shadow: inset -80px 0 $bg_color;
+    }
+
+    &.maximized {
+      headerbar, .titlebar {
+        border: 0px;
+        border-bottom: 1px solid transparent;
+        box-shadow: none;
+        margin: 0px;
+      }
     }
   }
 }

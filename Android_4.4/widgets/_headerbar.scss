@@ -12,8 +12,7 @@
   outline-offset: 0;
   -gtk-outline-radius: 0;
 
-  &:hover {
-  }
+  &:hover {}
 
   &:active, &:checked {
     outline-color: gtkshade($selected_bg_color, 1.4);
@@ -29,9 +28,7 @@
       }
     }
 
-    &:backdrop {
-      color: $unfocused_selected_fg_color;
-    }
+    &:backdrop { color: $unfocused_selected_fg_color; }
   }
 
   &:disabled {
@@ -51,34 +48,41 @@
 }
 
 @mixin headerbar() {
-  headerbar, headerbar:not(.titlebar) {
+  headerbar {
     padding: 4px 8px;
-    border-width: 0;
-    border-style: solid;
-    border-color: gtkmix($borders, $headerbar_bg_color, 0.5);
-    border-bottom-width: 1px;
-    color: $headerbar_fg_color;
-    background-color: $headerbar_bg_color;
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    border-bottom: 1px solid gtkshade($titlebar_bg_color, 0.6);
 
     &:backdrop {
-      border-color: $unfocused_borders;
-      color: $unfocused_fg_color;
       background-color: $unfocused_bg_color;
+      color: $unfocused_fg_color;
+      border-color: $unfocused_borders;
     }
 
-    .titlebar &, .titlebar &:backdrop {
-      background-color: transparent;
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
     }
 
-    .tiled &,
-    .tiled-top &,
-    .tiled-right &,
-    .tiled-bottom &,
-    .tiled-left &,
-    .maximized &,
-    .fullscreen & {
-      &:backdrop, & {
-        border-radius: 0;
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $csd_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
       }
     }
 
@@ -99,8 +103,18 @@
       @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $headerbar_bg_color);
     }
     
-    entry {
-      padding: 4px 8px;
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $csd_radius $csd_radius 0px 0px; }
+
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        padding: 2px 2px;
+        background-color: transparent;
+        
+        &:active {
+          color: gtkshade($titlebar_fg_color, 0.85);
+        }
+      }
     }
   }
 }

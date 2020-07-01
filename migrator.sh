@@ -21,10 +21,12 @@ find_in_colors() {
 }
 
 find_in_widgets() {
+  local TERM='headerbar_bg_color'
   local theme_dir="$1"
 
   for F in "$theme_dir"/widgets/*; do
-    res=$(grep '& {' "$F")
+    if [ ! -f "$F" ]; then continue; fi
+    res=$(grep "$TERM" "$F")
   
     # find '& {' widget files
     [[ ! -z $res ]] && echo "$F contains string"
@@ -48,7 +50,7 @@ add_config() {
 }
 
 invoke() {
-  replace_in_imports $@
+  find_in_widgets $@
 }
 
 for dir in *; do

@@ -666,7 +666,7 @@ image {
 .caja-location-entry {
   padding: 3px 5px; }
 
-scrolledwindow viewport.frame {
+scrolledwindow.frame, scrolledwindow viewport.frame {
   border: none; }
 
 arrow, combobox arrow {
@@ -1298,10 +1298,10 @@ separator {
     margin: 4px 1px; }
   .sidebar view separator, view separator, separator .separator, separator {
     border: none;
-    background-color: mix(alpha(#1F2630, 0.85), #FFFFFF, 0.1); }
+    background-color: mix(alpha(#1F2630, 0.75), #FFFFFF, 0.1); }
     .sidebar view separator:backdrop, view separator:backdrop, separator .separator:backdrop, separator:backdrop {
       border: none;
-      background-color: mix(alpha(#1F2630, 0.85), #FFFFFF, 0.075); }
+      background-color: mix(alpha(#1F2630, 0.75), #FFFFFF, 0.075); }
   .primary-toolbar separator, toolbar separator {
     background-color: mix(#1F2630, #FFFFFF, 0.1); }
     .primary-toolbar separator:backdrop, toolbar separator:backdrop {
@@ -1533,29 +1533,36 @@ colorchooser #add-color-button {
   padding-left: 0;
   padding-right: 0; }
 
-headerbar, headerbar:not(.titlebar) {
+headerbar {
   padding: 4px 8px;
-  border: none;
+  min-height: 30px;
   color: #FFFFFF;
-  background-color: #1F2630; }
-  headerbar:backdrop, headerbar:not(.titlebar):backdrop {
-    border-color: shade(shade(#1F2630, 1.25), 0.93);
-    color: shade(#FFFFFF, 0.8);
-    background-color: shade(#1F2630, 1.25); }
-  .titlebar headerbar, .titlebar headerbar:backdrop, .titlebar headerbar:not(.titlebar), .titlebar headerbar:not(.titlebar):backdrop {
-    background-color: transparent; }
-  .tiled headerbar:backdrop, .tiled headerbar, .tiled-top headerbar:backdrop, .tiled-top headerbar, .tiled-right headerbar:backdrop, .tiled-right headerbar, .tiled-bottom headerbar:backdrop, .tiled-bottom headerbar, .tiled-left headerbar:backdrop, .tiled-left headerbar, .maximized headerbar:backdrop, .maximized headerbar, .fullscreen headerbar:backdrop, .fullscreen headerbar, .tiled headerbar:not(.titlebar):backdrop, .tiled headerbar:not(.titlebar), .tiled-top headerbar:not(.titlebar):backdrop, .tiled-top headerbar:not(.titlebar), .tiled-right headerbar:not(.titlebar):backdrop, .tiled-right headerbar:not(.titlebar), .tiled-bottom headerbar:not(.titlebar):backdrop, .tiled-bottom headerbar:not(.titlebar), .tiled-left headerbar:not(.titlebar):backdrop, .tiled-left headerbar:not(.titlebar), .maximized headerbar:not(.titlebar):backdrop, .maximized headerbar:not(.titlebar), .fullscreen headerbar:not(.titlebar):backdrop, .fullscreen headerbar:not(.titlebar) {
+  background-color: #1F2630;
+  border-bottom: 1px solid shade(#1F2630, 0.9); }
+  headerbar:backdrop {
+    background-color: shade(#1F2630, 1.25);
+    border-bottom-color: shade(shade(#1F2630, 1.25), 0.93);
+    color: shade(#FFFFFF, 0.8); }
+  .tiled headerbar, .tiled headerbar:backdrop, .maximized headerbar, .maximized headerbar:backdrop {
     border-radius: 0; }
-  headerbar .title, headerbar:not(.titlebar) .title {
+  separator:first-child + headerbar, separator:first-child + headerbar:backdrop, headerbar:first-child, headerbar:first-child:backdrop {
+    border-top-left-radius: 4px; }
+    .maximized separator:first-child + headerbar, .tiled separator:first-child + headerbar, .maximized separator:first-child + headerbar:backdrop, .tiled separator:first-child + headerbar:backdrop, .maximized headerbar:first-child, .tiled headerbar:first-child, .maximized headerbar:first-child:backdrop, .tiled headerbar:first-child:backdrop {
+      border-radius: 0; }
+  headerbar:last-child, headerbar:last-child:backdrop {
+    border-top-right-radius: 4px; }
+    .maximized headerbar:last-child, .tiled headerbar:last-child, .maximized headerbar:last-child:backdrop, .tiled headerbar:last-child:backdrop {
+      border-radius: 0; }
+  headerbar .title {
     padding-left: 12px;
     padding-right: 12px;
     font-weight: bold; }
-  headerbar .subtitle, headerbar:not(.titlebar) .subtitle {
+  headerbar .subtitle {
     font-size: smaller;
     padding-left: 12px;
     padding-right: 12px;
     color: alpha(currentColor, 0.7); }
-  headerbar button, headerbar:not(.titlebar) button {
+  headerbar button {
     padding: 4px 8px;
     border-style: solid;
     border-width: 1px;
@@ -1567,39 +1574,84 @@ headerbar, headerbar:not(.titlebar) {
     border-right-color: shade(shade(#1F2630, 0.7), 1.05);
     background-color: #1E2832;
     -gtk-outline-radius: 4px; }
-    headerbar button:hover, headerbar:not(.titlebar) button:hover {
+    headerbar button:hover {
       color: #FFFFFF;
       background-color: shade(#1E2832, 1.1); }
-    headerbar button:active, headerbar button:checked, headerbar:not(.titlebar) button:active, headerbar:not(.titlebar) button:checked {
+    headerbar button:active, headerbar button:checked {
       color: #FFFFFF;
       border-color: shade(shade(#1F2630, 0.7), 0.9);
       background-color: shade(#1E2832, 0.5); }
-      headerbar button:active:backdrop, headerbar button:checked:backdrop, headerbar:not(.titlebar) button:active:backdrop, headerbar:not(.titlebar) button:checked:backdrop {
+      headerbar button:active:backdrop, headerbar button:checked:backdrop {
         color: shade(#FFFFFF, 0.8);
         border-color: shade(shade(#1F2630, 1.25), 0.93);
         background-color: shade(shade(#1F2630, 1.25), 0.85); }
-      headerbar button:active:disabled, headerbar button:checked:disabled, headerbar:not(.titlebar) button:active:disabled, headerbar:not(.titlebar) button:checked:disabled {
+      headerbar button:active:disabled, headerbar button:checked:disabled {
         color: mix(#FFFFFF, mix(#FFFFFF, #1F2630, 0.75), 0.1);
         border-color: shade(shade(#1F2630, 1.25), 0.93);
         background-color: shade(mix(#FFFFFF, #1F2630, 0.975), 0.9); }
-        headerbar button:active:disabled:backdrop, headerbar button:checked:disabled:backdrop, headerbar:not(.titlebar) button:active:disabled:backdrop, headerbar:not(.titlebar) button:checked:disabled:backdrop {
+        headerbar button:active:disabled:backdrop, headerbar button:checked:disabled:backdrop {
           color: mix(#FFFFFF, #1F2630, 0.75);
           border-color: shade(shade(#1F2630, 1.25), 0.93);
           background-color: shade(mix(#FFFFFF, #1F2630, 0.98), 0.9); }
-    headerbar button:disabled, headerbar:not(.titlebar) button:disabled {
+    headerbar button:disabled {
       color: mix(#FFFFFF, mix(#FFFFFF, #1F2630, 0.75), 0.5);
       border-color: shade(shade(#1F2630, 1.25), 0.93);
       background-color: shade(mix(#FFFFFF, #1F2630, 0.975), 1.1); }
-      headerbar button:disabled:backdrop, headerbar:not(.titlebar) button:disabled:backdrop {
+      headerbar button:disabled:backdrop {
         color: mix(#FFFFFF, #1F2630, 0.75);
         border-color: shade(shade(#1F2630, 1.25), 0.93);
         background-color: mix(#FFFFFF, #1F2630, 0.98); }
-    headerbar button:backdrop, headerbar:not(.titlebar) button:backdrop {
+    headerbar button:backdrop {
       color: shade(#FFFFFF, 0.8);
       border-color: shade(shade(#1F2630, 1.25), 0.93);
       background-color: shade(#1E2832, 1.25); }
-  headerbar entry, headerbar:not(.titlebar) entry {
+  headerbar entry {
     padding: 4px 8px; }
+  headerbar.titlebar, .titlebar headerbar {
+    border-radius: 4px 4px 0px 0px; }
+  headerbar .titlebutton.close, headerbar .titlebutton.maximize, headerbar .titlebutton.minimize, headerbar .titlebutton:not(separator) {
+    padding: 0;
+    min-height: 15px;
+    min-width: 15px;
+    border: 1px solid #1F2630;
+    border-radius: 100%;
+    color: transparent;
+    background-color: #525969;
+    -gtk-icon-shadow: none; }
+    headerbar .titlebutton.close:hover, headerbar .titlebutton.maximize:hover, headerbar .titlebutton.minimize:hover, headerbar .titlebutton:not(separator):hover {
+      background-color: shade(#525969, 1.1); }
+    headerbar .titlebutton.close:active, headerbar .titlebutton.maximize:active, headerbar .titlebutton.minimize:active, headerbar .titlebutton:not(separator):active {
+      background-color: shade(#525969, 0.8); }
+    headerbar .titlebutton.close.close, headerbar .titlebutton.maximize.close, headerbar .titlebutton.minimize.close, headerbar .titlebutton:not(separator).close {
+      background-color: #ff3b18; }
+      headerbar .titlebutton.close.close:hover, headerbar .titlebutton.maximize.close:hover, headerbar .titlebutton.minimize.close:hover, headerbar .titlebutton:not(separator).close:hover {
+        background-color: shade(#ff3b18, 1.1); }
+      headerbar .titlebutton.close.close:active, headerbar .titlebutton.maximize.close:active, headerbar .titlebutton.minimize.close:active, headerbar .titlebutton:not(separator).close:active {
+        background-color: shade(#ff3b18, 0.8); }
+    headerbar .titlebutton.close.maximize, headerbar .titlebutton.maximize.maximize, headerbar .titlebutton.minimize.maximize, headerbar .titlebutton:not(separator).maximize {
+      background-color: #00e456; }
+      headerbar .titlebutton.close.maximize:hover, headerbar .titlebutton.maximize.maximize:hover, headerbar .titlebutton.minimize.maximize:hover, headerbar .titlebutton:not(separator).maximize:hover {
+        background-color: shade(#00e456, 1.1); }
+      headerbar .titlebutton.close.maximize:active, headerbar .titlebutton.maximize.maximize:active, headerbar .titlebutton.minimize.maximize:active, headerbar .titlebutton:not(separator).maximize:active {
+        background-color: shade(#00e456, 0.8); }
+    headerbar .titlebutton.close.minimize, headerbar .titlebutton.maximize.minimize, headerbar .titlebutton.minimize.minimize, headerbar .titlebutton:not(separator).minimize {
+      background-color: #FF9900; }
+      headerbar .titlebutton.close.minimize:hover, headerbar .titlebutton.maximize.minimize:hover, headerbar .titlebutton.minimize.minimize:hover, headerbar .titlebutton:not(separator).minimize:hover {
+        background-color: shade(#FF9900, 1.1); }
+      headerbar .titlebutton.close.minimize:active, headerbar .titlebutton.maximize.minimize:active, headerbar .titlebutton.minimize.minimize:active, headerbar .titlebutton:not(separator).minimize:active {
+        background-color: shade(#FF9900, 0.8); }
+    headerbar .titlebutton.close:backdrop, headerbar .titlebutton.maximize:backdrop, headerbar .titlebutton.minimize:backdrop, headerbar .titlebutton:not(separator):backdrop {
+      background-color: shade(#1F2630, 1.4); }
+
+window > .titlebar:not(headerbar), window > .titlebar:not(headerbar):backdrop, window.csd > .titlebar:not(headerbar), window.csd > .titlebar:not(headerbar):backdrop {
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none; }
+
+window.ssd .titlebar {
+  border-bottom: none;
+  min-height: 20px; }
 
 toolbar {
   padding: 4px;
@@ -1960,9 +2012,13 @@ tooltip {
 textview {
   color: #FFFFFF;
   background-color: #1E2832; }
-  textview text:selected, textview text selection, textview text:selected:focus, textview text selection:focus {
-    color: #FFFFFF;
-    background-color: #525969; }
+  textview text {
+    background-color: #1E2832; }
+    textview text:selected, textview text selection, textview text:selected:focus, textview text selection:focus {
+      color: #FFFFFF;
+      background-color: #525969; }
+    textview text:backdrop {
+      background-color: shade(#1E2832, 1.25); }
 
 treeview {
   -treeview-vertical-separator: 0; }
@@ -2025,7 +2081,7 @@ treeview {
       background-color: shade(shade(#1F2630, 1.25), 0.7); }
 
 filechooser.csd.background, filechooser placessidebar list, .nautilus-window.csd.background, .nautilus-window placessidebar list, .nemo-window.csd.background, .nemo-window placessidebar list {
-  background-color: alpha(#1F2630, 0.85); }
+  background-color: alpha(#1F2630, 0.75); }
   filechooser.csd.background:backdrop, filechooser placessidebar list:backdrop, .nautilus-window.csd.background:backdrop, .nautilus-window placessidebar list:backdrop, .nemo-window.csd.background:backdrop, .nemo-window placessidebar list:backdrop {
     background-color: shade(#1F2630, 1.25); }
 filechooser .sidebar row, filechooser .sidebar row:focus, filechooser .sidebar view row, filechooser .sidebar view row:focus, filechooser .sidebar row.sidebar-row, filechooser .sidebar row.sidebar-row:focus, filechooser .sidebar .view, filechooser .sidebar .view:focus, filechooser .sidebar iconview, filechooser .sidebar iconview:focus, .nautilus-window .sidebar row, .nautilus-window .sidebar row:focus, .nautilus-window .sidebar view row, .nautilus-window .sidebar view row:focus, .nautilus-window .sidebar row.sidebar-row, .nautilus-window .sidebar row.sidebar-row:focus, .nautilus-window .sidebar .view, .nautilus-window .sidebar .view:focus, .nautilus-window .sidebar iconview, .nautilus-window .sidebar iconview:focus, .nemo-window .sidebar row, .nemo-window .sidebar row:focus, .nemo-window .sidebar view row, .nemo-window .sidebar view row:focus, .nemo-window .sidebar row.sidebar-row, .nemo-window .sidebar row.sidebar-row:focus, .nemo-window .sidebar .view, .nemo-window .sidebar .view:focus, .nemo-window .sidebar iconview, .nemo-window .sidebar iconview:focus {
@@ -2034,10 +2090,10 @@ filechooser .sidebar row, filechooser .sidebar row:focus, filechooser .sidebar v
   background-color: transparent; }
   filechooser .sidebar row:hover, filechooser .sidebar row:focus:hover, filechooser .sidebar view row:hover, filechooser .sidebar view row:focus:hover, filechooser .sidebar row.sidebar-row:hover, filechooser .sidebar row.sidebar-row:focus:hover, filechooser .sidebar .view:hover, filechooser .sidebar .view:focus:hover, filechooser .sidebar iconview:hover, filechooser .sidebar iconview:focus:hover, .nautilus-window .sidebar row:hover, .nautilus-window .sidebar row:focus:hover, .nautilus-window .sidebar view row:hover, .nautilus-window .sidebar view row:focus:hover, .nautilus-window .sidebar row.sidebar-row:hover, .nautilus-window .sidebar row.sidebar-row:focus:hover, .nautilus-window .sidebar .view:hover, .nautilus-window .sidebar .view:focus:hover, .nautilus-window .sidebar iconview:hover, .nautilus-window .sidebar iconview:focus:hover, .nemo-window .sidebar row:hover, .nemo-window .sidebar row:focus:hover, .nemo-window .sidebar view row:hover, .nemo-window .sidebar view row:focus:hover, .nemo-window .sidebar row.sidebar-row:hover, .nemo-window .sidebar row.sidebar-row:focus:hover, .nemo-window .sidebar .view:hover, .nemo-window .sidebar .view:focus:hover, .nemo-window .sidebar iconview:hover, .nemo-window .sidebar iconview:focus:hover {
     color: #FFFFFF;
-    background-color: mix(alpha(#1F2630, 0.85), #FFFFFF, 0.05); }
+    background-color: mix(alpha(#1F2630, 0.75), #FFFFFF, 0.05); }
   filechooser .sidebar row:active, filechooser .sidebar row:focus:active, filechooser .sidebar view row:active, filechooser .sidebar view row:focus:active, filechooser .sidebar row.sidebar-row:active, filechooser .sidebar row.sidebar-row:focus:active, filechooser .sidebar .view:active, filechooser .sidebar .view:focus:active, filechooser .sidebar iconview:active, filechooser .sidebar iconview:focus:active, .nautilus-window .sidebar row:active, .nautilus-window .sidebar row:focus:active, .nautilus-window .sidebar view row:active, .nautilus-window .sidebar view row:focus:active, .nautilus-window .sidebar row.sidebar-row:active, .nautilus-window .sidebar row.sidebar-row:focus:active, .nautilus-window .sidebar .view:active, .nautilus-window .sidebar .view:focus:active, .nautilus-window .sidebar iconview:active, .nautilus-window .sidebar iconview:focus:active, .nemo-window .sidebar row:active, .nemo-window .sidebar row:focus:active, .nemo-window .sidebar view row:active, .nemo-window .sidebar view row:focus:active, .nemo-window .sidebar row.sidebar-row:active, .nemo-window .sidebar row.sidebar-row:focus:active, .nemo-window .sidebar .view:active, .nemo-window .sidebar .view:focus:active, .nemo-window .sidebar iconview:active, .nemo-window .sidebar iconview:focus:active {
     color: #FFFFFF;
-    background-color: mix(alpha(#1F2630, 0.85), #FFFFFF, 0.15); }
+    background-color: mix(alpha(#1F2630, 0.75), #FFFFFF, 0.15); }
   filechooser .sidebar row:backdrop, filechooser .sidebar row:focus:backdrop, filechooser .sidebar view row:backdrop, filechooser .sidebar view row:focus:backdrop, filechooser .sidebar row.sidebar-row:backdrop, filechooser .sidebar row.sidebar-row:focus:backdrop, filechooser .sidebar .view:backdrop, filechooser .sidebar .view:focus:backdrop, filechooser .sidebar iconview:backdrop, filechooser .sidebar iconview:focus:backdrop, .nautilus-window .sidebar row:backdrop, .nautilus-window .sidebar row:focus:backdrop, .nautilus-window .sidebar view row:backdrop, .nautilus-window .sidebar view row:focus:backdrop, .nautilus-window .sidebar row.sidebar-row:backdrop, .nautilus-window .sidebar row.sidebar-row:focus:backdrop, .nautilus-window .sidebar .view:backdrop, .nautilus-window .sidebar .view:focus:backdrop, .nautilus-window .sidebar iconview:backdrop, .nautilus-window .sidebar iconview:focus:backdrop, .nemo-window .sidebar row:backdrop, .nemo-window .sidebar row:focus:backdrop, .nemo-window .sidebar view row:backdrop, .nemo-window .sidebar view row:focus:backdrop, .nemo-window .sidebar row.sidebar-row:backdrop, .nemo-window .sidebar row.sidebar-row:focus:backdrop, .nemo-window .sidebar .view:backdrop, .nemo-window .sidebar .view:focus:backdrop, .nemo-window .sidebar iconview:backdrop, .nemo-window .sidebar iconview:focus:backdrop {
     color: shade(#FFFFFF, 0.8); }
   filechooser .sidebar row:selected, filechooser .sidebar row:focus:selected, filechooser .sidebar view row:selected, filechooser .sidebar view row:focus:selected, filechooser .sidebar row.sidebar-row:selected, filechooser .sidebar row.sidebar-row:focus:selected, filechooser .sidebar .view:selected, filechooser .sidebar .view:focus:selected, filechooser .sidebar iconview:selected, filechooser .sidebar iconview:focus:selected, .nautilus-window .sidebar row:selected, .nautilus-window .sidebar row:focus:selected, .nautilus-window .sidebar view row:selected, .nautilus-window .sidebar view row:focus:selected, .nautilus-window .sidebar row.sidebar-row:selected, .nautilus-window .sidebar row.sidebar-row:focus:selected, .nautilus-window .sidebar .view:selected, .nautilus-window .sidebar .view:focus:selected, .nautilus-window .sidebar iconview:selected, .nautilus-window .sidebar iconview:focus:selected, .nemo-window .sidebar row:selected, .nemo-window .sidebar row:focus:selected, .nemo-window .sidebar view row:selected, .nemo-window .sidebar view row:focus:selected, .nemo-window .sidebar row.sidebar-row:selected, .nemo-window .sidebar row.sidebar-row:focus:selected, .nemo-window .sidebar .view:selected, .nemo-window .sidebar .view:focus:selected, .nemo-window .sidebar iconview:selected, .nemo-window .sidebar iconview:focus:selected {
@@ -2067,10 +2123,10 @@ filechooser .sidebar separator, filechooser .sidebar separator:backdrop, .nautil
   background-color: transparent; }
   .caja-navigation-window .caja-side-pane row:hover, .caja-navigation-window .caja-side-pane row:focus:hover, .caja-navigation-window .caja-side-pane view row:hover, .caja-navigation-window .caja-side-pane view row:focus:hover, .caja-navigation-window .caja-side-pane row.sidebar-row:hover, .caja-navigation-window .caja-side-pane row.sidebar-row:focus:hover, .caja-navigation-window .caja-side-pane .view:hover, .caja-navigation-window .caja-side-pane .view:focus:hover, .caja-navigation-window .caja-side-pane iconview:hover, .caja-navigation-window .caja-side-pane iconview:focus:hover {
     color: #FFFFFF;
-    background-color: mix(alpha(#1F2630, 0.85), #FFFFFF, 0.05); }
+    background-color: mix(alpha(#1F2630, 0.75), #FFFFFF, 0.05); }
   .caja-navigation-window .caja-side-pane row:active, .caja-navigation-window .caja-side-pane row:focus:active, .caja-navigation-window .caja-side-pane view row:active, .caja-navigation-window .caja-side-pane view row:focus:active, .caja-navigation-window .caja-side-pane row.sidebar-row:active, .caja-navigation-window .caja-side-pane row.sidebar-row:focus:active, .caja-navigation-window .caja-side-pane .view:active, .caja-navigation-window .caja-side-pane .view:focus:active, .caja-navigation-window .caja-side-pane iconview:active, .caja-navigation-window .caja-side-pane iconview:focus:active {
     color: #FFFFFF;
-    background-color: mix(alpha(#1F2630, 0.85), #FFFFFF, 0.15); }
+    background-color: mix(alpha(#1F2630, 0.75), #FFFFFF, 0.15); }
   .caja-navigation-window .caja-side-pane row:backdrop, .caja-navigation-window .caja-side-pane row:focus:backdrop, .caja-navigation-window .caja-side-pane view row:backdrop, .caja-navigation-window .caja-side-pane view row:focus:backdrop, .caja-navigation-window .caja-side-pane row.sidebar-row:backdrop, .caja-navigation-window .caja-side-pane row.sidebar-row:focus:backdrop, .caja-navigation-window .caja-side-pane .view:backdrop, .caja-navigation-window .caja-side-pane .view:focus:backdrop, .caja-navigation-window .caja-side-pane iconview:backdrop, .caja-navigation-window .caja-side-pane iconview:focus:backdrop {
     color: shade(#FFFFFF, 0.8); }
   .caja-navigation-window .caja-side-pane row:selected, .caja-navigation-window .caja-side-pane row:focus:selected, .caja-navigation-window .caja-side-pane view row:selected, .caja-navigation-window .caja-side-pane view row:focus:selected, .caja-navigation-window .caja-side-pane row.sidebar-row:selected, .caja-navigation-window .caja-side-pane row.sidebar-row:focus:selected, .caja-navigation-window .caja-side-pane .view:selected, .caja-navigation-window .caja-side-pane .view:focus:selected, .caja-navigation-window .caja-side-pane iconview:selected, .caja-navigation-window .caja-side-pane iconview:focus:selected {
@@ -2470,69 +2526,6 @@ decoration {
 
 window.background.csd.popup {
   border-radius: 4px; }
-
-.titlebar {
-  border-bottom: none;
-  border-radius: 4px 4px 0px 0px; }
-  .titlebar .title {
-    padding-left: 12px;
-    padding-right: 12px;
-    font-weight: bold; }
-  .titlebar .subtitle {
-    font-size: smaller;
-    padding-left: 12px;
-    padding-right: 12px;
-    color: alpha(currentColor, 0.7); }
-  .titlebar .titlebutton.close, .titlebar .titlebutton.maximize, .titlebar .titlebutton.minimize, .titlebar .titlebutton:not(separator) {
-    padding: 0;
-    min-height: 15px;
-    min-width: 15px;
-    border: 1px solid #1F2630;
-    border-radius: 100%;
-    color: transparent;
-    background-color: #525969;
-    -gtk-icon-shadow: none; }
-    .titlebar .titlebutton.close:hover, .titlebar .titlebutton.maximize:hover, .titlebar .titlebutton.minimize:hover, .titlebar .titlebutton:not(separator):hover {
-      background-color: shade(#525969, 1.1); }
-    .titlebar .titlebutton.close:active, .titlebar .titlebutton.maximize:active, .titlebar .titlebutton.minimize:active, .titlebar .titlebutton:not(separator):active {
-      background-color: shade(#525969, 0.8); }
-    .titlebar .titlebutton.close.close, .titlebar .titlebutton.maximize.close, .titlebar .titlebutton.minimize.close, .titlebar .titlebutton:not(separator).close {
-      background-color: #ff3b18; }
-      .titlebar .titlebutton.close.close:hover, .titlebar .titlebutton.maximize.close:hover, .titlebar .titlebutton.minimize.close:hover, .titlebar .titlebutton:not(separator).close:hover {
-        background-color: shade(#ff3b18, 1.1); }
-      .titlebar .titlebutton.close.close:active, .titlebar .titlebutton.maximize.close:active, .titlebar .titlebutton.minimize.close:active, .titlebar .titlebutton:not(separator).close:active {
-        background-color: shade(#ff3b18, 0.8); }
-    .titlebar .titlebutton.close.maximize, .titlebar .titlebutton.maximize.maximize, .titlebar .titlebutton.minimize.maximize, .titlebar .titlebutton:not(separator).maximize {
-      background-color: #00e456; }
-      .titlebar .titlebutton.close.maximize:hover, .titlebar .titlebutton.maximize.maximize:hover, .titlebar .titlebutton.minimize.maximize:hover, .titlebar .titlebutton:not(separator).maximize:hover {
-        background-color: shade(#00e456, 1.1); }
-      .titlebar .titlebutton.close.maximize:active, .titlebar .titlebutton.maximize.maximize:active, .titlebar .titlebutton.minimize.maximize:active, .titlebar .titlebutton:not(separator).maximize:active {
-        background-color: shade(#00e456, 0.8); }
-    .titlebar .titlebutton.close.minimize, .titlebar .titlebutton.maximize.minimize, .titlebar .titlebutton.minimize.minimize, .titlebar .titlebutton:not(separator).minimize {
-      background-color: #FF9900; }
-      .titlebar .titlebutton.close.minimize:hover, .titlebar .titlebutton.maximize.minimize:hover, .titlebar .titlebutton.minimize.minimize:hover, .titlebar .titlebutton:not(separator).minimize:hover {
-        background-color: shade(#FF9900, 1.1); }
-      .titlebar .titlebutton.close.minimize:active, .titlebar .titlebutton.maximize.minimize:active, .titlebar .titlebutton.minimize.minimize:active, .titlebar .titlebutton:not(separator).minimize:active {
-        background-color: shade(#FF9900, 0.8); }
-    .titlebar .titlebutton.close:backdrop, .titlebar .titlebutton.maximize:backdrop, .titlebar .titlebutton.minimize:backdrop, .titlebar .titlebutton:not(separator):backdrop {
-      background-color: shade(#1F2630, 1.4); }
-  .tiled .titlebar:not(headerbar), .tiled .titlebar:backdrop:not(headerbar), .maximized .titlebar:not(headerbar), .maximized .titlebar:backdrop:not(headerbar) {
-    border-radius: 0; }
-
-.titlebar, .titlebar:not(headerbar), headerbar.default-decoration, .csd headerbar.default-decoration, .default-decoration.titlebar:not(headerbar), .csd .default-decoration.titlebar:not(headerbar) {
-  min-height: 30px;
-  color: #FFFFFF;
-  background-color: #1F2630;
-  border-bottom: 1px solid shade(#1F2630, 0.9); }
-  .titlebar headerbar, .titlebar:not(headerbar) headerbar, headerbar.default-decoration headerbar, .csd headerbar.default-decoration headerbar, .default-decoration.titlebar:not(headerbar) headerbar, .csd .default-decoration.titlebar:not(headerbar) headerbar {
-    border-bottom: none; }
-  .titlebar:backdrop, .titlebar:not(headerbar):backdrop, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop, .default-decoration.titlebar:not(headerbar):backdrop, .csd .default-decoration.titlebar:not(headerbar):backdrop {
-    background-color: shade(#1F2630, 1.25);
-    border-bottom-color: shade(shade(#1F2630, 1.25), 0.93);
-    color: shade(#FFFFFF, 0.8); }
-  window.ssd .titlebar, window.ssd .titlebar:not(headerbar), window.ssd headerbar.default-decoration, window.ssd .csd headerbar.default-decoration, window.ssd .default-decoration.titlebar:not(headerbar), window.ssd .csd .default-decoration.titlebar:not(headerbar) {
-    border-bottom: none;
-    min-height: 20px; }
 
 messagedialog {
   border-bottom-left-radius: 4px;

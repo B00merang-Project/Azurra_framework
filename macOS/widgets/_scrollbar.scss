@@ -8,9 +8,7 @@
       border-radius: 0;
     }
 
-    &:backdrop {
-      background-color: $unfocused_base_color;
-    }
+    &:backdrop { background-color: $unfocused_base_color; }
 
     slider {
       min-width: 8px;
@@ -24,18 +22,11 @@
       &:hover {
         background-color: gtkshade($bg_color, 0.6);
 
-        &:active {
-          background-color: gtkshade($bg_color, 0.55);
-        }
+        &:active { background-color: gtkshade($bg_color, 0.55); }
       }
 
-      &:backdrop {
-        background-color: gtkshade($bg_color, 0.55);
-      }
-
-      &:disabled {
-        background-color: transparent;
-      }
+      &:backdrop { background-color: gtkshade($bg_color, 0.55); }
+      &:disabled { background-color: transparent; }
     }
 
     &.fine-tune {
@@ -86,44 +77,26 @@
         }
       }
       
-      &.dragging, &.hovering {
-        opacity: 1;
-      }
+      &.dragging, &.hovering { opacity: 1; }
     }
 
     &.horizontal {
       border-top: 1px solid $borders;
       
-      slider {
-        min-width: 40px;
-      }
-
+      slider { min-width: 40px; }
       button {
-        &.down {
-          -gtk-icon-source: -gtk-icontheme("pan-right-symbolic");
-        }
-
-        &.up {
-          -gtk-icon-source: -gtk-icontheme("pan-left-symbolic");
-        }
+        &.down { -gtk-icon-source: -gtk-icontheme("pan-right-symbolic"); }
+        &.up { -gtk-icon-source: -gtk-icontheme("pan-left-symbolic"); }
       }
     }
 
     &.vertical {
       border-left: 1px solid $borders;
       
-      slider {
-        min-height: 40px;
-      }
-
+      slider { min-height: 40px; }
       button {
-        &.down {
-          -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-        }
-
-        &.up {
-          -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
-        }
+        &.down { -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
+        &.up { -gtk-icon-source: -gtk-icontheme("pan-up-symbolic"); }
       }
     }
 
