@@ -10,15 +10,34 @@
   border-bottom-color: gtkshade($br, 0.75);
   background-color: $bg;
   background-image: linear-gradient(to bottom, gtkshade($bg, 1.01), gtkshade($bg, 0.92));
-  box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5), inset 0 -1px gtkalpha($dark_shadow, 0.025);
-  text-shadow: 0 1px $light_shadow;
-  -gtk-icon-shadow: 0 1px $light_shadow;
+  
+  @if $variant != 'dark' {
+    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5), inset 0 -1px gtkalpha($dark_shadow, 0.025);
+  }
+  @else {
+    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15), inset 0 -1px gtkalpha($dark_shadow, 0.5);
+  }
+  
+  @if $variant != 'dark' {
+    text-shadow: 0 1px $light_shadow;
+    -gtk-icon-shadow: 0 1px $light_shadow;
+  }
+  @else {
+    text-shadow: 0 1px $dark_shadow;
+    -gtk-icon-shadow: 0 1px $dark_shadow;
+  }
 
   -gtk-outline-radius: $button_radius;
 
   &:hover {
     background-image: linear-gradient(to bottom, gtkshade($bg, 1.075), gtkshade($bg, 0.945));
-    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5), inset 0 -1px gtkalpha($dark_shadow, 0.025);
+
+    @if $variant != 'dark' {
+      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5), inset 0 -1px gtkalpha($dark_shadow, 0.025);
+    }
+    @else {
+      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15), inset 0 -1px gtkalpha($dark_shadow, 0.5);
+    }
   }
 
   &:active, &:checked {
@@ -100,9 +119,22 @@
     border-bottom-color: gtkshade($br, 0.75);
     background-color: $bg;
     background-image: linear-gradient(to bottom, gtkshade($bg, 1.075), gtkshade($bg, 0.945));
-    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5), inset 0 -1px gtkalpha($dark_shadow, 0.025);
-    text-shadow: 0 1px $light_shadow;
-    -gtk-icon-shadow: 0 1px $light_shadow;
+    
+    @if $variant != 'dark' {
+      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5), inset 0 -1px gtkalpha($dark_shadow, 0.025);
+    }
+    @else {
+      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15), inset 0 -1px gtkalpha($dark_shadow, 0.5);
+    }
+    
+    @if $variant != 'dark' {
+      text-shadow: 0 1px $light_shadow;
+      -gtk-icon-shadow: 0 1px $light_shadow;
+    }
+    @else {
+      text-shadow: 0 1px $dark_shadow;
+      -gtk-icon-shadow: 0 1px $dark_shadow;
+    }
   }
 
   &:active, &:checked {
