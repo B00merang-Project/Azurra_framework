@@ -17,15 +17,15 @@
       border: none;
       border-radius: $scrollbar_radius;
       background-clip: padding-box;
-      background-color: gtkshade($bg_color, 0.6);
+      background-color: gtkmix($bg_color, $fg_color, 0.4);
 
       &:hover {
-        background-color: gtkshade($bg_color, 0.6);
+        background-color: gtkmix($bg_color, $fg_color, 0.4);
 
-        &:active { background-color: gtkshade($bg_color, 0.55); }
+        &:active { background-color: gtkmix($bg_color, $fg_color, 0.45); }
       }
 
-      &:backdrop { background-color: gtkshade($bg_color, 0.55); }
+      &:backdrop { background-color: gtkmix($bg_color, $fg_color, 0.45); }
       &:disabled { background-color: transparent; }
     }
 

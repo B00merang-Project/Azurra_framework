@@ -1,16 +1,17 @@
 @mixin headerbar_buttons($bg, $fg, $br)
 {
-  @include flat_buttons($bg, $fg, $br);
+  @include normal_buttons($bg, $fg, $br);
 }
 
 @mixin headerbar() {
   headerbar {
     min-height: 30px;
-    padding: 12px 14px;
+    padding: 4px 8px;
     border: none;
     border-radius: 0px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
+    background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 0.965), gtkshade($titlebar_bg_color, 0.9));
     border-bottom: 1px solid gtkshade($borders, 0.9);
 
     &:backdrop {
@@ -111,21 +112,6 @@
       }
     }
   }
-  
-  .nautilus-window headerbar {
-    background-color: transparent;
-    background-image: linear-gradient(to right, $sidebar_bg_color 188px, $borders, $titlebar_bg_color 189px);
-    border-image: linear-gradient(to right, $sidebar_bg_color 188px, $borders 189px) 1 stretch;
-
-    &:backdrop {
-      background-image: linear-gradient(to right, $unfocused_bg_color 188px, $unfocused_borders, $unfocused_bg_color 189px);
-      border-image: linear-gradient(to right, $unfocused_bg_color 188px, $unfocused_borders 189px) 1 stretch;
-    }
-
-    // move header buttons away from fake sidebar portion
-    separator.titlebutton { margin-right: 100px; }
-  }
-
 
   window.ssd .titlebar {
     border-bottom: none;

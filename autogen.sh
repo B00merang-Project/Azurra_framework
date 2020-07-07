@@ -171,4 +171,4 @@ while [ "$1" != "" ]; do
 done
 
 [ ${#QUEUE[@]} -eq 0 ] && fail 'Missing target(s), aborting'
-recursive "${QUEUE[@]}"
+recursive "${QUEUE[@]}"   # iterate on eligible folders, calling function FUNC

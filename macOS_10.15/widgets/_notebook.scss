@@ -4,7 +4,7 @@
 
     &.frame {
       margin: -1px;
-      border-width: 1px;
+      border-width: 0;
       border-style: solid;
       border-color: $borders;
 
@@ -21,21 +21,24 @@
       }
     }
 
-    > stack:not(:only-child) { background-color: $base_color; }
+    > stack:not(:only-child) {
+      background-color: $base_color;
+    }
 
     tab {
       padding: 6px 20px;
       border-width: 1px;
       border-style: solid;
       border-radius: 0;
-      border-color: gtkshade($bg_color, 0.95);
+      border-color: transparent;
       color: gtkalpha($fg_color, 0.5);
-      background-color: gtkshade($bg_color, 0.95);
+      background-color: transparent;
 
       &:checked {
         color: $fg_color;
         border-color: $borders;
         background-color: $base_color;
+        background-image: linear-gradient(to bottom, gtkshade($bg_color, 0.9), gtkshade($bg_color, 0.85));
 
         &:backdrop {
           background-image: none;
@@ -45,15 +48,17 @@
       }
 
       &:backdrop {
-        border-color: gtkshade($unfocused_bg_color, 0.95);
-        background-color: gtkshade($unfocused_bg_color, 0.95);
+        background-color: transparent;
       }
     }
 
     > header {
       background-color: $bg_color;
+      background-image: linear-gradient(to bottom, gtkshade($bg_color, 0.8), gtkshade($bg_color, 0.75));
       
-      &:backdrop { background-color: $unfocused_bg_color; }
+      &:backdrop {
+        background-color: $unfocused_bg_color;
+      }
 
       &.top {
         box-shadow: 0 1px $borders;

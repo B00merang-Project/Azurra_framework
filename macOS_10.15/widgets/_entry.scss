@@ -1,13 +1,17 @@
 @mixin entry() {
   entry {
-    padding: 6px;
+    padding: 5px;
     border-width: 1px;
     border-style: solid;
     border-color: $borders;
+    border-top-color: gtkshade($borders, 1.1);
+    border-left-color: gtkshade($borders, 1.05);
+    border-right-color: gtkshade($borders, 1.05);
     border-radius: $entry_radius;
     color: $text_color;
     caret-color: currentColor;
     background-color: $base_color;
+    background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.4), gtkmix(gtkshade($bg_color, 1.2), $dark_shadow, 0.02));
 
     &:active, &:focus { box-shadow: 0 0 0 4px $selected_base_color; }
 
@@ -22,6 +26,7 @@
       &:backdrop {
         color: $unfocused_disabled_fg_color;
         border-color: $unfocused_borders;
+        background-image: none;
         background-color: $unfocused_disabled_base_color;
       }
     }
@@ -30,6 +35,7 @@
       color: $unfocused_fg_color;
       border-color: $unfocused_borders;
       background-color: $unfocused_base_color;
+      background-image: none;
     }
 
     > image {
