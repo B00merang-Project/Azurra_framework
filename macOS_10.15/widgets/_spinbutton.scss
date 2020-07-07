@@ -3,7 +3,11 @@
     &.horizontal {
       border-radius: $entry_radius;
       border: 1px solid $borders;
+      border-top-color: gtkshade($borders, 1.1);
+      border-left-color: gtkshade($borders, 1.05);
+      border-right-color: gtkshade($borders, 1.05);
       background-color: $base_color;
+      background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.4), gtkmix(gtkshade($bg_color, 1.2), $dark_shadow, 0.02));
       
       &:disabled {
         color: $disabled_fg_color;

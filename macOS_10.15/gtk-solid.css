@@ -892,7 +892,7 @@ notebook {
     background-color: transparent; }
     notebook tab:checked {
       color: #000000;
-      border-color: shade(#F5F5F5, 0.9);
+      border-color: shade(shade(#F5F5F5, 0.9), 0.9);
       background-color: #FFFFFF;
       background-image: linear-gradient(to bottom, shade(#F5F5F5, 0.9), shade(#F5F5F5, 0.85)); }
       notebook tab:checked:backdrop {
@@ -905,7 +905,7 @@ notebook {
     background-color: #F5F5F5;
     background-image: linear-gradient(to bottom, shade(#F5F5F5, 0.8), shade(#F5F5F5, 0.75)); }
     notebook > header:backdrop {
-      background-color: #E4E4E4; }
+      background-image: image(shade(#E4E4E4, 0.9)); }
     notebook > header.top {
       box-shadow: 0 1px shade(#F5F5F5, 0.9); }
       notebook > header.top > tabs > tab {

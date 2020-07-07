@@ -198,7 +198,6 @@ button {
     color: #000000;
     background-color: transparent; }
     button.flat:hover {
-      border-color: shade(#FFFFFF, 0.9);
       color: #000000;
       background-color: #FFFFFF; }
     button.flat:active, button.flat:checked {
@@ -1330,11 +1329,7 @@ separator {
 spinbutton.horizontal {
   border-radius: 8px;
   border: 1px solid shade(#FFFFFF, 0.9);
-  border-top-color: shade(shade(#FFFFFF, 0.9), 1.1);
-  border-left-color: shade(shade(#FFFFFF, 0.9), 1.05);
-  border-right-color: shade(shade(#FFFFFF, 0.9), 1.05);
-  background-color: #FFFFFF;
-  background-image: linear-gradient(to bottom, shade(#FFFFFF, 1.4), mix(shade(#FFFFFF, 1.2), black, 0.02)); }
+  background-color: #FFFFFF; }
   spinbutton.horizontal:disabled {
     color: mix(#000000, #FFFFFF, 0.5);
     background-color: shade(mix(#000000, #FFFFFF, 0.95), 1.05); }
@@ -1557,7 +1552,6 @@ headerbar {
     color: #000000;
     background-color: transparent; }
     headerbar button:hover {
-      border-color: shade(#FFFFFF, 0.9);
       color: #000000;
       background-color: #FFFFFF; }
     headerbar button:active, headerbar button:checked {
@@ -1654,7 +1648,6 @@ toolbar {
     color: #000000;
     background-color: transparent; }
     toolbar button.flat:hover {
-      border-color: shade(#FFFFFF, 0.9);
       color: #000000;
       background-color: #FFFFFF; }
     toolbar button.flat:active, toolbar button.flat:checked {
@@ -1935,11 +1928,20 @@ stackswitcher button.text-button {
   box-shadow: none; }
   stackswitcher button.text-button:active, stackswitcher button.text-button:active:hover, stackswitcher button.text-button:active:focus, stackswitcher button.text-button:checked, stackswitcher button.text-button:checked:hover, stackswitcher button.text-button:checked:focus {
     background-color: #2E7CF7;
-    background-image: linear-gradient(to bottom, shade(#2E7CF7, 1.4), shade(#2E7CF7, 1.05));
     color: #FFFFFF; }
     stackswitcher button.text-button:active:backdrop, stackswitcher button.text-button:active:hover:backdrop, stackswitcher button.text-button:active:focus:backdrop, stackswitcher button.text-button:checked:backdrop, stackswitcher button.text-button:checked:hover:backdrop, stackswitcher button.text-button:checked:focus:backdrop {
-      background-image: linear-gradient(to bottom, shade(#FBFBFB, 0.9), shade(#FBFBFB, 1.05));
+      background-color: shade(#FBFBFB, 0.7);
       color: #8C8C8C; }
+
+headerbar .linked button, headerbar .linked button:last-child {
+  border-width: 1px;
+  border-left-width: 1px;
+  border-radius: 8px; }
+
+headerbar .linked.vertical button, .linked.vertical button:last-child {
+  border-width: 1px;
+  border-top-width: 1px;
+  border-radius: 8px; }
 
 tooltip {
   border-radius: 8px;

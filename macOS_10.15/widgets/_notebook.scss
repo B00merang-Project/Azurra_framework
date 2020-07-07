@@ -21,9 +21,7 @@
       }
     }
 
-    > stack:not(:only-child) {
-      background-color: $base_color;
-    }
+    > stack:not(:only-child) { background-color: $base_color; }
 
     tab {
       padding: 6px 20px;
@@ -36,7 +34,7 @@
 
       &:checked {
         color: $fg_color;
-        border-color: $borders;
+        border-color: gtkshade($borders, 0.9);
         background-color: $base_color;
         background-image: linear-gradient(to bottom, gtkshade($bg_color, 0.9), gtkshade($bg_color, 0.85));
 
@@ -47,18 +45,14 @@
         }
       }
 
-      &:backdrop {
-        background-color: transparent;
-      }
+      &:backdrop { background-color: transparent; }
     }
 
     > header {
       background-color: $bg_color;
       background-image: linear-gradient(to bottom, gtkshade($bg_color, 0.8), gtkshade($bg_color, 0.75));
       
-      &:backdrop {
-        background-color: $unfocused_bg_color;
-      }
+      &:backdrop { background-image: image(gtkshade($unfocused_bg_color, 0.9)); }
 
       &.top {
         box-shadow: 0 1px $borders;

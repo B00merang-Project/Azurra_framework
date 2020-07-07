@@ -6,14 +6,25 @@
     &:active, &:checked {
       &, &:hover, &:focus {
         background-color: $selected_bg_color;
-        background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.4), gtkshade($selected_bg_color, 1.05));
         color: $selected_fg_color;
         
         &:backdrop {
-          background-image: linear-gradient(to bottom, gtkshade($unfocused_bg_color, 0.9), gtkshade($unfocused_bg_color, 1.05));
+          background-color: $unfocused_selected_bg_color;
           color: $unfocused_fg_color;
         }
       }
     }
-  }  
+  }
+  
+  headerbar .linked button, headerbar .linked button:last-child {
+    border-width: 1px;
+    border-left-width: 1px;
+    border-radius: $button_radius;
+  }
+  
+  headerbar .linked.vertical button, .linked.vertical button:last-child {
+    border-width: 1px;
+    border-top-width: 1px;
+    border-radius: $button_radius;
+  }
 }
