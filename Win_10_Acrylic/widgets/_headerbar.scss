@@ -148,4 +148,16 @@
       }
     }
   }
+
+  .titlebar:not(headerbar) {
+    window > &,
+    window.csd > & {
+      &, &:backdrop {
+        padding: 0;
+        background: none;
+        border: none;
+        box-shadow: none;
+      }
+    }
+  }
 }
