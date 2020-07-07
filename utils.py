@@ -175,11 +175,12 @@ def get_parents(target: str, ignore_base: bool):
             clean_line = clean(line)
 
             console += [clean_line]
-            name = line.split('/')[1]
-
+            
+            name = line.split('/')[-3]
+            
             if name not in parent_names:
                 parent_names.append(name)
-
+    
     return [console, parent_names, len(lines)]
 
 
@@ -301,8 +302,6 @@ def new(target: str, source: str, bundle: bool):
 
 # detect cross-dependencies
 def conflicts(target: str, widget: Any, ignore_base: bool):
-    print(colors.WARNING + "WARNING: bundled themes are not fully supported. Try using without bundle name prefixed. [WIP]" + colors.ENDC)
-
     parents = get_parents(target, ignore_base)[1]
     
     # child search requires last part in file path (ex. needs only 'dark' in 'B00merang/dark')
