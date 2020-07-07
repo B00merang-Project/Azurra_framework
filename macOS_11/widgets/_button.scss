@@ -1,43 +1,35 @@
 @mixin normal_buttons($bg, $fg, $br) {
-  padding: 4px 8px;
+  padding: 6px 8px;
   border-style: solid;
   border-width: 1px;
   border-radius: $button_radius;
   color: $fg;
   border-color: $br;
-  border-top-color: gtkshade($br, 1.1);
-  border-left-color: gtkshade($br, 1.05);
-  border-right-color: gtkshade($br, 1.05);
   background-color: $bg;
-  background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.4), gtkmix(gtkshade($bg_color, 1.2), $dark_shadow, 0.02));
   -gtk-outline-radius: $button_radius;
 
-  &:hover {
-    color: $fg;
-    background-color: gtkshade($bg, 1.1);
-  }
+  &:hover {}
 
   &:active, &:checked {
-    color: $selected_fg_color;
-    border-color: gtkshade($br, 0.9);
-    background-image: none;
-    background-color: gtkmix($fg, $bg, 0.5);
+    color: $fg;
+    border-color: gtkalpha($fg, 0.1);
+    background-color: gtkalpha($fg, 0.1);
 
     &:backdrop {
       color: $unfocused_fg_color;
-      border-color: gtkshade($unfocused_bg_color, 0.85);
-      background-color: gtkshade($unfocused_bg_color, 0.85);
+      border-color: gtkshade($unfocused_bg_color, 0.95);
+      background-color: gtkshade($unfocused_bg_color, 0.95);
     }
     
     &:disabled {
       color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
-      border-color: gtkmix($borders, $disabled_bg_color, 0.15);
-      background-color: gtkshade($disabled_bg_color, 0.9);
+      border-color: $disabled_bg_color;
+      background-color: $disabled_bg_color;
       
       &:backdrop {
         color: $unfocused_disabled_fg_color;
-        border-color: $unfocused_borders;
-        background-color: gtkshade($unfocused_disabled_bg_color, 0.9);
+        border-color: $unfocused_disabled_bg_color;
+        background-color: $unfocused_disabled_bg_color;
       }
     }
   }
@@ -47,14 +39,12 @@
     
     &:backdrop {
       color: $unfocused_disabled_fg_color;
-      background-image: none;
     }
   }
 
   &:backdrop {
     color: $unfocused_fg_color;
     border-color: $unfocused_borders;
-    background-image: none;
     background-color: $unfocused_bg_color;
   }
 }
@@ -65,28 +55,22 @@
   border-radius: $button_radius;
   color: $fg;
   background-color: transparent;
-  background-image: none;
 
   &:hover {
     border-color: $br;
-    border-top-color: gtkshade($br, 1.1);
-    border-left-color: gtkshade($br, 1.05);
-    border-right-color: gtkshade($br, 1.05);
     color: $fg;
     background-color: $bg;
-    background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.4), gtkmix(gtkshade($bg_color, 1.2), $dark_shadow, 0.02));
   }
 
   &:active, &:checked {
     color: $fg;
-    border-color: gtkshade($br, 0.9);
-    background-image: none;
-    background-color: gtkshade($bg, 0.5);
+    border-color: gtkalpha($fg, 0.1);
+    background-color: gtkalpha($fg, 0.1);
     
     &:backdrop {
       color: $unfocused_selected_fg_color;
-      border-color: gtkshade($unfocused_bg_color, 0.85);
-      background-color: gtkshade($unfocused_selected_bg_color, 0.6);
+      border-color: gtkshade($unfocused_bg_color, 0.95);
+      background-color: gtkshade($unfocused_bg_color, 0.95);
     }
   }
 
