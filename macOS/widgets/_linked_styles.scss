@@ -5,10 +5,12 @@
 
     &:active, &:checked {
       &, &:hover, &:focus {
+        border-color: $selected_bg_color;
         background-color: $selected_bg_color;
         color: $selected_fg_color;
         
         &:backdrop {
+          border-color: $unfocused_selected_bg_color;
           background-color: $unfocused_selected_bg_color;
           color: $unfocused_fg_color;
         }

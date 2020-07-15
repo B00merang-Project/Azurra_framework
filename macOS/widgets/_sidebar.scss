@@ -63,18 +63,17 @@
 
 @mixin sidebar() {
   filechooser, .nautilus-window, .nemo-window {
-    &.csd.background, placessidebar list {
+    placessidebar list {
       background-color: $sidebar_bg_color;
       
       &:backdrop { background-color: $unfocused_bg_color; }
     }
     
+    &.csd.background { background: transparent; }
+    
     .sidebar { @include common_sidebar(); }
   }
 
-  // mandatory override, or else opacity is reduced by half
-  .nautilus-window.csd.background { background: transparent; }
-  
   .caja-navigation-window .caja-side-pane { @include common_sidebar(); }
 
   stacksidebar {
