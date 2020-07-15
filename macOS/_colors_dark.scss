@@ -27,7 +27,7 @@ $unfocused_disabled_base_color : gtkshade($unfocused_bg_color, 1.05);
 $unfocused_disabled_text_color : $unfocused_disabled_fg_color;
 
 // Darker color scheme
-$dark_bg_color : #3B3B3B;
+$dark_bg_color : #000000;
 $dark_fg_color : #FFFFFF;
 
 // Shadows
@@ -60,22 +60,22 @@ $warning_color : #FF9900;
 // Widget colors
 $tooltip_bg_color : $dark_bg_color;
 $tooltip_fg_color : $dark_fg_color;
-$menu_bg_color : gtkalpha(gtkmix($base_color, $bg_color, 0.5), 0.9);
+$menu_bg_color : gtkalpha($dark_bg_color, 0.9);
 $menu_fg_color : $fg_color;
-$menubar_bg_color : gtkshade($bg_color, 0.9);
+$menubar_bg_color : $bg_color;
 $menubar_fg_color : $fg_color;
-$toolbar_bg_color : gtkshade($bg_color, 0.9);
+$toolbar_bg_color : $bg_color;
 $toolbar_fg_color : $fg_color;
-$sidebar_bg_color : gtkalpha($bg_color, 0.9);
+$sidebar_bg_color : gtkalpha($dark_bg_color, 0.9);
 $sidebar_fg_color : $fg_color;
-$taskbar_bg_color : #000000;
-$taskbar_fg_color : #FFFFFF;
+$taskbar_bg_color : $dark_bg_color;
+$taskbar_fg_color : $dark_fg_color;
 $titlebar_bg_color : #2F2934;
 $titlebar_fg_color : $fg_color;
 $headerbar_bg_color : $bg_color;
 $headerbar_fg_color : $fg_color;
-$terminal_bg_color : #000000;
-$terminal_fg_color : #FFFFFF;
+$terminal_bg_color : $dark_bg_color;
+$terminal_fg_color : $dark_fg_color;
 
 // OSD
 $osd_fg : $dark_fg_color;
