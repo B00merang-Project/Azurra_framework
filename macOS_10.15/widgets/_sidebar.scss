@@ -1,40 +1,51 @@
 @mixin common_sidebar() {
   row, view row, row.sidebar-row, .view, iconview {
     &, &:focus {
-      border: 3px solid transparent;
-      border-radius: $roundness;
+      border: none;
       color: $sidebar_fg_color;
       background-color: transparent;
 
       &:hover {
         color: $sidebar_fg_color;
-        background-color: gtkalpha($sidebar_fg_color, 0.05);
+        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.05);
       }
       
       &:active {
         color: $sidebar_fg_color;
-        background-color: gtkalpha($sidebar_fg_color, 0.1);
+        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.15);
       }
       
       &:backdrop { color: $unfocused_fg_color; }
       
       &:selected {
         color: $sidebar_fg_color;
-        background-color: gtkalpha($sidebar_fg_color, 0.15);
+        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.2);
         
         &:hover {
           color: $sidebar_fg_color;
-          background-color: gtkalpha($sidebar_fg_color, 0.1);
+          
+          @if $variant == 'light' {
+            background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.15);
+          }
+          @else {
+            background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.3);
+          }
         }
         
         &:active {
           color: $sidebar_fg_color;
-          background-color: gtkalpha($sidebar_fg_color, 0.15);
+          
+          @if $variant == 'light' {
+            background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.25);
+          }
+          @else {
+            background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.15);
+          }
         }
         
         &:backdrop {
           color: $unfocused_fg_color;
-          background-color: gtkalpha($sidebar_fg_color, 0.1);
+          background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.10);
         }
       }
     }
