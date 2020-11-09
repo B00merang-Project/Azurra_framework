@@ -1323,52 +1323,53 @@ separator {
   combobox separator {
     border: none; }
 
-spinbutton.horizontal {
+spinbutton {
   border: 2px solid #FFFFFF;
   border-radius: 0px;
   background-color: #000000; }
-  spinbutton.horizontal:disabled {
+  spinbutton:disabled {
     border-color: #FFFFFF;
     color: mix(#FFFFFF, #000000, 0.5);
     background-color: mix(#FFFFFF, #000000, 0.95); }
-    spinbutton.horizontal:disabled:backdrop {
+    spinbutton:disabled:backdrop {
       border-color: #FFFFFF;
       color: mix(#FFFFFF, #000000, 0.75);
       background-color: mix(#FFFFFF, #000000, 0.98); }
-  spinbutton.horizontal:backdrop {
+  spinbutton:backdrop {
     background-color: #000000;
     border-color: #FFFFFF; }
-  spinbutton.horizontal:focus {
+  spinbutton:focus {
     border-color: #3E65FF; }
-  spinbutton.horizontal entry {
+  spinbutton entry {
     padding: 7px 15px;
     border: none;
-    background: none;
-    border-radius: 0px 0 0 0px; }
-    spinbutton.horizontal entry:focus {
+    background: none; }
+    spinbutton entry:focus {
       box-shadow: none; }
-    spinbutton.horizontal entry:disabled {
+    spinbutton entry:disabled {
       background: none; }
-  spinbutton.horizontal button {
+  spinbutton button {
     border: none;
     border-radius: 0;
-    background: none;
-    box-shadow: -2px 0 #FFFFFF; }
-    spinbutton.horizontal button:disabled, spinbutton.horizontal button:backdrop {
-      box-shadow: -2px 0 #FFFFFF;
+    background: none; }
+    spinbutton button:disabled, spinbutton button:backdrop {
       background: none; }
-    spinbutton.horizontal button.up {
-      border-radius: 0 0px 0px 0; }
-spinbutton.vertical entry {
-  border-radius: 0; }
-spinbutton.vertical button.up {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-width: 0; }
-spinbutton.vertical button.down {
-  border-top-width: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0; }
+  spinbutton.horizontal entry {
+    border-radius: 0px 0 0 0px; }
+  spinbutton.horizontal button.up {
+    border-radius: 0 0px 0px 0; }
+  spinbutton.vertical entry {
+    border-radius: 0;
+    padding: 6px 7px;
+    border: none; }
+  spinbutton.vertical button.up {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-width: 0; }
+  spinbutton.vertical button.down {
+    border-top-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
 
 @keyframes spin {
   to {

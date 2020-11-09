@@ -2,16 +2,18 @@
   color: $fg;
   padding: 6px 8px;
   border-radius: $button_radius;
-  border: none;
+  border: 2px solid transparent;
   background-color: gtkmix($bg, $fg, 0.15);
-  
+  outline-width: 0;
+
+/*
   outline-color: $fg_color;
   outline-offset: 0px;
-  outline-width: 2px;
   outline-style: solid;
+*/
 
   &:hover {
-    color: $fg;
+    color: $fg;    
     box-shadow: inset 0 0 0 2px gtkalpha($fg_color, 0.4);
     background-color: gtkmix($bg, $fg, 0.15);
   }
@@ -28,6 +30,7 @@
   
   &:focus {
     box-shadow: inset 0 0 0 1px $base_color;
+    border-color: $fg;
   }
 
   &:disabled {
