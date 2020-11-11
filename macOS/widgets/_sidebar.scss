@@ -1,7 +1,9 @@
 @mixin common_sidebar() {
   row, view row, row.sidebar-row, .view, iconview {
+    margin-left: 6px;
+    margin-right: 6px;
+  
     &, &:focus {
-      border: 3px solid transparent;
       border-radius: $roundness;
       color: $sidebar_fg_color;
       background-color: transparent;
@@ -82,7 +84,7 @@
     }
 
     row {
-      padding: 10px 4px;
+      padding: 10px 1px;
       
       > label {
         padding-left: 6px;
