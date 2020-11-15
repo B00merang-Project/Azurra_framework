@@ -1272,24 +1272,29 @@ scrollbar {
     border-color: mix(#EEF2FB, #000000, 0.1);
     background-color: mix(#EEF2FB, #000000, 0.1); }
   scrollbar slider {
-    min-width: 45px;
-    min-height: 14px;
     margin: 0;
-    border: none;
-    border-radius: 0px;
-    background-clip: padding-box;
-    background-color: mix(#EEF2FB, #000000, 0.4); }
+    border: 1px solid shade(shade(#EEF2FB, 0.9), 0.9);
+    border-radius: 4px;
+    background-color: shade(#EEF2FB, 0.95);
+    box-shadow: inset 0 0 3px 1px white; }
     scrollbar slider:hover {
-      background-color: mix(#EEF2FB, #000000, 0.35); }
+      background-color: #EEF2FB; }
       scrollbar slider:hover:active {
-        background-color: mix(#EEF2FB, #000000, 0.6); }
+        background-color: shade(#EEF2FB, 0.8); }
     scrollbar slider:backdrop {
-      background-color: mix(#EEF2FB, #000000, 0.45); }
+      background-color: shade(#EEF2FB, 0.95); }
     scrollbar slider:disabled {
       background-color: transparent; }
   scrollbar.vertical slider {
     min-width: 14px;
-    min-height: 45px; }
+    min-height: 45px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
+  scrollbar.horizontal slider {
+    min-width: 45px;
+    min-height: 14px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
   scrollbar.overlay-indicator:not(.dragging):not(.hovering) {
     border: none;
     opacity: 0.7;
@@ -1299,7 +1304,7 @@ scrollbar {
       margin: 0;
       min-width: 2px;
       min-height: 2px;
-      background-color: mix(#EEF2FB, #000000, 0.6);
+      background-color: shade(#EEF2FB, 0.85);
       border: 2px solid transparent;
       border-radius: 2px; }
     scrollbar.overlay-indicator:not(.dragging):not(.hovering).horizontal slider {
@@ -2395,6 +2400,18 @@ messagedialog.csd .dialog-action-area button {
     color: #FFFFFF;
     text-shadow: none; }
 
+XfdesktopIconView .view {
+  border-radius: 0px;
+  color: #FFFFFF;
+  background-color: transparent;
+  text-shadow: 1px 1px alpha(black, 0.8); }
+  XfdesktopIconView .view:active {
+    color: #FFFFFF; }
+XfdesktopIconView:active {
+  color: #FFFFFF;
+  text-shadow: none;
+  background-color: #86B2E3; }
+
 panel-toplevel.background, panel-toplevel.background menubar {
   background-color: #2F66A8;
   color: #FFFFFF; }
@@ -2593,6 +2610,35 @@ panel-toplevel.background na-tray-applet {
       color: mix(#000000, #EEF2FB, 0.5);
       border-color: shade(shade(#EEF2FB, 0.9), 0.75);
       background-color: mix(#000000, #EEF2FB, 0.95); }
+
+#whiskermenu-button {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: bold;
+  font-style: italic;
+  font-size: 130%;
+  text-shadow: 2px 2px #000000;
+  background-image: url("../cinnamon/menu-box.png");
+  background-size: 100% 100%;
+  padding-right: 100px; }
+  #whiskermenu-button:hover {
+    background-image: url("../cinnamon/menu-hover.png"); }
+  #whiskermenu-button:active, #whiskermenu-button:checked {
+    background-image: url("../cinnamon/menu-active.png"); }
+
+#whiskermenu-window {
+  padding: 2px;
+  background-color: #508ad7; }
+  #whiskermenu-window border {
+    border: 1px solid #4c7cb6; }
+  #whiskermenu-window > frame > stack > box > box:first-child {
+    margin: -2px;
+    margin-bottom: -6px;
+    background-image: url("../cinnamon/menu-top.png");
+    background-size: 100% 100%; }
+  #whiskermenu-window > frame > stack > box > box:last-child {
+    background-image: url("../cinnamon/menu-bottom.png");
+    margin: -2px;
+    padding: 2px; }
 
 .nemo-window .nemo-window-pane widget.entry {
   border: 1px solid;
