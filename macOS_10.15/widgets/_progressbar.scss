@@ -7,11 +7,32 @@
 
     progress {
       border: none;
-      border-radius: $progressbar_radius;
+      border-radius: 1px;
       background-color: $selected_bg_color;
 
       &:backdrop {
         background-color: $unfocused_selected_bg_color;
+      }
+      
+      // alignments
+      &.left {
+       border-top-left-radius: $progressbar_radius;
+       border-bottom-left-radius: $progressbar_radius;
+      }
+
+      &.right {
+       border-top-right-radius: $progressbar_radius;
+       border-bottom-right-radius: $progressbar_radius;
+      }
+
+      &.top {
+       border-top-right-radius: $progressbar_radius;
+       border-top-left-radius: $progressbar_radius;
+      }
+
+      &.bottom {
+       border-bottom-right-radius: $progressbar_radius;
+       border-bottom-left-radius: $progressbar_radius;
       }
     }
 

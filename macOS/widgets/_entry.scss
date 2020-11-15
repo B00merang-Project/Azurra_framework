@@ -4,10 +4,14 @@
     border-width: 1px;
     border-style: solid;
     border-color: $borders;
+    border-left-color: gtkshade($borders, 0.95);
+    border-right-color: gtkshade($borders, 0.95);
+    border-bottom-color: gtkshade($borders, 0.9);
     border-radius: $entry_radius;
     color: $text_color;
     caret-color: currentColor;
     background-color: $base_color;
+    box-shadow: 0 0 2px 0 gtkalpha($dark_shadow, 0.1);
 
     &:active, &:focus { box-shadow: 0 0 0 4px $selected_base_color; }
 
