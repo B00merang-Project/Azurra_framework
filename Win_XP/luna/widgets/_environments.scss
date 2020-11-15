@@ -10,6 +10,23 @@
       text-shadow: none;
     }
   }
+  
+  XfdesktopIconView {
+    .view {
+      border-radius: $view_radius;
+      color: $desktop_item_fg;
+      background-color: transparent;
+      text-shadow: 1px 1px $desktop_item_text_shadow;
+     
+      &:active { color: $desktop_item_fg; }
+    }
+    
+    &:active {
+      color: $desktop_item_selected_fg;
+      text-shadow: none;
+      background-color: $selected_bg_color;
+    }
+  }
 }
 
 @mixin tasklist_button() {
@@ -119,6 +136,45 @@
       label#summary { font-weight: bold; }
       
       button { @include normal_buttons($bg_color, $fg_color, $borders); }
+    }
+  }
+  
+  // whisker menu
+  #whiskermenu-button {
+    color: $whisker_button_fg_color;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 130%;
+    text-shadow: 2px 2px $whisker_button_shadow;
+    background-image: url('../cinnamon/menu-box.png');
+    background-size: 100% 100%;
+    padding-right: 100px;
+    
+    &:hover {
+      background-image: url('../cinnamon/menu-hover.png');
+    }
+    &:active, &:checked {
+      background-image: url('../cinnamon/menu-active.png');
+    }
+  }
+  
+  #whiskermenu-window {
+    padding: 2px;
+    background-color: $whisker_bg_color;
+    
+    border { border: 1px solid $whisker_borders; }
+    
+    > frame > stack > box > box:first-child {
+      margin: -2px;
+      margin-bottom: -6px;
+      background-image: url('../cinnamon/menu-top.png');
+      background-size: 100% 100%;
+    }
+    
+    > frame > stack > box > box:last-child {
+      background-image: url('../cinnamon/menu-bottom.png');
+      margin: -2px;
+      padding: 2px;
     }
   }
 }

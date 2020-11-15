@@ -10,6 +10,23 @@
       text-shadow: none;
     }
   }
+  
+  XfdesktopIconView {
+    .view {
+      border-radius: $view_radius;
+      color: $desktop_item_fg;
+      background-color: transparent;
+      text-shadow: 1px 1px $desktop_item_text_shadow;
+     
+      &:active { color: $desktop_item_fg; }
+    }
+    
+    &:active {
+      color: $desktop_item_selected_fg;
+      text-shadow: none;
+      background-color: $selected_bg_color;
+    }
+  }
 }
 
 @mixin tasklist_button() {
@@ -44,7 +61,7 @@
   background-color: gtkalpha($taskbar_bg_color, 0.6);
   border-radius: 0;
   border: none;
-  box-shadow: inset 0 1px gtkalpha($light_shadow, 0.4);
+  box-shadow: inset 0 1px gtkalpha($light_shadow, 0.8);
 
   &:hover {
     border: none;

@@ -6,6 +6,23 @@
     &:active { color: $desktop_item_fg; }
     &:selected { color: $desktop_item_selected_fg; text-shadow: none; }
   }
+  
+  XfdesktopIconView {
+    .view {
+      border-radius: $view_radius;
+      color: $desktop_item_fg;
+      background-color: transparent;
+      text-shadow: 1px 1px $desktop_item_text_shadow;
+     
+      &:active { color: $desktop_item_fg; }
+    }
+    
+    &:active {
+      color: $desktop_item_selected_fg;
+      text-shadow: none;
+      background-color: $selected_bg_color;
+    }
+  }
 }
 
 @mixin taskbar_button() {
