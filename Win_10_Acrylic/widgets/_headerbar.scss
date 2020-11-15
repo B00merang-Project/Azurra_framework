@@ -21,7 +21,7 @@
     .maximized &, .maximized &:backdrop {
       border-radius: 0;
     }
-    
+
     // Fixes split headerbars
     separator:first-child + &,
     &:first-child {
@@ -145,6 +145,16 @@
           &:hover { background-image: url('assets/restore-focused.png'); }
           &:active { background-image: url('assets/restore-focused.png'); }
         }
+      }
+    }
+
+    &:not(.titlebar) {
+      color: $fg_color;
+      background-color: $bg_color;
+
+      &:backdrop {
+        color: $unfocused_fg_color;
+        background-color: $unfocused_bg_color;
       }
     }
   }
