@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import os
+import os, argparse
 
 IMPORTS_FILENAME = "_imports.scss"
 BUNDLE_FILENAME = "bundle.conf"
@@ -148,7 +148,7 @@ def get_children(theme: str, widget: str):
 
     for idx in range(len(themes)):
         for pack in imports[idx]:
-            if filter_theme(pack[0], theme) and filter_widget(pack[1], widget):
+            if filter_theme(pack[0], theme) and (widget == "" or filter_widget(pack[1], widget)):
                 children.append([themes[idx], pack[1]])
 
                 if themes[idx] not in child_list:
@@ -212,4 +212,38 @@ def conflicts(theme: str):
 # parents(TEST_THEME, TEST_PARENT, TEST_WIDGET)
 # children(TEST_THEME, TEST_WIDGET)
 # implementations(TEST_THEME)
-conflicts(TEST_THEME)
+# conflicts(TEST_THEME)
+
+def main():
+
+    parser = argparse.ArgumentParser(description="Azurra Utils, a management script for the Azurra framework")
+    ops = parser.add_mutually_exclusive_group()
+    optargs = parser.add_mutually_exclusive_group()
+
+    # operational arguments
+    ops.add_argument("-p", "--parents", type=str, help='Shows external dependencies for <TARGET> theme')
+    ops.add_argument("-c", "--children", type=str, help='Shows themes depending on <TARGET> theme')
+    ops.add_argument("-i", "--implementations", type=str, help='Shows unique widgets for <TARGET>')
+    ops.add_argument("-x", "--conflicts", type=str, help='Detect if theme is cross-dependent on any child')
+
+    # optional arguments
+    optargs.add_argument("-w", "--widget", type=str, help='Filter dependencies to <WIDGET>')
+
+    # pretty args
+    parser.add_argument("-v", "--version", action='version', version='Azurra Utils, version 0.3 beta',
+                        help='Shows script version and exists')
+    args = parser.parse_args()
+    
+    if args.parents:
+        parents(args.parents, args.widget)
+
+    elif args.children:
+        children(args.children, args.widget)
+
+    elif args.implementations:
+        implementations(args.singletons)
+    
+    elif args.conflicts:
+        conflicts(args.conflicts)
+
+if __name__ == "__main__": main()
