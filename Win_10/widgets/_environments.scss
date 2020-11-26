@@ -118,6 +118,12 @@
       button { @include normal_buttons($bg_color, $fg_color, $borders); }
     }
   }
+  
+  // workspace switcher
+  wnck-pager {
+    &:hover { background-color: $selected_bg_color; }
+    &:selected { background-color: gtkshade($selected_bg_color, 0.88); }
+  }
 }
 
 @mixin mate() {
