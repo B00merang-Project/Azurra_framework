@@ -2963,6 +2963,16 @@ panel-toplevel.background na-tray-applet {
   background-color: #2f2f2f; }
   #whiskermenu-window border {
     border: 1px solid #080808; }
+  #whiskermenu-window .view {
+    color: #ffffff;
+    background-color: #666666; }
+    #whiskermenu-window .view:hover, #whiskermenu-window .view:selected {
+      color: #FFFFFF;
+      background-color: #C55815; }
+  #whiskermenu-window > frame > stack button {
+    color: #ffffff; }
+    #whiskermenu-window > frame > stack button:hover, #whiskermenu-window > frame > stack button:active, #whiskermenu-window > frame > stack button:checked {
+      color: #000000; }
   #whiskermenu-window > frame > stack > box > box:first-child {
     margin: -2px;
     margin-bottom: -6px;
@@ -2972,6 +2982,11 @@ panel-toplevel.background na-tray-applet {
     background-image: url("../cinnamon/menu-bottom.png");
     margin: -2px;
     padding: 2px; }
+
+wnck-pager:hover {
+  background-color: #C55815; }
+wnck-pager:selected {
+  background-color: #a4501c; }
 
 .nemo-window .nemo-window-pane widget.entry {
   border: 1px solid;

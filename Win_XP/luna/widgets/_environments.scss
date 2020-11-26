@@ -164,6 +164,17 @@
     
     border { border: 1px solid $whisker_borders; }
     
+    .view {
+      color: $whisker_text_color;
+      background-color: $whisker_base_color;
+      
+      &:hover, &:selected { color: $selected_fg_color; background-color: $selected_bg_color; }
+    }
+    
+    > frame > stack button { color: $whisker_fg_color;
+      &:hover, &:active, &:checked { color: $fg_color; }
+    }
+    
     > frame > stack > box > box:first-child {
       margin: -2px;
       margin-bottom: -6px;
@@ -176,6 +187,12 @@
       margin: -2px;
       padding: 2px;
     }
+  }
+  
+  // workspace switcher
+  wnck-pager {
+    &:hover { background-color: $selected_bg_color; }
+    &:selected { background-color: gtkshade($selected_bg_color, 0.88); }
   }
 }
 
