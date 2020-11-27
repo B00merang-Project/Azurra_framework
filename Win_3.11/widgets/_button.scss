@@ -7,12 +7,13 @@
   border-color: $br;
   background-color: $bg;
   box-shadow: inset -2px 0 gtkshade($bg, 0.65), inset 0 -2px gtkshade($bg, 0.65), inset 1px 0 $light_shadow, inset 0 1px $light_shadow;
-  -gtk-outline-radius: 4px;
-  outline-color: $fg;
-  outline-offset: 0;
-  outline-style: solid;
+  outline-offset: -5px;
 
   &:hover {
+  }
+  
+  &:focus {
+    box-shadow: inset -3px 0 gtkshade($bg, 0.65), inset 0 -3px gtkshade($bg, 0.65), inset 2px 0 $light_shadow, inset 0 2px $light_shadow, inset 0 0 0 1px $dark_shadow;
   }
 
   &:active {
@@ -30,6 +31,8 @@
     background-color: $bg;
     background-image: linear-gradient(to bottom left, $base_color 33%, $bg 34%, $bg 66%, $base_color 67%);
     background-size: 3px 3px, auto;
+    
+    &:focus { box-shadow: inset 0 0 0 1px $dark_shadow; }
 
     &:disabled {
       color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
