@@ -57,10 +57,11 @@
   color: $taskbar_fg_color;
   text-shadow: 1px 1px $dark_shadow;
   background-image: url('../cinnamon/panel.png');
-  background-size: 1px 100%;
+  background-size: 100% 100%;
   background-color: transparent;
   border-radius: 0;
   border: none;
+  box-shadow: none;
 
   &:hover {
     border: none;
@@ -152,14 +153,18 @@
 @mixin mate() {
   .mate-panel-menu-bar menubar > menuitem {
     color: $taskbar_fg_color;
-    background-color: $taskbar_bg_color;  
+    background-color: transparent;
   }
+  
+  .mate-panel-menu-bar menubar { background: transparent; }
 
   .mate-panel-menu-bar {
     color: $taskbar_fg_color;
-    background-color: $taskbar_bg_color;
+    background-color: transparent;
+    background-image: url('../cinnamon/panel.png');
+    background-size: 100% 100%;
 
-    &, .menubar { background-color: $taskbar_bg_color; }
+    &, .menubar { background-color: transparent; }
 
     menubar, menubar menuitem, togglebutton {
       border-color: transparent;
@@ -185,9 +190,9 @@
       &:disabled { color: $disabled_fg_color; }
     }
 
-    > button, > button.flat { background-color: transparent; }
+    button, button.flat { @include panel_button(); }
 
-    .button:not(#tasklist-button) { @include panel_button(); }
+    > .button:not(#tasklist-button) { @include panel_button(); }
 
     #tasklist-button { @include tasklist_button(); }
 

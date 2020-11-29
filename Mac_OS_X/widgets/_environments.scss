@@ -1,3 +1,5 @@
+// NOTE: this should mirror the Azurra environments module, save for panel image customizations
+
 @mixin desktop_icons() {
   .caja-desktop, .nemo-desktop.nemo-canvas-item, .nautilus-desktop.nautilus-canvas-item {
     color: $desktop_item_fg;
@@ -32,6 +34,7 @@
 @mixin tasklist_button() {
   color: $taskbar_fg_color;
   background-color: $taskbar_bg_color;
+  background-image: url('../cinnamon/panel.png');
   border-radius: 0;
   border: none;
 
@@ -119,12 +122,13 @@
 @mixin mate() {
   .mate-panel-menu-bar menubar > menuitem {
     color: $taskbar_fg_color;
-    background-color: $taskbar_bg_color;  
+    background-color: $taskbar_bg_color;
   }
-
+  
   .mate-panel-menu-bar {
     color: $taskbar_fg_color;
     background-color: $taskbar_bg_color;
+    background-image: url('../cinnamon/panel.png');
 
     &, .menubar { background-color: $taskbar_bg_color; }
 

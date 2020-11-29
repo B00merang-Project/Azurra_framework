@@ -2433,36 +2433,82 @@ panel-toplevel.background menubar > menuitem, panel-toplevel.background menubar 
 panel-toplevel.background menubar > menuitem:hover, panel-toplevel.background menubar > menuitem:hover label:backdrop {
   color: #FFFFFF; }
 panel-toplevel.background button {
+  padding: 4px 8px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
   color: #000000;
+  border-color: #767a87;
+  border-top-color: #b8bac4;
+  border-left-color: #acafba;
+  border-right-color: #acafba;
   background-color: #E8E9ED;
-  border-radius: 0;
-  border: none; }
+  background-image: linear-gradient(to bottom, white, #E8E9ED, #f5f6f7);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+  -gtk-outline-radius: 5px; }
   panel-toplevel.background button:hover {
-    border: none;
+    border-color: #64666f;
+    border-top-color: #acafba;
+    border-left-color: #969aa6;
+    border-right-color: #969aa6;
     color: #000000;
-    background-color: white; }
+    background-color: white;
+    box-shadow: inset 0 -9px 4px 0 rgba(255, 255, 255, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.7), inset 0 8px 4px 0 rgba(255, 255, 255, 0.4); }
   panel-toplevel.background button:active, panel-toplevel.background button:checked {
-    color: #FFFFFF;
-    border: none;
-    box-shadow: none;
-    background-image: none;
-    background-color: #4B6983; }
+    border-color: #717f8c;
+    border-top-color: #383b3d;
+    border-left-color: #59626a;
+    border-right-color: #59626a;
+    background-color: #6e717c;
+    background-image: linear-gradient(to bottom, #a4b0bb, #99a6b2, #b9c3cd);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3); }
+    panel-toplevel.background button:active:disabled, panel-toplevel.background button:checked:disabled {
+      color: #0c0c0c; }
+  panel-toplevel.background button:active {
+    color: #FFFFFF; }
+  panel-toplevel.background button:disabled {
+    color: #3a3b3c; }
+  panel-toplevel.background button:backdrop {
+    color: #000000; }
 
 #tasklist-button {
+  padding: 4px 8px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
   color: #000000;
+  border-color: #767a87;
+  border-top-color: #b8bac4;
+  border-left-color: #acafba;
+  border-right-color: #acafba;
   background-color: #E8E9ED;
-  border-radius: 0;
-  border: none; }
+  background-image: linear-gradient(to bottom, white, #E8E9ED, #f5f6f7);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+  -gtk-outline-radius: 5px; }
   #tasklist-button:hover {
-    border: none;
+    border-color: #64666f;
+    border-top-color: #acafba;
+    border-left-color: #969aa6;
+    border-right-color: #969aa6;
     color: #000000;
-    background-color: white; }
+    background-color: white;
+    box-shadow: inset 0 -9px 4px 0 rgba(255, 255, 255, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.7), inset 0 8px 4px 0 rgba(255, 255, 255, 0.4); }
   #tasklist-button:active, #tasklist-button:checked {
-    color: #FFFFFF;
-    border: none;
-    box-shadow: none;
-    background-image: none;
-    background-color: #4B6983; }
+    border-color: #717f8c;
+    border-top-color: #383b3d;
+    border-left-color: #59626a;
+    border-right-color: #59626a;
+    background-color: #6e717c;
+    background-image: linear-gradient(to bottom, #a4b0bb, #99a6b2, #b9c3cd);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3); }
+    #tasklist-button:active:disabled, #tasklist-button:checked:disabled {
+      color: #0c0c0c; }
+  #tasklist-button:active {
+    color: #FFFFFF; }
+  #tasklist-button:disabled {
+    color: #3a3b3c; }
+  #tasklist-button:backdrop {
+    color: #000000; }
   #tasklist-button label {
     color: rgba(0, 0, 0, 0.7); }
     #tasklist-button label:hover {
@@ -2478,11 +2524,16 @@ panel-toplevel.background na-tray-applet {
   color: #000000;
   background-color: #E8E9ED; }
 
+.mate-panel-menu-bar menubar {
+  background: transparent;
+  box-shadow: none; }
+
 .mate-panel-menu-bar {
   color: #000000;
-  background-color: #E8E9ED; }
+  background-color: #E8E9ED;
+  background-image: linear-gradient(to bottom, #E8E9ED, rgba(232, 233, 237, 0.35)); }
   .mate-panel-menu-bar, .mate-panel-menu-bar .menubar {
-    background-color: #E8E9ED; }
+    background-color: transparent; }
   .mate-panel-menu-bar menubar, .mate-panel-menu-bar menubar menuitem, .mate-panel-menu-bar togglebutton {
     border-color: transparent;
     background-color: transparent; }
@@ -2500,35 +2551,81 @@ panel-toplevel.background na-tray-applet {
   .mate-panel-menu-bar button, .mate-panel-menu-bar button.flat {
     background-color: transparent; }
   .mate-panel-menu-bar > .button:not(#tasklist-button) {
+    padding: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
     color: #000000;
+    border-color: #767a87;
+    border-top-color: #b8bac4;
+    border-left-color: #acafba;
+    border-right-color: #acafba;
     background-color: #E8E9ED;
-    border-radius: 0;
-    border: none; }
+    background-image: linear-gradient(to bottom, white, #E8E9ED, #f5f6f7);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+    -gtk-outline-radius: 5px; }
     .mate-panel-menu-bar > .button:not(#tasklist-button):hover {
-      border: none;
+      border-color: #64666f;
+      border-top-color: #acafba;
+      border-left-color: #969aa6;
+      border-right-color: #969aa6;
       color: #000000;
-      background-color: white; }
+      background-color: white;
+      box-shadow: inset 0 -9px 4px 0 rgba(255, 255, 255, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.7), inset 0 8px 4px 0 rgba(255, 255, 255, 0.4); }
     .mate-panel-menu-bar > .button:not(#tasklist-button):active, .mate-panel-menu-bar > .button:not(#tasklist-button):checked {
-      color: #FFFFFF;
-      border: none;
-      box-shadow: none;
-      background-image: none;
-      background-color: #4B6983; }
+      border-color: #717f8c;
+      border-top-color: #383b3d;
+      border-left-color: #59626a;
+      border-right-color: #59626a;
+      background-color: #6e717c;
+      background-image: linear-gradient(to bottom, #a4b0bb, #99a6b2, #b9c3cd);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3); }
+      .mate-panel-menu-bar > .button:not(#tasklist-button):active:disabled, .mate-panel-menu-bar > .button:not(#tasklist-button):checked:disabled {
+        color: #0c0c0c; }
+    .mate-panel-menu-bar > .button:not(#tasklist-button):active {
+      color: #FFFFFF; }
+    .mate-panel-menu-bar > .button:not(#tasklist-button):disabled {
+      color: #3a3b3c; }
+    .mate-panel-menu-bar > .button:not(#tasklist-button):backdrop {
+      color: #000000; }
   .mate-panel-menu-bar #tasklist-button {
+    padding: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
     color: #000000;
+    border-color: #767a87;
+    border-top-color: #b8bac4;
+    border-left-color: #acafba;
+    border-right-color: #acafba;
     background-color: #E8E9ED;
-    border-radius: 0;
-    border: none; }
+    background-image: linear-gradient(to bottom, white, #E8E9ED, #f5f6f7);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+    -gtk-outline-radius: 5px; }
     .mate-panel-menu-bar #tasklist-button:hover {
-      border: none;
+      border-color: #64666f;
+      border-top-color: #acafba;
+      border-left-color: #969aa6;
+      border-right-color: #969aa6;
       color: #000000;
-      background-color: white; }
+      background-color: white;
+      box-shadow: inset 0 -9px 4px 0 rgba(255, 255, 255, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.7), inset 0 8px 4px 0 rgba(255, 255, 255, 0.4); }
     .mate-panel-menu-bar #tasklist-button:active, .mate-panel-menu-bar #tasklist-button:checked {
-      color: #FFFFFF;
-      border: none;
-      box-shadow: none;
-      background-image: none;
-      background-color: #4B6983; }
+      border-color: #717f8c;
+      border-top-color: #383b3d;
+      border-left-color: #59626a;
+      border-right-color: #59626a;
+      background-color: #6e717c;
+      background-image: linear-gradient(to bottom, #a4b0bb, #99a6b2, #b9c3cd);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3); }
+      .mate-panel-menu-bar #tasklist-button:active:disabled, .mate-panel-menu-bar #tasklist-button:checked:disabled {
+        color: #0c0c0c; }
+    .mate-panel-menu-bar #tasklist-button:active {
+      color: #FFFFFF; }
+    .mate-panel-menu-bar #tasklist-button:disabled {
+      color: #3a3b3c; }
+    .mate-panel-menu-bar #tasklist-button:backdrop {
+      color: #000000; }
   .mate-panel-menu-bar PanelSeparator {
     color: #9c9fac;
     padding-top: 4px;
@@ -2564,35 +2661,81 @@ panel-toplevel.background na-tray-applet {
 .xfce4-panel.panel {
   background-color: #E8E9ED; }
   .xfce4-panel.panel button.flat, .xfce4-panel.panel button.sidebar-button {
+    padding: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
     color: #000000;
+    border-color: #767a87;
+    border-top-color: #b8bac4;
+    border-left-color: #acafba;
+    border-right-color: #acafba;
     background-color: #E8E9ED;
-    border-radius: 0;
-    border: none; }
+    background-image: linear-gradient(to bottom, white, #E8E9ED, #f5f6f7);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+    -gtk-outline-radius: 5px; }
     .xfce4-panel.panel button.flat:hover, .xfce4-panel.panel button.sidebar-button:hover {
-      border: none;
+      border-color: #64666f;
+      border-top-color: #acafba;
+      border-left-color: #969aa6;
+      border-right-color: #969aa6;
       color: #000000;
-      background-color: white; }
+      background-color: white;
+      box-shadow: inset 0 -9px 4px 0 rgba(255, 255, 255, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.7), inset 0 8px 4px 0 rgba(255, 255, 255, 0.4); }
     .xfce4-panel.panel button.flat:active, .xfce4-panel.panel button.flat:checked, .xfce4-panel.panel button.sidebar-button:active, .xfce4-panel.panel button.sidebar-button:checked {
-      color: #FFFFFF;
-      border: none;
-      box-shadow: none;
-      background-image: none;
-      background-color: #4B6983; }
+      border-color: #717f8c;
+      border-top-color: #383b3d;
+      border-left-color: #59626a;
+      border-right-color: #59626a;
+      background-color: #6e717c;
+      background-image: linear-gradient(to bottom, #a4b0bb, #99a6b2, #b9c3cd);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3); }
+      .xfce4-panel.panel button.flat:active:disabled, .xfce4-panel.panel button.flat:checked:disabled, .xfce4-panel.panel button.sidebar-button:active:disabled, .xfce4-panel.panel button.sidebar-button:checked:disabled {
+        color: #0c0c0c; }
+    .xfce4-panel.panel button.flat:active, .xfce4-panel.panel button.sidebar-button:active {
+      color: #FFFFFF; }
+    .xfce4-panel.panel button.flat:disabled, .xfce4-panel.panel button.sidebar-button:disabled {
+      color: #3a3b3c; }
+    .xfce4-panel.panel button.flat:backdrop, .xfce4-panel.panel button.sidebar-button:backdrop {
+      color: #000000; }
   .xfce4-panel.panel .tasklist button {
+    padding: 4px 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
     color: #000000;
+    border-color: #767a87;
+    border-top-color: #b8bac4;
+    border-left-color: #acafba;
+    border-right-color: #acafba;
     background-color: #E8E9ED;
-    border-radius: 0;
-    border: none; }
+    background-image: linear-gradient(to bottom, white, #E8E9ED, #f5f6f7);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+    -gtk-outline-radius: 5px; }
     .xfce4-panel.panel .tasklist button:hover {
-      border: none;
+      border-color: #64666f;
+      border-top-color: #acafba;
+      border-left-color: #969aa6;
+      border-right-color: #969aa6;
       color: #000000;
-      background-color: white; }
+      background-color: white;
+      box-shadow: inset 0 -9px 4px 0 rgba(255, 255, 255, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.7), inset 0 8px 4px 0 rgba(255, 255, 255, 0.4); }
     .xfce4-panel.panel .tasklist button:active, .xfce4-panel.panel .tasklist button:checked {
-      color: #FFFFFF;
-      border: none;
-      box-shadow: none;
-      background-image: none;
-      background-color: #4B6983; }
+      border-color: #717f8c;
+      border-top-color: #383b3d;
+      border-left-color: #59626a;
+      border-right-color: #59626a;
+      background-color: #6e717c;
+      background-image: linear-gradient(to bottom, #a4b0bb, #99a6b2, #b9c3cd);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3); }
+      .xfce4-panel.panel .tasklist button:active:disabled, .xfce4-panel.panel .tasklist button:checked:disabled {
+        color: #0c0c0c; }
+    .xfce4-panel.panel .tasklist button:active {
+      color: #FFFFFF; }
+    .xfce4-panel.panel .tasklist button:disabled {
+      color: #3a3b3c; }
+    .xfce4-panel.panel .tasklist button:backdrop {
+      color: #000000; }
 
 #XfceNotifyWindow.osd {
   background-color: #E8E9ED;

@@ -29,6 +29,12 @@
   }
 }
 
+@mixin tasklist_button() {
+  @include normal_buttons($taskbar_bg_color, $taskbar_fg_color, $borders);
+}
+
+@mixin panel_button() { @include tasklist_button(); }
+
 @mixin gnome_flashback() {
   panel-toplevel.background {
     &, menubar {
@@ -42,35 +48,18 @@
 
     menubar > menuitem:hover, menubar > menuitem:hover label:backdrop { color: $selected_fg_color; }
 
-    button {
-      background-color: $taskbar_bg_color;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-      color: $taskbar_fg_color;
-
-      &:active, &:checked {
-        background-color: gtkshade($taskbar_bg_color, 0.8);
-        border: none;
-        box-shadow: none;
-        color: $taskbar_fg_color;
-      }
-    }
+    button { @include panel_button(); }
   }
 
-  #tasklist-button, #tasklist-button label {
-    color: gtkalpha($taskbar_fg_color, 0.7);
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    background-color: transparent;
-
-    &:hover {
+  #tasklist-button {
+    @include tasklist_button();
+  
+    label {
       color: gtkalpha($taskbar_fg_color, 0.7);
-      background-color: transparent;
-    }
 
-    &:checked { color: $taskbar_fg_color; }
+      &:hover { color: gtkalpha($taskbar_fg_color, 0.7); }
+      &:checked { color: $taskbar_fg_color; }
+    }
   }
 
   panel-toplevel.background na-tray-applet {
@@ -83,22 +72,9 @@
   .xfce4-panel.panel {
     background-color: $taskbar_bg_color;
 
-    button.flat, button.sidebar-button {
-      color: $taskbar_fg_color;
-      background-color: $taskbar_bg_color;
-      border-radius: 0;
-      border: none;
-
-      &:hover {
-        border: none;
-        background-color: gtkshade($taskbar_bg_color, 1.1);
-      }
-      &:active, &:checked {
-        color: $selected_bg_color;
-        border: none;
-        background-color: gtkshade($taskbar_bg_color, 0.93);
-      }
-    }
+    button.flat, button.sidebar-button { @include panel_button(); }
+    
+    .tasklist button { @include tasklist_button(); }
   }
   
   #XfceNotifyWindow {
@@ -107,10 +83,10 @@
       color: $fg_color;
       border-radius: $roundness;
       border: none;
-
+      
       label #summary { font-weight: bold; }
-
-      button { @include normal_buttons(transparent, $fg_color, transparent); }
+      
+      button { @include normal_buttons($bg_color, $fg_color, $borders); }
     }
   }
   
@@ -124,14 +100,17 @@
 @mixin mate() {
   .mate-panel-menu-bar menubar > menuitem {
     color: $taskbar_fg_color;
-    background-color: $taskbar_bg_color;  
+    background-color: $taskbar_bg_color;
   }
+  
+  .mate-panel-menu-bar menubar { background: transparent; box-shadow: none; }
 
   .mate-panel-menu-bar {
     color: $taskbar_fg_color;
     background-color: $taskbar_bg_color;
+    background-image: linear-gradient(to bottom, $taskbar_bg_color, gtkalpha($taskbar_bg_color, 0.35));
 
-    &, .menubar { background-color: $taskbar_bg_color; }
+    &, .menubar { background-color: transparent; }
 
     menubar, menubar menuitem, togglebutton {
       border-color: transparent;
@@ -156,42 +135,12 @@
 
       &:disabled { color: $disabled_fg_color; }
     }
-    
+
     button, button.flat { background-color: transparent; }
 
-    > .button:not(#tasklist-button) { 
-      color: $taskbar_fg_color;
-      border-radius: 0;
-      border: none;
-      background-color: $taskbar_bg_color;
+    > .button:not(#tasklist-button) { @include panel_button(); }
 
-      &:hover {
-        border: none;
-        background-color: gtkshade($taskbar_bg_color, 1.1);
-      }
-
-      &:active, &:checked {
-        color: $selected_fg_color;
-        border: none;
-        background-color: $selected_bg_color;
-      }
-    }
-
-    #tasklist-button {
-      color: $taskbar_fg_color;
-      border-radius: 0;
-      border: none;
-      padding-bottom: 0;
-      padding-top: 0;
-
-      &:hover { background-color: gtkshade($taskbar_bg_color, 1.1); }
-
-      &:checked,
-      &:active {
-        color: $selected_fg_color;
-        background-color: $selected_bg_color;
-      }
-    }
+    #tasklist-button { @include tasklist_button(); }
 
     PanelSeparator {
       color: gtkshade($taskbar_bg_color, 0.7);
