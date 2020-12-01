@@ -2,17 +2,12 @@
 
 import os, argparse
 
-IMPORTS_FILENAME = "_imports.scss"
 BUNDLE_FILENAME = "bundle.conf"
+IMPORTS_FILENAME = "_imports.scss"
 THEME_CONFIG_FILENAME = "theme.conf"
 
-UPPER_DIR_INDICATOR = "../"
-
-TEST_THEME = "Win_XP/luna"
-TEST_PARENT = "Azurra"
-TEST_WIDGET = ""
-
 EMPTY = ""
+UPPER_DIR_INDICATOR = "../"
 
 CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
@@ -44,13 +39,19 @@ def clean(line: str):
 
     return line
 
+def is_empty(value):
+    if value == "" or value == None:
+        return True
+    else:
+        return False
+
 def split(line: str):
     line = line.strip(UPPER_DIR_INDICATOR)
 
     return [line.split('/widgets/')[0], line.split('/widgets/')[1]]
 
 def filter_theme(pack_theme, theme: str):
-    if theme != EMPTY:
+    if not is_empty(theme):
         if pack_theme == theme:
             return True
         else:
@@ -62,7 +63,7 @@ def filter_theme(pack_theme, theme: str):
         return True
 
 def filter_widget(pack_widget, widget: str):
-    if widget != EMPTY:
+    if not is_empty(widget):
         if pack_widget == widget:
             return True
         else:
@@ -148,7 +149,7 @@ def get_children(theme: str, widget: str):
 
     for idx in range(len(themes)):
         for pack in imports[idx]:
-            if filter_theme(pack[0], theme) and (widget == "" or filter_widget(pack[1], widget)):
+            if filter_theme(pack[0], theme) and (is_empty(widget) or filter_widget(pack[1], widget)):
                 children.append([themes[idx], pack[1]])
 
                 if themes[idx] not in child_list:
@@ -204,7 +205,7 @@ def conflicts(theme: str):
     for theme in parents:
         for child in children:
             if filter_theme(child, theme) or filter_theme(theme, child):
-                print(f"CRITICAL: {parent} is also a child!")
+                print(f"CRITICAL: {theme} is also a child!")
                 return
     
     print("No cross-dependencies found")
@@ -213,6 +214,10 @@ def conflicts(theme: str):
 # children(TEST_THEME, TEST_WIDGET)
 # implementations(TEST_THEME)
 # conflicts(TEST_THEME)
+
+TEST_THEME = "Win_XP/luna"
+TEST_PARENT = "Azurra"
+TEST_WIDGET = ""
 
 def main():
 
@@ -235,13 +240,13 @@ def main():
     args = parser.parse_args()
     
     if args.parents:
-        parents(args.parents, args.widget)
+        parents(args.parents, EMPTY, args.widget)
 
     elif args.children:
         children(args.children, args.widget)
 
     elif args.implementations:
-        implementations(args.singletons)
+        implementations(args.implementations)
     
     elif args.conflicts:
         conflicts(args.conflicts)
