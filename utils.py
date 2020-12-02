@@ -51,10 +51,14 @@ def split(line: str):
     return [line.split('/widgets/')[0], line.split('/widgets/')[1]]
 
 def filter_theme(pack_theme, theme: str):
+    # Remove trailing slash before, it causes issues
+    if theme.endswith("/"):
+        theme = theme[:-1]
+    
     if not is_empty(theme):
         if pack_theme == theme:
             return True
-        else:
+        else:            
             if "/" in theme:
                 return filter_theme(pack_theme, theme.split("/")[1])
             else:
@@ -149,7 +153,7 @@ def get_children(theme: str, widget: str):
 
     for idx in range(len(themes)):
         for pack in imports[idx]:
-            if filter_theme(pack[0], theme) and (is_empty(widget) or filter_widget(pack[1], widget)):
+            if filter_theme(pack[0], theme) and filter_widget(pack[1], widget):
                 children.append([themes[idx], pack[1]])
 
                 if themes[idx] not in child_list:
