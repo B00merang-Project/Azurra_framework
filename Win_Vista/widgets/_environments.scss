@@ -118,6 +118,9 @@
 
     button.flat, button.sidebar-button { @include panel_button(); }
     
+    // launcher buttons are drawn on the panel and don't need a color override
+    button#launcher-arrow { background-image: none; }
+    
     menu { text-shadow: none; }
     
     .tasklist button { @include tasklist_button(); }
