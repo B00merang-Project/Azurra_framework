@@ -1,0 +1,13 @@
+@mixin background() {
+  .background {
+    color: $fg_color;
+    background-color: gtkalpha($bg_color, 0.999);
+    background-image: url('assets/background.png');
+    background-size: 100% 38px;
+
+    &:backdrop {
+      color: $unfocused_fg_color; 
+      background-color: gtkalpha($unfocused_bg_color, 0.999);
+    }
+  }
+}
