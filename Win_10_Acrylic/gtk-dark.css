@@ -1238,16 +1238,13 @@ scrollbar {
   scrollbar:backdrop {
     background-color: #1a1a1a; }
   scrollbar button:hover {
-    box-shadow: none;
     border-color: #1a1a1a;
     background-color: #333333; }
   scrollbar button:active {
-    box-shadow: none;
     border-color: #1a1a1a;
     background-color: #999999; }
   scrollbar button, scrollbar button:backdrop, scrollbar button:disabled, scrollbar button:disabled:backdrop {
-    border: none;
-    padding: 4px;
+    padding: 3px;
     border-color: #1a1a1a;
     background-color: #1a1a1a; }
   scrollbar slider {
@@ -1270,7 +1267,31 @@ scrollbar {
     min-width: 14px;
     min-height: 45px; }
   scrollbar.overlay-indicator:not(.dragging):not(.hovering) {
-    opacity: 1; }
+    border: none;
+    opacity: 0.7;
+    margin: 0;
+    background-color: transparent; }
+    scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider {
+      margin: 0;
+      min-width: 2px;
+      min-height: 2px;
+      background-color: #999999;
+      border: 2px solid transparent;
+      border-radius: 2px; }
+    scrollbar.overlay-indicator:not(.dragging):not(.hovering).horizontal slider {
+      margin: 0;
+      min-width: 40px; }
+    scrollbar.overlay-indicator:not(.dragging):not(.hovering).vertical slider {
+      margin: 0;
+      min-height: 40px; }
+    scrollbar.overlay-indicator:not(.dragging):not(.hovering) button {
+      min-width: 0;
+      min-height: 0;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      color: transparent;
+      background-color: transparent; }
   scrollbar.overlay-indicator.dragging, scrollbar.overlay-indicator.hovering {
     opacity: 1; }
   scrollbar.horizontal slider {
