@@ -18,7 +18,7 @@
       background-color: transparent;
       text-shadow: 1px 1px $desktop_item_text_shadow;
      
-      &:active { color: $desktop_item_fg; }
+      &:active { color: $desktop_item_selected_fg; }
     }
     
     &:active {
@@ -60,7 +60,7 @@
   background-color: gtkalpha($taskbar_bg_color, 0.6);
   border-radius: 0;
   border: none;
-  box-shadow: inset 0 1px gtkalpha($light_shadow, 0.8);
+  box-shadow: inset 0 1px gtkalpha($light_shadow, 0.775);
 
   &:hover {
     border: none;
@@ -116,7 +116,10 @@
     background-image: url('../cinnamon/panel.png');
     background-size: 100% 100%;
 
-    button.flat, button.sidebar-button { @include panel_button(); }
+    button.flat, button.sidebar-button { @include panel_button(); background-color: transparent; }
+    
+    // launcher buttons are drawn on the panel and don't need a color override (moved to all buttons)
+    button#launcher-arrow { }
     
     menu { text-shadow: none; }
 
@@ -129,6 +132,12 @@
       &:hover { background-color: gtkalpha($light_shadow, 0.2); }
       &:checked { background-color: gtkalpha($dark_shadow, 0.2); }
     }
+  }
+  
+  // fix lines caused by margin in wrapper
+  #XfcePanelWindowWrapper {
+    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.75);
+    background-color: gtkalpha($taskbar_bg_color, 0.6);
   }
   
   #XfceNotifyWindow {

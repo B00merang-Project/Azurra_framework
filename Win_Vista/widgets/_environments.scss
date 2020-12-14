@@ -18,7 +18,7 @@
       background-color: transparent;
       text-shadow: 1px 1px $desktop_item_text_shadow;
      
-      &:active { color: $desktop_item_fg; }
+      &:active { color: $desktop_item_selected_fg; }
     }
     
     &:active {
@@ -117,6 +117,9 @@
     background-repeat: repeat;
 
     button.flat, button.sidebar-button { @include panel_button(); }
+    
+    // launcher buttons are drawn on the panel and don't need a color override
+    button#launcher-arrow { background-image: none; }
     
     menu { text-shadow: none; }
     
