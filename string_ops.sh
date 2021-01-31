@@ -12,12 +12,12 @@ NEW_VAL=''    # used in replace ops
 # HELP
 ops() {
   echo "Available options:"
-  echo "  -fc    --find-in-colors       <STRING>"
-  echo "  -fw    --find-in-widgets      <STRING>"
-  echo "  -rg    --replace-in-gtk-files <STRING> <STRING>"
-  echo "  -ri    --replace-in-imports   <STRING> <STRING>"
-  echo "  -rw    --replace-in-widgets   <STRING> <STRING>"
-  echo "  -ac    --append-to-conf-file  <STRING>"
+  echo "  -fc    --find-in-colors       <VALUE>"
+  echo "  -fw    --find-in-widgets      <VALUE>"
+  echo "  -rg    --replace-in-gtk-files <VALUE> <NEW_VALUE>"
+  echo "  -ri    --replace-in-imports   <VALUE> <NEW_VALUE>"
+  echo "  -rw    --replace-in-widgets   <VALUE> <NEW_VALUE>"
+  echo "  -ac    --append-to-conf-file  <VALUE>"
 }
 
 help() {
