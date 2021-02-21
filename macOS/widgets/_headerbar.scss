@@ -126,9 +126,9 @@
       background-image: linear-gradient(to right, $unfocused_bg_color $sidebar_width, $unfocused_borders, $unfocused_bg_color $sidebar_width + 1);
       border-image: linear-gradient(to right, $unfocused_bg_color $sidebar_width, $unfocused_borders $sidebar_width + 1) 1 stretch;
     }
-    // move header buttons away from fake sidebar portion
-    // TODO: Find a better way to do this
-    //separator.titlebutton { margin-right: 100px; }
+    
+    // move header buttons away from fake sidebar portion    
+    box.horizontal.left { margin-right: $pathbar_offset; }
   }
 
 
