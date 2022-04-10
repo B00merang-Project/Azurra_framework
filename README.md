@@ -11,9 +11,11 @@ The Azurra Framework is a handy tool for creating and managing GTK themes.
 ---
 
 **Dependencies**
-- `ruby-sass`, installable in Ubuntu by running `sudo apt install sass`
+- `sassc`, or any other up-to-date SCSS parser
 - `bash 4` or higher, required for the autogen script
 - `python 3.6` or higher, for utils.py
+- `imagemagick`, for asset rendering
+- `optipng`, for PNG compression
 
 ---
 
@@ -55,4 +57,4 @@ And the following files:
 - `theme.conf`: Contains a theme's name, author and target directory. Dynamic versioning is coming in a future release.
 
 ---
-More documentation will be available soon on the [wiki](https://github.com/Elbullazul/Azurra_framework/wiki)
+More documentation and a tutorial are available on the [wiki](https://github.com/B00merang-Project/Azurra_framework/wiki)
