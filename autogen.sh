@@ -131,8 +131,8 @@ empty_assets() {
 }
 
 clean() {
-  [ -f $1/*.css ] || echo "Folder '$1' is clean" && return
-  rm -r $1/*.css
+  [ -f "$1"/*.css ] || echo "Folder '$1' is clean" && return
+  rm -r "$1"/*.css
 }
 
 make() {
