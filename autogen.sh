@@ -143,9 +143,6 @@ while [ "$1" != "" ]; do
   case $1 in
     -a | --all )            QUEUE=*/
                             LOCK_ADD=true
-                            sass_args="$sass_args -q"
-                            ;;
-    -q | --quiet )          sass_args="$sass_args -q"
                             ;;
     -c | --compile )        FUNC='compile'
                             ;;

@@ -8,12 +8,14 @@
 OP=''         # call appropriate string op when iterating on folders
 VAL=''        # used in search, append and replace ops
 NEW_VAL=''    # used in replace ops
+MOD=0 # used to prompt if operation is MOD
 
 # HELP
 ops() {
   echo "Available options:"
   echo "  -fc    --find-in-colors       <VALUE>"
   echo "  -fw    --find-in-widgets      <VALUE>"
+  echo "  -fi    --find-in-imports      <VALUE>"
   echo "  -rg    --replace-in-gtk-files <VALUE> <NEW_VALUE>"
   echo "  -ri    --replace-in-imports   <VALUE> <NEW_VALUE>"
   echo "  -rw    --replace-in-widgets   <VALUE> <NEW_VALUE>"
@@ -36,10 +38,11 @@ replace() {
 
 # $1: target  $2: filename
 file_contains() {
-  result=$(grep "$1" "$2")
+  if grep -q "$1" "$2"; then
+    return 0
+  fi
   
-  # 0 is OK, 1 is error
-  [[ ! -z $result ]] && return 0 || return 1  
+  return 1  
 }
 
 # iterate on all theme folders
@@ -86,6 +89,15 @@ widgets_contains() {
   done
   
   [ $hits -le 0 ] && echo "No matches found"
+}
+
+imports_contains() {
+  local theme_dir="$1"
+  local value="$2"
+  
+  if file_contains "$value" "$theme_dir/_imports.scss"; then
+    echo "Match in folder $theme_dir"
+  fi
 }
 
 gtk_replace() {
@@ -140,17 +152,24 @@ case $1 in
   -fw|--find-in-widgets)
     OP="widgets_contains"
   ;;
+  -fi|--find-in-imports)
+    OP="imports_contains"
+  ;;
   -rg|--replace-in-gtk-files)
     OP="gtk_replace"
+    MOD=1
   ;;
   -ri|--replace-in-imports)
     OP="imports_replace"
+    MOD=1
   ;;
   -rw|--replace-in-widgets)
     OP="widgets_replace"
+    MOD=1
   ;;
   -ac|--append-to-conf-file)
     OP="config_append"
+    MOD=1
   ;;
   *)
     echo -n "Invalid operation. "
@@ -160,12 +179,18 @@ case $1 in
 esac
 
 # warn user of potential catastrophic consequences
-read -p "Files will be altered. Continue? (y/n): " -n 1 -r
-echo ""	# new line
-
-if [[ $REPLY =~ ^[Yy]$ ]]
+if [ $MOD -eq 1 ]
 then
-  run
+
+  read -p "Files will be altered. Continue? (y/n): " -n 1 -r
+  echo ""	# new line
+
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    run
+  else
+    echo "Operation aborted."
+  fi
 else
-  echo "Operation aborted."
+  run
 fi
