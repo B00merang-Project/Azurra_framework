@@ -131,8 +131,8 @@ empty_assets() {
 }
 
 clean() {
-  [ -f "$1"/*.css ] || echo "Folder '$1' is clean" && return
-  rm -r "$1"/*.css
+  rm -r "$1"/*".css"
+  echo "Cleaned $1"
 }
 
 make() {
@@ -172,5 +172,5 @@ done
 [ ${#QUEUE[@]} -eq 0 ] && fail 'Missing target(s), aborting'
 
 for dir in ${QUEUE[@]}; do
-  is_theme $dir && $FUNC "$dir"
+  is_theme "$dir" && $FUNC "$dir"
 done
