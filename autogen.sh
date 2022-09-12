@@ -131,7 +131,7 @@ empty_assets() {
 }
 
 clean() {
-  rm -r "$1"/*".css"
+  rm -r "$1"/*".css" 2> /dev/null
   echo "Cleaned $1"
 }
 
