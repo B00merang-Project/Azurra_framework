@@ -378,7 +378,8 @@ colorchooser {
 
 @include searchbar();
 
-@include app_notifications();
+// NOTICE: renamed from app_notifications()
+@include notifications();
 
 @include osd;
 
@@ -386,9 +387,11 @@ colorchooser {
 
 @include suggested_button();
 
-@include headerbar_suggested_button();
+// NOTICE: not used, deprecated
+// @include headerbar_suggested_button();
 
-@include selection_mode();
+// NOTICE: deprecated in GTK4
+// @include selection_mode();
 
 @include decoration();
 
