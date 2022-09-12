@@ -2,7 +2,6 @@
 
 import os, argparse
 
-BUNDLE_FILENAME = "bundle.conf"
 IMPORTS_FILENAME = "_imports.scss"
 THEME_CONFIG_FILENAME = "theme.conf"
 
@@ -203,7 +202,7 @@ def get_imports_recursive(prefix: str, folders):
     return [themes, imports]
 
 def is_bundle(folder: str):
-    return os.path.isfile(f"{CURRENT_DIRECTORY}/{folder}/{BUNDLE_FILENAME}")
+    return false
 
 def is_theme(folder: str):
     return os.path.isfile(f"{CURRENT_DIRECTORY}/{folder}/{THEME_CONFIG_FILENAME}")
