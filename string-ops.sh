@@ -19,6 +19,7 @@ ops() {
   echo "  -rg    --replace-in-gtk-files <VALUE> <NEW_VALUE>"
   echo "  -ri    --replace-in-imports   <VALUE> <NEW_VALUE>"
   echo "  -rw    --replace-in-widgets   <VALUE> <NEW_VALUE>"
+  echo "  -di    --delete-in-imports    <VALUE>"
   echo "  -ac    --append-to-conf-file  <VALUE>"
 }
 
@@ -34,6 +35,10 @@ help() {
 # $1: target  $2: new value  $3: filename
 replace() {
   sed -i "s@$1@$2@g" "$3"
+}
+
+delete() {
+  sed -i "/$1/d" "$2"
 }
 
 # $1: target  $2: filename
@@ -134,6 +139,15 @@ widgets_replace() {
   done
 }
 
+imports_delete() {
+  local theme_dir="$1"
+  local value="$2"
+  
+  delete "$value" "$theme_dir/_imports.scss"
+  
+  echo "Deleted value in '$theme_dir/_imports.scss' (if found)"
+}
+
 config_append() {
   local theme_dir="$1"
   local string="$2"
@@ -161,6 +175,10 @@ case $1 in
   ;;
   -ri|--replace-in-imports)
     OP="imports_replace"
+    MOD=1
+  ;;
+  -di|--delete-in-imports)
+    OP="imports_delete"
     MOD=1
   ;;
   -rw|--replace-in-widgets)
