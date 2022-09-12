@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# A script to quickly generate a list, bundle or all indexed themes
+# Compile the various themes in this folder
 # Author: Christian Medel <cmedelahumada@gmail.com>
 # License: GPLv3
 
@@ -8,6 +8,12 @@ version=3.0
 description="Azurra Autogen, version $version"
 base_theme='Azurra'
 ROOT_DIR="$PWD"
+
+# Program vars
+FUNC="make"
+LOCK_ADD=false
+sass_args="-M"
+sass_compiler="sassc"
 
 show_help() {
   echo -e "$description\n"
@@ -33,12 +39,11 @@ show_version() {
   echo "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>" && exit
 }
 
-fail() { tput setaf 1 && echo 'ERROR: '$@ && exit 1; }
+fail() { tput setaf 1 && echo 'ERROR: '$@ && tput sgr 0 && exit 1; }
 warn() { tput setaf 220 && echo 'WARNING: '$@ && tput sgr 0; }
 hlight() { tput setaf 33 && echo $@ && tput sgr 0; }
 
 is_theme() { [ -f "$1/theme.conf" ] && return 0 || return 1; }
-is_bundle() { [ -f "$1/bundle.conf" ] && return 0 || return 1; }
 load_conf() { source $1/*.conf; }
 has_dark() { [ -z $target_dir_dark ] && return 1 || return 0; }
 has_light() { [ -z $target_dir_light ] && return 1 || return 0; }
@@ -47,11 +52,6 @@ has_render() {
   return 1
 }
 
-recursive() {
-  for dir in $@; do
-    is_theme $dir && $FUNC "$dir" || is_bundle $dir && recursive "$dir"/*
-  done
-}
 
 deploy() {
   load_conf $1
@@ -97,7 +97,7 @@ compile() {
 
   for sass_file in $1/gtk*.scss; do
     local filename=${sass_file%".scss"}
-    sass $sass_args $sass_file $filename.css
+    $sass_compiler $sass_args $sass_file $filename.css
 
     [ $? -ne 0 ] && fail "SASS exited unexpectedly, aborting"
   done
@@ -137,11 +137,6 @@ make() {
   echo
 }
 
-# Program vars
-FUNC="make"
-LOCK_ADD=false
-sass_args="-C --sourcemap=none"
-
 declare -a QUEUE
 
 while [ "$1" != "" ]; do
@@ -171,4 +166,7 @@ while [ "$1" != "" ]; do
 done
 
 [ ${#QUEUE[@]} -eq 0 ] && fail 'Missing target(s), aborting'
-recursive "${QUEUE[@]}"   # iterate on eligible folders, calling function FUNC
+
+for dir in ${QUEUE[@]}; do
+  is_theme $dir && $FUNC "$dir"
+done
