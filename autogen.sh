@@ -26,9 +26,10 @@ show_help() {
   echo "  -q   --quiet        " "Silences ALL SASS warnings"
   echo "  -a   --all          " "Generates and deploys all themes with valid configuration"
   echo "  -d   --deploy       " "Deploys current files"
-  echo "  -c   --compile      " "Run SASS compiler only (no deployment)"
+  echo "  -p   --process      " "Run SASS compiler only (no deployment)"
   echo "  -r   --render       " "Run asset generation script if found"
   echo "  -e   --empty-assets " "Removes previously rendered assets. Run before rendering after changes"
+  echo "  - c  --clean        " "Removes '.css' files from the working tree"
 
   echo -e "\nMore information: <http://github.com/Elbullazul/Azurra_framework/wiki>" && exit
 }
@@ -51,7 +52,6 @@ has_render() {
   [ -d "$1/assets-render" ] || [ -d "$1/assets-render-light" ] || [ -d "$1/assets-render-dark" ] && return 0
   return 1
 }
-
 
 deploy() {
   load_conf $1
@@ -130,6 +130,11 @@ empty_assets() {
   [ -d "$1/assets-render-light" ] && rm -rf "$1/assets-render-light/assets/"*
 }
 
+clean() {
+  [ -f $1/*.css ] || echo "Folder '$1' is clean" && return
+  rm -r $1/*.css
+}
+
 make() {
   compile $1
   deploy $1
@@ -144,13 +149,15 @@ while [ "$1" != "" ]; do
     -a | --all )            QUEUE=*/
                             LOCK_ADD=true
                             ;;
-    -c | --compile )        FUNC='compile'
+    -p | --process )        FUNC='compile'
                             ;;
     -d | --deploy )         FUNC='deploy'
                             ;;
     -r | --render )         FUNC='render'
                             ;;
     -e | --empty-assets )   FUNC='empty_assets'
+                            ;;
+    -c | --clean )          FUNC='clean'
                             ;;
     -h | --help )           show_help
                             ;;
