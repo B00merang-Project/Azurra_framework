@@ -1,18 +1,18 @@
 @mixin messagedialog() {
   messagedialog {
-    border-bottom-left-radius: $csd_radius;
-    border-bottom-right-radius: $csd_radius;
+    border-bottom-left-radius: $window_radius;
+    border-bottom-right-radius: $window_radius;
     
     .background.csd {
-	    border-radius: $csd_radius;
+	    border-radius: $window_radius;
 	    color: $fg_color;
       background-color: $bg_color;
     }
   
     decoration {
-      border-radius: $csd_radius;
-      border-bottom-left-radius: $csd_radius;
-      border-bottom-right-radius: $csd_radius;
+      border-radius: $window_radius;
+      border-bottom-left-radius: $window_radius;
+      border-bottom-right-radius: $window_radius;
       box-shadow: 0 1px 2px gtkalpha($dark_shadow, 0.2);
     }
 
@@ -30,25 +30,25 @@
       &:last-child {
         border-right-width: 0;
         border-radius: 0px;
-        border-bottom-right-radius: $csd_radius;
+        border-bottom-right-radius: $window_radius;
 
-        -gtk-outline-radius: 0 0 $csd_radius 0;
+        -gtk-outline-radius: 0 0 $window_radius 0;
       }
 
       &:first-child {
         border-left-width: 0;
         border-radius: 0px;
-        border-bottom-left-radius: $csd_radius;
+        border-bottom-left-radius: $window_radius;
 
-        -gtk-outline-radius: 0 0 0 $csd_radius;
+        -gtk-outline-radius: 0 0 0 $window_radius;
       }
 
       &:only-child {
         border-radius: 0px;
-        border-bottom-left-radius: $csd_radius;
-        border-bottom-right-radius: $csd_radius;
+        border-bottom-left-radius: $window_radius;
+        border-bottom-right-radius: $window_radius;
 
-        -gtk-outline-radius: 0 0 0 $csd_radius $csd_radius;
+        -gtk-outline-radius: 0 0 0 $window_radius $window_radius;
       }
     }
   }

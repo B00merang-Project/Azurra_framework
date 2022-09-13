@@ -1,9 +1,9 @@
 // wildcard settings
 * {
-  -GtkScrollbar-has-backward-stepper: $top_primary_stepper;
-  -GtkScrollbar-has-forward-stepper: $bottom_primary_stepper;
-  -GtkScrollbar-has-secondary-backward-stepper: $bottom_secondary_stepper;
-  -GtkScrollbar-has-secondary-forward-stepper: $top_secondary_stepper;
+  -GtkScrollbar-has-backward-stepper: $top_stepper;
+  -GtkScrollbar-has-forward-stepper: $bottom_stepper;
+  -GtkScrollbar-has-secondary-backward-stepper: $left_stepper;
+  -GtkScrollbar-has-secondary-forward-stepper: $right_stepper;
   -GtkScrolledwindow-scrollbar-spacing: 0;
   -GtkScrolledwindow-scrollbars-within-bevel: 1;
   -GtkTextView-error-underline-color: $error_color;
@@ -28,13 +28,8 @@
 
 // Image effects 
 * {
-  &:disabled {
-    -gtk-icon-effect: dim;
-  }
-
-  &:hover {
-    -gtk-icon-effect: highlight;
-  }
+  &:disabled { -gtk-icon-effect: dim; }
+  &:hover { -gtk-icon-effect: highlight; }
 }
 
 .gtkstyle-fallback {
@@ -62,8 +57,8 @@
   }
 }
 
-image, image:disabled, label, label:disabled, box, box:disabled {
-  background-color: transparent;
+image, label, box {
+  &, &:disabled { background-color: transparent; }
 }
 
 @include labels();
@@ -88,6 +83,7 @@ assistant {
 }
 
 // link widgets
+// TODO: deprecate wildcarding, use new link code
 %link,
 *:link {
   color: $link_color;
@@ -372,6 +368,7 @@ colorchooser {
 
 @include view();
 
+// TODO: merge into listview?
 @include sidebar();
 
 @include actionbar();
@@ -395,11 +392,14 @@ colorchooser {
 
 @include decoration();
 
-@include titlebar();
+// NOTICE: deprecated
+// @include titlebar();
 
+// TODO: rename to dialog?
 @include messagedialog();
 
 // desktop theme rules
+// TODO: merge into a single mixin
 @include desktop_icons();
 
 @include gnome_flashback();

@@ -32,7 +32,7 @@
     separator:first-child + &,
     &:first-child {
       &, &:backdrop {
-        border-top-left-radius: $csd_radius;
+        border-top-left-radius: $window_radius;
 
         .maximized &,
         .tiled & { border-radius: 0; }
@@ -41,7 +41,7 @@
 
     &:last-child {
       &, &:backdrop {
-        border-top-right-radius: $csd_radius;
+        border-top-right-radius: $window_radius;
 
         .maximized &,
         .tiled & { border-radius: 0; }
@@ -68,7 +68,7 @@
     }
 
     entry { padding: 4px 8px; }
-    &.titlebar, .titlebar & { border-radius: $csd_radius $csd_radius 0px 0px; }
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
     
     .titlebutton {
       &.close, &.maximize, &.minimize, &:not(separator) {

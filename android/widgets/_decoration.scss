@@ -1,6 +1,6 @@
 @mixin decoration() {
   decoration {
-    border-radius: $csd_radius $csd_radius 0 0;
+    border-radius: $window_radius $window_radius 0 0;
     border-width: 0px;
     box-shadow: 8px 8px 10px 0 gtkalpha($wm_shadow, 0.3);
     margin: 10px;
@@ -25,7 +25,7 @@
     }
 
     .ssd & {
-      border-radius: $csd_radius $csd_radius 0 0;
+      border-radius: $window_radius $window_radius 0 0;
       box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.1);
 
       &.maximized {
@@ -34,7 +34,7 @@
     }
 
     tooltip.csd & {
-      border-radius: $csd_radius;
+      border-radius: $window_radius;
       box-shadow: none;
     }
 

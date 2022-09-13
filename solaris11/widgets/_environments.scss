@@ -13,7 +13,7 @@
   
   XfdesktopIconView {
     .view {
-      border-radius: $view_radius;
+      border-radius: $viewitem_radius;
       color: $desktop_item_fg;
       background-color: transparent;
       text-shadow: 1px 1px $desktop_item_text_shadow;
@@ -84,7 +84,7 @@
     &.osd {
       background-color: $bg_color;
       color: $fg_color;
-      border-radius: $roundness;
+      border-radius: $global_radius;
       border: none;
       
       label #summary { font-weight: bold; }
@@ -225,7 +225,7 @@
 
     .top {
       border: none;
-      border-radius: $roundness $roundness 0 0;
+      border-radius: $global_radius $global_radius 0 0;
       padding: 1px 8px 0 8px;
       background-color: $titlebar_bg_color;
       color: gtkmix($titlebar_fg_color, $titlebar_bg_color, 0.1);

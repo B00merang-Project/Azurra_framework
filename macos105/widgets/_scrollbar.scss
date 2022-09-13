@@ -7,7 +7,7 @@
       border: none;
       background-color: $base_color;
       box-shadow: inset 2px -2px 5px 1px gtkalpha($dark_shadow, 0.25);
-      border-radius: $scrollbar_radius;
+      border-radius: $scrollbar_slider_radius;
     }
 
     &.overlay-indicator {
@@ -31,7 +31,7 @@
         min-width: 45px;
         border-width: 2px;
         border-color: transparent;
-        border-radius: $scrollbar_radius;
+        border-radius: $scrollbar_slider_radius;
         background-color: gtkmix($bg_color, $fg_color, 0.21);
         background-image: linear-gradient(to right, transparent, gtkalpha($dark_shadow, 0.05), transparent), linear-gradient(to bottom, gtkshade($selected_bg_color, 2.3) 15%, gtkshade($selected_bg_color, 1.6) 45%, gtkshade($selected_bg_color, 2.1) 75%);
         background-size: 16px 16px, auto;
@@ -78,7 +78,7 @@
         padding: 0;
         border-width: 2px;
         border-color: transparent;
-        border-radius: $scrollbar_radius;
+        border-radius: $scrollbar_slider_radius;
         background-color: gtkmix($bg_color, $fg_color, 0.21);
         background-image: linear-gradient(to bottom, transparent, gtkalpha($dark_shadow, 0.05), transparent), linear-gradient(to right, gtkshade($selected_bg_color, 2.3) 15%, gtkshade($selected_bg_color, 1.6) 45%, gtkshade($selected_bg_color, 2.1) 75%);
         background-size: 16px 16px, auto;

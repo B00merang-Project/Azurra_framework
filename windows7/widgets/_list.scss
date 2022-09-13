@@ -9,7 +9,7 @@
 
       &:hover {
         border-color: gtkshade($selected_bg_color, 0.9);
-        border-radius: $roundness;
+        border-radius: $global_radius;
         background-color: gtkshade($selected_bg_color, 1.12);
         background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.065), gtkshade($selected_bg_color, 1.03));
       }
@@ -27,7 +27,7 @@
       &:selected {
         &, &:focus {
           border-color: gtkshade($selected_bg_color, 0.85);
-          border-radius: $roundness;
+          border-radius: $global_radius;
           color: $selected_fg_color;
           background-color: $selected_bg_color;
           background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.02), gtkshade($selected_bg_color, 0.98));
