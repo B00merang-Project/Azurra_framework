@@ -202,7 +202,7 @@ def get_imports_recursive(prefix: str, folders):
     return [themes, imports]
 
 def is_bundle(folder: str):
-    return false
+    return False
 
 def is_theme(folder: str):
     return os.path.isfile(f"{CURRENT_DIRECTORY}/{folder}/{THEME_CONFIG_FILENAME}")
