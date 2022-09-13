@@ -14,14 +14,15 @@ ARGS=2        # check if required number of args is received
 # HELP
 ops() {
   echo "Available options:"
-  echo "  -fc    --find-in-colors       <VALUE>"
-  echo "  -fw    --find-in-widgets      <VALUE>"
-  echo "  -fi    --find-in-imports      <VALUE>"
-  echo "  -rg    --replace-in-gtk-files <VALUE> <NEW_VALUE>"
-  echo "  -ri    --replace-in-imports   <VALUE> <NEW_VALUE>"
-  echo "  -rw    --replace-in-widgets   <VALUE> <NEW_VALUE>"
-  echo "  -di    --delete-in-imports    <VALUE>"
-  echo "  -ac    --append-to-conf-file  <VALUE>"
+  echo "  -fc    --find-in-colors         <VALUE>"
+  echo "  -fw    --find-in-widgets        <VALUE>"
+  echo "  -fi    --find-in-imports        <VALUE>"
+  echo "  -rg    --replace-in-gtk-files   <VALUE> <NEW_VALUE>"
+  echo "  -ri    --replace-in-imports     <VALUE> <NEW_VALUE>"
+  echo "  -rw    --replace-in-widgets     <VALUE> <NEW_VALUE>"
+  echo "  -rp    --replace-in-properties  <VALUE> <NEW_VALUE>"
+  echo "  -di    --delete-in-imports      <VALUE>"
+  echo "  -ac    --append-to-conf-file    <VALUE>"
 }
 
 help() {
@@ -149,6 +150,16 @@ widgets_replace() {
   done
 }
 
+properties_replace() {
+  local theme_dir="$1"
+  local value="$2"
+  local new_value="$3"
+  
+  replace "$value" "$new_value" "$theme_dir/_properties.scss"
+  
+  echo "Replaced value in '$theme_dir/_properties.scss' (if found)"
+}
+
 imports_delete() {
   local theme_dir="$1"
   local value="$2"
@@ -191,6 +202,11 @@ case $1 in
   ;;
   -rw|--replace-in-widgets)
     OP="widgets_replace"
+    MOD=1
+    ARGS=3
+  ;;
+  -rp|--replace-in-properties)
+    OP="properties_replace"
     MOD=1
     ARGS=3
   ;;
