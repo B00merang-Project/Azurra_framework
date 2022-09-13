@@ -1,21 +1,18 @@
 @mixin pathbar() {
+  @warn "[TODO] Migrate to new pathbar";
+
   .path-bar button {
-    &.text-button, &.image-button, button {
+    &.text-button, &.image-button {
       padding-left: 4px;
       padding-right: 4px;
     }
 
-    &.text-button.image-button label, label {
+    & > label {
       padding-left: 0;
       padding-right: 0;
 
-      &:last-child {
-        padding-right: 8px;
-      }
-
-      &:first-child {
-        padding-left: 8px;
-      }
+      &:last-child { padding-right: 8px; }
+      &:first-child { padding-left: 8px; }
     }
 
     image {
