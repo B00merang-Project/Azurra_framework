@@ -8,7 +8,8 @@
 OP=''         # call appropriate string op when iterating on folders
 VAL=''        # used in search, append and replace ops
 NEW_VAL=''    # used in replace ops
-MOD=0 # used to prompt if operation is MOD
+MOD=0         # used to prompt if operation is MOD
+ARGS=2        # check if required number of args is received
 
 # HELP
 ops() {
@@ -67,6 +68,15 @@ run() {
       done
     fi
   done
+}
+
+parm_count_check() {
+  if [ "$#" -ne $ARGS ]; then
+    echo "Invalid number of arguments."
+    ops
+    
+    exit 2
+  fi
 }
 
 # OPERATIONS
@@ -172,17 +182,20 @@ case $1 in
   -rg|--replace-in-gtk-files)
     OP="gtk_replace"
     MOD=1
+    ARGS=3
   ;;
   -ri|--replace-in-imports)
     OP="imports_replace"
     MOD=1
-  ;;
-  -di|--delete-in-imports)
-    OP="imports_delete"
-    MOD=1
+    ARGS=3
   ;;
   -rw|--replace-in-widgets)
     OP="widgets_replace"
+    MOD=1
+    ARGS=3
+  ;;
+  -di|--delete-in-imports)
+    OP="imports_delete"
     MOD=1
   ;;
   -ac|--append-to-conf-file)
@@ -196,6 +209,8 @@ case $1 in
   ;;
 esac
 
+parm_count_check $@
+
 # warn user of potential catastrophic consequences
 if [ $MOD -eq 1 ]
 then
@@ -203,12 +218,11 @@ then
   read -p "Files will be altered. Continue? (y/n): " -n 1 -r
   echo ""	# new line
 
-  if [[ $REPLY =~ ^[Yy]$ ]]
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
-    run
-  else
     echo "Operation aborted."
+    exit 1
   fi
-else
-  run
 fi
+
+run
