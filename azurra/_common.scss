@@ -400,7 +400,7 @@ colorswatch {
   &#add-color-button {
     border-radius: $colorswatch_radius 0 0 $colorswatch_radius;
     
-    &:only-child { border-radius: $_colorswatch_radius; }
+    &:only-child { border-radius: $colorswatch_radius; }
     
     // TODO: use regular style buttons here instead of old shadow-based colors?
     background-clip: padding-box;
@@ -603,7 +603,7 @@ shortcut > .keycap {
   background-color: $base_color;
   border: 1px solid $border_color;
   border-radius: $global_radius;
-  box-shadow: if($variant == 'light', inset 0 -3px mix($base_color, $bg_color, 20%), inset 0 -3px mix($borders_color, $base_color, 60%));
+  box-shadow: if($variant == 'light', inset 0 -3px mix($base_color, $bg_color, 20%), inset 0 -3px mix($border_color, $base_color, 60%));
   font-size: smaller;
 }
 
@@ -646,13 +646,13 @@ popover.emoji-picker > contents { padding: 0; }
 .emoji-searchbar {
   padding: $padding;
   border-spacing: $padding;
-  border-bottom: 1px solid $borders_color;
+  border-bottom: 1px solid $border_color;
 }
 
 .emoji-toolbar {
   padding: $padding;
   border-spacing: $padding;
-  border-top: 1px solid $borders_color;
+  border-top: 1px solid $border_color;
 }
 
 button.emoji-section {
@@ -686,7 +686,7 @@ popover.emoji-picker emoji {
     // TODO: add shadows on hover?
     /* SAMPLE
     @if $contrast == 'high' {
-      box-shadow: inset 0 0 0 1px $borders_color;
+      box-shadow: inset 0 0 0 1px $border_color;
     }*/
   }
 }
@@ -704,7 +704,7 @@ emoji-completion-row:hover {
 
 emoji-completion-row emoji:focus,
 emoji-completion-row emoji:hover {
-  background-color: $menu_selected_color;
+  background-color: $selected_bg_color;
 }
 
 // no idea what this does. Autocomplete?
