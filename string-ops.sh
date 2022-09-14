@@ -14,19 +14,20 @@ ARGS=2        # check if required number of args is received
 # HELP
 ops() {
   echo "Available options:"
-  echo "  -fc    --find-in-colors         <VALUE>"
-  echo "  -fw    --find-in-widgets        <VALUE>"
-  echo "  -fi    --find-in-imports        <VALUE>"
-  echo "  -rg    --replace-in-gtk-files   <VALUE> <NEW_VALUE>"
-  echo "  -ri    --replace-in-imports     <VALUE> <NEW_VALUE>"
-  echo "  -rw    --replace-in-widgets     <VALUE> <NEW_VALUE>"
-  echo "  -rp    --replace-in-properties  <VALUE> <NEW_VALUE>"
-  echo "  -di    --delete-in-imports      <VALUE>"
-  echo "  -ac    --append-to-conf-file    <VALUE>"
+  echo "  -fc <VALUE>              Find <VALUE> in all '_colors.scss' files"
+  echo "  -fw <VALUE>              Find <VALUE> in all 'widgets/*.scss' files"
+  echo "  -fi <VALUE>              Find <VALUE> in all '_imports.scss' files"
+  echo "  -rg <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_gtk*.scss' files"
+  echo "  -rc <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_colors.scss' files"
+  echo "  -ri <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_imports.scss' files"
+  echo "  -rw <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all 'widgets/*.scss' files"
+  echo "  -rp <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_properties.scss' files"
+  echo "  -di <VALUE>              Delete lines containing <VALUE> in all '_imports.scss' files"
+  echo "  -ac <VALUE>              Add <VALUE> as a new line in all 'theme.conf' files"
 }
 
 help() {
-  echo "Azurra string ops v0.1"
+  echo "Azurra string ops v1.2"
   echo "Run string modification ops on all theme folders"
   echo ""
   
@@ -58,15 +59,6 @@ run() {
     if [ -f "$dir/theme.conf" ]  # if has valid configuration
     then
       $OP "$dir" "$VAL" "$NEW_VAL"
-    elif [ -f "$dir/bundle.conf" ]  # if is a bundle directory
-    then
-      for bundle_dir in "$dir"/*
-      do
-        if [ -f "$bundle_dir/theme.conf" ]  # process bundled themes
-        then
-          $OP "$bundle_dir" "$VAL" "$NEW_VAL"
-        fi    
-      done
     fi
   done
 }
@@ -129,6 +121,19 @@ gtk_replace() {
   echo "Replaced value in gtk*.scss files (if found)"
 }
 
+colors_replace() {
+  local theme_dir="$1"
+  local value="$2"
+  local new_value="$3"
+  
+  replace "$value" "$new_value" "$theme_dir/_colors.scss"
+  
+  [ -f "$theme_dir/_colors_light.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_light.scss"
+  [ -f "$theme_dir/_colors_dark.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_dark.scss"
+  
+  echo "Replaced value in '$theme_dir/_colors_dark.scss' (if found)"
+}
+
 imports_replace() {
   local theme_dir="$1"
   local value="$2"
@@ -181,40 +186,45 @@ VAL="$2"
 NEW_VAL="$3"
 
 case $1 in
-  -fc|--find-in-colors)
+  -fc)
     OP="colors_contains"
   ;;
-  -fw|--find-in-widgets)
+  -fw)
     OP="widgets_contains"
   ;;
-  -fi|--find-in-imports)
+  -fi)
     OP="imports_contains"
   ;;
-  -rg|--replace-in-gtk-files)
+  -rg)
     OP="gtk_replace"
     MOD=1
     ARGS=3
   ;;
-  -ri|--replace-in-imports)
+  -rc)
+    OP="colors_replace"
+    MOD=1
+    ARGS=3
+  ;;
+  -ri)
     OP="imports_replace"
     MOD=1
     ARGS=3
   ;;
-  -rw|--replace-in-widgets)
+  -rw)
     OP="widgets_replace"
     MOD=1
     ARGS=3
   ;;
-  -rp|--replace-in-properties)
+  -rp)
     OP="properties_replace"
     MOD=1
     ARGS=3
   ;;
-  -di|--delete-in-imports)
+  -di)
     OP="imports_delete"
     MOD=1
   ;;
-  -ac|--append-to-conf-file)
+  -ac)
     OP="config_append"
     MOD=1
   ;;
