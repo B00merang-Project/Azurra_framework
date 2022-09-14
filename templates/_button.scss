@@ -1,0 +1,101 @@
+@mixin button($type, $bg : #, $fg, $br) {
+  // NOTICE: these variables can eventually be migrated elsewhere
+  
+  // sizing and others
+  $button_padding : 4px 8px;
+  $button_border_width : 1px;
+  $button_border_radius : 0px;
+  $button_border_margin : 0px;
+  
+  // colors by possible states
+  // normal
+  $button_normal_bg_color : $bg;
+  $button_normal_fg_color : $fg;
+  $button_normal_border_color : $br;
+  $button_normal_bg_image : image($bg);
+  $button_normal_box_shadow : none;
+  
+  // hover
+  $button_hover_bg_color : none;
+  $button_hover_fg_color : none;
+  $button_hover_border_color : none;
+  $button_hover_bg_image : none;
+  $button_hover_box_shadow : none;
+  
+  // focus
+  $button_focus_bg_color : none;
+  $button_focus_fg_color : none;
+  $button_focus_border_color : none;
+  $button_focus_bg_image : none;
+  $button_focus_box_shadow : none;
+  
+  // active
+  $button_active_bg_color : none;
+  $button_active_fg_color : none;
+  $button_active_border_color : none;
+  $button_active_bg_image : none;
+  $button_active_box_shadow : none;
+  
+  // checked
+  $button_checked_bg_color : none;
+  $button_checked_fg_color : none;
+  $button_checked_border_color : none;
+  $button_checked_bg_image : none;
+  $button_checked_box_shadow : none;
+  
+  // checked & hover
+  $button_checked_hover_bg_color : none;
+  $button_checked_hover_fg_color : none;
+  $button_checked_hover_border_color : none;
+  $button_checked_hover_bg_image : none;
+  $button_checked_hover_box_shadow : none;
+  
+  // checked & active (?)
+  $button_checked_active_bg_color : none;
+  $button_checked_active_fg_color : none;
+  $button_checked_active_border_color : none;
+  $button_checked_active_bg_image : none;
+  $button_checked_active_box_shadow : none;
+  
+  // backdrop
+  $button_backdrop_bg_color : $backdrop_bg_color;
+  $button_backdrop_fg_color : $backdrop_fg_color;
+  $button_backdrop_border_color : $backdrop_border_color;
+  $button_backdrop_bg_image : none;
+  $button_backdrop_box_shadow : none;
+  
+  // backdrop & hover
+  $button_backdrop_hover_bg_color : none;
+  $button_backdrop_hover_fg_color : none;
+  $button_backdrop_hover_border_color : none;
+  $button_backdrop_hover_bg_image : none;
+  $button_backdrop_hover_box_shadow : none;
+  
+  // disabled
+  $button_disabled_bg_color : $disabled_bg_color;
+  $button_disabled_fg_color : $disabled_fg_color;
+  $button_disabled_border_color : $disabled_border_color;
+  $button_disabled_bg_image : none;
+  $button_disabled_box_shadow : none;
+  
+  // disabled & backdrop
+  $button_disabled_backdrop_bg_color : none;
+  $button_disabled_backdrop_fg_color : none;
+  $button_disabled_backdrop_border_color : none;
+  $button_disabled_backdrop_bg_image : none;
+  $button_disabled_backdrop_box_shadow : none;
+  
+  // process button type
+  @if $type == 'normal' {
+    @warn 'Normal state is not implemented yet';
+  }
+  @else if $type == 'flat' {
+  
+  }
+  @else if $type == 'destructive' {
+  
+  }
+  @else if $type == 'suggested' {
+  
+  }
+}
