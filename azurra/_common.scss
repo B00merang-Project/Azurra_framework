@@ -138,7 +138,18 @@ editablelabel > stack > text {
   }
 }
 
-@include button();
+button {
+  @include normal_buttons();
+  
+  &.flat {
+    @include flat_buttons();
+  }
+}
+
+// TODO: merge with button() eventually
+@include destructive_button();
+@include suggested_button();
+
 // NOTE: adwaita includes modelbuttons here. In our case, they're defined in _menu.scss
 
 // NOTE: $link_color is defined in _colors.scss
@@ -740,20 +751,8 @@ menubutton {
 @include linked_widgets();
 @include linked_styles();
 
-// TODO: move next to button()
-@include destructive_button();
-
-// TODO: move next to button()
-@include suggested_button();
-
-// NOTICE: deprecated in GTK4
-// @include selection_mode();
-
-// NOTICE: deprecated
-// @include titlebar();
-
 // desktop theme rules
-// TODO: merge into a single mixin
+// TODO: merge into a single mixin?
 @include desktop_icons();
 @include gnome_flashback();
 @include mate();

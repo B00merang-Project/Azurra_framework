@@ -1,4 +1,4 @@
-@mixin normal_buttons($bg, $fg, $br) {
+@mixin normal_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
   padding: 4px 8px;
   border-style: solid;
   border-color: $br;
@@ -42,8 +42,7 @@
   }
 }
 
-@mixin flat_buttons($bg, $fg, $br)
-{
+@mixin flat_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
   border-color: transparent;
   border-radius: $button_radius;
   color: $fg;
@@ -87,15 +86,5 @@
     color: $backdrop_disabled_fg_color;
     border-color: transparent;
     background-color: transparent;
-  }
-}
-
-@mixin button() {
-  button {
-    @include normal_buttons($bg_color, $fg_color, $border_color);
-    
-    &.flat {
-      @include flat_buttons($bg_color, $fg_color, $border_color);
-    }
   }
 }

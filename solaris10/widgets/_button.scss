@@ -1,4 +1,4 @@
-@mixin normal_buttons($bg, $fg, $br) {
+@mixin normal_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
   padding: 4px 4px;
   border-style: solid;
   border-width: 1px;
@@ -49,9 +49,7 @@
   &:disabled {
     color: gtkmix($fg, $backdrop_disabled_fg_color, 0.5);
     
-    &:backdrop {
-      color: $backdrop_disabled_fg_color;
-    }
+    &:backdrop { color: $backdrop_disabled_fg_color; }
   }
 
   &:backdrop {
@@ -60,8 +58,7 @@
   }
 }
 
-@mixin flat_buttons($bg, $fg, $br)
-{
+@mixin flat_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
   border-color: transparent;
   border-radius: $button_radius;
   color: $fg;
@@ -74,12 +71,7 @@
     -gtk-icon-shadow: 1px 1px $dark_shadow;
   }
 
-  &:active, &:checked {
-    color: $fg;
-    
-    &:backdrop {
-    }
-  }
+  &:active, &:checked { color: $fg; }
 
   &:disabled {
     border-color: transparent;
@@ -93,17 +85,5 @@
     }
   }
 
-  &:backdrop {
-    color: $backdrop_fg_color;
-  }
-}
-
-@mixin button() {
-  button {
-    @include normal_buttons($bg_color, $fg_color, $border_color);
-    
-    &.flat {
-      @include flat_buttons($bg_color, $fg_color, $border_color);
-    }
-  }
+  &:backdrop { color: $backdrop_fg_color; }
 }

@@ -1,4 +1,4 @@
-@mixin normal_buttons($bg, $fg, $br) {
+@mixin normal_buttons($bg : gtkalpha($bg_color, 0.25), $fg : $fg_color, $br : $border_color) {
   padding: 4px 8px;
   border: none;
   border-radius: $button_radius;
@@ -7,7 +7,7 @@
   outline-style: none;
   -gtk-outline-radius: $button_radius;
 
-  &:hover {}
+  // TODO: implement hover state
   
   &:focus {
     background-color: $base_color;
@@ -49,8 +49,7 @@
   &:backdrop { color: $backdrop_fg_color; }
 }
 
-@mixin flat_buttons($bg, $fg, $br)
-{
+@mixin flat_buttons($bg : transparent, $fg : $fg_color, $br : $border_color) {
   border: none;
   border-radius: $button_radius;
   color: $fg;
@@ -82,14 +81,4 @@
   }
 
   &:backdrop { color: $backdrop_fg_color; }
-}
-
-@mixin button() {
-  button {
-    @include normal_buttons(gtkalpha($bg_color, 0.25), $fg_color, $border_color);
-    
-    &.flat {
-      @include flat_buttons(transparent, $fg_color, $border_color);
-    }
-  }
 }

@@ -1,4 +1,4 @@
-@mixin normal_buttons($bg, $fg, $br) {
+@mixin normal_buttons($bg : gtkmix($bg_color, $fg_color, 0.1), $fg : $fg_color, $br : $border_color) {
   padding: 4px 8px;
   border: none;
   border-radius: $button_radius;
@@ -6,8 +6,7 @@
   background-color: $bg;
   -gtk-outline-radius: $button_radius;
 
-  &:hover {
-  }
+  // TODO: implement hover state
 
   &:active, &:checked {
     color: $selected_fg_color;
@@ -30,18 +29,13 @@
 
   &:disabled {
     color: gtkmix($fg, $backdrop_disabled_fg_color, 0.5);
-    &:backdrop {
-      color: $backdrop_disabled_fg_color;
-    }
+    &:backdrop { color: $backdrop_disabled_fg_color; }
   }
 
-  &:backdrop {
-    color: $backdrop_fg_color;
-  }
+  &:backdrop { color: $backdrop_fg_color; }
 }
 
-@mixin flat_buttons($bg, $fg, $br)
-{
+@mixin flat_buttons($bg : transparent, $fg : $selected_bg_color, $br : $border_color) {
   border: none;
   border-radius: $button_radius;
   color: $fg;
@@ -72,17 +66,5 @@
     }
   }
 
-  &:backdrop {
-    color: $backdrop_fg_color;
-  }
-}
-
-@mixin button() {
-  button {
-    @include normal_buttons(gtkmix($bg_color, $fg_color, 0.1), $fg_color, $border_color);
-    
-    &.flat {
-      @include flat_buttons(transparent, $selected_bg_color, $border_color);
-    }
-  }
+  &:backdrop { color: $backdrop_fg_color; }
 }

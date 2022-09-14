@@ -1,4 +1,4 @@
-@mixin normal_buttons($bg, $fg, $br) {
+@mixin normal_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
   padding: 5px 9px;
   min-height: 24px;
   min-width: 16px;
@@ -73,6 +73,13 @@
     }
   }
 
+  // TODO: change $success_shadow to $drop_target_color
+  &:drop(active) {
+    color: gtkshade($success_color, 0.8);
+    border-color: gtkshade($success_color, 0.8);
+    box-shadow: inset 0 0 0 1px gtkshade($success_color, 0.8);
+  }
+
   &:disabled {
     color: $disabled_fg_color;
     border-color: $border_color;
@@ -102,8 +109,7 @@
   }
 }
 
-@mixin flat_buttons($bg, $fg, $br)
-{
+@mixin flat_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
   border-color: transparent;
   border-radius: $button_radius;
   color: $fg;
@@ -183,19 +189,5 @@
     box-shadow: none;
     text-shadow: none;
     -gtk-icon-shadow: none;
-  }
-}
-
-@mixin button() {
-  button {
-    @include normal_buttons($bg_color, $fg_color, $border_color);
-
-    &.flat { @include flat_buttons($bg_color, $fg_color, $border_color); }
-
-    &:drop(active) {
-      color: gtkshade($success_color, 0.8);
-      border-color: gtkshade($success_color, 0.8);
-      box-shadow: inset 0 0 0 1px gtkshade($success_color, 0.8);
-    }
   }
 }

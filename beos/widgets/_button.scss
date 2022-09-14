@@ -1,4 +1,4 @@
-@mixin normal_buttons($bg, $fg, $br) {
+@mixin normal_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
   padding: 4px 9px;
   border-style: solid;
   border-width: 1px;
@@ -12,8 +12,7 @@
   outline-style: solid;
   outline-color: gtkalpha($dark_shadow, 0.5);
 
-  &:hover {
-  }
+  // TODO: add hover state (maybe even spin out a VM to check it out
 
   &:active, &:checked {
     background-color: gtkshade($bg, 0.9);
@@ -37,9 +36,6 @@
   &:disabled {
     color: gtkmix($fg, $backdrop_disabled_fg_color, 0.5);
     box-shadow: inset 3px 3px $light_shadow, inset 1px 1px $bg_color, inset -2px -2px gtkshade($bg_color, 0.95);
-    
-    &:backdrop {
-    }
   }
 
   &:backdrop {
@@ -47,8 +43,7 @@
   }
 }
 
-@mixin flat_buttons($bg, $fg, $br)
-{
+@mixin flat_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
   border-color: transparent;
   border-radius: $button_radius;
   color: $fg;
@@ -67,9 +62,7 @@
     background-color: gtkshade($bg, 0.9);
     box-shadow: inset -3px -3px gtkshade($base_color, 0.9), inset -1px -1px gtkshade($bg_color, 0.9), inset 2px 2px gtkshade($bg_color, 0.85), inset 1px 1px gtkshade($bg_color, 0.65);
     
-    &:backdrop {
-      color: $backdrop_selected_fg_color;
-    }
+    &:backdrop { color: $backdrop_selected_fg_color; }
   }
 
   &:disabled {
@@ -89,15 +82,5 @@
     border-color: transparent;
     background-color: transparent;
     color: $backdrop_fg_color;
-  }
-}
-
-@mixin button() {
-  button {
-    @include normal_buttons($bg_color, $fg_color, $border_color);
-    
-    &.flat {
-      @include flat_buttons($bg_color, $fg_color, $border_color);
-    }
   }
 }
