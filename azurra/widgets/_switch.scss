@@ -4,17 +4,17 @@
     color: transparent;
     outline-offset: -4px;
     margin: 4px;
-    border: 1px solid $borders;
+    border: 1px solid $border_color;
     border-radius: 16px;
-    background-color: $borders;
+    background-color: $border_color;
 
     &:checked {
       border-color: $selected_bg_color;
       background-color: $selected_bg_color;
 
       &:backdrop {
-        border-color: $unfocused_selected_bg_color;
-        background-color: $unfocused_selected_bg_color;
+        border-color: $backdrop_selected_bg_color;
+        background-color: $backdrop_selected_bg_color;
       }
     }
 
@@ -23,14 +23,14 @@
       background-color: gtkshade($disabled_bg_color, 0.95);
 
       &:backdrop {
-        border-color: gtkshade($unfocused_disabled_bg_color, 0.95);
-        background-color: gtkshade($unfocused_disabled_bg_color, 0.95);
+        border-color: gtkshade($backdrop_disabled_bg_color, 0.95);
+        background-color: gtkshade($backdrop_disabled_bg_color, 0.95);
       }
     }
 
     &:backdrop {
-      border-color: $unfocused_borders;
-      background-color: $unfocused_borders;
+      border-color: $backdrop_border_color;
+      background-color: $backdrop_border_color;
     }
 
     slider {
@@ -49,12 +49,12 @@
       }
 
       &:backdrop slider {
-        background-color: $unfocused_disabled_base_color;
+        background-color: $backdrop_disabled_base_color;
       }
     }
 
     &:backdrop slider {
-      background-color: $unfocused_base_color;
+      background-color: $backdrop_base_color;
     }
   }
 }

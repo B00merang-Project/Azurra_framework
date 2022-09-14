@@ -6,7 +6,7 @@
       margin: -1px;
       border-width: 1px;
       border-style: solid;
-      border-color: $borders;
+      border-color: $border_color;
 
       > header {
         margin: -1px;
@@ -53,17 +53,17 @@
       background-color: $bg_color;
 
       &:checked {
-        border-color: $borders;
+        border-color: $border_color;
         background-color: $base_color;
 
         &:backdrop {
-          border-color: $unfocused_borders;
-          background-color: $unfocused_base_color;
+          border-color: $backdrop_border_color;
+          background-color: $backdrop_base_color;
         }
       }
 
       &:backdrop {
-        background-color: $unfocused_bg_color;
+        background-color: $backdrop_bg_color;
       }
     }
 
@@ -72,11 +72,11 @@
       background-color: $bg_color;
       
       &:backdrop {
-        background-color: $unfocused_bg_color;
+        background-color: $backdrop_bg_color;
       }
 
       &.top {
-        box-shadow: 0 1px $borders;
+        box-shadow: 0 1px $border_color;
 
         > tabs > tab {
           border-bottom: none;
@@ -91,7 +91,7 @@
 
       &.bottom {
         padding-top: 0;
-        box-shadow: 0 -1px $borders;
+        box-shadow: 0 -1px $border_color;
 
         > tabs > tab {
           border-top: none;
@@ -105,7 +105,7 @@
       }
 
       &.right {
-        box-shadow: -1px 0 $borders;
+        box-shadow: -1px 0 $border_color;
 
         > tabs > tab {
           border-left: none;
@@ -119,7 +119,7 @@
       }
 
       &.left {
-        box-shadow: 1px 0 $borders;
+        box-shadow: 1px 0 $border_color;
 
         > tabs > tab {
           border-right: none;

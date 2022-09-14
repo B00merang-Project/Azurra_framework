@@ -11,8 +11,8 @@
     background-color: gtkshade($bg, 1.05);
 
     &:backdrop {
-      border-color: $unfocused_borders;
-      background-color: $unfocused_bg_color;
+      border-color: $backdrop_border_color;
+      background-color: $backdrop_bg_color;
     }
   }
 
@@ -22,9 +22,9 @@
     background-color: gtkshade($selected_bg_color, 1.15);
     
     &:backdrop {
-      border-color: $unfocused_selected_bg_color;
-      color: $unfocused_selected_fg_color;
-      background-color: $unfocused_selected_bg_color;
+      border-color: $backdrop_selected_bg_color;
+      color: $backdrop_selected_fg_color;
+      background-color: $backdrop_selected_bg_color;
     }
   }
 
@@ -34,16 +34,16 @@
     background-color: transparent;
     
     &:backdrop {
-      border-color: gtkshade($unfocused_borders, 1.05);
+      border-color: gtkshade($backdrop_border_color, 1.05);
       color: $disabled_fg_color;
       background-color: transparent;
     }
   }
 
   &:backdrop {
-    border-color: $unfocused_borders;
-    color: $unfocused_fg_color;
-    background-color: $unfocused_bg_color;
+    border-color: $backdrop_border_color;
+    color: $backdrop_fg_color;
+    background-color: $backdrop_bg_color;
   }
 }
 
@@ -56,9 +56,9 @@
     border-bottom: 1px solid $titlebar_bg_color;
 
     &:backdrop {
-      color: $unfocused_fg_color;
-      border-bottom-color: $unfocused_borders;
-      background-color: $unfocused_bg_color;
+      color: $backdrop_fg_color;
+      border-bottom-color: $backdrop_border_color;
+      background-color: $backdrop_bg_color;
     }
 
     .tiled &, .tiled &:backdrop,

@@ -5,18 +5,18 @@
     padding: 4px;
     border-width: 0 0 1px 0;
     border-style: solid;
-    border-color: gtkmix($borders, $toolbar_bg_color, 0.5);
+    border-color: gtkmix($border_color, $toolbar_bg_color, 0.5);
     color: $toolbar_fg_color;
     background-color: $toolbar_bg_color;
 
     &:backdrop {
-      border-color: $unfocused_bg_color;
-      color: $unfocused_fg_color;
-      background-color: $unfocused_bg_color;
+      border-color: $backdrop_bg_color;
+      color: $backdrop_fg_color;
+      background-color: $backdrop_bg_color;
     }
 
     button, .raised button {
-      @include normal_buttons($toolbar_bg_color, $toolbar_fg_color, $borders);
+      @include normal_buttons($toolbar_bg_color, $toolbar_fg_color, $border_color);
     }
   }
 }

@@ -1,25 +1,25 @@
 @mixin spinbutton() {
   spinbutton {
     &.horizontal {
-      border: 1px solid $borders;
+      border: 1px solid $border_color;
       border-radius: $entry_radius;
       background-color: $base_color;
       
       &:disabled {
-        border-color: $unfocused_borders;
+        border-color: $backdrop_border_color;
         color: $disabled_fg_color;
         background-color: $disabled_base_color;
 
         &:backdrop {
-          border-color: $unfocused_borders;
-          color: $unfocused_disabled_fg_color;
-          background-color: $unfocused_disabled_base_color;
+          border-color: $backdrop_border_color;
+          color: $backdrop_disabled_fg_color;
+          background-color: $backdrop_disabled_base_color;
         }
       }
       
       &:backdrop {
-        background-color: $unfocused_base_color;
-        border-color: $unfocused_borders;
+        background-color: $backdrop_base_color;
+        border-color: $backdrop_border_color;
       }
 
       &:focus { border-color: $selected_bg_color; }
@@ -39,9 +39,9 @@
         border: none;
         border-radius: 0;
         background: none;
-        box-shadow: -1px 0 $borders;
+        box-shadow: -1px 0 $border_color;
         
-        &:disabled, &:backdrop { box-shadow: -1px 0 $unfocused_borders; background: none; }
+        &:disabled, &:backdrop { box-shadow: -1px 0 $backdrop_border_color; background: none; }
         &.up { border-radius: 0 $entry_radius $entry_radius 0; }
       }
     }

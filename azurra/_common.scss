@@ -2,8 +2,8 @@
 * {
   -GtkScrollbar-has-backward-stepper: $top_stepper;
   -GtkScrollbar-has-forward-stepper: $bottom_stepper;
-  -GtkScrollbar-has-secondary-backward-stepper: $left_stepper;
-  -GtkScrollbar-has-secondary-forward-stepper: $right_stepper;
+  -GtkScrollbar-has-secondary-backward-stepper: $secondary_top_stepper;
+  -GtkScrollbar-has-secondary-forward-stepper: $secondary_bottom_stepper;
   -GtkScrolledwindow-scrollbar-spacing: 0;
   -GtkScrolledwindow-scrollbars-within-bevel: 1;
   -GtkTextView-error-underline-color: $error_color;
@@ -76,7 +76,7 @@ assistant {
     border-width: 0 1px 0 0;
     border-style: solid;
     border-radius: 0;
-    border-right-color: $borders;
+    border-right-color: $border_color;
     color: $fg_color;
     background-color: $bg_color;
   }
@@ -114,7 +114,7 @@ assistant {
 
   &:backdrop {
     &:backdrop:hover, &:backdrop:hover:selected, & {
-      color: gtkmix($link_color, $unfocused_selected_bg_color, 0.3);
+      color: gtkmix($link_color, $backdrop_selected_bg_color, 0.3);
     }
   }
 

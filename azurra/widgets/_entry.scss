@@ -3,7 +3,7 @@
     padding: 5px;
     border-width: 1px;
     border-style: solid;
-    border-color: $borders;
+    border-color: $border_color;
     border-radius: $entry_radius;
     color: $text_color;
     caret-color: currentColor;
@@ -24,15 +24,15 @@
       background-color: gtkmix($bg_color, $disabled_bg_color, 0.1);
 
       &:backdrop {
-        color: $unfocused_disabled_fg_color;
-        border-color: $unfocused_borders;
-        background-color: $unfocused_disabled_bg_color;
+        color: $backdrop_disabled_fg_color;
+        border-color: $backdrop_border_color;
+        background-color: $backdrop_disabled_bg_color;
       }
     }
 
     &:backdrop {
-      color: $unfocused_fg_color;
-      background-color: $unfocused_base_color;
+      color: $backdrop_fg_color;
+      background-color: $backdrop_base_color;
     }
 
     > image {

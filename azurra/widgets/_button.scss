@@ -19,9 +19,9 @@
     background-color: gtkshade($bg, 0.85);
 
     &:backdrop {
-      color: $unfocused_fg_color;
-      border-color: gtkshade($unfocused_bg_color, 0.85);
-      background-color: gtkshade($unfocused_bg_color, 0.85);
+      color: $backdrop_fg_color;
+      border-color: gtkshade($backdrop_bg_color, 0.85);
+      background-color: gtkshade($backdrop_bg_color, 0.85);
     }
     
     &:disabled {
@@ -31,28 +31,28 @@
       
       &:backdrop {
         color: gtkmix($fg, $disabled_fg_color, 0.1);
-        border-color: gtkmix(gtkshade($bg, 0.85), $unfocused_disabled_bg_color, 0.6);
-        background-color: gtkmix(gtkshade($bg, 0.85), $unfocused_disabled_bg_color, 0.1);
+        border-color: gtkmix(gtkshade($bg, 0.85), $backdrop_disabled_bg_color, 0.6);
+        background-color: gtkmix(gtkshade($bg, 0.85), $backdrop_disabled_bg_color, 0.1);
       }
     }
   }
 
   &:disabled {
-    color: gtkmix($fg, $unfocused_disabled_fg_color, 0.1);
+    color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
     border-color: gtkmix($bg, $disabled_bg_color, 0.6);
     background-color: gtkmix($bg, $disabled_bg_color, 0.1);
     
     &:backdrop {
-      color: $unfocused_disabled_fg_color;
-      border-color: $unfocused_borders;
-      background-color: $unfocused_disabled_bg_color;
+      color: $backdrop_disabled_fg_color;
+      border-color: $backdrop_border_color;
+      background-color: $backdrop_disabled_bg_color;
     }
   }
 
   &:backdrop {
-    border-color: $unfocused_borders;
-    color: $unfocused_fg_color;
-    background-color: $unfocused_bg_color;
+    border-color: $backdrop_border_color;
+    color: $backdrop_fg_color;
+    background-color: $backdrop_bg_color;
   }
 }
 
@@ -75,9 +75,9 @@
     background-color: $selected_bg_color;
     
     &:backdrop {
-      border-color: $unfocused_selected_bg_color;
-      color: $unfocused_selected_fg_color;
-      background-color: $unfocused_selected_bg_color;
+      border-color: $backdrop_selected_bg_color;
+      color: $backdrop_selected_fg_color;
+      background-color: $backdrop_selected_bg_color;
     }
   }
 
@@ -96,16 +96,16 @@
   &:backdrop {
     border-color: transparent;
     background-color: transparent;
-    color: $unfocused_fg_color;
+    color: $backdrop_fg_color;
   }
 }
 
 @mixin button() {
   button {
-    @include normal_buttons($bg_color, $fg_color, $borders);
+    @include normal_buttons($bg_color, $fg_color, $border_color);
     
     &.flat {
-      @include flat_buttons($bg_color, $fg_color, $borders);
+      @include flat_buttons($bg_color, $fg_color, $border_color);
     }
   }
 }

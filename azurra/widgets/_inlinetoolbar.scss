@@ -3,17 +3,17 @@
     padding: 1px;
     border-width: 1px;
     border-style: solid;
-    border-color: gtkmix($borders, $toolbar_bg_color, 0.5);
+    border-color: gtkmix($border_color, $toolbar_bg_color, 0.5);
     border-radius: 0;
     background-color: $toolbar_bg_color;
 
     &:backdrop {
-      border-color: $unfocused_borders;
-      background-color: $unfocused_bg_color;
+      border-color: $backdrop_border_color;
+      background-color: $backdrop_bg_color;
     }
 
     toolbutton > button {
-      @include normal_buttons($toolbar_bg_color, $toolbar_fg_color, $borders);
+      @include normal_buttons($toolbar_bg_color, $toolbar_fg_color, $border_color);
     }
   } 
 }

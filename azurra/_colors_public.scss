@@ -33,16 +33,16 @@
 @define-color insensitive_base_color #{"" +$base_color};
 
 /* widget text/foreground color on backdrop windows */
-@define-color theme_unfocused_fg_color #{"" +$unfocused_fg_color};
+@define-color theme_unfocused_fg_color #{"" +$backdrop_fg_color};
 
 /* text color for entries, views and content in general on backdrop windows */
 @define-color theme_unfocused_text_color #{"" +$text_color};
 
 /* widget base background color on backdrop windows */
-@define-color theme_unfocused_bg_color #{"" +$unfocused_bg_color};
+@define-color theme_unfocused_bg_color #{"" +$backdrop_bg_color};
 
 /* text widgets and the like base background color on backdrop windows */
-@define-color theme_unfocused_base_color #{"" +$unfocused_base_color};
+@define-color theme_unfocused_base_color #{"" +$backdrop_base_color};
 
 /* base background color of selections on backdrop windows */
 @define-color theme_unfocused_selected_bg_color #{"" +$selected_bg_color};
@@ -51,13 +51,13 @@
 @define-color theme_unfocused_selected_fg_color #{"" + $selected_fg_color};
 
 /* insensitive color on backdrop windows*/
-@define-color unfocused_insensitive_color #{"" + $unfocused_disabled_fg_color};
+@define-color unfocused_insensitive_color #{"" + $backdrop_disabled_fg_color};
 
 /* widgets main borders color */
-@define-color borders #{"" +$borders};
+@define-color borders #{"" +$border_color};
 
 /* widgets main borders color on backdrop windows */
-@define-color unfocused_borders #{"" +$unfocused_borders};
+@define-color unfocused_borders #{"" +$backdrop_border_color};
 
 /* these are pretty self explicative */
 @define-color warning_color #{"" +$warning_color};
@@ -71,9 +71,9 @@ $_wm_highlight: $wm_shadow;
 /* these colors are exported for the window manager and shouldn't be used in applications,
 read if you used those and something break with a version upgrade you're on your own... */
 @define-color wm_title shade(#{$fg_color}, 1.8);
-@define-color wm_unfocused_title #{$unfocused_fg_color};
+@define-color wm_unfocused_title #{$backdrop_fg_color};
 @define-color wm_highlight #{"" + $_wm_highlight};
-@define-color wm_borders_edge #{"" + $borders};
+@define-color wm_borders_edge #{"" + $border_color};
 
 @define-color wm_bg_a shade(#{$bg_color}, 1.2);
 @define-color wm_bg_b #{$bg_color};
