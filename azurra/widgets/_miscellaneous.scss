@@ -5,13 +5,17 @@
     border-color: $border_color;
   }
 
-  .nautilus-window notebook, .nautilus-window notebook > stack:not(:only-child) searchbar {
+  // TODO: remove this
+  .nautilus-window notebook,
+  .nautilus-window notebook > stack:not(:only-child) searchbar {
     background-color: $base_color;
+
+    &:backdrop { background-color: $backdrop_base_color; }
   }
 
   .caja-location-entry { padding: 3px 5px; }
 
-  scrolledwindow.frame, scrolledwindow viewport.frame { border: none; }
+  scrolledwindow viewport.frame { border: none; }
 
   arrow, combobox arrow {
     color: gtkalpha(currentColor, 0.75);
@@ -51,23 +55,31 @@
     border-radius: 50%;
     -gtk-outline-radius: 50%;
   }
-  
+
   stackswitcher button.circular, stackswitcher button.text-button.circular {
     min-width: 32px;
     min-height: 32px;
     padding: 0;
   }
-    
+
   printdialog paper {
     border: 1px solid $border_color;
     background: $light_shadow;
     padding: 0;
   }
-  
+
   // drop function styles
+  // TODO: this should be moved to their respective widget files
+  // TODO: use new `$drop_target_color` for :drop(active) states
   filechooserbutton:drop(active) {
     box-shadow: none;
     border-color: transparent;
+  }
+
+  combobox:drop(active) button.combo {
+    box-shadow: none;
+    color: gtkshade($success_color, 0.8);
+    border-color: gtkshade($success_color, 0.8);
   }
   
   :not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus, combobox:drop(active) button.combo {

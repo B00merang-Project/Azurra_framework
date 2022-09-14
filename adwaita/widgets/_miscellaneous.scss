@@ -5,6 +5,12 @@
     border-color: $border_color;
   }
 
+  .nautilus-window {
+    background-color: $base_color;
+
+    &:backdrop { background-color: $backdrop_base_color; }
+  }
+
   .caja-location-entry { padding: 3px 5px; }
 
   scrolledwindow viewport.frame { border: none; }
@@ -71,11 +77,4 @@
     border-color: gtkshade($success_color, 0.8);
   }
   
-  .nautilus-window {
-    background-color: $base_color;
-    
-    &:backdrop {
-      background-color: $backdrop_base_color;
-    }
-  }
 }

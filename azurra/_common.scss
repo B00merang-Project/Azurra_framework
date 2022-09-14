@@ -1,338 +1,408 @@
-// wildcard settings
-* {
-  -GtkScrollbar-has-backward-stepper: $top_stepper;
-  -GtkScrollbar-has-forward-stepper: $bottom_stepper;
-  -GtkScrollbar-has-secondary-backward-stepper: $secondary_top_stepper;
-  -GtkScrollbar-has-secondary-forward-stepper: $secondary_bottom_stepper;
-  -GtkScrolledwindow-scrollbar-spacing: 0;
-  -GtkScrolledwindow-scrollbars-within-bevel: 1;
-  -GtkTextView-error-underline-color: $error_color;
-  -GtkToolbutton-icon-spacing: 6;
-  -GtkToolItemGroup-expander-size: 11;
-  -GtkWidget-text-handle-width: 20;
-  -GtkWidget-text-handle-height: 20;
-  -GtkDialog-button-spacing: 4;
-  -GtkDialog-action-area-border: 0;
-  -GtkTreeview-expander-size: 8;
-
-  background-clip: padding-box;
-
-  outline-width: $outline_width;
-  outline-offset: -3px;
-  outline-style: $outline_style;
-  outline-color: $outline_color;
-  -gtk-outline-radius: 0;
-}
+// wildcard has been deprecated (thanks for that, GNOME team!)
+// Some reusable variables are scattered across the file for now
+// TODO: move them to _properties.scss or another file
 
 @include background();
 
-// Image effects 
-* {
-  &:disabled { -gtk-icon-effect: dim; }
-  &:hover { -gtk-icon-effect: highlight; }
-}
+dnd { color: $fg-color; }
 
-.gtkstyle-fallback {
-  color: $fg_color;
-  background-color: $bg_color;
+.normal-icons { -gtk-icon-size: 16px; }
+.large-icons { -gtk-icon-size: 32px; }
 
-  &:hover {
-    color: $fg_color;
-    background-color: gtkshade($bg_color, 1.1);
-  }
+image:disabled { -gtk-icon-filter: opacity(0.5); }
 
-  &:active {
-    color: $fg_color;
-    background-color: gtkshade($bg_color, 0.9);
-  }
-
-  &:disabled {
-    color: $disabled_fg_color;
-    background-color: $disabled_bg_color;
-  }
-
-  &:selected {
-    color: $selected_fg_color;
-    background-color: $selected_bg_color;
-  }
-}
-
+// NOTE: still necessary?
 image, label, box {
   &, &:disabled { background-color: transparent; }
 }
 
+@include view();
+@include textview();
+@include iconview();
+// @include rubberband();  TODO: use new mixin rubberband
+@include flowbox();
+// @include gridview();  TODO: use new mixin gridview
+
+// TEST: how to test this?
+coverflow cover {
+  color: $text_color;
+  background-color: $base_color;
+  border: 1px solid if($variant == 'light', gtkshade($border_color, 0.6), gtkshade($border_color, 1.4));
+}
+
 @include labels();
+
+$dim_label_opacity : 0.6;
+
+.dim-label {
+  opacity: $dim_label_opacity;
+  text-shadow: none;	// NOTE: remove if any theme needs to override
+}
 
 @include transitions();
 
-assistant {
-  .sidebar label.highlight {
+$menu-margin : 4px;
+
+// TEST: how to test this?
+window.assistant {
+  .sidebar {
+    padding: $menu-margin;
+    border-top: 1px solid $border_color;
+  }
+
+  &.csd .sidebar { border-top-style: none; }
+
+  .sidebar > label { padding: 6px 12px; }
+
+  .sidebar > label.highlight {
+    // TODO: use new mixin selection
     color: $selected_fg_color;
     background-color: $selected_bg_color;
-  }
-
-  .sidebar {
-    padding: 4px;
-    border-width: 0 1px 0 0;
-    border-style: solid;
-    border-radius: 0;
-    border-right-color: $border_color;
-    color: $fg_color;
-    background-color: $bg_color;
+    border-radius: $menu_radius;
   }
 }
 
-// link widgets
-// TODO: deprecate wildcarding, use new link code
-%link,
-*:link {
-  color: $link_color;
+// TODO: move to new mixin dialog
+window.aboutdialog image.large-icons { -gtk-icon-size: 128px; }
 
-  &:visited {
-    color: gtkmix($link_color, $fg_color, 0.2);
+@include osd();
 
-    *:selected & {
-      color: gtkmix($selected_fg_color, $selected_bg_color, 0.4);
-    }
-  }
-
-  &:hover {
-    color: gtkshade($link_color, 1.1);
-
-    *:selected & {
-      color: gtkmix($selected_fg_color, $selected_bg_color, 0.9);
-    }
-  }
-
-  &:active {
-    color: $link_color;
-
-    *:selected & {
-      color: gtkmix($selected_fg_color, $selected_bg_color, 0.8);
-    }
-  }
-
-  &:backdrop {
-    &:backdrop:hover, &:backdrop:hover:selected, & {
-      color: gtkmix($link_color, $backdrop_selected_bg_color, 0.3);
-    }
-  }
-
-  @at-root %link_selected,
-  &:selected, *:selected & {
-    color: gtkmix($selected_fg_color, $selected_bg_color, 0.8);
-  }
-}
-
-button:link, button:visited {
-  @extend *:link;
-
-  border-color: transparent;
-  background-color: transparent;
-  text-shadow: none;
-
-  &:hover, &:active, &:checked, &:focus:active {
-    border-color: transparent;
-    background-color: transparent;
-    text-shadow: none;
-  }
-
-  > label {
-    @extend %link;
-
-    text-decoration-line: underline;
-  }
-}
-
-@include button();
-
-@include checkradio();
-
-.content-view.view {
-  background-color: $base_color;
-
-  &:hover {
-    background-color: gtkalpha($selected_bg_color, 0.6);
-  }
-
-  &:selected, &:active {
-    background-color: $selected_bg_color;
-  }
-
-  &:disabled {
-    background-color: gtkshade($base_color, 0.9);
-  }
-}
-
-@include calendar();
-
-@include entry();
-
-@include expander();
-
-@include list();
-
-@include frame();
-
-@include iconview();
-
-@include flowbox();
-
-@include infobar();
-
-@include images();
-
-@include floating_bar();
-
-@include terminal();
-
-@include miscellaneous();
-
-@include menu();
-
-@include menubar();
-
-@include menubar_menuitem();
-
-@include menuitem();
-
-@include popover();
-
-@include modelbutton();
-
-@include notebook();
-
-@include paned();
-
-@include over_undershoot();
-
-@include progressbar();
-
-@include levelbar();
-
-@include scale();
-
-@include scrollbar();
-
-@include separator();
-
-@include spinbutton();
-
-// spinner 
+// TODO: use new mixin spinner???
 @keyframes spin {
   to {
     -gtk-icon-transform: rotate(1turn); }
 }
 
 spinner {
+  opacity: 0;   // only visible when rotating
   background: none;
-  opacity: 0;
   -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
 
   &:checked {
     opacity: 1;
     animation: spin 1s linear infinite;
 
-    &:disabled {
-      opacity: 0.5;
+    &:disabled { opacity: 0.5; }
+  }
+}
+
+// typography
+.large-title {
+   font-weight: 300;
+   font-size: 24pt;
+}
+.title-1 {
+   font-weight: 800;
+   font-size: 20pt;
+}
+.title-2 {
+   font-weight: 800;
+   font-size: 15pt;
+}
+.title-3 {
+   font-weight: 700;
+   font-size: 15pt;
+}
+.title-4 {
+   font-weight: 700;
+   font-size: 13pt;
+}
+.heading {
+   font-weight: 700;
+   font-size: 11pt;
+}
+.body {
+   font-weight: 400;
+   font-size: 11pt;
+}
+.caption-heading {
+   font-weight: 700;
+   font-size: 9pt;
+}
+.caption {
+   font-weight: 400;
+   font-size: 9pt;
+}
+
+@include entry();
+
+editablelabel > stack > text {
+  // @include entry(normal);
+
+  // TODO: use new mixin selection
+  > selection {
+    color: transparent; background-color: $selected_bg_color;
+    
+    // TODO: extend entry?
+    &:focus-within { color: $fg_color; background-color: $selected_base_color; }
+  }
+}
+
+@include button();
+// NOTE: adwaita includes modelbuttons here. In our case, they're defined in _menu.scss
+
+// NOTE: $link_color is defined in _colors.scss
+$link_visited_color : gtkmix($link_color, $fg_color, 0.2);
+
+%link,
+link {
+  color: $link_color;
+  text-decoration: underline;
+
+  &:visited {
+    color: $link_visited_color;
+
+    *:selected & { color: gtkmix($selected_fg_color, $link_visited_color, 0.6); }
+  }
+
+  &:hover {
+    color: gtkshade($link_color, 1.1);
+
+    *:selected & { color: gtkmix($selected_fg_color, $link_color, 0.9); }
+  }
+
+  &:active {
+    color: $link_color;
+
+    *:selected & { color: gtkmix($selected_fg_color, $link_color, 0.8); }
+  }
+
+  &:backdrop:hover, &:backdrop:hover:selected, & { color: gtkmix($link_color, $backdrop_selected_bg_color, 0.3); }
+  
+  &:disabled { color: transparentize(desaturate($link_color, 100%), 0.2); }
+
+  @at-root %link_selected,
+  &:selected, *:selected & { color: gtkmix($selected_fg_color, $link_color, 0.8); }
+}
+
+button.link {
+  @extend %link;
+  
+  &, &:hover, &:active, &:checked {
+    // @include button_flat();
+    
+    text-shadow: none;
+  }
+  
+  > label { text-decoration: underline; }
+}
+
+@include spinbutton();
+// @include combobox();   TODO: use new mixin combobox
+
+// TODO: merge all toolbars into one mixin?
+@include toolbar();
+@include primary_toolbar();
+@include inline_toolbar();
+
+@include searchbar();
+@include infobar();
+@include headerbar();
+// NOTE: titlebuttons are defined in _headerbar.scss, should it go to a separate file?
+// NOTE: should window.devel be implemented?
+
+@include pathbar();
+@include treeview();
+
+// NOTICE: in GTK 4, the .menu class and menu node are deprecated. Menu stuff should be migrated to popover and modelbutton
+@include popover();
+
+magnifier { background-color: $base_color; }
+
+@include modelbutton();
+@include menu();      // TODO: deprecate
+@include menuitem();  // TODO: deprecate
+@include menubar();
+@include menubar_menuitem();
+@include notebook();
+@include scrollbar();   // TODO: figure out how to simulate buttons for themes requiring it
+@include switch();
+@include checkradio();  // TODO: include special cases, like menu/modelbutton, treeview, etc.
+@include scale();
+@include progressbar();
+@include levelbar();
+
+// move to dialog?
+window.dialog.print {
+  drawing {
+    color: $fg_color;
+    background: none;
+    border: none;
+    padding: 0;
+
+    paper {
+      background: white;
+      color: #2e3436;   // dark grey
+      border: 1px solid $border_color;
+    }
+  }
+
+  .dialog-action-box { margin: 12px; }
+}
+
+@include frame();
+@include actionbar();
+@include scrolledwindow();
+
+// NOTE: this has been merged in the various other widgets that can act as separators
+// is keeping all separators in a single file still a good idea?
+@include separator();
+
+// TODO: rename to listview?
+// TODO: new nodes: listview, row(?), columnview
+@include list();
+
+// move into _list.scss?
+treeexpander {
+  border-spacing: 4px;
+}
+
+/* SAMPLE
+//vbox and hbox separators
+separator {
+  background: lighten($border_color, 5%);
+  min-width: 1px;
+  min-height: 1px;
+}*/
+
+// data table are treeview like tables with individual focusable cells
+$focus_border_color : transparentize($selected_bg_color, 0.45);
+
+columnview row:not(:selected) cell editablelabel:not(.editing):focus-within {
+  outline: 2px solid $focus_border_color;
+}
+
+columnview row:not(:selected) cell editablelabel.editing:focus-within {
+  outline: 2px solid $selected_bg_color;
+}
+
+columnview row:not(:selected) cell editablelabel.editing text selection {
+  background-color: $backdrop_selected_bg_color;
+  color: transparent;
+  
+  &:focus-within { color: $fg_color; background-color: $selected_base_color; }
+}
+
+// rich lists are a large list usually containing lots of widgets, generally other widgets than just labels/text
+.rich-list {
+  & > row {
+    padding: 8px 12px;
+    min-height: 32px; /* should be tall even when only containing a label */
+
+    & > box {
+      border-spacing: 12px;
     }
   }
 }
 
-@include statusbar();
+@include notifications();
+@include expander();
+@include calendar();
 
-@include switch();
+// TODO: rename to dialog
+@include messagedialog();
+@include sidebar();
+
+// adwaita has a whole segment related to filechooser around here. Not sure how important it is. Skipping for now
+
+@include paned();
+
+// video widget
+video {
+  & image.osd {
+    min-width: 64px;
+    min-height: 64px;
+    border-radius: 32px;  // TODO: change based on theme
+  }
+  background: black;
+}
+
+@include tooltip();
 
 // color chooser 
+
+// from adwaita comments:
+// This widget is made of two boxes one on top of the other, the lower box is colorswatch {} the other one
+// is colorswatch overlay {}, colorswatch has the programmatically set background, so most of the style is
+// applied to the overlay box.
+
+$colorswatch_radius : 2px;
+
 colorswatch {
   &.top {
-    border-top-left-radius: 2.5px;
-    border-top-right-radius: 2.5px;
+    border-top-left-radius: $colorswatch_radius + 0.5px;
+    border-top-right-radius: $colorswatch_radius + 0.5px;
 
     overlay {
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px;
+      border-top-left-radius: $colorswatch_radius;
+      border-top-right-radius: $colorswatch_radius;
     }
   }
   &.bottom {
-    border-bottom-left-radius: 2.5px;
-    border-bottom-right-radius: 2.5px;
+    border-bottom-left-radius: $colorswatch_radius + 0.5px;
+    border-bottom-right-radius: $colorswatch_radius + 0.5px;
 
     overlay {
-      border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 2px;
+      border-bottom-left-radius: $colorswatch_radius;
+      border-bottom-right-radius: $colorswatch_radius;
     }
   }
 
   &.left, &:first-child:not(.top) {
-    border-top-left-radius: 2.5px;
-    border-bottom-left-radius: 2.5px;
+    border-top-left-radius: $colorswatch_radius + 0.5px;
+    border-bottom-left-radius: $colorswatch_radius + 0.5px;
 
     overlay {
-      border-top-left-radius: 2px;
-      border-bottom-left-radius: 2px;
+      border-top-left-radius: $colorswatch_radius;
+      border-bottom-left-radius: $colorswatch_radius;
     }
   }
 
   &.right, &:last-child:not(.bottom) {
-    border-top-right-radius: 2.5px;
-    border-bottom-right-radius: 2.5px;
+    border-top-right-radius: $colorswatch_radius + 0.5px;
+    border-bottom-right-radius: $colorswatch_radius + 0.5px;
 
     overlay {
-      border-top-right-radius: 2px;
-      border-bottom-right-radius: 2px;
+      border-top-right-radius: $colorswatch_radius;
+      border-bottom-right-radius: $colorswatch_radius;
     }
   }
 
-  &.dark overlay {
-    color: gtkalpha($light_shadow, 0.7);
+  &.dark {
+    > overlay { color: gtkalpha($light_shadow, 0.7); }
+    &.activatable:hover > overlay { border-color: gtkalpha($dark_shadow, 0.5); }
+  }
 
-    &:hover {
-      border-color: gtkalpha($dark_shadow, 0.5);
+  &.light
+    > overlay { color: gtkalpha($light_shadow, 0.7);
+    &.activatable:hover > overlay { border-color: gtkalpha($dark_shadow, 0.3); }
+  }
+  
+  &:drop(active) {
+    box-shadow: none;
+
+    &.light > overlay {
+      border-color: $color_shadow;
+      box-shadow: inset 0 0 0 2px $border_color,
+                  inset 0 0 0 1px $color_shadow;
+    }
+
+    &.dark > overlay {
+      border-color: $color_shadow;
+      box-shadow: inset 0 0 0 2px $border_color,
+                  inset 0 0 0 1px $color_shadow;
     }
   }
 
-  &.light overlay {
-    color: gtkalpha($light_shadow, 0.7);
+  > overlay { border: 1px solid gtkalpha($dark_shadow, 0.15); }
+  &.activatable:hover > overlay { background-color: gtkalpha($light_shadow, 0.2); }
 
-    &:hover {
-      border-color: gtkalpha($dark_shadow, 0.3);
-    }
-  }
-
-  overlay {
-    border: 1px solid gtkalpha($dark_shadow, 0.15);
-
-    &:hover {
-      background-color: gtkalpha($light_shadow, 0.2);
-    }
-  }
-
-  &:disabled {
-    opacity: 0.5;
-
-    overlay {
-      border-color: gtkalpha($dark_shadow, 0.6);
-      box-shadow: none;
-    }
-  }
-}
-
-button.color {
-  padding: 0;
-
-  colorswatch:first-child:last-child, colorswatch:first-child:last-child overlay {
-    margin: 4px;
-    border-radius: 0;
-  }
-}
-
-colorchooser {
-  .popover.osd {
-    border-radius: 0;
-  }
-
-  #add-color-button {
+  &#add-color-button {
+    border-radius: $colorswatch_radius 0 0 $colorswatch_radius;
+    
+    &:only-child { border-radius: $_colorswatch_radius; }
+    
+    // TODO: use regular style buttons here instead of old shadow-based colors?
     background-clip: padding-box;
     border-color: gtkalpha($dark_shadow, 0.1);
     background-color: gtkshade($bg_color, 0.95);
@@ -343,71 +413,350 @@ colorchooser {
       background-color: gtkshade($bg_color, 0.90);
       color: $fg_color;
     }
+    
+    /* SAMPLE
+    > overlay {
+      @include button(normal);
+    }
+
+    &.activatable:hover > overlay {
+      @include button(hover);
+    }*/
+  }
+
+  &:disabled {
+    opacity: 0.5;
+
+    overlay {
+      border-color: gtkalpha($dark_shadow, 0.6);
+      box-shadow: none;
+    }
+  }
+  
+  row:selected & { box-shadow: 0 0 0 2px $selected_fg_color; }
+
+  &#editor-color-sample {
+    border-radius: $colorswatch_radius;
+
+    > overlay { border-radius: $colorswatch_radius + 0.5px; }
+  }
+  
+  // colorscale popup
+  // TODO: figure out the correct radius to apply here
+  .popover.osd { border-radius: $menu_radius; }
+}
+
+// TODO: move to _button.scss
+button.color {
+  padding: 0;
+
+  colorswatch:first-child:last-child, colorswatch:first-child:last-child overlay {
+    margin: 4px;
+    border-radius: 0;
   }
 }
 
-@include pathbar();
+// Misc.
+.content-view {
+  background-color: $base_color;
 
-@include headerbar();
+  // TODO: use new mixin selection
+  &:hover { background-color: gtkalpha($selected_bg_color, 0.6); }
+  
+  .tile {
+    background-color: $base_color;
+    border-radius: 0;
+    padding: 0;
+    margin: 2px;
+    
+    &:active, &:selected { background-color: $selected_bg_color; }
+    &:disabled { background-color: $disabled_bg_color; }  
+  }
+  
+  // TODO: use new mixin rubberband
+  > rubberband { /*@extend rubberband;*/ }
+}
 
-@include toolbar();
+.scale-popup {
+  // TODO: make osd expandable or variable based on parameters
+  //.osd & { @extend %osd; }
 
-@include primary_toolbar();
+  .osd & button.flat {  //adwaita FIXME: quick hack, redo properly
+    border-style: none;
+    border-radius: 5px;
+  }
 
-@include inline_toolbar();
+  // NOTE: how to test this?
+  // TODO: use new mixin for flat button
+  /* SAMPLE
+  button { // +/- buttons on GtkVolumeButton popup
+    &:hover {
+      @extend %undecorated_button;
+      background-color: transparentize($fg_color,0.9);
+      border-radius: 5px;
+    }
+  }
+  */
+}
 
+// TODO: if possible, deprecate app-specific theming, unless it breaks something
+.nautilus-window notebook,
+.nautilus-window notebook > stack:not(:only-child) searchbar {
+  background-color: $base_color;
+
+  &:backdrop { background-color: $backdrop_base_color; }
+}
+
+.caja-location-entry { padding: 3px 5px; }
+
+.gedit-search-entry-occurrences-tag {
+  color: gtkalpha(currentColor, 0.7);
+  border: none;
+  margin: 2px;
+  padding: 2px;
+}
+
+.gedit-search-slider {
+  border-color: $border_color;
+  padding: 6px;
+  border-radius: 0 0 $global_radius $global_radius;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  background-color: $bg_color;
+}
+
+// TODO: move to _scrolledwindow.scss
+scrolledwindow viewport.frame { border: none; }
+
+// TODO: move and adapt in new mixin combobox
+arrow, combobox arrow {
+  color: gtkalpha(currentColor, 0.75);
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+  min-height: 16px;
+  min-width: 16px;
+}
+
+.context-menu, popover.touch-selection, .csd popover.touch-selection,
+popover.background.touch-selection, .csd popover.background.touch-selection {
+  font: initial;
+}
+
+.monospace { font-family: monospace; }
+
+// TODO: move to _button.scss
+button.circular, button.circular-button {
+  padding: 0;
+  min-width: 16px;
+  min-height: 24px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  -gtk-outline-radius: 50%;
+}
+
+// TODO: this should be moved to their respective widget files
+// TODO: use new `$drop_target_color` for :drop(active) states
+// drop function styles
+filechooserbutton:drop(active) {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+// TODO: move to _button.scss
+combobox:drop(active) button.combo {
+  box-shadow: none;
+  color: gtkshade($success_color, 0.8);
+  border-color: gtkshade($success_color, 0.8);
+}
+
+// TODO: move to _button.scss
+:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus, combobox:drop(active) button.combo {
+  border-color: $selected_bg_color;
+  box-shadow: inset 0 0 0 1px $selected_bg_color;
+  caret-color: $selected_bg_color;
+}
+
+// Misc. end
+
+@include decoration();
+
+// TODO: use new mixin touchselect (touch copy and paste control)
+// TODO: alternatively, make all themes share the controls
+// @include touchselect();
+
+// keyboard shortcuts screen
+shortcuts-section { margin: 20px; }
+
+.shortcuts-search-results { margin: 20px; border-spacing: 24px; }
+
+// shortcut window keys
+shortcut { border-spacing: 6px; }
+
+shortcut > .keycap {
+  min-width: 20px;
+  min-height: 25px;
+  margin-top: 2px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+
+  color: $fg_color;
+  background-color: $base_color;
+  border: 1px solid $border_color;
+  border-radius: $global_radius;
+  box-shadow: if($variant == 'light', inset 0 -3px mix($base_color, $bg_color, 20%), inset 0 -3px mix($borders_color, $base_color, 60%));
+  font-size: smaller;
+}
+
+// TODO: move to _button.scss
+stackswitcher > button.text-button { min-width: 100px; }
+
+stackswitcher.circular {
+  border-spacing: 12px;
+  
+  > button.circular,
+  > button.text-button.circular {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0;
+  }
+}
+
+// outline for low res icons
+.lowres-icon {
+    -gtk-icon-shadow: 0 -1px gtkalpha($dark_shadow,0.05),
+      1px 0 gtkalpha($dark_shadow,0.1),
+      0 1px gtkalpha($dark_shadow,0.3),
+      -1px 0 gtkalpha($dark_shadow,0.1);
+}
+
+// dropshadow for large icons
+.icon-dropshadow {
+  -gtk-icon-shadow: 0 1px 12px gtkalpha($dark_shadow,0.05),
+      0 -1px gtkalpha($dark_shadow,0.05),
+      1px 0 gtkalpha($dark_shadow,0.1),
+      0 1px gtkalpha($dark_shadow,0.3),
+      -1px 0 gtkalpha($dark_shadow,0.1);
+}
+
+// emoji selector
+$padding : 6px;
+
+popover.emoji-picker > contents { padding: 0; }
+
+.emoji-searchbar {
+  padding: $padding;
+  border-spacing: $padding;
+  border-bottom: 1px solid $borders_color;
+}
+
+.emoji-toolbar {
+  padding: $padding;
+  border-spacing: $padding;
+  border-top: 1px solid $borders_color;
+}
+
+button.emoji-section {
+  border-color: transparent;
+  border-width: 3px;
+  border-style: none none solid;
+  border-radius: 0;
+
+  padding: 3px 0 0;
+  min-width: 32px;
+  min-height: 28px;
+
+  // reset styles inherited from button
+  background: none;
+  box-shadow: none;
+  text-shadow: none;
+
+  &:hover { border-color: $border_color; 
+  &:checked { border-color: $selected_bg_color; }
+}
+
+popover.emoji-picker emoji {
+  font-size: x-large;
+  padding: $padding;
+  border-radius: $global_radius;
+
+  &:focus,
+  &:hover {
+    background: $selected_bg_color;
+
+    // TODO: add shadows on hover?
+    /* SAMPLE
+    @if $contrast == 'high' {
+      box-shadow: inset 0 0 0 1px $borders_color;
+    }*/
+  }
+}
+
+emoji-completion-row > box {
+  border-spacing: 10px;
+  padding: 2px 10px;
+}
+
+emoji-completion-row:focus,
+emoji-completion-row:hover {
+  background-color: $selected_bg_color;
+  color: $selected_fg_color;
+}
+
+emoji-completion-row emoji:focus,
+emoji-completion-row emoji:hover {
+  background-color: $menu_selected_color;
+}
+
+// no idea what this does. Autocomplete?
+popover.entry-completion > contents { padding: 0; }
+
+@include statusbar();
+
+// arrow
+$menubutton_spacing : 6px;
+
+menubutton {
+  > button > box { border-spacing: $menubutton_spacing; }
+
+  arrow {
+    min-height: 16px;
+    min-width: 16px;
+    
+    &.none { -gtk-icon-source: -gtk-icontheme('open-menu-symbolic'); }
+    &.down { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+    &.up { -gtk-icon-source: -gtk-icontheme('pan-up-symbolic'); }
+    &.left { -gtk-icon-source: -gtk-icontheme('pan-start-symbolic'); }
+    &.right { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic'); }
+  }
+}
+
+// legacy stuff
+
+@include images();
+@include floating_bar();
+@include terminal();
+
+// TODO: make widgets handle their own linked styles
 @include linked_widgets();
-
 @include linked_styles();
 
-@include tooltip();
-
-@include textview();
-
-@include treeview();
-
-@include view();
-
-// TODO: merge into listview?
-@include sidebar();
-
-@include actionbar();
-
-@include searchbar();
-
-// NOTICE: renamed from app_notifications()
-@include notifications();
-
-@include osd;
-
+// TODO: move next to button()
 @include destructive_button();
 
+// TODO: move next to button()
 @include suggested_button();
-
-// NOTICE: not used, deprecated
-// @include headerbar_suggested_button();
 
 // NOTICE: deprecated in GTK4
 // @include selection_mode();
 
-@include decoration();
-
 // NOTICE: deprecated
 // @include titlebar();
-
-// TODO: rename to dialog?
-@include messagedialog();
 
 // desktop theme rules
 // TODO: merge into a single mixin
 @include desktop_icons();
-
 @include gnome_flashback();
-
 @include mate();
-
 @include xfce();
-
 @include nemo();
-
 @include unity();

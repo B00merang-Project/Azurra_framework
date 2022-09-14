@@ -1,4 +1,9 @@
 @mixin separator() {
+  // TODO: is this still used?
+  label.separator, popover label.separator, popover.background label.separator {
+    text-shadow: 1px 1px gtkalpha($light_shadow, 0.85);
+  }
+
   separator {
     -gtk-icon-source: none;
     min-width: 1px;
