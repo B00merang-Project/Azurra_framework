@@ -130,8 +130,10 @@ colors_replace() {
   
   [ -f "$theme_dir/_colors_light.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_light.scss"
   [ -f "$theme_dir/_colors_dark.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_dark.scss"
+  [ -f "$theme_dir/_colors_solid.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_solid.scss"
+  [ -f "$theme_dir/_colors_solid_dark.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_solid_dark.scss"
   
-  echo "Replaced value in '$theme_dir/_colors_dark.scss' (if found)"
+  echo "Replaced value in '$theme_dir/_colors*.scss' (if found)"
 }
 
 imports_replace() {
