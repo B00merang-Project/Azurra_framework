@@ -1,0 +1,45 @@
+@mixin spinbutton() {
+  spinbutton {
+    &.horizontal {
+      border: 1px solid $border_color;
+      
+      &:backdrop { border-color: $backdrop_border_color; }
+      &:focus { border-color: gtkshade($selected_bg_color, 0.6); }
+      
+      entry {
+        border: none;
+        padding: 7px 15px;
+      }
+      
+      button {
+        border-width: 0;
+        border-radius: 0;
+        border-left-width: 1px;
+        
+        &:hover, &:active, &:checked {
+          border-color: $border_color; background-color: $bg_color;
+          
+          &:backdrop { border-color: $backdrop_border_color; background-color: $backdrop_bg_color; }
+        }
+        
+        &:focus { border-color: gtkshade($selected_bg_color, 0.6); }
+      }
+    }
+
+    &.vertical {
+      button {
+        &.up {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          border-bottom-width: 0;
+        }
+
+        &.down {
+          border-top-width: 0;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+    }
+  }
+}

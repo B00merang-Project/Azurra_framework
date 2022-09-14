@@ -1,0 +1,17 @@
+@mixin infobar() {
+  infobar {
+    border: none;
+
+    &.info, &.question, &.warning, &.error {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+
+      &:backdrop {
+        color: $backdrop_selected_fg_color;
+        background-color: $backdrop_selected_bg_color;
+      }
+
+      @include selection_mode_button();
+    }
+  }
+}

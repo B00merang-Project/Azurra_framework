@@ -1,0 +1,150 @@
+@mixin normal_buttons($bg, $fg, $br) {
+  & {
+    padding: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: $button_radius;
+    color: $fg;
+    border-color: $br;
+    background-color: $bg;
+    background-image: linear-gradient(to bottom,
+      $light_shadow,
+      gtkshade($bg, 0.98) 21%,
+      gtkshade($bg, 0.93) 51%,
+      gtkshade($bg, 0.87) 60%,
+      gtkshade($bg, 0.82) 70%,
+      gtkshade($bg, 0.9) 90%
+    );
+
+    &:hover {
+      color: $fg;
+      border-color: gtkshade($selected_bg_color, 0.7);
+      background-color: gtkshade($selected_bg_color, 1.02);
+      background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.12), $selected_bg_color 60%, gtkshade($selected_bg_color, 0.95) 70%);
+    }
+    
+    &:focus {
+      background-image: linear-gradient(to bottom,
+        $light_shadow,
+        gtkshade($color_shadow, 0.98) 21%,
+        gtkshade($color_shadow, 0.93) 51%,
+        gtkshade($color_shadow, 0.87) 60%,
+        gtkshade($color_shadow, 0.82) 70%,
+        gtkshade($color_shadow, 0.9) 90%
+      );
+    }
+
+    &:active, &:checked {
+      color: $fg;
+      border-color: gtkshade($selected_bg_color, 0.6);
+      background-color: gtkshade($selected_bg_color, 0.95);
+      background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.07), gtkshade($selected_bg_color, 0.95) 60%, gtkshade($selected_bg_color, 0.9) 70%);
+
+      &:backdrop {
+        color: $backdrop_fg_color;
+        border-color: gtkshade($backdrop_bg_color, 0.85);
+        background-color: gtkshade($backdrop_bg_color, 0.85);
+        background-image: linear-gradient(to bottom, gtkshade($backdrop_selected_bg_color, 1.07), gtkshade($backdrop_selected_bg_color, 0.95) 60%, gtkshade($backdrop_selected_bg_color, 0.9) 70%);
+      }
+      
+      &:disabled {
+        color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
+        
+        &:backdrop {
+          color: $backdrop_disabled_fg_color;
+        }
+      }
+    }
+    
+    &:disabled {
+      color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
+
+      &:backdrop {
+        color: $backdrop_disabled_fg_color;
+      }
+    }
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+    }
+  }
+}
+
+@mixin flat_buttons($bg, $fg, $br)
+{
+  & {
+    border-color: transparent;
+    border-radius: $button_radius;
+    color: $fg;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    
+    &:hover {
+      color: $fg;
+      border-color: gtkshade($selected_bg_color, 0.7);
+      background-color: gtkshade($selected_bg_color, 1.02);
+      background-image: linear-gradient(to bottom,
+        $light_shadow,
+        gtkshade($bg, 0.98) 21%,
+        gtkshade($bg, 0.93) 51%,
+        gtkshade($bg, 0.87) 60%,
+        gtkshade($bg, 0.82) 70%,
+        gtkshade($bg, 0.9) 90%
+      );
+    }
+
+    &:active, &:checked {
+      color: $fg;
+      border-color: gtkshade($selected_bg_color, 0.6);
+      background-color: gtkshade($selected_bg_color, 0.95);
+      background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.07), gtkshade($selected_bg_color, 0.95) 60%, gtkshade($selected_bg_color, 0.9) 70%);
+
+      &:backdrop {
+        color: $backdrop_fg_color;
+        border-color: gtkshade($backdrop_bg_color, 0.85);
+        background-color: gtkshade($backdrop_bg_color, 0.85);
+        background-image: linear-gradient(to bottom, gtkshade($backdrop_selected_bg_color, 1.07), gtkshade($backdrop_selected_bg_color, 0.95) 60%, gtkshade($backdrop_selected_bg_color, 0.9) 70%);
+      }
+      
+      &:disabled {
+        color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
+        
+        &:backdrop {
+          color: $backdrop_disabled_fg_color;
+        }
+      }
+    }
+
+    &:disabled {
+      border-color: transparent;
+      color: gtkalpha($fg, 0.8);
+      background-color: transparent;
+      background-image: none;
+      
+      &:backdrop {
+        border-color: transparent;
+        color: gtkalpha($fg, 0.7);
+        background-color: transparent;
+        background-image: none;
+      }
+    }
+
+    &:backdrop {
+      border-color: transparent;
+      background-color: transparent;
+      color: $backdrop_fg_color;
+      background-image: none;
+    }
+  }
+}
+
+@mixin button() {
+  button {
+    @include normal_buttons($dark_bg_color, $fg_color, gtkshade($dark_bg_color, 0.5));
+    
+    &.flat {
+      @include flat_buttons($dark_bg_color, $fg_color, $border_color);
+    }
+  }
+}

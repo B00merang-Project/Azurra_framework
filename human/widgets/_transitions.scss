@@ -1,0 +1,61 @@
+@mixin transitions() {
+  button {
+    transition: none;
+  }
+
+  entry {
+    transition: none;
+
+    &:focus {
+      transition: none;
+    }
+  }
+
+  notebook {
+    tab label, .prelight-page, .prelight-page label, .active-page, .active-page label {
+      transition: none;
+    }
+  }
+
+  scale, progressbar {
+    transition: none;
+
+    &:backdrop {
+      transition: none;
+    }
+  }
+
+  scale, switch {
+    slider {
+      transition: none;
+
+      &:backdrop {
+        transition: none;
+      }
+    }
+
+    &:backdrop slider {
+      transition: none;
+    }
+  }
+
+  scrollbar {
+    transition: none;
+
+    &:backdrop {
+      transition: none;
+    }
+
+    & slider {
+      transition: none;
+    }
+  }
+
+  decoration {
+    transition: none;
+
+    &:backdrop {
+      transition: none;
+    }
+  }
+}

@@ -1,0 +1,206 @@
+@mixin notebook() {
+  notebook {
+    padding: 0;
+
+    > stack:not(:only-child) {
+      background-color: $base_color;
+
+      &:backdrop { background-color: $backdrop_base_color; }
+    }
+
+    > header {
+      padding: 1px;
+      border-color: $border_color;
+      border-width: 1px;
+      background-color: gtkshade($bg_color, 0.9);
+
+      &:backdrop {
+        border-color: $backdrop_border_color;
+        background-color: gtkshade($backdrop_bg_color, 0.95);
+      }
+
+      tabs { margin: -1px; }
+
+      &.top {
+        border-bottom-style: solid;
+        > tabs {
+          margin-bottom: -2px;
+          > tab {
+            &:hover { box-shadow: inset 0 -3px $border_color; }
+            &:backdrop { box-shadow: none; }
+            &:checked { box-shadow: inset 0 -3px $selected_bg_color; }
+          }
+        }
+      }
+
+      &.bottom {
+        border-top-style: solid;
+        > tabs {
+          margin-top: -2px;
+          > tab {
+            &:hover { box-shadow: inset 0 3px $border_color; }
+            &:backdrop { box-shadow: none; }
+            &:checked { box-shadow: inset 0 3px $selected_bg_color; }
+          }
+        }
+      }
+
+      &.right {
+        border-left-style: solid;
+        > tabs {
+          margin-left: -2px;
+          > tab {
+            &:hover { box-shadow: inset 3px 0 $border_color; }
+            &:backdrop { box-shadow: none; }
+            &:checked { box-shadow: inset 3px 0 $selected_bg_color; }
+          }
+        }
+      }
+
+      &.left {
+        border-right-style: solid;
+        > tabs {
+          margin-right: -2px;
+          > tab {
+            &:hover { box-shadow: inset -3px 0 $border_color; }
+            &:backdrop { box-shadow: none; }
+            &:checked { box-shadow: inset -3px 0 $selected_bg_color; }
+          }
+        }
+      }
+
+      tab {
+        min-height: 30px;
+        min-width: 30px;
+        padding: 3px 12px;
+        border-width: 1px;
+        border-color: transparent;
+        font-weight: bold;
+        color: $disabled_fg_color;
+        background-color: transparent;
+        outline-offset: -6px;
+
+        &:hover {
+          color: gtkmix($disabled_fg_color, $fg_color, 0.5);
+
+          &.reorderable-page {
+            border-color: gtkalpha($border_color, 0.3);
+            background-color: gtkalpha($bg_color, 0.3);
+          }
+        }
+
+        &:checked { color: $fg_color;
+          &:backdrop { color: $backdrop_fg_color; }
+
+          &.reorderable-page {
+            border-color: gtkalpha($border_color, 0.7);
+            background-color: gtkalpha($bg_color, 0.5);
+
+            &:hover { background-color: gtkalpha($bg_color, 0.8); }
+            &:backdrop {
+              border-color: $backdrop_border_color;
+              background-color: $backdrop_bg_color;
+            }
+          }
+        }
+
+        &:backdrop {
+          color: $backdrop_fg_color;
+
+          &.reorderable-page {
+            border-color: transparent;
+            background-color: transparent;
+          }
+        }
+
+        button.flat {
+          padding: 0;
+          margin-top: 4px;
+          margin-bottom: 4px;
+          min-width: 20px;
+          min-height: 20px;
+        }
+      }
+
+      &.top, &.bottom {
+        tabs {
+          padding-left: 4px;
+          padding-right: 4px;
+
+          &:not(:only-child) {
+            margin-left: 3px;
+            margin-right: 3px;
+
+            &:first-child { margin-left: -1px; }
+            &:last-child { margin-right: -1px; }
+          }
+
+          tab {
+            margin-left: 4px;
+            margin-right: 4px;
+
+            &.reorderable-page { border-style: none solid; }
+          }
+        }
+      }
+
+      &.left, &.right {
+        tabs {
+          padding-top: 4px;
+          padding-bottom: 4px;
+
+          &:not(:only-child) {
+            margin-top: 3px;
+            margin-bottom: 3px;
+
+            &:first-child { margin-top: -1px; }
+            &:last-child { margin-bottom: -1px; }
+          }
+
+          tab {
+            margin-top: 4px;
+            margin-bottom: 4px;
+
+            &.reorderable-page { border-style: solid none; }
+          }
+        }
+      }
+
+      &.top tab { padding-bottom: 4px; }
+      &.bottom tab { padding-top: 4px; }
+
+      // alignments
+      &.top > tabs > arrow.up, &.bottom > tabs > arrow.up {
+        -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+
+        &:last-child { margin-left: 2px; }
+      }
+
+      &.top > tabs > arrow.down, &.bottom > tabs > arrow.down {
+        -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
+
+        &:first-child { margin-right: 2px; }
+      }
+
+      &.left > tabs > arrow.up, &.right > tabs > arrow.up {
+        -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+
+        &:last-child { margin-top: 2px; }
+      }
+
+      &.left > tabs > arrow.down, &.right > tabs > arrow.down {
+        -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+
+        &:first-child { margin-bottom: 2px; }
+      }
+
+      > tabs > arrow {
+        color: $fg_color;
+
+        &:hover { color: gtkshade($fg_color, 1.2); }
+        &:active { color: gtkshade($fg_color, 0.8); }
+        &:disabled { color: $disabled_fg_color; }
+      }
+    }
+  }
+}

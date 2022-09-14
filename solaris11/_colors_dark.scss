@@ -1,0 +1,101 @@
+// Normal colors
+$bg_color : #B9D0E4;
+$fg_color : #000000;
+$base_color : #B9D0E4;
+$text_color : #000000;
+$selected_bg_color : #607B8B;
+$selected_fg_color : #FFFFFF;
+$selected_base_color : #607B8B;
+$selected_text_color : #FFFFFF;
+$disabled_bg_color : gtkmix($fg_color, $bg_color, 0.95);
+$disabled_fg_color : gtkmix($fg_color, $bg_color, 0.5);
+$disabled_base_color : $disabled_bg_color;
+$disabled_text_color : $disabled_fg_color;
+
+// Backdrop state colors
+$backdrop_bg_color : $bg_color;
+$backdrop_fg_color : $fg_color;
+$backdrop_base_color : $base_color;
+$backdrop_text_color : $text_color;
+$backdrop_selected_bg_color : $selected_bg_color;
+$backdrop_selected_fg_color : $selected_fg_color;
+$backdrop_selected_base_color : $selected_base_color;
+$backdrop_selected_text_color : $selected_text_color;
+$backdrop_disabled_bg_color : gtkmix($fg_color, $bg_color, 0.95);
+$backdrop_disabled_fg_color : gtkmix($fg_color, $bg_color, 0.5);
+$backdrop_disabled_base_color : $backdrop_disabled_bg_color;
+$backdrop_disabled_text_color : $backdrop_disabled_fg_color;
+
+// Darker color scheme
+$dark_bg_color : #2A3D69;
+$dark_fg_color : #FFFFFF;
+
+// lighter scheme for buttons
+$light_bg_color : #E8E9ED;
+$light_fg_color : #000000;
+$light_borders : gtkshade($light_bg_color, 0.9);
+
+// Shadows
+$dark_shadow : rgb(0, 0, 0);
+$color_shadow : $selected_bg_color;
+$light_shadow : rgb(255, 255, 255);
+$wm_shadow : #000000;
+
+// Borders
+$border_color : gtkshade($bg_color, 0.9);
+$outline_color : gtkshade($bg_color, 0.75);
+$backdrop_border_color : gtkshade($backdrop_bg_color, 0.9);
+
+// Notification header backgrounds
+$info_fg_color : #FFFFFF;
+$info_bg_color : #0055FF;
+$warning_fg_color : #FFFFFF;
+$warning_bg_color : #FF8300;
+$question_fg_color : #FFFFFF;
+$question_bg_color : #2C2C2C;
+$error_fg_color : #FFFFFF;
+$error_bg_color : #FF0000;
+
+// Special foreground colors
+$link_color : #1D72E9;
+$error_color : #CC0000;
+$success_color : #39E4A3;
+$warning_color : #FF9900;
+
+// Widget colors
+$tooltip_bg_color : #16223E;
+$tooltip_fg_color : #FFFFFF;
+$menu_bg_color : $bg_color;
+$menu_fg_color : $fg_color;
+$menubar_bg_color : $dark_bg_color;
+$menubar_fg_color : $dark_fg_color;
+$toolbar_bg_color : $dark_bg_color;
+$toolbar_fg_color : $dark_fg_color;
+$sidebar_bg_color : $base_color;
+$sidebar_fg_color : $text_color;
+$taskbar_bg_color : $dark_bg_color;
+$taskbar_fg_color : $dark_fg_color;
+$titlebar_bg_color : $dark_bg_color;
+$titlebar_fg_color : $dark_fg_color;
+$headerbar_bg_color : $dark_bg_color;
+$headerbar_fg_color : $dark_fg_color;
+$terminal_bg_color : $base_color;
+$terminal_fg_color : $text_color;
+
+// OSD
+$osd_fg : $dark_fg_color;
+$osd_bg : gtkmix($dark_bg_color, $dark_fg_color, 0.2);
+$osd_base : $dark_bg_color;
+
+// Budgie colors
+$raven_fg_color : $dark_fg_color;
+$raven_bg_color : gtkalpha($dark_bg_color, 0.9);
+
+// Desktop Icons
+$desktop_item_fg : #FFFFFF;
+$desktop_item_selected_fg : $selected_fg_color;
+$desktop_item_text_shadow : gtkalpha($dark_shadow, 0.8);
+
+// LightDM greeter colors
+$lightdm_bg_color : $dark_bg_color;
+$lightdm_fg_color : $dark_fg_color;

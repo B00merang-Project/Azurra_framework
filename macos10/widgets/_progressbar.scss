@@ -1,0 +1,109 @@
+// progressbar 
+@mixin progressbar() {
+  progressbar {
+    padding: 0;
+    border: none;
+    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+    background-color: transparent;
+
+    progress {
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 -1px #2b5dbe;
+      background-color: $selected_bg_color;
+      background-image: linear-gradient(to right, transparent, gtkalpha($dark_shadow, 0.05), transparent), linear-gradient(to top, #b9edff, gtkshade($selected_bg_color, 1.3) 40%, gtkshade($selected_bg_color, 1.15) 60%, gtkshade($selected_bg_color, 1.6) 80%);
+      background-size: 16px 16px, auto;
+
+      &:backdrop {
+        background-color: $backdrop_selected_bg_color;
+      }
+    }
+
+    trough {
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 0;
+      border-color: gtkshade($bg_color, 0.68);
+      border-left-color: gtkshade($bg_color, 0.8);
+      border-right-color: gtkshade($bg_color, 0.8);
+      border-bottom-color: gtkshade($bg_color, 0.9);
+      background-color: gtkshade($bg_color, 0.8);
+      background-image: linear-gradient(to bottom, $base_color 15%, $bg_color 40%, $base_color 75%);
+      box-shadow: 0 2px 2px 0 gtkalpha($dark_shadow, 0.2);
+
+      &:backdrop {
+        background-color: gtkshade($backdrop_bg_color, 0.95);
+      }
+    }
+    
+    &.vertical {
+      progress {
+        box-shadow: -1px 0 #2b5dbe;
+        border-left-color: #2b5dbe;
+        background-image: linear-gradient(to top, transparent, gtkalpha($dark_shadow, 0.05), transparent), 
+                          linear-gradient(to left, #b9edff, gtkshade($selected_bg_color, 1.3) 40%, gtkshade($selected_bg_color, 1.15) 60%, gtkshade($selected_bg_color, 1.6) 80%);
+
+        &:backdrop {
+          background-color: $backdrop_selected_bg_color;
+        }
+      }
+
+      trough {
+        border-left-color: gtkshade($bg_color, 0.68);
+        border-top-color: gtkshade($bg_color, 0.8);
+        border-bottom-color: gtkshade($bg_color, 0.8);
+        border-right-color: gtkshade($bg_color, 0.9);
+        background-image: linear-gradient(to right, $base_color 15%, $bg_color 40%, $base_color 75%);
+        box-shadow: 2px 0 2px 0 gtkalpha($dark_shadow, 0.2);
+
+        &:backdrop {
+          background-color: gtkshade($backdrop_bg_color, 0.95);
+        }
+      }
+    }
+
+    &.horizontal trough,
+    &.horizontal progress {
+      min-height: 16px;
+    }
+
+    &.vertical trough,
+    &.vertical progress {
+      min-width: 16px;
+    }
+  }
+
+  treeview.view {
+    &.progressbar {
+      &, &:disabled {
+        color: $selected_fg_color;
+        border-radius: 0;
+        background-color: $selected_bg_color;
+      }
+
+      &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
+        border-radius: 0;
+        color: $selected_bg_color;
+        background-color: $selected_fg_color;
+      }
+    }
+
+    &.trough {
+      color: $fg_color;
+      background-color: gtkalpha($dark_shadow, 0.1);
+      border-radius: 0;
+      border: none;
+
+      &:selected, &:selected:focus {
+        color: $selected_fg_color;
+        background-color: gtkalpha($dark_shadow, 0.1);
+        border-radius: 0;
+        border: none;
+      }
+    }
+
+    infobar & trough, row:selected & trough {
+      background-color: gtkalpha($dark_shadow, 0.1);
+    }
+  }
+}

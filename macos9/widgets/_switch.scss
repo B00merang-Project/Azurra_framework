@@ -1,0 +1,43 @@
+@mixin switch() {
+  switch {
+    outline-offset: -4px;
+    margin: 4px;
+    color: $fg_color;
+    border-radius: $button_radius;
+    border: 1px solid $border_color;
+    background-color: gtkshade($bg_color, 0.8);
+    box-shadow: inset 1px 1px gtkshade($bg_color, 0.6), inset -1px -1px gtkshade($bg_color, 0.95);
+
+    &:checked {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+      box-shadow: inset 1px 1px gtkshade($selected_bg_color, 0.6), inset -1px -1px gtkshade($selected_bg_color, 0.95);
+    }
+
+    &:disabled {
+      color: $disabled_fg_color;
+      border-color: $disabled_bg_color;
+      background-color: $disabled_bg_color;
+      box-shadow: none;
+    }
+
+    slider {
+      margin: -1px;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: $button_radius;
+      color: $fg_color;
+      border-color: gtkshade($border_color, 0.55);
+      box-shadow: inset 2px 2px $light_shadow, inset 1px 1px $bg_color, inset -2px -2px gtkshade($bg_color, 0.85), inset -1px -1px gtkshade($bg_color, 0.65);
+      background-color: $bg_color;
+    }
+
+    &:disabled {
+      slider {
+        box-shadow: none;
+        border-color: gtkshade($disabled_bg_color, 0.9);
+        background-color: $disabled_bg_color;
+      }
+    }
+  }
+}

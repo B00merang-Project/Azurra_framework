@@ -1,0 +1,90 @@
+@mixin headerbar_buttons($bg, $fg, $br)
+{
+  @include normal_buttons($bg, $fg, $br);
+}
+
+@mixin headerbar() {
+  headerbar {
+    padding: 4px 8px;
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+
+    &:backdrop {
+      background-color: gtkmix($titlebar_bg_color, $backdrop_bg_color, 0.3);
+      color: gtkmix($titlebar_fg_color, $backdrop_fg_color, 0.3);
+    }
+
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    button {
+      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
+    }
+    
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        padding: 0;
+        min-width: 31px;
+        min-height: 30px;
+        border: none;
+        color: transparent;
+        background-color: transparent;
+        background-position: center center;
+        -gtk-icon-shadow: none;
+        
+        &:hover { background-color: #3665b3; }
+        &:active { background-color: #3d6099; }
+        &:backdrop { opacity: 0.9; }
+      }
+      
+      &.close {
+        background-image: url('assets/close.png');
+
+        &:hover { background-color: #e04343; }
+        &:active { background-color: #c75050; }
+      }
+
+      &.minimize { background-image: url('assets/minimize.png'); }
+      &.maximize { background-image: url('assets/maximize.png'); }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+@mixin levelbar() {
+  levelbar {
+    &.horizontal {
+      block {
+        min-height: 1px;
+      }
+
+      &.discrete block {
+        margin: 0 1px;
+        min-width: 32px;
+      }
+    }
+
+    &.vertical {
+      block {
+        min-width: 1px;
+      }
+
+      &.discrete block {
+        margin: 1px 0;
+        min-height: 32px;
+      }
+    }
+
+    trough {
+      padding: 2px;
+      border: 1px solid $border_color;
+      background-color: $base_color;
+      border-radius: $levelbar_radius;
+
+      &:backdrop {
+        border-color: $backdrop_border_color;
+        background-color: $backdrop_base_color;
+      }
+    }
+
+    block {
+      border: 1px solid;
+      border-radius: 1px;
+
+      &.low {
+        border-color: gtkshade($warning_color, 0.8);
+        background-color: $warning_color;
+
+        &:backdrop { border-color: $warning_color; }
+      }
+
+      &.high, &:not(.empty) {
+        border-color: gtkshade($selected_bg_color, 0.8);
+        background-color: $selected_bg_color;
+
+        &:backdrop { border-color: $selected_bg_color; }
+      }
+
+      &.full {
+        border-color: gtkshade($success_color, 0.8);
+        background-color: $success_color;
+
+        &:backdrop { border-color: $success_color; }
+      }
+
+      &.empty {
+        border-color: gtkalpha($border_color, 0.5);
+        background-color: transparent;
+
+        &:backdrop { border-color: gtkalpha($backdrop_border_color, 0.2); }
+      }
+    }
+  }
+}

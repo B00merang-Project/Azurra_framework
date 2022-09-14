@@ -1,0 +1,16 @@
+@mixin menubar() {
+  menubar, .menubar {
+    -GtkWidget-window-dragging: true;
+    padding: 0;
+    border-style: none;
+    background-color: $menubar_bg_color;
+    color: $menubar_fg_color;
+    background-image: url('assets/titlebar.png');
+    background-size: 100% 100%;
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: $backdrop_bg_color;
+    }
+  }
+}

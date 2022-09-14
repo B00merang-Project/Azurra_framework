@@ -1,0 +1,224 @@
+@mixin headerbar_buttons($bg, $fg, $br)
+{
+  padding: 5px 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: $button_radius;
+  color: $fg;
+  border-color: $br;
+  border-top-color: gtkshade($br, 1.1);
+  border-left-color: gtkshade($br, 1.05);
+  border-right-color: gtkshade($br, 1.05);
+  background-color: transparent;
+  background-image: none;
+  box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.08);
+  -gtk-outline-radius: $button_radius;
+
+  &:hover {
+    color: $fg;
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
+    background-color: gtkshade($bg, 1.1);
+  }
+  
+  &:active, &:checked:active {
+    color: $fg;
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
+    background-color: gtkshade($bg, 1.1);
+    border-color: gtkshade($br, 0.9);
+    background-image: none;
+  }
+
+  &:checked {
+    color: $fg;
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
+    background-color: gtkshade($bg, 1.1);
+    border-color: gtkshade($br, 0.9);
+    background-image: none;
+    
+    @if $variant != 'light' {
+      box-shadow: inset 2px 2px gtkalpha($dark_shadow, 0.4), inset -2px -2px gtkalpha($light_shadow, 0.1);
+    }
+    @else {
+      box-shadow: inset 2px 2px gtkalpha($dark_shadow, 0.08), inset -2px -2px gtkalpha($light_shadow, 0.1);
+    }
+
+    &:backdrop {
+      background-image: none;
+      
+      &:hover {
+        background-color: gtkshade($bg, 1.1);
+      }
+    }
+    
+    &:disabled {
+      color: gtkmix($fg, $disabled_fg_color, 0.1);
+      border-color: gtkmix($fg, $disabled_bg_color, 0.85);
+      background-image: none;
+      
+      &:backdrop {
+        color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
+        background-image: none;
+      }
+    }
+  }
+
+  &:disabled {
+    border-color: $br;
+    border-top-color: gtkshade($br, 1.1);
+    border-left-color: gtkshade($br, 1.05);
+    border-right-color: gtkshade($br, 1.05);
+    color: gtkmix($fg, $backdrop_disabled_fg_color, 0.5);
+    background-image: none;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.05);
+    
+    &:backdrop {
+      border-color: $br;
+      border-top-color: gtkshade($br, 1.1);
+      border-left-color: gtkshade($br, 1.05);
+      border-right-color: gtkshade($br, 1.05);
+      color: gtkmix($fg, $backdrop_disabled_fg_color, 0.5);
+      background-image: none;
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.04);
+    }
+  }
+
+  &:backdrop {
+    color: gtkmix($fg, $backdrop_fg_color, 0.2);
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
+    
+    &:hover {
+      background-color: gtkshade($bg, 1.1);
+    }
+  }
+}
+
+@mixin headerbar() {
+  headerbar {
+    padding: 4px 8px;
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    
+    @if $variant != 'light' {
+      background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.6), $titlebar_bg_color);
+    }
+    @else {
+      background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.15), $titlebar_bg_color);
+    }
+
+    &:backdrop {
+      color: gtkalpha($titlebar_fg_color, 0.8);
+      background-image: none;
+    }
+    
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    button {
+      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, gtkshade($headerbar_bg_color, 0.8));
+    }
+
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+    
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        min-width: 16px;
+        min-height: 16px;
+        padding: 0;
+        border: 1px solid gtkshade($titlebar_bg_color, 0.8);
+        -gtk-icon-shadow: none;
+        border-radius: 100%;
+        
+        @if $variant != 'light' {
+          color: gtkshade($titlebar_bg_color, 0.8);
+        }
+        @else {
+          color: $titlebar_fg_color;
+        }
+        
+        background-color: transparent;
+        
+        @if $variant != 'light' {
+          background-image: linear-gradient(to bottom, gtkshade($light_shadow, 0.55), gtkshade($light_shadow, 0.35));
+        }
+        @else {
+          background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.15), $titlebar_bg_color);
+        }
+        
+        &:hover, &:backdrop:hover {
+          box-shadow: none;
+          
+          @if $variant != 'light' {
+            background-image: linear-gradient(to bottom, gtkshade($light_shadow, 0.75), gtkshade($light_shadow, 0.55));
+          }
+          
+          @else {
+            background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.6), gtkshade($titlebar_bg_color, 1.2));
+          }
+        }
+
+        &:active {
+          background-color: gtkalpha($base_color, 0.2);
+        }
+        
+        &:backdrop {
+          color: gtkshade($titlebar_bg_color, 0.85);
+          background-color: gtkalpha($light_shadow, 0.125);
+          background-image: linear-gradient(to bottom, transparent, gtkalpha($light_shadow, 0.1));
+        }
+      }
+      
+      &.close {
+        background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.1), gtkshade($selected_bg_color, 0.8));
+
+        &:hover {
+          box-shadow: none;
+          background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.25), gtkshade($selected_bg_color, 0.85));
+        }
+        
+        &:active {
+          background-image: none;
+          background-color: $selected_bg_color;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+@mixin switch() {
+  switch {
+    font-size: 0;
+    color: transparent;
+    outline-offset: -4px;
+    margin: 4px;
+    margin-left: -3px;
+    margin-right: -3px;
+    border: 3px solid $fg_color;
+    border-radius: 16px;
+    background-color: transparent;
+    min-width: 42px;
+
+    &:checked {
+      border-color: $selected_base_color;
+      background-color: $selected_base_color;
+      box-shadow: none;
+
+      &:disabled {
+        border-color: gtkmix($selected_base_color, $disabled_bg_color, 0.4);
+      }
+
+      &:backdrop {
+        border-color: gtkshade($selected_base_color, 0.9);
+        background-color: gtkshade($selected_base_color, 0.9);
+      }
+    }
+
+    &:disabled {
+      border-color: $disabled_fg_color;
+
+      &:backdrop {
+        border-color: $backdrop_disabled_fg_color;
+      }
+    }
+
+    &:backdrop {
+      border-color: $backdrop_fg_color;
+    }
+
+    slider {
+      min-width: 12px;
+      min-height: 12px;
+      margin: 3px;
+      border: none;
+      border-radius: 100%;
+      color: $fg_color;
+      background-color: $fg_color;
+      margin-left: 4px;
+    	margin-right: 4px;
+    }
+    
+    &:checked {
+      slider {
+        background-color: $base_color;
+      }
+      
+      &:disabled {
+        slider {
+          background-color: $disabled_bg_color;
+        }
+      
+        &:backdrop slider {
+          background-color: $backdrop_disabled_bg_color;
+        } 
+      }
+      
+      &:backdrop slider {
+        background-color: $backdrop_bg_color;
+      }
+    }
+
+    &:disabled {
+      & slider {
+        background-color: $disabled_fg_color;
+      }
+
+      &:backdrop slider {
+        background-color: $backdrop_disabled_fg_color;
+      }
+    }
+
+    &:backdrop slider {
+      background-color: $backdrop_fg_color;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@mixin menubar() {
+  menubar, .menubar {
+    -GtkWidget-window-dragging: true;
+    padding: 0;
+    border-style: none;
+    background-color: $menubar_bg_color;
+    color: $menubar_fg_color;
+    box-shadow: inset 0 -1px gtkshade($menubar_bg_color, 0.9), inset 1px 1px gtkalpha($light_shadow, 0.5);
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: $backdrop_bg_color;
+    }
+  }
+}

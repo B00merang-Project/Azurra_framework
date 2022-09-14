@@ -1,0 +1,59 @@
+@mixin switch() {
+  switch {
+    font-size: 0;
+    color: transparent;
+    outline-offset: -4px;
+    margin: 4px;
+    border: 1px solid $border_color;
+    border-radius: $global_radius;
+    background-color: $border_color;
+
+    &:checked {
+      border-color: $selected_bg_color;
+      background-color: $selected_bg_color;
+
+      &:backdrop {
+      }
+    }
+
+    &:disabled {
+      border-color: gtkshade($disabled_bg_color, 1.02);
+      background-color: gtkshade($disabled_bg_color, 1.02);
+
+      &:backdrop {
+        border-color: $backdrop_disabled_bg_color;
+        background-color: $backdrop_disabled_bg_color;
+      }
+    }
+
+    &:backdrop {
+      border-color: $backdrop_border_color;
+      background-color: $backdrop_border_color;
+    }
+
+    slider {
+      min-width: 20px;
+      min-height: 20px;
+      margin: 0;
+      border-radius: $global_radius;
+      border-style: solid;
+      border-width: 1px;
+      border-color: gtkshade($border_color, 0.55);
+      -gtk-outline-radius: $button_radius;
+      background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.1), gtkshade($bg_color, 1.08) 45%, gtkshade($bg_color, 1.04) 55%, gtkshade($bg_color, 0.999));
+    -gtk-outline-radius: $button_radius;
+      box-shadow: inset 1px 1px gtkshade($bg_color, 1.4), inset -1px -1px gtkshade($bg_color, 0.65), 0 0 0 1px gtkalpha($dark_shadow, 0.05), 1px 1px gtkalpha($light_shadow, 0.5);
+    }
+
+    &:disabled {
+      slider {
+      }
+
+      &:backdrop slider {
+      }
+    }
+
+    &:backdrop slider {
+    }
+  }
+}

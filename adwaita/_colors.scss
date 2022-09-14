@@ -1,0 +1,98 @@
+// Normal colors
+$bg_color : #E8E8E7;
+$fg_color : #2E3436;
+$base_color : #FFFFFF;
+$text_color : #2E3436;
+$selected_bg_color : #4A90D9;
+$selected_fg_color : #FFFFFF;
+$selected_base_color : #4A90D9;
+$selected_text_color : #FFFFFF;
+$disabled_bg_color : gtkshade($bg_color, 1.05);
+$disabled_fg_color : gtkshade($bg_color, 0.55);
+$disabled_base_color : $disabled_bg_color;
+$disabled_text_color : $disabled_fg_color;
+
+// Backdrop state colors
+$backdrop_bg_color : $bg_color;
+$backdrop_fg_color : gtkmix($bg_color, $fg_color, 0.5);
+$backdrop_base_color : #FCFCFC;
+$backdrop_text_color : $text_color;
+$backdrop_selected_bg_color : $selected_bg_color;
+$backdrop_selected_fg_color : $bg_color;
+$backdrop_selected_base_color : $selected_base_color;
+$backdrop_selected_text_color : $bg_color;
+$backdrop_disabled_bg_color : gtkmix($fg_color, $bg_color, 1.05);
+$backdrop_disabled_fg_color : gtkmix($fg_color, $bg_color, 0.75);
+$backdrop_disabled_base_color : $backdrop_disabled_bg_color;
+$backdrop_disabled_text_color : $backdrop_disabled_fg_color;
+
+// Darker color scheme
+$dark_bg_color : #F4F4F4;
+$dark_fg_color : #2E3436;
+
+// Shadows
+$dark_shadow : rgb(0, 0, 0);
+$color_shadow : $selected_bg_color;
+$light_shadow : rgb(255, 255, 255);
+$wm_shadow : #000000;
+
+// Borders
+$border_color : gtkshade($bg_color, 0.8);
+$outline_color : gtkshade($bg_color, 0.8);
+$backdrop_border_color : gtkshade($backdrop_bg_color, 0.85);
+
+// Notification header backgrounds
+$info_fg_color : #FFFFFF;
+$info_bg_color : #0055FF;
+$warning_fg_color : #FFFFFF;
+$warning_bg_color : #FF8300;
+$question_fg_color : #FFFFFF;
+$question_bg_color : #2C2C2C;
+$error_fg_color : #FFFFFF;
+$error_bg_color : #FF0000;
+
+// Special foreground colors
+$link_color : #4A90D9;
+$error_color : #CC0000;
+$success_color : #33D17A;
+$warning_color : #FF9900;
+
+// Widget colors
+$tooltip_bg_color : rgba(0,0,0,0.9);
+$tooltip_fg_color : #FFFFFF;
+$menu_bg_color : $base_color;
+$menu_fg_color : $text_color;
+$menubar_bg_color : $bg_color;
+$menubar_fg_color : $fg_color;
+$toolbar_bg_color : $bg_color;
+$toolbar_fg_color : $fg_color;
+$sidebar_bg_color : #F4F4F3;
+$sidebar_fg_color : #2E3436;
+$taskbar_bg_color : $dark_bg_color;
+$taskbar_fg_color : $dark_fg_color;
+$titlebar_bg_color : $dark_bg_color;
+$titlebar_fg_color : $dark_fg_color;
+$headerbar_bg_color : $bg_color;
+$headerbar_fg_color : $fg_color;
+$terminal_bg_color : $base_color;
+$terminal_fg_color : $text_color;
+
+// OSD
+$osd_fg : #EEEEEC;
+$osd_bg : rgba(68, 70, 71, 0.9);
+$osd_text : #FFFFFF;
+$osd_base : #2D3031;
+$osd_borders : black;
+
+// Budgie colors
+$raven_fg_color : $dark_fg_color;
+$raven_bg_color : gtkalpha($dark_bg_color, 0.9);
+
+// Desktop Icons
+$desktop_item_fg : #FFFFFF;
+$desktop_item_selected_fg : $selected_fg_color;
+$desktop_item_text_shadow : gtkalpha($dark_shadow, 0.8);
+
+// LightDM greeter colors
+$lightdm_bg_color : $dark_bg_color;
+$lightdm_fg_color : $dark_fg_color;

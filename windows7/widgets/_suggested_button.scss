@@ -1,0 +1,11 @@
+@mixin suggested_button() {
+  button.suggested-action {
+    box-shadow: inset 0 0 1px 1px $color_shadow;
+    border-color: $selected_base_color;
+    background-image: linear-gradient(to bottom, gtkmix(gtkshade($bg_color, 1.08), $color_shadow, 0.15), gtkmix(gtkshade($bg_color, 1.05), $color_shadow, 0.15), gtkmix($bg_color, $color_shadow, 0.15) 50%, gtkmix(gtkshade($bg_color, 0.92), $color_shadow, 0.15) 51%);
+    
+    &:hover {
+      background-image: linear-gradient(to bottom, gtkmix(gtkshade($bg_color, 1.12), $color_shadow, 0.15), gtkmix(gtkshade($bg_color, 1.08), $color_shadow, 0.15), gtkmix($bg_color, $color_shadow, 0.15) 50%, gtkmix(gtkshade($bg_color, 0.95), $color_shadow, 0.15) 51%);
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@mixin linked_styles() {
+  .linked {
+    button, .raised button {
+      &:focus, &:hover, &:active, &:checked { box-shadow: -1px 0 gtkshade($selected_bg_color, 0.8);
+        &:backdrop { box-shadow: -1px 0 gtkshade($backdrop_bg_color, 0.85); }
+      }
+      &:first-child, &:only-child {
+        &:focus, &:hover, &:active, &:checked { box-shadow: none;
+          &:backdrop { box-shadow: none; }
+        }
+      }
+    }
+    
+    entry {
+      &:focus, &:last-child:focus { box-shadow: -1px 0 gtkshade($selected_bg_color, 0.6); }
+      &:first-child:focus, &:only-child:focus { box-shadow: none; }
+    }
+
+    combobox {
+      box.linked button {
+        &:focus, &:hover, &:active, &:checked { box-shadow: -1px 0 gtkshade($selected_bg_color, 0.8);
+          &:backdrop { box-shadow: -1px 0 gtkshade($backdrop_bg_color, 0.85); }
+        }
+      }
+      
+      &:first-child box.linked button, &:only-child box.linked button {
+        &:focus, &:hover, &:active, &:checked { box-shadow: none;
+          &:backdrop { box-shadow: none; }
+        }
+      }
+    }
+    
+    &.vertical {
+      button {
+        &:focus, &:hover, &:active, &:checked { box-shadow: 0 -1px gtkshade($selected_bg_color, 0.8);
+          &:backdrop { box-shadow: 0 -1px gtkshade($backdrop_bg_color, 0.85); }
+        }
+        &:first-child, &:only-child {
+          &:focus, &:hover, &:active, &:checked { box-shadow: none;
+            &:backdrop { box-shadow: none; }
+          }
+        }
+      }
+      
+      entry {
+        &:focus, &:last-child:focus { box-shadow: 0 -1px gtkshade($selected_bg_color, 0.6); }
+        &:first-child:focus, &:only-child:focus { box-shadow: none; }
+      }
+
+      combobox {
+        box.linked button {
+          &:focus, &:hover, &:active, &:checked { box-shadow: 0 -1px gtkshade($selected_bg_color, 0.8);
+            &:backdrop { box-shadow: 0 -1px gtkshade($backdrop_bg_color, 0.85); }
+          }
+        }
+        &:first-child box.linked button, &:only-child box.linked button {
+          &:focus, &:hover, &:active, &:checked { box-shadow: none;
+            &:backdrop { box-shadow: none; }
+          }
+        }
+      }
+      
+      spinbutton:focus { box-shadow: 0 -1px gtkshade($selected_bg_color, 0.6); }
+    }
+  }
+  
+  stackswitcher button.text-button { min-width: 80px; }
+}

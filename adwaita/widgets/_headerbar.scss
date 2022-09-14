@@ -1,0 +1,66 @@
+@mixin headerbar_buttons($bg, $fg, $br) { @include normal_buttons($bg, $fg, $br); }
+
+@mixin headerbar() {
+  headerbar {
+    min-height: 30px;
+    padding: 5px 6px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    border-bottom: 1px solid gtkshade($border_color, 0.65);
+    box-shadow: inset 0 -2px gtkalpha($dark_shadow, 0.045);
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      border-bottom-color: $backdrop_border_color;
+      background-color: $backdrop_bg_color;
+      box-shadow: none;
+    }
+
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    button { @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color); }
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+    
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        @include flat_buttons($bg_color, $fg_color, $border_color);
+      }
+    }
+  }
+}

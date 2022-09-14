@@ -1,0 +1,68 @@
+@mixin entry() {
+  entry {
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: $entry_radius;
+    color: $text_color;
+    caret-color: currentColor;
+    background-color: transparent;
+    border-image: linear-gradient(to bottom, transparent 80%, $border_color 81%) 1 1 1 1;
+
+    &:active, &:focus {
+      border-image: linear-gradient(to bottom, transparent 80%, $selected_bg_color 81%) 1 1 1 1;
+    }
+
+    &:selected, &:selected:focus, selection, selection:focus {
+      color: $selected_text_color;
+      background-color: $selected_base_color;
+    }
+
+    &:disabled {
+      color: $disabled_text_color;
+      border-image: linear-gradient(to bottom, transparent 80%, $backdrop_border_color 81%) 1 1 1 1;
+
+      &:backdrop {
+        color: $backdrop_disabled_fg_color;
+      }
+    }
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+    }
+
+    > image {
+      &.left {
+        padding-right: 5px;
+      }
+      
+      &.right {
+        padding-left: 5px;
+      }
+    }
+
+    progress {
+      margin: -4px -4px;
+      border-width: 0 0 2px;
+      border-radius: 0;
+      border-style: solid;
+      border-color: $selected_bg_color;
+      background-color: transparent;
+    }
+
+    &.flat, &.flat:focus {
+      min-height: 0;
+      padding: 3px;
+      border-radius: 0;
+      border-image: none;
+      background-image: none;
+      border-color: transparent;
+    }
+
+    &.search {
+      border-radius: $entry_radius;
+      border: 1px solid $border_color;
+    }
+  }
+}

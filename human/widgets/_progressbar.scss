@@ -1,0 +1,85 @@
+@mixin progressbar() {
+  $bg : #c48559;
+  $stripe : #b67d54;
+
+  progressbar {
+    padding: 0;
+    border: none;
+    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+    background-color: transparent;
+
+    progress {
+      border: 1px solid gtkshade($selected_bg_color, 1.1);
+      border-radius: $progressbar_radius;
+      background-color: gtkshade(gtkmix($selected_bg_color, $warning_bg_color, 0.2), 1.2);
+      box-shadow: inset 1px 1px gtkalpha($light_shadow, 0.15);
+      
+      background-image: repeating-linear-gradient(65deg, $bg, $bg 10px, $stripe 10px, $stripe 20px);
+      background-size: 22px;
+
+      &:backdrop {
+      }
+    }
+    
+    &.vertical progress {
+      background-image: repeating-linear-gradient(-25deg, $bg, $bg 10px, $stripe 10px, $stripe 20px);
+      background-size: 20px;
+      
+      &:backdrop {
+      }
+    }
+
+    trough {
+      border: 1px solid gtkshade($bg_color, 0.75);
+      border-radius: $progressbar_radius;
+      background-color: gtkshade($bg_color, 0.9);
+
+      &:backdrop {
+      }
+    }
+
+    &.horizontal trough,
+    &.horizontal progress {
+      min-height: 18px;
+    }
+
+    &.vertical trough,
+    &.vertical progress {
+      min-width: 18px;
+    }
+  }
+
+  treeview.view {
+    &.progressbar {
+      &, &:disabled {
+        color: $selected_fg_color;
+        border-radius: 0;
+        background-color: $selected_bg_color;
+      }
+
+      &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
+        border-radius: 0;
+        color: $selected_bg_color;
+        background-color: $selected_fg_color;
+      }
+    }
+
+    &.trough {
+      color: $fg_color;
+      background-color: gtkalpha($dark_shadow, 0.1);
+      border-radius: 0;
+      border: none;
+
+      &:selected, &:selected:focus {
+        color: $selected_fg_color;
+        background-color: gtkalpha($dark_shadow, 0.1);
+        border-radius: 0;
+        border: none;
+      }
+    }
+
+    infobar & trough, row:selected & trough {
+      background-color: gtkalpha($dark_shadow, 0.1);
+    }
+  }
+}

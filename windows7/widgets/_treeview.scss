@@ -1,0 +1,62 @@
+@mixin treeview() {
+  treeview {
+    -treeview-vertical-separator: 0;
+
+    &.view {
+      &:selected, &:selected:focus {
+        border-radius: 0;
+        color: $selected_fg_color;
+        box-shadow: inset 0 0 1px 0 gtkshade($selected_bg_color, 0.87);
+        background-color: $selected_bg_color;
+        background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.02), gtkshade($selected_bg_color, 0.98));
+      }
+    
+      &:drop(active) {
+        border-style: solid none;
+        border-width: 1px;
+        border-color: $selected_bg_color;
+        
+        &.after { border-top-style: none; }
+        &.before { border-bottom-style: none; }
+      }
+    }
+
+    header {
+      button {
+        border-width: 0 1px 1px 0;
+        border-radius: 0;
+        
+        &:last-child {
+          border-width: 0 0 1px 0;
+        }
+
+        &, &:focus {
+          background-image: none;
+          background-color: $base_color;
+
+          &:hover {
+            color: $selected_fg_color;
+            background-image: none;
+            background-color: gtkalpha($selected_bg_color, 0.4);
+            
+            &:active {
+              color: $selected_fg_color;
+              background-image: none;
+              background-color: $selected_bg_color;
+            }
+          }
+        }
+      }
+    }
+    
+    entry, entry.flat {
+      border-radius: 0;
+      background-image: none;
+      background-color: $base_color;
+      
+      &:focus {
+        border-color: $selected_bg_color;
+      }
+    }
+  }
+}

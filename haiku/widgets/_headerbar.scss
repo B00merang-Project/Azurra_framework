@@ -1,0 +1,103 @@
+@mixin headerbar_buttons($bg, $fg, $br)
+{
+  @include normal_buttons($bg, $fg, gtkshade($br, 0.9));
+}
+
+@mixin headerbar() {
+  headerbar {
+    padding: 4px 8px;
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.6), $titlebar_bg_color);
+    box-shadow: inset 1px 1px gtkmix($titlebar_bg_color, $base_color, 0.4), inset -1px -1px $titlebar_bg_color;
+    @debug gtkmix($titlebar_bg_color, $base_color, 0.4);
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: $backdrop_bg_color;
+      background-image: linear-gradient(to bottom, gtkshade($backdrop_bg_color, 1.05), $backdrop_bg_color);
+      box-shadow: inset 1px 1px gtkshade($light_shadow, 0.95), inset -1px -1px gtkshade($bg_color, 0.85);
+    }
+
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    button {
+      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
+    }
+
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+    
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        min-width: 14px;
+        min-height: 14px;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        color: transparent;
+        background-color: transparent;
+        -gtk-icon-shadow: none;
+        
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+      
+      &.close {
+        background: url('assets/close-focused.png') no-repeat no-repeat;
+        
+        &:backdrop { background: url('assets/close-unfocused.png') no-repeat no-repeat; }
+      } 
+      
+      &.maximize {
+        background: url('assets/maximize-focused.png') no-repeat no-repeat;
+        
+        &:backdrop { background: url('assets/maximize-unfocused.png') no-repeat no-repeat; }
+      }
+      
+      &.minimize {
+        background: url('assets/minimize-focused.png') no-repeat no-repeat;
+        
+        &:backdrop { background: url('assets/minimize-unfocused.png') no-repeat no-repeat; }
+      }
+    }
+  }
+}

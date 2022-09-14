@@ -1,0 +1,139 @@
+@mixin headerbar_buttons($bg, $fg, $br)
+{
+  @include normal_buttons($bg, $fg, $br);
+}
+
+@mixin headerbar() {
+  headerbar {
+    padding: 4px 8px;
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    box-shadow: inset 1px 0 gtkalpha($light_shadow, 0.6), inset -1px 0 gtkalpha($light_shadow, 0.6), inset 0 1px gtkalpha($light_shadow, 0.6);
+    background-image: url('assets/titlebar.png');
+    background-size: 100% 100%;
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: gtkshade($backdrop_bg_color, 0.95);
+      box-shadow: inset 1px 0 gtkalpha($light_shadow, 0.3), inset -1px 0 gtkalpha($light_shadow, 0.3), inset 0 1px gtkalpha($light_shadow, 0.3);
+    }
+
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+    
+    button {
+      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
+    }
+
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        padding: 0 0;
+        min-height: 14px;
+        min-width: 25px;
+        border: none;
+        border-radius: 0;
+        color: transparent;
+        background-color: transparent;
+        -gtk-icon-shadow: none;
+        box-shadow: none;
+        
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      &.close {
+        background: url('assets/close-normal.png') 100% 100%;
+
+        &:hover { background: url('assets/close-hover.png') 100% 100%; }
+        &:active { background: url('assets/close-active.png') 100% 100%; }
+        &:backdrop {
+          background: url('assets/close-backdrop.png') 100% 100%;
+
+          &:hover { background: url('assets/close-hover.png') 100% 100%; }
+          &:active { background: url('assets/close-active.png') 100% 100%; }
+        }
+      }
+
+      &.minimize {
+        background: url('assets/minimize-normal.png') 100% 100%;
+
+        &:hover { background: url('assets/minimize-hover.png') 100% 100%; }
+        &:active { background: url('assets/minimize-active.png') 100% 100%; }
+
+        &:backdrop {
+          background: url('assets/minimize-backdrop.png') 100% 100%;
+          
+          &:hover { background: url('assets/minimize-hover.png') 100% 100%; }
+          &:active { background: url('assets/minimize-active.png') 100% 100%; }
+        }
+      }
+
+      &.maximize {
+        background: url('assets/maximize-normal.png') 100% 100%;
+
+        &:hover { background: url('assets/maximize-hover.png') 100% 100%; }
+        &:active { background: url('assets/maximize-active.png') 100% 100%; }
+
+        &:backdrop {
+          background: url('assets/maximize-backdrop.png') 100% 100%;
+
+          &:hover { background: url('assets/maximize-hover.png') 100% 100%; }
+          &:active { background: url('assets/maximize-active.png') 100% 100%; }
+        }
+      }
+      
+      .maximized &.maximize {
+        background: url('assets/restore-normal.png') 100% 100%;
+
+        &:hover { background: url('assets/restore-hover.png') 100% 100%; }
+        &:active { background: url('assets/restore-active.png') 100% 100%; }
+
+        &:backdrop {
+          background: url('assets/restore-backdrop.png') 100% 100%;
+          
+          &:hover { background: url('assets/restore-hover.png') 100% 100%; }
+          &:active { background: url('assets/restore-active.png') 100% 100%; }
+        }
+      }
+    }
+  }
+}

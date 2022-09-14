@@ -1,0 +1,71 @@
+@mixin entry() {
+  entry {
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $border_color;
+    border-radius: $entry_radius;
+    color: $text_color;
+    caret-color: currentColor;
+    background-color: $base_color;
+    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+
+    &:selected, &:selected:focus, selection, selection:focus {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 2px $color_shadow;
+    }
+
+    &:disabled {
+      color: $disabled_text_color;
+
+      &:backdrop {
+        color: $backdrop_disabled_fg_color;
+        background-color: $backdrop_disabled_base_color;
+      }
+    }
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: $backdrop_base_color;
+    }
+
+    > image {
+      &.left {
+        padding-right: 5px;
+      }
+      
+      &.right {
+        padding-left: 5px;
+      }
+    }
+
+    progress {
+      margin: -4px -4px;
+      border-width: 0 0 2px;
+      border-radius: 0;
+      border-style: solid;
+      border-color: $selected_bg_color;
+      background-color: transparent;
+    }
+
+    &.flat, &.flat:focus {
+      padding: 3px;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+    }
+
+    &.search {
+      border-radius: 0px;
+    }
+    
+    entry {
+      box-shadow: none;
+    }
+  }
+}

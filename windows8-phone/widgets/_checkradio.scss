@@ -1,0 +1,110 @@
+@mixin checkradio() {
+  checkbutton, radiobutton {
+    padding: 4px;
+    outline-offset: 0;
+  }
+
+  check, radio {
+    margin: 4px;
+    min-height: $checkradio_size;
+    min-width: $checkradio_size;
+
+    &:active { background-color: $selected_bg_color; }
+  }
+  
+  .check, check {
+    -gtk-icon-source: gtkscale("assets/checkbox-unchecked", ".png");
+    transition: 0.2s;
+    
+    &:disabled { opacity: 0.5; }
+    &:backdrop { opacity: 0.8; }
+    &:hover { -gtk-icon-source: gtkscale("assets/checkbox-unchecked", ".png"); }
+    &:active { -gtk-icon-source: gtkscale("assets/checkbox-unchecked", ".png"); }
+    &:checked { -gtk-icon-source: gtkscale("assets/checkbox-checked", ".png");
+      &:hover { -gtk-icon-source: gtkscale("assets/checkbox-checked", ".png"); }
+      &:active { -gtk-icon-source: gtkscale("assets/checkbox-checked-active", ".png"); }
+    }
+    &:indeterminate { -gtk-icon-source: gtkscale("assets/checkbox-mixed", ".png");
+      &:hover { -gtk-icon-source: gtkscale("assets/checkbox-mixed", ".png"); }
+      &:active { -gtk-icon-source: gtkscale("assets/checkbox-mixed-active", ".png"); }
+    }
+  }
+
+  menu menuitem {
+    .check, check {
+      -gtk-icon-source: gtkscale("assets/checkbox-unchecked", ".png");
+      animation: none;
+      transition: none;
+
+      &:backdrop { opacity: 0.8; }
+      &:hover { -gtk-icon-source: gtkscale("assets/checkbox-unchecked", ".png"); }
+      &:checked { -gtk-icon-source: gtkscale("assets/checkbox-checked", ".png");
+        &:hover { -gtk-icon-source: gtkscale("assets/checkbox-checked", ".png"); }
+      }
+      &:indeterminate { -gtk-icon-source: gtkscale("assets/checkbox-mixed", ".png");
+        &:hover { -gtk-icon-source: gtkscale("assets/checkbox-mixed", ".png"); }
+      }
+    }
+  }
+
+  .radio, radio {
+    border-radius: 100%;
+    -gtk-icon-source: gtkscale("assets/radio-unchecked", ".png");
+    transition: 0.2s;
+    
+    &:disabled { opacity: 0.5; }
+    &:backdrop { opacity: 0.8; }
+    &:hover { -gtk-icon-source: gtkscale("assets/radio-unchecked", ".png"); }
+    &:active { -gtk-icon-source: gtkscale("assets/radio-unchecked", ".png"); }
+    &:checked { -gtk-icon-source: gtkscale("assets/radio-checked", ".png");
+      &:hover { -gtk-icon-source: gtkscale("assets/radio-checked", ".png"); }
+      &:active { -gtk-icon-source: gtkscale("assets/radio-checked-active", ".png"); }
+    }
+    &:indeterminate { -gtk-icon-source: gtkscale("assets/radio-mixed", ".png");
+      &:hover { -gtk-icon-source: gtkscale("assets/radio-mixed", ".png"); }
+      &:active { -gtk-icon-source: gtkscale("assets/radio-mixed-active", ".png"); }
+    }
+  }
+
+  menu menuitem {
+    .radio, radio {
+      -gtk-icon-source: gtkscale("assets/radio-unchecked", ".png");
+      animation: none;
+      transition: none;
+
+      &:backdrop { opacity: 0.8; }
+      &:hover { -gtk-icon-source: gtkscale("assets/radio-unchecked", ".png"); }
+      &:checked { -gtk-icon-source: gtkscale("assets/radio-checked", ".png");
+        &:hover { -gtk-icon-source: gtkscale("assets/radio-checked", ".png"); }
+        &:disabled { -gtk-icon-source: gtkscale("assets/radio-checked-insensitive", ".png");
+          &:hover { -gtk-icon-source: gtkscale("assets/radio-checked-insensitive", ".png"); }
+        }
+      }
+      &:indeterminate { -gtk-icon-source: gtkscale("assets/radio-mixed", ".png");
+        &:hover { -gtk-icon-source: gtkscale("assets/radio-mixed", ".png"); }
+      }
+    }
+  }
+
+  treeview.view {
+    check, radio {
+      &:selected {
+        color: $fg_color;
+        border-color: gtkshade($selected_bg_color, 0.6);
+
+        &:focus {
+          color: $fg_color;
+          border-color: gtkshade($selected_bg_color, 0.6);
+        }
+        
+        &:disabled { color: $disabled_fg_color;
+          &:backdrop { color: gtkshade($backdrop_fg_color, 1.1); }
+        }
+      }
+
+      &:backdrop { color: $disabled_fg_color;
+        &:selected { color: $disabled_fg_color; }
+      }
+    }
+  }
+}

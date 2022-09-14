@@ -1,0 +1,29 @@
+@mixin modelbutton() {
+  modelbutton.flat, menuitem.button.flat, .menuitem.button.flat {
+    padding: 2px 8px;
+    border-radius: $global_radius;
+    border: none;
+    color: $fg_color;
+    background-color: transparent;
+
+    &:hover, &:selected, &:active:hover {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+      background-image: linear-gradient(gtkshade($selected_bg_color, 1.1), $selected_bg_color);
+    }
+
+    > image {
+      padding-right: 4px;
+    }
+
+    arrow {
+      &.left {
+        -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
+      }
+
+      &.right {
+        -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+      }
+    }
+  }
+}

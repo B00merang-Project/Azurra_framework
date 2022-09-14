@@ -1,0 +1,66 @@
+@mixin entry() {
+  entry {
+    padding: 4px 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $border_color;
+    border-top-color: gtkalpha($dark_shadow, 0.4);
+    border-radius: $entry_radius;
+    color: $text_color;
+    caret-color: currentColor;
+    background-color: $base_color;
+
+    &:selected, &:selected:focus, selection, selection:focus {
+      color: $selected_text_color;
+      background-color: $selected_base_color;
+    }
+
+    &:disabled {
+      color: $disabled_text_color;
+      border-color: gtkshade($disabled_base_color, 0.85);
+      background-color: $disabled_base_color;
+
+      &:backdrop {
+        color: $backdrop_disabled_fg_color;
+        border-color: $backdrop_border_color;
+        background-color: $backdrop_disabled_base_color;
+      }
+    }
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: $backdrop_base_color;
+    }
+
+    > image {
+      &.left {
+        padding-right: 5px;
+      }
+      
+      &.right {
+        padding-left: 5px;
+      }
+    }
+
+    progress {
+      margin: -4px -3px;
+      border-width: 0 0 2px;
+      border-radius: 0;
+      border-style: solid;
+      border-color: gtkshade($selected_bg_color, 0.6);
+      background-color: transparent;
+    }
+
+    &.flat, &.flat:focus {
+      min-height: 0;
+      padding: 3px;
+      border-radius: 0;
+      background-image: none;
+      border-color: transparent;
+    }
+
+    &.search {
+      border-radius: 0px;
+    }
+  }
+}

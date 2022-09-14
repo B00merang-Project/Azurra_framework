@@ -1,0 +1,48 @@
+@mixin switch() {
+  switch {
+    font-size: 0;
+    color: transparent;
+    outline-offset: -4px;
+    margin: 4px;
+    border: 1px solid $border_color;
+    border-radius: 5px;
+    background-color: $bg_color;
+
+    &:checked {
+      border-color: $border_color;
+      background-color: $selected_bg_color;
+    }
+
+    &:disabled {
+      background-color: $disabled_bg_color;
+    }
+
+    &:backdrop {
+      border-color: $backdrop_border_color;
+    }
+
+    slider {
+      min-width: 20px;
+      min-height: 20px;
+      margin: -1px;
+      border: 1px solid $border_color;
+      border-radius: 4px;
+      color: $fg_color;
+      background-color: $base_color;
+    }
+
+    &:disabled {
+      slider {
+        background-color: $disabled_base_color;
+      }
+
+      &:backdrop slider {
+        background-color: $backdrop_disabled_base_color;
+      }
+    }
+
+    &:backdrop slider {
+      background-color: $backdrop_base_color;
+    }
+  }
+}

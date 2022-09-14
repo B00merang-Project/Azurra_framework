@@ -1,0 +1,18 @@
+@mixin tooltip() {
+  tooltip {
+    border-radius: 3px;
+    box-shadow: none;
+
+    &.background {
+      border: none;
+      background-color: $tooltip_bg_color;
+
+      label { padding: 1px; }
+    }
+
+    * {
+      color: $tooltip_fg_color;
+      background-color: transparent;
+    }
+  }
+}

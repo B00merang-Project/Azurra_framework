@@ -1,0 +1,54 @@
+@mixin switch() {
+  switch {
+    font-size: 0;
+    color: transparent;
+    outline-offset: -4px;
+    margin: 4px;
+    border: 1px solid gtkmix(gtkshade($border_color, 0.3), $selected_bg_color, 0.25);
+    border-radius: 3px;
+    background-color: $border_color;
+
+    &:checked {
+      background-color: $selected_bg_color;
+
+      &:backdrop {
+      }
+    }
+
+    &:disabled {
+      border-color: gtkmix(gtkshade($border_color, 0.3), $disabled_bg_color, 0.85);
+      background-color: $disabled_bg_color;
+
+      &:backdrop {
+      }
+    }
+
+    &:backdrop {
+    }
+
+    slider {
+      min-width: 20px;
+      min-height: 20px;
+      margin: -1px;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: $button_radius;
+      border-color: gtkmix(gtkshade($border_color, 0.3), $selected_bg_color, 0.25);
+      background-color: $bg_color;
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0.045) 1px, rgba(0, 0, 0, 0.006) 2px, transparent 2px), linear-gradient(to top, rgba(0, 0, 0, 0.13), transparent 3px), linear-gradient(to bottom, white, #fcfcfa 3px, #f6f6f3 7px, #f4f4f0 50%, #f0f0ea);
+    }
+
+    &:disabled {
+      slider {
+        border-color: gtkmix(gtkshade($border_color, 0.3), $disabled_bg_color, 0.85);
+        background-color: $disabled_base_color;
+      }
+
+      &:backdrop slider {
+      }
+    }
+
+    &:backdrop slider {
+    }
+  }
+}

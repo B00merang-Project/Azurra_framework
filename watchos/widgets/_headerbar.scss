@@ -1,0 +1,100 @@
+@mixin headerbar_buttons($bg, $fg, $br)
+{
+  @include normal_buttons($bg, $fg, $br)
+}
+
+@mixin headerbar() {
+  headerbar {
+    padding: 4px 8px;
+    min-height: 30px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: $backdrop_bg_color;
+    }
+
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        border-top-left-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha(currentColor, 0.7);
+    }
+
+    button {
+      @include headerbar_buttons(gtkmix($bg_color, $fg_color, 0.1), $headerbar_fg_color, $border_color);
+    }
+
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+    
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        padding: 2px 2px;
+        border: none;
+        color: transparent;
+        background-color: transparent;
+        -gtk-icon-shadow: none;
+        
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+      
+      &.close {
+        background-image: url('assets/close-normal.svg');
+
+        &:hover { background-image: url('assets/close-hover.svg'); }
+        &:active { background-image: url('assets/close-active.svg'); }
+        &:backdrop { background-image: url('assets/close-backdrop.svg'); }
+      }
+
+      &.minimize {
+        background-image: url('assets/minimize-normal.svg');
+
+        &:hover { background-image: url('assets/minimize-hover.svg'); }
+        &:active { background-image: url('assets/minimize-active.svg'); }
+        &:backdrop { background-image: url('assets/minimize-backdrop.svg'); }
+      }
+
+      &.maximize {
+        background-image: url('assets/maximize-normal.svg');
+
+        &:hover { background-image: url('assets/maximize-hover.svg'); }
+        &:active { background-image: url('assets/maximize-active.svg'); }
+        &:backdrop { background-image: url('assets/maximize-backdrop.svg'); }
+      }
+    }
+  }
+}

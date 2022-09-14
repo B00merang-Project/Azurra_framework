@@ -1,0 +1,193 @@
+@mixin scale() {
+  scale {
+    min-height: 10px;
+    min-width: 10px;
+    padding: 12px;
+
+    fill, trough {
+      border: none;
+      background-color: gtkalpha($dark_shadow, 0.2);
+      outline-offset: 2px;
+      -gtk-outline-radius: 0;
+      border: 4px solid transparent;
+      border-radius: 10px;
+      background-image: linear-gradient(to bottom, gtkshade($bg_color, 0.8), $fg_color);
+      border-image: url('assets/scale-h-trough.png') 4 4 4 4;
+
+      &:disabled {
+        background-color: gtkalpha($dark_shadow, 0.15);
+
+        &:backdrop {
+          background-color: gtkalpha($dark_shadow, 0.08);
+        }
+      }
+
+      &:backdrop {
+        background-color: gtkalpha($dark_shadow, 0.1);
+      }
+    }
+    
+    &.vertical {
+      fill, trough {
+        background-image: linear-gradient(to right, gtkshade($bg_color, 0.8), $fg_color);
+        border-image: url('assets/scale-v-trough.png') 4 4 4 4;
+      }
+    }
+
+    highlight {
+      border: none;
+      border-radius: 4px;
+      background-color: transparent;
+      background-image: none;
+
+      &:disabled {
+
+        &:backdrop {
+        }
+      }
+
+      &:backdrop {
+      }
+    }
+
+    &.horizontal {
+      indicator {
+        min-height: 6px;
+        min-width: 1px;
+      }
+
+      &.fine-tune indicator {
+        min-height: 3px;
+      }
+    }
+
+    &.vertical {
+      indicator {
+        min-height: 1px;
+        min-width: 6px;
+      }
+
+      &.fine-tune indicator {
+        min-width: 3px;
+      }
+    }
+
+    &.fine-tune {
+      &.horizontal {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        min-height: 14px;
+      }
+
+      &.vertical {
+        padding-left: 10px;
+        padding-right: 10px;
+        min-width: 14px;
+      }
+
+      slider {
+        margin: -6px;
+      }
+
+      fill, trough, highlight {
+        border-radius: 4px;
+        -gtk-outline-radius: 0;
+      }
+
+      marks {
+        &.top {
+          margin-bottom: 8px;
+          margin-top: -13px;
+        }
+
+        &.bottom {
+          margin-top: 8px;
+          margin-bottom: -13px;
+        }
+
+        &.top {
+          margin-right: 8px;
+          margin-left: -13px;
+        }
+
+        &.bottom {
+          margin-left: 8px;
+          margin-right: -13px;
+        }
+      }
+    }
+
+    slider {
+      min-height: 8px;
+      min-width: 15px;
+      margin: -3px;
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 1px 2px 1px gtkalpha($dark_shadow, 0.09);
+      color: $fg_color;
+      background-color: transparent;
+      background-image: url('assets/scale-h-slider.png');
+
+      &:hover {
+        color: $fg_color;
+        background-color: $base_color;
+        background-image: url('assets/scale-h-slider-hover.png');
+      }
+
+      &:disabled {
+        opacity: 0.75;
+        -gtk-icon-shadow: none;
+
+        &:backdrop {
+          background-color: transparent;
+          -gtk-icon-shadow: none;
+        }
+      }
+
+      &:backdrop {
+        color: $backdrop_fg_color;
+        background-color: transparent;
+      }
+    }
+    
+    &.vertical {
+      slider {
+        min-height: 15px;
+        min-width: 8px;
+        background-image: url('assets/scale-v-slider.png');
+        
+        &:hover {
+          background-image: url('assets/scale-v-slider-hover.png');
+        }
+      }
+    }
+
+    value {
+      color: gtkalpha(currentColor,0.55);
+    }
+
+    marks {
+      color: gtkalpha(currentColor,0.55);
+
+      &.top {
+        margin-bottom: 6px;
+        margin-top: -12px;
+      }
+
+      &.bottom {
+        margin-top: 6px;
+        margin-bottom: -12px;
+      }
+
+      &.top {
+        margin-right: 6px;
+        margin-left: -12px;
+      }
+
+      &.bottom {
+        margin-left: 6px;
+        margin-right: -12px;
+      }
+    }
+  }
+}

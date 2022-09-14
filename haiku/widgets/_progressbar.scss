@@ -1,0 +1,98 @@
+@mixin progressbar() {
+  progressbar {
+    padding: 0;
+    border: none;
+    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+    background-color: transparent;
+
+    progress {
+      border: 1px solid #1b528c;
+      border-top-color: #2777cb;
+      border-left-color: #2777cb;
+      background-color: #3196ff;
+      background-image: linear-gradient(to bottom, #8bc3ff, #73b7ff 50%, #5fadff 60%, #46a0ff);
+      box-shadow: inset 1px 1px gtkalpha($light_shadow, 0.5);
+      border-radius: $progressbar_radius;
+
+      &:backdrop {
+      }
+    }
+
+    trough {
+      border-radius: $progressbar_radius;
+      border-width: 1px;
+      border-style: solid;
+      border-color: gtkshade($bg_color, 0.8);
+      border-bottom-color: gtkshade($base_color, 0.9);
+      border-right-color: gtkshade($base_color, 0.9);
+      background-color: $base_color;
+      color: $fg_color;
+      box-shadow: inset 1px 1px gtkshade($bg_color, 0.65), inset -1px -1px gtkshade($bg_color, 1.02);
+
+      &:backdrop {
+      }
+    }
+
+    &.horizontal {
+      trough, progress {
+        min-height: 18px;
+      }
+      
+      trough {
+        padding: 2px 0;
+      }
+    }
+
+    &.vertical  {
+      progress {
+        border: 1px solid #1b528c;
+        border-bottom-color: #2777cb;
+        border-left-color: #2777cb;
+        background-color: #3196ff;
+        background-image: linear-gradient(to right, #8bc3ff, #73b7ff 50%, #5fadff 60%, #46a0ff);
+      }
+    
+      trough, progress {
+        min-width: 18px;
+      }
+      
+      trough {
+        padding: 0 2px;
+      }
+    }
+  }
+
+  treeview.view {
+    &.progressbar {
+      &, &:disabled {
+        color: $selected_fg_color;
+        border-radius: 0;
+        background-color: $selected_bg_color;
+      }
+
+      &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
+        border-radius: 0;
+        color: $selected_bg_color;
+        background-color: $selected_fg_color;
+      }
+    }
+
+    &.trough {
+      color: $fg_color;
+      background-color: gtkalpha($dark_shadow, 0.1);
+      border-radius: 0;
+      border: none;
+
+      &:selected, &:selected:focus {
+        color: $selected_fg_color;
+        background-color: gtkalpha($dark_shadow, 0.1);
+        border-radius: 0;
+        border: none;
+      }
+    }
+
+    infobar & trough, row:selected & trough {
+      background-color: gtkalpha($dark_shadow, 0.1);
+    }
+  }
+}

@@ -1,0 +1,107 @@
+@mixin scrollbar() {
+  scrollbar {
+    border: 1px solid $dark_shadow;
+    background-color: gtkshade($bg_color, 0.8);
+    box-shadow: inset 2px 2px gtkshade($bg_color, 0.6), inset -2px 0 gtkshade($bg_color, 0.95);
+
+    trough {
+      border: none;
+      border-radius: 0;
+    }
+
+    button {
+      box-shadow: inset 1px 1px $light_shadow, inset -1px -1px gtkshade($bg_color, 0.85);
+      
+      &:active {
+        box-shadow: inset -1px -1px $light_shadow, inset 1px 1px gtkshade($bg_color, 0.85);
+      }
+      
+      &, &:disabled {
+        &, &:backdrop {
+          border-radius: 0;
+          color: transparent;
+          padding: 0;
+          background-size: auto;
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+
+    &.fine-tune {
+    }
+
+    &.overlay-indicator {
+      opacity: 1;
+    }
+
+    &.horizontal {
+      slider {
+        min-width: 45px;
+        min-height: 14px;
+        margin: 0;
+        border: 1px solid gtkshade($selected_bg_color, 0.7);
+        border-top-color: gtkmix($selected_bg_color, $light_shadow, 0.7);
+        border-left-color: gtkmix($selected_bg_color, $light_shadow, 0.7);
+        border-radius: $scrollbar_slider_radius;
+        background-clip: padding-box;
+        background-color: $selected_bg_color;
+        background-position: center center;
+        background-image: url('assets/handle-horiz.png');
+        background-repeat: no-repeat;
+      }
+
+      button {
+        min-height: 14px;
+        min-width: 14px;
+        margin-top: -1px;
+        margin-bottom: -1px;
+      
+        &.down {
+          background-image: url('assets/arrow-right.png');
+        }
+
+        &.up {
+          background-image: url('assets/arrow-left.png');
+        }
+      }
+    }
+
+    &.vertical {
+      slider {
+        min-width: 14px;
+        min-height: 45px;
+        margin: 0;
+        border: 1px solid gtkshade($selected_bg_color, 0.7);
+        border-top-color: gtkmix($selected_bg_color, $light_shadow, 0.7);
+        border-left-color: gtkmix($selected_bg_color, $light_shadow, 0.7);
+        border-radius: $scrollbar_slider_radius;
+        background-clip: padding-box;
+        background-color: $selected_bg_color;
+        background-position: center center;
+        background-image: url('assets/handle-vert.png');
+        background-repeat: no-repeat;
+      }
+
+      button {
+        min-height: 14px;
+        min-width: 14px;
+        margin-left: -1px;
+        margin-right: -1px;
+
+        &.down {
+          background-image: url('assets/arrow-down.png');
+        }
+
+        &.up {
+          background-image: url('assets/arrow-up.png');
+        }
+      }
+    }
+
+    treeview ~ &.vertical {
+      border-top: 1px solid $border_color;
+      margin-top: -1px;
+    }
+  }
+}

@@ -1,0 +1,124 @@
+@mixin scrollbar() {
+  scrollbar {
+    border: none;
+    background-color: transparent;
+
+    trough {
+      border: none;
+      background-color: $base_color;
+      box-shadow: inset 2px -2px 5px 1px gtkalpha($dark_shadow, 0.25);
+      border-radius: $scrollbar_slider_radius;
+    }
+
+    &.overlay-indicator {
+      &:not(.dragging):not(.hovering) {
+        border: none;
+        opacity: 1;
+        margin: 0;
+        background-color: transparent;
+      }
+      
+      &.dragging, &.hovering {
+        opacity: 1;
+      }
+    }
+
+    &.horizontal {
+      border-top: none;
+      
+      slider {
+        min-height: 13px;
+        min-width: 45px;
+        border-width: 2px;
+        border-color: transparent;
+        border-radius: $scrollbar_slider_radius;
+        background-color: gtkmix($bg_color, $fg_color, 0.21);
+        background-image: linear-gradient(to right, transparent, gtkalpha($dark_shadow, 0.05), transparent), linear-gradient(to bottom, gtkshade($selected_bg_color, 2.3) 15%, gtkshade($selected_bg_color, 1.6) 45%, gtkshade($selected_bg_color, 2.1) 75%);
+        background-size: 16px 16px, auto;
+        box-shadow: inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.34), inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.34);
+        
+        &:backdrop {
+          background-image: linear-gradient(to bottom, $base_color 15%, $bg_color 40%, $base_color 75%);
+        }
+      }
+      
+      trough {
+        margin-right: -5px;
+      }
+
+      button {
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        color: transparent;
+        box-shadow: none;
+        min-height: 13px;
+        
+        &:backdrop {
+          color: transparent; }
+        
+        &.down {
+          min-width: 15px;
+          background-image: url('assets/stepper-right.png');
+        }
+
+        &.up {
+          min-width: 20px;
+          background-image: url('assets/stepper-left.png');
+        }
+      }
+    }
+
+    &.vertical {
+      border-left: none;
+      
+      slider {
+        min-height: 45px;
+        min-width: 13px;
+        padding: 0;
+        border-width: 2px;
+        border-color: transparent;
+        border-radius: $scrollbar_slider_radius;
+        background-color: gtkmix($bg_color, $fg_color, 0.21);
+        background-image: linear-gradient(to bottom, transparent, gtkalpha($dark_shadow, 0.05), transparent), linear-gradient(to right, gtkshade($selected_bg_color, 2.3) 15%, gtkshade($selected_bg_color, 1.6) 45%, gtkshade($selected_bg_color, 2.1) 75%);
+        background-size: 16px 16px, auto;
+        box-shadow: inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.34), inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.34);
+        
+        &:backdrop {
+          background-image: linear-gradient(to right, $base_color 15%, $bg_color 40%, $base_color 75%);
+        }
+      }
+      
+      trough {
+        margin-bottom: -5px;
+      }
+
+      button {
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        color: transparent;
+        box-shadow: none;
+        min-width: 13px;
+        
+        &:backdrop {
+          color: transparent; }
+          
+        &.down {
+          min-height: 16px;
+          background-image: url('assets/stepper-down.png');
+        }
+
+        &.up {
+          min-height: 20px;
+          background-image: url('assets/stepper-up.png');
+        }
+      }
+    }
+
+    treeview ~ &.vertical {
+      border-top: 1px solid $border_color;
+      margin-top: -1px;
+    }
+  }
+}

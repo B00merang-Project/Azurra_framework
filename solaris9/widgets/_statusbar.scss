@@ -1,0 +1,12 @@
+@mixin statusbar() {
+  statusbar {
+    color: $fg_color;
+    border: 1px solid $border_color;
+    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+
+    frame > border {
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,96 @@
+@mixin headerbar_buttons($bg, $fg, $br)
+{
+  @include normal_buttons($bg, $fg, $br);
+}
+
+@mixin headerbar() {
+  headerbar {
+    padding: 4px 8px;
+    min-height: 34px;
+    color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
+    background-image: url('assets/titlebar.png');
+    background-position: right;
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+
+    &:backdrop {
+      @debug $titlebar_fg_color;
+      color: gtkalpha($titlebar_fg_color, 0.4);
+      background-image: none;
+      background-color: gtkshade($titlebar_bg_color, 0.65);
+    }
+
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
+    }
+    
+    // Fixes split headerbars
+    separator:first-child + &,
+    &:first-child {
+      &, &:backdrop {
+        background-image: none;
+        border-top-left-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    &:last-child {
+      &, &:backdrop {
+        border-top-right-radius: $window_radius;
+
+        .maximized &,
+        .tiled & { border-radius: 0; }
+      }
+    }
+
+    .title {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+      color: $selected_fg_color;
+      
+      &:backdrop { color: gtkalpha($titlebar_fg_color, 0.4); }
+    }
+
+    .subtitle {
+      font-size: smaller;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: gtkalpha($selected_fg_color, 0.7);
+      
+      &:backdrop { color: gtkalpha($titlebar_fg_color, 0.25); }
+    }
+
+    button {
+      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, gtkshade($border_color, 0.9));
+    }
+
+    entry { padding: 4px 8px; }
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+
+    .titlebutton {
+      &.close, &.maximize, &.minimize, &:not(separator) {
+        padding: 0;
+        border-radius: 0;
+        -gtk-icon-shadow: none;
+        box-shadow: none;
+        color: gtkalpha($titlebar_fg_color, 0.8);
+        border-color: gtkalpha($titlebar_fg_color, 0.8);
+        background-image: none;
+        background-color: transparent;
+        
+        background-position: center;
+        background-repeat: no-repeat;
+        
+        &:backdrop {
+          color: gtkalpha($titlebar_fg_color, 0.25);
+          border-color: gtkalpha($titlebar_fg_color, 0.25);
+        }
+      }
+    }
+  }
+}
