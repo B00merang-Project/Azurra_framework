@@ -11,7 +11,9 @@
         background-color: $backdrop_selected_bg_color;
       }
 
-      @include suggested_button();
+      button {
+      	@include normal_buttons($selected_bg_color, $selected_fg_color, gtkshade($selected_bg_color, 0.8));
+      }
     }
   }
 }
