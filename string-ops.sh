@@ -17,6 +17,7 @@ ops() {
   echo "  -fc <VALUE>              Find <VALUE> in all '_colors.scss' files"
   echo "  -fw <VALUE>              Find <VALUE> in all 'widgets/*.scss' files"
   echo "  -fi <VALUE>              Find <VALUE> in all '_imports.scss' files"
+  echo "  -fp <VALUE>              Find <VALUE> in all '_properties.scss' files"
   echo "  -rg <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_gtk*.scss' files"
   echo "  -rc <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_colors.scss' files"
   echo "  -ri <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_imports.scss' files"
@@ -106,6 +107,15 @@ imports_contains() {
   local value="$2"
   
   if file_contains "$value" "$theme_dir/_imports.scss"; then
+    echo "Match in folder $theme_dir"
+  fi
+}
+
+properties_contains() {
+  local theme_dir="$1"
+  local value="$2"
+  
+  if file_contains "$value" "$theme_dir/_properties.scss"; then
     echo "Match in folder $theme_dir"
   fi
 }
@@ -217,6 +227,9 @@ case $1 in
   ;;
   -fi)
     OP="imports_contains"
+  ;;
+  -fp)
+    OP="properties_contains"
   ;;
   -rg)
     OP="gtk_replace"
