@@ -1,0 +1,42 @@
+@mixin view() {
+  .view {
+    color: $text_color;
+    background-color: $base_color;
+    
+    &.horizontal, &.vertical {
+      background-color: transparent;
+    }
+
+    &:disabled {
+      color: $disabled_fg_color;
+      background-color: $disabled_bg_color;
+    }
+
+    &:selected, & text:selected, & text selection {
+      &, &:focus {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
+        background-image: linear-gradient($selected_bg_color, gtkshade($selected_bg_color, 0.85));
+        
+        &:disabled {
+          color: gtkmix($selected_fg_color,
+      $disabled_fg_color,
+      0.5);
+          background-color: $selected_bg_color;
+        }
+
+        &:backdrop {
+          color: $backdrop_selected_fg_color;
+          background-color: $backdrop_selected_bg_color;
+        }
+
+        border-radius: $viewitem_radius;
+        -gtk-outline-radius: $viewitem_radius;
+      }
+    }
+  }
+  
+  .gedit-view {
+    background-color: transparent;
+  }
+}

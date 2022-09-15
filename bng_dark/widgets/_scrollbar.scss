@@ -1,0 +1,159 @@
+@mixin scrollbar() {
+  scrollbar {
+    border: 1px solid $border_color;
+    background-color: $bg_color;
+
+    trough {
+      border: none;
+      border-radius: 0;
+    }
+
+    &:backdrop {
+      background-color: $backdrop_bg_color;
+    }
+
+    slider {
+      min-width: 10px;
+      min-height: 10px;
+      margin: 2px;
+      border: none;
+      border-radius: $scrollbar_slider_radius;
+      background-clip: padding-box;
+      background-color: gtkmix($fg_color, $bg_color, 0.1);
+
+      &:hover {
+        background-color: gtkmix($fg_color, $bg_color, 0.1);
+
+        &:active {
+          background-color: $fg_color;
+        }
+      }
+
+      &:backdrop {
+        background-color: gtkmix($backdrop_fg_color, $backdrop_bg_color, 0.1);
+      }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+
+    &.fine-tune {
+      & slider {
+        min-width: 6px;
+        min-height: 6px;
+        border-radius: $scrollbar_slider_radius;
+      }
+
+      &.horizontal slider {
+        margin-top: 1px;
+        margin-bottom: 1px;
+      }
+
+      &.vertical slider {
+        margin-left: 1px;
+        margin-right: 1px;
+      }
+    }
+
+    &.overlay-indicator:not(.dragging):not(.hovering) {
+      border: none;
+      opacity: 0.7;
+      margin: 0;
+      background-color: transparent;
+
+      button {
+        padding: 0;
+        color: transparent;
+        border: none;
+        min-width: 0;
+        min-height: 0;
+        box-shadow: none;
+      }
+
+      slider {
+        margin: 0;
+        min-width: 1px;
+        min-height: 1px;
+        background-color: gtkmix($fg_color, $bg_color, 0.1);
+        border: none;
+      }
+
+      &.horizontal {
+        slider {
+          margin: 0;
+          min-width: 40px;
+        }
+      }
+
+      &.vertical {
+        slider {
+          margin: 0;
+          min-height: 40px;
+        }
+      }
+    }
+
+    &.overlay-indicator {
+      &.dragging, &.hovering {
+        opacity: 1;
+      }
+    }
+
+    button {
+      &, &:disabled {
+        &, &:backdrop {
+          padding: 0;
+          border: none;
+          color: $fg_color;
+          box-shadow: none;
+          background-color: transparent;
+          background-image: none;
+        }
+      }
+    }
+
+    &.horizontal {
+      slider {
+        min-width: 40px;
+      }
+
+      button {
+        min-height: 14px;
+        min-width: 14px;
+      
+        &.down {
+          -gtk-icon-source: -gtk-icontheme("pan-right-symbolic");
+        }
+
+        &.up {
+          -gtk-icon-source: -gtk-icontheme("pan-left-symbolic");
+        }
+      }
+    }
+
+    &.vertical {
+      slider {
+        min-height: 40px;
+      }
+
+      button {
+        min-height: 14px;
+        min-width: 14px;
+      
+        &.down {
+          -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+        }
+
+        &.up {
+          -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+        }
+      }
+    }
+
+    treeview ~ &.vertical {
+      border-top: 1px solid $border_color;
+      margin-top: -1px;
+    }
+  }
+}

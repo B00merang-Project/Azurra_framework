@@ -1,0 +1,49 @@
+@mixin decoration() {
+  decoration {
+    border-radius: $window_radius $window_radius 0 0;
+    border-width: 0px;
+    box-shadow: 0 8px 8px 0 gtkalpha($wm_shadow, 0.1), 0 0 0 1px gtkalpha($wm_shadow, 0.3);
+    margin: 10px;
+
+    &:backdrop {
+      box-shadow: 0 8px 8px 0 transparent, 0 5px 5px 0 gtkalpha($wm_shadow, 0.1), 0 0 0 1px gtkalpha($wm_shadow, 0.2);
+    }
+
+    .maximized &,
+    .fullscreen &,
+    .tiled &,
+    .tiled-top &,
+    .tiled-right &,
+    .tiled-bottom &,
+    .tiled-left & { border-radius: 0; }
+
+    .popup & { box-shadow: none; }
+
+    .csd.popup & {
+      border-radius: $menu_radius;
+      box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.1);
+    }
+
+    .ssd & {
+      border-radius: $window_radius $window_radius 0 0;
+      box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.1);
+
+      &.maximized {
+        border-radius: 0;
+      }
+    }
+
+    tooltip.csd & {
+      // TODO: tooltip csd radius
+      border-radius: $window_radius;
+      box-shadow: none;
+    }
+
+    .solid-csd & {
+      margin: 1px;
+      border-radius: 0px;
+      background-color: gtkalpha($light_shadow, 0.95);
+      box-shadow: none;
+    }
+  }
+}

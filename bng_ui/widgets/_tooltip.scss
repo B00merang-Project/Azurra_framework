@@ -1,0 +1,20 @@
+@mixin tooltip() {
+  tooltip {
+    // TODO: replace with $tooltip_radius
+    border-radius: $window_radius;
+    box-shadow: none;
+
+    &.background {
+      border: 1px solid $border_color;
+      background-color: $tooltip_bg_color;
+      background-image: linear-gradient(to bottom, $tooltip_bg_color, gtkshade($tooltip_bg_color, 0.9));
+
+      label { padding: 1px; }
+    }
+
+    * {
+      background-color: transparent;
+      color: $tooltip_fg_color;
+    }
+  }
+}

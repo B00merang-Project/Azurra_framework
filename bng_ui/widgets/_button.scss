@@ -1,0 +1,76 @@
+@mixin normal_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
+  padding: 8px;
+  border: none;
+  border-radius: $button_radius;
+  color: $fg;
+  background-color: gtkalpha($dark_shadow, 0.03);
+
+  // TODO: use a shadow or highlight instead of color change 
+  &:hover { color: $selected_bg_color; }
+
+  &:active, &:checked {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+
+    &:backdrop {
+      color: $backdrop_selected_fg_color;
+      background-color: $backdrop_selected_bg_color;
+    }
+    
+    &:disabled {
+      color: $disabled_fg_color;
+      background-color: $disabled_bg_color;
+      
+      &:backdrop {
+        color: $backdrop_disabled_fg_color;
+        background-color: $backdrop_disabled_bg_color;
+      }
+    }
+  }
+
+  &:disabled {
+    color: $disabled_fg_color;
+    
+    &:backdrop { color: $backdrop_disabled_fg_color; }
+  }
+
+  &:backdrop { color: $backdrop_fg_color; }
+}
+
+@mixin flat_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
+  color: $fg;
+  background-color: transparent;
+
+  &:hover {
+    color: $selected_bg_color;
+    background-color: gtkalpha($dark_shadow, 0.03);
+  }
+
+  &:active, &:checked {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+
+    &:backdrop {
+      color: $backdrop_selected_fg_color;
+      background-color: $backdrop_selected_bg_color;
+    }
+    
+    &:disabled {
+      color: $disabled_fg_color;
+      background-color: $disabled_bg_color;
+      
+      &:backdrop {
+        color: $backdrop_disabled_fg_color;
+        background-color: $backdrop_disabled_bg_color;
+      }
+    }
+  }
+
+  &:disabled {
+    color: $disabled_fg_color;
+    
+    &:backdrop { color: $backdrop_disabled_fg_color; }
+  }
+
+  &:backdrop { color: $backdrop_fg_color; }
+}
