@@ -85,7 +85,7 @@ deploy() {
     [ -d $1/assets-dark ] && cp -r $1/assets-dark "$target_dir_dark/assets" || cp -r $1/assets "$target_dir_dark"
   fi
   if has_light; then
-    [ -d $1/assets-dark ] && cp -r $1/assets-light "$target_dir_light/assets" || cp -r $1/assets "$target_dir_light"
+    [ -d $1/assets-light ] && cp -r $1/assets-light "$target_dir_light/assets" || cp -r $1/assets "$target_dir_light"
   fi
 
   echo 'done'
