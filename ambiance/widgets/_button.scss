@@ -10,7 +10,6 @@
   border-bottom-color: gtkshade($border_color, 0.78);
   background-color: $bg;
   background-image: linear-gradient(to bottom, gtkshade($bg, 1.05), gtkshade($bg, 0.975));
-  -gtk-outline-radius: $button_radius;
   
   @if $variant != 'dark' {
     box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.3);
@@ -22,7 +21,6 @@
   outline-offset: -1px;
   outline-style: solid;
   outline-color: gtkshade($selected_bg_color, 0.9);
-  -gtk-outline-radius: $button_radius;
 
   &:hover {
     box-shadow: 0 1px gtkalpha($dark_shadow, 0.085), 1px 0 gtkalpha($dark_shadow, 0.055), -1px 0 gtkalpha($dark_shadow, 0.055);

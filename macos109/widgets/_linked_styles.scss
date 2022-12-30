@@ -1,23 +1,11 @@
 @mixin linked_styles() {
   .linked, .osd .linked .primary-toolbar .linked {
-    button, .raised button { -gtk-outline-radius: 0;
-      &:first-child { -gtk-outline-radius: $button_radius 0 0 $button_radius; }
-      &:last-child { -gtk-outline-radius: 0 $button_radius $button_radius 0; }
-      &:only-child { -gtk-outline-radius: $button_radius; }
-    }
-
     entry {
       &:focus, &:last-child:focus { box-shadow: inset 0 0 1px 3px gtkshade($selected_bg_color, 1.9), -1px 0 gtkshade($border_color, 1.05); }
       &:first-child:focus, &:only-child:focus { box-shadow: inset 0 0 1px 3px gtkshade($selected_bg_color, 1.9); }
     }
     
     &.vertical {
-      button { -gtk-outline-radius: 0;
-          &:first-child { -gtk-outline-radius: $button_radius $button_radius 0 0; }
-          &:last-child { -gtk-outline-radius: 0 0 $button_radius $button_radius; }
-          &:only-child { -gtk-outline-radius: $button_radius; }
-        }
-
       entry {
         &:focus, &:last-child:focus { box-shadow: inset 0 0 1px 3px gtkshade($selected_bg_color, 1.9), 0 -1px gtkshade($border_color, 1.05); }
 
