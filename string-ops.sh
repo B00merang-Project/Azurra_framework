@@ -26,6 +26,7 @@ ops() {
   echo "  -rt <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all 'theme.conf' files"
   echo "  -di <VALUE>              Delete lines containing <VALUE> in all '_imports.scss' files"
   echo "  -dt <VALUE>              Delete lines containing <VALUE> in all 'theme.conf' files"
+  echo "  -dw <VALUE>              Delete lines containing <VALUE> in all 'widgets/*.scss' files"
   echo "  -at <VALUE>              Add <VALUE> as a new line in all 'theme.conf' files"
 }
 
@@ -169,6 +170,16 @@ widgets_replace() {
   done
 }
 
+widget_delete() {
+  local theme_dir="$1"
+  local value="$2"
+  
+  # replace 'value' by 'new_value'
+  for FILE in "$theme_dir"/widgets/*.scss; do
+    [ -f $FILE ] && delete "$value" $FILE && echo "Replacing value in $FILE (if found)"
+  done
+}
+
 properties_replace() {
   local theme_dir="$1"
   local value="$2"
@@ -267,6 +278,10 @@ case $1 in
   ;;
   -di)
     OP="config_delete"
+    MOD=1
+  ;;
+  -dw)
+    OP="widget_delete"
     MOD=1
   ;;
   -at)
