@@ -32,7 +32,6 @@
     }
 
     headerbar & {
-      -GtkWidget-window-dragging: true;
       margin-top: 4px;
       margin-bottom: 4px;
       background-color: gtkmix($border_color, $headerbar_bg_color, 0.5);
@@ -43,7 +42,6 @@
     }
 
     .titlebar &, .titlebar:not(headerbar) > &, .titlebar &.titlebutton, .titlebar:not(headerbar) > &.titlebutton {
-      -GtkWidget-window-dragging: true;
       background-color: gtkmix($border_color, $titlebar_bg_color, 0.5);
 
       &:backdrop {
