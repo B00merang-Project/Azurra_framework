@@ -1,4 +1,4 @@
-@mixin messagedialog() {
+@mixin dialog() {
   messagedialog {
     border-bottom-left-radius: $window_radius;
     border-bottom-right-radius: $window_radius;
@@ -17,6 +17,8 @@
     }
 
     .titlebar.horizontal {
+      border: none;
+      background-image: none;
       background-color: $bg_color;
     }
 
@@ -24,27 +26,28 @@
       padding: 10px;
       border-radius: 0;
       border-bottom-style: none;
-
+      background-image: none;
+      
 
       &:last-child {
         border-right-width: 0;
         border-radius: 0px;
         border-bottom-right-radius: $window_radius;
-
+        
       }
 
       &:first-child {
         border-left-width: 0;
         border-radius: 0px;
         border-bottom-left-radius: $window_radius;
-
+        
       }
 
       &:only-child {
         border-radius: 0px;
         border-bottom-left-radius: $window_radius;
         border-bottom-right-radius: $window_radius;
-
+        
       }
     }
   }
