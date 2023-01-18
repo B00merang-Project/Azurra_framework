@@ -44,8 +44,8 @@ fail() { tput setaf 1 && echo 'ERROR: '$@ && tput sgr 0 && exit 1; }
 warn() { tput setaf 220 && echo 'WARNING: '$@ && tput sgr 0; }
 hlight() { tput setaf 33 && echo $@ && tput sgr 0; }
 
-is_theme() { [ -f "$1/theme.conf" ] && return 0 || return 1; }
-load_conf() { source $1/*.conf; }
+is_theme() { [ -f "$1/theme.rc" ] && return 0 || return 1; }
+load_conf() { source "$1/theme.rc"; }
 has_dark() { [ -z $target_dir_dark ] && return 1 || return 0; }
 has_light() { [ -z $target_dir_light ] && return 1 || return 0; }
 has_render() {

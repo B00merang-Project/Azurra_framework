@@ -3,7 +3,7 @@
 import os, argparse
 
 IMPORTS_FILENAME = "_imports.scss"
-THEME_CONFIG_FILENAME = "theme.conf"
+THEME_CONFIG_FILENAME = "theme.rc"
 
 EMPTY = ""
 UPPER_DIR_INDICATOR = "../"

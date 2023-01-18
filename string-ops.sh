@@ -23,11 +23,11 @@ ops() {
   echo "  -ri <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_imports.scss' files"
   echo "  -rw <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all 'widgets/*.scss' files"
   echo "  -rp <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_properties.scss' files"
-  echo "  -rt <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all 'theme.conf' files"
+  echo "  -rt <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all 'theme.rc' files"
   echo "  -di <VALUE>              Delete lines containing <VALUE> in all '_imports.scss' files"
-  echo "  -dt <VALUE>              Delete lines containing <VALUE> in all 'theme.conf' files"
+  echo "  -dt <VALUE>              Delete lines containing <VALUE> in all 'theme.rc' files"
   echo "  -dw <VALUE>              Delete lines containing <VALUE> in all 'widgets/*.scss' files"
-  echo "  -at <VALUE>              Add <VALUE> as a new line in all 'theme.conf' files"
+  echo "  -at <VALUE>              Add <VALUE> as a new line in all 'theme.rc' files"
 }
 
 help() {
@@ -60,7 +60,7 @@ file_contains() {
 # iterate on all theme folders
 run() {
   for dir in *; do
-    if [ -f "$dir/theme.conf" ]  # if has valid configuration
+    if [ -f "$dir/theme.rc" ]  # if has valid configuration
     then
       $OP "$dir" "$VAL" "$NEW_VAL"
     fi
@@ -195,9 +195,9 @@ config_replace() {
   local value="$2"
   local new_value="$3"
   
-  replace "$value" "$new_value" "$theme_dir/theme.conf"
+  replace "$value" "$new_value" "$theme_dir/theme.rc"
   
-  echo "Replaced value in '$theme_dir/theme.conf' (if found)"
+  echo "Replaced value in '$theme_dir/theme.rc' (if found)"
 }
 
 imports_delete() {
@@ -213,7 +213,7 @@ config_delete() {
   local theme_dir="$1"
   local value="$2"
   
-  delete "$value" "$theme_dir/theme.conf"
+  delete "$value" "$theme_dir/theme.rc"
   
   echo "Deleted value in '$theme_dir/_imports.scss' (if found)"
 }
