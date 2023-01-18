@@ -29,7 +29,7 @@ show_help() {
   echo "  -p   --process      " "Run SASS compiler only (no deployment)"
   echo "  -r   --render       " "Run asset generation script if found"
   echo "  -e   --empty-assets " "Removes previously rendered assets. Run before rendering after changes"
-  echo "  - c  --clean        " "Removes '.css' files from the working tree"
+  echo "  -c   --clean        " "Removes '.css' files from the working tree"
 
   echo -e "\nMore information: <http://github.com/Elbullazul/Azurra_framework/wiki>" && exit
 }
@@ -158,6 +158,8 @@ while [ "$1" != "" ]; do
     -e | --empty-assets )   FUNC='empty_assets'
                             ;;
     -c | --clean )          FUNC='clean'
+                            QUEUE=*/
+                            LOCK_ADD=true
                             ;;
     -h | --help )           show_help
                             ;;
