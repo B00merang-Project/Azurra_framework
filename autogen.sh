@@ -54,7 +54,14 @@ has_render() {
 }
 
 deploy() {
+  # reset variables
+  target_dir=""
+  target_dir_dark=""
+  target_dir_light=""
+
+  # reload values
   load_conf $1
+  
   [ -z "$target_dir" ] && warn "Empty target for $name, skipping deployment" && return
 
   echo -n "Deploying $(hlight -n $name), "
@@ -93,7 +100,7 @@ deploy() {
 
 compile() {
   load_conf $1
-  [ $LOCK_ADD == true ] && echo -n "Compiling $(hlight -n $name), " || echo "Compiling $(hlight $name)"
+  [ $LOCK_ADD == true ] && echo -n "Compiling $(hlight -n $name), " || echo "Compiling $(hlight $1)"
 
   for sass_file in $1/gtk*.scss; do
     local filename=${sass_file%".scss"}
