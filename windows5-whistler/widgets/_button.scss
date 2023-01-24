@@ -6,16 +6,33 @@
   color: $fg;
   border-color: $br;
   background-color: $bg;
-  background-image: linear-gradient(to bottom, gtkshade($bg, 1.05) 5%, $bg 20%, $bg 70%, gtkshade($bg, 0.95) 90%);
-  box-shadow: inset -1px 0 gtkshade($bg, 0.65), inset 0 -1px gtkshade($bg, 0.65), inset 1px 0 gtkmix($bg, $light_shadow, 0.7), inset 0 1px gtkmix($bg, $light_shadow, 0.7);
+  background-image: linear-gradient(
+    to bottom,
+    gtkshade($bg, 1.05) 5%,
+    $bg 20%, $bg 70%,
+    gtkshade($bg, 0.95) 90%
+  );
+  box-shadow: inset -1px 0 gtkshade($bg, 0.65),
+              inset 0 -1px gtkshade($bg, 0.65),
+              inset 1px 0 gtkmix($bg, $light_shadow, 0.7),
+              inset 0 1px gtkmix($bg, $light_shadow, 0.7);
   outline-color: $fg;
   outline-offset: 0;
   outline-style: solid;
 
   &:hover {
     background-color: $color_shadow;
-    box-shadow: inset -1px 0 gtkshade($color_shadow, 0.65), inset 0 -1px gtkshade($color_shadow, 0.65), inset 1px 0 gtkmix($color_shadow, $light_shadow, 0.7), inset 0 1px gtkmix($color_shadow, $light_shadow, 0.7);
-    background-image: linear-gradient(to bottom, gtkshade($color_shadow, 1.05) 5%, $color_shadow 20%, $color_shadow 70%, gtkshade($color_shadow, 0.95) 90%);
+    box-shadow: inset -1px 0 gtkshade($color_shadow, 0.65),
+                inset 0 -1px gtkshade($color_shadow, 0.65),
+                inset 1px 0 gtkmix($color_shadow, $light_shadow, 0.7),
+                inset 0 1px gtkmix($color_shadow, $light_shadow, 0.7);
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($color_shadow, 1.05) 5%,
+      $color_shadow 20%,
+      $color_shadow 70%,
+      gtkshade($color_shadow, 0.95) 90%
+    );
   }
 
   &:active, &:checked {
@@ -23,13 +40,25 @@
     border-color: $br;
     background-color: $color_shadow;
     box-shadow: none;
-    background-image: linear-gradient(to top, gtkshade($color_shadow, 0.95) 5%, gtkshade($color_shadow, 0.9) 20%, gtkshade($color_shadow, 0.9) 70%, gtkshade($color_shadow, 0.85) 90%);
+    background-image: linear-gradient(
+      to top,
+      gtkshade($color_shadow, 0.95) 5%,
+      gtkshade($color_shadow, 0.9) 20%,
+      gtkshade($color_shadow, 0.9) 70%,
+      gtkshade($color_shadow, 0.85) 90%
+    );
 
     &:disabled {
       color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
       border-color: gtkmix($fg, $disabled_bg_color, 0.85);
       background-color: gtkshade($disabled_bg_color, 0.9);
-      background-image: linear-gradient(to top, gtkshade($disabled_bg_color, 0.85) 5%, gtkshade($disabled_bg_color, 0.8) 20%, gtkshade($disabled_bg_color, 0.8) 70%, gtkshade($disabled_bg_color, 0.75) 90%);
+      background-image: linear-gradient(
+        to top,
+        gtkshade($disabled_bg_color, 0.85) 5%,
+        gtkshade($disabled_bg_color, 0.8) 20%,
+        gtkshade($disabled_bg_color, 0.8) 70%,
+        gtkshade($disabled_bg_color, 0.75) 90%
+      );
     }
   }
 
@@ -48,8 +77,17 @@
     color: $fg;
     border-color: $br;
     background-color: $bg;
-    background-image: linear-gradient(to bottom, gtkshade($bg, 1.05) 5%, $bg 20%, $bg 70%, gtkshade($bg, 0.95) 90%);
-    box-shadow: inset -1px 0 gtkshade($bg, 0.65), inset 0 -1px gtkshade($bg, 0.65), inset 1px 0 gtkmix($bg, $light_shadow, 0.7), inset 0 1px gtkmix($bg, $light_shadow, 0.7);
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($bg, 1.05) 5%,
+      $bg 20%,
+      $bg 70%,
+      gtkshade($bg, 0.95) 90%
+    );
+    box-shadow: inset -1px 0 gtkshade($bg, 0.65),
+                inset 0 -1px gtkshade($bg, 0.65),
+                inset 1px 0 gtkmix($bg, $light_shadow, 0.7),
+                inset 0 1px gtkmix($bg, $light_shadow, 0.7);
   }
 
   &:active, &:checked {
@@ -57,12 +95,65 @@
     border-color: $br;
     background-color: $color_shadow;
     box-shadow: none;
-    background-image: linear-gradient(to top, gtkshade($color_shadow, 0.95) 5%, gtkshade($color_shadow, 0.9) 20%, gtkshade($color_shadow, 0.9) 70%, gtkshade($color_shadow, 0.85) 90%);
+    background-image: linear-gradient(
+      to top,
+      gtkshade($color_shadow, 0.95) 5%,
+      gtkshade($color_shadow, 0.9) 20%,
+      gtkshade($color_shadow, 0.9) 70%,
+      gtkshade($color_shadow, 0.85) 90%
+    );
   }
 
   &:disabled {
     border-color: transparent;
     color: gtkalpha($fg, 0.8);
     background-color: transparent;
+  }
+}
+
+@mixin destructive_button() {
+  // TODO: check if all rules are actually applicable
+  button.destructive-action {
+    border-width: 1px;
+    border-style: solid;
+    border-color: gtkmix($error_color, $fg_color, 0.2);
+    border-radius: $button_radius;
+    color: gtkmix($selected_fg_color, $error_color, 0.1);
+    background-color: $error_color;
+    background-image: none;
+
+    &:hover {
+      border-color: gtkmix($error_color, $fg_color, 0.3);
+      background-color: gtkmix($error_color, $selected_fg_color, 0.2);
+    }
+
+    &:active {
+      border-color: gtkmix($error_color, $fg_color, 0.3);
+      background-color: gtkmix($error_color, $fg_color, 0.1);
+    }
+
+    &:backdrop {
+      border-color: gtkmix($error_color, $backdrop_fg_color, 0.2);
+      color: gtkmix($backdrop_selected_fg_color, $error_color, 0.1);
+      background-color: gtkmix($error_color, $backdrop_bg_color, 0.3);
+    }
+  }
+}
+
+@mixin suggested_button() {
+  button.suggested-action {
+    box-shadow: 0 0 0 1px $border_color,
+                inset -1px 0 gtkshade($bg_color, 0.65),
+                inset 0 -1px gtkshade($bg_color, 0.65),
+                inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7),
+                inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
+    
+    &:active {
+      box-shadow: 0 0 0 1px $border_color,
+                  inset 1px 0 gtkshade($bg_color, 0.65),
+                  inset 0 1px gtkshade($bg_color, 0.65),
+                  inset -1px 0 gtkmix($bg_color, $light_shadow, 0.7),
+                  inset 0 -1px gtkmix($bg_color, $light_shadow, 0.7);
+    }
   }
 }

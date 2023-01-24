@@ -9,13 +9,19 @@
   border-color: $br;
   border-bottom-color: gtkshade($br, 0.75);
   background-color: $bg;
-  background-image: linear-gradient(to bottom, gtkshade($bg, 1.01), gtkshade($bg, 0.92));
+  background-image: linear-gradient(
+    to bottom,
+    gtkshade($bg, 1.01),
+    gtkshade($bg, 0.92)
+  );
   
   @if $variant != 'dark' {
-    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5), inset 0 -1px gtkalpha($dark_shadow, 0.025);
+    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5),
+                inset 0 -1px gtkalpha($dark_shadow, 0.025);
   }
   @else {
-    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15), inset 0 -1px gtkalpha($dark_shadow, 0.5);
+    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15),
+                inset 0 -1px gtkalpha($dark_shadow, 0.5);
   }
   
   @if $variant != 'dark' {
@@ -29,13 +35,19 @@
 
 
   &:hover {
-    background-image: linear-gradient(to bottom, gtkshade($bg, 1.075), gtkshade($bg, 0.945));
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($bg, 1.075),
+      gtkshade($bg, 0.945)
+    );
 
     @if $variant != 'dark' {
-      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5), inset 0 -1px gtkalpha($dark_shadow, 0.025);
+      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5),
+                  inset 0 -1px gtkalpha($dark_shadow, 0.025);
     }
     @else {
-      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15), inset 0 -1px gtkalpha($dark_shadow, 0.5);
+      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15),
+                  inset 0 -1px gtkalpha($dark_shadow, 0.5);
     }
   }
 
@@ -123,13 +135,19 @@
     border-color: $br;
     border-bottom-color: gtkshade($br, 0.75);
     background-color: $bg;
-    background-image: linear-gradient(to bottom, gtkshade($bg, 1.075), gtkshade($bg, 0.945));
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($bg, 1.075),
+      gtkshade($bg, 0.945)
+    );
     
     @if $variant != 'dark' {
-      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5), inset 0 -1px gtkalpha($dark_shadow, 0.025);
+      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.5), 
+                  inset 0 -1px gtkalpha($dark_shadow, 0.025);
     }
     @else {
-      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15), inset 0 -1px gtkalpha($dark_shadow, 0.5);
+      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15),
+                  inset 0 -1px gtkalpha($dark_shadow, 0.5);
     }
     
     @if $variant != 'dark' {
@@ -188,5 +206,110 @@
     box-shadow: none;
     text-shadow: none;
     -gtk-icon-shadow: none;
+  }
+}
+
+@mixin destructive_button() {
+  button.destructive-action {
+    border-width: 1px;
+    border-style: solid;
+    border-color: gtkmix($error_color, $fg_color, 0.2);
+    border-radius: $button_radius;
+    color: gtkmix($selected_fg_color, $error_color, 0.1);
+    background-color: $error_color;
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($error_color, 1.2),
+      $error_color
+    );
+    text-shadow: 0 1px $dark_shadow;
+    -gtk-icon-shadow: 0 1px $dark_shadow;
+
+    &:hover {
+      border-color: gtkmix($error_color, $fg_color, 0.3);
+      background-color: gtkmix($error_color, $selected_fg_color, 0.2);
+    }
+
+    &:active {
+      border-color: gtkmix($error_color, $fg_color, 0.3);
+      background-color: gtkmix($error_color, $fg_color, 0.1);
+      background-image: none;
+    }
+
+    &:backdrop {
+      border-color: gtkmix($error_color, $backdrop_fg_color, 0.2);
+      color: gtkmix($backdrop_selected_fg_color, $error_color, 0.1);
+      background-color: gtkmix($error_color, $backdrop_bg_color, 0.3);
+      background-image: none;
+      text-shadow: none;
+      -gtk-icon-shadow: none;
+    }
+  }
+}
+
+@mixin suggested_button() {
+  button.suggested-action {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: $button_radius;
+    border-color: gtkshade($selected_bg_color, 0.8);
+    color: gtkmix($selected_fg_color, $selected_bg_color, 0.1);
+    background-color: gtkmix($selected_bg_color, $selected_fg_color, 0.25);
+    background-image: linear-gradient(
+      to bottom,
+      $selected_bg_color 40%,
+      gtkshade($selected_bg_color, 0.85)
+    );
+    text-shadow: 0 1px $dark_shadow;
+    -gtk-icon-shadow: 0 1px $dark_shadow;
+
+    &:hover {
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($selected_bg_color, 1.1) 40%,
+        gtkshade($selected_bg_color, 0.95)
+      );
+    }
+
+    &:active, &:checked {
+      border-color: gtkmix($selected_bg_color, $fg_color, 0.1);
+      background-color: gtkmix($selected_bg_color, $fg_color, 0.1);
+      background-image: none;
+
+      &:backdrop {
+        border-color: gtkmix($backdrop_selected_bg_color, $backdrop_fg_color, 0.1);
+        background-color: gtkmix($backdrop_selected_bg_color, $backdrop_fg_color, 0.1);
+        background-image: none;
+        text-shadow: none;
+        -gtk-icon-shadow: none;
+      }
+    }
+
+    &:disabled {
+      border-color: gtkmix($selected_bg_color, $disabled_bg_color, 0.2);
+      color: gtkmix($selected_fg_color, $disabled_fg_color, 0.2);
+      background-color: gtkmix($selected_bg_color, $disabled_bg_color, 0.2);
+      background-image: none;
+      text-shadow: none;
+      -gtk-icon-shadow: none;
+
+      &:backdrop {
+        border-color: gtkmix($backdrop_selected_bg_color, $backdrop_disabled_bg_color, 0.2);
+        color: gtkmix($backdrop_selected_fg_color, $backdrop_disabled_fg_color, 0.2);
+        background-color: gtkmix($backdrop_selected_bg_color, $backdrop_disabled_bg_color, 0.2);
+        background-image: none;
+        text-shadow: none;
+        -gtk-icon-shadow: none;
+      }
+    }
+
+    &:backdrop {
+      border-color: $backdrop_selected_bg_color;
+      color: $backdrop_selected_fg_color;
+      background-color: $backdrop_selected_bg_color;
+      background-image: none;
+      text-shadow: none;
+      -gtk-icon-shadow: none;
+    }
   }
 }
