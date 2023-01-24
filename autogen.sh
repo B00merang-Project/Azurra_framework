@@ -100,7 +100,7 @@ deploy() {
 
 compile() {
   load_conf $1
-  [ $LOCK_ADD == true ] && echo -n "Compiling $(hlight -n $name), " || echo "Compiling $(hlight $1)"
+  echo -n "Compiling $(hlight -n $name) "
 
   for sass_file in $1/gtk*.scss; do
     local filename=${sass_file%".scss"}
