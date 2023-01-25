@@ -6,39 +6,63 @@
   color: $fg;
   border-color: $br;
   background-color: $bg;
-  background-image: linear-gradient(to bottom, $bg, gtkshade($bg, 0.9));
+  background-image: linear-gradient(
+    to bottom,
+    $bg,
+    gtkshade($bg, 0.9)
+  );
 
   &:hover {
     color: $fg;
     border-color: gtkshade($selected_bg_color, 0.7);
     background-color: gtkshade($selected_bg_color, 1.02);
-    background-image: linear-gradient(to bottom, $selected_bg_color, gtkshade($selected_bg_color, 0.9));
+    background-image: linear-gradient(
+      to bottom,
+      $selected_bg_color,
+      gtkshade($selected_bg_color, 0.9)
+    );
   }
 
   &:active, &:checked {
     color: $fg;
     border-color: gtkshade($selected_bg_color, 0.6);
     background-color: gtkshade($selected_bg_color, 0.95);
-    background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 0.85), gtkshade($selected_bg_color, 0.7));
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($selected_bg_color, 0.85),
+      gtkshade($selected_bg_color, 0.7)
+    );
 
     &:backdrop {
       color: $backdrop_fg_color;
       border-color: gtkshade($backdrop_bg_color, 0.85);
       background-color: gtkshade($backdrop_bg_color, 0.85);
-      background-image: linear-gradient(to bottom, gtkshade($backdrop_bg_color, 0.85), gtkshade($backdrop_bg_color, 0.7));
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($backdrop_bg_color, 0.85),
+        gtkshade($backdrop_bg_color, 0.7)
+      );
     }
     
     &:disabled {
       color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
       border-color: gtkmix($fg, $disabled_bg_color, 0.9);
       background-color: gtkmix($bg, $disabled_bg_color, 0.2);
-      background-image: linear-gradient(to bottom, gtkshade($disabled_bg_color, 0.85), gtkshade($disabled_bg_color, 0.7));
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($disabled_bg_color, 0.85),
+        gtkshade($disabled_bg_color, 0.7)
+      );
       
       &:backdrop {
         color: $backdrop_disabled_fg_color;
         border-color: $backdrop_border_color;
         background-color: gtkmix($fg, $disabled_bg_color, 0.9);
-        background-image: linear-gradient(to bottom, gtkshade($backdrop_disabled_bg_color, 0.85), gtkshade($backdrop_disabled_bg_color, 0.7));
+        background-image: linear-gradient(
+          to bottom,
+          gtkshade($backdrop_disabled_bg_color, 0.85),
+          gtkshade($backdrop_disabled_bg_color, 0.7)
+        );
       }
     }
   }
@@ -77,33 +101,53 @@
     color: $fg;
     border-color: gtkshade($selected_bg_color, 0.7);
     background-color: gtkshade($selected_bg_color, 1.02);
-    background-image: linear-gradient(to bottom, $selected_bg_color, gtkshade($selected_bg_color, 0.9));
+    background-image: linear-gradient(
+      to bottom,
+      $selected_bg_color,
+      gtkshade($selected_bg_color, 0.9)
+    );
   }
 
   &:active, &:checked {
     color: $fg;
     border-color: gtkshade($selected_bg_color, 0.6);
     background-color: gtkshade($selected_bg_color, 0.95);
-    background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 0.85), gtkshade($selected_bg_color, 0.7));
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($selected_bg_color, 0.85),
+      gtkshade($selected_bg_color, 0.7)
+    );
 
     &:backdrop {
       color: $backdrop_fg_color;
       border-color: gtkshade($backdrop_bg_color, 0.85);
       background-color: gtkshade($backdrop_bg_color, 0.85);
-      background-image: linear-gradient(to bottom, gtkshade($backdrop_bg_color, 0.85), gtkshade($backdrop_bg_color, 0.7));
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($backdrop_bg_color, 0.85),
+        gtkshade($backdrop_bg_color, 0.7)
+      );
     }
     
     &:disabled {
       color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
       border-color: gtkmix($fg, $disabled_bg_color, 0.9);
       background-color: gtkmix($bg, $disabled_bg_color, 0.2);
-      background-image: linear-gradient(to bottom, gtkshade($disabled_bg_color, 0.85), gtkshade($disabled_bg_color, 0.7));
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($disabled_bg_color, 0.85),
+        gtkshade($disabled_bg_color, 0.7)
+      );
       
       &:backdrop {
         color: $backdrop_disabled_fg_color;
         border-color: $backdrop_border_color;
         background-color: gtkmix($fg, $disabled_bg_color, 0.9);
-        background-image: linear-gradient(to bottom, gtkshade($backdrop_disabled_bg_color, 0.85), gtkshade($backdrop_disabled_bg_color, 0.7));
+        background-image: linear-gradient(
+          to bottom,
+          gtkshade($backdrop_disabled_bg_color, 0.85),
+          gtkshade($backdrop_disabled_bg_color, 0.7)
+        );
       }
     }
   }
@@ -127,5 +171,38 @@
     background-color: transparent;
     color: $backdrop_fg_color;
     background-image: none;
+  }
+}
+
+@mixin destructive_button() {
+  button.destructive-action {
+    color: $selected_fg_color;
+    border-color: gtkshade($error_color, 0.6);
+    background-color: gtkshade($error_color, 0.95);
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($error_color, 0.85),
+      gtkshade($error_color, 0.7)
+    );
+  }
+}
+
+@mixin suggested_button() {
+  button.suggested-action {
+    border-color: gtkshade($selected_bg_color, 0.7);
+    background-color: gtkshade($selected_bg_color, 1.02);
+    background-image: linear-gradient(
+      to bottom,
+      $selected_bg_color,
+      gtkshade($selected_bg_color, 0.9)
+    );
+    
+    &:hover {
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($selected_bg_color, 0.95),
+        gtkshade($selected_bg_color, 0.85)
+      );
+    }
   }
 }
