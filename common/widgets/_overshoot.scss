@@ -1,0 +1,20 @@
+@mixin overshoot($position) {
+  background-image: radial-gradient(
+    farthest-side at $position,
+    $overshoot_color,
+    transparent
+  );
+  
+  @if ($position == "left" or $position == "right") {
+    background-size: 50% 100%;
+  }
+  @else {
+    background-size: 100% 50%;
+  }
+  
+  background-repeat: no-repeat;
+  background-position: $position;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}

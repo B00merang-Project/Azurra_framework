@@ -276,7 +276,26 @@ window.dialog.print {
 
 @include frame();
 @include actionbar();
-@include scrolledwindow();
+
+scrolledwindow {
+  > overshoot {
+    &.top {
+      @include overshoot(top);
+    }
+
+    &.bottom {
+      @include overshoot(bottom);
+    }
+
+    &.left {
+      @include overshoot(left);
+    }
+
+    &.right {
+      @include overshoot(right);
+    }
+  }
+}
 
 // NOTE: this has been merged in the various other widgets that can act as separators
 // is keeping all separators in a single file still a good idea?
@@ -606,9 +625,6 @@ button.color {
   border-style: solid;
   background-color: $bg_color;
 }
-
-// TODO: move to _scrolledwindow.scss
-scrolledwindow viewport.frame { border: none; }
 
 // TODO: move and adapt in new mixin combobox
 arrow, combobox arrow {
