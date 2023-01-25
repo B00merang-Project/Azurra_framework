@@ -4,24 +4,34 @@
 
 @include background();
 
-dnd { color: $fg-color; }
+dnd {
+  color: $fg-color;
+}
 
-.normal-icons { -gtk-icon-size: 16px; }
-.large-icons { -gtk-icon-size: 32px; }
+.normal-icons {
+  -gtk-icon-size: 16px;
+}
 
-image:disabled { -gtk-icon-filter: opacity(0.5); }
+.large-icons {
+  -gtk-icon-size: 32px;
+}
+
+// NOTE: still necessary?
+image:disabled {
+  -gtk-icon-filter: opacity(0.5);
+}
 
 // NOTE: still necessary?
 image, label, box {
-  &, &:disabled { background-color: transparent; }
+  background-color: transparent;
 }
 
 @include view();
 @include textview();
 @include iconview();
-// @include rubberband();  TODO: use new mixin rubberband
+// @include rubberband();  CREATE: new mixin rubberband
 @include flowbox();
-// @include gridview();  TODO: use new mixin gridview
+// @include gridview();    CREATE: new mixin gridview
 
 // TEST: how to test this?
 coverflow cover {
@@ -32,6 +42,7 @@ coverflow cover {
 
 @include labels();
 
+// MOVE: _properties.scss or use fixed value
 $dim_label_opacity : 0.6;
 
 .dim-label {
@@ -41,6 +52,7 @@ $dim_label_opacity : 0.6;
 
 @include transitions();
 
+// MOVE: _properties.scss
 $menu-margin : 4px;
 
 // TEST: how to test this?
@@ -65,9 +77,9 @@ window.assistant {
 // TODO: move to new mixin dialog
 window.aboutdialog image.large-icons { -gtk-icon-size: 128px; }
 
+// TODO: move back to respective widgets
 @include osd();
 
-// TODO: use new mixin spinner???
 @keyframes spin {
   to {
     -gtk-icon-transform: rotate(1turn); }
@@ -124,6 +136,7 @@ spinner {
    font-size: 9pt;
 }
 
+// TODO: rework like button
 @include entry();
 
 editablelabel > stack > text {
@@ -138,6 +151,7 @@ editablelabel > stack > text {
   }
 }
 
+// TODO: rework button() mixin to process all types of buttons
 button {
   @include normal_buttons();
   
@@ -146,13 +160,12 @@ button {
   }
 }
 
-// TODO: merge with button() eventually
 @include destructive_button();
 @include suggested_button();
 
 // NOTE: adwaita includes modelbuttons here. In our case, they're defined in _menu.scss
 
-// NOTE: $link_color is defined in _colors.scss
+// MOVE: _colors*.scss
 $link_visited_color : gtkmix($link_color, $fg_color, 0.2);
 
 %link,
@@ -190,7 +203,7 @@ button.link {
   @extend %link;
   
   &, &:hover, &:active, &:checked {
-    // @include button_flat();  // TODO: implement state requirement for mixins 
+    // @include button_flat();  // TODO: use button(flat) once rework is complete 
     
     text-shadow: none;
   }
@@ -199,7 +212,7 @@ button.link {
 }
 
 @include spinbutton();
-// @include combobox();   TODO: use new mixin combobox
+// @include combobox();   CREATE: new mixin combobox
 
 @include toolbar();
 
@@ -302,7 +315,7 @@ scrolledwindow {
 @include separator();
 
 // TODO: rename to listview?
-// TODO: new nodes: listview, row(?), columnview
+// CREATE: new mixins: listview, row(?), columnview
 @include list();
 
 // move into _list.scss?
@@ -626,7 +639,7 @@ button.color {
   background-color: $bg_color;
 }
 
-// TODO: move and adapt in new mixin combobox
+// CREATE: new mixin combobox
 arrow, combobox arrow {
   color: gtkalpha(currentColor, 0.75);
   -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
@@ -674,10 +687,9 @@ combobox:drop(active) button.combo {
 
 // Misc. end
 
-@include decoration();
+@include window();
 
-// TODO: use new mixin touchselect (touch copy and paste control)
-// TODO: alternatively, make all themes share the controls
+// CREATE: new mixin touchselect (touch copy and paste control), or make all themes share a common implementation
 // @include touchselect();
 
 // keyboard shortcuts screen
