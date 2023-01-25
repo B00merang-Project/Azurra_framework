@@ -1,5 +1,3 @@
-@mixin headerbar_buttons($bg, $fg, $br) { @include normal_buttons($bg, $fg, $br); }
-
 @mixin headerbar() {
   headerbar {
     min-height: 30px;
@@ -54,11 +52,30 @@
       color: gtkalpha(currentColor, 0.7);
     }
 
-    button { @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color); }
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+    button {
+      @include normal_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
+    }
     
-    .titlebutton {
-      &.close, &.maximize, &.minimize, &:not(separator) {
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+  }
+    
+  windowcontrols {
+    border-spacing: 6px;
+
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
+    }
+
+    button {
+      &.close, &.maximize, &.minimize {
         @include flat_buttons($bg_color, $fg_color, $border_color);
       }
     }

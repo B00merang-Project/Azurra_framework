@@ -1,20 +1,25 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  @include normal_buttons($bg, $fg, $br);
-}
-
 @mixin headerbar() {
   headerbar {
     padding: 2px;
     min-height: 26px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    background-image: linear-gradient(to right, #0a246a, #a2c6ed);
+    
+    // TODO: remove hard-coded colors
+    background-image: linear-gradient(
+      to right,
+      #0a246a,
+      #a2c6ed
+    );
 
     &:backdrop {
       color: $backdrop_fg_color;
       background-color: $backdrop_bg_color;
-      background-image: linear-gradient(to right, #808080, #c0c0c0);
+      background-image: linear-gradient(
+        to right,
+        #808080,
+        #c0c0c0
+      );
     }
 
     .tiled &, .tiled &:backdrop,
@@ -60,15 +65,26 @@
       &:backdrop { color: gtkalpha($backdrop_fg_color, 0.7); }
     }
 
-    button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+  }
+    
+  windowcontrols {
+    border-spacing: 6px;
+
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
     }
 
-    entry { padding: 4px 8px; }
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
-
-    .titlebutton {
-      &.close, &.maximize, &.minimize, &:not(separator) {
+    button {
+      &.close, &.maximize, &.minimize {
         color: transparent;
         padding: 0;
         border-radius: 0;
@@ -84,12 +100,14 @@
       .maximized &.maximize { background-image: url('assets/restore.png'); }
     }
     
+    // NOTE: is this still valid?
     .horizontal.right .titlebutton.maximize {
       margin-left: -6px;
       margin-right: -4px;
     }
   }
   
+  // TODO: move to window.scss
   window.ssd headerbar, window.ssd .titlebar {
     padding: 0px;
     margin: 0px;

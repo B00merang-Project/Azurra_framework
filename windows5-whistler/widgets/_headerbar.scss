@@ -1,8 +1,3 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  @include normal_buttons($bg, $fg, $br);
-}
-
 @mixin headerbar() {
   headerbar {
     padding: 4px 8px;
@@ -52,7 +47,9 @@
       font-weight: bold;
       color: $selected_fg_color;
       
-      &:backdrop { color: gtkalpha($titlebar_fg_color, 0.4); }
+      &:backdrop {
+        color: gtkalpha($titlebar_fg_color, 0.4);
+      }
     }
 
     .subtitle {
@@ -61,18 +58,35 @@
       padding-right: 12px;
       color: gtkalpha($selected_fg_color, 0.7);
       
-      &:backdrop { color: gtkalpha($titlebar_fg_color, 0.25); }
+      &:backdrop {
+        color: gtkalpha($titlebar_fg_color, 0.25);
+      }
+    }
+    
+    button {
+      @include flat_buttons();
+    }
+
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+  }
+    
+  windowcontrols {
+    border-spacing: 6px;
+
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
     }
 
     button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, gtkshade($border_color, 0.9));
-    }
-
-    entry { padding: 4px 8px; }
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
-
-    .titlebutton {
-      &.close, &.maximize, &.minimize, &:not(separator) {
+      &.close, &.maximize, &.minimize {
         padding: 0;
         border-radius: 0;
         -gtk-icon-shadow: none;
@@ -81,9 +95,6 @@
         border-color: gtkalpha($titlebar_fg_color, 0.8);
         background-image: none;
         background-color: transparent;
-        
-        background-position: center;
-        background-repeat: no-repeat;
         
         &:backdrop {
           color: gtkalpha($titlebar_fg_color, 0.25);

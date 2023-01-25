@@ -1,8 +1,3 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  @include normal_buttons($bg, $fg, $br);
-}
-
 @mixin headerbar() {
   headerbar {
     padding: 4px 8px;
@@ -16,6 +11,11 @@
       color: $backdrop_fg_color;
       background-color: $backdrop_bg_color;
       background-image: url('assets/titlebar-unfocused-middle.png');
+    }
+    
+    .tiled &, .tiled &:backdrop,
+    .maximized &, .maximized &:backdrop {
+      border-radius: 0;
     }
 
     // Fixes split headerbars
@@ -65,13 +65,28 @@
     }
 
     button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
+      @include flat_buttons();
     }
 
-    entry { padding: 6px 8px; }
     &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
-    
-    .titlebutton {
+  }
+
+  windowcontrols {
+    border-spacing: 6px;
+
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
+    }
+
+    button {
       &.close, &.maximize, &.minimize, &:not(separator) {
         margin: -1px;
         padding: 1px;
@@ -87,57 +102,41 @@
         background-repeat: no-repeat;
       }
 
-      &.close {
-        background-image: url('assets/close-normal.png');
-
+      &.close { background-image: url('assets/close-normal.png');
         &:hover { background-image: url('assets/close-hover.png'); }
         &:active { background-image: url('assets/close-active.png'); }
 
-        &:backdrop {
-          background-image: url('assets/close-backdrop.png');
-          
+        &:backdrop { background-image: url('assets/close-backdrop.png');
           &:hover { background-image: url('assets/close-backdrop-hover.png'); }
           &:active { background-image: url('assets/close-active.png'); }
         }
       }
 
-      &.minimize {
-        background-image: url('assets/minimize-normal.png');
-
+      &.minimize { background-image: url('assets/minimize-normal.png');
         &:hover { background-image: url('assets/minimize-hover.png'); }
         &:active { background-image: url('assets/minimize-active.png'); }
 
-        &:backdrop {
-          background-image: url('assets/minimize-backdrop.png');
-          
+        &:backdrop { background-image: url('assets/minimize-backdrop.png');
           &:hover { background-image: url('assets/minimize-backdrop-hover.png'); }
           &:active { background-image: url('assets/minimize-active.png'); }
         }
       }
 
-      &.maximize {
-        background-image: url('assets/maximize-normal.png');
-
+      &.maximize { background-image: url('assets/maximize-normal.png');
         &:hover { background-image: url('assets/maximize-hover.png'); }
         &:active { background-image: url('assets/maximize-active.png'); }
 
-        &:backdrop {
-          background-image: url('assets/maximize-backdrop.png');
-          
+        &:backdrop { background-image: url('assets/maximize-backdrop.png');
           &:hover { background-image: url('assets/maximize-backdrop-hover.png'); }
           &:active { background-image: url('assets/maximize-active.png'); }
         }
       }
       
-      .maximized &.maximize {
-        background-image: url('assets/restore-normal.png');
-
+      .maximized &.maximize { background-image: url('assets/restore-normal.png');
         &:hover { background-image: url('assets/restore-hover.png'); }
         &:active { background-image: url('assets/restore-active.png'); }
 
-        &:backdrop {
-          background-image: url('assets/restore-backdrop.png');
-          
+        &:backdrop { background-image: url('assets/restore-backdrop.png');
           &:hover { background-image: url('assets/restore-backdrop-hover.png'); }
           &:active { background-image: url('assets/restore-active.png'); }
         }

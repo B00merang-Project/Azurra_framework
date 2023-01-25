@@ -1,21 +1,18 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  @include normal_buttons($bg, $fg, $br);
-}
-
 @mixin headerbar() {
   headerbar {
     padding: 4px 8px;
     min-height: 34px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    box-shadow: inset 2px 2px gtkshade($titlebar_bg_color, 1.4), inset -2px -2px gtkshade($titlebar_bg_color, 0.6);
+    box-shadow: inset 2px 2px gtkshade($titlebar_bg_color, 1.4),
+                inset -2px -2px gtkshade($titlebar_bg_color, 0.6);
 
     &:backdrop {
       color: $backdrop_fg_color;
       background-image: none;
       background-color: $backdrop_bg_color;
-      box-shadow: inset 2px 2px gtkshade($backdrop_bg_color, 1.2), inset -2px -2px gtkshade($backdrop_bg_color, 0.8);
+      box-shadow: inset 2px 2px gtkshade($backdrop_bg_color, 1.2),
+                  inset -2px -2px gtkshade($backdrop_bg_color, 0.8);
     }
 
     .tiled &, .tiled &:backdrop,
@@ -49,7 +46,9 @@
       font-weight: bold;
       color: $selected_fg_color;
       
-      &:backdrop { color: $backdrop_fg_color; }
+      &:backdrop {
+        color: $backdrop_fg_color;
+      }
     }
 
     .subtitle {
@@ -58,18 +57,35 @@
       padding-right: 12px;
       color: gtkalpha($selected_fg_color, 0.7);
       
-      &:backdrop { color: gtkalpha($backdrop_fg_color, 0.7); }
+      &:backdrop {
+        color: gtkalpha($backdrop_fg_color, 0.7);
+      }
     }
 
     button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
+      @include flat_buttons();
     }
 
-    entry { padding: 4px 8px; }
     &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+  }
+    
+  windowcontrols {
+    border-spacing: 6px;
 
-    .titlebutton {
-      &.close, &.maximize, &.minimize, &:not(separator) {
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
+    }
+
+    button {
+      &.close, &.maximize, &.minimize {
         min-width: 19px;
         min-height: 19px;
         color: transparent;
@@ -84,21 +100,15 @@
         background-repeat: no-repeat;
       }
       
-      &.close {
-        background-image: url('assets/close-focused.png');
-        
+      &.close { background-image: url('assets/close-focused.png');
         &:backdrop { background-image: url('assets/close-unfocused.png'); }
       }
 
-      &.minimize {
-        background-image: url('assets/minimize-focused.png');
-        
+      &.minimize { background-image: url('assets/minimize-focused.png');
         &:backdrop { background-image: url('assets/minimize-unfocused.png'); }
       }
 
-      &.maximize {
-        background-image: url('assets/maximize-focused.png');
-        
+      &.maximize { background-image: url('assets/maximize-focused.png');
         &:backdrop { background-image: url('assets/maximize-unfocused.png'); }
       }
     }

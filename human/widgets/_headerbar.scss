@@ -1,20 +1,24 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  @include normal_buttons($bg, $fg, $br);
-}
-
 @mixin headerbar() {
   headerbar {
     padding: 4px 8px;
     min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.2), $titlebar_bg_color, gtkshade($titlebar_bg_color, 0.9));
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($titlebar_bg_color, 1.2),
+      $titlebar_bg_color,
+      gtkshade($titlebar_bg_color, 0.9)
+    );
     box-shadow: inset 0 1px gtkalpha($light_shadow, 0.6);
     border-bottom: 1px solid $dark_shadow;
 
     &:backdrop {
-      background-image: linear-gradient(to bottom, gtkshade($backdrop_bg_color, 1.05), $backdrop_bg_color);
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($backdrop_bg_color, 1.05),
+        $backdrop_bg_color
+      );
       box-shadow: none;
       border-bottom-color: gtkalpha($dark_shadow, 0.15);
     }
@@ -69,14 +73,30 @@
     }
 
     button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
+      @include flat_buttons();
+      //@include normal_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
     }
 
-    entry { padding: 4px 8px; }
     &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+  }
     
-    .titlebutton {
-      &.close, &.maximize, &.minimize, &:not(separator) {
+  windowcontrols {
+    border-spacing: 6px;
+
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
+    }
+
+    button {
+      &.close, &.maximize, &.minimize {
         min-width: 18px;
         min-height: 18px;
         padding: 0;

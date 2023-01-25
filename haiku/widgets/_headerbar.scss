@@ -1,22 +1,27 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  @include normal_buttons($bg, $fg, gtkshade($br, 0.9));
-}
-
 @mixin headerbar() {
   headerbar {
     padding: 4px 8px;
     min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    background-image: linear-gradient(to bottom, gtkshade($titlebar_bg_color, 1.6), $titlebar_bg_color);
-    box-shadow: inset 1px 1px gtkmix($titlebar_bg_color, $base_color, 0.4), inset -1px -1px $titlebar_bg_color;
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($titlebar_bg_color, 1.6),
+      $titlebar_bg_color
+    );
+    box-shadow: inset 1px 1px gtkmix($titlebar_bg_color, $base_color, 0.4),
+                inset -1px -1px $titlebar_bg_color;
 
     &:backdrop {
       color: $backdrop_fg_color;
       background-color: $backdrop_bg_color;
-      background-image: linear-gradient(to bottom, gtkshade($backdrop_bg_color, 1.05), $backdrop_bg_color);
-      box-shadow: inset 1px 1px gtkshade($light_shadow, 0.95), inset -1px -1px gtkshade($bg_color, 0.85);
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($backdrop_bg_color, 1.05),
+        $backdrop_bg_color
+      );
+      box-shadow: inset 1px 1px gtkshade($light_shadow, 0.95),
+                  inset -1px -1px gtkshade($bg_color, 0.85);
     }
 
     .tiled &, .tiled &:backdrop,
@@ -58,14 +63,29 @@
     }
 
     button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
+      @include flat_buttons();
     }
 
-    entry { padding: 4px 8px; }
     &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+  }
     
-    .titlebutton {
-      &.close, &.maximize, &.minimize, &:not(separator) {
+  windowcontrols {
+    border-spacing: 6px;
+
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
+    }
+
+    button {
+      &.close, &.maximize, &.minimize {
         min-width: 14px;
         min-height: 14px;
         padding: 0;
@@ -80,21 +100,15 @@
         background-repeat: no-repeat;
       }
       
-      &.close {
-        background: url('assets/close-focused.png') no-repeat no-repeat;
-        
+      &.close { background: url('assets/close-focused.png') no-repeat no-repeat;
         &:backdrop { background: url('assets/close-unfocused.png') no-repeat no-repeat; }
       } 
       
-      &.maximize {
-        background: url('assets/maximize-focused.png') no-repeat no-repeat;
-        
+      &.maximize { background: url('assets/maximize-focused.png') no-repeat no-repeat;
         &:backdrop { background: url('assets/maximize-unfocused.png') no-repeat no-repeat; }
       }
       
-      &.minimize {
-        background: url('assets/minimize-focused.png') no-repeat no-repeat;
-        
+      &.minimize { background: url('assets/minimize-focused.png') no-repeat no-repeat;
         &:backdrop { background: url('assets/minimize-unfocused.png') no-repeat no-repeat; }
       }
     }

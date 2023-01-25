@@ -1,46 +1,3 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  padding: 4px 8px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: $button_radius;
-  color: $fg;
-  border-color: $br;
-  border-top-color: gtkshade($br, 1.1);
-  border-left-color: gtkshade($br, 1.05);
-  border-right-color: gtkshade($br, 1.05);
-  background-color: $bg;
-
-  &:hover {
-    color: $fg;
-    background-color: gtkshade($bg, 1.1);
-  }
-
-  &:active, &:checked {
-    color: $selected_fg_color;
-    border-color: gtkshade($br, 0.9);
-    background-color: gtkmix($bg, $fg, 0.2);
-
-    &:backdrop {}
-    
-    &:disabled {
-      color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
-      border-color: gtkmix($fg, $disabled_bg_color, 0.85);
-      background-color: gtkshade($disabled_bg_color, 0.9);
-      
-      &:backdrop {}
-    }
-  }
-
-  &:disabled {
-    color: gtkmix($fg, $backdrop_disabled_fg_color, 0.5);
-    
-    &:backdrop {}
-  }
-
-  &:backdrop {}
-}
-
 @mixin headerbar() {
   headerbar {
     padding: 4px 8px;
@@ -89,14 +46,31 @@
     }
 
     button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, gtkshade($headerbar_fg_color, 0.3));
+      @include flat_buttons();
+    }
+    
+    // TODO: include flat entry too
+
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+  }
+    
+  windowcontrols {
+    border-spacing: 6px;
+
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
     }
 
-    entry { padding: 4px 8px; }
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
-    
-    .titlebutton {
-      &.close, &.maximize, &.minimize, &:not(separator) {
+    button {
+      &.close, &.maximize, &.minimize {
         min-width: 28px;
         min-height: 28px;
         padding: 0;
@@ -109,25 +83,26 @@
         background-position: center center;
         background-repeat: no-repeat;
         
-        &:hover, &:active { background-color: gtkalpha($base_color, 0.2); }
+        &:hover, &:active {
+          background-color: gtkalpha($base_color, 0.2);
+        }
       }
       
       &.close {
         background: url('assets/close-normal.png') center center;
-
-        &:hover, &:active { background-color: $error_color; }
+        
+        &:hover, &:active {
+          background-color: $error_color;
+        }
+        
         &:backdrop { background: url('assets/close-backdrop.png') center center; }
       }
 
-      &.minimize {
-        background: url('assets/minimize-normal.png') center center;
-
+      &.minimize { background: url('assets/minimize-normal.png') center center;
         &:backdrop { background: url('assets/minimize-backdrop.png') center center; }
       }
 
-      &.maximize {
-        background: url('assets/maximize-normal.png') center center;
-
+      &.maximize { background: url('assets/maximize-normal.png') center center;
         &:backdrop { background: url('assets/maximize-backdrop.png') center center; }
       }
     }

@@ -1,51 +1,3 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  padding: 4px 8px;
-  border: none;
-  border-radius: $button_radius;
-  color: $fg;
-  border-color: $br;
-  background-color: $bg;
-  
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: 0;
-
-  &:hover {}
-
-  &:active, &:checked {
-    outline-color: gtkshade($selected_bg_color, 1.4);
-    color: $selected_fg_color;
-
-    &:disabled {
-      color: gtkmix($selected_fg_color, $disabled_fg_color, 0.4);
-      background-color: $bg;
-    
-      &:backdrop {
-        color: gtkmix($selected_fg_color, $backdrop_disabled_fg_color, 0.4);
-        background-color: $bg;
-      }
-    }
-
-    &:backdrop { color: $backdrop_selected_fg_color; }
-  }
-
-  &:disabled {
-    color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
-    background-color: $bg;
-    
-    &:backdrop {
-      color: $backdrop_disabled_fg_color;
-      background-color: transparent;
-    }
-  }
-
-  &:backdrop {
-    color: $backdrop_fg_color;
-    background-color: transparent;
-  }
-}
-
 @mixin headerbar() {
   headerbar {
     padding: 4px 8px;
@@ -98,15 +50,76 @@
       color: gtkalpha(currentColor, 0.7);
     }
 
+    // TODO: move to button?
     button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $headerbar_bg_color);
+      padding: 4px 8px;
+      border: none;
+      border-radius: $button_radius;
+      color: $headerbar_fg_color;
+      border-color: $headerbar_bg_color;
+      background-color: $headerbar_bg_color;
+      
+      outline-style: solid;
+      outline-width: 2px;
+      outline-offset: 0;
+
+      // TODO: hover
+
+      &:active, &:checked {
+        outline-color: gtkshade($selected_bg_color, 1.4);
+        color: $selected_fg_color;
+
+        &:disabled {
+          color: gtkmix($selected_fg_color, $disabled_fg_color, 0.4);
+          background-color: $headerbar_bg_color;
+        
+          &:backdrop {
+            color: gtkmix($selected_fg_color, $backdrop_disabled_fg_color, 0.4);
+            background-color: $headerbar_bg_color;
+          }
+        }
+
+        &:backdrop {
+          color: $backdrop_selected_fg_color;
+        }
+      }
+
+      &:disabled {
+        color: gtkmix($headerbar_fg_color, $backdrop_disabled_fg_color, 0.1);
+        background-color: $headerbar_bg_color;
+        
+        &:backdrop {
+          color: $backdrop_disabled_fg_color;
+          background-color: transparent;
+        }
+      }
+
+      &:backdrop {
+        color: $backdrop_fg_color;
+        background-color: transparent;
+      }
     }
     
-    entry { padding: 4px 8px; }
     &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+  }
+    
+  windowcontrols {
+    border-spacing: 6px;
 
-    .titlebutton {
-      &.close, &.maximize, &.minimize, &:not(separator) {
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
+    }
+
+    button {
+      &.close, &.maximize, &.minimize {
         padding: 2px 2px;
         background-color: transparent;
         

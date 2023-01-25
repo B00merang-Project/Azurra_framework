@@ -1,8 +1,3 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  @include normal_buttons($bg, $fg, $br);
-}
-
 @mixin headerbar() {
   headerbar {
     padding: 4px 8px;
@@ -54,14 +49,29 @@
     }
 
     button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
+      @include flat_buttons();
     }
-    
-    entry { padding: 4px 8px; }
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
 
-    .titlebutton {
-      &.close, &.maximize, &.minimize, &:not(separator) {
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+  }
+    
+  windowcontrols {
+    border-spacing: 6px;
+
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
+    }
+
+    button {
+      &.close, &.maximize, &.minimize {
         padding: 0;
         min-width: 31px;
         min-height: 30px;
@@ -71,14 +81,13 @@
         background-position: center center;
         -gtk-icon-shadow: none;
         
+        // TODO: remove hard-coded colors
         &:hover { background-color: #3665b3; }
         &:active { background-color: #3d6099; }
         &:backdrop { opacity: 0.9; }
       }
       
-      &.close {
-        background-image: url('assets/close.png');
-
+      &.close { background-image: url('assets/close.png');
         &:hover { background-color: #e04343; }
         &:active { background-color: #c75050; }
       }

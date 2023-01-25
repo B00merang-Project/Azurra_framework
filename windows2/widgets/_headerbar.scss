@@ -1,8 +1,3 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  @include normal_buttons($bg, $fg, $br);
-}
-
 @mixin headerbar() {
   headerbar {
     padding: 2px;
@@ -58,18 +53,35 @@
       color: gtkalpha($titlebar_fg_color, 0.7);
       background-color: $fg_color;
       
-      &:backdrop { color: gtkalpha($titlebar_fg_color, 0.7); }
+      &:backdrop {
+        color: gtkalpha($titlebar_fg_color, 0.7);
+      }
+    }
+    
+    button {
+      @include flat_buttons();
+    }
+    
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+  }
+    
+  windowcontrols {
+    border-spacing: 6px;
+
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
     }
 
     button {
-      @include headerbar_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
-    }
-
-    entry { padding: 4px 8px; }
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
-
-    .titlebutton {
-      &.close, &.maximize, &.minimize, &:not(separator) {
+      &.close, &.maximize, &.minimize {
         color: transparent;
         padding: 2px 2px;
         border-radius: 0;
@@ -85,9 +97,11 @@
       .maximized &.maximize { background-image: url('assets/restore.svg'); }
     }
 
+    // TODO: does this still work?
     .horizontal.right .titlebutton.minimize { margin-left: -7px; }
   }
 
+  // what dis do?
   window.ssd {
     headerbar, .titlebar { margin: 0px; }
     &.maximized headerbar, &.maximized .titlebar { margin: 0px; }

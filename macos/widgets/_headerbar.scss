@@ -1,8 +1,3 @@
-@mixin headerbar_buttons($bg, $fg, $br)
-{
-  @include flat_buttons($bg, $fg, $br);
-}
-
 @mixin headerbar() {
   headerbar {
     min-height: 30px;
@@ -62,13 +57,31 @@
       padding-right: 12px;
       color: gtkalpha(currentColor, 0.7);
     }
-
-    button { @include headerbar_buttons($base_color, $headerbar_fg_color, $border_color); }
-    entry { padding: 4px 8px; }
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
     
-    .titlebutton {
-      &.close, &.maximize, &.minimize, &:not(separator) {
+    button {
+      @include flat_buttons($base_color, $headerbar_fg_color, $border_color);
+    }
+
+    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
+  }
+    
+  windowcontrols {
+    border-spacing: 6px;
+
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
+    }
+
+    button {
+      &.close, &.maximize, &.minimize {
         padding: 2px 2px;
         border: none;
         color: transparent;
@@ -79,32 +92,29 @@
         background-repeat: no-repeat;
       }
       
-      &.close {
-        background-image: url('assets/close-normal.svg');
-
+      &.close { background-image: url('assets/close-normal.svg');
         &:hover { background-image: url('assets/close-hover.svg'); }
         &:active { background-image: url('assets/close-active.svg'); }
         &:backdrop { background-image: url('assets/close-backdrop.svg'); }
       }
 
-      &.minimize {
-        background-image: url('assets/minimize-normal.svg');
-
+      &.minimize { background-image: url('assets/minimize-normal.svg');
         &:hover { background-image: url('assets/minimize-hover.svg'); }
         &:active { background-image: url('assets/minimize-active.svg'); }
         &:backdrop { background-image: url('assets/minimize-backdrop.svg'); }
       }
 
-      &.maximize {
-        background-image: url('assets/maximize-normal.svg');
-
+      &.maximize { background-image: url('assets/maximize-normal.svg');
         &:hover { background-image: url('assets/maximize-hover.svg'); }
         &:active { background-image: url('assets/maximize-active.svg'); }
         &:backdrop { background-image: url('assets/maximize-backdrop.svg'); }
       }
+      
+      // TODO: does macos have a different maximized window button?
     }
   }
 
+  // not sure what this does, make titlebars transparent?
   .titlebar:not(headerbar) {
     window > &,
     window.csd > & {
@@ -117,21 +127,40 @@
     }
   }
   
+  // Make left part of nautilus titlebar transparent like sidebar (still work in GTK4?)
   .nautilus-window headerbar {
     background-color: transparent;
-    background-image: linear-gradient(to right, $sidebar_bg_color $sidebar_width, $border_color, $titlebar_bg_color $sidebar_width + 1);
-    border-image: linear-gradient(to right, $sidebar_bg_color $sidebar_width, $border_color $sidebar_width + 1) 1 stretch;
+    background-image: linear-gradient(
+      to right,
+      $sidebar_bg_color $sidebar_width,     // sidebar_width set in properties.scss
+      $border_color,                        // 1px fake border
+      $titlebar_bg_color $sidebar_width + 1
+    );
+    border-image: linear-gradient(
+      to right,
+      $sidebar_bg_color $sidebar_width,
+      $border_color $sidebar_width + 1
+    ) 1 stretch;
 
     &:backdrop {
-      background-image: linear-gradient(to right, $backdrop_bg_color $sidebar_width, $backdrop_border_color, $backdrop_bg_color $sidebar_width + 1);
-      border-image: linear-gradient(to right, $backdrop_bg_color $sidebar_width, $backdrop_border_color $sidebar_width + 1) 1 stretch;
+      background-image: linear-gradient(
+        to right,
+        $backdrop_bg_color $sidebar_width,
+        $backdrop_border_color,
+        $backdrop_bg_color $sidebar_width + 1
+      );
+      border-image: linear-gradient(
+        to right,
+        $backdrop_bg_color $sidebar_width,
+        $backdrop_border_color $sidebar_width + 1
+      ) 1 stretch;
     }
     
     // move header buttons away from fake sidebar portion    
     box.horizontal.left { margin-right: $pathbar_offset; }
   }
 
-
+  // SSD titlebars are little slimmer (and no bottom border)
   window.ssd .titlebar {
     border-bottom: none;
     min-height: 20px;
