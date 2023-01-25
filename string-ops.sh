@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Azurra string_ops v 0.1
+# Azurra string_ops v 0.5
 # Run string modification ops on all theme folders
 # WARNING: use with caution!
 
@@ -12,7 +12,7 @@ MOD=0         # used to prompt if operation is MOD
 ARGS=2        # check if required number of args is received
 
 # HELP
-ops() {
+show_ops() {
   echo "Available options:"
   echo "  -fc <VALUE>              Find <VALUE> in all '_colors.scss' files"
   echo "  -fw <VALUE>              Find <VALUE> in all 'widgets/*.scss' files"
@@ -35,7 +35,7 @@ help() {
   echo "Run string modification ops on all theme folders"
   echo ""
   
-  ops
+  show_ops
 }
 
 # UTILS
@@ -55,25 +55,6 @@ file_contains() {
   fi
   
   return 1  
-}
-
-# iterate on all theme folders
-run() {
-  for dir in *; do
-    if [ -f "$dir/theme.rc" ]  # if has valid configuration
-    then
-      $OP "$dir" "$VAL" "$NEW_VAL"
-    fi
-  done
-}
-
-parm_count_check() {
-  if [ "$#" -ne $ARGS ]; then
-    echo "Invalid number of arguments."
-    ops
-    
-    exit 2
-  fi
 }
 
 # OPERATIONS
@@ -100,7 +81,7 @@ widgets_contains() {
     fi
   done
   
-  [ $hits -le 0 ] && echo "No matches found"
+  #[ $hits -le 0 ] && echo "No matches found"
 }
 
 imports_contains() {
@@ -170,16 +151,6 @@ widgets_replace() {
   done
 }
 
-widget_delete() {
-  local theme_dir="$1"
-  local value="$2"
-  
-  # replace 'value' by 'new_value'
-  for FILE in "$theme_dir"/widgets/*.scss; do
-    [ -f $FILE ] && delete "$value" $FILE && echo "Replacing value in $FILE (if found)"
-  done
-}
-
 properties_replace() {
   local theme_dir="$1"
   local value="$2"
@@ -209,6 +180,16 @@ imports_delete() {
   echo "Deleted value in '$theme_dir/_imports.scss' (if found)"
 }
 
+widget_delete() {
+  local theme_dir="$1"
+  local value="$2"
+  
+  # replace 'value' by 'new_value'
+  for FILE in "$theme_dir"/widgets/*.scss; do
+    [ -f $FILE ] && delete "$value" $FILE && echo "Replacing value in $FILE (if found)"
+  done
+}
+
 config_delete() {
   local theme_dir="$1"
   local value="$2"
@@ -230,72 +211,32 @@ VAL="$2"
 NEW_VAL="$3"
 
 case $1 in
-  -fc)
-    OP="colors_contains"
-  ;;
-  -fw)
-    OP="widgets_contains"
-  ;;
-  -fi)
-    OP="imports_contains"
-  ;;
-  -fp)
-    OP="properties_contains"
-  ;;
-  -rg)
-    OP="gtk_replace"
-    MOD=1
-    ARGS=3
-  ;;
-  -rc)
-    OP="colors_replace"
-    MOD=1
-    ARGS=3
-  ;;
-  -ri)
-    OP="imports_replace"
-    MOD=1
-    ARGS=3
-  ;;
-  -rw)
-    OP="widgets_replace"
-    MOD=1
-    ARGS=3
-  ;;
-  -rp)
-    OP="properties_replace"
-    MOD=1
-    ARGS=3
-  ;;
-  -rt)
-    OP="config_replace"
-    MOD=1
-    ARGS=3
-  ;;
-  -di)
-    OP="imports_delete"
-    MOD=1
-  ;;
-  -di)
-    OP="config_delete"
-    MOD=1
-  ;;
-  -dw)
-    OP="widget_delete"
-    MOD=1
-  ;;
-  -at)
-    OP="config_append"
-    MOD=1
-  ;;
-  *)
-    echo -n "Invalid operation. "
-    ops
-    exit 1
-  ;;
+  -fc) OP="colors_contains"     ;;
+  -fw) OP="widgets_contains"    ;;
+  -fi) OP="imports_contains"    ;;
+  -fp) OP="properties_contains" ;;
+  -rg) OP="gtk_replace"         ;  MOD=1;  ARGS=3 ;;
+  -rc) OP="colors_replace"      ;  MOD=1;  ARGS=3 ;;
+  -ri) OP="imports_replace"     ;  MOD=1;  ARGS=3 ;;
+  -rw) OP="widgets_replace"     ;  MOD=1;  ARGS=3 ;;
+  -rp) OP="properties_replace"  ;  MOD=1;  ARGS=3 ;;
+  -rt) OP="config_replace"      ;  MOD=1;  ARGS=3 ;;
+  -di) OP="imports_delete"      ;  MOD=1;;
+  -di) OP="config_delete"       ;  MOD=1;;
+  -dw) OP="widget_delete"       ;  MOD=1;;
+  -at) OP="config_append"       ;  MOD=1;;
+  *)   echo -n "Invalid operation. "
+       show_ops
+       exit 1;;
 esac
 
-parm_count_check $@
+# see if correct number of arguments received
+if [ "$#" -ne $ARGS ]; then
+  echo "Invalid number of arguments. Possible options:"
+  show_ops
+  
+  exit 2
+fi
 
 # warn user of potential catastrophic consequences
 if [ $MOD -eq 1 ]
@@ -311,4 +252,10 @@ then
   fi
 fi
 
-run
+# run op on all theme folders 
+for dir in *; do
+  if [ -f "$dir/theme.rc" ]  # if has valid configuration
+  then
+    $OP "$dir" "$VAL" "$NEW_VAL"
+  fi
+done
