@@ -64,7 +64,7 @@ deploy() {
   
   [ -z "$target_dir" ] && warn "Empty target for $name, skipping deployment" && return
 
-  echo -n "Deploying $(hlight -n $name), "
+  echo -n "Deploying $(hlight -n $name)..."
 
   # Stylesheets
   rm -rf "$target_dir"/*.css
@@ -100,7 +100,7 @@ deploy() {
 
 compile() {
   load_conf $1
-  echo -n "Compiling $(hlight -n $name) "
+  echo -n "Compiling $(hlight -n $name)..."
 
   for sass_file in $1/gtk*.scss; do
     local filename=${sass_file%".scss"}
@@ -145,8 +145,6 @@ clean() {
 make() {
   compile $1
   deploy $1
-
-  echo
 }
 
 declare -a QUEUE

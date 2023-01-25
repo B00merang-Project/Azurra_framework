@@ -201,10 +201,7 @@ button.link {
 @include spinbutton();
 // @include combobox();   TODO: use new mixin combobox
 
-// TODO: merge all toolbars into one mixin?
 @include toolbar();
-@include primary_toolbar();
-@include inline_toolbar();
 
 @include searchbar();
 @include infobar();
@@ -218,7 +215,9 @@ button.link {
 // NOTICE: in GTK 4, the .menu class and menu node are deprecated. Menu stuff should be migrated to popover and modelbutton
 @include popover();
 
-magnifier { background-color: $base_color; }
+magnifier {
+  background-color: $base_color; 
+}
 
 @include modelbutton();
 @include menu();      // TODO: deprecate
@@ -790,7 +789,8 @@ menubutton {
 
 // legacy stuff
 
-@include images();
+// TODO: include '> image' nodes in affected widgets
+//@include images();
 @include floating_bar();
 @include terminal();
 
