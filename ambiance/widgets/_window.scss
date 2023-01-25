@@ -1,12 +1,12 @@
-@mixin decoration() {
+@mixin window() {
   decoration {
     border-radius: $window_radius $window_radius 0 0;
     border-width: 0px;
-    box-shadow: 0 8px 8px 0 gtkalpha($wm_shadow, 0.2), 0 0 0 1px gtkalpha($wm_shadow, 0.3);
+    box-shadow: 0 3px 9px 1px gtkalpha($wm_shadow, 0.3), 0 0 0 1px gtkalpha($wm_shadow, 0.25);
     margin: 10px;
 
     &:backdrop {
-      box-shadow: 0 8px 8px 0 transparent, 0 5px 5px 0 gtkalpha($wm_shadow, 0.2), 0 0 0 1px gtkalpha($wm_shadow, 0.3);
+      box-shadow: 0 3px 9px 1px transparent, 0 2px 6px 2px gtkalpha($wm_shadow, 0.2), 0 0 0 1px gtkalpha($wm_shadow, 0.25);
     }
 
     .maximized &,
@@ -21,12 +21,12 @@
 
     .csd.popup & {
       border-radius: $menu_radius;
-      box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.1);
+      box-shadow: 0 3px 5px 1px gtkalpha($wm_shadow, 0.3), 0 0 0 1px gtkalpha($wm_shadow, 0.1);
     }
 
     .ssd & {
       border-radius: $window_radius $window_radius 0 0;
-      box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.3);
+      box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.1);
 
       &.maximized {
         border-radius: 0;

@@ -1,4 +1,4 @@
-@mixin decoration() {
+@mixin window() {
   decoration {
     border-radius: $window_radius $window_radius 0 0;
     border-width: 0px;
@@ -22,7 +22,6 @@
     .csd.popup & {
       border-radius: $menu_radius;
       box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.1);
-      box-shadow: 2px 2px 2px 1px gtkalpha($wm_shadow, 0.3), 0 0 0 1px $border_color;
     }
 
     .ssd & {
@@ -45,5 +44,10 @@
       background-color: gtkalpha($light_shadow, 0.95);
       box-shadow: none;
     }
+  }
+
+  // HACK: for rounded menus this has to override the .background definition
+  window.background.csd.popup {
+    border-radius: $window_radius;
   }
 }

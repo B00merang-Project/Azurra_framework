@@ -1,8 +1,8 @@
-@mixin decoration() {
+@mixin window() {
   decoration {
     border-radius: $window_radius $window_radius 0 0;
     border-width: 0px;
-    box-shadow: 0 3px 9px 1px gtkalpha($wm_shadow, 0.3), 0 0 0 1px $wm_shadow;
+    box-shadow: 0 3px 9px 1px gtkalpha($wm_shadow, 0.3), 0 0 0 1px gtkalpha($wm_shadow, 0.25);
     margin: 10px;
 
     &:backdrop {
@@ -16,7 +16,6 @@
     .tiled-right &,
     .tiled-bottom &,
     .tiled-left & { border-radius: 0; }
-
     .popup & { box-shadow: none; }
 
     .csd.popup & {
