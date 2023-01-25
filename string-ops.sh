@@ -62,9 +62,11 @@ colors_contains() {
   local theme_dir="$1"
   local value="$2"
   
-  if file_contains "$value" "$theme_dir/_colors.scss"; then
-    echo "Match in folder $theme_dir"
-  fi
+  for FILE in "$theme_dir/_colors"*.scss; do
+    if file_contains "$value" "$FILE"; then
+      echo "Match in $FILE"
+    fi
+  done
 }
 
 widgets_contains() {
@@ -125,6 +127,7 @@ colors_replace() {
   [ -f "$theme_dir/_colors_light.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_light.scss"
   [ -f "$theme_dir/_colors_dark.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_dark.scss"
   [ -f "$theme_dir/_colors_solid.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_solid.scss"
+  [ -f "$theme_dir/_colors_solid_light.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_solid_light.scss"
   [ -f "$theme_dir/_colors_solid_dark.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_solid_dark.scss"
   
   echo "Replaced value in '$theme_dir/_colors*.scss' (if found)"
