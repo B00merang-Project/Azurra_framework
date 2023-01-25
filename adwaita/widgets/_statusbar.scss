@@ -1,9 +1,9 @@
 @mixin statusbar() {
   statusbar {
-    color: $fg_color;
+    padding: 4px 6px 4px 6px;
     
-    &:backdrop { color: $backdrop_fg_color; }
-
-    frame > border { border: none; }
+    &:backdrop {
+      color: $backdrop_fg_color;
+    }
   }
 }
