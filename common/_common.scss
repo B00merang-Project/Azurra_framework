@@ -31,18 +31,31 @@ image, label, box {
 @include textview();
 @include iconview();
 // @include rubberband();  CREATE: new mixin rubberband
-// @include flowbox();
-flowbox flowboxchild {
-  padding: 3px;
-  border-radius: $global_radius;
 
-  // TODO: use selected_items
-  &:selected {
-    outline-offset: -2px;
-    color: $selected_fg_color;
-    background-color: $selected_bg_color;
+flowbox {
+  // TODO: use rubberband mixin, once it's created
+  //> rubberband { @extend rubberband; }
+
+  > flowboxchild {
+    padding: 3px;
+    
+    // TODO: transitions?
+    //transition: $focus_transition;
+
+    // TODO: focus_outline
+    //@include focus-ring();
+
+    &:selected {
+      // TODO: use focus_outline
+      //outline-color: $alt_focus_border_color;
+
+      // TODO: use selected_items once ready
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+    }
   }
 }
+
 // @include gridview();    CREATE: new mixin gridview
 
 // coverflow
