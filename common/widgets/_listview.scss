@@ -1,4 +1,4 @@
-@mixin list() {
+@mixin listview() {
   list {
     color: $fg_color;
     background-color: $base_color;
@@ -32,10 +32,8 @@
           }
         }
         
-        scale {
-          highlight, slider {
-            background-color: $selected_fg_color;
-          }
+        scale slider, scale highlight {
+          background-color: $selected_fg_color;
         }
         
         &:hover {
@@ -58,6 +56,7 @@
       }
     }
 
+    // TODO: move to sidebar?
     separator, separator:backdrop {
       background: none; // no lines on sidebar
     }
