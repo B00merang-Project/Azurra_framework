@@ -14,20 +14,21 @@ ARGS=2        # check if required number of args is received
 # HELP
 show_ops() {
   echo "Available options:"
-  echo "  -fc <VALUE>              Find <VALUE> in all '_colors.scss' files"
-  echo "  -fw <VALUE>              Find <VALUE> in all 'widgets/*.scss' files"
-  echo "  -fi <VALUE>              Find <VALUE> in all '_imports.scss' files"
-  echo "  -fp <VALUE>              Find <VALUE> in all '_properties.scss' files"
-  echo "  -rg <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_gtk*.scss' files"
-  echo "  -rc <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_colors.scss' files"
-  echo "  -ri <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_imports.scss' files"
-  echo "  -rw <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all 'widgets/*.scss' files"
-  echo "  -rp <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all '_properties.scss' files"
-  echo "  -rt <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in all 'theme.rc' files"
-  echo "  -di <VALUE>              Delete lines containing <VALUE> in all '_imports.scss' files"
-  echo "  -dt <VALUE>              Delete lines containing <VALUE> in all 'theme.rc' files"
-  echo "  -dw <VALUE>              Delete lines containing <VALUE> in all 'widgets/*.scss' files"
-  echo "  -at <VALUE>              Add <VALUE> as a new line in all 'theme.rc' files"
+  echo "  -fc  <VALUE>              Find <VALUE> in all '_colors.scss'"
+  echo "  -fw  <VALUE>              Find <VALUE> in all 'widgets/*.scss'"
+  echo "  -fi  <VALUE>              Find <VALUE> in all '_imports.scss'"
+  echo "  -fp  <VALUE>              Find <VALUE> in all '_properties.scss'"
+  echo "  -rg  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in '_gtk*.scss'"
+  echo "  -rc  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in '_colors.scss'"
+  echo "  -ri  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in '_imports.scss'"
+  echo "  -rw  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in 'widgets/*.scss'"
+  echo "  -rp  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in '_properties.scss'"
+  echo "  -rt  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in 'theme.rc'"
+  echo "  -di  <VALUE>              Delete lines containing <VALUE> in '_imports.scss'"
+  echo "  -dt  <VALUE>              Delete lines containing <VALUE> in 'theme.rc'"
+  echo "  -dw  <VALUE>              Delete lines containing <VALUE> in 'widgets/*.scss'"
+  echo "  -at  <VALUE>              Add <VALUE> as a new line in all 'theme.rc'"
+  echo "  -apa <VALUE> <AFTER>      Add <VALUE> after line <AFTER> in '_properties.scss'" 
 }
 
 help() {
@@ -209,25 +210,36 @@ config_append() {
   echo "$string" >> "$theme_dir/theme.conf"
 }
 
+props_insert_after() {
+  local theme_dir="$1"
+  local content="$2"
+  local insert_after="$3"
+  
+  echo $theme_dir/_properties.scss
+  
+  sed -i "/$insert_after/a $content" "$theme_dir/_properties.scss"
+}
+
 OP="$!"
 VAL="$2"
 NEW_VAL="$3"
 
 case $1 in
-  -fc) OP="colors_contains"     ;;
-  -fw) OP="widgets_contains"    ;;
-  -fi) OP="imports_contains"    ;;
-  -fp) OP="properties_contains" ;;
-  -rg) OP="gtk_replace"         ;  MOD=1;  ARGS=3 ;;
-  -rc) OP="colors_replace"      ;  MOD=1;  ARGS=3 ;;
-  -ri) OP="imports_replace"     ;  MOD=1;  ARGS=3 ;;
-  -rw) OP="widgets_replace"     ;  MOD=1;  ARGS=3 ;;
-  -rp) OP="properties_replace"  ;  MOD=1;  ARGS=3 ;;
-  -rt) OP="config_replace"      ;  MOD=1;  ARGS=3 ;;
-  -di) OP="imports_delete"      ;  MOD=1;;
-  -di) OP="config_delete"       ;  MOD=1;;
-  -dw) OP="widget_delete"       ;  MOD=1;;
-  -at) OP="config_append"       ;  MOD=1;;
+  -fc)  OP="colors_contains"     ;;
+  -fw)  OP="widgets_contains"    ;;
+  -fi)  OP="imports_contains"    ;;
+  -fp)  OP="properties_contains" ;;
+  -rg)  OP="gtk_replace"         ;  MOD=1;  ARGS=3 ;;
+  -rc)  OP="colors_replace"      ;  MOD=1;  ARGS=3 ;;
+  -ri)  OP="imports_replace"     ;  MOD=1;  ARGS=3 ;;
+  -rw)  OP="widgets_replace"     ;  MOD=1;  ARGS=3 ;;
+  -rp)  OP="properties_replace"  ;  MOD=1;  ARGS=3 ;;
+  -rt)  OP="config_replace"      ;  MOD=1;  ARGS=3 ;;
+  -di)  OP="imports_delete"      ;  MOD=1;;
+  -di)  OP="config_delete"       ;  MOD=1;;
+  -dw)  OP="widget_delete"       ;  MOD=1;;
+  -at)  OP="config_append"       ;  MOD=1;;
+  -apa) OP="props_insert_after"  ;  MOD=1;  ARGS=3 ;;
   *)   echo -n "Invalid operation. "
        show_ops
        exit 1;;
