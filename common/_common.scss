@@ -65,7 +65,13 @@ coverflow cover {
   border: 1px solid if($variant == 'light', gtkshade($border_color, 0.6), gtkshade($border_color, 1.4));
 }
 
-@include labels();
+label {
+  // TODO: use mixin selected_text
+  selection {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+}
 
 // MOVE: _properties.scss or use fixed value
 $dim_label_opacity : 0.6;
