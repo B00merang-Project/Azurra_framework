@@ -844,7 +844,12 @@ menubutton {
 // TODO: include '> image' nodes in affected widgets
 //@include images();
 @include floating_bar();
-@include terminal();
+
+//@include terminal();
+.terminal-screen, terminal-window, vte-terminal {
+  background-color: $terminal_bg_color;
+  color: $terminal_fg_color;
+}
 
 // TODO: make widgets handle their own linked styles
 @include linked_widgets();
