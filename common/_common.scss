@@ -320,7 +320,19 @@ window.dialog.print {
   .dialog-action-box { margin: 12px; }
 }
 
-@include frame();
+// frame
+frame,
+.frame {
+  border: 1px solid $border_color;
+}
+
+frame {
+  border-radius: $global_radius;
+
+  > label {
+    margin: 4px;
+  }
+}
 
 // actionbar
 actionbar > revealer > box {
