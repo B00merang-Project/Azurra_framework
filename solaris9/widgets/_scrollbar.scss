@@ -55,13 +55,8 @@
         min-height: 11px;
         min-width: 11px;
       
-        &.down {
-          background-image: url('assets/arrow-right.png');
-        }
-
-        &.up {
-          background-image: url('assets/arrow-left.png');
-        }
+        &.down { background-image: url('assets/arrow-right.png'); }
+        &.up { background-image: url('assets/arrow-left.png'); }
       }
     }
 
@@ -82,13 +77,8 @@
         min-height: 11px;
         min-width: 11px;
 
-        &.down {
-          background-image: url('assets/arrow-down.png');
-        }
-
-        &.up {
-          background-image: url('assets/arrow-up.png');
-        }
+        &.down { background-image: url('assets/arrow-down.png'); }
+        &.up { background-image: url('assets/arrow-up.png'); }
       }
     }
 
@@ -96,5 +86,11 @@
       border-top: 1px solid $border_color;
       margin-top: -1px;
     }
+  }
+  
+  // fix terminal scrollbar
+  terminal-screen-container scrollbar {
+    margin-right: -2px;
+    box-shadow: 0 0 0 4px $bg_color;
   }
 }
