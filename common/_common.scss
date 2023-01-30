@@ -299,7 +299,15 @@ window.dialog.print {
 }
 
 @include frame();
-@include actionbar();
+
+actionbar > revealer > box {
+  padding: 6px;
+  border-top: 1px solid $border_color;
+
+  &, > box.start, > box.end {
+    border-spacing: 6px;
+  }
+}
 
 scrolledwindow {
   > overshoot {
