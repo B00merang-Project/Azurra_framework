@@ -30,7 +30,18 @@ image, label, box {
 @include textview();
 @include iconview();
 // @include rubberband();  CREATE: new mixin rubberband
-@include flowbox();
+// @include flowbox();
+flowbox flowboxchild {
+  padding: 3px;
+  border-radius: $global_radius;
+
+  // TODO: use selected_items
+  &:selected {
+    outline-offset: -2px;
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+  }
+}
 // @include gridview();    CREATE: new mixin gridview
 
 // TEST: how to test this?
