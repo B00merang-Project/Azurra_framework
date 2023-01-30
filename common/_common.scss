@@ -373,10 +373,33 @@ columnview row:not(:selected) cell editablelabel.editing text selection {
 }
 
 @include notifications();
-@include expander();
+
+expander {
+  min-width: 16px;
+  min-height: 16px;
+  -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+  
+  &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
+  &:disabled { color: $disabled_fg_color; }
+  &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+}
+
+expander-widget {
+  // CREATE: mixin outline()
+  //@include focus-ring("> box > title");
+
+  > box > title {
+    // TODO: add transition
+    //transition: $focus_transition;
+    border-radius: $global_radius;
+
+    &:hover > expander {
+      color: lighten($fg_color, 30%); // only lightens the icon
+    }
+  }
+}
 
 // merge back
-//@include calendar();
 calendar {
   border-width: 1px;
   border-radius: $global_radius;
@@ -856,7 +879,6 @@ menubutton {
 //@include images();
 @include floating_bar();
 
-//@include terminal();
 .terminal-screen, terminal-window, vte-terminal {
   background-color: $terminal_bg_color;
   color: $terminal_fg_color;
