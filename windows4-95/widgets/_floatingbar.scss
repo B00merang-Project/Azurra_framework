@@ -1,11 +1,10 @@
 @mixin floating_bar() {
   .floating-bar {
-    border-width: 1px;
-    border-style: solid;
-    border-color: $border_color;
+    border: 1px solid $border_color;
     border-radius: $global_radius;
     background-color: $tooltip_bg_color;
     color: $fg_color;
+    box-shadow: none;
 
     &.top {
       border-top-width: 0px;
@@ -31,11 +30,6 @@
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
       }
-    }
-
-    button {
-      border-style: none;
-      background-color: transparent;
     }
   }
 }
