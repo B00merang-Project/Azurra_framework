@@ -1,21 +1,59 @@
 @mixin paned() {
   paned {
     > separator {
-      border: none;
-      color: transparent;
-      background-color: $border_color;
+      min-width: 1px;
+      min-height: 1px;
+      -gtk-icon-source: none; // defeats the ugly default handle decoration
+      border-style: none;     // use background instead of borders
+      background-color: transparent;
+      background-image: image($border_color);
+      background-size: 1px 1px;
 
-      &:backdrop {
-        background-color: $backdrop_border_color;
-      }
+      &:selected { background-image: image($selected_bg_color); } // is this needed?
 
-      &:selected {
-        background-color: $border_color;
+      &.wide {
+        min-width: 5px;
+        min-height: 5px;
+        background-color: $bg_color;
+        background-image: image($border_color), image($border_color);
+        background-size: 1px 1px, 1px 1px;
       }
     }
 
-    .sidebar.left, .sidebar.right, .sidebar.left:dir(rtl), .sidebar:dir(rtl), .sidebar:dir(ltr), .sidebar {
-      border-style: none;
+    &.horizontal > separator {
+      background-repeat: repeat-y;
+
+      &:dir(ltr) {
+        margin: 0 -8px 0 0;
+        padding: 0 8px 0 0;
+        background-position: left;
+      }
+      &:dir(rtl) {
+        margin: 0 0 0 -8px;
+        padding: 0 0 0 8px;
+        background-position: right;
+      }
+
+      &.wide {
+        margin: 0;
+        padding: 0;
+        background-repeat: repeat-y, repeat-y;
+        background-position: left, right;
+      }
+    }
+
+    &.vertical > separator {
+      margin: 0 0 -8px 0;
+      padding: 0 0 8px 0;
+      background-repeat: repeat-x;
+      background-position: top;
+
+      &.wide {
+        margin: 0;
+        padding: 0;
+        background-repeat: repeat-x, repeat-x;
+        background-position: bottom, top;
+      }
     }
   }
 }
