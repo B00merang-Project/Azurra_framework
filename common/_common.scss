@@ -2,6 +2,7 @@
 // Some reusable variables are scattered across the file for now
 // TODO: move them to _properties.scss or another file
 
+// TODO: move to window?
 @include background();
 
 dnd {
@@ -44,7 +45,7 @@ flowbox flowboxchild {
 }
 // @include gridview();    CREATE: new mixin gridview
 
-// TEST: how to test this?
+// coverflow
 coverflow cover {
   color: $text_color;
   background-color: $base_color;
@@ -85,12 +86,12 @@ window.assistant {
   }
 }
 
-// TODO: move to new mixin dialog
 window.aboutdialog image.large-icons { -gtk-icon-size: 128px; }
 
 // TODO: move back to respective widgets
 @include osd();
 
+// spinner
 @keyframes spin {
   to {
     -gtk-icon-transform: rotate(1turn); }
@@ -150,6 +151,7 @@ spinner {
 // TODO: rework like button
 @include entry();
 
+// editable label
 editablelabel > stack > text {
   // @include entry(normal);
 
@@ -179,6 +181,7 @@ button {
 // MOVE: _colors*.scss
 $link_visited_color : gtkmix($link_color, $fg_color, 0.2);
 
+// links
 %link,
 link {
   color: $link_color;
@@ -233,6 +236,7 @@ button.link {
 // NOTE: titlebuttons are defined in _headerbar.scss, should it go to a separate file?
 // NOTE: should window.devel be implemented?
 
+// pathbar
 pathbar > button {
   &.text-button, &.image-button, & {
     padding-left: 4px;
@@ -280,7 +284,6 @@ magnifier {
 @include progressbar();
 @include levelbar();
 
-// move to dialog?
 window.dialog.print {
   drawing {
     color: $fg_color;
@@ -300,6 +303,7 @@ window.dialog.print {
 
 @include frame();
 
+// actionbar
 actionbar > revealer > box {
   padding: 6px;
   border-top: 1px solid $border_color;
@@ -309,6 +313,7 @@ actionbar > revealer > box {
   }
 }
 
+// scrolled window & overshoots
 scrolledwindow {
   > overshoot {
     &.top {
@@ -329,15 +334,14 @@ scrolledwindow {
   }
 }
 
-// NOTE: this has been merged in the various other widgets that can act as separators
-// is keeping all separators in a single file still a good idea?
+// TODO: move separators to their respective controls
 @include separator();
 
 // TODO: rename to listview?
 // CREATE: new mixins: listview, row(?), columnview
-@include list();
+@include listview();
 
-// move into _list.scss?
+// TODO: move into _list.scss?
 treeexpander {
   border-spacing: 4px;
 }
@@ -350,7 +354,7 @@ separator {
   min-height: 1px;
 }*/
 
-// data table are treeview like tables with individual focusable cells
+// data tables are treeview-like tables with individual focusable cells
 $focus_border_color : transparentize($selected_bg_color, 0.45);
 
 columnview row:not(:selected) cell editablelabel:not(.editing):focus-within {
@@ -382,6 +386,7 @@ columnview row:not(:selected) cell editablelabel.editing text selection {
 
 @include notifications();
 
+// expander
 expander {
   min-width: 16px;
   min-height: 16px;
@@ -407,7 +412,7 @@ expander-widget {
   }
 }
 
-// merge back
+// calendar
 calendar {
   border-width: 1px;
   border-radius: $global_radius;
@@ -463,7 +468,6 @@ calendar {
 
 @include paned();
 
-// video widget
 video {
   & image.osd {
     min-width: 64px;
@@ -482,8 +486,10 @@ video {
 // is colorswatch overlay {}, colorswatch has the programmatically set background, so most of the style is
 // applied to the overlay box.
 
+// MOVE: to properties.scss?
 $colorswatch_radius : 2px;
 
+// colorwatch
 colorswatch {
   &.top {
     border-top-left-radius: $colorswatch_radius + 0.5px;
@@ -655,32 +661,6 @@ button.color {
   */
 }
 
-// TODO: if possible, deprecate app-specific theming, unless it breaks something
-.nautilus-window notebook,
-.nautilus-window notebook > stack:not(:only-child) searchbar {
-  background-color: $base_color;
-
-  &:backdrop { background-color: $backdrop_base_color; }
-}
-
-.caja-location-entry { padding: 3px 5px; }
-
-.gedit-search-entry-occurrences-tag {
-  color: gtkalpha(currentColor, 0.7);
-  border: none;
-  margin: 2px;
-  padding: 2px;
-}
-
-.gedit-search-slider {
-  border-color: $border_color;
-  padding: 6px;
-  border-radius: 0 0 $global_radius $global_radius;
-  border-width: 0 1px 1px 1px;
-  border-style: solid;
-  background-color: $bg_color;
-}
-
 // CREATE: new mixin combobox
 arrow, combobox arrow {
   color: gtkalpha(currentColor, 0.75);
@@ -689,14 +669,10 @@ arrow, combobox arrow {
   min-width: 16px;
 }
 
-.context-menu, popover.touch-selection, .csd popover.touch-selection,
-popover.background.touch-selection, .csd popover.background.touch-selection {
-  font: initial;
-}
-
 .monospace { font-family: monospace; }
 
 // TODO: move to _button.scss
+// NOTE: seems to be duplicated in _sidebar for some themes too
 button.circular, button.circular-button {
   padding: 0;
   min-width: 16px;
@@ -708,6 +684,7 @@ button.circular, button.circular-button {
 // TODO: this should be moved to their respective widget files
 // TODO: use new `$drop_target_color` for :drop(active) states
 // drop function styles
+// CREATE: mixin drop()?
 filechooserbutton:drop(active) {
   box-shadow: none;
   border-color: transparent;
