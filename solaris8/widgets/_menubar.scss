@@ -11,5 +11,38 @@
       color: $backdrop_fg_color;
       background-color: $backdrop_bg_color;
     }
+    
+    > menuitem {
+      margin-left: 2px;
+      margin-right: 2px;
+      padding: 3px 20px 3px 8px;
+      border: 1px solid gtkshade($border_color, 0.8);
+      border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+      border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+      
+      border-radius: 40px;
+      color: $menubar_fg_color;
+      background-color: transparent;
+      background-image: url('assets/menuitem_arrow.png');
+      background-size: 14px 9px;
+      background-position: right center;
+      background-repeat: no-repeat;
+
+      &:hover {
+        border-color: gtkshade($border_color, 0.8);
+        border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
+        border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+      }
+
+      &:disabled {
+        color: $disabled_fg_color;
+        background-color: transparent;
+      }
+
+      &:backdrop {
+        color: $backdrop_fg_color;
+        background-color: transparent;
+      }
+    }
   }
 }

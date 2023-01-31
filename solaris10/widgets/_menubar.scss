@@ -4,11 +4,45 @@
     border-style: none;
     background-color: $menubar_bg_color;
     color: $menubar_fg_color;
-    background-image: linear-gradient(to bottom, gtkshade($menubar_bg_color, 0.95), $menubar_bg_color, gtkshade($menubar_bg_color, 0.95));
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($menubar_bg_color, 0.95),
+      $menubar_bg_color,
+      gtkshade($menubar_bg_color, 0.95)
+    );
 
     &:backdrop {
       color: $backdrop_fg_color;
       background-color: $backdrop_bg_color;
+    }
+    
+    > menuitem {
+      padding: 3px 5px;
+      border: none;
+      color: $menubar_fg_color;
+      background-color: transparent;
+
+      &:hover {
+        border-radius: 40px 0 0 40px;
+        color: $selected_fg_color;
+        text-shadow: 1px 1px $dark_shadow;
+        background-color: $selected_bg_color;
+        background-image: linear-gradient(
+          to right,
+          $selected_bg_color 60%,
+          $menubar_bg_color 95%
+        );
+      }
+
+      &:disabled {
+        color: $disabled_fg_color;
+        background-color: transparent;
+      }
+
+      &:backdrop {
+        color: $backdrop_fg_color;
+        background-color: transparent;
+      }
     }
   }
 }
