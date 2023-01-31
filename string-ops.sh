@@ -6,9 +6,7 @@
 
 # PROGRAM VARS
 OP=''         # call appropriate string op when iterating on folders
-VAL=''        # used in search, append and replace ops
-NEW_VAL=''    # used in replace ops
-MOD=0         # used to prompt if operation is MOD
+MOD=0         # used to prompt if operation is MOD (modifies files)
 ARGS=2        # check if required number of args is received
 
 # HELP
@@ -54,22 +52,24 @@ help() {
 }
 
 # UTILS
-# $1: target  $2: new value  $3: filename
+# $1: value to replace  $2: new value  $3: filename
 replace() {
+  # warn if file contains
+  file_contains "$1" "$3" && echo "Replacing value in $3"
+
   sed -i "s@$1@$2@g" "$3"
 }
 
+# $1: value to delete   $2: filename
 delete() {
+  file_contains "$1" "$2" && echo "Deleting value in $2"
+
   sed -i "/$1/d" "$2"
 }
 
-# $1: target  $2: filename
+# $1: value to find     $2: filename
 file_contains() {
-  if grep -q "$1" "$2"; then
-    return 0
-  fi
-  
-  return 1  
+  grep -q "$1" "$2" && return 0 || return 1
 }
 
 # OPERATIONS
@@ -78,45 +78,31 @@ colors_contains() {
   local value="$2"
   
   for FILE in "$theme_dir/_colors"*.scss; do
-    if file_contains "$value" "$FILE"; then
-      echo "Match in $FILE"
-    fi
+    file_contains "$value" "$FILE" && echo "Match in $FILE"
   done
 }
 
 widgets_contains() {
   local theme_dir="$1"
   local value="$2"
-  local hits=0
 
   for FILE in "$theme_dir/widgets/"*; do
-    if [ ! -f "$FILE" ]; then continue; fi
-    
-    if file_contains "$value" "$FILE"; then
-      echo "Match in file $FILE"
-      hits=$((hits+1))
-    fi
+    [ -f "$FILE" ] && file_contains "$value" "$FILE" && echo "Match in $FILE"
   done
-  
-  #[ $hits -le 0 ] && echo "No matches found"
 }
 
 imports_contains() {
   local theme_dir="$1"
   local value="$2"
   
-  if file_contains "$value" "$theme_dir/_imports.scss"; then
-    echo "Match in folder $theme_dir"
-  fi
+  file_contains "$value" "$theme_dir/_imports.scss" && echo "Match in $theme_dir"
 }
 
 properties_contains() {
   local theme_dir="$1"
   local value="$2"
   
-  if file_contains "$value" "$theme_dir/_properties.scss"; then
-    echo "Match in folder $theme_dir"
-  fi
+  file_contains "$value" "$theme_dir/_properties.scss" && echo "Match in $theme_dir"
 }
 
 colors_replace() {
@@ -124,15 +110,9 @@ colors_replace() {
   local value="$2"
   local new_value="$3"
   
-  replace "$value" "$new_value" "$theme_dir/_colors.scss"
-  
-  [ -f "$theme_dir/_colors_light.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_light.scss"
-  [ -f "$theme_dir/_colors_dark.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_dark.scss"
-  [ -f "$theme_dir/_colors_solid.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_solid.scss"
-  [ -f "$theme_dir/_colors_solid_light.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_solid_light.scss"
-  [ -f "$theme_dir/_colors_solid_dark.scss" ] && replace "$value" "$new_value" "$theme_dir/_colors_solid_dark.scss"
-  
-  echo "Replaced value in '$theme_dir/_colors*.scss' (if found)"
+  for FILE in "$theme_dir/_colors"*.scss; do
+    replace "$value" "$new_value" "$FILE"
+  done
 }
 
 imports_replace() {
@@ -141,8 +121,6 @@ imports_replace() {
   local new_value="$3"
   
   replace "$value" "$new_value" "$theme_dir/_imports.scss"
-  
-  echo "Replaced value in '$theme_dir/_imports.scss' (if found)"
 }
 
 widgets_replace() {
@@ -150,9 +128,8 @@ widgets_replace() {
   local value="$2"
   local new_value="$3"
   
-  # replace 'value' by 'new_value'
   for FILE in "$theme_dir"/widgets/*.scss; do
-    [ -f $FILE ] && replace "$value" "$new_value" $FILE && echo "Replacing value in $FILE (if found)"
+    [ -f $FILE ] && replace "$value" "$new_value" $FILE
   done
 }
 
@@ -162,8 +139,6 @@ properties_replace() {
   local new_value="$3"
   
   replace "$value" "$new_value" "$theme_dir/_properties.scss"
-  
-  echo "Replaced value in '$theme_dir/_properties.scss' (if found)"
 }
 
 config_replace() {
@@ -172,8 +147,6 @@ config_replace() {
   local new_value="$3"
   
   replace "$value" "$new_value" "$theme_dir/theme.rc"
-  
-  echo "Replaced value in '$theme_dir/theme.rc' (if found)"
 }
 
 imports_delete() {
@@ -181,8 +154,6 @@ imports_delete() {
   local value="$2"
   
   delete "$value" "$theme_dir/_imports.scss"
-  
-  echo "Deleted value in '$theme_dir/_imports.scss' (if found)"
 }
 
 widget_delete() {
@@ -191,7 +162,7 @@ widget_delete() {
   
   # replace 'value' by 'new_value'
   for FILE in "$theme_dir"/widgets/*.scss; do
-    [ -f $FILE ] && delete "$value" $FILE && echo "Replacing value in $FILE (if found)"
+    [ -f $FILE ] && delete "$value" $FILE
   done
 }
 
@@ -200,8 +171,6 @@ config_delete() {
   local value="$2"
   
   delete "$value" "$theme_dir/theme.rc"
-  
-  echo "Deleted value in '$theme_dir/_imports.scss' (if found)"
 }
 
 config_append() {
@@ -273,10 +242,7 @@ then
   fi
 fi
 
-# run op on all theme folders 
+# run op on all theme folders and pass all arguments, except the first 2: script (0) name and flag (1)
 for dir in *; do
-  if [ -f "$dir/theme.rc" ]  # if has valid configuration
-  then
-    $OP "$dir" "${@:2}"
-  fi
+  [ -f "$dir/theme.rc" ] && $OP "$dir" "${@:2}"
 done
