@@ -8,17 +8,24 @@ $scrollbar_slider_radius : 0px;
 $window_radius : 0px;
 $viewitem_radius : 0px;
 $menu_radius : 0px;
+$tooltip_radius : $global_radius;
 
+$checkradio_size: 20px;
+
+// scrollbar steppers
 $top_stepper: true;
 $bottom_stepper: true;
 $secondary_top_stepper: false;
 $secondary_bottom_stepper: false;
-
-$checkradio_size: 20px;
 
 // outline
 $outline_width : 2px;
 $outline_offset : -3px;
 $outline_style : solid;
 
-$tooltip_radius : $global_radius;
+// transitions
+$ease-out-quad : cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$backdrop_transition : 200ms ease-out;
+$focus_transition : outline-width 200ms $ease-out-quad, outline-offset 200ms $ease-out-quad;
+$button_transition : all 200ms $ease-out-quad;
+$scrollbar_transition : all 300ms $ease-out-quad;

@@ -24,9 +24,6 @@ flowbox {
   > flowboxchild {
     padding: 3px;
     
-    // TODO: transitions?
-    //transition: $focus_transition;
-
     // TODO: focus_outline
     //@include focus-ring();
 
@@ -80,9 +77,83 @@ label {
   text-shadow: none;	// NOTE: remove if any theme needs to override
 }
 
-// TODO: move back into widget, or move property definition to properties
-// OR create new file _transitions.scss
-@include transitions();
+// widget transitions (transitions defined in '_properties.scss'
+button { transition: $button_transition;
+  &:backdrop { transition: $backdrop_transition; }
+
+  &.flat { transition: none;
+    &:hover, &:checked { transition: $button_transition; }
+  }
+}
+entry { transition: all 200ms $ease-out-quad;
+  &:focus { transition: $focus_transition; }
+}
+
+flowbox > flowboxchild { transition: $focus_transition; }
+gridview > child { transition: $focus_transition; }
+
+searchbar > revealer > box:backdrop {
+  transition: $backdrop_transition;
+}
+
+headerbar:backdrop { transition: $backdrop_transition; }
+
+treeview > header > button {
+  &, &:hover, &:active { transition: none; }
+  
+  // for treeview-like derive widgets
+  button.dnd, header.button.dnd {
+    &:active, &:selected, &:hover, & {
+      transition: none;
+    }
+  }
+}
+
+popover.menu box.inline-buttons button.image-button.model {
+  transition: none;
+}
+
+notebook > header > tabs > tab {
+  transition: $focus_transition;
+}
+
+scrollbar { transition: $scrollbar_transition;
+  &:backdrop { transition: $backdrop_transition; }
+
+  > range > trough > slider { transition: $scrollbar_transition; }
+  
+  > range.fine-tune > trough > slider {
+    transition: none;
+  }
+}
+
+switch { transition: $focus_transition;
+  > slider { transition: $button_transition; }
+}
+
+.view.content-view.check:not(list),
+.content-view .tile check:not(list) {
+  transition: 200ms;
+}
+
+checkbutton { transition: $focus_transition; }
+
+scale > through { transition: $focus_transition;
+  > slider {
+    transition: $button_transition;
+    transition-property: background, border, box-shadow;
+  }
+}
+
+placesview .server-list-button > image,
+placesview .server-list-button:checked > image {
+  transition: 200ms $ease-out-quad;
+}
+
+colorswatch { transition: $focus_transition; }
+plane { transition: $focus_transition; }
+
+window.csd:backdrop { transition: $backdrop_transition; }
 
 // MOVE: _properties.scss
 $menu-margin : 4px;
@@ -403,8 +474,6 @@ expander-widget {
   //@include focus-ring("> box > title");
 
   > box > title {
-    // TODO: add transition
-    //transition: $focus_transition;
     border-radius: $global_radius;
 
     &:hover > expander {
