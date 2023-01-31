@@ -102,11 +102,18 @@
     }
   }
   
-  // inline toolbar is a bit different
-  toolbar.inline-toolbar toolbutton, toolbar.inline-toolbar toolbutton:backdrop {
-    > button.flat { @include linked_middle($button_radius); }
-    &:first-child > button.flat { @include linked_first($button_radius); }
-    &:last-child > button.flat { @include linked_last($button_radius); }
-    &:only-child > button.flat { @include linked_only($button_radius); }
+  // flat buttons with some margin
+  .toolbar > button,
+  .toolbar > :not(.linked) > button,
+  .toolbar :not(.linked) > menubutton > button,
+  .toolbar :not(.linked) > scalebutton > button,
+  .toolbar :not(.linked) > dropdown > button,
+  .toolbar :not(.linked) > colorbutton > button,
+  .toolbar :not(.linked) > fontbutton > button,
+  .toolbar :not(.linked) > appchooserbutton > button,
+  .toolbar :not(.linked) > combobox > box > button {
+    margin: 1px;
+    
+    @include button_flat();
   }
 }
