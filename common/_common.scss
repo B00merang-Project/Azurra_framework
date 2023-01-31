@@ -5,27 +5,12 @@
 // TODO: move to window?
 @include background();
 
-dnd {
-  color: $fg-color;
-}
+dnd { color: $fg-color; }
 
-.normal-icons {
-  -gtk-icon-size: 16px;
-}
+.normal-icons { -gtk-icon-size: 16px; }
+.large-icons { -gtk-icon-size: 32px; }
 
-.large-icons {
-  -gtk-icon-size: 32px;
-}
-
-// NOTE: still necessary?
-image:disabled {
-  -gtk-icon-filter: opacity(0.5);
-}
-
-// NOTE: still necessary?
-image, label, box {
-  background-color: transparent;
-}
+image:disabled { -gtk-icon-filter: opacity(0.5); }
 
 @include view();
 @include textview();
@@ -66,27 +51,42 @@ coverflow cover {
 }
 
 label {
-  // TODO: use mixin selected_text
-  selection {
-    background-color: $selected_bg_color;
-    color: $selected_fg_color;
+  // TODO: implement 'label.separator' once we know where separators will go 
+  
+  // TODO: use focus_outline
+  &:selected { color: $selected_text_color; }
+  
+  > selection {
+    @include selected_text('backdrop');
+
+    &:focus-within { @include selected_text('normal'); }
+  }
+  
+  &:disabled { color: $disabled_fg_color;
+    button & { color: inherit; }
+    
+    > selection & { @include selected_text('disabled');
+      &:backdrop { @include selected_text('backdrop-disabled'); }
+    }
+  }
+  
+  &.error { color: $error_color;
+    &:disabled { color: gtkalpha($error_color, 0.5); }
   }
 }
 
-// MOVE: _properties.scss or use fixed value
-$dim_label_opacity : 0.6;
-
 .dim-label {
-  opacity: $dim_label_opacity;
+  opacity: 0.6;
   text-shadow: none;	// NOTE: remove if any theme needs to override
 }
 
+// TODO: move back into widget, or move property definition to properties
+// OR create new file _transitions.scss
 @include transitions();
 
 // MOVE: _properties.scss
 $menu-margin : 4px;
 
-// TEST: how to test this?
 window.assistant {
   .sidebar {
     padding: $menu-margin;
@@ -98,8 +98,6 @@ window.assistant {
   .sidebar > label { padding: 6px 12px; }
 
   .sidebar > label.highlight {
-    // TODO: use new mixin selection
-    color: $selected_fg_color;
     background-color: $selected_bg_color;
     border-radius: $menu_radius;
   }
@@ -112,8 +110,7 @@ window.aboutdialog image.large-icons { -gtk-icon-size: 128px; }
 
 // spinner
 @keyframes spin {
-  to {
-    -gtk-icon-transform: rotate(1turn); }
+  to { -gtk-icon-transform: rotate(1turn); }
 }
 
 spinner {
@@ -184,12 +181,8 @@ editablelabel > stack > text {
 }
 
 // TODO: rework button() mixin to process all types of buttons
-button {
-  @include normal_buttons();
-  
-  &.flat {
-    @include flat_buttons();
-  }
+button { @include normal_buttons();
+  &.flat { @include flat_buttons(); }
 }
 
 @include destructive_button();
@@ -206,21 +199,15 @@ link {
   color: $link_color;
   text-decoration: underline;
 
-  &:visited {
-    color: $link_visited_color;
-
+  &:visited { color: $link_visited_color;
     *:selected & { color: gtkmix($selected_fg_color, $link_visited_color, 0.6); }
   }
 
-  &:hover {
-    color: gtkshade($link_color, 1.1);
-
+  &:hover { color: gtkshade($link_color, 1.1);
     *:selected & { color: gtkmix($selected_fg_color, $link_color, 0.9); }
   }
 
-  &:active {
-    color: $link_color;
-
+  &:active { color: $link_color;
     *:selected & { color: gtkmix($selected_fg_color, $link_color, 0.8); }
   }
 
@@ -286,9 +273,7 @@ pathbar > button {
 // NOTICE: in GTK 4, the .menu class and menu node are deprecated. Menu stuff should be migrated to popover and modelbutton
 @include popover();
 
-magnifier {
-  background-color: $base_color; 
-}
+magnifier { background-color: $base_color; }
 
 @include modelbutton();
 @include menu();      // TODO: deprecate
@@ -321,17 +306,10 @@ window.dialog.print {
 }
 
 // frame
-frame,
-.frame {
-  border: 1px solid $border_color;
-}
+frame, .frame { border: 1px solid $border_color; }
 
-frame {
-  border-radius: $global_radius;
-
-  > label {
-    margin: 4px;
-  }
+frame { border-radius: $global_radius;
+  > label { margin: 4px; }
 }
 
 // actionbar
@@ -339,29 +317,16 @@ actionbar > revealer > box {
   padding: 6px;
   border-top: 1px solid $border_color;
 
-  &, > box.start, > box.end {
-    border-spacing: 6px;
-  }
+  &, > box.start, > box.end { border-spacing: 6px; }
 }
 
 // scrolled window & overshoots
 scrolledwindow {
   > overshoot {
-    &.top {
-      @include overshoot(top);
-    }
-
-    &.bottom {
-      @include overshoot(bottom);
-    }
-
-    &.left {
-      @include overshoot(left);
-    }
-
-    &.right {
-      @include overshoot(right);
-    }
+    &.top { @include overshoot(top); }
+    &.bottom { @include overshoot(bottom); }
+    &.left { @include overshoot(left); }
+    &.right { @include overshoot(right); }
   }
 }
 
@@ -373,9 +338,7 @@ scrolledwindow {
 @include listview();
 
 // TODO: move into _list.scss?
-treeexpander {
-  border-spacing: 4px;
-}
+treeexpander { border-spacing: 4px; }
 
 /* SAMPLE
 //vbox and hbox separators
@@ -409,9 +372,7 @@ columnview row:not(:selected) cell editablelabel.editing text selection {
     padding: 8px 12px;
     min-height: 32px; /* should be tall even when only containing a label */
 
-    & > box {
-      border-spacing: 12px;
-    }
+    & > box { border-spacing: 12px; }
   }
 }
 
@@ -457,9 +418,7 @@ calendar {
     color: $text_color;
   }
 
-  &.button {
-    color: gtkalpha($fg_color, 0.45);
-
+  &.button { color: gtkalpha($fg_color, 0.45);
     &:hover { color: $fg_color; }
     &:backdrop { color: gtkalpha($backdrop_fg_color, 0.45); }
     &:disabled { color: gtkalpha($disabled_fg_color, 0.45); }
@@ -479,9 +438,7 @@ calendar {
 
   &:indeterminate { color: gtkalpha(currentColor, 0.1); }
 
-  &.highlight {
-    color: $disabled_fg_color;
-
+  &.highlight { color: $disabled_fg_color;
     &:backdrop { color: $backdrop_disabled_fg_color; }
   }
 
@@ -505,6 +462,7 @@ video {
     min-height: 64px;
     border-radius: 32px;  // TODO: change based on theme
   }
+  
   background: black;
 }
 
@@ -628,9 +586,7 @@ colorswatch {
   
   row:selected & { box-shadow: 0 0 0 2px $selected_fg_color; }
 
-  &#editor-color-sample {
-    border-radius: $colorswatch_radius;
-
+  &#editor-color-sample { border-radius: $colorswatch_radius;
     > overlay { border-radius: $colorswatch_radius + 0.5px; }
   }
   
