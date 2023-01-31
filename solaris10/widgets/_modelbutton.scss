@@ -1,29 +1,12 @@
-@mixin modelbutton() {
-  modelbutton.flat, menuitem.button.flat, .menuitem.button.flat {
-    padding: 2px 8px;
-    border: none;
-    border-radius: 20px 0 0 20px;
-    color: $fg_color;
-    background-color: transparent;
-
-    &:hover, &:selected, &:active:hover {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-      background-image: linear-gradient(to right, $selected_bg_color 60%, $menu_bg_color 95%);
-    }
-
-    > image {
-      padding-right: 4px;
-    }
-
-    arrow {
-      &.left {
-        -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
-      }
-
-      &.right {
-        -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
-      }
-    }
-  }
+// TODO: migrate to selection.scss
+@mixin selected_items() {
+  color: $selected_fg_color;
+  background-color: $selected_bg_color;
+  background-image: linear-gradient(
+    to right,
+    $selected_bg_color 60%,
+    $menu_bg_color 95%
+  );
 }
+
+@import '../../common/widgets/modelbutton';
