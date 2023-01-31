@@ -232,12 +232,12 @@ fi
 if [ $MOD -eq 1 ]
 then
 
-  read -p "Files will be altered. Continue? (y/n): " -n 1 -r
-  echo ""	# new line
+  read -p "Files will be altered. Continue? [y/N]: " -n 1 -r
+  echo
 
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
-    echo "Operation aborted."
+    echo "Canceled"
     exit 1
   fi
 fi
