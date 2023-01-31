@@ -1,4 +1,4 @@
-@mixin separator() {
+@mixin separators() {
   separator {
     -gtk-icon-source: none;
     min-width: 1px;
@@ -56,28 +56,28 @@
     }
 
     .titlebar &, .titlebar:not(headerbar) > &, .titlebar &.titlebutton, .titlebar:not(headerbar) > &.titlebutton {
-      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.3);
+      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.2);
 
       &:backdrop {
-        background-color: $backdrop_border_color;
+        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
       }
     }
 
     headerbar &.titlebutton, .titlebar:not(headerbar) &.titlebutton {
       min-width: 1px;
       min-height: 1px;
-      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.3);
+      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.2);
 
       &:backdrop {
-        background-color: $backdrop_border_color;
+        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
       }
     }
     
     .titlebutton button &, .titlebutton &.titlebutton {
-      border-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.3);
+      border-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.2);
 
       &:backdrop {
-        border-color: $backdrop_border_color;
+        border-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
       }
     }
 

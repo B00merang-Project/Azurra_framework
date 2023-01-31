@@ -1,4 +1,4 @@
-@mixin separator() {
+@mixin separators() {
   separator {
     -gtk-icon-source: none;
     min-width: 1px;
@@ -9,9 +9,7 @@
       background-color: $backdrop_border_color;
     }
 
-    button & {
-      margin: 4px 1px;
-    }
+    button & { margin: 4px 1px; }
 
     .sidebar view &, view &, .separator, & {
       border: none;
@@ -23,23 +21,7 @@
       }
     }
 
-    toolbar & {
-      background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
-
-      &:backdrop {
-        background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.075);
-      }
-    }
-
-    .primary-toolbar &, toolbar.primary-toolbar & {
-      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
-
-      &:backdrop {
-        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.075);
-      }
-    }
-
-    toolbar button & {
+    .primary-toolbar &, toolbar & {
       background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
 
       &:backdrop {
@@ -47,11 +29,11 @@
       }
     }
     
-    .primary-toolbar button &, .primary-toolbar:not(.libreoffice-toolbar) & {
-      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1);
+    .primary-toolbar button &, toolbar button &, .primary-toolbar:not(.libreoffice-toolbar) & {
+      background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
 
       &:backdrop {
-        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.075);
+        background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.075);
       }
     }
 
@@ -74,28 +56,28 @@
     }
 
     .titlebar &, .titlebar:not(headerbar) > &, .titlebar &.titlebutton, .titlebar:not(headerbar) > &.titlebutton {
-      background-color: gtkshade(gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1), 0.8);
+      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.15);
 
       &:backdrop {
-        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.075);
+        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.15);
       }
     }
 
     headerbar &.titlebutton, .titlebar:not(headerbar) &.titlebutton {
       min-width: 1px;
       min-height: 1px;
-      background-color: gtkshade(gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1), 0.8);
+      background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.15);
 
       &:backdrop {
-        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.075);
+        background-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.15);
       }
     }
     
     .titlebutton button &, .titlebutton &.titlebutton {
-      border-color: gtkshade(gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.1), 0.8);
+      border-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.15);
 
       &:backdrop {
-        border-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.075);
+        border-color: gtkmix($titlebar_bg_color, $titlebar_fg_color, 0.15);
       }
     }
 
@@ -115,8 +97,6 @@
       background-color: transparent;
     }
 
-    combobox & {
-      border: none;
-    }
+    combobox & { border: none; }
   }
 }

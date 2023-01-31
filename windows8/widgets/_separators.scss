@@ -1,4 +1,4 @@
-@mixin separator() {
+@mixin separators() {
   separator {
     -gtk-icon-source: none;
     min-width: 1px;
@@ -13,50 +13,50 @@
 
     .sidebar view &, view &, .separator, & {
       border: none;
-      background-color: $border_color;
+      background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.2);
 
       &:backdrop {
         border: none;
-        background-color: $backdrop_border_color;
+        background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.1);
       }
     }
 
     .primary-toolbar &, toolbar & {
-      background-color: $border_color;
+      background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.2);
 
       &:backdrop {
-        background-color: $backdrop_border_color;
+        background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
       }
     }
-
+    
     .primary-toolbar button &, toolbar button &, .primary-toolbar:not(.libreoffice-toolbar) & {
-      background-color: $border_color;
+      background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.2);
 
       &:backdrop {
-        background-color: $backdrop_border_color;
+        background-color: gtkmix($toolbar_bg_color, $toolbar_fg_color, 0.1);
       }
     }
 
     headerbar & {
       margin-top: 4px;
       margin-bottom: 4px;
-      background-color: $border_color;
+      background-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.2);
 
       &:backdrop {
-        background-color: $backdrop_border_color;
+        background-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.1);
       }
     }
-
+    
     headerbar button & {
-      background-color: $border_color;
+      border-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.2);
 
       &:backdrop {
-        border-color: $backdrop_border_color;
+        border-color: gtkmix($headerbar_bg_color, $headerbar_fg_color, 0.1);
       }
     }
 
     .titlebar &, .titlebar:not(headerbar) > &, .titlebar &.titlebutton, .titlebar:not(headerbar) > &.titlebutton {
-      background-color: $border_color;
+      border-color: gtkshade($titlebar_bg_color, 0.8);
 
       &:backdrop {
         background-color: $backdrop_border_color;
@@ -66,15 +66,15 @@
     headerbar &.titlebutton, .titlebar:not(headerbar) &.titlebutton {
       min-width: 1px;
       min-height: 1px;
-      background-color: $border_color;
+      border-color: gtkshade($titlebar_bg_color, 0.8);
 
       &:backdrop {
         background-color: $backdrop_border_color;
       }
     }
-
+    
     .titlebutton button &, .titlebutton &.titlebutton {
-      border-color: $border_color;
+      border-color: gtkshade($titlebar_bg_color, 0.8);
 
       &:backdrop {
         border-color: $backdrop_border_color;
@@ -82,9 +82,9 @@
     }
 
     menu & {
-      background-color: $border_color;
+      background-color: gtkmix($menu_bg_color, $menu_fg_color, 0.2);
     }
-
+    
     menuitem & {
       border-width: 1px;
       border-style: none;
