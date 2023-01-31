@@ -14,21 +14,35 @@ ARGS=2        # check if required number of args is received
 # HELP
 show_ops() {
   echo "Available options:"
-  echo "  -fc  <VALUE>              Find <VALUE> in all '_colors.scss'"
-  echo "  -fw  <VALUE>              Find <VALUE> in all 'widgets/*.scss'"
-  echo "  -fi  <VALUE>              Find <VALUE> in all '_imports.scss'"
-  echo "  -fp  <VALUE>              Find <VALUE> in all '_properties.scss'"
-  echo "  -rg  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in '_gtk*.scss'"
-  echo "  -rc  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in '_colors.scss'"
-  echo "  -ri  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in '_imports.scss'"
-  echo "  -rw  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in 'widgets/*.scss'"
-  echo "  -rp  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in '_properties.scss'"
-  echo "  -rt  <VALUE> <NEW_VALUE>  Replace <VALUE> with <NEW_VALUE> in 'theme.rc'"
-  echo "  -di  <VALUE>              Delete lines containing <VALUE> in '_imports.scss'"
-  echo "  -dt  <VALUE>              Delete lines containing <VALUE> in 'theme.rc'"
-  echo "  -dw  <VALUE>              Delete lines containing <VALUE> in 'widgets/*.scss'"
-  echo "  -at  <VALUE>              Add <VALUE> as a new line in all 'theme.rc'"
-  echo "  -apa <VALUE> <AFTER>      Add <VALUE> after line <AFTER> in '_properties.scss'" 
+  echo
+  echo "For '_colors.scss'"
+  echo "  -fc  <VALUE>                Find <VALUE>"
+  echo "  -rc  <VALUE> <NEW_VALUE>    Replace <VALUE> with <NEW_VALUE>"
+
+  echo
+  echo "For 'widgets/*.scss'"
+  echo "  -fw  <VALUE>                Find <VALUE>"
+  echo "  -rw  <VALUE> <NEW_VALUE>    Replace <VALUE> with <NEW_VALUE>"
+  echo "  -dw  <VALUE>                Delete lines containing <VALUE>"
+  
+  echo
+  echo "For '_imports.scss'"
+  echo "  -fi  <VALUE>                Find <VALUE>"
+  echo "  -ri  <VALUE> <NEW_VALUE>    Replace <VALUE> with <NEW_VALUE>"
+  echo "  -di  <VALUE>                Delete lines containing <VALUE>"
+
+  echo
+  echo "For 'theme.rc'"
+  echo "  -rt  <VALUE> <NEW_VALUE>    Replace <VALUE> with <NEW_VALUE>"
+  echo "  -dt  <VALUE>                Delete lines containing <VALUE>"
+  echo "  -at  <VALUE>                Add <VALUE> as a new line"
+
+  echo
+  echo "For '_properties.scss'"
+  echo "  -fp  <VALUE>                Find <VALUE>"
+  echo "  -rp  <VALUE> <NEW_VALUE>    Replace <VALUE> with <NEW_VALUE>"
+  echo "  -ap  <NAME> <VALUE>         Add <NAME> SCSS variable with value <VALUE>"
+  echo "  -apf <NAME> <VALUE> <FIND>  Add <NAME> SCSS variable with value <VALUE> after line <FIND>" 
 }
 
 help() {
@@ -103,19 +117,6 @@ properties_contains() {
   if file_contains "$value" "$theme_dir/_properties.scss"; then
     echo "Match in folder $theme_dir"
   fi
-}
-
-gtk_replace() {
-  local theme_dir="$1"
-  local value="$2"
-  local new_value="$3"
-  
-  # replace in gtk*.scss files
-  [ -f "$theme_dir/gtk.scss" ] && replace "$value" "$new_value" "$theme_dir/gtk.scss"
-  [ -f "$theme_dir/gtk-light.scss" ] && replace "$value" "$new_value" "$theme_dir/gtk-light.scss"
-  [ -f "$theme_dir/gtk-dark.scss" ] && replace "$value" "$new_value" "$theme_dir/gtk-dark.scss"
-  
-  echo "Replaced value in gtk*.scss files (if found)"
 }
 
 colors_replace() {
@@ -207,29 +208,31 @@ config_append() {
   local theme_dir="$1"
   local string="$2"
   
-  echo "$string" >> "$theme_dir/theme.conf"
+  echo "$string" >> "$theme_dir/theme.rc"
+}
+
+props_insert() {
+  local theme_dir="$1"
+  local var_name="$2"
+  local var_value="$3"
+  
+  echo "\$$var_name : $var_value;" >> "$theme_dir/_my_properties.scss"
 }
 
 props_insert_after() {
   local theme_dir="$1"
-  local content="$2"
-  local insert_after="$3"
+  local var_name="$2"
+  local var_value="$3"
+  local insert_after="$4"
   
-  echo $theme_dir/_properties.scss
-  
-  sed -i "/$insert_after/a $content" "$theme_dir/_properties.scss"
+  sed -i "/$insert_after/a \$$var_name : $var_value\;" "$theme_dir/_properties.scss"
 }
-
-OP="$!"
-VAL="$2"
-NEW_VAL="$3"
 
 case $1 in
   -fc)  OP="colors_contains"     ;;
   -fw)  OP="widgets_contains"    ;;
   -fi)  OP="imports_contains"    ;;
   -fp)  OP="properties_contains" ;;
-  -rg)  OP="gtk_replace"         ;  MOD=1;  ARGS=3 ;;
   -rc)  OP="colors_replace"      ;  MOD=1;  ARGS=3 ;;
   -ri)  OP="imports_replace"     ;  MOD=1;  ARGS=3 ;;
   -rw)  OP="widgets_replace"     ;  MOD=1;  ARGS=3 ;;
@@ -239,7 +242,9 @@ case $1 in
   -di)  OP="config_delete"       ;  MOD=1;;
   -dw)  OP="widget_delete"       ;  MOD=1;;
   -at)  OP="config_append"       ;  MOD=1;;
-  -apa) OP="props_insert_after"  ;  MOD=1;  ARGS=3 ;;
+  -ap)  OP="props_insert"        ;  MOD=1;  ARGS=3 ;;
+  -apf) OP="props_insert_after"  ;  MOD=1;  ARGS=4 ;;
+  -h)   show_ops; exit;          ;;
   *)   echo -n "Invalid operation. "
        show_ops
        exit 1;;
@@ -247,7 +252,8 @@ esac
 
 # see if correct number of arguments received
 if [ "$#" -ne $ARGS ]; then
-  echo "Invalid number of arguments. Possible options:"
+  echo "Command requires $ARGS arguments"
+  echo
   show_ops
   
   exit 2
@@ -271,6 +277,6 @@ fi
 for dir in *; do
   if [ -f "$dir/theme.rc" ]  # if has valid configuration
   then
-    $OP "$dir" "$VAL" "$NEW_VAL"
+    $OP "$dir" "${@:2}"
   fi
 done
