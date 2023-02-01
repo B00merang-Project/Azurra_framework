@@ -14,33 +14,34 @@ show_ops() {
   echo "Available options:"
   echo
   echo "For '_colors.scss'"
-  echo "  -fc  <VALUE>                Find <VALUE>"
-  echo "  -rc  <VALUE> <NEW_VALUE>    Replace <VALUE> with <NEW_VALUE>"
+  echo "  -fc  <VALUE>                 Find <VALUE>"
+  echo "  -rc  <VALUE> <NEW_VALUE>     Replace <VALUE> with <NEW_VALUE>"
 
   echo
   echo "For 'widgets/*.scss'"
-  echo "  -fw  <VALUE>                Find <VALUE>"
-  echo "  -rw  <VALUE> <NEW_VALUE>    Replace <VALUE> with <NEW_VALUE>"
-  echo "  -dw  <VALUE>                Delete lines containing <VALUE>"
+  echo "  -fw  <VALUE>                 Find <VALUE>"
+  echo "  -rw  <VALUE> <NEW_VALUE>     Replace <VALUE> with <NEW_VALUE>"
+  echo "  -dw  <VALUE>                 Delete lines containing <VALUE>"
   
   echo
   echo "For '_imports.scss'"
-  echo "  -fi  <VALUE>                Find <VALUE>"
-  echo "  -ri  <VALUE> <NEW_VALUE>    Replace <VALUE> with <NEW_VALUE>"
-  echo "  -di  <VALUE>                Delete lines containing <VALUE>"
+  echo "  -fi  <VALUE>                 Find <VALUE>"
+  echo "  -ri  <VALUE> <NEW_VALUE>     Replace <VALUE> with <NEW_VALUE>"
+  echo "  -di  <VALUE>                 Delete lines containing <VALUE>"
+  echo "  -at  <VALUE>                 Add \"@include '<VALUE>';\" as a new line"
 
   echo
   echo "For 'theme.rc'"
-  echo "  -rt  <VALUE> <NEW_VALUE>    Replace <VALUE> with <NEW_VALUE>"
-  echo "  -dt  <VALUE>                Delete lines containing <VALUE>"
-  echo "  -at  <VALUE>                Add <VALUE> as a new line"
+  echo "  -rt  <VALUE> <NEW_VALUE>     Replace <VALUE> with <NEW_VALUE>"
+  echo "  -dt  <VALUE>                 Delete lines containing <VALUE>"
+  echo "  -at  <VALUE>                 Add <VALUE> as a new line"
 
   echo
   echo "For '_properties.scss'"
-  echo "  -fp  <VALUE>                Find <VALUE>"
-  echo "  -rp  <VALUE> <NEW_VALUE>    Replace <VALUE> with <NEW_VALUE>"
-  echo "  -ap  <NAME> <VALUE>         Add <NAME> SCSS variable with value <VALUE>"
-  echo "  -apf <NAME> <VALUE> <FIND>  Add <NAME> SCSS variable with value <VALUE> after line <FIND>" 
+  echo "  -fp  <VALUE>                 Find <VALUE>"
+  echo "  -rp  <VALUE> <NEW_VALUE>     Replace <VALUE> with <NEW_VALUE>"
+  echo "  -ap  <NAME>  <VALUE>         Add SCSS snippet '$<NAME> : <VALUE>;'"
+  echo "  -apf <NAME>  <VALUE> <FIND>  Add SCSS snippet '$<NAME> : <VALUE>;' after line <FIND>" 
 }
 
 help() {
@@ -73,6 +74,7 @@ file_contains() {
 }
 
 # OPERATIONS
+### Contains
 colors_contains() {
   local theme_dir="$1"
   local value="$2"
@@ -105,6 +107,7 @@ properties_contains() {
   file_contains "$value" "$theme_dir/_properties.scss" && echo "Match in $theme_dir"
 }
 
+### Replace
 colors_replace() {
   local theme_dir="$1"
   local value="$2"
@@ -149,6 +152,7 @@ config_replace() {
   replace "$value" "$new_value" "$theme_dir/theme.rc"
 }
 
+### Delete
 imports_delete() {
   local theme_dir="$1"
   local value="$2"
@@ -173,11 +177,19 @@ config_delete() {
   delete "$value" "$theme_dir/theme.rc"
 }
 
+### Insert/append/add
 config_append() {
   local theme_dir="$1"
   local string="$2"
   
   echo "$string" >> "$theme_dir/theme.rc"
+}
+
+imports_append() {
+  local theme_dir="$1"
+  local string="$2"
+  
+  echo "@import '$string';" >> "$theme_dir/_imports.scss" 
 }
 
 props_insert() {
@@ -197,6 +209,7 @@ props_insert_after() {
   sed -i "/$insert_after/a \$$var_name : $var_value\;" "$theme_dir/_properties.scss"
 }
 
+# PROGRAM
 case $1 in
   -fc)  OP="colors_contains"     ;;
   -fw)  OP="widgets_contains"    ;;
@@ -211,19 +224,19 @@ case $1 in
   -di)  OP="config_delete"       ;  MOD=1;;
   -dw)  OP="widget_delete"       ;  MOD=1;;
   -at)  OP="config_append"       ;  MOD=1;;
+  -ai)  OP="imports_append"      ;  MOD=1;;
   -ap)  OP="props_insert"        ;  MOD=1;  ARGS=3 ;;
   -apf) OP="props_insert_after"  ;  MOD=1;  ARGS=4 ;;
   -h)   show_ops; exit;          ;;
-  *)   echo -n "Invalid operation. "
-       show_ops
-       exit 1;;
+
+  *)    echo -n "Invalid operation. "
+        show_ops
+        exit 1;;
 esac
 
 # see if correct number of arguments received
 if [ "$#" -ne $ARGS ]; then
-  echo "Command requires $ARGS arguments"
-  echo
-  show_ops
+  echo "Command requires $(($ARGS - 1)) argument(s)"
   
   exit 2
 fi
