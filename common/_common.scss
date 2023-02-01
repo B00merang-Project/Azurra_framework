@@ -15,11 +15,11 @@ image:disabled { -gtk-icon-filter: opacity(0.5); }
 @include view();
 @include textview();
 @include iconview();
-// @include rubberband();  CREATE: new mixin rubberband
+
+rubberband { @include rubberband(); }
 
 flowbox {
-  // TODO: use rubberband mixin, once it's created
-  //> rubberband { @extend rubberband; }
+  > rubberband { @include rubberband(); }
 
   > flowboxchild {
     padding: 3px;
@@ -700,8 +700,7 @@ button.color {
     &:disabled { background-color: $disabled_bg_color; }  
   }
   
-  // TODO: use new mixin rubberband
-  > rubberband { /*@extend rubberband;*/ }
+  > rubberband { @include rubberband(); }
 }
 
 .scale-popup {
