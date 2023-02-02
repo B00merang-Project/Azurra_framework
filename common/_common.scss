@@ -12,9 +12,86 @@ dnd { color: $fg-color; }
 
 image:disabled { -gtk-icon-filter: opacity(0.5); }
 
-@include view();
-@include textview();
-@include iconview();
+.view,
+%view {
+  color: $text_color;
+  background-color: $base_color;
+
+  &:disabled {
+    color: $disabled_fg_color;
+    background-color: $disabled_bg_color;
+  }
+
+  &:selected {
+    &:focus, & {
+      @include selected_items('normal');
+
+      border-radius: $viewitem_radius;
+    }
+    
+    &:backdrop { @include selected_items('backdrop'); }
+  }
+}
+
+// Ideally we'd extend %view in text too, but since some themes have gradients
+// for view selected states, it's better to define textview text selection colors on their own
+textview {
+  > text {
+    color: $text_color;
+    background-color: $base_color;
+
+    &:disabled {
+      color: $disabled_fg_color;
+      background-color: $disabled_bg_color;
+    }
+
+    &:selected {
+      &:focus, & {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
+
+        // TODO: is this required?
+        //border-radius: $viewitem_radius;
+      }
+      
+      &:backdrop {
+        color: $backdrop_selected_text_color;
+        background-color: $backdrop_selected_text_bg_color;
+      }
+    }
+
+    background-color: transparent;
+
+    > selection {
+      background-color: $backdrop_selected_bg_color;
+
+      &:focus-within {
+         background-color: $selected_text_bg_color;
+      }
+    }
+  }
+
+  &:drop(active) {
+    // TODO: color for :drop status
+    //caret-color: $drop_target_color;
+    caret-color: $color_shadow;
+  }
+}
+
+iconview {
+  @extend .view;
+
+  // TODO: outline_focus widget
+  //@include focus-ring();
+
+  &:drop(active) { box-shadow: none; }
+
+  > dndtarget:drop(active) {
+    // TODO: :drop color or something else?
+    //border: 1px solid $selected_borders_color;
+    border: 1px solid $color_shadow;
+  }
+}
 
 rubberband { @include rubberband(); }
 
@@ -38,7 +115,30 @@ flowbox {
   }
 }
 
-// @include gridview();    CREATE: new mixin gridview
+gridview {
+  > rubberband { @include rubberband(); }
+
+  > child {
+    padding: 3px;
+    transition: $focus_transition;
+
+    // USE: outline-focus widget
+    //@include focus-ring();
+
+    &:selected {
+      //outline-color: $alt_focus_border_color;
+
+      @include selected_items('normal');
+      
+      &:backdrop { @include selected_items('backdrop'); }
+    }
+
+    box { //cells
+      border-spacing: 8px; //label separation
+      margin: 12px;
+    }
+  }
+}
 
 // coverflow
 coverflow cover {
@@ -417,11 +517,9 @@ scrolledwindow {
 // TODO: move separators to their respective controls
 @include separators();
 
-// TODO: rename to listview?
-// CREATE: new mixins: listview, row(?), columnview
 @include listview();
+// CREATE: new widget columnview
 
-// TODO: move into _list.scss?
 treeexpander { border-spacing: 4px; }
 
 /* SAMPLE
@@ -530,7 +628,6 @@ calendar {
   }
 }
 
-// TODO: rename to dialog
 @include dialog();
 @include sidebar();
 
