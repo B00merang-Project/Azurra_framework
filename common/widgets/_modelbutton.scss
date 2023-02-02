@@ -9,6 +9,8 @@
     background-image: none;
     box-shadow: none;
 
+    // TODO: some themes (ex. solaris 10) have a different selection for menus than grids
+    // create new mixin new selected_list_items?
     &:hover { @include selected_items('normal'); }
     &:selected { @include selected_items('normal'); }
     &:disabled { color: $disabled_fg_color; }

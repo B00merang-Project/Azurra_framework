@@ -1,9 +1,18 @@
-// wildcard has been deprecated (thanks for that, GNOME team!)
 // Some reusable variables are scattered across the file for now
 // TODO: move them to _properties.scss or another file
 
-// TODO: move to window?
-@include background();
+// TODO: is this still relevant with GTK4? If it causes problems, enable from _properties.scss
+// NOTE: add a bit of transparency for themes that require it
+// (doesn't affect themes with no transparency)
+.background {
+  color: $fg_color;
+  background-color: gtkalpha($bg_color, 0.999);
+
+  &:backdrop {
+    color: $backdrop_fg_color; 
+    background-color: gtkalpha($backdrop_bg_color, 0.999);
+  }
+}
 
 dnd { color: $fg-color; }
 
@@ -362,8 +371,7 @@ button { @include normal_buttons();
 
 @include destructive_button();
 @include suggested_button();
-
-// NOTE: adwaita includes modelbuttons here. In our case, they're defined in _menu.scss
+@include modelbutton();
 
 // MOVE: _colors*.scss
 $link_visited_color : gtkmix($link_color, $fg_color, 0.2);
@@ -454,13 +462,10 @@ pathbar > button {
 }
 
 @include treeview();
-
-// NOTICE: in GTK 4, the .menu class and menu node are deprecated. Menu stuff should be migrated to popover and modelbutton
 @include popover();
 
 magnifier { background-color: $base_color; }
 
-@include modelbutton();
 @include menu();      // TODO: modernize
 @include menubar();
 @include notebook();  // TODO: modernize
