@@ -55,19 +55,19 @@ label {
   
   > selection {
     color: $backdrop_selected_text_color;
-    background-color: $backdrop_selected_base_color;
+    background-color: $backdrop_selected_text_bg_color;
 
     &:focus-within {
       color: $selected_text_color;
-      background-color: $selected_base_color;
+      background-color: $selected_text_bg_color;
     }
   }
   
   &:disabled { color: $disabled_fg_color;
     button & { color: inherit; }
     
-    > selection & { color: gtkmix($disabled_fg_color, $selected_base_color, 0.5);
-      &:backdrop { color: gtkmix($backdrop_disabled_fg_color, $backdrop_selected_base_color, 0.5); }
+    > selection & { color: gtkmix($disabled_fg_color, $selected_text_bg_color, 0.5);
+      &:backdrop { color: gtkmix($backdrop_disabled_fg_color, $backdrop_selected_text_bg_color, 0.5); }
     }
   }
   
@@ -251,7 +251,7 @@ editablelabel > stack > text {
     color: transparent; background-color: $selected_bg_color;
     
     // TODO: extend entry?
-    &:focus-within { color: $fg_color; background-color: $selected_base_color; }
+    &:focus-within { color: $fg_color; background-color: $selected_text_bg_color; }
   }
 }
 
@@ -447,7 +447,7 @@ columnview row:not(:selected) cell editablelabel.editing text selection {
   background-color: $backdrop_selected_bg_color;
   color: transparent;
   
-  &:focus-within { color: $fg_color; background-color: $selected_base_color; }
+  &:focus-within { color: $fg_color; background-color: $selected_text_bg_color; }
 }
 
 // rich lists are a large list usually containing lots of widgets, generally other widgets than just labels/text

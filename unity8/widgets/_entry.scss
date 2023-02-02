@@ -9,12 +9,12 @@
     border-right-color: gtkshade($border_color, 1.05);
     border-radius: $entry_radius;
     color: $text_color;
-    caret-color: $selected_base_color;
+    caret-color: $selected_text_bg_color;
     background-color: $base_color;
 
     &:selected, &:selected:focus, selection, selection:focus {
       color: $selected_text_color;
-      background-color: $selected_base_color;
+      background-color: $selected_text_bg_color;
     }
 
     &:disabled {

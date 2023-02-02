@@ -12,17 +12,17 @@
     min-width: 42px;
 
     &:checked {
-      border-color: $selected_base_color;
-      background-color: $selected_base_color;
+      border-color: $selected_text_bg_color;
+      background-color: $selected_text_bg_color;
       box-shadow: none;
 
       &:disabled {
-        border-color: gtkmix($selected_base_color, $disabled_bg_color, 0.4);
+        border-color: gtkmix($selected_text_bg_color, $disabled_bg_color, 0.4);
       }
 
       &:backdrop {
-        border-color: gtkshade($selected_base_color, 0.9);
-        background-color: gtkshade($selected_base_color, 0.9);
+        border-color: gtkshade($selected_text_bg_color, 0.9);
+        background-color: gtkshade($selected_text_bg_color, 0.9);
       }
     }
 

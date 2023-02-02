@@ -5,7 +5,7 @@ $base_color : #FFFFFF;
 $text_color : #3C3C3C;
 $selected_bg_color : #F07746;
 $selected_fg_color : #FFFFFF;
-$selected_base_color : #F07746;
+$selected_text_bg_color : #F07746;
 $selected_text_color : #FFFFFF;
 $disabled_bg_color : gtkshade($bg_color, 1.02);
 $disabled_fg_color : gtkmix($fg_color, $bg_color, 0.5);
@@ -19,7 +19,7 @@ $backdrop_base_color : $bg_color;
 $backdrop_text_color : $backdrop_fg_color;
 $backdrop_selected_bg_color : gtkshade($backdrop_bg_color, 0.9);
 $backdrop_selected_fg_color : gtkshade($backdrop_text_color, 0.8);
-$backdrop_selected_base_color : $selected_base_color;
+$backdrop_selected_text_bg_color : $selected_text_bg_color;
 $backdrop_selected_text_color : $selected_text_color;
 $backdrop_disabled_bg_color : gtkshade($bg_color, 1.02);
 $backdrop_disabled_fg_color : gtkmix($fg_color, $bg_color, 0.75);
@@ -52,7 +52,7 @@ $error_fg_color : #FFFFFF;
 $error_bg_color : #FF0000;
 
 // Special foreground colors
-$link_color : $selected_base_color;
+$link_color : $selected_text_bg_color;
 $error_color : #ED3146;
 $success_color : #48B259;
 $warning_color : #FF9900;
