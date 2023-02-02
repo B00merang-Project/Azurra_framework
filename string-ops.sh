@@ -257,6 +257,6 @@ fi
 
 # run op on all theme folders and pass all arguments, except the first 2: script (0) name and flag (1)
 for dir in *; do
-  [ -d "$dir" ] && $OP "$dir" "${@:2}"
-  #[ -f "$dir/theme.rc" ] && $OP "$dir" "${@:2}"
+  # [ -d "$dir" ] && $OP "$dir" "${@:2}"
+  [ -f "$dir/theme.rc" ] && $OP "$dir" "${@:2}"
 done
