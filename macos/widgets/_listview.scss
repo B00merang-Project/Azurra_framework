@@ -3,20 +3,11 @@
     color: $fg_color;
     background-color: $base_color;
 
-    row {
-      padding: 2px;
+    row { padding: 2px;
 
-      &:hover {
-        background-color: gtkmix($bg_color, $fg_color, 0.1);
-      }
-      
-      &:active {
-        background-color: gtkmix($bg_color, $fg_color, 0.2);
-      }
-      
-      &:backdrop {
-        color: $backdrop_fg_color;
-      }
+      &:hover { background-color: gtkmix($bg_color, $fg_color, 0.1); }
+      &:active { background-color: gtkmix($bg_color, $fg_color, 0.2); }
+      &:backdrop { color: $backdrop_fg_color; }
 
       &:selected {
         &, &:hover, &:focus {
@@ -24,13 +15,8 @@
           color: $selected_fg_color;
           background-color: $selected_bg_color;
           
-          &:hover {
-            background-color: gtkshade($selected_bg_color, 1.05);
-          }
-          
-          &:active {
-            background-color: gtkshade($selected_bg_color, 0.95);
-          }
+          &:hover { background-color: gtkshade($selected_bg_color, 1.05); }
+          &:active { background-color: gtkshade($selected_bg_color, 0.95); }
           
           &:disabled {
             color: gtkalpha($selected_fg_color, 0.7);
@@ -45,8 +31,7 @@
       }
     }
 
-    separator, separator:backdrop {
-      background: none; // no lines on sidebar
-    }
+    // no lines on sidebar
+    separator, separator:backdrop { background: none; }
   }
 }

@@ -3,12 +3,9 @@
     color: $fg_color;
     background-color: $bg_color;
 
-    row {
-      padding: 2px;
+    row { padding: 2px;
 
-      &:backdrop {
-        color: $backdrop_fg_color;
-      }
+      &:backdrop { color: $backdrop_fg_color; }
 
       &:selected {
         &, &:hover, &:focus {
@@ -27,7 +24,9 @@
           background-color: $backdrop_selected_bg_color;
         }
         
-        button:not(:hover):not(:checked) { color: $selected_fg_color; }
+        button:not(:hover):not(:checked) {
+          color: $selected_fg_color;
+        }
       }
     }
   }

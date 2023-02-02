@@ -11,18 +11,24 @@
         border-color: gtkshade($selected_bg_color, 0.9);
         border-radius: $global_radius;
         background-color: gtkshade($selected_bg_color, 1.12);
-        background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.065), gtkshade($selected_bg_color, 1.03));
+        background-image: linear-gradient(
+          to bottom,
+          gtkshade($selected_bg_color, 1.065),
+          gtkshade($selected_bg_color, 1.03)
+        );
       }
       
       &:active {
         color: $selected_fg_color;
         border-color: gtkshade($selected_bg_color, 0.8);
-        background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 0.98), gtkshade($selected_bg_color, 0.94));
+        background-image: linear-gradient(
+          to bottom,
+          gtkshade($selected_bg_color, 0.98),
+          gtkshade($selected_bg_color, 0.94)
+        );
       }
 
-      &:backdrop {
-        color: $backdrop_fg_color;
-      }
+      &:backdrop { color: $backdrop_fg_color; }
 
       &:selected {
         &, &:focus {
@@ -30,42 +36,66 @@
           border-radius: $global_radius;
           color: $selected_fg_color;
           background-color: $selected_bg_color;
-          background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.02), gtkshade($selected_bg_color, 0.98));
+          background-image: linear-gradient(
+            to bottom,
+            gtkshade($selected_bg_color, 1.02),
+            gtkshade($selected_bg_color, 0.98)
+          );
           
           &:hover {
             color: $selected_fg_color;
             border-color: gtkshade($selected_bg_color, 0.87);
-            background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.05), gtkshade($selected_bg_color, 1.01));
+            background-image: linear-gradient(
+              to bottom,
+              gtkshade($selected_bg_color, 1.05),
+              gtkshade($selected_bg_color, 1.01)
+            );
           }
           
           &:active {
             color: $selected_fg_color;
             border-color: gtkshade($selected_bg_color, 0.8);
-            background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 0.98), gtkshade($selected_bg_color, 0.94));
+            background-image: linear-gradient(
+              to bottom,
+              gtkshade($selected_bg_color, 0.98),
+              gtkshade($selected_bg_color, 0.94)
+            );
           }
           
           &:disabled {
             color: gtkalpha($selected_fg_color, 0.7);
             background-color: $selected_bg_color;
-            background-image: linear-gradient(to bottom, gtkshade($disabled_bg_color, 1.02), gtkshade($disabled_bg_color, 0.98));
+            background-image: linear-gradient(
+              to bottom,
+              gtkshade($disabled_bg_color, 1.02),
+              gtkshade($disabled_bg_color, 0.98)
+            );
           }
           
           &:backdrop {
             color: $backdrop_selected_fg_color;
             border-color: gtkshade($backdrop_selected_bg_color, 0.9);
-            background-image: linear-gradient(to bottom, gtkshade($backdrop_selected_bg_color, 1.02), gtkshade($backdrop_selected_bg_color, 0.98));
+            background-image: linear-gradient(
+              to bottom,
+              gtkshade($backdrop_selected_bg_color, 1.02),
+              gtkshade($backdrop_selected_bg_color, 0.98)
+            );
             
             &:hover {
               color: $selected_fg_color;
               border-color: gtkshade($selected_bg_color, 0.85);
-              background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 1.02), gtkshade($selected_bg_color, 0.98));
+              background-image: linear-gradient(
+                to bottom,
+                gtkshade($selected_bg_color, 1.02),
+                gtkshade($selected_bg_color, 0.98)
+              );
             }
           }
         }
       }
     }
-    separator, separator:backdrop {
-      background: none; // no lines on sidebar
-    }
+    
+    // no lines on sidebar
+    separator, separator:backdrop { background: none; }
   }
 }
