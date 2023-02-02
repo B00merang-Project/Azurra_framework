@@ -461,10 +461,9 @@ pathbar > button {
 magnifier { background-color: $base_color; }
 
 @include modelbutton();
-@include menu();      // TODO: deprecate
-@include menuitem();  // TODO: deprecate
+@include menu();      // TODO: modernize
 @include menubar();
-@include notebook();
+@include notebook();  // TODO: modernize
 @include scrollbar();   // TODO: figure out how to simulate buttons for themes requiring it
 @include switch();
 @include checkradio();  // TODO: include special cases, like menu/modelbutton, treeview, etc.

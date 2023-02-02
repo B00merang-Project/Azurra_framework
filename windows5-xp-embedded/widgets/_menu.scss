@@ -1,36 +1,46 @@
 @mixin menu() {
   menu, .menu {
     margin: 4px;
-    padding: 0;
+    padding: 4px 4px;
     border-radius: $menu_radius;
-    border-style: none;
+    border: 3px solid transparent;
     color: $menu_fg_color;
     background-color: $menu_bg_color;
+    border-image: url('assets/menu-bg.png') 3 3 3 3;
 
-    .csd &, {
-      padding: 4px 4px;
-      border-radius: $menu_radius;
-      border: 3px solid transparent;
-      border-image: url('assets/menu-bg.png') 3 3 3 3;
-    }
+    // TODO: arrow
     
-    > arrow {
-      padding: 4px;
-      border-color: transparent;
-      background-color: $menu_bg_color;
-      min-width: 16px;
+    menuitem {
       min-height: 16px;
+      min-width: 40px;
+      padding: 4px;
+      border: none;
+      border-radius: 0;
+      color: $menu_fg_color;
+      background-color: $menu_bg_color;
 
-      &.top {
-        margin-top: -6px;
-        border-bottom: 1px solid gtkshade($menu_bg_color, 0.9);
-        -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+      &:hover {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
+        
+        switch slider, scale highlight, scale slider {
+          background-color: $selected_fg_color;
+        }
+        
+        scale trough, switch {
+          background-color: gtkalpha($selected_fg_color, 0.75);
+        }
       }
 
-      &.bottom {
-        margin-bottom: -6px;
-        border-top: 1px solid gtkshade($menu_bg_color, 0.9);
-        -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+      &:disabled {
+        color: gtkmix($menu_fg_color, $menu_bg_color, 0.5);
+      }
+
+      // TODO: arrow
+
+      accelerator { color: gtkalpha(currentColor, 0.55);
+        &:hover { color: gtkalpha($selected_fg_color, 0.8); }
+        &:disabled { color: gtkmix($menu_fg_color, $menu_bg_color, 0.5); }
       }
     }
   }

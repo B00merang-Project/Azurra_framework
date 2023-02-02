@@ -1,19 +1,14 @@
 @mixin menu() {
-  // TODO: is this still relevant?
-  // NOTE: looks similar to _common/widgets/menu (except for transparency bit)
-  // transparency for popovers and menus
-  .background.popup { background-color: transparent; }
-
   menu, .menu {
     margin: 4px;
-    padding: 4px 0;
+    padding: 4px 0px;
     border-radius: $menu_radius;
     border: none;
     color: $menu_fg_color;
     background-color: $menu_bg_color;
-
-    // TODO: arrow
     
+    // TODO: arrow
+
     menuitem {
       min-height: 16px;
       min-width: 40px;
@@ -21,11 +16,16 @@
       border: none;
       border-radius: 0;
       color: $menu_fg_color;
-      background-color: transparent;
+      background-color: $menu_bg_color;
 
       &:hover {
         color: $selected_fg_color;
         background-color: $selected_bg_color;
+        background-image: linear-gradient(
+          to bottom,
+          gtkshade($selected_bg_color, 1.1),
+          gtkshade($selected_bg_color, 0.9)
+        );
       }
 
       &:disabled {
