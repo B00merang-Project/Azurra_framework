@@ -16,6 +16,7 @@ show_ops() {
   echo "For '_colors.scss'"
   echo "  -fc  <VALUE>                 Find <VALUE>"
   echo "  -rc  <VALUE> <NEW_VALUE>     Replace <VALUE> with <NEW_VALUE>"
+  echo "  -acf <NAME>  <VALUE> <FIND>  Add SCSS snippet '$<NAME> : <VALUE>;' after line <FIND>"
 
   echo
   echo "For 'widgets/*.scss'"
@@ -41,7 +42,7 @@ show_ops() {
   echo "  -fp  <VALUE>                 Find <VALUE>"
   echo "  -rp  <VALUE> <NEW_VALUE>     Replace <VALUE> with <NEW_VALUE>"
   echo "  -ap  <NAME>  <VALUE>         Add SCSS snippet '$<NAME> : <VALUE>;'"
-  echo "  -apf <NAME>  <VALUE> <FIND>  Add SCSS snippet '$<NAME> : <VALUE>;' after line <FIND>" 
+  echo "  -apf <NAME>  <VALUE> <FIND>  Add SCSS snippet '$<NAME> : <VALUE>;' after line <FIND>"
 }
 
 help() {
@@ -53,7 +54,7 @@ help() {
 }
 
 # UTILS
-# $1: value to replace  $2: new value  $3: filename
+# $1: value to replace    $2: new value   $3: filename
 replace() {
   # warn if file contains
   file_contains "$1" "$3" && echo "Replacing value in $3"
@@ -68,9 +69,14 @@ delete() {
   sed -i "/$1/d" "$2"
 }
 
-# $1: value to find     $2: filename
+# $1: value to find   $2: filename
 file_contains() {
   grep -q "$1" "$2" && return 0 || return 1
+}
+
+# $1: value to add    $2: value to find   $3: filename
+insert_after() {
+  sed -i "/$1/a $2" "$3"
 }
 
 # OPERATIONS
@@ -206,7 +212,18 @@ props_insert_after() {
   local var_value="$3"
   local insert_after="$4"
   
-  sed -i "/$insert_after/a \$$var_name : $var_value\;" "$theme_dir/_properties.scss"
+  insert_after "$insert_after" "\$$var_name : $var_value\;" "$theme_dir/_properties.scss" 
+}
+
+colors_insert_after() {
+  local theme_dir="$1"
+  local var_name="$2"
+  local var_value="$3"
+  local insert_after="$4"
+  
+  for FILE in "$theme_dir/_colors"*.scss; do
+    insert_after "$insert_after" "\$$var_name : $var_value\;" "$FILE"
+  done
 }
 
 # PROGRAM
@@ -227,6 +244,7 @@ case $1 in
   -ai)  OP="imports_append"      ;  MOD=1;;
   -ap)  OP="props_insert"        ;  MOD=1;  ARGS=3 ;;
   -apf) OP="props_insert_after"  ;  MOD=1;  ARGS=4 ;;
+  -acf) OP="colors_insert_after" ;  MOD=1;  ARGS=4 ;;
   -h)   show_ops; exit;          ;;
 
   *)    echo -n "Invalid operation. "
