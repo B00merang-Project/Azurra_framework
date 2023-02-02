@@ -54,16 +54,20 @@ label {
   &:selected { color: $selected_text_color; }
   
   > selection {
-    @include selected_text('backdrop');
+    color: $backdrop_selected_text_color;
+    background-color: $backdrop_selected_base_color;
 
-    &:focus-within { @include selected_text('normal'); }
+    &:focus-within {
+      color: $selected_text_color;
+      background-color: $selected_base_color;
+    }
   }
   
   &:disabled { color: $disabled_fg_color;
     button & { color: inherit; }
     
-    > selection & { @include selected_text('disabled');
-      &:backdrop { @include selected_text('backdrop-disabled'); }
+    > selection & { color: gtkmix($disabled_fg_color, $selected_base_color, 0.5);
+      &:backdrop { color: gtkmix($backdrop_disabled_fg_color, $backdrop_selected_base_color, 0.5); }
     }
   }
   
