@@ -1,45 +1,27 @@
 @mixin popover() {
-  popover {
-    &, &.background {
-      padding: 2px;
-      border-color: $border_color;
-      border-width: 1px;
-      border-style: solid;
-      border-radius: $global_radius;
-      color: $fg_color;
-      background-clip: border-box;
-      background-color: $bg_color;
-      box-shadow: none;
+  popover.background {
+    padding: 2px;
+    background-color: $popover_bg_color;  // TODO: make sure transparency works
+    box-shadow: 0 1px 2px gtkalpha($wm_shadow, 0.3);  // add option to turn off?
 
     .csd &, & {
-      border: 1px solid $border_color; }
-
-      > list, > .view, > iconview, > toolbar, > .inline-toolbar {
-        border-style: none;
-        background-color: transparent;
-      }
-
-      checkbutton:selected, radiobutton:selected {
-        color: $selected_fg_color;
-        background-color: $selected_bg_color;
-      }
+      border: 1px solid $border_color;
+      border-radius: $popover_radius;
+      
+      &:backdrop { border-color: $backdrop_border_color; }
     }
-
-    &.osd {
-      box-shadow: none;
-
-      > toolbar button {
-        border-width: 0;
-        border-radius: 0;
-        background-color: transparent;
-      }
-    }
-
+    
     &:backdrop {
-      border-color: $backdrop_border_color;
-      color: $backdrop_fg_color;
       background-color: $backdrop_bg_color;
       box-shadow: none;
     }
+
+    > list, > .view, > iconview, > toolbar, > .inline-toolbar {
+      border-style: none;
+      background-color: transparent;
+    }
+
+    separator { margin: 3px; }
+    list separator { margin: 0px; }
   }
 }
