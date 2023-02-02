@@ -1,0 +1,26 @@
+@mixin selected_items($type : 'normal') {
+  @if ($type == 'normal') {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($selected_bg_color, 1.45),
+      gtkshade($selected_bg_color, 1.2)
+    );
+  }
+  @else if ($type == 'backdrop') {
+    color: $backdrop_selected_fg_color;
+    background-color: $backdrop_selected_bg_color;
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($backdrop_selected_bg_color, 1.45),
+      gtkshade($backdrop_selected_bg_color, 1.2)
+    );
+  }
+  @else if ($type == 'disabled') {
+    color: gtkmix($disabled_fg_color, $selected_bg_color, 0.5);
+  }
+  @else if ($type == 'backdrop-disabled') {
+    color: gtkmix($backdrop_disabled_fg_color, $backdrop_selected_bg_color, 0.5);
+  }
+}
