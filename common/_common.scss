@@ -272,6 +272,7 @@ window.csd:backdrop { transition: $backdrop_transition; }
 // MOVE: _properties.scss
 $menu-margin : 4px;
 
+// TODO: adjust margins?
 window.assistant {
   .sidebar {
     padding: $menu-margin;
@@ -661,9 +662,76 @@ calendar {
 }
 
 @include dialogs();
-@include sidebar();
 
-// adwaita has a whole segment related to filechooser around here. Not sure how important it is. Skipping for now
+.sidebar {
+  // FIXME: not working on nautilus
+  background-color: $sidebar_bg_color;
+
+  &:not(separator) {
+    @at-root %sidebar_left,
+    &:dir(ltr),
+    &.left,
+    &.left:dir(rtl) {
+      border-right: 1px solid $border_color;
+      border-left-style: none;
+    }
+
+    @at-root %sidebar_right,
+    &:dir(rtl),
+    &.right {
+      border-left: 1px solid $border_color;
+      border-right-style: none;
+    }
+  }
+
+  listview.view,
+  list { background-color: transparent; }
+
+  paned & { &.left, &.right, &.left:dir(rtl), &:dir(rtl), &:dir(ltr), & { border-style: none; }}
+}
+
+// TODO: include more sidebar_items states in the future
+stacksidebar {
+  //not a regular list
+  list.separators:not(.horizontal) > row:not(.separator) {
+    border-bottom: none;
+  }
+  row {
+    padding: 10px 4px;
+    // is this a good idea?
+    @include sidebar_items('normal');
+    
+    // TODO: implement
+    //@include focus-ring();
+
+    > label {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+
+    &.needs-attention > label {
+      // TODO: implement?
+      //@extend %needs_attention;
+      background-size: 6px 6px, 0 0;
+    }
+    &:selected {
+      @include sidebar_items('selected');
+      
+      border-radius: $viewitem_radius;
+    }
+    &:selected:hover:dir(ltr), &:selected:hover:dir(rtl) {
+      @include sidebar_items('selected-hover');
+    }
+    &.activatable:active, &.activatable:selected:active {
+      box-shadow: none; // #3413
+    }
+  }
+}
+
+// TODO: adjust colors
+separator.sidebar { background-color: $border_color; }
+
+// TODO: import .navigation-sidebar, placessidebar, placesview, etc.
 
 @include paned();
 

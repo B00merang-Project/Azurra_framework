@@ -1,0 +1,33 @@
+@mixin sidebar_items($state : "normal") {
+  @if ($state == 'normal') {
+    color: $sidebar_fg_color;
+  }
+  @else if ($state == 'hover') {
+    color: $sidebar_fg_color;
+    background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.1);
+  }
+  @else if ($state == 'backdrop-hover') {
+    color: $backdrop_fg_color;
+    background-color: gtkmix($backdrop_fg_color, $backdrop_fg_color, 0.1);
+  }
+  @else if ($state == 'active') {
+    color: $sidebar_fg_color;
+    background-color: gtkmix($sidebar_bg_color, $sidebar_fg_color, 0.25);
+  }
+  @else if ($state == 'selected') {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+  }
+  @else if ($state == 'selected-hover') {
+    color: $selected_fg_color;
+    background-color: gtkshade($selected_bg_color, 1.1);
+  }
+  @else if ($state == 'selected-backdrop') {
+    color: $backdrop_selected_fg_color;
+    background-color: $backdrop_selected_bg_color;
+  }
+  @else if ($state == 'selected-backdrop-hover') {
+    color: $backdrop_selected_fg_color;
+    background-color: gtkmix($backdrop_selected_bg_color, $backdrop_selected_fg_color, 0.1);
+  }
+}
