@@ -520,9 +520,11 @@ scrolledwindow {
   }
 }
 
-// TODO: move separators to their respective controls
+// TODO: move separators to their respective controls?
 @include separators();
-@include listview();
+
+// TODO: update this block
+listview row { @include listview(); }
 
 // columnview rows (should this be moved to treeview?)
 columnview {
@@ -663,6 +665,7 @@ calendar {
 
 @include dialogs();
 
+// sidebars
 .sidebar {
   // FIXME: not working on nautilus
   background-color: $sidebar_bg_color;
