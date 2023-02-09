@@ -1,66 +1,75 @@
 @mixin dialogs() {
-  messagedialog {
-    border-bottom-left-radius: $window_radius;
-    border-bottom-right-radius: $window_radius;
-    background-color: $osd_bg;
+  window.dialog.message {
+    // should be put in window section in '_common' and declared in '_properties'    
+    box-shadow: 0 0 0 3px $osd_fg,
+                0 3px 2px gtkalpha($dark_shadow, 0.2);
+
+    .titlebar {
+      min-height: 20px;
+      background-color: $osd_bg;
+      border-style: none;
+      border-top-left-radius: $window_radius;
+      border-top-right-radius: $window_radius;
+      background: $osd_bg, linear-gradient(
+        to bottom,
+        gtkalpha($osd_fg, 0.6),
+        gtkalpha($osd_fg, 0.1) 65%,
+        transparent 66%
+      );
+    }
     
-    .dialog-vbox {
+    box.dialog-vbox {
       background-color: $osd_bg;
       color: $osd_fg;
       border-bottom-left-radius: $window_radius;
       border-bottom-right-radius: $window_radius;
+      
+      &.vertical {
+        border-spacing: 10px;
+      }
+    }
+
+    label.title {
+      font-weight: 800;
+      font-size: 15pt;
     }
     
-    .background.csd {
-	    border-radius: $window_radius;
-	    color: $osd_fg;
-      background-color: $osd_bg;
-    }
-  
-    decoration {
-      border-radius: $window_radius;
-      border-bottom-left-radius: $window_radius;
-      border-bottom-right-radius: $window_radius;
-      box-shadow: 0 0 0 3px $osd_fg, 0 3px 2px gtkalpha($dark_shadow, 0.2);
-    }
-
-    .titlebar.horizontal, .titlebar.horizontal:backdrop {
-      border: none;
-      background: $osd_bg, linear-gradient(to bottom, gtkalpha($osd_fg, 0.6), gtkalpha($osd_fg, 0.1) 65%, transparent 66%);
-    }
-
-    &.csd .dialog-action-area button {
-      padding: 10px;
-      border-radius: 0;
-      border-bottom-style: none;
-      
-      
-      color: $osd_fg;
-      background-image: linear-gradient(to bottom, gtkshade($osd_bg, 1.1) 40%, gtkshade($osd_bg, 0.75) 60%);
-      
-      &:focus {
-        background-image: linear-gradient(to bottom, gtkshade($osd_bg, 1.3) 40%, gtkshade($osd_bg, 0.95) 60%);
-      }
-
-      &:last-child {
-        border-right-width: 0;
-        border-radius: 0px;
+    &.csd {
+      &.background {
+	      border-bottom-left-radius: $window_radius;
         border-bottom-right-radius: $window_radius;
-        
       }
 
-      &:first-child {
-        border-left-width: 0;
+      // TODO: make OSD button
+      .dialog-action-area button {
+        padding: 10px 14px;
         border-radius: 0px;
-        border-bottom-left-radius: $window_radius;
+        border-left-style: solid;
+        border-right-style: none;
+        border-bottom-style: none;
+        color: $osd_fg;
+        background-image: linear-gradient(
+          to bottom,
+          gtkshade($osd_bg, 1.1) 40%,
+          gtkshade($osd_bg, 0.75) 60%
+        );
         
-      }
+        &:focus {
+          background-image: linear-gradient(
+            to bottom,
+            gtkshade($osd_bg, 1.3) 40%,
+            gtkshade($osd_bg, 0.95) 60%
+          );
+        }
 
-      &:only-child {
-        border-radius: 0px;
-        border-bottom-left-radius: $window_radius;
-        border-bottom-right-radius: $window_radius;
-        
+        &:first-child {
+          border-left-style: none;
+          border-bottom-left-radius: $window_radius;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: $window_radius;
+        }
       }
     }
   }

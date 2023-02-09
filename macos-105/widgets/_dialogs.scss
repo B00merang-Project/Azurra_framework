@@ -1,50 +1,47 @@
 @mixin dialogs() {
-  messagedialog {
-    border-bottom-left-radius: $window_radius;
-    border-bottom-right-radius: $window_radius;
+  window.dialog.message {
+    // should be put in window section in '_common' and declared in '_properties'
+    box-shadow: 0 1px 2px gtkalpha($dark_shadow, 0.2);
     
-    .background.csd {
-	    border-radius: $window_radius;
-	    color: $fg_color;
+    .titlebar {
+      min-height: 20px;
+      background-image: none;
       background-color: $bg_color;
+      border-style: none;
+      border-top-left-radius: $window_radius;
+      border-top-right-radius: $window_radius;
     }
-  
-    decoration {
-      border-radius: $window_radius;
-      border-bottom-left-radius: $window_radius;
-      border-bottom-right-radius: $window_radius;
-      box-shadow: 0 1px 2px gtkalpha($dark_shadow, 0.2);
-    }
-
-    .titlebar.horizontal {
-      background-color: $bg_color;
+    
+    box.dialog-vbox.vertical {
+      border-spacing: 10px;
     }
 
-    &.csd .dialog-action-area button {
-      padding: 10px;
-      border-radius: 0;
-      border-bottom-style: none;
+    label.title {
+      font-weight: 800;
+      font-size: 15pt;
+    }
 
-
-      &:last-child {
-        border-right-width: 0;
-        border-radius: 0px;
+    &.csd {
+      &.background {
+	      border-bottom-left-radius: $window_radius;
         border-bottom-right-radius: $window_radius;
-
       }
-
-      &:first-child {
-        border-left-width: 0;
+    
+      .dialog-action-area button {
+        padding: 10px 14px;
         border-radius: 0px;
-        border-bottom-left-radius: $window_radius;
+        border-left-style: solid;
+        border-right-style: none;
+        border-bottom-style: none;
 
-      }
+        &:first-child {
+          border-left-style: none;
+          border-bottom-left-radius: $window_radius;
+        }
 
-      &:only-child {
-        border-radius: 0px;
-        border-bottom-left-radius: $window_radius;
-        border-bottom-right-radius: $window_radius;
-
+        &:last-child {
+          border-bottom-right-radius: $window_radius;
+        }
       }
     }
   }

@@ -1,49 +1,34 @@
 @mixin dialogs() {
-  $radius : 4px;
-
-  messagedialog {
-    border-bottom-left-radius: $radius;
-    border-bottom-right-radius: $radius;
-    
-    .background.csd {
-	    border-radius: $radius;
-	    color: $fg_color;
-      background-color: $bg_color;
-    }
-  
-    decoration {
-      border-radius: $radius;
-      border-bottom-left-radius: $radius;
-      border-bottom-right-radius: $radius;
-      box-shadow: 0 1px 2px gtkalpha($dark_shadow, 0.2);
-    }
-
-    .titlebar.horizontal {
-      border: none;
-      border-radius: $radius $radius 0 0;
+  window.dialog.message {
+    .titlebar {
+      min-height: 20px;
       background-image: none;
       background-color: $bg_color;
+      border-style: none;
+      border-top-left-radius: $window_radius;
+      border-top-right-radius: $window_radius;
     }
 
-    &.csd .dialog-action-area button {
-      padding: 10px;
-      border-radius: 0;
-      outline-offset: -2px;
+    box.dialog-vbox.vertical {
+      border-spacing: 10px;
+    }
 
-      &:last-child {
-        border-radius: 0px;
-        border-bottom-right-radius: $radius;
+    label.title {
+      font-weight: 800;
+      font-size: 15pt;
+    }
+    
+    &.csd {
+      &.background {  // TODO: not working (overriden by window?)
+        border-bottom-left-radius: $window_radius + 1;
+        border-bottom-right-radius: $window_radius + 1;
       }
 
-      &:first-child {
-        border-radius: 0px;
-        border-bottom-left-radius: $radius;
-      }
-
-      &:only-child {
-        border-radius: 0px;
-        border-bottom-left-radius: $radius;
-        border-bottom-right-radius: $radius;
+      .dialog-action-area button {
+        padding: 10px 14px; // workaround for vertically centered labels
+        border-left-style: solid;
+        border-right-style: none;
+        border-bottom-style: none;
       }
     }
   }

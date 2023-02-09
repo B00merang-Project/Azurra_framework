@@ -1,40 +1,44 @@
 @mixin dialogs() {
-  messagedialog {
-    .background.csd {
-	    border-radius: $window_radius $window_radius 0 0;
-	    color: $fg_color;
+  window.dialog.message {
+    .titlebar {
+      min-height: 20px;
+      background-image: none;
       background-color: $bg_color;
+      border-style: none;
+      border-top-left-radius: $window_radius;
+      border-top-right-radius: $window_radius;
+    }
+    
+    box.dialog-vbox.vertical {
+      border-spacing: 10px;
     }
 
-    decoration {
-      border-radius: $window_radius $window_radius 0 0;
-      box-shadow: 0 1px 2px gtkalpha($dark_shadow, 0.2);
+    label.title {
+      font-weight: 800;
+      font-size: 15pt;
     }
 
-    .titlebar.horizontal {
-      border: none;
-      background-color: $bg_color;
-    }
-
-    &.csd .dialog-action-area button {
-      margin: 0;
-      padding: 10px;
-      border-radius: 0;
-      border-bottom-style: none;
-
-
-      &:last-child {
-        border-right-width: 0;
-        border-radius: 0px;
+    &.csd {
+      &.background {
+	      border-bottom-left-radius: $window_radius;
+	      border-bottom-right-radius: $window_radius;
       }
 
-      &:first-child {
-        border-left-width: 0;
-        border-radius: 0px;
-      }
+      .dialog-action-area button {
+        padding: 10px 14px; // workaround for vertically centered labels
+        border-radius: 0;
+        border-left-style: solid;
+        border-right-style: none;
+        border-bottom-style: none;
 
-      &:only-child {
-        border-radius: 0px;
+        &:first-child {
+          border-left-style: none;
+          border-bottom-left-radius: $window_radius;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: $window_radius;
+        }
       }
     }
   }

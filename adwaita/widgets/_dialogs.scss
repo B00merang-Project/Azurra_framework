@@ -1,13 +1,21 @@
 @mixin dialogs() {
-  messagedialog {
+  window.dialog.message {
     .titlebar {
       min-height: 20px;
-      border: none;
-      border-top-left-radius: $window_radius + 2px;
-      border-top-right-radius: $window_radius + 2px;
       background-image: none;
       background-color: $bg_color;
-      box-shadow: none;
+      border-style: none;
+      border-top-left-radius: $window_radius + 2px;
+      border-top-right-radius: $window_radius + 2px;
+    }
+        
+    box.dialog-vbox.vertical {
+      border-spacing: 10px;
+    }
+
+    label.title {
+      font-weight: 800;
+      font-size: 15pt;
     }
 
     &.csd {
@@ -17,31 +25,20 @@
       }
 
       .dialog-action-area button {
-        padding: 10px;
+        padding: 10px 14px;
         border-radius: 0;
+        border-left-style: solid;
+        border-right-style: none;
         border-bottom-style: none;
         background-image: none;
 
+        &:first-child {
+          border-left-style: none;
+          border-bottom-left-radius: $window_radius;
+        }
 
         &:last-child {
-          border-right-width: 0;
-          border-radius: 0px;
           border-bottom-right-radius: $window_radius;
-
-        }
-
-        &:first-child {
-          border-left-width: 0;
-          border-radius: 0px;
-          border-bottom-left-radius: $window_radius;
-
-        }
-
-        &:only-child {
-          border-radius: 0px;
-          border-bottom-left-radius: $window_radius;
-          border-bottom-right-radius: $window_radius;
-
         }
       }
     }
