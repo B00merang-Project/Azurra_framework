@@ -1,27 +1,40 @@
 @mixin popover() {
   popover.background {
-    padding: 2px;
-    background-color: $popover_bg_color;  // TODO: make sure transparency works
-    box-shadow: 0 1px 2px gtkalpha($wm_shadow, 0.3);  // add option to turn off?
+    background-color: transparent;
+    font: initial; // Decouple the font of popovers from their entry/textview
 
-    .csd &, & {
+    > arrow,
+    > contents {
+      //color: $menu_fg_color;    // should maybe be in modelbutton?
+      background-color: $menu_bg_color;
+      background-clip: padding-box;
       border: 1px solid $border_color;
-      border-radius: $popover_radius;
-      
-      &:backdrop { border-color: $backdrop_border_color; }
-    }
-    
-    &:backdrop {
-      background-color: $backdrop_bg_color;
-      box-shadow: none;
+      box-shadow: 0 1px 2px gtkalpha($wm_shadow, 0.7);
     }
 
-    > list, > .view, > iconview, > toolbar, > .inline-toolbar {
-      border-style: none;
+    &:backdrop {
       background-color: transparent;
     }
 
-    separator { margin: 3px; }
-    list separator { margin: 0px; }
+    > contents {
+      padding: 8px;
+      border-radius: $popover_radius;
+
+      > list,
+      > .view,
+      > .toolbar {
+        border-style: none;
+        background-color: transparent;
+      }
+
+      separator {
+        background-color: $border_color;
+        margin: 3px;
+      }
+
+      list separator { margin: 0; }
+    }
+
+    // TODO: touch selection & magnifier?
   }
 }
