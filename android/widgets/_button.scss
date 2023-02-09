@@ -1,10 +1,11 @@
-@mixin normal_buttons($bg : transparent, $fg : $selected_bg_color, $br : transparent) {
+// TODO: use colors instead of transparency
+@mixin normal_buttons($button_bg : transparent, $button_fg : $selected_bg_color, $button_border : transparent) {
   padding: 4px 8px;
   border: none;
   border-radius: $button_radius;
-  color: $fg;
-  border-color: $br;
-  background-color: $bg;
+  color: $button_fg;
+  border-color: $button_border;
+  background-color: $button_bg;
   
   outline-style: solid;
   outline-width: 2px;
@@ -34,19 +35,19 @@
   }
 
   &:disabled {
-    color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
+    color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.1);
     
     &:backdrop { color: $backdrop_disabled_fg_color; }
   }
 
   &:backdrop {
     color: $backdrop_fg_color;
-    background-color: $bg;
+    background-color: $button_bg;
   }
 }
 
-@mixin flat_buttons($bg : transparent, $fg : $selected_bg_color, $br : transparent) {
-  @include normal_buttons($bg, $fg, $br);
+@mixin flat_buttons($button_bg : transparent, $button_fg : $selected_bg_color, $button_border : transparent) {
+  @include normal_buttons($button_bg, $button_fg, $button_border);
 }
 
 @mixin destructive_button() {

@@ -1,22 +1,24 @@
-@mixin normal_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
+// TODO: OSD buttons. Either a new mixin or rework normal/flat buttons to generate with received colors only 
+// TODO: unify flat with 'normal' buttons -> make flat a state and buttons() return code for each state
+@mixin normal_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
   padding: 4px 8px;
   border-style: solid;
   border-width: 1px;
   border-radius: $button_radius;
-  color: $fg;
-  border-color: $br;
-  background-color: $bg;
+  color: $button_fg;
+  border-color: $button_border;
+  background-color: $button_bg;
 
   &:hover {
-    color: $fg;
-    border-color: $br;
-    background-color: gtkshade($bg, 1.1);
+    color: $button_fg;
+    border-color: $button_border;
+    background-color: gtkshade($button_bg, 1.1);
   }
 
   &:active, &:checked {
-    color: $fg;
-    border-color: gtkshade($br, 0.9);
-    background-color: gtkshade($bg, 0.85);
+    color: $button_fg;
+    border-color: gtkshade($button_border, 0.9);
+    background-color: gtkshade($button_bg, 0.85);
 
     &:backdrop {
       color: $backdrop_fg_color;
@@ -25,22 +27,22 @@
     }
     
     &:disabled {
-      color: gtkmix($fg, $disabled_fg_color, 0.1);
-      border-color: gtkmix(gtkshade($bg, 0.85), $disabled_bg_color, 0.6);
-      background-color: gtkmix(gtkshade($bg, 0.85), $disabled_bg_color, 0.1);
+      color: gtkmix($button_fg, $disabled_fg_color, 0.1);
+      border-color: gtkmix(gtkshade($button_bg, 0.85), $disabled_bg_color, 0.6);
+      background-color: gtkmix(gtkshade($button_bg, 0.85), $disabled_bg_color, 0.1);
       
       &:backdrop {
-        color: gtkmix($fg, $disabled_fg_color, 0.1);
-        border-color: gtkmix(gtkshade($bg, 0.85), $backdrop_disabled_bg_color, 0.6);
-        background-color: gtkmix(gtkshade($bg, 0.85), $backdrop_disabled_bg_color, 0.1);
+        color: gtkmix($button_fg, $disabled_fg_color, 0.1);
+        border-color: gtkmix(gtkshade($button_bg, 0.85), $backdrop_disabled_bg_color, 0.6);
+        background-color: gtkmix(gtkshade($button_bg, 0.85), $backdrop_disabled_bg_color, 0.1);
       }
     }
   }
 
   &:disabled {
-    color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
-    border-color: gtkmix($bg, $disabled_bg_color, 0.6);
-    background-color: gtkmix($bg, $disabled_bg_color, 0.1);
+    color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.1);
+    border-color: gtkmix($button_bg, $disabled_bg_color, 0.6);
+    background-color: gtkmix($button_bg, $disabled_bg_color, 0.1);
     
     &:backdrop {
       color: $backdrop_disabled_fg_color;
@@ -56,16 +58,16 @@
   }
 }
 
-@mixin flat_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
+@mixin flat_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
   border-color: transparent;
   border-radius: $button_radius;
-  color: $fg;
+  color: $button_fg;
   background-color: transparent;
 
   &:hover {
-    border-color: $br;
-    color: $fg;
-    background-color: $bg;
+    border-color: $button_border;
+    color: $button_fg;
+    background-color: $button_bg;
   }
 
   &:active, &:checked {
@@ -82,12 +84,12 @@
 
   &:disabled {
     border-color: transparent;
-    color: gtkalpha($fg, 0.8);
+    color: gtkalpha($button_fg, 0.8);
     background-color: transparent;
     
     &:backdrop {
       border-color: transparent;
-      color: gtkalpha($fg, 0.7);
+      color: gtkalpha($button_fg, 0.7);
       background-color: transparent;
     }
   }
@@ -99,23 +101,28 @@
   }
 }
 
+// TODO: unify destructive and suggested buttons?
+@mixin action_button($button_bg, $button_fg, $button_border) {
+  @warn "Not implemented";
+}
+
 @mixin destructive_button() {
   button.destructive-action {
     border-width: 1px;
     border-style: solid;
-    border-color: gtkmix($error_color, $fg_color, 0.2);
+    border-color: gtkmix($error_color, $button_fg_color, 0.2);
     border-radius: $button_radius;
     color: gtkmix($selected_fg_color, $error_color, 0.1);
     background-color: $error_color;
 
     &:hover {
-      border-color: gtkmix($error_color, $fg_color, 0.3);
+      border-color: gtkmix($error_color, $button_fg_color, 0.3);
       background-color: gtkmix($error_color, $selected_fg_color, 0.2);
     }
 
     &:active {
-      border-color: gtkmix($error_color, $fg_color, 0.3);
-      background-color: gtkmix($error_color, $fg_color, 0.1);
+      border-color: gtkmix($error_color, $button_fg_color, 0.3);
+      background-color: gtkmix($error_color, $button_fg_color, 0.1);
     }
 
     &:backdrop {
@@ -141,8 +148,8 @@
     }
 
     &:active, &:checked {
-      border-color: gtkmix($selected_bg_color, $fg_color, 0.1);
-      background-color: gtkmix($selected_bg_color, $fg_color, 0.1);
+      border-color: gtkmix($selected_bg_color, $button_fg_color, 0.1);
+      background-color: gtkmix($selected_bg_color, $button_fg_color, 0.1);
 
       &:backdrop {
         border-color: gtkmix($backdrop_selected_bg_color, $backdrop_fg_color, 0.1);

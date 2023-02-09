@@ -1,38 +1,38 @@
-@mixin normal_buttons($bg : $base_color, $fg : $fg_color, $br : $border_color) {
+@mixin normal_buttons($button_bg : $base_color, $button_fg : $fg_color, $button_border : $border_color) {
   padding: 4px 8px;
   border-style: solid;
   border-width: 1px;
   border-radius: $button_radius;
-  color: $fg;
-  border-color: gtkshade($br, 0.85);
-  background-color: $bg;
+  color: $button_fg;
+  border-color: gtkshade($button_border, 0.85);
+  background-color: $button_bg;
   background-image: linear-gradient(
     to bottom,
-    $bg 40%,
-    gtkshade($bg, 0.95) 60%
+    $button_bg 40%,
+    gtkshade($button_bg, 0.95) 60%
   );
   box-shadow: 0 1px gtkalpha(gtkmix($light_shadow, $dark_shadow, 0.5), 0.1);
 
   &:active, &:checked {
     color: $selected_fg_color;
-    border-color: gtkshade($br, 0.5);
-    background-color: gtkshade($bg, 0.5);
+    border-color: gtkshade($button_border, 0.5);
+    background-color: gtkshade($button_bg, 0.5);
     background-image: none;
     box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.45),
                 inset 0 -2px 3px 1px gtkalpha($light_shadow, 0.45),
-                inset 0 1px gtkshade($bg_color, 0.35);
+                inset 0 1px gtkshade($button_bg, 0.3);
 
     &:backdrop {
       color: $backdrop_fg_color;
       border-color: gtkshade($backdrop_bg_color, 0.85);
       background-color: gtkshade($backdrop_bg_color, 0.85);
       box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.25),
-                  inset 0 1px gtkshade($bg_color, 0.55);
+                  inset 0 1px gtkshade($button_bg, 0.5);
     }
     
     &:disabled {
-      color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
-      border-color: gtkmix($fg, $disabled_bg_color, 0.85);
+      color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.1);
+      border-color: gtkmix($button_fg, $disabled_bg_color, 0.85);
       background-color: gtkshade($disabled_bg_color, 0.9);
       
       &:backdrop {
@@ -44,7 +44,7 @@
   }
 
   &:disabled {
-    color: gtkmix($fg, $backdrop_disabled_fg_color, 0.5);
+    color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.5);
    
     &:backdrop { color: $backdrop_disabled_fg_color; }
   }
@@ -55,18 +55,18 @@
   }
 }
 
-@mixin flat_buttons($bg : $base_color, $fg : $fg_color, $br : $border_color) {
+@mixin flat_buttons($button_bg : $base_color, $button_fg : $fg_color, $button_border : $border_color) {
   border-color: transparent;
   border-radius: $button_radius;
-  color: $fg;
+  color: $button_fg;
   box-shadow: none;
   background-image: none;
   background-color: transparent;
 
   &:hover {
-    color: $fg_color;
-    border-color: gtkshade($br, 0.85);
-    background-color: $bg;
+    color: $button_fg;
+    border-color: gtkshade($button_border, 0.85);
+    background-color: $button_bg;
     background-image: linear-gradient(
       to bottom,
       $base_color 40%,
@@ -77,30 +77,30 @@
 
   &:active, &:checked {
     color: $selected_fg_color;
-    border-color: gtkshade($br, 0.5);
-    background-color: gtkshade($bg, 0.5);
+    border-color: gtkshade($button_border, 0.5);
+    background-color: gtkshade($button_bg, 0.5);
     background-image: none;
     box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.45),
                 inset 0 -2px 3px 1px gtkalpha($light_shadow, 0.45),
-                inset 0 1px gtkshade($bg_color, 0.35);
+                inset 0 1px gtkshade($button_bg, 0.3);
     
     &:backdrop {
       color: $backdrop_fg_color;
       border-color: gtkshade($backdrop_bg_color, 0.85);
       background-color: gtkshade($backdrop_bg_color, 0.85);
       box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.25),
-                  inset 0 1px gtkshade($bg_color, 0.55);
+                  inset 0 1px gtkshade($button_bg, 0.5);
     }
   }
 
   &:disabled {
     border-color: transparent;
-    color: gtkalpha($fg, 0.8);
+    color: gtkalpha($button_fg, 0.8);
     background-color: transparent;
     
     &:backdrop {
       border-color: transparent;
-      color: gtkalpha($fg, 0.7);
+      color: gtkalpha($button_fg, 0.7);
       background-color: transparent;
     }
   }
