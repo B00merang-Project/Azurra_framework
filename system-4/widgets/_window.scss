@@ -1,11 +1,16 @@
+$focus_wm_shadow : 3px 3px $wm_shadow, 0 0 0 1px $wm_shadow;
+$backdrop_wm_shadow : $focus_wm_shadow;
+$popup_wm_shadow : $focus_wm_shadow;
+
 @mixin window() {
   decoration {
     border-radius: $window_radius $window_radius 0 0;
     border-width: 0px;
-    box-shadow: 3px 3px $wm_shadow, 0 0 0 1px $wm_shadow;
+    box-shadow: $focus_wm_shadow;
     margin: 10px;
 
     &:backdrop {
+      box-shadow: $backdrop_wm_shadow;
     }
 
     .maximized &,
@@ -20,7 +25,7 @@
 
     .csd.popup & {
       border-radius: $menu_radius;
-      box-shadow: 3px 3px $wm_shadow, 0 0 0 1px $wm_shadow;
+      box-shadow: $popup_wm_shadow;
     }
 
     .ssd & {

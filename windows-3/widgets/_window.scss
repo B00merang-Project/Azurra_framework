@@ -1,3 +1,8 @@
+// TODO: figure out how to replicate "3D" shadows
+$focus_wm_shadow : none;
+$backdrop_wm_shadow : none;
+$popup_wm_shadow : 0 0 0 1px $wm_shadow;
+
 @mixin window() {
   decoration {
     border-radius: $window_radius $window_radius 0 0;
@@ -8,6 +13,7 @@
     padding: 4px;
 
     &:backdrop {
+      box-shadow: $backdrop_wm_shadow;
     }
 
     .maximized &,
@@ -22,7 +28,7 @@
 
     .csd.popup & {
       border-radius: $menu_radius;
-      box-shadow: 0 0 0 1px $wm_shadow;
+      box-shadow: $popup_wm_shadow;
       padding: 0;
     }
 

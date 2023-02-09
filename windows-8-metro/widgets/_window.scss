@@ -1,12 +1,16 @@
+$focus_wm_shadow : 0 8px 8px 0 gtkalpha($wm_shadow, 0.2), 0 0 0 1px gtkalpha($wm_shadow, 0.3);
+$backdrop_wm_shadow : 0 5px 5px 0 gtkalpha($wm_shadow, 0.2), 0 0 0 1px gtkalpha($wm_shadow, 0.3);
+$popup_wm_shadow : 0 0 0 1px gtkalpha($wm_shadow, 0.1);
+
 @mixin window() {
   decoration {
     border-radius: $window_radius $window_radius 0 0;
     border-width: 0px;
-    box-shadow: 0 8px 8px 0 gtkalpha($wm_shadow, 0.2), 0 0 0 1px gtkalpha($wm_shadow, 0.3);
+    box-shadow: $focus_wm_shadow;
     margin: 10px;
 
     &:backdrop {
-      box-shadow: 0 8px 8px 0 transparent, 0 5px 5px 0 gtkalpha($wm_shadow, 0.2), 0 0 0 1px gtkalpha($wm_shadow, 0.3);
+      box-shadow: $backdrop_wm_shadow;
     }
 
     .maximized &,
@@ -21,7 +25,7 @@
 
     .csd.popup & {
       border-radius: $menu_radius;
-      box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.1);
+      box-shadow: $popup_wm_shadow;
     }
 
     .ssd & {

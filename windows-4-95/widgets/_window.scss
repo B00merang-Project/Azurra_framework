@@ -1,3 +1,8 @@
+// TODO: figure out how to replicate "3D" shadows
+$focus_wm_shadow : none;
+$backdrop_wm_shadow : none; 
+$popup_wm_shadow : none; // 0 0 0 1px gtkalpha($wm_shadow, 0.1);
+
 @mixin window() {
   decoration {
     background-color: $bg_color;
@@ -7,6 +12,7 @@
     box-shadow: inset -2px -2px gtkshade($bg_color, 0.85), inset 2px 2px gtkmix($bg_color, $light_shadow, 0.55), inset -1px -1px $border_color, inset 1px 1px gtkmix($bg_color, $light_shadow, 0.7);
 
     &:backdrop {
+      box-shadow: $backdrop_wm_shadow;
     }
 
     .maximized &,
@@ -21,7 +27,7 @@
 
     .csd.popup & {
       border-radius: $menu_radius;
-      box-shadow: none;
+      box-shadow: $popup_wm_shadow;
       padding: 0;
     }
 
