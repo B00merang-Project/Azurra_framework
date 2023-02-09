@@ -31,3 +31,12 @@ $backdrop_transition : 200ms ease-out;
 $focus_transition : outline-width 200ms $ease-out-quad, outline-offset 200ms $ease-out-quad;
 $button_transition : all 200ms $ease-out-quad;
 $scrollbar_transition : all 300ms $ease-out-quad;
+
+// window shadows (simulate 3D borders with shadows)
+$focus_wm_shadow : inset -2px -2px gtkshade($bg_color, 0.85),
+                   inset 2px 2px gtkmix($bg_color, $light_shadow, 0.55),
+                   inset -1px -1px $border_color,
+                   inset 1px 1px gtkmix($bg_color, $light_shadow, 0.7);
+$backdrop_wm_shadow : $focus_wm_shadow;
+$popup_wm_shadow : none;  // menu has its own borders
+$window_padding : 2px;

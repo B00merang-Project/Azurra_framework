@@ -31,3 +31,9 @@ $backdrop_transition : 200ms ease-out;
 $focus_transition : outline-width 200ms $ease-out-quad, outline-offset 200ms $ease-out-quad;
 $button_transition : all 200ms $ease-out-quad;
 $scrollbar_transition : all 300ms $ease-out-quad;
+
+// window shadows (simulate 3D borders with shadows)
+$focus_wm_shadow : inset 0 0 0 3px $bg_color, inset 0 0 0 1px $border_color;
+$backdrop_wm_shadow : $focus_wm_shadow;
+$popup_wm_shadow : 0 0 0 1px $wm_shadow;
+$window_padding : 2px;

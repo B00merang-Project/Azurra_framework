@@ -176,7 +176,7 @@ label {
   &:disabled { color: $disabled_fg_color;
     button & { color: inherit; }
     
-    > selection & { color: gtkmix($disabled_fg_color, $selected_text_bg_color, 0.5);
+    > selection { color: gtkmix($disabled_fg_color, $selected_text_bg_color, 0.5);
       &:backdrop { color: gtkmix($backdrop_disabled_fg_color, $backdrop_selected_text_bg_color, 0.5); }
     }
   }
@@ -974,7 +974,76 @@ combobox:drop(active) button.combo {
 
 // Misc. end
 
-@include window();
+// window decorations
+window {
+  border-width: 0px;    // necessary to get rounded borders
+  padding: $window_padding;   // normally set to 0; used for themes with 3D window edges (ex. Win 95)
+
+  &.csd {
+    box-shadow: $focus_wm_shadow;
+    margin: 0px;
+    border-radius: $window_radius $window_radius 0 0;
+    
+    &:backdrop {
+      box-shadow: $backdrop_wm_shadow;
+      transition: $backdrop_transition;
+    }
+
+    &.popup {
+      border-radius: $menu_radius;
+      box-shadow: $popup_wm_shadow;
+    }
+
+    &.dialog.message {
+      border-radius: $window_radius;
+      box-shadow: 0 1px 2px gtkalpha($wm_shadow, 0.2),
+                  0 0 0 1px gtkalpha($wm_shadow, 0.35);  // TODO: is this an ok value?
+    }
+  }
+
+  // resize window handles (when no resize preview available)
+  &.solid-csd {
+    margin: 0;
+    padding: 4px;
+    border: solid 1px $border_color;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 4px $border_color,
+                inset 0 0 0 3px $headerbar_bg_color;
+
+    &:backdrop {
+      box-shadow: inset 0 0 0 4px $border_color,
+                  inset 0 0 0 3px $backdrop_bg_color;
+    }
+  }
+
+  &.maximized,
+  &.fullscreen { border-radius: 0; box-shadow: none; }
+
+  &.tiled,
+  &.tiled-top,
+  &.tiled-left,
+  &.tiled-right,
+  &.tiled-bottom {
+    border-radius: 0;
+    box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.35),    // TODO: tweak if necessary
+                0 0 0 20px transparent;   // resize area
+
+    &:backdrop {
+      box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.2),  // TODO: tweak if necessary
+                  0 0 0 20px transparent; // resize area
+    }
+  }
+
+  &.popup { box-shadow: none; }
+
+  // server-side decorations as used by mutter
+  &.ssd { box-shadow: 0 0 0 1px gtkalpha($wm_shadow, 0.4); } // just doing borders, wm draws actual shadows
+}
+
+tooltip.csd {
+  border-radius: $tooltip_radius;
+  box-shadow: none;
+}
 
 // CREATE: new mixin touchselect (touch copy and paste control), or make all themes share a common implementation
 // @include touchselect();
