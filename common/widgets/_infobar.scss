@@ -1,176 +1,118 @@
 @mixin infobar() {
   infobar {
-    border: none;
-  }
+    > revealer > box {
+      padding: 8px;
+      border-spacing: 12px;
+    }
 
-  .info {
-    border-width: 1px;
-    border-style: solid;
-    border-color: gtkshade($info_bg_color, 0.8);
-    color: $info_fg_color;
-    background-image: none;
-    background-color: $info_bg_color;
-
-    button {
-      border-color: gtkshade($info_bg_color, 0.8);
-      color: $info_fg_color;
+    // TODO: for loop?
+    &.info > revealer > box {
+      border: 1px solid gtkshade($info_color, 0.8);
+      color: $selected_fg_color;
       background-image: none;
-      background-color: gtkshade($info_bg_color, 1.08);
+      background-color: $info_color;
 
-      &:hover {
-        border-color: gtkshade($info_bg_color, 0.85);
-        background-color: gtkshade($info_bg_color, 1.10);
-      }
-
-      &:active {
-        border-color: gtkshade($info_bg_color, 0.6);
-        background-color: gtkshade($info_bg_color, 0.95);
+      button {
+        border-color: gtkshade($info_color, 0.8);
+        color: $selected_fg_color;
+        background-image: none;
+        background-color: gtkshade($info_color, 1.08);
 
         &:hover {
-          border-color: gtkshade($info_bg_color, 0.85);
-        }
-      }
-      &.close {
-        color: $info_fg_color;
-
-        &:hover {
-          background-color: gtkalpha($light_shadow, 0.2);
+          border-color: gtkshade($info_color, 0.85);
+          background-color: gtkshade($info_color, 1.10);
         }
 
         &:active {
-          color: $info_fg_color;
-          background-color: gtkalpha($dark_shadow, 0.1);
+          border-color: gtkshade($info_color, 0.6);
+          background-color: gtkshade($info_color, 0.95);
         }
       }
     }
-  }
 
-  .warning {
-    border-width: 1px;
-    border-style: solid;
-    border-color: gtkshade($warning_bg_color, 0.8);
-    color: $warning_fg_color;
-    background-image: none;
-    background-color: $warning_bg_color;
-
-    button {
-      border-color: gtkshade($warning_bg_color, 0.8);
-      color: $warning_fg_color;
+    &.warning > revealer > box {
+      border: 1px solid gtkshade($warning_color, 0.8);
+      color: $selected_fg_color;
       background-image: none;
-      background-color: gtkshade($warning_bg_color, 1.08);
+      background-color: $warning_color;
 
-      &:hover {
-        border-color: gtkshade($warning_bg_color, 0.85);
-        background-color: gtkshade($warning_bg_color, 1.10);
-      }
-
-      &:active {
-        border-color: gtkshade($warning_bg_color, 0.6);
-        background-color: gtkshade($warning_bg_color, 0.95);
+      button {
+        border-color: gtkshade($warning_color, 0.8);
+        color: $selected_fg_color;
+        background-image: none;
+        background-color: gtkshade($warning_color, 1.08);
 
         &:hover {
-          border-color: gtkshade($warning_bg_color, 0.85);
-        }
-      }
-
-      &.close {
-        color: $warning_fg_color;
-
-        &:hover {
-          background-color: gtkalpha($light_shadow, 0.2);
+          border-color: gtkshade($warning_color, 0.85);
+          background-color: gtkshade($warning_color, 1.10);
         }
 
         &:active {
-          color: $warning_fg_color;
-          background-color: gtkalpha($dark_shadow, 0.1);
+          border-color: gtkshade($warning_color, 0.6);
+          background-color: gtkshade($warning_color, 0.95);
         }
       }
     }
-  }
 
-  .question {
-    border-width: 1px;
-    border-style: solid;
-    border-color: gtkshade($question_bg_color, 0.8);
-    color: $question_fg_color;
-    background-image: none;
-    background-color: $question_bg_color;
-
-    button {
-      border-color: gtkshade($question_bg_color, 0.8);
-      color: $question_fg_color;
+    &.question > revealer > box {
+      border: 1px solid gtkshade($question_color, 0.8);
+      color: $selected_fg_color;
       background-image: none;
-      background-color: gtkshade($question_bg_color, 1.08);
+      background-color: $question_color;
 
-      &:hover {
-        border-color: gtkshade($question_bg_color, 0.85);
-        background-color: gtkshade($question_bg_color, 1.10);
-      }
-
-      &:active {
-        border-color: gtkshade($question_bg_color, 0.6);
-        background-color: gtkshade($question_bg_color, 0.95);
+      button {
+        border-color: gtkshade($question_color, 0.8);
+        color: $selected_fg_color;
+        background-image: none;
+        background-color: gtkshade($question_color, 1.08);
 
         &:hover {
-          border-color: gtkshade($question_bg_color, 0.85);
-        }
-      }
-
-      &.close {
-        color: $question_fg_color;
-
-        &:hover {
-          background-color: gtkalpha($light_shadow, 0.2);
+          border-color: gtkshade($question_color, 0.85);
+          background-color: gtkshade($question_color, 1.10);
         }
 
         &:active {
-          color: $question_fg_color;
-          background-color: gtkalpha($dark_shadow, 0.1);
+          border-color: gtkshade($question_color, 0.6);
+          background-color: gtkshade($question_color, 0.95);
         }
       }
     }
-  }
 
-  .error {
-    border-width: 1px;
-    border-style: solid;
-    border-color: gtkshade($error_bg_color, 0.8);
-    background-color: $error_bg_color;
-    background-image: none;
-    color: $error_fg_color;
-
-    button {
-      border-color: gtkshade($error_bg_color, 0.8);
+    &.error > revealer > box {
+      border: 1px solid gtkshade($error_bg_color, 0.8);
+      background-color: $error_bg_color;
+      background-image: none;
       color: $error_fg_color;
-      background-image: none;
-      background-color: gtkshade($error_bg_color, 1.08);
 
-      &:hover {
-        border-color: gtkshade($error_bg_color, 0.85);
-        background-color: gtkshade($error_bg_color, 1.10);
-      }
-
-      &:active {
-        border-color: gtkshade($error_bg_color, 0.6);
-        background-color: gtkshade($error_bg_color, 0.95);
+      button {
+        border-color: gtkshade($error_bg_color, 0.8);
+        color: $error_fg_color;
+        background-image: none;
+        background-color: gtkshade($error_bg_color, 1.08);
 
         &:hover {
           border-color: gtkshade($error_bg_color, 0.85);
-        }
-      }
-
-      &.close {
-        color: $error_fg_color;
-
-        &:hover {
-          background-color: gtkalpha($light_shadow, 0.2);
+          background-color: gtkshade($error_bg_color, 1.10);
         }
 
         &:active {
-          color: $error_fg_color;
-          background-color: gtkalpha($dark_shadow, 0.1);
+          border-color: gtkshade($error_bg_color, 0.6);
+          background-color: gtkshade($error_bg_color, 0.95);
         }
       }
     }
-  }
+    
+    // close button for info and searchbar
+    // TODO: use flat button
+    .close {
+      color: $selected_fg_color;
+      border-color: transparent;
+      background-color: transparent;
+      background-image: none;
+      box-shadow: none;
+      
+      &:hover { background-color: gtkalpha($light_shadow, 0.2); }
+      &:active { background-color: gtkalpha($dark_shadow, 0.1); }
+    }
+  }  
 }

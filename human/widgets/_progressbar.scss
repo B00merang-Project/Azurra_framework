@@ -11,7 +11,8 @@
     progress {
       border: 1px solid gtkshade($selected_bg_color, 1.1);
       border-radius: $progressbar_radius;
-      background-color: gtkshade(gtkmix($selected_bg_color, $warning_bg_color, 0.2), 1.2);
+      // TODO: don't use warning color, may be deprecated in the future
+      background-color: gtkshade(gtkmix($selected_bg_color, $warning_color, 0.2), 1.2);
       box-shadow: inset 1px 1px gtkalpha($light_shadow, 0.15);
       
       background-image: repeating-linear-gradient(65deg, $bg, $bg 10px, $stripe 10px, $stripe 20px);

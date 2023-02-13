@@ -1,19 +1,35 @@
 @mixin infobar() {
   infobar {
-    border: none;
+    > revealer > box {
+      padding: 8px;
+      border-spacing: 12px;
+    }
 
-    &.info, &.question, &.warning, &.error {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
+    &.info,
+    &.question,
+    &.warning,
+    &.error {
+      > revealer > box {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
 
-      &:backdrop {
-        color: $backdrop_selected_fg_color;
-        background-color: $backdrop_selected_bg_color;
-      }
-
-      button {
-      	@include normal_buttons($selected_bg_color, $selected_fg_color, gtkshade($selected_bg_color, 0.8));
+        &:backdrop {
+          color: $backdrop_selected_fg_color;
+          background-color: $backdrop_selected_bg_color;
+        }
       }
     }
+
+    button {
+    	@include normal_buttons($selected_bg_color, $selected_fg_color, gtkshade($selected_bg_color, 0.8));
+    }
+  }
+
+  infobar .close,
+  searchbar .close {
+    @include flat_buttons($selected_bg_color, $selected_fg_color, gtkshade($selected_bg_color, 0.8));
+    min-width: 16px;
+    min-height: 16px;
+    padding: 4px;
   }
 }
