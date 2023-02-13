@@ -1199,7 +1199,35 @@ menubutton {
 
 // TODO: include '> image' nodes in affected widgets
 //@include images();
-@include floating_bar();
+.floating-bar {
+  @include floating_bar();
+  
+  &.top {
+    border-top-width: 0px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+  }
+
+  &.bottom {
+    border-bottom-width: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+  
+  &.top, &.bottom {
+    &.left {
+      border-left-width: 0px;
+      border-bottom-left-radius: 0px;
+      border-top-left-radius: 0px;
+    }
+
+    &.right {
+      border-right-width: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+  }
+}  
 
 .terminal-screen, terminal-window, vte-terminal {
   background-color: $terminal_bg_color;
