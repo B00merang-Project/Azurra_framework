@@ -1,26 +1,28 @@
-@mixin normal_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
+@mixin normal_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
   padding: 4px 8px;
   border-style: solid;
   border-width: 1px;
   border-radius: $button_radius;
-  color: $fg;
-  border-color: $br;
-  background-color: $bg;
+  color: $button_fg;
+  border-color: $button_border;
+  background-color: $button_bg;
   background-image: linear-gradient(
     to bottom,
-    gtkshade($bg, 1.05) 5%,
-    $bg 20%, $bg 70%,
-    gtkshade($bg, 0.95) 90%
+    gtkshade($button_bg, 1.05) 5%,
+    $button_bg 20%,
+    $button_bg 70%,
+    gtkshade($button_bg, 0.95) 90%
   );
-  box-shadow: inset -1px 0 gtkshade($bg, 0.65),
-              inset 0 -1px gtkshade($bg, 0.65),
-              inset 1px 0 gtkmix($bg, $light_shadow, 0.7),
-              inset 0 1px gtkmix($bg, $light_shadow, 0.7);
-  outline-color: $fg;
+  box-shadow: inset -1px 0 gtkshade($button_bg, 0.65),
+              inset 0 -1px gtkshade($button_bg, 0.65),
+              inset 1px 0 gtkmix($button_bg, $light_shadow, 0.7),
+              inset 0 1px gtkmix($button_bg, $light_shadow, 0.7);
+  outline-color: $button_fg;
   outline-offset: 0;
   outline-style: solid;
 
   &:hover {
+    // TODO: use come other color instead?
     background-color: $color_shadow;
     box-shadow: inset -1px 0 gtkshade($color_shadow, 0.65),
                 inset 0 -1px gtkshade($color_shadow, 0.65),
@@ -36,8 +38,8 @@
   }
 
   &:active, &:checked {
-    color: $fg;
-    border-color: $br;
+    color: $button_fg;
+    border-color: $button_border;
     background-color: $color_shadow;
     box-shadow: none;
     background-image: linear-gradient(
@@ -49,8 +51,8 @@
     );
 
     &:disabled {
-      color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
-      border-color: gtkmix($fg, $disabled_bg_color, 0.85);
+      color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.1);
+      border-color: gtkmix($button_fg, $disabled_bg_color, 0.85);
       background-color: gtkshade($disabled_bg_color, 0.9);
       background-image: linear-gradient(
         to top,
@@ -62,37 +64,38 @@
     }
   }
 
-  &:disabled { color: gtkmix($fg, $backdrop_disabled_fg_color, 0.5); }
+  &:disabled { color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.5); }
 }
 
-@mixin flat_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
+@mixin flat_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
   border-color: transparent;
   border-radius: $button_radius;
-  color: $fg;
+  color: $button_fg;
   box-shadow: none;
   background-image: none;
   background-color: transparent;
 
   &:hover {
-    color: $fg;
-    border-color: $br;
-    background-color: $bg;
+    color: $button_fg;
+    border-color: $button_border;
+    background-color: $button_bg;
     background-image: linear-gradient(
       to bottom,
-      gtkshade($bg, 1.05) 5%,
-      $bg 20%,
-      $bg 70%,
-      gtkshade($bg, 0.95) 90%
+      gtkshade($button_bg, 1.05) 5%,
+      $button_bg 20%,
+      $button_bg 70%,
+      gtkshade($button_bg, 0.95) 90%
     );
-    box-shadow: inset -1px 0 gtkshade($bg, 0.65),
-                inset 0 -1px gtkshade($bg, 0.65),
-                inset 1px 0 gtkmix($bg, $light_shadow, 0.7),
-                inset 0 1px gtkmix($bg, $light_shadow, 0.7);
+    box-shadow: inset -1px 0 gtkshade($button_bg, 0.65),
+                inset 0 -1px gtkshade($button_bg, 0.65),
+                inset 1px 0 gtkmix($button_bg, $light_shadow, 0.7),
+                inset 0 1px gtkmix($button_bg, $light_shadow, 0.7);
   }
 
+  // TODO: maybe use another color?
   &:active, &:checked {
-    color: $fg;
-    border-color: $br;
+    color: $button_fg;
+    border-color: $button_border;
     background-color: $color_shadow;
     box-shadow: none;
     background-image: linear-gradient(
@@ -106,7 +109,7 @@
 
   &:disabled {
     border-color: transparent;
-    color: gtkalpha($fg, 0.8);
+    color: gtkalpha($button_fg, 0.8);
     background-color: transparent;
   }
 }

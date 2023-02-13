@@ -1,20 +1,18 @@
-@mixin normal_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
+@mixin normal_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
   padding: 3px;
-  border-style: solid;
-  border-width: 1px;
+  border: 1px solid $button_border;
   border-radius: $button_radius;
-  color: $fg;
-  border-color: $br;
-  background-color: $bg;
+  color: $button_fg;
+  background-color: $button_bg;
 
   &:hover {
-    color: $fg;
+    color: $button_fg;
     border-color: gtkshade($selected_bg_color, 0.7);
     background-color: gtkshade($selected_bg_color, 1.02);
   }
 
   &:active, &:checked {
-    color: $fg;
+    color: $button_fg;
     border-color: gtkshade($selected_bg_color, 0.8);
     background-color: gtkshade($selected_bg_color, 0.95);
 
@@ -25,14 +23,14 @@
     }
     
     &:disabled {
-      color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
-      border-color: gtkmix($bg, $disabled_bg_color, 0.6);
-      background-color: gtkmix($bg, $disabled_bg_color, 0.2);
+      color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.1);
+      border-color: gtkmix($button_bg, $disabled_bg_color, 0.6);
+      background-color: gtkmix($button_bg, $disabled_bg_color, 0.2);
       
       &:backdrop {
         color: $backdrop_disabled_fg_color;
         border-color: $backdrop_border_color;
-        background-color: gtkmix($bg, $disabled_bg_color, 0.2);
+        background-color: gtkmix($button_bg, $disabled_bg_color, 0.2);
       }
     }
   }
@@ -42,9 +40,9 @@
   }
 
   &:disabled {
-    color: gtkmix($fg, $backdrop_disabled_fg_color, 0.1);
-    border-color: gtkmix($bg, $disabled_bg_color, 0.6);
-    background-color: gtkmix($bg, $disabled_bg_color, 0.1);
+    color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.1);
+    border-color: gtkmix($button_bg, $disabled_bg_color, 0.6);
+    background-color: gtkmix($button_bg, $disabled_bg_color, 0.1);
 
     &:backdrop {
       color: $backdrop_disabled_fg_color;
@@ -60,20 +58,20 @@
   }
 }
 
-@mixin flat_buttons($bg : $bg_color, $fg : $fg_color, $br : $border_color) {
+@mixin flat_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
   border-color: transparent;
   border-radius: $button_radius;
-  color: $fg;
+  color: $button_fg;
   background-color: transparent;
 
   &:disabled {
     border-color: transparent;
-    color: gtkalpha($fg, 0.8);
+    color: gtkalpha($button_fg, 0.8);
     background-color: transparent;
     
     &:backdrop {
       border-color: transparent;
-      color: gtkalpha($fg, 0.7);
+      color: gtkalpha($button_fg, 0.7);
       background-color: transparent;
     }
   }
