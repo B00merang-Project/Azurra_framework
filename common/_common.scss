@@ -461,7 +461,172 @@ pathbar > button {
   }
 }
 
-@include treeview();
+// treeview
+// TODO: move elsewhere?
+$treeview_border: gtkmix($border_color, $base_color, 0.2);
+$treeview_backdrop_border: gtkmix($backdrop_border_color, $base_color, 0.2);
+
+columnview.view, treeview.view {
+  border-left-color: $treeview_border; // tree line color
+  border-top-color:  $treeview_border; // grid line border color
+
+  // TODO: outline widget
+  //@include focus-ring();
+
+  > rubberband { @include rubberband(); }
+
+  &:selected {
+    &, &:focus { @include selected_items('normal'); 
+      &:backdrop { @include selected_items('backdrop'); }
+
+      border-radius: 0;
+    }
+  }
+
+  &:disabled { color: $disabled_fg_color;
+    &:backdrop { color: $backdrop_disabled_fg_color; }
+
+    &:selected { @include selected_items('disabled');
+      &:backdrop { @include selected_items('backdrop-disabled'); }
+    }
+  }
+
+  &.separator {
+    min-height: 2px;
+    color: $treeview_border;
+  }
+
+  &:backdrop {
+    border-left-color: $treeview_backdrop_border;
+    border-top: $treeview_backdrop_border;
+  }
+
+  &:drop(active) { box-shadow: none; }
+
+  > dndtarget:drop(active) {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: $drop_target_color;
+
+    &.after { border-top-style: none; }
+    &.before { border-bottom-style: none; }
+  }
+
+  &.expander {
+    // only one size applies at a time, based on orientation
+    min-width: 16px;
+    min-height: 16px;
+    color: mix($text_color, $base_color, 70%);
+
+    &:hover { color: $text_color; }
+    &:selected { color: gtkmix($selected_fg_color, $selected_bg_color, 0.3);
+      &:hover { color: $selected_fg_color; }
+    }
+
+    -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+
+    &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+    &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
+  }
+
+  &.progressbar {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+    background-image: image($selected_bg_color);
+    box-shadow: none;
+
+    &:selected {
+      &:focus, & {
+        color: $selected_bg_color;
+        background-image: image($selected_fg_color);
+
+        &:backdrop {
+          color: $backdrop_selected_bg_color;
+          background-color: $backdrop_selected_fg_color;
+        }
+      }
+    }
+  }
+
+  &.trough {
+    background-color: gtkalpha($fg_color, 0.9);
+
+    &:selected, &:selected:focus {
+      background-color: gtkalpha($selected_fg_color, 0.3);
+    }
+  }
+
+  // TODO: move to mixin to make more customizable (ex. Windows xP Luna)
+  > header > button {
+    $column_header_fg_color: mix($fg_color, $base_color, 50%);
+
+    @extend %column_header_button;
+
+    color: $column_header_fg_color;
+    background-color: $base_color; //$bg_color?
+    font-weight: bold;
+    text-shadow: none;
+    box-shadow: none;
+
+    &:hover {
+      @extend %column_header_button;
+
+      color: mix($column_header_fg_color, $fg_color, 50%);
+      box-shadow: none;
+      transition: none;
+    }
+
+    &:active {
+      @extend %column_header_button;
+
+      color: $fg_color;
+      transition: none;
+    }
+    
+    sort-indicator {
+      min-height: 16px;
+      min-width: 16px;
+
+      &.ascending { -gtk-icon-source: -gtk-icontheme('pan-up-symbolic'); }
+      &.descending { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+    }
+  }
+
+  button.dnd, header.button.dnd {
+    &:active, &:selected, &:hover, & {
+      padding: 0 6px;
+      color: $selected_fg_color;
+      background-image: none;
+      background-color: $selected_bg_color;
+      border-style: none;
+      border-radius: 0;
+      box-shadow: inset 0 0 0 1px $selected_fg_color;
+      text-shadow: none;
+      transition: none;
+    }
+  }
+
+  acceleditor > label {
+    background-color: $selected_bg_color;
+  }
+}
+
+%column_header_button {
+  padding: 0 6px;
+  background-image: none;
+  border-style: none none solid solid;
+  border-color: $treeview_border;
+  border-radius: 0;
+  text-shadow: none;
+
+  &:disabled {
+    border-color: $bg_color;
+    background-image: none;
+  }
+
+  &:last-child, &:last-child:backdrop { border-right-style: none; }
+}
+
 @include popover();
 
 magnifier { background-color: $base_color; }
