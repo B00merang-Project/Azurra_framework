@@ -81,9 +81,7 @@ textview {
   }
 
   &:drop(active) {
-    // TODO: color for :drop status
-    //caret-color: $drop_target_color;
-    caret-color: $color_shadow;
+    caret-color: $drop_target_color;
   }
 }
 
@@ -99,7 +97,7 @@ iconview {
   > dndtarget:drop(active) {
     // TODO: :drop color or something else?
     //border: 1px solid $selected_borders_color;
-    border: 1px solid $color_shadow;
+    border: 1px solid $drop_target_color;
   }
 }
 
@@ -815,15 +813,15 @@ colorswatch {
     box-shadow: none;
 
     &.light > overlay {
-      border-color: $color_shadow;
+      border-color: $drop_target_color;
       box-shadow: inset 0 0 0 2px $border_color,
-                  inset 0 0 0 1px $color_shadow;
+                  inset 0 0 0 1px $drop_target_color;
     }
 
     &.dark > overlay {
-      border-color: $color_shadow;
+      border-color: $drop_target_color;
       box-shadow: inset 0 0 0 2px $border_color,
-                  inset 0 0 0 1px $color_shadow;
+                  inset 0 0 0 1px $drop_target_color;
     }
   }
 
@@ -949,27 +947,25 @@ button.circular, button.circular-button {
   border-radius: 50%;
 }
 
-// TODO: this should be moved to their respective widget files
-// TODO: use new `$drop_target_color` for :drop(active) states
-// drop function styles
-// CREATE: mixin drop()?
+// TODO: :drop should be implemented in the widget file
 filechooserbutton:drop(active) {
   box-shadow: none;
   border-color: transparent;
 }
 
-// TODO: move to _button.scss
+// TODO: move to _button.scss / new mixin combobox?
 combobox:drop(active) button.combo {
   box-shadow: none;
-  color: gtkshade($success_color, 0.8);
-  border-color: gtkshade($success_color, 0.8);
+  color: $drop_target_color;
+  border-color: $drop_target_color;
 }
 
-// TODO: move to _button.scss
-:not(decoration):not(window):drop(active), :not(decoration):not(window):drop(active):focus, combobox:drop(active) button.combo {
-  border-color: $selected_bg_color;
-  box-shadow: inset 0 0 0 1px $selected_bg_color;
-  caret-color: $selected_bg_color;
+// TODO: where to move this? It it still valid?
+:not(decoration):not(window):drop(active),
+:not(decoration):not(window):drop(active):focus {
+  border-color: $drop_target_color;
+  box-shadow: inset 0 0 0 1px $drop_target_color;
+  caret-color: $drop_target_color;
 }
 
 // Misc. end
