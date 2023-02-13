@@ -16,6 +16,7 @@ show_ops() {
   echo "For '_colors.scss'"
   echo "  -fc  <VALUE>                 Find <VALUE>"
   echo "  -rc  <VALUE> <NEW_VALUE>     Replace <VALUE> with <NEW_VALUE>"
+  echo "  -dc  <VALUE>                 Delete lines containing <VALUE>"
   echo "  -acf <NAME>  <VALUE> <FIND>  Add SCSS snippet '$<NAME> : <VALUE>;' after line <FIND>"
 
   echo
@@ -176,6 +177,15 @@ widget_delete() {
   done
 }
 
+colors_delete() {
+  local theme_dir="$1"
+  local value="$2"
+  
+  for FILE in "$theme_dir/_colors"*.scss; do
+    delete "$value" "$FILE"
+  done
+}
+
 config_delete() {
   local theme_dir="$1"
   local value="$2"
@@ -238,7 +248,8 @@ case $1 in
   -rp)  OP="properties_replace"  ;  MOD=1;  ARGS=3 ;;
   -rt)  OP="config_replace"      ;  MOD=1;  ARGS=3 ;;
   -di)  OP="imports_delete"      ;  MOD=1;;
-  -di)  OP="config_delete"       ;  MOD=1;;
+  -dc)  OP="colors_delete"       ;  MOD=1;;
+  -dt)  OP="config_delete"       ;  MOD=1;;
   -dw)  OP="widget_delete"       ;  MOD=1;;
   -at)  OP="config_append"       ;  MOD=1;;
   -ai)  OP="imports_append"      ;  MOD=1;;
