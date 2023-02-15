@@ -1,40 +1,42 @@
+$imgtype : "png";
+
 // added the ext part for when we need selected (or dark) assets
 @mixin check($ext : "") {
-  -gtk-icon-source: gtkscale("assets/checkbox-unchecked" + $ext, ".png");
-  &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-unchecked-unfocused" + $ext, ".png"); }
-  &:disabled { -gtk-icon-source: gtkscale("assets/checkbox-unchecked-insensitive" + $ext, ".png");
-    &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-unchecked-insensitive-unfocused" + $ext, ".png"); }
+  -gtk-icon-source: gtkscale("assets/checkbox-unchecked" + $ext, $imgtype);
+  &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-unchecked-unfocused" + $ext, $imgtype); }
+  &:disabled { -gtk-icon-source: gtkscale("assets/checkbox-unchecked-insensitive" + $ext, $imgtype);
+    &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-unchecked-insensitive-unfocused" + $ext, $imgtype); }
   }
-  &:active, &:checked { -gtk-icon-source: gtkscale("assets/checkbox-checked" + $ext, ".png");
-    &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-checked-unfocused" + $ext, ".png"); }
-    &:disabled { -gtk-icon-source: gtkscale("assets/checkbox-checked-insensitive" + $ext, ".png");
-      &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-checked-insensitive-unfocused" + $ext, ".png"); }
+  &:active, &:checked { -gtk-icon-source: gtkscale("assets/checkbox-checked" + $ext, $imgtype);
+    &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-checked-unfocused" + $ext, $imgtype); }
+    &:disabled { -gtk-icon-source: gtkscale("assets/checkbox-checked-insensitive" + $ext, $imgtype);
+      &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-checked-insensitive-unfocused" + $ext, $imgtype); }
     }
   }
-  &:indeterminate { -gtk-icon-source: gtkscale("assets/checkbox-mixed" + $ext, ".png");      
-    &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-mixed-unfocused" + $ext, ".png"); }
-    &:disabled { -gtk-icon-source: gtkscale("assets/checkbox-mixed-insensitive" + $ext, ".png");        
-      &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-mixed-insensitive-unfocused" + $ext, ".png"); }
+  &:indeterminate { -gtk-icon-source: gtkscale("assets/checkbox-mixed" + $ext, $imgtype);      
+    &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-mixed-unfocused" + $ext, $imgtype); }
+    &:disabled { -gtk-icon-source: gtkscale("assets/checkbox-mixed-insensitive" + $ext, $imgtype);        
+      &:backdrop { -gtk-icon-source: gtkscale("assets/checkbox-mixed-insensitive-unfocused" + $ext, $imgtype); }
     }
   }
 }
 
 @mixin radio($ext : "") {
-  -gtk-icon-source: gtkscale("assets/radio-unchecked" + $ext, ".png");
-  &:backdrop { -gtk-icon-source: gtkscale("assets/radio-unchecked-unfocused" + $ext, ".png"); }
-  &:disabled { -gtk-icon-source: gtkscale("assets/radio-unchecked-insensitive" + $ext, ".png");
-    &:backdrop { -gtk-icon-source: gtkscale("assets/radio-unchecked-insensitive-unfocused" + $ext, ".png"); }
+  -gtk-icon-source: gtkscale("assets/radio-unchecked" + $ext, $imgtype);
+  &:backdrop { -gtk-icon-source: gtkscale("assets/radio-unchecked-unfocused" + $ext, $imgtype); }
+  &:disabled { -gtk-icon-source: gtkscale("assets/radio-unchecked-insensitive" + $ext, $imgtype);
+    &:backdrop { -gtk-icon-source: gtkscale("assets/radio-unchecked-insensitive-unfocused" + $ext, $imgtype); }
   }
-  &:active, &:checked { -gtk-icon-source: gtkscale("assets/radio-checked" + $ext, ".png");
-    &:backdrop { -gtk-icon-source: gtkscale("assets/radio-checked-unfocused" + $ext, ".png"); }
-    &:disabled { -gtk-icon-source: gtkscale("assets/radio-checked-insensitive" + $ext, ".png");
-      &:backdrop { -gtk-icon-source: gtkscale("assets/radio-checked-insensitive-unfocused" + $ext, ".png"); }
+  &:active, &:checked { -gtk-icon-source: gtkscale("assets/radio-checked" + $ext, $imgtype);
+    &:backdrop { -gtk-icon-source: gtkscale("assets/radio-checked-unfocused" + $ext, $imgtype); }
+    &:disabled { -gtk-icon-source: gtkscale("assets/radio-checked-insensitive" + $ext, $imgtype);
+      &:backdrop { -gtk-icon-source: gtkscale("assets/radio-checked-insensitive-unfocused" + $ext, $imgtype); }
     }
   }
-  &:indeterminate { -gtk-icon-source: gtkscale("assets/radio-mixed" + $ext, ".png");
-    &:backdrop { -gtk-icon-source: gtkscale("assets/radio-mixed-unfocused" + $ext, ".png"); }
-    &:disabled { -gtk-icon-source: gtkscale("assets/radio-mixed-insensitive" + $ext, ".png");
-      &:backdrop { -gtk-icon-source: gtkscale("assets/radio-mixed-insensitive-unfocused" + $ext, ".png"); }
+  &:indeterminate { -gtk-icon-source: gtkscale("assets/radio-mixed" + $ext, $imgtype);
+    &:backdrop { -gtk-icon-source: gtkscale("assets/radio-mixed-unfocused" + $ext, $imgtype); }
+    &:disabled { -gtk-icon-source: gtkscale("assets/radio-mixed-insensitive" + $ext, $imgtype);
+      &:backdrop { -gtk-icon-source: gtkscale("assets/radio-mixed-insensitive-unfocused" + $ext, $imgtype); }
     }
   }
 }
@@ -51,11 +53,10 @@
     min-width: $checkradio_size;    
   }
   
-  check, .check { @include check(); }
-  radio, .radio { @include radio(); }
-  
-  menuitem, .menuitem, menuitem.button.flat, .menuitem.button.flat, modelbutton.flat, menuitem.button.flat {
-    check { @include check(); }
-    radio { @include radio(); }
+  check {
+    &, popover.menu &, modelbutton.flat & { @include check(); }
+  }
+  radio {
+    &, popover.menu &, modelbutton.flat & { @include radio(); }
   }
 }

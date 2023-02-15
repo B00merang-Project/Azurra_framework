@@ -1,27 +1,6 @@
 // Sourced from https://github.com/ndwarshuis/CinnXP
 
 @mixin checkradio() {
-  //selection-mode
-  @each $s,$as in ('','-selectionmode'),
-                    (':hover', '-hover-selectionmode'),
-                    (':active', '-active-selectionmode'),
-                    (':checked', '-checked-selectionmode'),
-                    (':checked:hover', '-checked-hover-selectionmode'),
-                    (':checked:active', '-checked-active-selectionmode') {
-    .view.content-view.check#{$s}:not(list),
-    .content-view .tile check#{$s}:not(list) {
-      -gtk-icon-shadow: none;
-      -gtk-icon-source: -gtk-scaled(url("assets/checkbox#{$as}.png"));
-      background-color: transparent;
-      min-width: 41px;
-      min-height: 41px;
-      background-image: none;
-      transition: none;
-      box-shadow: none;
-      border-width: 0;
-    }
-  }
-
   checkbutton.text-button, radiobutton.text-button {
     // this is for a nice focus on check and radios text
     padding: 2px 0;
@@ -65,33 +44,28 @@
       .view #{$w}#{$s}:selected,
       row:selected #{$w}#{$s} {
         -gtk-icon-source: none;
-        background-image: linear-gradient(to bottom, gtkalpha($selected_bg_color, 0.85), gtkalpha($selected_bg_color, 0.85)),
-                          url("assets/#{$a}#{$as}.png"); //dirty hack
+        background-image: linear-gradient(
+          to bottom,
+          gtkalpha($selected_bg_color, 0.85),
+          gtkalpha($selected_bg_color, 0.85)
+        ),
+        url("assets/#{$a}#{$as}.png"); //dirty hack
 
         &:backdrop { -gtk-icon-source: -gtk-scaled(url("assets/#{$a}#{$as}.png")); }
       }
     }
 
-    //menu
-    menu menuitem #{$w} {
-      -gtk-icon-shadow: none;
-
+    popover.menu #{$w} { -gtk-icon-shadow: none;
       &:hover, &:disabled, & { -gtk-icon-source: none; }
 
       &:active,
-      &:checked {
-        -gtk-icon-source: -gtk-scaled(url("assets/menu-#{$w}-checked.png"));
-
+      &:checked { -gtk-icon-source: -gtk-scaled(url("assets/menu-#{$w}-checked.png"));
         &:hover { -gtk-icon-source: -gtk-scaled(url("assets/menu-#{$w}-checked-hover.png")); }
-
         &:disabled { -gtk-icon-source: -gtk-scaled(url("assets/menu-#{$w}-checked-insensitive.png")); }
       }
 
-      &:indeterminate {
-        -gtk-icon-source: -gtk-scaled(url("assets/menu-#{$w}-mixed.png")); 
-        
+      &:indeterminate { -gtk-icon-source: -gtk-scaled(url("assets/menu-#{$w}-mixed.png")); 
         &:hover { -gtk-icon-source: -gtk-scaled(url("assets/menu-#{$w}-mixed-hover.png")); }
-
         &:disabled { -gtk-icon-source: -gtk-scaled(url("assets/menu-#{$w}-mixed-insensitive.png")); }
       }
     }
