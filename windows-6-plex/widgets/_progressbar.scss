@@ -1,89 +1,49 @@
 @mixin progressbar() {
   progressbar {
-    padding: 0;
-    border: none;
+    font-size: smaller;
     color: gtkmix($fg_color, $selected_fg_color, 0.5);
-    background-color: transparent;
 
-    progress {
+    // TODO: replace hard-coded colors
+    > trough {
+      padding: 1px 0;
+      border: 1px solid $border_color;
+      border-radius: $progressbar_radius;
+      background-color: transparent;
+      background-image: image(#e4eef4);
+      border-image: url('assets/trough.png') 4 4 4 4 / 4px 4px 4px 4px stretch;
+    }
+    
+    > trough > progress {
       border: 1px solid transparent;
       border-radius: 0;
       background-color: $selected_bg_color;
       border-image: url('assets/progress.png') 4 4 4 4 / 8px 8px 8px 8px stretch;
       background-size: 16px 16px, auto;
-
-      &:backdrop {
-      }
-    }
-
-    trough {
-      padding: 1px 0;
-      border-width: 1px;
-      border-style: solid;
-      border-color: $border_color;
-      border-radius: $progressbar_radius;
-      background-color: transparent;
-      background-image: image(#e4eef4);
-      border-image: url('assets/trough.png') 4 4 4 4 / 4px 4px 4px 4px stretch;
-
-      &:backdrop {
-      }
     }
     
     &.vertical {
-      progress {
-        border-image: url('assets/progress-vert.png') 4 4 4 4 / 8px 8px 8px 8px stretch;
-        background-size: 16px 16px, auto;
-      }
-      
-      trough {
+      > trough {
         padding: 0 1px;
         border-image: url('assets/trough-vert.png') 4 4 4 4 / 4px 4px 4px 4px stretch;
       }
+      
+      > trough > progress {
+        border-image: url('assets/progress-vert.png') 4 4 4 4 / 8px 8px 8px 8px stretch;
+        background-size: 16px 16px, auto;
+      }
     }
 
-    &.horizontal trough,
-    &.horizontal progress {
+    &.horizontal > trough { min-width: 150px; }
+    &.vertical > trough { min-height: 80px; }
+
+    &.horizontal > trough,
+    &.horizontal > trough > progress {
       min-height: 16px;
     }
 
-    &.vertical trough,
-    &.vertical progress {
+    &.vertical > trough,
+    &.vertical > trough > progress {
       min-width: 16px;
-    }
-  }
-
-  treeview.view {
-    &.progressbar {
-      &, &:disabled {
-        color: $selected_fg_color;
-        border-radius: 0;
-        background-color: $selected_bg_color;
-      }
-
-      &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
-        border-radius: 0;
-        color: $selected_bg_color;
-        background-color: $selected_fg_color;
-      }
-    }
-
-    &.trough {
-      color: $fg_color;
-      background-color: gtkalpha($dark_shadow, 0.1);
-      border-radius: 0;
-      border: none;
-
-      &:selected, &:selected:focus {
-        color: $selected_fg_color;
-        background-color: gtkalpha($dark_shadow, 0.1);
-        border-radius: 0;
-        border: none;
-      }
-    }
-
-    infobar trough, row:selected trough {
-      background-color: gtkalpha($dark_shadow, 0.1);
     }
   }
 }

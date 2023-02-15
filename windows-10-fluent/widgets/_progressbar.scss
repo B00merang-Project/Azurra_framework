@@ -1,71 +1,34 @@
 @mixin progressbar() {
   progressbar {
-    padding: 0;
-    border: none;
+    font-size: smaller;
     color: gtkmix($fg_color, $selected_fg_color, 0.5);
-    background-color: transparent;
 
-    progress {
+    > trough {
+      border-radius: $progressbar_radius;
+      background-color: gtkalpha($fg_color, 0.1);
+
+      &:backdrop { background-color: gtkshade($backdrop_bg_color, 0.95); }
+    }
+
+    > trough > progress {
       border: none;
       border-radius: $progressbar_radius;
       background-color: $selected_bg_color;
 
-      &:backdrop {
-        background-color: $backdrop_selected_bg_color;
-      }
+      &:backdrop { background-color: $backdrop_selected_bg_color; }
     }
 
-    trough {
-      border-radius: $progressbar_radius;
-      background-color: gtkalpha($fg_color, 0.1);
+    &.horizontal > trough { min-width: 150px; }
+    &.vertical > trough { min-height: 80px; }
 
-      &:backdrop {
-        background-color: gtkshade($backdrop_bg_color, 0.95);
-      }
-    }
-
-    &.horizontal trough,
-    &.horizontal progress {
+    &.horizontal > trough,
+    &.horizontal > trough > progress {
       min-height: 7px;
     }
 
-    &.vertical trough,
-    &.vertical progress {
+    &.vertical > trough,
+    &.vertical > trough > progress {
       min-width: 7px;
-    }
-  }
-
-  treeview.view {
-    &.progressbar {
-      &, &:disabled {
-        color: $selected_fg_color;
-        border-radius: 0;
-        background-color: $selected_bg_color;
-      }
-
-      &:focus, &:selected:focus, &:focus:selected, &:focus:selected:focus, &:disabled:selected {
-        border-radius: 0;
-        color: $selected_bg_color;
-        background-color: $selected_fg_color;
-      }
-    }
-
-    &.trough {
-      color: $fg_color;
-      background-color: gtkalpha($fg_color, 0.1);
-      border-radius: 0;
-      border: none;
-
-      &:selected, &:selected:focus {
-        color: $selected_fg_color;
-        background-color: gtkalpha($fg_color, 0.1);
-        border-radius: 0;
-        border: none;
-      }
-    }
-
-    infobar & trough, row:selected & trough {
-      background-color: gtkalpha($fg_color, 0.1);
     }
   }
 }
