@@ -50,17 +50,14 @@ textview {
     background-color: $base_color;
 
     &:disabled {
-      color: $disabled_fg_color;
-      background-color: $disabled_bg_color;
+      color: $disabled_text_color;
+      background-color: $disabled_text_color;
     }
 
     &:selected {
       &:focus, & {
-        color: $selected_fg_color;
-        background-color: $selected_bg_color;
-
-        // TODO: is this required?
-        //border-radius: $viewitem_radius;
+        color: $selected_text_color;
+        background-color: $selected_text_bg_color;
       }
       
       &:backdrop {
@@ -72,9 +69,11 @@ textview {
     background-color: transparent;
 
     > selection {
-      background-color: $backdrop_selected_bg_color;
+      color: $backdrop_selected_text_color;
+      background-color: $backdrop_selected_text_bg_color;
 
       &:focus-within {
+        color: $selected_text_color;
          background-color: $selected_text_bg_color;
       }
     }
