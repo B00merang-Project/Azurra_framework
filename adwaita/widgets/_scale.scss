@@ -1,14 +1,28 @@
+// TODO: move to properties
+$scale_radius : 4px;
+$scale_padding : 12px;
+$scale_finetune_margin : 3px;
+
+$scale_marks_length : 6px;
+$scale_marks_distance: 6px;
+
+$scale_slider_width : 18px;
+$scale_slider_height : 18px;
+$scale_slider_radius : 100%;
+$scale_slider_margin : -9px;
+
 @mixin scale() {
   scale {
     min-height: 10px;
     min-width: 10px;
-    padding: 12px;
+    padding: $scale_padding;
 
-    trough {
+    > trough {
       border: 1px solid gtkshade($border_color, 0.95);
-      border-radius: 4px;
+      border-radius: $scale_radius;
       background-color: gtkalpha($dark_shadow, 0.1);
-      outline-offset: 2px;
+      
+      // TODO: outline widget
 
       &:disabled {
         border-color: $backdrop_border_color;
@@ -25,10 +39,10 @@
       }
     }
 
-    highlight {
+    > trough > highlight {
       margin: -1px;
       border: 1px solid gtkshade($selected_bg_color, 0.5);
-      border-radius: 4px;
+      border-radius: $scale_radius;
       background-color: $selected_bg_color;
 
       &:disabled {
@@ -46,18 +60,29 @@
       }
     }
 
-    slider {
-      min-height: 18px;
-      min-width: 18px;
-      margin: -9px;
+    > trough > slider {
+      min-height: $scale_slider_height;
+      min-width: $scale_slider_width;
+      margin: $scale_slider_margin;
+      border-radius: $scale_slider_radius;
+      
       border: 1px solid gtkshade($border_color, 0.8);
-      border-radius: 100%;
       background-color: $bg_color;
-      background-image: linear-gradient(to bottom, gtkshade($dark_bg_color, 1.03), gtkshade($dark_bg_color, 0.94));
-      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.1), inset 0 -1px gtkalpha($dark_shadow, 0.1), 0 1px gtkalpha($dark_shadow, 0.1);
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($dark_bg_color, 1.03),
+        gtkshade($dark_bg_color, 0.94)
+      );
+      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.1),
+                  inset 0 -1px gtkalpha($dark_shadow, 0.1),
+                  0 1px gtkalpha($dark_shadow, 0.1);
 
       &:hover {
-        background-image: linear-gradient(to bottom, gtkshade($dark_bg_color, 1.08), gtkshade($dark_bg_color, 0.99));
+        background-image: linear-gradient(
+          to bottom,
+          gtkshade($dark_bg_color, 1.08),
+          gtkshade($dark_bg_color, 0.99)
+        );
 
         &:active {
           border: 1px solid gtkshade($selected_bg_color, 0.5);
@@ -85,90 +110,81 @@
         box-shadow: none;
       }
     }
-
-    &.horizontal {
-      indicator {
-        min-height: 6px;
-        min-width: 1px;
-      }
-
-      &.fine-tune indicator { min-height: 3px; }
-    }
-
-    &.vertical {
-      indicator {
-        min-height: 1px;
-        min-width: 6px;
-      }
-
-      &.fine-tune indicator { min-width: 3px; }
-    }
-
+    
     &.fine-tune {
       &.horizontal {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        min-height: 14px;
+        padding-top: $scale_padding - $scale_finetune_margin;
+        padding-bottom: $scale_padding - $scale_finetune_margin;
+        min-height: 16px;
       }
 
       &.vertical {
-        padding-left: 10px;
-        padding-right: 10px;
-        min-width: 14px;
+        // in gtk4-widget-factory this causes issues, turn off for now
+        //padding-left: 9px;
+        //padding-right: 9px;
+        min-width: 16px;
       }
 
-      slider { margin: -6px; }
-
-      fill, trough, highlight {
-        border-radius: 10px;
+      > trough,
+      > trough > fill,
+      > trough > highlight {
+        border-radius: $scale_radius * 2;
       }
 
-      marks {
-        &.top {
-          margin-bottom: 8px;
-          margin-top: -13px;
-        }
+      > trough > slider { margin: - ($scale_finetune_margin * 2); }
+    }
 
-        &.bottom {
-          margin-top: 8px;
-          margin-bottom: -13px;
-        }
+    > value {
+      color: gtkalpha(currentColor, 0.55);
+      font-feature-settings: "tnum";
+    }
+    
+    > marks { color: gtkalpha(currentColor, 0.55); }
 
-        &.top {
-          margin-right: 8px;
-          margin-left: -13px;
-        }
+    &.horizontal {
+      > marks {
+        &.top { margin-bottom: $scale_marks_distance; }
+        &.bottom { margin-top: $scale_marks_distance; }
 
-        &.bottom {
-          margin-left: 8px;
-          margin-right: -13px;
+        indicator {
+          min-width: 1px;
+          min-height: $scale_marks_length;
+          background-color: currentColor;
         }
+      }
+
+      > value.left  { margin-right: 9px; }
+      > value.right { margin-left: 9px; }
+
+      // TODO: figure out how to auto-resize when $scale_marks_distance changes
+      &.fine-tune > marks {
+        &.top { margin-top: 3px; }
+        &.bottom { margin-bottom: 3px; }
+
+        indicator { min-height: ($scale_marks_length - $scale_finetune_margin); }
       }
     }
 
-    value { color: gtkalpha(currentColor,0.55); }
+    &.vertical {
+      > marks {
+        &.top { margin-right: $scale_marks_distance; }
+        &.bottom { margin-left: $scale_marks_distance; }
 
-    marks {
-      color: gtkalpha(currentColor,0.55);
-
-      &.top {
-        margin-bottom: 6px;
-        margin-top: -12px;
+        indicator {
+          min-height: 1px;
+          min-width: $scale_marks_length;
+          background-color: currentColor;
+        }
       }
 
-      &.bottom {
-        margin-top: 6px;
-        margin-bottom: -12px;
-      }
+      > value.top { margin-bottom: 9px; }
+      > value.bottom { margin-top: 9px; }
 
-      &.top {
-        margin-right: 6px;
-        margin-left: -12px;
-      }
+      &.fine-tune > marks {
+        &.top { margin-left: 3px; }
+        &.bottom { margin-right: 3px; }
 
-      &.bottom {
-        margin-left: 6px;
-        margin-right: -12px;
+        indicator { min-height: ($scale_marks_length - $scale_finetune_margin); }
       }
     }
   }
