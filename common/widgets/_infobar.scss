@@ -1,105 +1,60 @@
+@mixin infobar_button($button_bg, $button_fg) {
+  // TODO: use button flat?
+  button:not(.close) {
+    border-color: transparent;
+    color: $button_fg;
+    background-image: none;
+    background-color: gtkshade($button_bg, 1.08);
+    box-shadow: none;
+
+    &:hover { background-color: gtkshade($button_bg, 1.10); }
+    &:active { background-color: gtkshade($button_bg, 0.95); }
+  }
+}
+
 @mixin infobar() {
   infobar {
     > revealer > box {
       padding: 8px;
       border-spacing: 12px;
+      box-shadow: none;
     }
 
     // TODO: for loop?
     &.info > revealer > box {
-      border: 1px solid gtkshade($info_color, 0.8);
+      border: 1px solid $info_color;
       color: $selected_fg_color;
       background-image: none;
       background-color: $info_color;
 
-      button {
-        border-color: gtkshade($info_color, 0.8);
-        color: $selected_fg_color;
-        background-image: none;
-        background-color: gtkshade($info_color, 1.08);
-
-        &:hover {
-          border-color: gtkshade($info_color, 0.85);
-          background-color: gtkshade($info_color, 1.10);
-        }
-
-        &:active {
-          border-color: gtkshade($info_color, 0.6);
-          background-color: gtkshade($info_color, 0.95);
-        }
-      }
+      @include infobar_button($info_color, $selected_fg_color);
     }
 
     &.warning > revealer > box {
-      border: 1px solid gtkshade($warning_color, 0.8);
+      border: 1px solid $warning_color;
       color: $selected_fg_color;
       background-image: none;
       background-color: $warning_color;
 
-      button {
-        border-color: gtkshade($warning_color, 0.8);
-        color: $selected_fg_color;
-        background-image: none;
-        background-color: gtkshade($warning_color, 1.08);
-
-        &:hover {
-          border-color: gtkshade($warning_color, 0.85);
-          background-color: gtkshade($warning_color, 1.10);
-        }
-
-        &:active {
-          border-color: gtkshade($warning_color, 0.6);
-          background-color: gtkshade($warning_color, 0.95);
-        }
-      }
+      @include infobar_button($warning_color, $selected_fg_color);
     }
 
     &.question > revealer > box {
-      border: 1px solid gtkshade($question_color, 0.8);
+      border: 1px solid $question_color;
       color: $selected_fg_color;
       background-image: none;
       background-color: $question_color;
 
-      button {
-        border-color: gtkshade($question_color, 0.8);
-        color: $selected_fg_color;
-        background-image: none;
-        background-color: gtkshade($question_color, 1.08);
-
-        &:hover {
-          border-color: gtkshade($question_color, 0.85);
-          background-color: gtkshade($question_color, 1.10);
-        }
-
-        &:active {
-          border-color: gtkshade($question_color, 0.6);
-          background-color: gtkshade($question_color, 0.95);
-        }
-      }
+      @include infobar_button($question_color, $selected_fg_color);
     }
 
     &.error > revealer > box {
-      border: 1px solid gtkshade($error_bg_color, 0.8);
-      background-color: $error_bg_color;
+      border: 1px solid $error_color;
+      background-color: $error_color;
       background-image: none;
-      color: $error_fg_color;
+      color: $selected_fg_color;
 
-      button {
-        border-color: gtkshade($error_bg_color, 0.8);
-        color: $error_fg_color;
-        background-image: none;
-        background-color: gtkshade($error_bg_color, 1.08);
-
-        &:hover {
-          border-color: gtkshade($error_bg_color, 0.85);
-          background-color: gtkshade($error_bg_color, 1.10);
-        }
-
-        &:active {
-          border-color: gtkshade($error_bg_color, 0.6);
-          background-color: gtkshade($error_bg_color, 0.95);
-        }
-      }
+      @include infobar_button($error_color, $selected_fg_color);
     }
     
     // close button for info and searchbar
@@ -111,8 +66,8 @@
       background-image: none;
       box-shadow: none;
       
-      &:hover { background-color: gtkalpha($light_shadow, 0.2); }
-      &:active { background-color: gtkalpha($dark_shadow, 0.1); }
+      &:hover { background-color: gtkalpha($light_shadow, 0.1); }
+      &:active { background-color: gtkalpha($dark_shadow, 0.05); }
     }
   }  
 }
