@@ -99,9 +99,9 @@ def main():
     elif args.children:
         find_children(args.children)
     elif args.dependencies:
-        find_dependencies(args.parents)
+        find_dependencies(args.dependencies)
     elif args.dependents:
-        find_dependents(args.children)
+        find_dependents(args.dependents)
     elif args.conflicts:
         find_conflicts()
     else:
