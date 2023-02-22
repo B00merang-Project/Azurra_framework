@@ -36,7 +36,7 @@ def get_themes():
 
 def is_child_of(theme: str, target: str):
     for line in read_imports(theme):
-        if target in line:
+        if f"{target}/" in line:
             return True
     
     return False
@@ -63,7 +63,7 @@ def find_dependencies(theme: str):
 def find_dependents(target: str):
     for theme in get_themes():
         for line in read_imports(theme):
-            if target in line:
+            if f"{target}/" in line:
                 print(f"{theme}/{get_widget(line)}")
 
 def find_conflicts():
