@@ -1,200 +1,74 @@
-@mixin scale() {
-  scale {
-    min-height: 10px;
-    min-width: 10px;
-    padding: 12px;
+@mixin scale_trough() {
+  border: 1px solid gtkshade($border_color, 0.75);
+  border-right-color: $light_shadow;
+  border-bottom-color: $light_shadow;
+  border-radius: 4px;
+  background-color: gtkshade($bg_color, 0.85);
+  outline-offset: 2px;
+  box-shadow: inset 0px 0px 0px 1px $dark_shadow;
+  
+  &:disabled {
+    border-color: gtkshade($border_color, 0.95);
+    border-right-color: $light_shadow;
+    border-bottom-color: $light_shadow;
+    background-color: $disabled_bg_color;
+    box-shadow: inset 0px 0px 0px 1px gtkalpha($dark_shadow, 0.2);
+  }
+}
 
-    fill, trough {
-      border: 1px solid $border_color;
-      border-radius: 4px;
-      background-color: gtkshade($bg_color, 0.85);
-      outline-offset: 2px;
-      box-shadow: inset 0 2px gtkalpha($dark_shadow, 0.2);
-      
-      &:disabled {
-        background-color: $disabled_bg_color;
-      }
-    }
+@mixin scale_highlight() {
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+
+  &:disabled { background-color: transparent;
+    &:backdrop { background-color: transparent; }
+  }
+  &:backdrop { background-color: transparent; }
+}
+
+//margin-top: -6px;
+//margin-bottom: -9px;
+@mixin scale_slider() {
+  min-width: $scale_slider_width;
+  min-height: $scale_slider_height;
+  margin: -$scale_slider_margin;
+  //margin-bottom: -($scale_slider_height + 1px);
+  border-radius: $scale_slider_radius;
+  border: none;
+  color: $selected_fg_color;
+  background-color: transparent;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  box-shadow: none;
+  
+  &:hover { color: $selected_fg_color; }
+  &:backdrop { color: $backdrop_selected_fg_color; }
+  
+  background-image: url('assets/slider-horiz.png');
+
+  &:hover { background-image: url('assets/slider-horiz.png'); }
+  &:disabled { background-image: url('assets/slider-horiz-insensitive.png');
+    &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
+  }
+
+  &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
+
+  @at-root
+  scale.vertical > trough > slider {
+    min-width: $scale_slider_height;
+    min-height: $scale_slider_width;
+    margin: -$scale_slider_margin;
+    //margin-right: -($scale_slider_height + 1px);
+    background-position: right center;
     
-    &.vertical {
-      fill, trough {
-        box-shadow: inset 2px 0 gtkalpha($dark_shadow, 0.2);
-      }
+    background-image: url('assets/slider-vert.png');
+
+    &:hover { background-image: url('assets/slider-vert.png'); }
+    &:disabled { background-image: url('assets/slider-vert-insensitive.png');
+      &:backdrop { background-image: url('assets/slider-vert-insensitive.png'); }
     }
 
-    highlight {
-      border: none;
-      border-radius: 4px;
-      background-color: transparent;
-
-      &:disabled {
-        background-color: transparent;
-
-        &:backdrop {
-          background-color: transparent;
-        }
-      }
-
-      &:backdrop {
-        background-color: transparent;
-      }
-    }
-
-    &.horizontal {
-      indicator {
-        min-height: 6px;
-        min-width: 1px;
-      }
-
-      &.fine-tune indicator {
-        min-height: 3px;
-      }
-    }
-
-    &.vertical {
-      indicator {
-        min-height: 1px;
-        min-width: 6px;
-      }
-
-      &.fine-tune indicator {
-        min-width: 3px;
-      }
-    }
-
-    &.fine-tune {
-      &.horizontal {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        min-height: 14px;
-      }
-
-      &.vertical {
-        padding-left: 10px;
-        padding-right: 10px;
-        min-width: 14px;
-      }
-
-      slider {
-        margin-top: -6px;
-        margin-bottom: -9px;
-      }
-
-      fill, trough, highlight {
-        border-radius: 0;
-      }
-
-      marks {
-        &.top {
-          margin-bottom: 8px;
-          margin-top: -13px;
-        }
-
-        &.bottom {
-          margin-top: 8px;
-          margin-bottom: -13px;
-        }
-
-        &.top {
-          margin-right: 8px;
-          margin-left: -13px;
-        }
-
-        &.bottom {
-          margin-left: 8px;
-          margin-right: -13px;
-        }
-      }
-    }
-
-    slider {
-      min-height: 16px;
-      min-width: 15px;
-      margin: -6px;
-      margin-bottom: -7px;
-      border: none;
-      border-radius: 0;
-      color: $selected_fg_color;
-      background-color: transparent;
-      background-image: url('assets/slider-horiz.png');
-
-      &:hover {
-        color: $selected_fg_color;
-        background-image: url('assets/slider-horiz.png');
-      }
-
-      &:disabled {
-        -gtk-icon-shadow: none;
-        background-image: url('assets/slider-horiz-insensitive.png');
-
-        &:backdrop {
-          -gtk-icon-shadow: none;
-          background-image: url('assets/slider-horiz-insensitive.png');
-        }
-      }
-
-      &:backdrop {
-        color: $backdrop_selected_fg_color;
-        background-image: url('assets/slider-horiz-insensitive.png');
-      }
-    }
-    
-    &.vertical {
-      slider {
-        min-height: 15px;
-        min-width: 16px;
-        margin: -5px;
-        margin-right: -7px;
-        background-image: url('assets/slider-vert.png');
-
-        &:hover {
-          background-image: url('assets/slider-vert.png');
-        }
-
-        &:disabled {
-          background-image: url('assets/slider-vert-insensitive.png');
-
-          &:backdrop {
-            background-image: url('assets/slider-vert-insensitive.png');
-          }
-        }
-
-        &:backdrop {
-          background-image: url('assets/slider-vert-insensitive.png');
-        }
-      }
-    }
-
-    value {
-      color: gtkalpha(currentColor,0.35);
-    }
-
-    marks {
-      color: gtkalpha(currentColor,0.35);
-      
-      mark {
-        box-shadow: 1px 1px $light_shadow;
-      }
-
-      &.top {
-        margin-bottom: 6px;
-        margin-top: -12px;
-      }
-
-      &.bottom {
-        margin-top: 6px;
-        margin-bottom: -12px;
-      }
-
-      &.top {
-        margin-right: 6px;
-        margin-left: -12px;
-      }
-
-      &.bottom {
-        margin-left: 6px;
-        margin-right: -12px;
-      }
-    }
+    &:backdrop { background-image: url('assets/slider-vert-insensitive.png'); }
   }
 }

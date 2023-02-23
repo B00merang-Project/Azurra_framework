@@ -1,191 +1,94 @@
-// TODO: move to properties
-$scale_radius : 4px;
-$scale_padding : 12px;
-$scale_finetune_margin : 3px;
+@mixin scale_trough() {
+  border: 1px solid gtkshade($border_color, 0.95);
+  border-radius: $scale_trough_radius;
+  background-color: gtkalpha($dark_shadow, 0.1);
 
-$scale_marks_length : 6px;
-$scale_marks_distance: 6px;
+  &:disabled {
+    border-color: $backdrop_border_color;
+    background-color: $disabled_bg_color;
 
-$scale_slider_width : 18px;
-$scale_slider_height : 18px;
-$scale_slider_radius : 100%;
-$scale_slider_margin : -9px;
-
-@mixin scale() {
-  scale {
-    min-height: 10px;
-    min-width: 10px;
-    padding: $scale_padding;
-
-    > trough {
-      border: 1px solid gtkshade($border_color, 0.95);
-      border-radius: $scale_radius;
-      background-color: gtkalpha($dark_shadow, 0.1);
-      
-      // TODO: outline widget
-
-      &:disabled {
-        border-color: $backdrop_border_color;
-        background-color: $disabled_bg_color;
-
-        &:backdrop {
-          border-color: $backdrop_border_color;
-          background-color: $backdrop_disabled_bg_color;
-        }
-      }
-      &:backdrop {
-        border-color: $backdrop_border_color;
-        background-color: gtkalpha($dark_shadow, 0.05);
-      }
-    }
-
-    > trough > highlight {
-      margin: -1px;
-      border: 1px solid gtkshade($selected_bg_color, 0.5);
-      border-radius: $scale_radius;
-      background-color: $selected_bg_color;
-
-      &:disabled {
-        border-color: $backdrop_border_color;
-        background-color: $disabled_bg_color;
-
-        &:backdrop {
-          border-color: $backdrop_border_color;
-          background-color: $backdrop_disabled_bg_color;
-        }
-      }
-      &:backdrop {
-        border-color: $backdrop_selected_bg_color;
-        background-color: $backdrop_selected_bg_color;
-      }
-    }
-
-    > trough > slider {
-      min-height: $scale_slider_height;
-      min-width: $scale_slider_width;
-      margin: $scale_slider_margin;
-      border-radius: $scale_slider_radius;
-      
-      border: 1px solid gtkshade($border_color, 0.8);
-      background-color: $bg_color;
-      background-image: linear-gradient(
-        to bottom,
-        gtkshade($dark_bg_color, 1.03),
-        gtkshade($dark_bg_color, 0.94)
-      );
-      box-shadow: inset 0 1px gtkalpha($light_shadow, 0.1),
-                  inset 0 -1px gtkalpha($dark_shadow, 0.1),
-                  0 1px gtkalpha($dark_shadow, 0.1);
-
-      &:hover {
-        background-image: linear-gradient(
-          to bottom,
-          gtkshade($dark_bg_color, 1.08),
-          gtkshade($dark_bg_color, 0.99)
-        );
-
-        &:active {
-          border: 1px solid gtkshade($selected_bg_color, 0.5);
-        }
-      }
-
-      &:disabled {
-        border-color: $backdrop_border_color;
-        background-color: $disabled_bg_color;
-        background-image: none;
-        box-shadow: none;
-
-        &:backdrop {
-          border-color: $backdrop_border_color;
-          background-color: $backdrop_disabled_bg_color;
-          background-image: none;
-          box-shadow: none;
-        }
-      }
-
-      &:backdrop {
-        border-color: $backdrop_border_color;
-        background-color: $backdrop_bg_color;
-        background-image: none;
-        box-shadow: none;
-      }
-    }
-    
-    &.fine-tune {
-      &.horizontal {
-        padding-top: $scale_padding - $scale_finetune_margin;
-        padding-bottom: $scale_padding - $scale_finetune_margin;
-        min-height: 16px;
-      }
-
-      &.vertical {
-        // in gtk4-widget-factory this causes issues, turn off for now
-        //padding-left: 9px;
-        //padding-right: 9px;
-        min-width: 16px;
-      }
-
-      > trough,
-      > trough > fill,
-      > trough > highlight {
-        border-radius: $scale_radius * 2;
-      }
-
-      > trough > slider { margin: - ($scale_finetune_margin * 2); }
-    }
-
-    > value {
-      color: gtkalpha(currentColor, 0.55);
-      font-feature-settings: "tnum";
-    }
-    
-    > marks { color: gtkalpha(currentColor, 0.55); }
-
-    &.horizontal {
-      > marks {
-        &.top { margin-bottom: $scale_marks_distance; }
-        &.bottom { margin-top: $scale_marks_distance; }
-
-        indicator {
-          min-width: 1px;
-          min-height: $scale_marks_length;
-          background-color: currentColor;
-        }
-      }
-
-      > value.left  { margin-right: 9px; }
-      > value.right { margin-left: 9px; }
-
-      // TODO: figure out how to auto-resize when $scale_marks_distance changes
-      &.fine-tune > marks {
-        &.top { margin-top: 3px; }
-        &.bottom { margin-bottom: 3px; }
-
-        indicator { min-height: ($scale_marks_length - $scale_finetune_margin); }
-      }
-    }
-
-    &.vertical {
-      > marks {
-        &.top { margin-right: $scale_marks_distance; }
-        &.bottom { margin-left: $scale_marks_distance; }
-
-        indicator {
-          min-height: 1px;
-          min-width: $scale_marks_length;
-          background-color: currentColor;
-        }
-      }
-
-      > value.top { margin-bottom: 9px; }
-      > value.bottom { margin-top: 9px; }
-
-      &.fine-tune > marks {
-        &.top { margin-left: 3px; }
-        &.bottom { margin-right: 3px; }
-
-        indicator { min-height: ($scale_marks_length - $scale_finetune_margin); }
-      }
+    &:backdrop {
+      border-color: $backdrop_border_color;
+      background-color: $backdrop_disabled_bg_color;
     }
   }
+  
+  &:backdrop {
+    border-color: $backdrop_border_color;
+    background-color: gtkalpha($dark_shadow, 0.05);
+  }
 }
+
+@mixin scale_highlight() {
+  margin: -1px;
+  border: 1px solid gtkshade($selected_bg_color, 0.5);
+  border-radius: $scale_trough_radius;
+  background-color: $selected_bg_color;
+
+  &:disabled {
+    border-color: $backdrop_border_color;
+    background-color: $disabled_bg_color;
+
+    &:backdrop {
+      border-color: $backdrop_border_color;
+      background-color: $backdrop_disabled_bg_color;
+    }
+  }
+  &:backdrop {
+    border-color: $backdrop_selected_bg_color;
+    background-color: $backdrop_selected_bg_color;
+  }
+}
+
+@mixin scale_slider() {
+  min-height: $scale_slider_height;
+  min-width: $scale_slider_width;
+  margin: -$scale_slider_margin;
+  border-radius: $scale_slider_radius;
+
+  border: 1px solid gtkshade($border_color, 0.8);
+  background-color: $bg_color;
+  background-image: linear-gradient(
+    to bottom,
+    gtkshade($dark_bg_color, 1.03),
+    gtkshade($dark_bg_color, 0.94)
+  );
+  box-shadow: inset 0 1px gtkalpha($light_shadow, 0.1),
+              inset 0 -1px gtkalpha($dark_shadow, 0.1),
+              0 1px gtkalpha($dark_shadow, 0.1);
+
+  &:hover {
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($dark_bg_color, 1.08),
+      gtkshade($dark_bg_color, 0.99)
+    );
+
+    &:active {
+      border: 1px solid gtkshade($selected_bg_color, 0.5);
+    }
+  }
+
+  &:disabled {
+    border-color: $backdrop_border_color;
+    background-color: $disabled_bg_color;
+    background-image: none;
+    box-shadow: none;
+
+    &:backdrop {
+      border-color: $backdrop_border_color;
+      background-color: $backdrop_disabled_bg_color;
+      background-image: none;
+      box-shadow: none;
+    }
+  }
+
+  &:backdrop {
+    border-color: $backdrop_border_color;
+    background-color: $backdrop_bg_color;
+    background-image: none;
+    box-shadow: none;
+  }
+}
+
+// TODO: directional sliders?
