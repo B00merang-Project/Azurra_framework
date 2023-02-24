@@ -1,12 +1,3 @@
-// scale
-$scale_slider_width : 15px;
-$scale_slider_height : 21px;
-$scale_slider_radius : 0px;
-$scale_slider_margin : 7px;
-$scale_slider_ft_margin : 4px;
-
-$scale_trough_radius : 0px;
-
 @mixin scale_trough() {
   border: 1px solid $border_color;
   border-radius: $scale_trough_radius;
@@ -37,20 +28,20 @@ $scale_trough_radius : 0px;
   border: none;
   color: $selected_fg_color;
   background-color: transparent;
-  background-position: center bottom;
+  background-position: center center;
   background-repeat: no-repeat;
   box-shadow: none;
-    
+
   &:hover { color: $selected_fg_color; }
   &:backdrop { color: $backdrop_selected_fg_color; }
-    
+
   // TODO: better solution to manage directional sliders
   @at-root
   scale.horizontal > trough > slider,
   scale.horizontal.marks-after:not(.marks-before) > trough > slider {
     margin-bottom: -10px;
     background-image: url('assets/slider-horiz.png');
-    
+
     &:hover { background-image: url('assets/slider-horiz.png'); }
     &:disabled { background-image: url('assets/slider-horiz-insensitive.png');
       &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
@@ -74,7 +65,6 @@ $scale_trough_radius : 0px;
   scale.vertical > trough > slider {
     min-width: $scale_slider_height;
     min-height: $scale_slider_width;
-    background-position: right center;
   }
   
   @at-root
@@ -89,12 +79,12 @@ $scale_trough_radius : 0px;
     }
     &:backdrop { background-image: url('assets/slider-vert-insensitive.png'); }
   }
-    
+
   @at-root
   scale.vertical.marks-before:not(.marks-after) > trough > slider {
     margin-left: -10px;
     background-image: url('assets/slider-vert-left.png');
-    
+
     &:hover { background-image: url('assets/slider-vert-left.png'); }
     &:disabled { background-image: url('assets/slider-vert-left-insensitive.png');
       &:backdrop { background-image: url('assets/slider-vert-left-insensitive.png'); }

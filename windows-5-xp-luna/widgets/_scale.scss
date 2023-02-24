@@ -1,290 +1,116 @@
-@mixin scale() {
-  scale {
-    min-height: 10px;
-    min-width: 10px;
-    padding: 12px;
+// TODO: remove hard-coded colors?
+@mixin scale_trough() {
+  border: 2px solid transparent;
+  border-radius: $scale_trough_radius;
+  background-color: transparent;
+  box-shadow: none;
+  
+  &:disabled {
+    border-color: transparent;
+    background-color: transparent;
+  }
 
-    fill, highlight {
-      margin: -1px;
-    }
+  @at-root
+  scale.horizontal > trough {
+    border-image: url("assets/trough-horz.png");
+    border-image-repeat: stretch;
+    border-width: 1px 2px;
+    border-image-slice: 1 2 1 2;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(236, 236, 231, 0.8) 1px,
+      rgba(245, 244, 239, 0.8)
+    );
+  }
+  
+  @at-root
+  scale.vertical > trough {
+    border-image: url("assets/trough-vert.png");
+    border-image-repeat: stretch;
+    border-width: 2px 1px;
+    border-image-slice: 2 1 2 1;
+    background-image: linear-gradient(
+      to right,
+      rgba(236, 236, 231, 0.8) 1px,
+      rgba(245, 244, 239, 0.8)
+    );
+  }
+}
 
-    trough, fill {
-      border: 2px solid transparent;
-      border-radius: 0;
-      background-color: transparent;
-      box-shadow: none;
-      outline-offset: 11px;
-      
-      &:disabled {
-        border-color: transparent;
-        background-color: transparent;
-      }
-    }
+@mixin scale_highlight() {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+// FIXME: weird inconsistencies when using background-image with a big enough slider margin 
+@mixin scale_slider() {
+  border-radius: $scale_slider_radius;
+  min-width: $scale_slider_width;
+  min-height: $scale_slider_height;
+  margin: -$scale_slider_margin;
+  border: none;
+  padding: 0px;
+  box-shadow: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  
+  @at-root
+  scale.horizontal > trough > slider {
+    background-image: -gtk-scaled(url("assets/slider-horz.png"));
     
-    row:selected & trough, & row:selected trough, row:selected & fill, & row:selected fill {
-      box-shadow: none;
+    &:hover { background-image: -gtk-scaled(url("assets/slider-horz-hover.png")); }
+    &:active { background-image: -gtk-scaled(url("assets/slider-horz-active.png")); }
+    &:disabled { background-image: -gtk-scaled(url("assets/slider-horz-insensitive.png")); }
+  }
 
-      &, &:disabled {
-        border-color: #061f3e;
-      }
-    }
-
-    &.horizontal {
-      trough {
-        border-image: url("assets/trough-horz.png");
-        border-image-repeat: stretch;
-        border-width: 1px 2px;
-        border-image-slice: 1 2 1 2;
-        background-image: linear-gradient(to bottom, rgba(236, 236, 231, 0.8) 1px, rgba(245, 244, 239, 0.8));
-      }
-      slider {
-        border-style: none;
-        border-radius: 0px;
-        background-color: transparent;
-        background-image: -gtk-scaled(url("assets/slider-horz.png"));
-        background-repeat: no-repeat;
-        background-position: center;
-        box-shadow: none;
-        min-height: 22px;
-        min-width: 11px;
-        margin-top: -10px;
-        margin-bottom: -10px;
-        
-        &:hover {
-          background-image: -gtk-scaled(url("assets/slider-horz-hover.png"));
-        }
-
-        &:active {
-          background-image: -gtk-scaled(url("assets/slider-horz-active.png"));
-        }
-
-        &:disabled {
-          background-image: -gtk-scaled(url("assets/slider-horz-insensitive.png"));
-        }
-      }
-    }
-    &.vertical {
-      trough {
-        border-image: url("assets/trough-vert.png");
-        border-image-repeat: stretch;
-        border-width: 2px 1px;
-        border-image-slice: 2 1 2 1;
-        background-image: linear-gradient(to right, rgba(236, 236, 231, 0.8) 1px, rgba(245, 244, 239, 0.8));
-      }
-      slider {
-        border-style: none;
-        border-radius: 0px;
-        background-color: transparent;
-        background-image: -gtk-scaled(url("assets/slider-vert.png"));
-        background-repeat: no-repeat;
-        background-position: center;
-        box-shadow: none;
-        min-height: 11px;
-        min-width: 22px;
-        margin-left: -10px;
-        margin-right: -10px;
-        
-        &:hover {
-          background-image: -gtk-scaled(url("assets/slider-vert-hover.png"));
-        }
-
-        &:active {
-          background-image: -gtk-scaled(url("assets/slider-vert-active.png"));
-        }
-
-        &:disabled {
-          background-image: -gtk-scaled(url("assets/slider-vert-insensitive.png"));
-        }
-      }
-    }
-    value {
-      color: gtkalpha(currentColor, 0.4);
-    }
-    marks {
-      color: gtkalpha(currentColor, 0.4);
-      &.top {
-        margin-bottom: 11px;
-        margin-top: -15px;
-      }
-      &.bottom {
-        margin-top: 11px;
-        margin-bottom: -15px;
-      }
-      &.top {
-        margin-right: 11px;
-        margin-left: -15px;
-      }
-      &.bottom {
-        margin-left: 11px;
-        margin-right: -15px;
-      }
-    }
-    &.fine-tune {
-      fill, highlight, trough {
-        outline-offset: 4px;
-      }
-      marks {
-        &.top {
-          margin-bottom: 11px;
-          margin-top: -12px;
-        }
-        &.bottom {
-          margin-top: 11px;
-          margin-bottom: -12px;
-        }
-        &.top {
-          margin-right: 11px;
-          margin-left: -12px;
-        }
-        &.bottom {
-          margin-left: 11px;
-          margin-right: -12px;
-        }
-      }
-    }
-    &.horizontal {
-      indicator {
-        min-height: 4px;
-        min-width: 1px;
-      }
-      &.fine-tune indicator {
-        min-height: 1px;
-      }
-    }
-    &.vertical {
-      indicator {
-        min-height: 1px;
-        min-width: 4px;
-      }
-      &.fine-tune indicator {
-        min-width: 1px;
-      }
-    }
-    &.color.horizontal slider, &.horizontal contents:last-child:not(:only-child) > trough > slider {
-      background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above.png"));
-      
-      &:hover {
-        background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above-hover.png"));
-      }
-      &:active {
-        background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above-active.png"));
-      }
-      &:disabled {
-        background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above-insensitive.png"));
-      }
-    }
-
-    &.horizontal contents {
-      &:first-child:not(:only-child) > trough > slider {
-        background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below.png"));
-
-        &:hover {
-          background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below-hover.png"));
-        }
-        &:active {
-          background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below-active.png"));
-        }
-        &:disabled {
-          background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below-insensitive.png"));
-        }
-      }
-    }
+  @at-root
+  scale.vertical > trough > slider {
+    min-width: $scale_slider_height;
+    min-height: $scale_slider_width;
+    background-image: -gtk-scaled(url("assets/slider-vert.png"));
     
-    &.color.vertical:dir(rtl) slider, &.vertical contents:last-child:not(:only-child) > trough > slider {
-      background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above.png"));
-      &:hover {
-        background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above-hover.png"));
-      }
-      &:active {
-        background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above-active.png"));
-      }
-      &:disabled {
-        background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above-insensitive.png"));
-      }
-    }
-    &.color.vertical:dir(ltr) slider, &.vertical contents:first-child:not(:only-child) > trough > slider {
-      background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below.png"));
+    &:hover { background-image: -gtk-scaled(url("assets/slider-vert-hover.png")); }
+    &:active { background-image: -gtk-scaled(url("assets/slider-vert-active.png")); }
+    &:disabled { background-image: -gtk-scaled(url("assets/slider-vert-insensitive.png")); }
+  }
 
-      &:hover {
-        background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below-hover.png"));
-      }
-      &:active {
-        background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below-active.png"));
-      }
-      &:disabled {
-        background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below-insensitive.png"));
-      }
-    }
+  @at-root
+  scale.color.horizontal > trough > slider,
+  scale.horizontal.marks-before:not(.marks-after) > trough > slider {
+    background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above.png"));
     
-    &.color {
-      min-height: 0;
-      min-width: 0;
+    &:hover { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above-hover.png")); }
+    &:active { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above-active.png")); }
+    &:disabled { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above-insensitive.png")); }
+  }
 
-      trough {
-        border: none;
-        background-image: none;
-        background-repeat: no-repeat;
-      }
+  @at-root
+  scale.horizontal.marks-after:not(.marks-before) > trough > slider {
+    background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below.png"));
 
-      &.horizontal {
-        padding: 0 0 15px 0;
+    &:hover { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below-hover.png")); }
+    &:active { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below-active.png")); }
+    &:disabled { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below-insensitive.png")); }
+  }
+    
+  @at-root
+  scale.color.vertical:dir(rtl) > trough > slider,
+  scale.vertical.marks-before:not(.marks-after) > trough > slider {
+    background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above.png"));
+    
+    &:hover { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above-hover.png")); }
+    &:active { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above-active.png")); }
+    &:disabled { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above-insensitive.png")); }
+  }
+  
+  @at-root
+  scale.color.vertical:dir(ltr) > trough > slider,
+  scale.vertical.marks-after:not(.marks-before) > trough > slider {
+    background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below.png"));
 
-        trough {
-          padding-bottom: 4px;
-          background-position: 0 -3px;
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-        }
-
-        slider {
-          &:dir(ltr), &:dir(rtl) { // specificity bumb
-            &:hover, & {
-              margin-bottom: -10px;
-              margin-top: 0;
-            }
-          }
-        }
-      }
-
-      &.vertical {
-        &:dir(ltr) {
-          padding: 0 0 0 15px;
-
-          trough {
-            padding-left: 4px;
-            background-position: 3px 0;
-            border-bottom-right-radius: 0;
-            border-top-right-radius: 0;
-          }
-
-          slider {
-            &:hover, & {
-              margin-left: -10px;
-              margin-right: 0;
-            }
-          }
-        }
-
-        &:dir(rtl) {
-          padding: 0 15px 0 0;
-
-          trough {
-            padding-right: 4px;
-            background-position: -3px 0;
-            border-bottom-left-radius: 0;
-            border-top-left-radius: 0;
-          }
-
-          slider {
-            &:hover, &:disabled {
-              margin-right: -10px;
-              margin-left: 0;
-            }
-            margin-right: -10px;
-            margin-left: 0;
-          }
-        }
-      }
-    }
+    &:hover { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below-hover.png")); }
+    &:active { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below-active.png")); }
+    &:disabled { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below-insensitive.png")); }
   }
 }
