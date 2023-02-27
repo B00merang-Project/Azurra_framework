@@ -42,21 +42,22 @@
   background-color: transparent;
 }
 
-// FIXME: weird inconsistencies when using background-image with a big enough slider margin 
-@mixin scale_slider() {
-  border-radius: $scale_slider_radius;
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: -$scale_slider_margin;
-  border: none;
-  padding: 0px;
-  box-shadow: none;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: center center;
+@mixin scale_slider($orient : "none") {
+
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    border-radius: $scale_slider_radius;
+    border: none;
+    padding: 0px;
+    box-shadow: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }  
   
-  @at-root
-  scale.horizontal > trough > slider {
+  @if $orient == "horiz" {
     background-image: -gtk-scaled(url("assets/slider-horz.png"));
     
     &:hover { background-image: -gtk-scaled(url("assets/slider-horz-hover.png")); }
@@ -64,10 +65,7 @@
     &:disabled { background-image: -gtk-scaled(url("assets/slider-horz-insensitive.png")); }
   }
 
-  @at-root
-  scale.vertical > trough > slider {
-    min-width: $scale_slider_height;
-    min-height: $scale_slider_width;
+  @if $orient == "vert" {
     background-image: -gtk-scaled(url("assets/slider-vert.png"));
     
     &:hover { background-image: -gtk-scaled(url("assets/slider-vert-hover.png")); }
@@ -75,9 +73,7 @@
     &:disabled { background-image: -gtk-scaled(url("assets/slider-vert-insensitive.png")); }
   }
 
-  @at-root
-  scale.color.horizontal > trough > slider,
-  scale.horizontal.marks-before:not(.marks-after) > trough > slider {
+  @if $orient == "top" {
     background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above.png"));
     
     &:hover { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above-hover.png")); }
@@ -85,8 +81,7 @@
     &:disabled { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above-insensitive.png")); }
   }
 
-  @at-root
-  scale.horizontal.marks-after:not(.marks-before) > trough > slider {
+  @if $orient == "bottom" {
     background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below.png"));
 
     &:hover { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below-hover.png")); }
@@ -94,9 +89,7 @@
     &:disabled { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below-insensitive.png")); }
   }
     
-  @at-root
-  scale.color.vertical:dir(rtl) > trough > slider,
-  scale.vertical.marks-before:not(.marks-after) > trough > slider {
+  @if $orient == "left" {
     background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above.png"));
     
     &:hover { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above-hover.png")); }
@@ -104,9 +97,7 @@
     &:disabled { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above-insensitive.png")); }
   }
   
-  @at-root
-  scale.color.vertical:dir(ltr) > trough > slider,
-  scale.vertical.marks-after:not(.marks-before) > trough > slider {
+  @if $orient == "right" {
     background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below.png"));
 
     &:hover { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below-hover.png")); }

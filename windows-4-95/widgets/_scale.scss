@@ -25,24 +25,25 @@
 }
 
 // copy of windows-3
-@mixin scale_slider() {
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: -$scale_slider_margin;
-  border-radius: $scale_slider_radius;
-  border: none;
-  color: $selected_fg_color;
-  background-color: transparent;
-  background-position: center center;
-  background-repeat: no-repeat;
-  box-shadow: none;
+@mixin scale_slider($orient : "none") {
 
-  &:hover { color: $selected_fg_color; }
-  &:backdrop { color: $backdrop_selected_fg_color; }
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    border-radius: $scale_slider_radius;
+    border: none;
+    color: $selected_fg_color;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-shadow: none;
 
-  @at-root
-  scale.horizontal > trough > slider,
-  scale.horizontal.marks-after:not(.marks-before) > trough > slider {
+    &:hover { color: $selected_fg_color; }
+    &:backdrop { color: $backdrop_selected_fg_color; }
+  }
+
+  @if $orient == "bottom" or $orient == "horiz" {
     margin-bottom: -10px;
     background-image: url('assets/slider-horiz.png');
 
@@ -53,8 +54,7 @@
     &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
   }
   
-  @at-root
-  scale.horizontal.marks-before:not(.marks-after) > trough > slider {
+  @if $orient == "top" {
     margin-top: -10px;
     background-image: url('assets/slider-horiz-top.png');
 
@@ -65,15 +65,7 @@
     &:backdrop { background-image: url('assets/slider-horiz-top-insensitive.png'); }
   }
   
-  @at-root
-  scale.vertical > trough > slider {
-    min-width: $scale_slider_height;
-    min-height: $scale_slider_width;
-  }
-  
-  @at-root
-  scale.vertical > trough > slider,
-  scale.vertical.marks-after:not(.marks-before) > trough > slider {
+  @if $orient == "right" or $orient == "vert" {
     margin-right: -10px;
     background-image: url('assets/slider-vert.png');
 
@@ -84,8 +76,7 @@
     &:backdrop { background-image: url('assets/slider-vert-insensitive.png'); }
   }
 
-  @at-root
-  scale.vertical.marks-before:not(.marks-after) > trough > slider {
+  @if $orient == "left" {
     margin-left: -10px;
     background-image: url('assets/slider-vert-left.png');
 

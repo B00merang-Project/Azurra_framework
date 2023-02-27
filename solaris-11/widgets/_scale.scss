@@ -25,42 +25,59 @@
 }
 
 @mixin scale_highlight() {
+  margin: 0px;
   border: none;
   border-radius: $scale_trough_radius;
-  background-color: $selected_bg_color;
 
-  &:disabled { background-color: gtkshade($disabled_bg_color, 0.8);
-    &:backdrop { background-color: gtkshade($backdrop_disabled_bg_color, 0.8); }
+  // FIXME: how did nimbus dark do slider highlights?
+  @if $variant == "dark" {
+    background-color: gtkshade($selected_bg_color, 0.95);
+    
+    &:disabled { background-color: gtkshade($disabled_bg_color, 1.1);
+      &:backdrop { background-color: gtkshade($backdrop_disabled_bg_color, 1.1); }
+    }
+    &:backdrop { background-color: gtkshade($backdrop_selected_bg_color, 0.95); }    
   }
-
-  &:backdrop { background-color: $backdrop_selected_bg_color; }
+  @else {
+    background-color: $selected_bg_color;
+    
+    &:disabled { background-color: gtkshade($disabled_bg_color, 0.8);
+      &:backdrop { background-color: gtkshade($backdrop_disabled_bg_color, 0.8); }
+    }
+    &:backdrop { background-color: $backdrop_selected_bg_color; }
+  }
 }
 
 // TODO: remove hard-coded colors?
-@mixin scale_slider() {
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: -$scale_slider_margin;
-  border: 1px solid #63788a;
-  border-bottom-color: #24394c;
-  border-radius: $scale_slider_radius;
-  color: $fg_color;
-  background-image: linear-gradient(
-    to bottom,
-    $light_shadow,
-    #a3b8cb 50%,
-    #a3b8cb 90%,
-    #b8cde0
-  );
+@mixin scale_slider($orient : "none") {
 
-  &:hover { border-color: #24394c; }
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    border-radius: $scale_slider_radius;
+    border: 1px solid #63788a;
+    border-bottom-color: #24394c;
+    color: $fg_color;
+    background-image: linear-gradient(
+      to bottom,
+      $light_shadow,
+      #a3b8cb 50%,
+      #a3b8cb 90%,
+      #b8cde0
+    );
+
+    &:hover { border-color: #24394c; }
+    
+    &:disabled { background-color: $disabled_base_color;
+      &:backdrop { background-color: $backdrop_disabled_bg_color; }
+    }
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: $backdrop_base_color;
+    }
+  }
   
-  &:disabled { background-color: $disabled_base_color;
-    &:backdrop { background-color: $backdrop_disabled_bg_color; }
-  }
-
-  &:backdrop {
-    color: $backdrop_fg_color;
-    background-color: $backdrop_base_color;
-  }
+  // did solaris have directional sliders?
 }

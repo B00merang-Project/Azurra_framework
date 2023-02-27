@@ -40,55 +40,59 @@
   }
 }
 
-@mixin scale_slider() {
-  min-height: $scale_slider_height;
-  min-width: $scale_slider_width;
-  margin: -$scale_slider_margin;
-  border-radius: $scale_slider_radius;
+@mixin scale_slider($orient : "none") {
 
-  border: 1px solid gtkshade($border_color, 0.8);
-  background-color: $bg_color;
-  background-image: linear-gradient(
-    to bottom,
-    gtkshade($dark_bg_color, 1.03),
-    gtkshade($dark_bg_color, 0.94)
-  );
-  box-shadow: inset 0 1px gtkalpha($light_shadow, 0.1),
-              inset 0 -1px gtkalpha($dark_shadow, 0.1),
-              0 1px gtkalpha($dark_shadow, 0.1);
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    border-radius: $scale_slider_radius;
 
-  &:hover {
+    border: 1px solid gtkshade($border_color, 0.8);
+    background-color: $bg_color;
     background-image: linear-gradient(
       to bottom,
-      gtkshade($dark_bg_color, 1.08),
-      gtkshade($dark_bg_color, 0.99)
+      gtkshade($dark_bg_color, 1.03),
+      gtkshade($dark_bg_color, 0.94)
     );
+    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.1),
+                inset 0 -1px gtkalpha($dark_shadow, 0.1),
+                0 1px gtkalpha($dark_shadow, 0.1);
 
-    &:active {
-      border: 1px solid gtkshade($selected_bg_color, 0.5);
+    &:hover {
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($dark_bg_color, 1.08),
+        gtkshade($dark_bg_color, 0.99)
+      );
+
+      &:active {
+        border: 1px solid gtkshade($selected_bg_color, 0.5);
+      }
     }
-  }
 
-  &:disabled {
-    border-color: $backdrop_border_color;
-    background-color: $disabled_bg_color;
-    background-image: none;
-    box-shadow: none;
+    &:disabled {
+      border-color: $backdrop_border_color;
+      background-color: $disabled_bg_color;
+      background-image: none;
+      box-shadow: none;
+
+      &:backdrop {
+        border-color: $backdrop_border_color;
+        background-color: $backdrop_disabled_bg_color;
+        background-image: none;
+        box-shadow: none;
+      }
+    }
 
     &:backdrop {
       border-color: $backdrop_border_color;
-      background-color: $backdrop_disabled_bg_color;
+      background-color: $backdrop_bg_color;
       background-image: none;
       box-shadow: none;
     }
   }
-
-  &:backdrop {
-    border-color: $backdrop_border_color;
-    background-color: $backdrop_bg_color;
-    background-image: none;
-    box-shadow: none;
-  }
+  
+  // TODO: directional sliders (with assets?)
 }
 
-// TODO: directional sliders?

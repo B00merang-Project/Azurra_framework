@@ -21,40 +21,42 @@
   &:backdrop { background-color: transparent; }
 }
 
-@mixin scale_slider() {
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: $scale_slider_margin;
-  border-radius: $scale_slider_radius;
-  color: $fg_color;
-  background-color: $bg_color;
-  border: 1px solid $border_color;
-  border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
-  border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
-  
-  // TODO: reuse this for os/2, haiku, beos?
-  background-image: linear-gradient(
-    to right,
-    $border_color,
-    gtkmix($bg_color, $light_shadow, 0.7)
-  );
-  background-size: 2px 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
+@mixin scale_slider($orient : "none") {
 
-  &:disabled { background-color: $disabled_bg_color;
-    &:backdrop { background-color: $backdrop_disabled_bg_color; }
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size / 2;
+    margin: $scale_slider_margin;
+    border-radius: $scale_slider_radius;
+    color: $fg_color;
+    background-color: $bg_color;
+    border: 1px solid $border_color;
+    border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+    
+    // TODO: reuse this for os/2, haiku, beos?
+    background-image: linear-gradient(
+      to right,
+      $border_color,
+      gtkmix($bg_color, $light_shadow, 0.7)
+    );
+    background-size: 2px 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    &:disabled { background-color: $disabled_bg_color;
+      &:backdrop { background-color: $backdrop_disabled_bg_color; }
+    }
+
+    &:backdrop {
+      color: $backdrop_selected_fg_color;
+      background-color: $backdrop_bg_color;
+    }
   }
 
-  &:backdrop {
-    color: $backdrop_selected_fg_color;
-    background-color: $backdrop_bg_color;
-  }
-
-  @at-root
-  scale.vertical > trough > slider {
-    min-width: $scale_slider_height;
-    min-height: $scale_slider_width;
+  @if $orient == "vert" {
+    min-width: $scale_slider_size / 2;
+    min-height: $scale_slider_size;
     background-size: 100% 2px;
     background-image: linear-gradient(
       to bottom,

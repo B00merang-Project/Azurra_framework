@@ -6,7 +6,6 @@
   &:disabled { background-color: gtkalpha($dark_shadow, 0.15);
     &:backdrop { background-color: gtkalpha($dark_shadow, 0.08); }
   }
-
   &:backdrop { background-color: gtkalpha($backdrop_selected_bg_color, 0.1); }
 }
 
@@ -19,28 +18,32 @@
   &:disabled { background-color: $disabled_bg_color;
     &:backdrop { background-color: $backdrop_disabled_bg_color; }
   }
-
   &:backdrop { background-color: $backdrop_selected_bg_color; }
 }
 
-@mixin scale_slider() {
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: -$scale_slider_margin;
-  border-radius: $scale_slider_radius;
-  border: none;
-  color: $selected_fg_color;
-  background-color: $selected_bg_color;
-  background-image: none;
+// clone of android, only :active shadow color changes
+// TODO: merge?
+@mixin scale_slider($orient : "none") {
 
-  &:active { box-shadow: 0 0 0 8px gtkalpha($selected_bg_color, 0.2); }
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    border-radius: $scale_slider_radius;
+    border: none;
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+    background-image: none;
 
-  &:disabled { background-color: $disabled_bg_color;
-    &:backdrop { background-color: $backdrop_disabled_bg_color; }
-  }
+    &:active { box-shadow: 0 0 0 8px gtkalpha($selected_bg_color, 0.2); }
 
-  &:backdrop {
-    color: $backdrop_selected_fg_color;
-    background-color: $backdrop_selected_bg_color;
+    &:disabled { background-color: $disabled_bg_color;
+      &:backdrop { background-color: $backdrop_disabled_bg_color; }
+    }
+
+    &:backdrop {
+      color: $backdrop_selected_fg_color;
+      background-color: $backdrop_selected_bg_color;
+    }
   }
 }

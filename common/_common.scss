@@ -655,7 +655,7 @@ scale {
   > trough {
     // TODO: outline widget
 
-    @include scale_trough();
+    @include scale_trough();  // TODO: support vertical troughs/highlights without @at-root?
   }
 
   > trough > highlight {
@@ -664,6 +664,34 @@ scale {
 
   > trough > slider {
     @include scale_slider();
+  }
+  
+  // directional sliders
+  &.horizontal {
+    > trough > slider {
+      @include scale_slider("horiz");
+    }
+    &.marks-after:not(.marks-before) > trough > slider {
+      @include scale_slider("bottom");
+    }
+    &.color > trough > slider,
+    &.marks-before:not(.marks-after) > trough > slider {
+      @include scale_slider("top");
+    }
+  }
+  
+  &.vertical {
+    > trough > slider {
+      @include scale_slider("vert");
+    }
+    &.color:dir(ltr) > trough > slider,
+    &.marks-after:not(.marks-before) > trough > slider {
+      @include scale_slider("right");
+    }
+    &.color:dir(rtl) > trough > slider,
+    &.marks-before:not(.marks-after) > trough > slider {
+      @include scale_slider("left");
+    }
   }
 
   &.fine-tune {
@@ -686,7 +714,7 @@ scale {
       border-radius: $scale_trough_radius * 2;
     }
 
-    // TODO: move to slider? human, solaris9 have margin issues with fine-tune state
+    // TODO: move to slider? human, solaris-9, windows-10-fluent have margin issues with fine-tune state
     > trough > slider { margin: -$scale_slider_ft_margin; }
   }
 
@@ -896,39 +924,54 @@ calendar {
   border-color: $border_color;
   color: $fg_color;
 
-  &.header {
+  > header {
     border: none;
     border-bottom: 1px solid gtkshade($border_color, 1.1);
     color: $text_color;
-  }
 
-  &.button { color: gtkalpha($fg_color, 0.45);
-    &:hover { color: $fg_color; }
-    &:backdrop { color: gtkalpha($backdrop_fg_color, 0.45); }
-    &:disabled { color: gtkalpha($disabled_fg_color, 0.45); }
-  }
-
-  &:selected {
-    // TODO: use selected_item/list
-    border-radius: $button_radius + 1px;
-    color: $selected_fg_color;
-    background-color: $selected_bg_color;
-
-    &:backdrop {
-      color: $backdrop_selected_fg_color;
-      background-color: $backdrop_selected_bg_color;
+    > button {
+      border: none;
+      box-shadow: none;
+      background: none;
+      border-radius: 0;
+      
+      // TODO: hover and active states
+      &:hover { color: $fg_color; }
+      &:backdrop { color: $backdrop_text_color; }
+      &:disabled { color: $disabled_fg_color; }
     }
   }
+  
+  > grid {
+    > label.today {
+      box-shadow: inset 0px -2px $border_color;
 
-  &:indeterminate { color: gtkalpha(currentColor, 0.1); }
+      &:selected { box-shadow: none; }
+    }
 
-  &.highlight { color: $disabled_fg_color;
-    &:backdrop { color: $backdrop_disabled_fg_color; }
-  }
+    > label:focus {
+      outline-color: $border_color;
+      outline-offset: -2px;
+      outline-width: 2px;
+      outline-style: solid;
+    }
 
-  &:backdrop {
-    color: $backdrop_text_color;
-    border-color: $backdrop_border_color;
+    > label.day-number {
+      padding: 3px;   // originally 4px
+
+      &:selected{
+        @include selected_items("normal");
+        border-radius: $viewitem_radius;
+      }
+
+      &:checked {
+        background-color: gtkalpha($selected_bg_color, 0.3);
+      }
+    }
+
+    > label.day-number.other-month {
+      color: gtkalpha(currentColor, 0.3);
+    }
   }
 }
 

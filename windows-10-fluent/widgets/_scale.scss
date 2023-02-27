@@ -21,40 +21,55 @@
   &:backdrop { background-color: $backdrop_selected_bg_color; }
 }
 
-@mixin scale_slider() {
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: -$scale_slider_margin;
-  margin-left: 0;
-  margin-right: 0;
-  border: none;
-  border-radius: $scale_slider_radius;
-  color: $selected_fg_color;
-  background-color: $selected_bg_color;
-  background-image: none;
-  box-shadow: none;
+@mixin scale_slider($orient : "none") {
 
-  &:hover {
+  @if $orient == "none" {
+    min-width: ($scale_slider_size / 2) - 2px;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    margin-left: 0;
+    margin-right: 0;
+    border: none;
+    border-radius: $scale_slider_radius;
     color: $selected_fg_color;
     background-color: $selected_bg_color;
+    background-image: none;
+    box-shadow: none;
+
+    &:hover {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+    }
+
+    &:disabled { background-color: $disabled_bg_color;
+      &:backdrop { background-color: $backdrop_disabled_bg_color; }
+    }
+    
+    &:backdrop {
+      color: $backdrop_selected_fg_color;
+      background-color: $backdrop_selected_bg_color;
+    }
   }
 
-  &:disabled { background-color: $disabled_bg_color;
-    &:backdrop { background-color: $backdrop_disabled_bg_color; }
-  }
-  
-  &:backdrop {
-    color: $backdrop_selected_fg_color;
-    background-color: $backdrop_selected_bg_color;
-  }
-
-  @at-root
-  scale.vertical > trough > slider {
-    min-width: $scale_slider_height;
-    min-height: $scale_slider_width;
+  @if $orient == "vert" {
+    min-width: $scale_slider_size;
+    min-height: ($scale_slider_size / 2) - 2px;
     margin: -$scale_slider_margin;
     margin-top: 0;
     margin-bottom: 0;
+  }
+  
+  // keep slider proportions in fine-tune mode
+  @at-root
+  scale.horizontal.fine-tune > trough > slider {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  
+  @at-root
+  scale.vertical.fine-tune > trough > slider {
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 }
 

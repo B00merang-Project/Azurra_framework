@@ -25,37 +25,45 @@
   background-image: none;
 }
 
-// TODO: fix fine-tune "moving" issue
-@mixin scale_slider() {
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: -$scale_slider_margin;
-  border: none;
-  border-radius: $scale_slider_radius;
-  box-shadow: 0 1px 2px 1px gtkalpha($dark_shadow, 0.09);
-  color: $fg_color;
-  background-color: transparent;
-  background-image: url('assets/scale-h-slider.png');
+@mixin scale_slider($orient : "none") {
 
-  &:hover {
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size / 2;
+    margin: -$scale_slider_margin;
+    border: none;
+    border-radius: $scale_slider_radius;
+    box-shadow: 0 1px 2px 1px gtkalpha($dark_shadow, 0.09);
     color: $fg_color;
-    background-color: $base_color;
-    background-image: url('assets/scale-h-slider-hover.png');
-  }
-
-  &:disabled { opacity: 0.75;
-    &:backdrop { background-color: transparent; }
-  }
-
-  &:backdrop {
-    color: $backdrop_fg_color;
     background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-shadow: none;
+
+    &:hover {
+      color: $fg_color;
+      background-color: $base_color;
+    }
+
+    &:disabled { opacity: 0.75;
+      &:backdrop { background-color: transparent; }
+    }
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: transparent;
+    }
   }
   
-  @at-root
-  scale.vertical > trough > slider {
-    min-width: $scale_slider_height;
-    min-height: $scale_slider_width;
+  @if $orient == "horiz" {
+    background-image: url('assets/scale-h-slider.png');
+  
+    &:hover { background-image: url('assets/scale-h-slider-hover.png'); }
+  }
+  
+  @if $orient == "vert" {
+    min-width: $scale_slider_size / 2;
+    min-height: $scale_slider_size;
     background-image: url('assets/scale-v-slider.png');
     
     &:hover { background-image: url('assets/scale-v-slider-hover.png'); }

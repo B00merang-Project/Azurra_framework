@@ -19,41 +19,43 @@
   background-color: transparent;
 }
 
-@mixin scale_slider() {
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: -$scale_slider_margin;
-  border: 1px solid $border_color;
-  border-radius: $scale_slider_radius;
-  color: $fg_color;
-  background-color: $base_color;
-  background-image: linear-gradient(
-    to right,
-    transparent 14%,
-    $border_color 15%,
-    $border_color 25%,
-    transparent 26%,
-    transparent 69%,
-    $border_color 70%,
-    $border_color 80%,
-    transparent 81%,
-    transparent
-  );
+@mixin scale_slider($orient : "none") {
 
-  &:disabled { background-color: $disabled_base_color; }
+  @if $orient == "none" {
+    min-width: $scale_slider_size / 2;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    border: 1px solid $border_color;
+    border-radius: $scale_slider_radius;
+    color: $fg_color;
+    background-color: $base_color;
+    background-image: linear-gradient(
+      to right,
+      transparent 14%,
+      $border_color 15%,
+      $border_color 21%,
+      transparent 22%,
+      transparent 73%,
+      $border_color 74%,
+      $border_color 80%,
+      transparent 81%,
+      transparent
+    );
 
-  @at-root
-  scale.vertical > trough > slider {
-    min-width: $scale_slider_height;
-    min-height: $scale_slider_width;
+    &:disabled { background-color: $disabled_base_color; }
+  }
+
+  @if $orient == "vert" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size / 2;
     background-image: linear-gradient(
       to bottom,
       transparent 14%,
       $border_color 15%,
-      $border_color 25%,
-      transparent 26%,
-      transparent 69%,
-      $border_color 70%,
+      $border_color 21%,
+      transparent 22%,
+      transparent 73%,
+      $border_color 74%,
       $border_color 80%,
       transparent 81%,
       transparent

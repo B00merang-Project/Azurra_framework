@@ -11,6 +11,7 @@
 }
 
 @mixin scale_highlight() {
+  margin: 0px;
   border: none;
   border-radius: $scale_trough_radius;
   background-color: $selected_bg_color;
@@ -22,25 +23,35 @@
   &:backdrop { background-color: $backdrop_selected_bg_color; }
 }
 
-@mixin scale_slider() {
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: -$scale_slider_margin;
-  border: none;
-  border-radius: $scale_slider_radius;
-  color: $fg_color;
-  background-color: gtkshade($bg_color, 1.4);
-  background-image: none;
-  box-shadow: 0 1px 2px 1px gtkalpha($dark_shadow, 0.09);
+@mixin scale_slider($orient : "none") {
 
-  &:disabled { background-color: $disabled_base_color;
-    &:backdrop { background-color: $backdrop_disabled_base_color; }
-  }
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    border-radius: $scale_slider_radius;
+    border: 1px solid gtkalpha($dark_shadow, 0.125);
+    border-left-color: gtkalpha($dark_shadow, 0.175);
+    border-right-color: gtkalpha($dark_shadow, 0.175);
+    border-bottom-color: gtkalpha($dark_shadow, 0.25);
+    color: $fg_color;
+    background-color: gtkshade($bg_color, 1.4);
+    background-image: none;
+    box-shadow: none;
 
-  &:backdrop {
-    color: $backdrop_fg_color;
-    background-color: gtkshade($backdrop_bg_color, 1.4);
+    &:disabled {
+      border-color: gtkalpha($dark_shadow, 0.085);
+      border-bottom-color: gtkalpha($dark_shadow, 0.115);
+      background-color: $disabled_base_color;     
+      
+      &:backdrop { background-color: $backdrop_disabled_base_color; }
+    }
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: gtkshade($backdrop_bg_color, 1.4);
+    }
   }
   
-  // TODO: directional sliders?
+  // TODO: directional sliders (with assets)
 }

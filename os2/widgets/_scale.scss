@@ -22,39 +22,34 @@
   &:backdrop { background-color: transparent; }
 }
 
-@mixin scale_slider() {
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: -$scale_slider_margin;
-  border-radius: $scale_slider_radius;
-  border: none;
-  color: $selected_fg_color;
-  background-color: transparent;
-  background-position: center center;
-  background-repeat: no-repeat;
-  box-shadow: none;
-  
-  background-image: url('assets/slider-horiz.png');
-
-  &:hover {
+@mixin scale_slider($orient : "none") {
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    border-radius: $scale_slider_radius;
+    border: none;
     color: $selected_fg_color;
-    background-image: url('assets/slider-horiz.png');
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-shadow: none;
+    
+    &:hover { color: $selected_fg_color; }
+    &:backdrop { color: $backdrop_selected_fg_color; }
   }
+  
+  @if $orient == "horiz" {
+    background-image: url('assets/slider-horiz.png');
 
-  &:disabled { background-image: url('assets/slider-horiz-insensitive.png');
+    &:hover { background-image: url('assets/slider-horiz.png'); }
+    &:disabled { background-image: url('assets/slider-horiz-insensitive.png');
+      &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
+    }
     &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
   }
-
-  &:backdrop {
-    color: $backdrop_selected_fg_color;
-    background-image: url('assets/slider-horiz-insensitive.png');
-  }
-    
-  @at-root
-  scale.vertical > trough > slider {
-    min-width: $scale_slider_height;
-    min-height: $scale_slider_width;
-    
+  
+  @if $orient == "vert" {
     background-image: url('assets/slider-vert.png');
 
     &:hover { background-image: url('assets/slider-vert.png'); }
@@ -63,4 +58,6 @@
     }
     &:backdrop { background-image: url('assets/slider-vert-insensitive.png'); }
   }
+  
+  // OS/2 didn't have directional sliders
 }

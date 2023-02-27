@@ -2,9 +2,8 @@
   border: 1px solid gtkshade($border_color, 0.75);
   border-right-color: $light_shadow;
   border-bottom-color: $light_shadow;
-  border-radius: 4px;
+  border-radius: $scale_trough_radius;
   background-color: gtkshade($bg_color, 0.85);
-  outline-offset: 2px;
   box-shadow: inset 0px 0px 0px 1px $dark_shadow;
   
   &:disabled {
@@ -18,7 +17,7 @@
 
 @mixin scale_highlight() {
   border: none;
-  border-radius: 4px;
+  border-radius: $scale_trough_radius;
   background-color: transparent;
 
   &:disabled { background-color: transparent;
@@ -27,48 +26,44 @@
   &:backdrop { background-color: transparent; }
 }
 
-//margin-top: -6px;
-//margin-bottom: -9px;
-@mixin scale_slider() {
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: -$scale_slider_margin;
-  //margin-bottom: -($scale_slider_height + 1px);
-  border-radius: $scale_slider_radius;
-  border: none;
-  color: $selected_fg_color;
-  background-color: transparent;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  box-shadow: none;
-  
-  &:hover { color: $selected_fg_color; }
-  &:backdrop { color: $backdrop_selected_fg_color; }
-  
-  background-image: url('assets/slider-horiz.png');
+@mixin scale_slider($orient : "none") {
 
-  &:hover { background-image: url('assets/slider-horiz.png'); }
-  &:disabled { background-image: url('assets/slider-horiz-insensitive.png');
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    border-radius: $scale_slider_radius;
+    border: none;
+    color: $selected_fg_color;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;   // TODO: fix assets
+    box-shadow: none;
+    
+    &:hover { color: $selected_fg_color; }
+    &:backdrop { color: $backdrop_selected_fg_color; }
+  }
+  
+  @if $orient == "horiz" /* or $orient == "bottom" */ {
+    background-image: url('assets/slider-horiz.png');
+
+    &:hover { background-image: url('assets/slider-horiz.png'); }
+    &:disabled { background-image: url('assets/slider-horiz-insensitive.png');
+      &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
+    }
     &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
   }
 
-  &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
-
-  @at-root
-  scale.vertical > trough > slider {
-    min-width: $scale_slider_height;
-    min-height: $scale_slider_width;
-    margin: -$scale_slider_margin;
-    //margin-right: -($scale_slider_height + 1px);
-    background-position: right center;
-    
+  @if $orient == "vert" /* or $orient == "right" */ {
     background-image: url('assets/slider-vert.png');
 
     &:hover { background-image: url('assets/slider-vert.png'); }
     &:disabled { background-image: url('assets/slider-vert-insensitive.png');
       &:backdrop { background-image: url('assets/slider-vert-insensitive.png'); }
     }
-
     &:backdrop { background-image: url('assets/slider-vert-insensitive.png'); }
   }
+  
+  // TODO: directional sliders
 }

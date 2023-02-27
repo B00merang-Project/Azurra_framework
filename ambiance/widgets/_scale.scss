@@ -65,25 +65,24 @@
   }
 }
 
-@mixin scale_slider() {
-  margin: -$scale_slider_margin;
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
+@mixin scale_slider($orient : "none") {
+
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    border-radius: $scale_slider_radius;
+    border: none;
+    color: $selected_fg_color;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-shadow: none;
+    
+    &:backdrop { color: $backdrop_selected_fg_color; }
+  }
   
-  border: none;
-  border-radius: $scale_slider_radius;
-  color: $selected_fg_color;
-  background-color: transparent;
-  background-position: center center;
-  background-repeat: no-repeat;
-  box-shadow: none;
-  
-  &:backdrop { color: $backdrop_selected_fg_color; }
-  
-  // TODO: better solution to manage directional sliders
-  @at-root
-  scale.horizontal > trough > slider,
-  scale.horizontal.marks-after:not(.marks-before) > trough > slider {
+  @if $orient == "bottom" or $orient == "horiz" {
     background-image: gtkscale('assets/slider-horizontal', 'png');
     
     &:focus { background-image: gtkscale('assets/slider-horizontal-focused', 'png');
@@ -95,8 +94,7 @@
     &:backdrop { background-image: gtkscale('assets/slider-horizontal-disabled', 'png'); }
   }
   
-  @at-root
-  scale.horizontal.marks-before:not(.marks-after) > trough > slider {
+  @if $orient == "top" {
     background-image: gtkscale('assets/slider-horizontal-left', 'png');
     
     &:focus { background-image: gtkscale('assets/slider-horizontal-left-focused', 'png');
@@ -107,17 +105,8 @@
     }
     &:backdrop { background-image: gtkscale('assets/slider-horizontal-left-disabled', 'png'); }
   }
-
-  @at-root
-  scale.vertical > trough > slider {
-    margin: -$scale_slider_margin;
-    min-height: $scale_slider_width;  // invert since it's now sideways
-    min-width: $scale_slider_height;
-  }
   
-  @at-root
-  scale.vertical > trough > slider,
-  scale.vertical.marks-after:not(.marks-before) > trough > slider {
+  @if $orient == "right" or $orient == "vert" {
     background-image: gtkscale('assets/slider-vertical', 'png');
 
     &:focus { background-image: gtkscale('assets/slider-vertical-focused', 'png');
@@ -129,8 +118,7 @@
     &:backdrop { background-image: gtkscale('assets/slider-vertical-disabled', 'png'); }
   }
 
-  @at-root
-  scale.vertical.marks-before:not(.marks-after) > trough > slider {
+  @if $orient == "left" {
     background-image: gtkscale('assets/slider-vertical-left', 'png');
     
     &:hover { background-image: gtkscale('assets/slider-vertical-left-focused', 'png');

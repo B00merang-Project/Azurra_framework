@@ -1,3 +1,4 @@
+// based on https://cdn.arstechnica.net/wp-content/uploads/2012/12/classic-prefs-2.jpg
 @mixin scale_trough() {
   border: 1px solid $selected_bg_color;
   border-left-color: gtkshade($border_color, 0.9);
@@ -13,7 +14,6 @@
     
     &:backdrop { background-color: gtkalpha($dark_shadow, 0.05); }
   }
-
   &:backdrop { background-color: gtkalpha($dark_shadow, 0.1); }
     
   @at-root
@@ -40,31 +40,36 @@
 }
 
 // TODO: remove hard-coded colors
-@mixin scale_slider() {
-  min-width: $scale_slider_width;
-  min-height: $scale_slider_height;
-  margin: -$scale_slider_margin;
-  border-radius: $scale_slider_radius;
-  border: 1px solid $selected_bg_color;
-  border-left-color: #385f92;
-  border-right-color: #385f92;
-  border-bottom-color: #24416b;
-  color: $fg_color;
-  background-color: gtkshade($selected_bg_color, 0.8);
-  background-image: linear-gradient(
-    to bottom,
-    #fff,
-    #95b9df 50%,
-    #689dd3 51%,
-    #d0faff
-  );
+@mixin scale_slider($orient : "none") {
 
-  &:disabled { background-color: $disabled_base_color;
-    &:backdrop { background-color: $backdrop_disabled_bg_color; }
-  }
+  @if $orient == "none" {
+    min-width: $scale_slider_size;
+    min-height: $scale_slider_size;
+    margin: -$scale_slider_margin;
+    border-radius: $scale_slider_radius;
+    border: 1px solid $selected_bg_color;
+    border-left-color: #385f92;
+    border-right-color: #385f92;
+    border-bottom-color: #24416b;
+    color: $fg_color;
+    background-color: gtkshade($selected_bg_color, 0.8);
+    background-image: linear-gradient(
+      to bottom,
+      #fff,
+      #95b9df 50%,
+      #689dd3 51%,
+      #d0faff
+    );
 
-  &:backdrop {
-    color: $backdrop_fg_color;
-    background-color: $backdrop_base_color;
+    &:disabled { background-color: $disabled_base_color;
+      &:backdrop { background-color: $backdrop_disabled_bg_color; }
+    }
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: $backdrop_base_color;
+    }
   }
+  
+  // TODO: directional sliders (with assets)
 }
