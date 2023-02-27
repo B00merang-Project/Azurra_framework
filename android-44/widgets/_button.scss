@@ -1,16 +1,14 @@
 // TODO: use mixed colors instead of transparent
 @mixin normal_buttons($button_bg : gtkalpha($fg_color, 0.2), $button_fg : $fg_color, $button_border : gtkalpha($fg_color, 0.2)) {
   padding: 4px 8px;
-  border: none;
   border-radius: $button_radius;
+  border: none;
   color: $button_fg;
   border-color: $button_border;
   background-color: $button_bg;
+  background-image: none;
+  box-shadow: none;
   
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: 0;
-
   // TODO: create a hover state?
 
   &:active, &:checked {
@@ -52,6 +50,8 @@
 
 @mixin flat_buttons($button_bg : gtkalpha($fg_color, 0.2), $button_fg : $fg_color, $button_border : gtkalpha($fg_color, 0.2)) {
   background-color: transparent;
+  background-image: none;
+  box-shadow: none;
 
   // TODO: create a hover state?
 
@@ -82,8 +82,8 @@
 
 @mixin destructive_button() {
   button.destructive-action {
-    border: none;
     border-radius: $button_radius;
+    border: none;
     color: gtkmix($selected_fg_color, $error_color, 0.1);
     background-color: $error_color;
 

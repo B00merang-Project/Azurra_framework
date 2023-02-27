@@ -1,16 +1,15 @@
 @mixin normal_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : gtkshade($border_color, 0.85)) {
   padding: 3px;
-  border-style: solid;
-  border-width: 1px;
   border-radius: $button_radius;
+  border: 1px solid $button_border;
   color: $button_fg;
-  border-color: $button_border;
   background-color: $button_bg;
   background-image: linear-gradient(
     to bottom,
     $button_bg,
     gtkshade($button_bg, 0.9)
   );
+  box-shadow: none;
 
   &:hover {
     color: $button_fg;
@@ -96,6 +95,7 @@
   color: $button_fg;
   background-color: transparent;
   background-image: none;
+  box-shadow: none;
   
   &:hover {
     color: $button_fg;
@@ -176,8 +176,8 @@
 
 @mixin destructive_button() {
   button.destructive-action {
-    color: $selected_fg_color;
     border-color: gtkshade($error_color, 0.6);
+    color: $selected_fg_color;
     background-color: gtkshade($error_color, 0.95);
     background-image: linear-gradient(
       to bottom,

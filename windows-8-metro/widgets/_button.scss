@@ -1,9 +1,11 @@
 @mixin normal_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
   padding: 4px 8px;
-  border: none;
   border-radius: $button_radius;
+  border: none;
   color: $button_fg;
   background-color: gtkmix($button_bg, $button_fg, 0.2);
+  background-image: none;
+  box-shadow: none;
   
   // TODO: outline mixin 
   /*
@@ -49,6 +51,8 @@
   border-radius: $button_radius;
   color: $button_fg;
   background-color: transparent;
+  background-image: none;
+  box-shadow: none;
 
   &:hover {
     color: $button_fg;
@@ -85,8 +89,8 @@
 
 @mixin destructive_button() {
   button.destructive-action {
-    border: none;
     border-radius: $button_radius;
+    border: none;
     color: gtkmix($selected_fg_color, $error_color, 0.1);
     background-color: $error_color;
 
@@ -107,8 +111,8 @@
 
 @mixin suggested_button() {
   button.suggested-action {
-    border: none;
     border-radius: $button_radius;
+    border: none;
     color: $selected_fg_color;
     background-color: $selected_bg_color;
 

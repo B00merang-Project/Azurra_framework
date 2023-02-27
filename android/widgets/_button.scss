@@ -1,16 +1,15 @@
 // TODO: use colors instead of transparency
 @mixin normal_buttons($button_bg : transparent, $button_fg : $selected_bg_color, $button_border : transparent) {
   padding: 4px 8px;
-  border: none;
   border-radius: $button_radius;
+  border: none;
   color: $button_fg;
   border-color: $button_border;
   background-color: $button_bg;
+  background-image: none;
+  box-shadow: none;
   
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: 0;
-
+  // TODO: outline widget
   // TODO: add hover state
 
   &:active, &:checked {

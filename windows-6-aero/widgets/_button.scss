@@ -146,15 +146,15 @@
 
 @mixin destructive_button() {
   button.destructive-action {
-    box-shadow: inset 0 0 1px 1px $color_shadow;
     border-color: $selected_text_bg_color;
     background-image: linear-gradient(
-    to bottom,
-    gtkshade($error_color, 1.1),
-    gtkshade($error_color, 0.985) 50%,
-    gtkshade($error_color, 0.95) 51%,
-    gtkshade($error_color, 0.94)
-  );
+      to bottom,
+      gtkshade($error_color, 1.1),
+      gtkshade($error_color, 0.985) 50%,
+      gtkshade($error_color, 0.95) 51%,
+      gtkshade($error_color, 0.94)
+    );
+    box-shadow: inset 0 0 1px 1px $color_shadow;
     
     &:hover {
       background-image: linear-gradient(
@@ -169,7 +169,6 @@
 
 @mixin suggested_button() {
   button.suggested-action {
-    box-shadow: inset 0 0 1px 1px $color_shadow;
     border-color: $selected_text_bg_color;
     background-image: linear-gradient(
       to bottom,
@@ -178,6 +177,7 @@
       gtkmix($bg_color, $color_shadow, 0.15) 50%,
       gtkmix(gtkshade($bg_color, 0.92), $color_shadow, 0.15) 51%
     );
+    box-shadow: inset 0 0 1px 1px $color_shadow;
     
     &:hover {
       background-image: linear-gradient(

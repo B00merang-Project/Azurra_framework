@@ -27,11 +27,13 @@
   @if $orient == "none" {
     min-height: $scale_slider_size;   // orig: 15px
     min-width: $scale_slider_size;
-    margin: $scale_slider_margin;
+    margin: -$scale_slider_margin;
     border: none;
     border-radius: $scale_slider_radius;
     color: $selected_fg_color;
     background-color: $selected_bg_color;
+    background-image: none;
+    box-shadow: none;
 
     &:hover {
       color: $selected_fg_color;

@@ -1,13 +1,11 @@
 @mixin normal_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
   padding: 4px 8px;
-  border-style: solid;
-  border-width: 1px;
   border-radius: $button_radius;
-  color: $button_fg;
-  border-color: gtkshade($button_border, 0.6);
+  border: 1px solid gtkshade($button_border, 0.6);
   border-top-color: gtkshade($button_border, 0.9);
   border-left-color: gtkshade($button_border, 0.85);
   border-right-color: gtkshade($button_border, 0.85);
+  color: $button_fg;
   background-color: $button_bg;
   background-image: linear-gradient(
     to bottom,
@@ -128,10 +126,8 @@
 
 @mixin destructive_button() {
   button.destructive-action {
-    border-width: 1px;
-    border-style: solid;
-    border-color: gtkmix($error_color, $fg_color, 0.2);
     border-radius: $button_radius;
+    border: 1px solid gtkmix($error_color, $fg_color, 0.2);
     color: gtkmix($selected_fg_color, $error_color, 0.1);
     background-color: $error_color;
     background-image: linear-gradient(
@@ -160,10 +156,8 @@
 
 @mixin suggested_button() {
   button.suggested-action {
-    border-width: 1px;
-    border-style: solid;
     border-radius: $button_radius;
-    border-color: gtkshade(gtkmix($bg_color, $selected_bg_color, 0.3), 0.65);
+    border: 1px solid gtkshade(gtkmix($bg_color, $selected_bg_color, 0.3), 0.65);
     border-top-color: gtkshade(gtkmix($bg_color, $selected_bg_color, 0.3), 0.3);
     border-left-color: gtkshade(gtkmix($bg_color, $selected_bg_color, 0.3), 0.5);
     border-right-color: gtkshade(gtkmix($bg_color, $selected_bg_color, 0.3), 0.5);

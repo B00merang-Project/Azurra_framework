@@ -1,17 +1,13 @@
 @mixin normal_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
   padding: 4px 8px;
-  border-style: solid;
-  border-width: 1px;
   border-radius: $button_radius;
+  border: 1px solid $button_border;
   color: $button_fg;
-  border-color: $button_border;
   border-bottom-color: $light_shadow;
   border-right-color: $light_shadow;
   background-color: $button_bg;
   box-shadow: inset -2px -2px $button_border,
               inset 2px 2px $light_shadow;
-
-  outline-style: none;
 
   // TODO: implement hover state
 
@@ -41,8 +37,9 @@
   border-color: transparent;
   border-radius: $button_radius;
   color: $button_fg;
-  box-shadow: none;
   background-color: transparent;
+  background-image: none;
+  box-shadow: none;
 
   &:hover {
     color: $button_fg;
@@ -74,10 +71,8 @@
 
 @mixin destructive_button() {
   button.destructive-action {
-    border-width: 1px;
-    border-style: solid;
-    border-color: gtkmix($error_color, $fg_color, 0.2);
     border-radius: $button_radius;
+    border: 1px solid gtkmix($error_color, $fg_color, 0.2);
     color: gtkmix($selected_fg_color, $error_color, 0.1);
     background-color: $error_color;
 

@@ -1,10 +1,8 @@
 @mixin normal_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
   padding: 4px 8px;
-  border-style: solid;
-  border-width: 1px;
   border-radius: $button_radius;
+  border: 1px solid $button_border;
   color: $button_fg;
-  border-color: $button_border;
   background-color: $button_bg;
   background-image: linear-gradient(
     to bottom,
@@ -17,9 +15,6 @@
               inset 0 -1px gtkshade($button_bg, 0.65),
               inset 1px 0 gtkmix($button_bg, $light_shadow, 0.7),
               inset 0 1px gtkmix($button_bg, $light_shadow, 0.7);
-  outline-color: $button_fg;
-  outline-offset: 0;
-  outline-style: solid;
 
   &:hover {
     // TODO: use come other color instead?
@@ -71,9 +66,9 @@
   border-color: transparent;
   border-radius: $button_radius;
   color: $button_fg;
-  box-shadow: none;
-  background-image: none;
   background-color: transparent;
+  background-image: none;
+  box-shadow: none;
 
   &:hover {
     color: $button_fg;
@@ -117,10 +112,8 @@
 @mixin destructive_button() {
   // TODO: check if all rules are actually applicable
   button.destructive-action {
-    border-width: 1px;
-    border-style: solid;
-    border-color: gtkmix($error_color, $fg_color, 0.2);
     border-radius: $button_radius;
+    border: 1px solid gtkmix($error_color, $fg_color, 0.2);
     color: gtkmix($selected_fg_color, $error_color, 0.1);
     background-color: $error_color;
     background-image: none;

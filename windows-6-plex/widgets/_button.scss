@@ -1,16 +1,15 @@
 @mixin normal_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
   padding: 6px 6px;
-  border-style: solid;
-  border-width: 1px;
   border-radius: $button_radius;
+  border: 1px solid gtkmix(gtkshade($button_border, 0.3), $selected_bg_color, 0.25);
   color: $button_fg;
-  border-color: gtkmix(gtkshade($button_border, 0.3), $selected_bg_color, 0.25);
   background-color: $button_bg;
   background-image: linear-gradient(
     to bottom,
     gtkshade($button_bg, 1.015) 20%,
     $color_shadow 35%
   );
+  box-shadow: none;
 
   // TODO: implement hover state
 
@@ -44,6 +43,7 @@
   color: $button_fg;
   background-color: transparent;
   background-image: none;
+  box-shadow: none;
 
   &:hover {
     border-color: gtkmix(gtkshade($button_border, 0.3), $selected_bg_color, 0.3);

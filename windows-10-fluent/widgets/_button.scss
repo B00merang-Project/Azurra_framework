@@ -4,7 +4,8 @@
   border-radius: $button_radius;
   border: 2px solid transparent;
   background-color: gtkmix($button_bg, $button_fg, 0.15);
-  outline-width: 0;
+  background-image: none;
+  box-shadow: none;
 
 /*
   outline-color: $fg_color;
@@ -90,8 +91,8 @@
 
 @mixin destructive_button() {
   button.destructive-action {
-    border: none;
     border-radius: $button_radius;
+    border: none;
     color: gtkmix($selected_fg_color, $error_color, 0.1);
     background-color: $error_color;
 
@@ -112,8 +113,8 @@
 
 @mixin suggested_button() {
   button.suggested-action {
-    border: none;
     border-radius: $button_radius;
+    border: none;
     color: $selected_fg_color;
     background-color: $selected_bg_color;
 
