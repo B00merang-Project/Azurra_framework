@@ -1,52 +1,54 @@
 @mixin menubar() {
-  menubar, .menubar {
-    padding: 0;
-    border-style: none;
+  padding: 0px;
+  border-style: none;
+  color: $menubar_fg_color;
+  background-color: $menubar_bg_color;
+
+  &:backdrop {
+    color: gtkmix($menubar_fg_color, $backdrop_fg_color, 0.1);
     background-color: $menubar_bg_color;
-    color: $menubar_fg_color;
-
-    &:backdrop {
-      color: gtkmix($menubar_fg_color, $backdrop_fg_color, 0.1);
-      background-color: $menubar_bg_color;
-    }
+  }
+}
     
-    > menuitem {
-      padding: 3px 5px;
-      border: 1px solid transparent;
-      color: $menubar_fg_color;
-      background-color: transparent;
+@mixin menubaritem($state : "none") {
 
-      &:hover {
-        color: $menubar_fg_color;
-        border-radius: $global_radius $global_radius 0 0;
-        border-color: gtkshade($menubar_bg_color, 0.8);
-        background-color: $menubar_bg_color;
+  @if $state == "none" {
+    padding: 3px 5px;
+    min-height: 12px;
+    border-radius: $global_radius $global_radius 0 0;
+    border: 1px solid transparent;
+    color: $menubar_fg_color;
+    background-color: transparent;
+  }
 
-        @if $variant != 'light' {
-          background-image: linear-gradient(
-            to bottom,
-            gtkshade($titlebar_bg_color, 1.6),
-            $titlebar_bg_color
-          );
-        }
-        @else {
-          background-image: linear-gradient(
-            to bottom,
-            gtkshade($titlebar_bg_color, 1.15),
-            $titlebar_bg_color
-          );
-        }
-      }
+  @if $state == "hover" {
+    border-color: gtkshade($menubar_bg_color, 0.8);
+    color: $menubar_fg_color;
+    background-color: $menubar_bg_color;
 
-      &:disabled {
-        color: $disabled_fg_color;
-        background-color: transparent;
-      }
-
-      &:backdrop {
-        color: $backdrop_fg_color;
-        background-color: transparent;
-      }
+    @if $variant != 'light' {
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($titlebar_bg_color, 1.6),
+        $titlebar_bg_color
+      );
     }
+    @else {
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($titlebar_bg_color, 1.15),
+        $titlebar_bg_color
+      );
+    }
+  }
+
+  @if $state == "disabled" {
+    color: $disabled_fg_color;
+    background-color: transparent;
+  }
+
+  @if $state == "backdrop" {
+    color: $backdrop_fg_color;
+    background-color: transparent;
   }
 }

@@ -1,50 +1,51 @@
 @mixin menubar() {
-  menubar, .menubar {
-    padding: 0;
-    border-style: none;
-    background-color: $menubar_bg_color;
-    color: $menubar_fg_color;
-    background-size: 100% 5px;
+  padding: 0px;
+  border-style: none;
+  color: $menubar_fg_color;
+  background-color: $menubar_bg_color;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 35%,
+    gtkshade($border_color, 1.3) 40%,
+    gtkshade($border_color, 1.3) 64%,
+    transparent 85%
+  );
+  background-size: 100% 5px;
+
+  &:backdrop {
+    color: $backdrop_fg_color;
+    background-color: $backdrop_base_color;
     background-image: linear-gradient(
       to bottom,
       transparent 35%,
-      gtkshade($border_color, 1.3) 40%,
-      gtkshade($border_color, 1.3) 64%,
+      gtkalpha($backdrop_border_color, 0.5) 40%,
+      gtkalpha($backdrop_border_color, 0.5) 64%,
       transparent 85%
     );
-
-    &:backdrop {
-      color: $backdrop_fg_color;
-      background-color: $backdrop_base_color;
-      background-image: linear-gradient(
-        to bottom,
-        transparent 35%,
-        gtkalpha($backdrop_border_color, 0.5) 40%,
-        gtkalpha($backdrop_border_color, 0.5) 64%,
-        transparent 85%
-      );
-    }
+  }
+}
     
-    > menuitem {
-      padding: 3px 5px;
-      border: none;
-      color: $menubar_fg_color;
-      background-color: transparent;
+@mixin menubaritem($state : "none") {
+  @if $state == "none" {
+    padding: 3px 5px;
+    min-height: 12px;
+    border: none;
+    color: $menubar_fg_color;
+    background-color: transparent;
+  }
 
-      &:hover {
-        color: $selected_fg_color;
-        background-color: gtkalpha($selected_bg_color, 0.7);
-      }
+  @if $state == "hover" {
+    color: $selected_fg_color;
+    background-color: gtkalpha($selected_bg_color, 0.7);
+  }
 
-      &:disabled {
-        color: $disabled_fg_color;
-        background-color: transparent;
-      }
+  @if $state == "disabled" {
+    color: $disabled_fg_color;
+    background-color: transparent;
+  }
 
-      &:backdrop {
-        color: $backdrop_fg_color;
-        background-color: transparent;
-      }
-    }
+  @if $state == "backdrop" {
+    color: $backdrop_fg_color;
+    background-color: transparent;
   }
 }

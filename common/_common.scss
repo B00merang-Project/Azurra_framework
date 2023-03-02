@@ -632,7 +632,17 @@ columnview.view, treeview.view {
 magnifier { background-color: $base_color; }
 
 @include menu();      // TODO: modernize
-@include menubar();
+
+menubar { @include menubar();
+  > item { @include menubaritem();
+    &:selected { @include menubaritem("hover"); }
+    &:disabled { @include menubaritem("disabled"); }
+    &:backdrop { @include menubaritem("backdrop"); }
+    
+    // TODO: submenu styling?
+  }
+}
+
 @include notebook();  // TODO: modernize
 @include scrollbar();   // TODO: figure out how to simulate buttons for themes requiring it
 @include switch();

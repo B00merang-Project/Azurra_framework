@@ -1,37 +1,38 @@
 @mixin menubar() {
-  menubar, .menubar {
-    padding: 0;
-    border-style: none;
-    background-color: $menubar_bg_color;
+  padding: 0px;
+  border-style: none;
+  color: $menubar_fg_color;
+  background-color: $menubar_bg_color;
+  box-shadow: inset 0 -1px gtkshade($menubar_bg_color, 0.9),
+              inset 1px 1px gtkalpha($light_shadow, 0.5);
+
+  &:backdrop {
+    color: $backdrop_fg_color;
+    background-color: $backdrop_bg_color;
+  }
+}
+
+@mixin menubaritem($state : "none") {
+  @if $state == "none" {
+    padding: 3px 5px;
+    min-height: 12px;
+    border: none;
     color: $menubar_fg_color;
-    box-shadow: inset 0 -1px gtkshade($menubar_bg_color, 0.9),
-                inset 1px 1px gtkalpha($light_shadow, 0.5);
+    background-color: transparent;
+  }
 
-    &:backdrop {
-      color: $backdrop_fg_color;
-      background-color: $backdrop_bg_color;
-    }
-    
-    > menuitem {
-      padding: 3px 5px;
-      border: none;
-      color: $menubar_fg_color;
-      background-color: transparent;
+  @if $state == "hover" {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+  }
 
-      &:hover {
-        color: $selected_fg_color;
-        background-color: $selected_bg_color;
-      }
+  @if $state == "disabled" {
+    color: $disabled_fg_color;
+    background-color: transparent;
+  }
 
-      &:disabled {
-        color: $disabled_fg_color;
-        background-color: transparent;
-      }
-
-      &:backdrop {
-        color: $backdrop_fg_color;
-        background-color: transparent;
-      }
-    }
+  @if $state == "backdrop" {
+    color: $backdrop_fg_color;
+    background-color: transparent;
   }
 }
