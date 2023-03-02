@@ -35,15 +35,22 @@
       }
     }
   }
+
+  @if $type == "hint" {
+    border: none;
+    opacity: 0.4;
+    background-color: transparent;
+  }
 }
 
+// TODO: fix fine-tune mode
 @mixin scrollbar_slider($type : "base") {
   @if $type == "base" {
     min-width: $scrollbar_slider_size;
     min-height: $scrollbar_slider_size;
     border-radius: $scrollbar_slider_radius;
-    margin: -1px;   // customize too?
-    border: 4px solid transparent;
+    margin: 0px;   // customize too?
+    border: 3px solid transparent;
     background-clip: padding-box;
     background-color: gtkalpha(gtkmix($fg_color, $bg_color, 0.15), 0.8);
 
@@ -58,6 +65,7 @@
     min-width: $scrollbar_indicator_size;
     min-height: $scrollbar_indicator_size;
     border: none;
-    background-color: gtkalpha($fg_color, 0.4);
+    background-color: $fg_color;
+    border: 1px solid $fg_color;
   }
 }

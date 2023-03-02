@@ -675,21 +675,17 @@ scrollbar {
 
   &.overlay-indicator {
     &:not(.dragging):not(.hovering) {
-      border: none;
-      opacity: 0.7;   // should this be a fixed or an editable value?
-      background-color: transparent;
+      @include scrollbar("hint");
 
       > range > trough > slider {
         @include scrollbar_slider("hint");
       }
 
       &.horizontal > range > trough > slider {
-        margin: 0px;
         min-width: $scrollbar_slider_min_length;
       }
 
       &.vertical > range > trough > slider {
-        margin: 0px;
         min-height: $scrollbar_slider_min_length;
       }
     }

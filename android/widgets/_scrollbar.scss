@@ -7,6 +7,12 @@
       background-color: gtkshade($backdrop_bg_color, 0.9);
     }
   }
+  
+  @if $type == "hint" {
+    border: none;
+    opacity: 0.7;
+    background-color: transparent;
+  }
 }
 
 @mixin scrollbar_slider($type : "base") {
