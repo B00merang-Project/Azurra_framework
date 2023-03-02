@@ -20,9 +20,8 @@
   &:backdrop { background-color: $backdrop_selected_bg_color; }
 }
 
-@mixin scale_slider($orient : "none") {
-
-  @if $orient == "none" {
+@mixin scale_slider($orient : "base") {
+  @if $orient == "base" {
     min-height: $scale_slider_size;
     min-width: $scale_slider_size;
     margin: -$scale_slider_margin;

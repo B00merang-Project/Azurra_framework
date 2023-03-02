@@ -22,9 +22,8 @@
   }
 }
 
-@mixin scale_slider($orient : "none") {
-
-  @if $orient == "none" or $orient == "horiz" {
+@mixin scale_slider($orient : "base") {
+  @if $orient == "base" or $orient == "horiz" {
     min-width: $scale_slider_size;
     min-height: $scale_slider_size / 2;
     margin: -$scale_slider_margin;
