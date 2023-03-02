@@ -21,8 +21,8 @@
 }
 
 // similar to windows 95, 3.11, xp luna
-@mixin scale_slider($orient : "base") {
-  @if $orient == "base" {
+@mixin scale_slider($type : "base") {
+  @if $type == "base" {
     min-width: $scale_slider_size;
     min-height: $scale_slider_size;
     margin: -$scale_slider_margin;
@@ -38,7 +38,7 @@
     &:backdrop { color: $backdrop_selected_fg_color; }
   }
   
-  @if $orient == "bottom" or $orient == "horiz" {
+  @if $type == "bottom" or $type == "horiz" {
     background-image: url('assets/slider-horiz.png');
 
     &:hover { background-image: url('assets/slider-horiz-hover.png'); }
@@ -48,7 +48,7 @@
     &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
   }
   
-  @if $orient == "top" {
+  @if $type == "top" {
     background-image: url('assets/slider-horiz-top.png');
 
     &:hover { background-image: url('assets/slider-horiz-top-hover.png'); }
@@ -58,7 +58,7 @@
     &:backdrop { background-image: url('assets/slider-horiz-top-insensitive.png'); }
   }
 
-  @if $orient == "right" or $orient == "vert" {
+  @if $type == "right" or $type == "vert" {
     background-image: url('assets/slider-vert.png');
 
     &:hover { background-image: url('assets/slider-vert-hover.png'); }
@@ -68,7 +68,7 @@
     &:backdrop { background-image: url('assets/slider-vert-insensitive.png'); }
   }
   
-  @if $orient == "left" {
+  @if $type == "left" {
     background-image: url('assets/slider-vert-left.png');
     
     &:hover { background-image: url('assets/slider-vert-left-hover.png'); }

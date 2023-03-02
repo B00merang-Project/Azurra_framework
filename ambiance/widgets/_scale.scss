@@ -65,8 +65,8 @@
   }
 }
 
-@mixin scale_slider($orient : "base") {
-  @if $orient == "base" {
+@mixin scale_slider($type : "base") {
+  @if $type == "base" {
     min-width: $scale_slider_size;
     min-height: $scale_slider_size;
     margin: -$scale_slider_margin;
@@ -81,7 +81,7 @@
     &:backdrop { color: $backdrop_selected_fg_color; }
   }
   
-  @if $orient == "bottom" or $orient == "horiz" {
+  @if $type == "bottom" or $type == "horiz" {
     background-image: gtkscale('assets/slider-horizontal', 'png');
     
     &:focus { background-image: gtkscale('assets/slider-horizontal-focused', 'png');
@@ -93,7 +93,7 @@
     &:backdrop { background-image: gtkscale('assets/slider-horizontal-disabled', 'png'); }
   }
   
-  @if $orient == "top" {
+  @if $type == "top" {
     background-image: gtkscale('assets/slider-horizontal-left', 'png');
     
     &:focus { background-image: gtkscale('assets/slider-horizontal-left-focused', 'png');
@@ -105,7 +105,7 @@
     &:backdrop { background-image: gtkscale('assets/slider-horizontal-left-disabled', 'png'); }
   }
   
-  @if $orient == "right" or $orient == "vert" {
+  @if $type == "right" or $type == "vert" {
     background-image: gtkscale('assets/slider-vertical', 'png');
 
     &:focus { background-image: gtkscale('assets/slider-vertical-focused', 'png');
@@ -117,7 +117,7 @@
     &:backdrop { background-image: gtkscale('assets/slider-vertical-disabled', 'png'); }
   }
 
-  @if $orient == "left" {
+  @if $type == "left" {
     background-image: gtkscale('assets/slider-vertical-left', 'png');
     
     &:hover { background-image: gtkscale('assets/slider-vertical-left-focused', 'png');

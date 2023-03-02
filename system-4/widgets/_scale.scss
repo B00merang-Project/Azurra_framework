@@ -19,8 +19,8 @@
   background-color: transparent;
 }
 
-@mixin scale_slider($orient : "base") {
-  @if $orient == "base" {
+@mixin scale_slider($type : "base") {
+  @if $type == "base" {
     min-width: $scale_slider_size / 2;
     min-height: $scale_slider_size;
     margin: -$scale_slider_margin;
@@ -44,7 +44,7 @@
     &:disabled { background-color: $disabled_base_color; }
   }
 
-  @if $orient == "vert" {
+  @if $type == "vert" {
     min-width: $scale_slider_size;
     min-height: $scale_slider_size / 2;
     background-image: linear-gradient(

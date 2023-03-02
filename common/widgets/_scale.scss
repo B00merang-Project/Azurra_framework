@@ -22,9 +22,9 @@
   &:backdrop { background-color: $backdrop_selected_bg_color; }
 }
 
-@mixin scale_slider($orient : "base") {
-  @if $orient == "base" {
-    min-height: $scale_slider_size;   // orig: 15px
+@mixin scale_slider($type : "base") {
+  @if $type == "base" {
+    min-height: $scale_slider_size;
     min-width: $scale_slider_size;
     margin: -$scale_slider_margin;
     border: none;
@@ -48,4 +48,13 @@
       background-color: $backdrop_selected_bg_color;
     }
   }
+
+  // DOC: list possible states
+  // @if $type == "base"
+  // @if $type == "horiz"
+  // @if $type == "vert"
+  // @if $type == "top"
+  // @if $type == "bottom"
+  // @if $type == "left"
+  // @if $type == "right"
 }

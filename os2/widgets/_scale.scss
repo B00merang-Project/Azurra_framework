@@ -22,8 +22,8 @@
   &:backdrop { background-color: transparent; }
 }
 
-@mixin scale_slider($orient : "base") {
-  @if $orient == "base" {
+@mixin scale_slider($type : "base") {
+  @if $type == "base" {
     min-width: $scale_slider_size;
     min-height: $scale_slider_size;
     margin: -$scale_slider_margin;
@@ -39,7 +39,7 @@
     &:backdrop { color: $backdrop_selected_fg_color; }
   }
   
-  @if $orient == "horiz" {
+  @if $type == "horiz" {
     background-image: url('assets/slider-horiz.png');
 
     &:hover { background-image: url('assets/slider-horiz.png'); }
@@ -49,7 +49,7 @@
     &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
   }
   
-  @if $orient == "vert" {
+  @if $type == "vert" {
     background-image: url('assets/slider-vert.png');
 
     &:hover { background-image: url('assets/slider-vert.png'); }

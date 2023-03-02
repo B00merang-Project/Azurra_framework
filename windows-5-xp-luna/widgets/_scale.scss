@@ -42,8 +42,8 @@
   background-color: transparent;
 }
 
-@mixin scale_slider($orient : "base") {
-  @if $orient == "base" {
+@mixin scale_slider($type : "base") {
+  @if $type == "base" {
     min-width: $scale_slider_size;
     min-height: $scale_slider_size;
     margin: -$scale_slider_margin;
@@ -56,7 +56,7 @@
     background-position: center center;
   }  
   
-  @if $orient == "horiz" {
+  @if $type == "horiz" {
     background-image: -gtk-scaled(url("assets/slider-horz.png"));
     
     &:hover { background-image: -gtk-scaled(url("assets/slider-horz-hover.png")); }
@@ -64,7 +64,7 @@
     &:disabled { background-image: -gtk-scaled(url("assets/slider-horz-insensitive.png")); }
   }
 
-  @if $orient == "vert" {
+  @if $type == "vert" {
     background-image: -gtk-scaled(url("assets/slider-vert.png"));
     
     &:hover { background-image: -gtk-scaled(url("assets/slider-vert-hover.png")); }
@@ -72,7 +72,7 @@
     &:disabled { background-image: -gtk-scaled(url("assets/slider-vert-insensitive.png")); }
   }
 
-  @if $orient == "top" {
+  @if $type == "top" {
     background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above.png"));
     
     &:hover { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above-hover.png")); }
@@ -80,7 +80,7 @@
     &:disabled { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-above-insensitive.png")); }
   }
 
-  @if $orient == "bottom" {
+  @if $type == "bottom" {
     background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below.png"));
 
     &:hover { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below-hover.png")); }
@@ -88,7 +88,7 @@
     &:disabled { background-image: -gtk-scaled(url("assets/slider-horz-scale-has-marks-below-insensitive.png")); }
   }
     
-  @if $orient == "left" {
+  @if $type == "left" {
     background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above.png"));
     
     &:hover { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above-hover.png")); }
@@ -96,7 +96,7 @@
     &:disabled { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-above-insensitive.png")); }
   }
   
-  @if $orient == "right" {
+  @if $type == "right" {
     background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below.png"));
 
     &:hover { background-image: -gtk-scaled(url("assets/slider-vert-scale-has-marks-below-hover.png")); }

@@ -25,8 +25,8 @@
   background-image: none;
 }
 
-@mixin scale_slider($orient : "base") {
-  @if $orient == "base" {
+@mixin scale_slider($type : "base") {
+  @if $type == "base" {
     min-width: $scale_slider_size;
     min-height: $scale_slider_size / 2;
     margin: -$scale_slider_margin;
@@ -54,13 +54,13 @@
     }
   }
   
-  @if $orient == "horiz" {
+  @if $type == "horiz" {
     background-image: url('assets/scale-h-slider.png');
   
     &:hover { background-image: url('assets/scale-h-slider-hover.png'); }
   }
   
-  @if $orient == "vert" {
+  @if $type == "vert" {
     min-width: $scale_slider_size / 2;
     min-height: $scale_slider_size;
     background-image: url('assets/scale-v-slider.png');
