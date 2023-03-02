@@ -644,13 +644,85 @@ menubar { @include menubar();
 }
 
 @include notebook();  // TODO: modernize
-@include scrollbar();   // TODO: figure out how to simulate buttons for themes requiring it
+
+// scrollbars
+$_slider_ft_size : $scrollbar_slider_size - (2 * $scrollbar_slider_ft_margin);
+
+scrollbar {
+  @include scrollbar();
+
+  > range > trough > slider {
+    @include scrollbar_slider();
+  }
+
+  > range.fine-tune {
+    > trough > slider {
+      min-width: $_slider_ft_size;
+      min-height: $_slider_ft_size;
+      border-radius: $scrollbar_slider_radius;
+    }
+
+    &.horizontal > trough > slider {
+      margin-top: $scrollbar_slider_ft_margin;
+      margin-bottom: $scrollbar_slider_ft_margin;
+    }
+
+    &.vertical > trough > slider {
+      margin-left: $scrollbar_slider_ft_margin;
+      margin-right: $scrollbar_slider_ft_margin;
+    }
+  }
+
+  &.overlay-indicator {
+    &:not(.dragging):not(.hovering) {
+      border: none;
+      opacity: 0.7;   // should this be a fixed or an editable value?
+      background-color: transparent;
+
+      > range > trough > slider {
+        @include scrollbar_slider("hint");
+      }
+
+      &.horizontal > range > trough > slider {
+        margin: 0px;
+        min-width: $scrollbar_slider_min_length;
+      }
+
+      &.vertical > range > trough > slider {
+        margin: 0px;
+        min-height: $scrollbar_slider_min_length;
+      }
+    }
+
+    &.dragging, &.hovering { opacity: 1; }
+  }
+  
+  &.horizontal > range > trough > slider { min-width: $scrollbar_slider_min_length; }
+  &.vertical > range > trough > slider { min-height: $scrollbar_slider_min_length; }
+  
+  // TODO: scrollbar buttons don't exist in GTK4, find a way to simulate them?
+  /*
+  &.horizontal button {
+    &.down { -gtk-icon-source: -gtk-icontheme("pan-right-symbolic"); }
+    &.up { -gtk-icon-source: -gtk-icontheme("pan-left-symbolic"); }
+  }
+
+  &.vertical button {
+    &.down { -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
+    &.up { -gtk-icon-source: -gtk-icontheme("pan-up-symbolic"); }
+  }
+  */
+}
+
+treeview ~ scrollbar.vertical {
+  border-top: 1px solid $border_color;
+  margin-top: -1px;
+}
+
 @include switch();
 @include checkradio();  // TODO: include special cases, like menu/modelbutton, treeview, etc.
 
-// scale (scale_* mixins reside in /widgets/scale.scss)
-
-// local vars
+// scale
 $_marks_length : 6px;
 $_marks_distance: 6px;
 $_scale_padding : 12px;

@@ -1,131 +1,43 @@
-@mixin scrollbar() {
-  scrollbar {
+@mixin scrollbar($type : "base") {
+  @if $type == "base" {
     border: none;
     background-color: gtkshade($bg_color, 0.9);
-
-    trough {
-      border: none;
-      border-radius: 0;
-    }
 
     &:backdrop {
       background-color: gtkshade($backdrop_bg_color, 0.9);
     }
+  }
+  
+  // DOC: possible values
+  // TODO: implement scrollbar orientation in _common.scss
+}
 
-    slider {
-      min-width: 8px;
-      min-height: 8px;
-      margin: 0;
-      border: none;
-      border-radius: $scrollbar_slider_radius;
-      background-clip: padding-box;
-      background-color: gtkshade($bg_color, 0.6);
+@mixin scrollbar_slider($type : "base") {
+  @if $type == "base" {
+    min-width: $scrollbar_slider_size;
+    min-height: $scrollbar_slider_size;
+    border-radius: $scrollbar_slider_radius;
+    margin: 0px;
+    border: none;
+    background-color: gtkshade($bg_color, 0.6);
+    background-clip: padding-box;
 
-      &:hover {
-        background-color: gtkshade($bg_color, 0.6);
-
-        &:active {
-          background-color: gtkshade($bg_color, 0.55);
-        }
-      }
-
-      &:backdrop {
-        background-color: gtkshade($bg_color, 0.55);
-      }
-
-      &:disabled {
-        background-color: transparent;
-      }
-    }
-
-    &.fine-tune {
-      slider {
-        min-width: 6px;
-        min-height: 6px;
-        border-radius: $scrollbar_slider_radius;
-      }
-
-      &.horizontal slider {
-        margin-top: 1px;
-        margin-bottom: 1px;
-      }
-
-      &.vertical slider {
-        margin-left: 1px;
-        margin-right: 1px;
-      }
-    }
-
-    &.overlay-indicator:not(.dragging):not(.hovering) {
-      border: none;
-      opacity: 0.7;
-      margin: 0;
-      background-color: transparent;
-
-      slider {
-        margin: 0;
-        min-width: 1px;
-        min-height: 1px;
-        background-color: gtkshade($bg_color, 0.6);
-        border: none;
-      }
-
-      &.horizontal {
-        slider {
-          margin: 0;
-          min-width: 40px;
-        }
-      }
-
-      &.vertical {
-        slider {
-          margin: 0;
-          min-height: 40px;
-        }
-      }
-    }
-
-    &.overlay-indicator {
-      &.dragging, &.hovering {
-        opacity: 1;
-      }
-    }
-
-    &.horizontal {
-      slider {
-        min-width: 40px;
-      }
-
-      button {
-        &.down {
-          -gtk-icon-source: -gtk-icontheme("pan-right-symbolic");
-        }
-
-        &.up {
-          -gtk-icon-source: -gtk-icontheme("pan-left-symbolic");
-        }
-      }
-    }
-
-    &.vertical {
-      slider {
-        min-height: 40px;
-      }
-
-      button {
-        &.down {
-          -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-        }
-
-        &.up {
-          -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
-        }
-      }
-    }
-
-    treeview ~ &.vertical {
-      border-top: 1px solid $border_color;
-      margin-top: -1px;
-    }
+    &:hover { background-color: gtkshade($bg_color, 0.6); }
+    &:hover:active { background-color: gtkshade($bg_color, 0.5); }
+    &:backdrop { background-color: gtkshade($backdrop_bg_color, 0.6); }
+    &:disabled { background-color: transparent; }
+  }
+  
+  // DOC: list possible types
+  // @if $type == "horiz"
+  // @if $type == "vert"
+  
+  // scroll indicator
+  @if $type == "hint" {
+    margin: 0px;
+    min-width: $scrollbar_indicator_size;
+    min-height: $scrollbar_indicator_size;
+    border: none;
+    background-color: gtkshade($bg_color, 0.6);
   }
 }
