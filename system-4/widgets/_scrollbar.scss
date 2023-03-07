@@ -1,125 +1,25 @@
-@mixin scrollbar() {
-  scrollbar {
+@mixin scrollbar($type : "base") {
+  @if $type == "base" {
     border: none;
     box-shadow: inset 0 0 0 1px $border_color;
     background-color: $base_color;
+  }
+  
+  @if $type == "hint" {
+    opacity: 1.0;
+  }
+}
 
-    trough {
-      border: none;
-      border-radius: 0;
-    }
+@mixin scrollbar_slider($type : "base") {
+  @if $type == "base" {
+    margin: 0px;
+    min-width: $scrollbar_slider_size;
+    min-height: $scrollbar_slider_size;
+    border-radius: $scrollbar_slider_radius;
+    border: 1px solid $border_color;
+    background-color: $bg_color;
 
-    &:backdrop {
-    }
-
-    slider {
-      min-width: 14px;
-      min-height: 14px;
-      margin: 0;
-      border: 1px solid $border_color;
-      border-radius: $scrollbar_slider_radius;
-      background-color: $bg_color;
-
-      &:hover {
-
-        &:active {
-          background-color: $selected_bg_color;
-        }
-      }
-
-      &:backdrop {
-      }
-
-      &:disabled {
-        background-color: $disabled_bg_color;
-      }
-    }
-
-    &.fine-tune {
-    }
-
-    &.overlay-indicator {
-      &:not(.dragging):not(.hovering) {
-        opacity: 1;
-      }
-
-      &.dragging, &.hovering {
-        opacity: 1;
-      }
-    }
-
-    button {
-      padding: 0;
-      border-radius: 0;
-      
-      &, &:active, &:disabled {
-        &, &:backdrop {
-          color: transparent;
-        }
-      }
-    }
-
-    &.horizontal {
-      slider {
-        min-width: 40px;
-        margin-left: -1px;
-        margin-right: -1px;
-      }
-
-      button {
-        min-height: 14px;
-        min-width: 14px;
-        
-        &.down {
-          background-image: url('assets/arrow-right.png');
-          
-          &:active {
-            background-image: url('assets/arrow-right-active.png');
-          }
-        }
-
-        &.up {
-          background-image: url('assets/arrow-left.png');
-          
-          &:active {
-            background-image: url('assets/arrow-left-active.png');
-          }
-        }
-      }
-    }
-
-    &.vertical {
-      slider {
-        min-height: 40px;
-        margin-top: -1px;
-        margin-bottom: -1px;
-      }
-
-      button {
-        min-height: 14px;
-        min-width: 14px;
-        
-        &.down {
-          background-image: url('assets/arrow-down.png');
-          
-          &:active {
-            background-image: url('assets/arrow-down-active.png');
-          }
-        }
-
-        &.up {
-          background-image: url('assets/arrow-up.png');
-          
-          &:active {
-            background-image: url('assets/arrow-up-active.png');
-          }
-        }
-      }
-    }
-
-    treeview ~ &.vertical {
-      border-top: 1px solid $border_color;
-      margin-top: -1px;
-    }
+    &:hover:active { background-color: $selected_bg_color; }
+    &:disabled { background-color: $disabled_bg_color; }
   }
 }

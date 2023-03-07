@@ -1,85 +1,69 @@
-@mixin scrollbar() {
-  scrollbar {
+@mixin scrollbar($type : "base") {
+  @if $type == "base" {
+    border: none;
     background-color: transparent;
-    border: 0 none transparent;
-    margin: 0;
-    padding: 0;
+  }
+  
+  @if $type == "hint" {
+    opacity: 1.0;
+  }
+  
+  @if $type == "horiz" {
+    background-image: url("assets/trough-scrollbar-horz.png");
+  }
+  
+  @if $type == "vert" {
+    background-image: url("assets/trough-scrollbar-vert.png");
+  }
+}
 
-    @each $w,$a in ('horizontal','horz'),
-                      ('vertical','vert') {
+@mixin scrollbar_slider($type : "base") {
+  @if $type == "base" {
+    margin: 0px;
+    border: 5px solid transparent;
+  }
+  
+  @if $type == "hint" {
+    margin: 0px;
+  }
+  
+  @if $type == "horiz" {
+    min-width: $scrollbar_slider_size + 1;
+    min-height: $scrollbar_slider_size;
+    border-image: url("assets/scrollbar-slider-horz.png") 5 5 5 5 stretch;
+    background: url("assets/handle-horz.png") no-repeat center center,
+                url("assets/slider-bg-horz.png");
 
-      &.#{$w} { background: url("assets/trough-scrollbar-#{$a}.png"); }
-
-      // slider
-      &.#{$w} slider {
-        border: 5px solid transparent;
-        border-image: url("assets/scrollbar-slider-#{$a}.png");
-        border-image-slice: 5 5 5 5;
-        border-image-repeat: stretch;
-        background: url("assets/handle-#{$a}.png") no-repeat center center,
-                    url("assets/slider-bg-#{$a}.png");
-
-        &:hover {
-          border-image: url("assets/scrollbar-slider-#{$a}-hover.png");
-          border-image-slice: 5 5 5 5;
-          border-image-repeat: stretch;
-          background: url("assets/handle-#{$a}-hover.png") no-repeat center center,
-                      url("assets/slider-bg-#{$a}-hover.png");
-        }
-
-        &:hover:active {
-          border-image: url("assets/scrollbar-slider-#{$a}-active.png");
-          border-image-slice: 5 5 5 5;
-          border-image-repeat: stretch;
-          background: url("assets/handle-#{$a}-active.png") no-repeat center center,
-                      url("assets/slider-bg-#{$a}-active.png");
-        }
-      }
+    &:hover {
+      border-image: url("assets/scrollbar-slider-horz-hover.png") 5 5 5 5 stretch;
+      background: url("assets/handle-horz-hover.png") no-repeat center center,
+                  url("assets/slider-bg-horz-hover.png");
     }
 
-    &.horizontal slider {
-      min-width: 8px;
-      min-height: 7px;
+    &:hover:active {
+      border-image: url("assets/scrollbar-slider-horz-active.png") 5 5 5 5 stretch;
+      background: url("assets/handle-horz-active.png") no-repeat center center,
+                  url("assets/slider-bg-horz-active.png");
+    }
+  }
+  
+  @if $type == "vert" {
+    min-width: $scrollbar_slider_size + 1;
+    min-height: $scrollbar_slider_size;
+    border-image: url("assets/scrollbar-slider-vert.png") 5 5 5 5 stretch;
+    background: url("assets/handle-vert.png") no-repeat center center,
+                url("assets/slider-bg-vert.png");
+
+    &:hover {
+      border-image: url("assets/scrollbar-slider-vert-hover.png") 5 5 5 5 stretch;
+      background: url("assets/handle-vert-hover.png") no-repeat center center,
+                  url("assets/slider-bg-vert-hover.png");
     }
 
-    &.vertical slider {
-      min-width: 7px;
-      min-height: 8px;
-    }
-
-    &.fine-tune {
-      slider {
-        margin: 1px;
-        min-width: 5px;
-        min-height: 5px;
-      }
-    }
-
-    // button styling
-    button {
-      &:active, &:hover, &:disabled, & {
-        padding: 0;
-        min-width: 17px;
-        min-height: 17px;
-        border: none;
-        border-radius: 0;
-        box-shadow: none;
-
-        -gtk-icon-source: none;
-      }
-    }
-
-    @each $scroll_orient,$step_end,$step_orient in ('horizontal','up','left'),
-                                                   ('horizontal','down','right'),
-                                                   ('vertical','up','top'),
-                                                   ('vertical','down','bottom') {
-	  &.#{$scroll_orient} button.#{$step_end} {
-	    background: url("assets/#{$step_orient}-stepper.png");
-
-        &:hover { background: url("assets/#{$step_orient}-stepper-hover.png"); }
-
-        &:hover:active { background: url("assets/#{$step_orient}-stepper-active.png"); }
-	    }
+    &:hover:active {
+      border-image: url("assets/scrollbar-slider-vert-active.png") 5 5 5 5 stretch;
+      background: url("assets/handle-vert-active.png") no-repeat center center,
+                  url("assets/slider-bg-vert-active.png");
     }
   }
 }

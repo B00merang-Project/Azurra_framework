@@ -6,20 +6,20 @@
     &:backdrop {
       background-color: $backdrop_bg_color;
     }
-    
-    &.horizontal {
-      box-shadow: inset 0 2px $border_color,
-                  inset 0 -1px gtkalpha($light_shadow, 0.3);
-    }
-    
-    &.vertical {
-      box-shadow: inset 2px 0 $border_color,
-                  inset -1px 0 gtkalpha($light_shadow, 0.3);
-    }
   }
   
   @if $type == "hint" {
     opacity: 1;
+  }
+    
+  @if $type == "horiz" {
+    box-shadow: inset 0 2px $border_color,
+                inset 0 -1px gtkalpha($light_shadow, 0.3);
+  }
+  
+  @if $type == "vert" {
+    box-shadow: inset 2px 0 $border_color,
+                inset -1px 0 gtkalpha($light_shadow, 0.3);
   }
 }
 
@@ -40,18 +40,15 @@
     background-repeat: no-repeat;
   }
   
+  @if $type == "hint" {
+    margin: -1px;
+  }
+  
   @if $type == "horiz" {
     background-image: url('assets/thumb-h.png');
   }
   
   @if $type == "vert" {
     background-image: url('assets/thumb-v.png');
-  }
-  
-  @if $type == "hint" {
-    margin: -1px;
-    border: 1px solid gtkshade($border_color, 0.8);
-    opacity: 1;
-    background-color: $bg_color;
   }
 }

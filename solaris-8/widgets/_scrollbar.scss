@@ -1,91 +1,49 @@
-@mixin scrollbar() {
-  scrolledwindow {
+@mixin scrollbar($type : "base") {
+  @if $type == "base" {
     border: 1px solid $border_color;
     border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
     border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+    background-color: $border_color;
+    box-shadow: inset 0px 0px 0px 6px gtkshade($bg_color, 0.9);;
+    padding: 1px;
+    
+    @at-root
+    scrolledwindow {
+      border: 1px solid $border_color;
+      border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
+      border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+    }
   }
 
-  scrollbar {
+  @if $type == "hint" {
+    opacity: 1;
+  }
+}
+
+@mixin scrollbar_slider($type : "base") {
+  @if $type == "base" {
+    margin: 0px;
+    min-width: $scrollbar_slider_size;
+    min-height: $scrollbar_slider_size;
+    border-radius: $scrollbar_slider_radius;
     border: 1px solid $border_color;
-    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
-    background-color: gtkshade($bg_color, 0.9);
-    padding: 1px;
-
-    trough {
-      border: none;
-      background-image: image($border_color);
-      background-size: 3px calc(100% - 10px);
-      background-position: center center;
-      background-repeat: no-repeat;
-      border-radius: 0; 
-    }
-    
-    &.horizontal trough {
-      background-size: calc(100% - 10px) 3px;
-    }
-
-    button {
-      &, &:active, &:disabled {
-        &, &:backdrop {
-          padding: 0;
-          -gtk-icon-source: none;
-        }
-      }
-    }
-
-    &.fine-tune {
-    }
-
-    &.overlay-indicator {
-      opacity: 1;
-    }
-
-    &.horizontal {
-      slider {
-        min-width: 45px;
-        min-height: 12px;
-        margin: 0;
-        border: 1px solid $border_color;
-        border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
-        border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
-        border-radius: $scrollbar_slider_radius;
-        background-clip: padding-box;
-        background-color: $bg_color;
-        background: $bg_color, url('assets/arrow-right.png') right center, url('assets/arrow-left.png') left center;
+    border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+    background-color: $bg_color;
+    background-clip: padding-box;
     background-repeat: no-repeat;
-      }
-
-      button {
-        min-height: 12px;
-        min-width: 8px;
-      }
-    }
-
-    &.vertical {
-      slider {
-        min-width: 12px;
-        min-height: 45px;
-        margin: 0;
-        border: 1px solid $border_color;
-        border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
-        border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
-        border-radius: $scrollbar_slider_radius;
-        background-clip: padding-box;
-        background-color: $bg_color;
-        background: $bg_color, url('assets/arrow-down.png') bottom center, url('assets/arrow-up.png') top center;
-    background-repeat: no-repeat;
-      }
-
-      button {
-        min-height: 8px;
-        min-width: 12px;
-      }
-    }
-
-    treeview ~ &.vertical {
-      border-top: 1px solid $border_color;
-      margin-top: -1px;
-    }
+  }
+  
+  @if $type == "hint" {
+    margin: 0px;
+  }
+  
+  // TODO: this doesn't work anymore
+  @if $type == "horiz" {
+    background: $bg_color, url('assets/arrow-right.png') right center, url('assets/arrow-left.png') left center;
+  }
+  
+  @if $type == "vert" {
+    background: $bg_color, url('assets/arrow-down.png') bottom center, url('assets/arrow-up.png') top center;
   }
 }

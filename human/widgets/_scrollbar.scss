@@ -1,134 +1,68 @@
-@mixin scrollbar() {
-  scrollbar {
+@mixin scrollbar($type : "base") {
+  @if $type == "base" {
     border: 1px solid gtkshade($bg_color, 0.75);
-    border-radius: 4px;
+    border-radius: 4px;   // TODO: move to properties.scss ?
     background-color: gtkshade($bg_color, 0.9);
-
-    trough {
-      border: none;
-      border-radius: 0;
-    }
 
     &:backdrop {
       background-color: gtkshade($backdrop_bg_color, 0.9);
     }
+  }
+  
+  @if $type == "hint" {
+    opacity: 1.0;
+  }
+}
     
-    button {
-      padding: 2px;
-      margin: -1px;
-      min-height: 11px;
-      min-width: 11px;
+@mixin scrollbar_slider($type : "base") {
+  @if $type == "base" {
+    margin: -1px;
+    min-width: $scrollbar_slider_size;
+    min-height: $scrollbar_slider_size;
+    border-radius: $scrollbar_slider_radius;
+    border: 1px solid $border_color;
+    background-clip: padding-box;
+    background-color: $bg_color;
+
+    &:disabled {
+      background-color: transparent;
+      background-image: none;
     }
+  }
+  
+  @if $type == "hint" {
+    margin: -1px;
+  }
+  
+  @if $type == "horiz" {
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($bg_color, 1.15),
+      gtkshade($bg_color, 0.98)
+    );
 
-    slider {
-      min-width: 45px;
-      min-height: 15px;
-      margin: -1px;
-      border: 1px solid $border_color;
-      border-radius: $scrollbar_slider_radius;
-      background-clip: padding-box;
-      background-color: $bg_color;
-      background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.15), gtkshade($bg_color, 0.98));
-
-      &:hover {
-        background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.2), gtkshade($bg_color, 0.999));
-
-        &:active {
-        }
-      }
-
-      &:backdrop {
-      }
-
-      &:disabled {
-        background-color: transparent;
-        background-image: none;
-      }
+    &:hover {
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($bg_color, 1.2),
+        gtkshade($bg_color, 0.999)
+      );
     }
-    
-    &.vertical slider {
-      min-width: 15px;
-      min-height: 45px;
-    }
-    
-    &.vertical slider, &.vertical button {      
-      background-image: linear-gradient(to right, gtkshade($bg_color, 1.15), gtkshade($bg_color, 0.98));
+  }
+  
+  @if $type == "vert" {
+    background-image: linear-gradient(
+      to right,
+      gtkshade($bg_color, 1.15),
+      gtkshade($bg_color, 0.98)
+    );
 
-      &:hover {
-        background-image: linear-gradient(to right, gtkshade($bg_color, 1.2), gtkshade($bg_color, 0.999));
-      }
-    }
-
-    &.fine-tune {
-    }
-
-    &.overlay-indicator {
-      &:not(.dragging):not(.hovering) {
-        opacity: 1;
-      }
-      
-      &.dragging, &.hovering {
-        opacity: 1;
-      }
-    }
-
-    &.horizontal {
-      slider {
-        min-width: 40px;
-      }
-    }
-
-    &.vertical {
-      slider {
-        min-height: 40px;
-      }
-    }
-    
-    &.horizontal {
-      slider {
-        min-width: 40px;
-      }
-
-      button {
-        &.down {
-          margin-bottom: 0;
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-          -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
-        }
-
-        &.up {
-          margin-top: 0;
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
-          -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
-        }
-      }
-    }
-
-    &.vertical {
-      slider {
-        min-height: 40px;
-      }
-
-      button {
-        &.down {
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-          -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-        }
-
-        &.up {
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-          -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
-        }
-      }
-    }
-
-    treeview ~ &.vertical {
-      border-top: 1px solid $border_color;
-      margin-top: -1px;
+    &:hover {
+      background-image: linear-gradient(
+        to right,
+        gtkshade($bg_color, 1.2),
+        gtkshade($bg_color, 0.999)
+      );
     }
   }
 }
