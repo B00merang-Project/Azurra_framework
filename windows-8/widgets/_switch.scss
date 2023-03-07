@@ -1,56 +1,58 @@
 @mixin switch() {
-  switch {
-    font-size: 0;
-    color: transparent;
-    outline-offset: -4px;
-    margin: 4px;
-    border: none;
-    border-radius: $global_radius;
-    background-color: $border_color;
+  font-size: 0;
+  margin: 4px;
+  border-radius: $global_radius;
+  border: none;
+  color: transparent;
+  background-color: $border_color;
 
-    &:checked {
-      background-color: gtkshade($selected_bg_color, 0.7);
-
-      &:backdrop {
-        background-color: gtkshade($backdrop_selected_bg_color, 0.7);
-      }
-    }
-
-    &:disabled {
-      background-color: $disabled_bg_color;
-
-      &:backdrop {
-        background-color: $backdrop_disabled_bg_color;
-      }
-    }
+  &:checked {
+    background-color: gtkshade($selected_bg_color, 0.7);
 
     &:backdrop {
-      background-color: $backdrop_border_color;
+      background-color: gtkshade($backdrop_selected_bg_color, 0.7);
     }
+  }
 
-    slider {
-      min-width: 20px;
-      min-height: 16px;
-      margin: 0;
-      border: 1px solid gtkshade($border_color, 0.8);
-      border-radius: $global_radius;
-      color: $fg_color;
-      background-color: $base_color;
-      background-image: linear-gradient(to bottom, $bg_color, gtkshade($bg_color, 0.9));
+  &:disabled {
+    background-color: $disabled_bg_color;
+
+    &:backdrop {
+      background-color: $backdrop_disabled_bg_color;
     }
+  }
 
-    &:disabled {
-      slider {
-        background-color: $disabled_base_color;
-      }
+  &:backdrop {
+    background-color: $backdrop_border_color;
+  }
+}
 
-      &:backdrop slider {
-        background-color: $backdrop_disabled_base_color;
-      }
-    }
+@mixin switch_slider($type : "base") {
+  @if $type == "base" {
+    margin: 0px;
+    min-width: 28px;
+    min-height: 22px;
+    border: 1px solid gtkshade($border_color, 0.8);
+    border-radius: $global_radius;
+    color: $fg_color;
+    background-color: $base_color;
+    background-image: linear-gradient(
+      to bottom,
+      $bg_color,
+      gtkshade($bg_color, 0.9)
+    );
+    box-shadow: none;
+  }
 
-    &:backdrop slider {
-      background-color: $backdrop_base_color;
-    }
+  @if $type == "disabled" {
+    background-color: $disabled_base_color;
+  }
+
+  @if $type == "disabled-backdrop" {
+    background-color: $backdrop_disabled_base_color;
+  }
+
+  @if $type == "backdrop" {
+    background-color: $backdrop_base_color;
   }
 }

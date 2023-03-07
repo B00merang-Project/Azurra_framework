@@ -731,7 +731,21 @@ treeview ~ scrollbar.vertical {
   margin-top: -1px;
 }
 
-@include switch();
+// switch
+switch {
+  @include switch();
+  
+  // TODO: outline
+
+  > slider { @include switch_slider(); }
+  &:hover > slider { @include switch_slider("hover"); }
+  &:checked > slider { @include switch_slider("checked"); }
+  &:checked:backdrop > slider { @include switch_slider("checked-backdrop"); }
+  &:disabled > slider { @include switch_slider("disabled"); }
+  &:disabled:backdrop > slider { @include switch_slider("disabled-backdrop"); }
+  &:backdrop > slider { @include switch_slider("backdrop"); }  
+}
+
 @include checkradio();  // TODO: include special cases, like menu/modelbutton, treeview, etc.
 
 // scale

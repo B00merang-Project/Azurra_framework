@@ -1,61 +1,60 @@
 @mixin switch() {
-  switch {
-    font-size: 0;
-    color: transparent;
-    outline-offset: -4px;
-    margin: 4px;
-    border: 1px solid $border_color;
-    border-radius: 16px;
-    background-color: $border_color;
+  margin: 4px;
+  font-size: 0;
+  border-radius: 16px;
+  border: 1px solid $border_color;
+  color: transparent;
+  background-color: $border_color;
 
-    &:checked {
-      border-color: $success_color;
-      background-color: $success_color;
-
-      &:backdrop {
-        border-color: gtkmix($backdrop_selected_bg_color, $success_color, 0.8);
-        background-color: gtkmix($backdrop_selected_bg_color, $success_color, 0.8);
-      }
-    }
-
-    &:disabled {
-      border-color: $disabled_bg_color;
-      background-color: $disabled_bg_color;
-
-      &:backdrop {
-        border-color: $backdrop_disabled_bg_color;
-        background-color: $backdrop_disabled_bg_color;
-      }
-    }
+  &:checked {
+    border-color: $success_color;
+    background-color: $success_color;
 
     &:backdrop {
-      border-color: $backdrop_border_color;
-      background-color: $backdrop_border_color;
+      border-color: gtkmix($backdrop_selected_bg_color, $success_color, 0.8);
+      background-color: gtkmix($backdrop_selected_bg_color, $success_color, 0.8);
     }
+  }
 
-    slider {
-      min-width: 20px;
-      min-height: 20px;
-      margin: 0;
-      border: none;
-      border-radius: 100%;
-      color: $fg_color;
-      box-shadow: 0 2px 2px 1px gtkalpha($dark_shadow, 0.09);
-      background-color: $base_color;
+  &:disabled {
+    border-color: $disabled_bg_color;
+    background-color: $disabled_bg_color;
+
+    &:backdrop {
+      border-color: $backdrop_disabled_bg_color;
+      background-color: $backdrop_disabled_bg_color;
     }
+  }
 
-    &:disabled {
-      slider {
-        background-color: $disabled_base_color;
-      }
+  &:backdrop {
+    border-color: $backdrop_border_color;
+    background-color: $backdrop_border_color;
+  }
+}
 
-      &:backdrop slider {
-        background-color: $backdrop_disabled_base_color;
-      }
-    }
+@mixin switch_slider($type : "base") {
+  @if $type == "base" {
+    min-width: 20px;
+    min-height: 20px;
+    margin: 0;
+    border: none;
+    border-radius: 100%;
+    color: $fg_color;
+    box-shadow: 0 2px 2px 1px gtkalpha($dark_shadow, 0.09);
+    background-color: $base_color;
+    background-image: none;
+    box-shadow: none;
+  }
 
-    &:backdrop slider {
-      background-color: $backdrop_base_color;
-    }
+  @if $type == "disabled" {
+    background-color: $disabled_base_color;
+  }
+
+  @if $type == "disabled-backdrop" {
+    background-color: $backdrop_disabled_base_color;
+  }
+
+  @if $type == "backdrop" {
+    background-color: $backdrop_base_color;
   }
 }

@@ -1,71 +1,65 @@
 @mixin switch() {
-  switch {
-    font-size: 0;
-    color: transparent;
-    outline-offset: -4px;
-    margin: 4px;
-    border: 2px solid $fg_color;
-    border-radius: 0;
-    background-color: $base_color;
+  font-size: 0;
+  margin: 4px;
+  border-radius: 0;
+  border: 2px solid $fg_color;
+  color: transparent;
+  background-color: $base_color;
 
-    &:checked {
-      background-color: gtkshade($sidebar_bg_color, 1.4);
-      box-shadow: inset 0 0 0 2px $base_color;
-
-      &:backdrop {
-        background-color: gtkmix($sidebar_bg_color, $disabled_bg_color, 0.25);
-      }
-    }
-
-    &:disabled {
-      border-color: $disabled_fg_color;
-      background-color: $disabled_base_color;
-
-      &:backdrop {
-        border-color: $backdrop_disabled_fg_color;
-        background-color: $backdrop_disabled_base_color;
-      }
-    }
+  &:checked {
+    background-color: gtkshade($sidebar_bg_color, 1.4);
+    box-shadow: inset 0 0 0 2px $base_color;
 
     &:backdrop {
-      border-color: $backdrop_fg_color;
-      background-color: $backdrop_base_color;
+      background-color: gtkmix($sidebar_bg_color, $disabled_bg_color, 0.25);
     }
+  }
 
-    slider {
-      min-width: 12px;
-      min-height: 24px;
-      margin: -4px;
-      margin-left: 0;
-      margin-right: 10px;
-      border: none;
-      border-radius: 0;
-      color: $fg_color;
-      background-color: $fg_color;
-      box-shadow: 0 0 0 2px $bg_color;
-    }
-    
-    &:checked slider {
-      margin-left: 10px;
-      margin-right: 0;
-    }
+  &:disabled {
+    border-color: $disabled_fg_color;
+    background-color: $disabled_base_color;
 
-    &:disabled {
-      slider {
-        background-color: $disabled_fg_color;
-      }
+    &:backdrop {
+      border-color: $backdrop_disabled_fg_color;
+      background-color: $backdrop_disabled_base_color;
+    }
+  }
 
-      &:backdrop slider {
-        background-color: $backdrop_disabled_fg_color;
-      }
-    }
+  &:backdrop {
+    border-color: $backdrop_fg_color;
+    background-color: $backdrop_base_color;
+  }
+}
 
-    &:backdrop slider {
-      background-color: $backdrop_fg_color;
-    }
-    
-    row:selected & {
-      box-shadow: none;
-    }
+@mixin switch_slider($type : "base") {
+  @if $type == "base" {  
+    margin: -4px;
+    min-width: 12px;
+    min-height: 24px;
+    margin-left: 0px;
+    margin-right: 10px;
+    border-radius: 0px;
+    border: none;
+    color: $fg_color;
+    background-color: $fg_color;
+    background-image: none;
+    box-shadow: 0 0 0 2px $bg_color;
+  }
+  
+  @if $type == "checked" {
+    margin-left: 10px;
+    margin-right: 0;
+  }
+
+  @if $type == "disabled" {
+    background-color: $disabled_fg_color;
+  }
+
+  @if $type == "disabled-backdrop" {
+    background-color: $backdrop_disabled_fg_color;
+  }
+
+  @if $type == "backdrop" {
+    background-color: $backdrop_fg_color;
   }
 }

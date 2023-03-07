@@ -1,67 +1,68 @@
 @mixin switch() {
-  switch {
-    font-size: 0;
-    color: transparent;
-    outline-offset: -4px;
-    margin: 4px;
-    border: 1px solid $border_color;
-    border-radius: $global_radius;
-    background-color: $border_color;
+  margin: 4px;
+  font-size: 0;
+  border-radius: $global_radius;
+  border: 1px solid $border_color;
+  color: transparent;
+  background-color: $border_color;
 
-    &:checked {
-      border-color: $selected_bg_color;
-      background-color: $selected_bg_color;
-
-      &:backdrop {
-        border-color: $backdrop_selected_bg_color;
-        background-color: $backdrop_selected_bg_color;
-      }
-    }
-
-    &:disabled {
-      border-color: $disabled_bg_color;
-      background-color: $disabled_bg_color;
-
-      &:backdrop {
-        border-color: $backdrop_disabled_bg_color;
-        background-color: $backdrop_disabled_bg_color;
-      }
-    }
+  &:checked {
+    border-color: $selected_bg_color;
+    background-color: $selected_bg_color;
 
     &:backdrop {
-      border-color: $backdrop_border_color;
-      background-color: $backdrop_border_color;
+      border-color: $backdrop_selected_bg_color;
+      background-color: $backdrop_selected_bg_color;
     }
+  }
 
-    slider {
-      min-width: 20px;
-      min-height: 20px;
-      margin: 0;
-      border-radius: $global_radius;
-      color: $fg_color;
-      border-width: 1px;
-      border-style: solid;
-      border-color: gtkshade($border_color, 0.6);
-      border-top-color: gtkshade($border_color, 0.9);
-      border-left-color: gtkshade($border_color, 0.85);
-      border-right-color: gtkshade($border_color, 0.85);
-      background-color: $bg_color;
-      background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.15), $bg_color, gtkshade($bg_color, 1.05));
-      box-shadow: inset 0 1px 0 0 gtkalpha($light_shadow, 0.7);
+  &:disabled {
+    border-color: $disabled_bg_color;
+    background-color: $disabled_bg_color;
+
+    &:backdrop {
+      border-color: $backdrop_disabled_bg_color;
+      background-color: $backdrop_disabled_bg_color;
     }
+  }
 
-    &:disabled {
-      slider {
-        background-color: $disabled_base_color;
-      }
+  &:backdrop {
+    border-color: $backdrop_border_color;
+    background-color: $backdrop_border_color;
+  }
+}
 
-      &:backdrop slider {
-        background-color: $backdrop_disabled_base_color;
-      }
-    }
+// TODO: make disabled state more disctinct
+@mixin switch_slider($type : "base") {
+  @if $type == "base" {
+    margin: 0px;
+    min-width: 28px;
+    min-height: 22px;
+    border-radius: $global_radius;
+    border: 1px solid gtkshade($border_color, 0.6);
+    border-top-color: gtkshade($border_color, 0.9);
+    border-left-color: gtkshade($border_color, 0.85);
+    border-right-color: gtkshade($border_color, 0.85);
+    color: $fg_color;
+    background-color: $bg_color;
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($bg_color, 1.15),
+      $bg_color,
+      gtkshade($bg_color, 1.05)
+    );
+    box-shadow: inset 0 1px 0 0 gtkalpha($light_shadow, 0.7);
+  }
 
-    &:backdrop slider {
-      background-color: $backdrop_base_color;
-    }
+  @if $type == "disabled" {
+    background-color: $disabled_base_color;
+  }
+
+  @if $type == "disabled-backdrop" {
+    background-color: $backdrop_disabled_base_color;
+  }
+
+  @if $type == "backdrop" {
+    background-color: $backdrop_base_color;
   }
 }

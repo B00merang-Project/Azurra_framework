@@ -1,67 +1,59 @@
 @mixin switch() {
-  switch {
-    outline-offset: -4px;
-    margin: 5px;
-    border: 1px solid gtkshade($border_color, 0.9);
-    border-radius: 0;
-    background-color: gtkshade($border_color, 0.9);
+  margin: 5px;
+  border-radius: 0;
+  color: $fg_color;
+  border: 1px solid gtkshade($border_color, 0.9);
+  background-color: $border_color;
 
-    &:checked {
-
-      &:backdrop {
-      }
-    }
-
-    &:disabled {
-      color: $disabled_fg_color;
-      border-color: $disabled_bg_color;
-      background-color: gtkshade($disabled_bg_color, 1.2);
-
-      &:backdrop {
-        color: $backdrop_disabled_fg_color;
-        border-color: $backdrop_disabled_bg_color;
-        background-color: gtkshade($backdrop_disabled_bg_color, 1.2);
-      }
-    }
+  &:disabled {
+    color: $disabled_fg_color;
+    border-color: gtkshade($disabled_bg_color, 1.05);
+    background-color: gtkshade($disabled_bg_color, 1.2);
 
     &:backdrop {
-      color: $backdrop_fg_color;
-      border-color: $backdrop_border_color;
-      background-color: $backdrop_border_color;
+      color: $backdrop_disabled_fg_color;
+      border-color: gtkshade($backdrop_disabled_bg_color, 1.05);
+      background-color: gtkshade($backdrop_disabled_bg_color, 1.2);
     }
+  }
 
-    slider {
-      min-width: 30px;
-      min-height: 20px;
-      margin: 0;
-      border: none;
-      border-radius: 0;
-      color: $fg_color;
-      background-color: gtkmix($fg_color, $bg_color, 0.6);
-    }
+  &:backdrop {
+    color: $backdrop_fg_color;
+    border-color: $backdrop_border_color;
+    background-color: $backdrop_border_color;
+  }
+}
 
-    &:checked {
-      slider {
-        background-color: $selected_bg_color;
-      }
-      
-      &:backdrop slider {
-        background-color: $backdrop_selected_bg_color;
-      }
-    }
+@mixin switch_slider($type : "base") {
+  @if $type == "base" {
+    min-width: 30px;
+    min-height: 20px;
+    margin: 0px;
+    border-radius: 0px;
+    border: none;
+    color: $fg_color;
+    background-color: gtkmix($fg_color, $bg_color, 0.6);
+    background-image: none;
+    box-shadow: none;
+  }
 
-    &:disabled {
-      slider {
-        background-color: $disabled_base_color;
-      }
+  @if $type == "checked" {
+    background-color: $selected_bg_color;
+  }
+    
+  @if $type == "checked-backdrop" {
+    background-color: $backdrop_selected_bg_color;
+  }
 
-      &:backdrop slider {
-        background-color: $backdrop_disabled_base_color;
-      }
-    }
+  @if $type == "disabled" {
+    background-color: $disabled_base_color;
+  }
 
-    &:backdrop slider {
-      background-color: gtkshade($backdrop_base_color, 0.95);
-    }
+  @if $type == "disabled-backdrop" {
+    background-color: $backdrop_disabled_base_color;
+  }
+
+  @if $type == "backdrop" {
+    background-color: gtkshade($backdrop_base_color, 0.95);
   }
 }

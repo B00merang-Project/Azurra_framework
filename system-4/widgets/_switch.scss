@@ -1,48 +1,48 @@
 @mixin switch() {
-  switch {
-    font-size: 0;
-    color: transparent;
-    outline-offset: -4px;
-    margin: 4px;
+  margin: 4px;
+  font-size: 0;
+  border-radius: 5px;
+  border: 1px solid $border_color;
+  color: transparent;
+  background-color: $bg_color;
+
+  &:checked {
+    border-color: $border_color;
+    background-color: $selected_bg_color;
+  }
+
+  &:disabled {
+    background-color: $disabled_bg_color;
+  }
+
+  &:backdrop {
+    border-color: $backdrop_border_color;
+  }
+}
+
+// TODO: make disabled state more distinct
+@mixin switch_slider($type : "base") {
+  @if $type == "base" {
+    margin: -1px;
+    min-width: 28px;
+    min-height: 22px;
+    border-radius: 4px;
     border: 1px solid $border_color;
-    border-radius: 5px;
-    background-color: $bg_color;
+    color: $fg_color;
+    background-color: $base_color;
+    background-image: none;
+    box-shadow: none;
+  }
 
-    &:checked {
-      border-color: $border_color;
-      background-color: $selected_bg_color;
-    }
+  @if $type == "disabled" {
+    background-color: $disabled_base_color;
+  }
 
-    &:disabled {
-      background-color: $disabled_bg_color;
-    }
+  @if $type == "disabled-backdrop" {
+    background-color: $backdrop_disabled_base_color;
+  }
 
-    &:backdrop {
-      border-color: $backdrop_border_color;
-    }
-
-    slider {
-      min-width: 20px;
-      min-height: 20px;
-      margin: -1px;
-      border: 1px solid $border_color;
-      border-radius: 4px;
-      color: $fg_color;
-      background-color: $base_color;
-    }
-
-    &:disabled {
-      slider {
-        background-color: $disabled_base_color;
-      }
-
-      &:backdrop slider {
-        background-color: $backdrop_disabled_base_color;
-      }
-    }
-
-    &:backdrop slider {
-      background-color: $backdrop_base_color;
-    }
+  @if $type == "backdrop" {
+    background-color: $backdrop_base_color;
   }
 }

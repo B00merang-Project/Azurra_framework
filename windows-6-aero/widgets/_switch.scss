@@ -1,62 +1,91 @@
+// almost the same as windows-7
 @mixin switch() {
-  switch {
-    font-size: 0;
-    color: transparent;
-    outline-offset: -4px;
-    margin: 4px;
-    border: none;
-    border-radius: $global_radius;
-    background-color: $border_color;
-    background-image: linear-gradient(to bottom, gtkshade($border_color, 0.9), $border_color);
+  margin: 4px;
+  font-size: 0;
+  border-radius: $global_radius;
+  border: none;
+  color: transparent;
+  background-color: $border_color;
+  background-image: linear-gradient(
+    to bottom,
+    gtkshade($border_color, 0.9),
+    $border_color
+  );
 
-    &:checked {
-      background-color: gtkshade($selected_bg_color, 0.7);
-      background-image: linear-gradient(to bottom, gtkshade($selected_bg_color, 0.7), gtkshade($selected_bg_color, 0.85));
-
-      &:backdrop {
-        background-color: $backdrop_selected_bg_color;
-        background-image: linear-gradient(to bottom, gtkshade($backdrop_selected_bg_color, 0.7), gtkshade($backdrop_selected_bg_color, 0.85));
-      }
-    }
-
-    &:disabled {
-      background-color: $disabled_bg_color;
-      background-image: linear-gradient(to bottom, gtkshade($disabled_bg_color, 0.9), $disabled_bg_color);
-
-      &:backdrop {
-        background-color: $backdrop_disabled_bg_color;
-        background-image: linear-gradient(to bottom, gtkshade($backdrop_disabled_bg_color, 0.9), $backdrop_disabled_bg_color);
-      }
-    }
+  &:checked {
+    background-color: gtkshade($selected_bg_color, 0.7);
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($selected_bg_color, 0.7),
+      gtkshade($selected_bg_color, 0.85)
+    );
 
     &:backdrop {
-      background-color: $backdrop_border_color;
-      background-image: linear-gradient(to bottom, gtkshade($backdrop_border_color, 0.9), $backdrop_border_color);
+      background-color: $backdrop_selected_bg_color;
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($backdrop_selected_bg_color, 0.7),
+        gtkshade($backdrop_selected_bg_color, 0.85)
+      );
     }
+  }
 
-    slider {
-      min-width: 20px;
-      min-height: 16px;
-      margin: 0;
-      border: 1px solid gtkshade($dark_bg_color, 0.8);
-      border-radius: $global_radius;
-      color: $fg_color;
-      background-color: $base_color;
-      background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.1), gtkshade($bg_color, 0.985) 50%, gtkshade($bg_color, 0.95) 51%, gtkshade($bg_color, 0.94));
+  &:disabled {
+    background-color: $disabled_bg_color;
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($disabled_bg_color, 0.9),
+      $disabled_bg_color
+    );
+
+    &:backdrop {
+      background-color: $backdrop_disabled_bg_color;
+      background-image: linear-gradient(
+        to bottom,
+        gtkshade($backdrop_disabled_bg_color, 0.9),
+        $backdrop_disabled_bg_color
+      );
     }
+  }
 
-    &:disabled {
-      slider {
-        background-color: $disabled_base_color;
-      }
+  &:backdrop {
+    background-color: $backdrop_border_color;
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($backdrop_border_color, 0.9),
+      $backdrop_border_color
+    );
+  }
+}
 
-      &:backdrop slider {
-        background-color: $backdrop_disabled_base_color;
-      }
-    }
+@mixin switch_slider($type : "base") {
+  @if $type == "base" {
+    margin: 0px;
+    min-width: 28px;
+    min-height: 22px;
+    border-radius: $global_radius;
+    border: 1px solid gtkshade($dark_bg_color, 0.8);
+    color: $fg_color;
+    background-color: $base_color;
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($bg_color, 1.1),
+      gtkshade($bg_color, 0.985) 50%,
+      gtkshade($bg_color, 0.95) 51%,
+      gtkshade($bg_color, 0.94)
+    );
+    box-shadow: none;
+  }
 
-    &:backdrop slider {
-      background-color: $backdrop_base_color;
-    }
+  @if $type == "disabled" {
+    background-color: $disabled_base_color;
+  }
+
+  @if $type == "disabled-backdrop" {
+    background-color: $backdrop_disabled_base_color;
+  }
+
+  @if $type == "backdrop" {
+    background-color: $backdrop_base_color;
   }
 }

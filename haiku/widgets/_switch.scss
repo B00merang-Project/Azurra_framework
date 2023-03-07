@@ -1,57 +1,60 @@
 @mixin switch() {
-  switch {
-    font-size: 0;
-    color: transparent;
-    outline-offset: -4px;
-    margin: 4px;
-    border: 1px solid $border_color;
-    border-radius: $global_radius;
-    background-color: $border_color;
+  margin: 4px;
+  font-size: 0;
+  border-radius: $global_radius;
+  border: 1px solid $border_color;
+  color: transparent;
+  background-color: $border_color;
 
-    &:checked {
-      border-color: $selected_bg_color;
-      background-color: $selected_bg_color;
-
-      &:backdrop {
-      }
-    }
-
-    &:disabled {
-      border-color: gtkshade($disabled_bg_color, 1.02);
-      background-color: gtkshade($disabled_bg_color, 1.02);
-
-      &:backdrop {
-        border-color: $backdrop_disabled_bg_color;
-        background-color: $backdrop_disabled_bg_color;
-      }
-    }
+  &:checked {
+    border-color: $selected_bg_color;
+    background-color: $selected_bg_color;
 
     &:backdrop {
-      border-color: $backdrop_border_color;
-      background-color: $backdrop_border_color;
+      border-color: $backdrop_selected_bg_color;
+      background-color: $backdrop_selected_bg_color;
     }
+  }
 
-    slider {
-      min-width: 20px;
-      min-height: 20px;
-      margin: 0;
-      border-radius: $global_radius;
-      border-style: solid;
-      border-width: 1px;
-      border-color: gtkshade($border_color, 0.55);
-      background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.1), gtkshade($bg_color, 1.08) 45%, gtkshade($bg_color, 1.04) 55%, gtkshade($bg_color, 0.999));
-      box-shadow: inset 1px 1px gtkshade($bg_color, 1.4), inset -1px -1px gtkshade($bg_color, 0.65), 0 0 0 1px gtkalpha($dark_shadow, 0.05), 1px 1px gtkalpha($light_shadow, 0.5);
+  &:disabled {
+    border-color: gtkshade($disabled_bg_color, 1.02);
+    background-color: gtkshade($disabled_bg_color, 1.02);
+
+    &:backdrop {
+      border-color: $backdrop_disabled_bg_color;
+      background-color: $backdrop_disabled_bg_color;
     }
+  }
 
-    &:disabled {
-      slider {
-      }
+  &:backdrop {
+    border-color: $backdrop_border_color;
+    background-color: $backdrop_border_color;
+  }
+}
 
-      &:backdrop slider {
-      }
-    }
+@mixin switch_slider($type : "base") {
+  @if $type == "base" {
+    min-width: 24px;
+    min-height: 20px;
+    margin: 0px;
+    border-radius: $global_radius;
+    border: 1px solid gtkshade($border_color, 0.55);
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($bg_color, 1.1),
+      gtkshade($bg_color, 1.08) 45%,
+      gtkshade($bg_color, 1.04) 55%,
+      gtkshade($bg_color, 0.999)
+    );
+    box-shadow: inset 1px 1px gtkshade($bg_color, 1.4),
+                inset -1px -1px gtkshade($bg_color, 0.65),
+                0 0 0 1px gtkalpha($dark_shadow, 0.05),
+                1px 1px gtkalpha($light_shadow, 0.5);
+  }
 
-    &:backdrop slider {
-    }
+  @if $type == "disabled" {
+    border-color: gtkshade($disabled_bg_color, 0.9);
+    background-color: gtkshade($disabled_bg_color, 1.1);
+    background-image: none;
   }
 }
