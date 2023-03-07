@@ -646,14 +646,31 @@ menubar { @include menubar();
 @include notebook();  // TODO: modernize
 
 // scrollbars
+// TODO: find a more elegant solution (half the themes have broken fine-tune scrollbars)
 $_slider_ft_size : $scrollbar_slider_size - (2 * $scrollbar_slider_ft_margin);
 
 scrollbar {
   @include scrollbar();
-
+  
   > range > trough > slider {
     @include scrollbar_slider();
   }
+
+  // TODO: are directional fills necessary? use .top, .bottom, .left or .right instead?
+  &.horizontal {
+    @include scrollbar("horiz");
+    
+    > range > trough > slider { @include scrollbar_slider("horiz"); }
+  }
+  
+  &.vertical {
+    @include scrollbar("vert");
+    
+    > range > trough > slider { @include scrollbar_slider("vert"); }
+  }
+  
+  &.horizontal > range > trough > slider { min-width: $scrollbar_slider_min_length; }
+  &.vertical > range > trough > slider { min-height: $scrollbar_slider_min_length; }
 
   > range.fine-tune {
     > trough > slider {
@@ -683,18 +700,17 @@ scrollbar {
 
       &.horizontal > range > trough > slider {
         min-width: $scrollbar_slider_min_length;
+        min-height: $scrollbar_indicator_size;
       }
 
       &.vertical > range > trough > slider {
+        min-width: $scrollbar_indicator_size;
         min-height: $scrollbar_slider_min_length;
       }
     }
 
     &.dragging, &.hovering { opacity: 1; }
   }
-  
-  &.horizontal > range > trough > slider { min-width: $scrollbar_slider_min_length; }
-  &.vertical > range > trough > slider { min-height: $scrollbar_slider_min_length; }
   
   // TODO: scrollbar buttons don't exist in GTK4, find a way to simulate them?
   /*
