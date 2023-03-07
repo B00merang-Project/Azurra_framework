@@ -1,41 +1,43 @@
 @mixin switch() {
-  switch {
-    outline-offset: -4px;
+  margin: 0px;
+  border-radius: $global_radius;
+  border: 1px solid $border_color;
+  border-bottom-color: $light_shadow;
+  border-right-color: $light_shadow;
+  color: $fg_color;
+  background-color: $bg_color;
+  box-shadow: inset 1px 1px $border_color,
+              inset -1px -1px $light_shadow;
+
+  &:checked {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+  }
+
+  &:disabled {
+    color: $disabled_fg_color;
+    border-color: $disabled_bg_color;
+    background-color: $disabled_bg_color;
+  }
+}
+
+@mixin switch_slider($type : "base") {
+  @if $type == "base" {
     margin: 0px;
-    color: $fg_color;
+    min-height: 24px;
+    min-width: 38px;
     border-radius: $global_radius;
     border: 1px solid $border_color;
-    border-bottom-color: $light_shadow;
-    border-right-color: $light_shadow;
+    border-top-color: $light_shadow;
+    border-left-color: $light_shadow;
+    color: $fg_color;
     background-color: $bg_color;
-    box-shadow: inset 1px 1px $border_color, inset -1px -1px $light_shadow;
+    background-image: none;
+    box-shadow: inset -1px -1px $border_color,
+                inset 1px 1px $light_shadow;
+  }
 
-    &:checked {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-    }
-
-    &:disabled {
-      color: $disabled_fg_color;
-      border-color: $disabled_bg_color;
-      background-color: $disabled_bg_color;
-    }
-
-    slider {
-      margin: 0;
-      border-radius: $global_radius;
-      color: $fg_color;
-      border: 1px solid $border_color;
-      border-top-color: $light_shadow;
-      border-left-color: $light_shadow;
-      box-shadow: inset -1px -1px $border_color, inset 1px 1px $light_shadow;
-      background-color: $bg_color;
-    }
-
-    &:disabled {
-      slider {
-        background-color: $disabled_bg_color;
-      }
-    }
+  @if $type == "disabled" {
+    background-color: $disabled_bg_color;
   }
 }
