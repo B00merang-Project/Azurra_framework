@@ -1,67 +1,39 @@
-@mixin entry() {
-  entry {
+@mixin entry($type : "base") {
+  @if $type == "base" {
     padding: 5px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: $base_color;
     border-radius: $entry_radius;
+    border: 1px solid $base_color;
     color: $text_color;
-    caret-color: currentColor;
     background-color: $base_color;
-
-    &:active, &:focus {
-      border-color: $selected_bg_color;
-    }
-
-    &:selected, &:selected:focus, selection, selection:focus {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-    }
-
-    &:disabled {
-      color: $disabled_text_color;
-
-      &:backdrop {
-        color: $backdrop_disabled_fg_color;
-        border-color: $backdrop_border_color;
-        background-color: $backdrop_disabled_bg_color;
-      }
-    }
-
-    &:backdrop {
-      color: $backdrop_fg_color;
-      background-color: $backdrop_base_color;
-    }
-
-    > image {
-      &.left {
-        padding-right: 5px;
-      }
-      
-      &.right {
-        padding-left: 5px;
-      }
-    }
-
-    progress {
-      margin: -4px -4px;
-      border-width: 0 0 2px;
-      border-radius: 0;
-      border-style: solid;
-      border-color: $selected_bg_color;
-      background-color: transparent;
-    }
-
-    &.flat, &.flat:focus {
-      min-height: 0;
-      padding: 3px;
-      border-radius: 0;
-      background-image: none;
-      border-color: transparent;
-    }
-
-    &.search {
-      border-radius: 40px;
-    }
   }
+
+  @else if $type == "focus" {
+    border-color: $selected_bg_color;
+    box-shadow: none;
+  }
+
+  @else if $type == "disabled" {
+    color: $disabled_text_color;
+  }
+
+  @else if $type == "disabled-backdrop" {
+    border-color: $backdrop_border_color;
+    color: $backdrop_disabled_fg_color;
+    background-color: $backdrop_disabled_bg_color;
+  }
+
+  @else if $type == "backdrop" {
+    color: $backdrop_fg_color;
+    background-color: $backdrop_base_color;
+  }
+
+  @else if $type == "flat" {
+    min-height: 0px;
+    padding: 3px;
+    border-radius: 0px;
+    background-image: none;
+    border-color: transparent;
+  }
+  
+  // TODO: linked states
 }
