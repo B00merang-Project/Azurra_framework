@@ -23,6 +23,15 @@
 }
 
 @mixin scale_slider($type : "base") {
+  // DOC
+  // @if $type == "base"
+  // @else if $type == "horiz"
+  // @else if $type == "vert"
+  // @else if $type == "top"
+  // @else if $type == "bottom"
+  // @else if $type == "left"
+  // @else if $type == "right"
+  
   @if $type == "base" {
     min-height: $scale_slider_size;
     min-width: $scale_slider_size;
@@ -48,13 +57,4 @@
       background-color: $backdrop_selected_bg_color;
     }
   }
-
-  // DOC: list possible states
-  // @if $type == "base"
-  // @if $type == "horiz"
-  // @if $type == "vert"
-  // @if $type == "top"
-  // @if $type == "bottom"
-  // @if $type == "left"
-  // @if $type == "right"
 }

@@ -1,4 +1,11 @@
 @mixin scrollbar($type : "base") {
+  // DOC
+  // TODO: implement following options in _common.scss
+  // @if $type == "base"
+  // @else if $type == "hint"
+  // @else if $type == "horiz"
+  // @else if $type == "vert"
+
   @if $type == "base" {
     border: none;
     background-color: gtkshade($bg_color, 0.9);
@@ -13,16 +20,15 @@
     opacity: 0.7;
     background-color: transparent;
   }
-  
-  // DOC: possible values
-  // TODO: implement following options in _common.scss
-  // @if $type == "base"
-  // @if $type == "hint"
-  // @if $type == "horiz"
-  // @if $type == "vert"
 }
 
 @mixin scrollbar_slider($type : "base") {
+  // DOC
+  // @if $type == "base"
+  // @else if $type == "hint"   (overlay scroll indicator)
+  // @else if $type == "horiz"
+  // @else if $type == "vert"
+  
   @if $type == "base" {
     min-width: $scrollbar_slider_size;
     min-height: $scrollbar_slider_size;
@@ -38,13 +44,6 @@
     &:disabled { background-color: transparent; }
   }
   
-  // DOC: list possible types
-  // @if $type == "base"
-  // @if $type == "hint"
-  // @if $type == "horiz"
-  // @if $type == "vert"
-  
-  // scroll indicator
   @if $type == "hint" {
     margin: 0px;
     min-width: $scrollbar_indicator_size;

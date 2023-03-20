@@ -33,6 +33,15 @@
 }
 
 @mixin switch_slider($type : "base") {
+  // DOC
+  // @if $type == "base"
+  // @else if $type == "hover"
+  // @else if $type == "checked"
+  // @else if $type == "checked-backdrop"
+  // @else if $type == "disabled"
+  // @else if $type == "disabled-backdrop"
+  // @else if $type == "backdrop"
+  
   @if $type == "base" {
     min-width: 14px;
     min-height: 14px;
@@ -46,13 +55,4 @@
   @if $type == "disabled" { background-color: $disabled_base_color; }
   @if $type == "disabled-backdrop" { background-color: $backdrop_disabled_base_color; }
   @if $type == "backdrop" { background-color: $backdrop_base_color; }
-  
-  // DOC
-  // @if $type == "base"
-  // @if $type == "hover"
-  // @if $type == "checked"
-  // @if $type == "backdrop"
-  // @if $type == "disabled"
-  // @if $type == "disabled-backdrop"
-  // @if $type == "backdrop"
 }
