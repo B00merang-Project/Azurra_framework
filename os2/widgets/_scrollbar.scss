@@ -6,7 +6,7 @@
     background-color: $bg_color;
   }
 
-  @if $type == "hint" {
+  @else if $type == "hint" {
     opacity: 1;
   }
 }
@@ -30,16 +30,16 @@
                 inset 0 1px $light_shadow;
   }
   
-  @if $type == "base" {
+  @else if $type == "hint" {
     margin: 0px;
   }
 
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     background-image: url('assets/handle-horiz.png');
     background-size: 12px 4px;
   }
   
-  @if $type == "vert" {
+  @else if $type == "vert" {
     background-image: url('assets/handle-vert.png');
     background-size: 4px 12px;
   }

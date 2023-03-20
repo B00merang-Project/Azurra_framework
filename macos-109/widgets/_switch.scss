@@ -61,16 +61,16 @@
     box-shadow: 0 2px 2px 1px gtkalpha($dark_shadow, 0.09);
   }
 
-  @if $type == "disabled"{
+  @else if $type == "disabled"{
     background-color: $disabled_base_color;
     box-shadow: inset 0 1px transparent;
   }
 
-  @if $type == "disabled-backdrop" {
+  @else if $type == "disabled-backdrop" {
     background-color: $backdrop_disabled_base_color;
   }
 
-  @if $type == "backdrop" {
+  @else if $type == "backdrop" {
     background-color: $backdrop_base_color;
     box-shadow: inset 0 1px transparent;
   }

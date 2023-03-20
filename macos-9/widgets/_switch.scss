@@ -36,7 +36,7 @@
                 inset -1px -1px gtkshade($bg_color, 0.65);
   }
 
-  @if $type == "disabled" {
+  @else if $type == "disabled" {
     box-shadow: none;
     border-color: gtkshade($disabled_bg_color, 0.9);
     background-color: $disabled_bg_color;

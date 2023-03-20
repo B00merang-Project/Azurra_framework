@@ -53,23 +53,23 @@
     box-shadow: none;
   }
   
-  @if $type == "checked" {
+  @else if $type == "checked" {
     background-color: $base_color;
   }
     
-  @if $type == "checked-backdrop" {
+  @else if $type == "checked-backdrop" {
     background-color: $backdrop_bg_color;
   }
 
-  @if $type == "disabled" {
+  @else if $type == "disabled" {
     background-color: $disabled_fg_color;
   }
 
-  @if $type == "disabled-backdrop" {
+  @else if $type == "disabled-backdrop" {
     background-color: $backdrop_disabled_fg_color;
   }
 
-  @if $type == "backdrop" {
+  @else if $type == "backdrop" {
     background-color: $backdrop_fg_color;
   }
 }

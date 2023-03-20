@@ -81,7 +81,7 @@
     &:backdrop { color: $backdrop_selected_fg_color; }
   }
   
-  @if $type == "bottom" or $type == "horiz" {
+  @else if $type == "bottom" or $type == "horiz" {
     background-image: gtkscale('assets/slider-horizontal', 'png');
     
     &:focus { background-image: gtkscale('assets/slider-horizontal-focused', 'png');
@@ -93,7 +93,7 @@
     &:backdrop { background-image: gtkscale('assets/slider-horizontal-disabled', 'png'); }
   }
   
-  @if $type == "top" {
+  @else if $type == "top" {
     background-image: gtkscale('assets/slider-horizontal-left', 'png');
     
     &:focus { background-image: gtkscale('assets/slider-horizontal-left-focused', 'png');
@@ -105,7 +105,7 @@
     &:backdrop { background-image: gtkscale('assets/slider-horizontal-left-disabled', 'png'); }
   }
   
-  @if $type == "right" or $type == "vert" {
+  @else if $type == "right" or $type == "vert" {
     background-image: gtkscale('assets/slider-vertical', 'png');
 
     &:focus { background-image: gtkscale('assets/slider-vertical-focused', 'png');
@@ -117,7 +117,7 @@
     &:backdrop { background-image: gtkscale('assets/slider-vertical-disabled', 'png'); }
   }
 
-  @if $type == "left" {
+  @else if $type == "left" {
     background-image: gtkscale('assets/slider-vertical-left', 'png');
     
     &:hover { background-image: gtkscale('assets/slider-vertical-left-focused', 'png');

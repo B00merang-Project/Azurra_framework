@@ -48,17 +48,17 @@
     );
   }
 
-  @if $type == "disabled" {
+  @else if $type == "disabled" {
     background-color: $disabled_base_color;
     border: 1px solid gtkshade($border_color, 0.75);
   }
 
-  @if $type == "disabled-backdrop" {
+  @else if $type == "disabled-backdrop" {
     background-color: $backdrop_disabled_base_color;
     border: 1px solid gtkshade($backdrop_border_color, 0.75);
   }
 
-  @if $type == "backdrop" {
+  @else if $type == "backdrop" {
     background-color: $backdrop_base_color;
   }
 }

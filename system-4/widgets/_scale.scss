@@ -44,7 +44,7 @@
     &:disabled { background-color: $disabled_base_color; }
   }
 
-  @if $type == "vert" {
+  @else if $type == "vert" {
     min-width: $scale_slider_size;
     min-height: $scale_slider_size / 2;
     background-image: linear-gradient(

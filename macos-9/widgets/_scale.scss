@@ -44,7 +44,7 @@
     &:backdrop { color: $backdrop_selected_fg_color; }
   }
   
-  @if $type == "horiz" /* or $type == "bottom" */ {
+  @else if $type == "horiz" /* or $type == "bottom" */ {
     background-image: url('assets/slider-horiz.png');
 
     &:hover { background-image: url('assets/slider-horiz.png'); }
@@ -54,7 +54,7 @@
     &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
   }
 
-  @if $type == "vert" /* or $type == "right" */ {
+  @else if $type == "vert" /* or $type == "right" */ {
     background-image: url('assets/slider-vert.png');
 
     &:hover { background-image: url('assets/slider-vert.png'); }

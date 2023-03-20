@@ -6,7 +6,7 @@
                 inset -2px 0 gtkshade($bg_color, 0.95);
   }
   
-  @if $type == "hint" {
+  @else if $type == "hint" {
     opacity: 1;
   }
 }
@@ -26,15 +26,15 @@
     background-repeat: no-repeat;
   }
   
-  @if $type == "hint" {
+  @else if $type == "hint" {
     margin: 0px;
   }
   
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     background-image: url('assets/handle-horiz.png');
   }
   
-  @if $type == "vert" {
+  @else if $type == "vert" {
       background-image: url('assets/handle-vert.png');
   }
 }

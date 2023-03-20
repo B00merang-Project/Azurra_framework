@@ -31,18 +31,18 @@
     background-repeat: no-repeat;
   }
 
-  @if $state == "hover" {
+  @else if $state == "hover" {
     border-color: gtkshade($border_color, 0.8);
     border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
     border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
   }
 
-  @if $state == "disabled" {
+  @else if $state == "disabled" {
     color: $disabled_fg_color;
     background-color: transparent;
   }
 
-  @if $state == "backdrop" {
+  @else if $state == "backdrop" {
     color: $backdrop_fg_color;
     background-color: transparent;
   }

@@ -10,15 +10,15 @@
   }
   
   // TODO: set as value in properties.scss and remove
-  @if $type == "hint" {
+  @else if $type == "hint" {
     opacity: 1.0;
   }
   
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     background-image: linear-gradient(to bottom, $dark_bg_color, gtkshade($dark_bg_color, 1.1));
   }
   
-  @if $type == "vert" {
+  @else if $type == "vert" {
     background-image: linear-gradient(to right, $dark_bg_color, gtkshade($dark_bg_color, 1.1));
   }
 }
@@ -47,7 +47,7 @@
     &:disabled { background-color: transparent; }
   }
   
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     background: url("assets/handle-vert.png") no-repeat center center,
                 linear-gradient(
                   to bottom,
@@ -77,7 +77,7 @@
     }
   }
       
-  @if $type == "vert" {
+  @else if $type == "vert" {
     background: url("assets/handle-vert.png") no-repeat center center,
                 linear-gradient(
                   to right,

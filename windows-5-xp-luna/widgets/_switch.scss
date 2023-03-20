@@ -45,7 +45,7 @@
     box-shadow: none;
   }
 
-  @if $type == "disabled" {
+  @else if $type == "disabled" {
     border-color: gtkmix(gtkshade($border_color, 0.3), $disabled_bg_color, 0.85);
     background-color: $disabled_base_color;
   }

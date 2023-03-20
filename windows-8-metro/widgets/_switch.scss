@@ -46,20 +46,20 @@
     box-shadow: 0 0 0 2px $bg_color;
   }
   
-  @if $type == "checked" {
+  @else if $type == "checked" {
     margin-left: 10px;
     margin-right: 0;
   }
 
-  @if $type == "disabled" {
+  @else if $type == "disabled" {
     background-color: $disabled_fg_color;
   }
 
-  @if $type == "disabled-backdrop" {
+  @else if $type == "disabled-backdrop" {
     background-color: $backdrop_disabled_fg_color;
   }
 
-  @if $type == "backdrop" {
+  @else if $type == "backdrop" {
     background-color: $backdrop_fg_color;
   }
 }

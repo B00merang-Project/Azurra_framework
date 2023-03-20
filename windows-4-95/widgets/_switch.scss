@@ -41,7 +41,7 @@
                 inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
   }
 
-  @if $type == "disabled" {
+  @else if $type == "disabled" {
     background-color: $disabled_bg_color;
   }
 }

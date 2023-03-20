@@ -60,29 +60,29 @@
                 0 1px gtkalpha($dark_shadow, 0.1);
   }
   
-  @if $type == "checked" { border: 1px solid gtkshade($border_color, 0.5); }
+  @else if $type == "checked" { border: 1px solid gtkshade($border_color, 0.5); }
 
-  @if $type == "backdrop" {
+  @else if $type == "checked-backdrop" {
     border-color: $backdrop_border_color;
     background-image: none;
     box-shadow: none;
   }
 
-  @if $type == "disabled" {
+  @else if $type == "disabled" {
     border-color: $backdrop_border_color;
     background-color: $disabled_bg_color;
     background-image: none;
     box-shadow: none;
   }
 
-  @if $type == "disabled-backdrop" {
+  @else if $type == "disabled-backdrop" {
     border-color: $backdrop_border_color;
     background-color: $backdrop_disabled_bg_color;
     background-image: none;
     box-shadow: none;
   }
 
-  @if $type == "backdrop" {
+  @else if $type == "backdrop" {
     border-color: $backdrop_border_color;
     background-color: $backdrop_bg_color;
     background-image: none;

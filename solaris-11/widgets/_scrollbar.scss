@@ -4,15 +4,15 @@
     background-color: transparent;
   }
 
-  @if $type == "hint" { 
+  @else if $type == "hint" { 
     opacity: 1; 
   }
 
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     background-image: url('assets/trough-h.png');
   }
   
-  @if $type == "vert" {
+  @else if $type == "vert" {
     background-image: url('assets/trough-v.png');
   }
 }
@@ -27,16 +27,16 @@
     background-color: transparent;
   }
 
-  @if $type == "hint" {
+  @else if $type == "hint" {
     margin: 1px;
   }
 
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     border-width: 7px 11px 7px 11px;
     border-image: url("assets/scrollbar-slider-h.png") 7 11 7 11 stretch;
   }
 
-  @if $type == "vert" {
+  @else if $type == "vert" {
     border-width: 11px 7px 11px 7px;
     border-image: url("assets/scrollbar-slider-v.png") 11 7 11 7 stretch;
   }

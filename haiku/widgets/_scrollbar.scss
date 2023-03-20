@@ -8,11 +8,11 @@
     }
   }
   
-  @if $type == "hint" {
+  @else if $type == "hint" {
     opacity: 1;
   }
     
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     background-image: linear-gradient(
       to top,
       gtkshade($bg_color, 0.95),
@@ -20,7 +20,7 @@
     );
   }
   
-  @if $type == "vert" {
+  @else if $type == "vert" {
     background-image: linear-gradient(
       to left,
       gtkshade($bg_color, 0.95),
@@ -47,11 +47,11 @@
     &:disabled { background-color: transparent; }
   }
 
-  @if $type == "hint" {
+  @else if $type == "hint" {
     margin: -1px;
   }
   
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     background-image: linear-gradient(
       to bottom,
       gtkshade($bg_color, 1.14),
@@ -65,7 +65,7 @@
   }
 
   // clone of "base" slider, still necessary?
-  @if $type == "vert" {
+  @else if $type == "vert" {
     background-image: linear-gradient(
       to right,
       gtkshade($bg_color, 1.14),

@@ -52,7 +52,7 @@
     background-color: $base_color;
   }
 
-  @if $type == "disabled" { background-color: $disabled_base_color; }
-  @if $type == "disabled-backdrop" { background-color: $backdrop_disabled_base_color; }
-  @if $type == "backdrop" { background-color: $backdrop_base_color; }
+  @else if $type == "disabled" { background-color: $disabled_base_color; }
+  @else if $type == "disabled-backdrop" { background-color: $backdrop_disabled_base_color; }
+  @else if $type == "backdrop" { background-color: $backdrop_base_color; }
 }

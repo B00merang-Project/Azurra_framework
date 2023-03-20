@@ -21,16 +21,16 @@
     background-color: transparent;
   }
 
-  @if $state == "hover" {
+  @else if $state == "hover" {
     color: $selected_bg_color;
     box-shadow: inset 0 -3px $selected_bg_color;
   }
   
-  @if $state == "disabled" {
+  @else if $state == "disabled" {
     color: $disabled_fg_color;
   }
   
-  @if $state == "backdrop" {
+  @else if $state == "backdrop" {
     color: $backdrop_fg_color;
   }
 }

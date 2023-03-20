@@ -54,13 +54,13 @@
     }
   }
   
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     background-image: url('assets/scale-h-slider.png');
   
     &:hover { background-image: url('assets/scale-h-slider-hover.png'); }
   }
   
-  @if $type == "vert" {
+  @else if $type == "vert" {
     min-width: $scale_slider_size / 2;
     min-height: $scale_slider_size;
     background-image: url('assets/scale-v-slider.png');

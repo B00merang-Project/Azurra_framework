@@ -36,7 +36,7 @@
     }
   }
 
-  @if $type == "hint" {
+  @else if $type == "hint" {
     border: none;
     opacity: 0.4;
     background-color: transparent;
@@ -60,7 +60,7 @@
     &:disabled { background-color: transparent; }
   }
 
-  @if $type == "hint" {
+  @else if $type == "hint" {
     margin: 0px;
     min-width: $scrollbar_indicator_size;
     min-height: $scrollbar_indicator_size;

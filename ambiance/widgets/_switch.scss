@@ -73,26 +73,26 @@
     box-shadow: none;
   }
     
-  @if $type == "checked" { border-color: gtkshade($selected_bg_color, 0.6); }
+  @else if $type == "checked" { border-color: gtkshade($selected_bg_color, 0.6); }
 
-  @if $type == "checked-backdrop" {
+  @else if $type == "checked-backdrop" {
     border-color: gtkshade($backdrop_selected_bg_color, 0.8);
     background-color: $backdrop_bg_color;
     background-image: none;
   }
 
-  @if $type == "disabled" {
+  @else if $type == "disabled" {
     border-color: gtkshade($border_color, 0.95);
     background-color: $disabled_base_color;
   }
 
-  @if $type == "disabled-backdrop" {
+  @else if $type == "disabled-backdrop" {
     border-color: $backdrop_border_color;
     background-color: $backdrop_bg_color;
     background-image: none;
   }
 
-  @if $type == "backdrop" {
+  @else if $type == "backdrop" {
     border-color: gtkshade($backdrop_border_color, 0.9);
     background-color: $backdrop_bg_color;
     background-image: none;

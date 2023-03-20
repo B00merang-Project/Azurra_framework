@@ -39,7 +39,7 @@
     &:backdrop { color: $backdrop_selected_fg_color; }
   }
   
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     background-image: url('assets/slider-horiz.png');
 
     &:hover { background-image: url('assets/slider-horiz.png'); }
@@ -49,7 +49,7 @@
     &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
   }
   
-  @if $type == "vert" {
+  @else if $type == "vert" {
     background-image: url('assets/slider-vert.png');
 
     &:hover { background-image: url('assets/slider-vert.png'); }

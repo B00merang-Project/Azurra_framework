@@ -29,7 +29,7 @@
     background-color: transparent;
   }
 
-  @if $state == "hover" {
+  @else if $state == "hover" {
     border-color: gtkshade($selected_bg_color, 0.9);
     color: $selected_fg_color;
     background-color: $selected_bg_color;
@@ -41,12 +41,12 @@
     );
   }
 
-  @if $state == "disabled" {
+  @else if $state == "disabled" {
     color: $disabled_fg_color;
     background-color: transparent;
   }
 
-  @if $state == "backdrop" {
+  @else if $state == "backdrop" {
     color: $backdrop_fg_color;
     background-color: transparent;
   }

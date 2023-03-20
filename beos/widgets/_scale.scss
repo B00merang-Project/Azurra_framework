@@ -34,11 +34,11 @@
     box-shadow: none;
   }
 
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     background-image: url('assets/slider-h.png');
   }
   
-  @if $type == "vert" {
+  @else if $type == "vert" {
     background-image: url('assets/slider-v.png');
   }
 }

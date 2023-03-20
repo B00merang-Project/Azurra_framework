@@ -37,7 +37,7 @@
     &:backdrop { color: $backdrop_selected_fg_color; }
   }
 
-  @if $type == "bottom" or $type == "horiz" {
+  @else if $type == "bottom" or $type == "horiz" {
     margin-bottom: -10px;
     background-image: url('assets/slider-horiz.png');
 
@@ -48,7 +48,7 @@
     &:backdrop { background-image: url('assets/slider-horiz-insensitive.png'); }
   }
   
-  @if $type == "top" {
+  @else if $type == "top" {
     margin-top: -10px;
     background-image: url('assets/slider-horiz-top.png');
 
@@ -59,7 +59,7 @@
     &:backdrop { background-image: url('assets/slider-horiz-top-insensitive.png'); }
   }
   
-  @if $type == "right" or $type == "vert"  {
+  @else if $type == "right" or $type == "vert"  {
     margin-right: -10px;
     background-image: url('assets/slider-vert.png');
 
@@ -70,7 +70,7 @@
     &:backdrop { background-image: url('assets/slider-vert-insensitive.png'); }
   }
 
-  @if $type == "left" {
+  @else if $type == "left" {
     margin-left: -10px;
     background-image: url('assets/slider-vert-left.png');
 

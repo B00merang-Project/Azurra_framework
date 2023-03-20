@@ -49,17 +49,17 @@
     box-shadow: none;
   }
 
-  @if $type == "disabled" {
+  @else if $type == "disabled" {
     border-color: gtkshade($border_color, 1.1);
     background-color: $disabled_base_color;
   }
 
-  @if $type == "disabled-backdrop" {
+  @else if $type == "disabled-backdrop" {
     border-color: $backdrop_border_color;
     background-color: $backdrop_disabled_base_color;
   }
 
-  @if $type == "backdrop" {
+  @else if $type == "backdrop" {
     border-color: $backdrop_border_color;
     background-color: $backdrop_base_color;
   }

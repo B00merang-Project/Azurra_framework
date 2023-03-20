@@ -8,16 +8,16 @@
     }
   }
   
-  @if $type == "hint" {
+  @else if $type == "hint" {
     opacity: 1.0;
   }
   
   // TODO: do borders like adwaita?
-  @if $type == "vert" {
+  @else if $type == "vert" {
     border-left: 1px solid $border_color;
   }
   
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     border-top: 1px solid $border_color;
   }
 }
@@ -38,7 +38,7 @@
     &:disabled { background-color: transparent; }
   }
   
-  @if $type == "hint" {
+  @else if $type == "hint" {
     margin: 2px;
     opacity: 1;
   }

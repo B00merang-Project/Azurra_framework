@@ -9,7 +9,7 @@
     }
   }
   
-  @if $type == "hint" {
+  @else if $type == "hint" {
     opacity: 1.0;
   }
 }
@@ -30,11 +30,11 @@
     }
   }
   
-  @if $type == "hint" {
+  @else if $type == "hint" {
     margin: -1px;
   }
   
-  @if $type == "horiz" {
+  @else if $type == "horiz" {
     background-image: linear-gradient(
       to bottom,
       gtkshade($bg_color, 1.15),
@@ -50,7 +50,7 @@
     }
   }
   
-  @if $type == "vert" {
+  @else if $type == "vert" {
     background-image: linear-gradient(
       to right,
       gtkshade($bg_color, 1.15),
