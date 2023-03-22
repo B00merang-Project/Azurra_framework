@@ -1022,7 +1022,20 @@ scrolledwindow {
 @include separators();
 
 // TODO: update this block
-listview row { @include listview(); }
+listview row {
+  &:hover { @include listview("hover"); }
+  &:active { @include listview("active"); }
+  &:backdrop { @include listview("backdrop"); }
+  
+  &:selected {
+    @include listview("selected");
+
+    &:hover { @include listview("selected-hover"); }
+    &:active { @include listview("selected-active"); }
+    &:disabled { @include listview("disabled"); }
+    &:backdrop { @include listview("selected-backdrop"); }
+  }
+}
 
 // columnview rows (should this be moved to treeview?)
 columnview {
