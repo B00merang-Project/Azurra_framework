@@ -1677,24 +1677,6 @@ popover.entry-completion > contents { padding: 0; }
 
 @include statusbar();
 
-// arrow
-$menubutton_spacing : 6px;
-
-menubutton {
-  > button > box { border-spacing: $menubutton_spacing; }
-
-  arrow {
-    min-height: 16px;
-    min-width: 16px;
-    
-    &.none { -gtk-icon-source: -gtk-icontheme('open-menu-symbolic'); }
-    &.down { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
-    &.up { -gtk-icon-source: -gtk-icontheme('pan-up-symbolic'); }
-    &.left { -gtk-icon-source: -gtk-icontheme('pan-start-symbolic'); }
-    &.right { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic'); }
-  }
-}
-
 // legacy stuff
 
 // TODO: include '> image' nodes in affected widgets
