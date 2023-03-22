@@ -713,7 +713,18 @@ columnview.view, treeview.view {
 
 magnifier { background-color: $base_color; }
 
-@include menu();      // TODO: modernize
+// TODO: modernize
+popover.menu {
+  @include menu();
+  
+  accelerator { color: gtkalpha(currentColor, 0.55);
+    &:hover { color: gtkalpha($selected_fg_color, 0.8); }
+    &:disabled { color: gtkmix($menu_fg_color, $menu_bg_color, 0.5); }
+    
+    &:dir(ltr) { margin-left: $menu_padding; }
+    &:dir(rtl) { margin-right: $menu_padding; }
+  }
+}
 
 menubar { @include menubar();
   > item { @include menubaritem();
