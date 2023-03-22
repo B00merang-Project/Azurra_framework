@@ -1,19 +1,19 @@
 @mixin popover() {
-  popover.background {
-    background-color: transparent;
-    font: initial; // Decouple the font of popovers from their entry/textview
+  popover {
+    &.background {
+      font: initial;
+      background-color: transparent;
+    }
 
     > arrow,
     > contents {
-      //color: $menu_fg_color;    // should maybe be in modelbutton?
-      background-color: $menu_bg_color;
-      background-clip: padding-box;
       border: 1px solid $border_color;
+      color: $popover_fg_color;
+      background-color: $popover_bg_color;
+      background-clip: padding-box;
       box-shadow: 0 1px 2px gtkalpha($wm_shadow, 0.7);
-    }
-
-    &:backdrop {
-      background-color: transparent;
+      
+      // TODO: backdrop?
     }
 
     > contents {
@@ -22,19 +22,16 @@
 
       > list,
       > .view,
-      > .toolbar {
+      > toolbar {
         border-style: none;
         background-color: transparent;
       }
 
+      // TODO: move to separators
       separator {
-        background-color: $border_color;
         margin: 3px;
+        background-color: $border_color;
       }
-
-      list separator { margin: 0; }
     }
-
-    // TODO: touch selection & magnifier?
   }
 }
