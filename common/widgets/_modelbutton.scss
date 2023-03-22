@@ -1,5 +1,5 @@
 @mixin modelbutton() {
-  modelbutton.flat {
+  modelbutton {
     min-height: 20px;
     padding-left: 5px;
     padding-right: 5px;
@@ -8,7 +8,6 @@
     background-color: transparent;
     background-image: none;
     box-shadow: none;
-    // TODO: modelbuttons color is white in nautilus
 
     // TODO: some themes (ex. solaris 10) have a different selection for menus than grids
     // create new mixin new selected_list_items?
@@ -22,9 +21,10 @@
       background: none;
       min-width: 16px;
       min-height: 16px;
-      opacity: 0.3; //dim icon
+      opacity: 0.3;     // TODO: set as global variable?
 
       &:hover { background: none; }
+      &:disabled { opacity: 0.15; }   // libadwaita uses a global var for dimmed disabled images
 
       &.left { -gtk-icon-source: -gtk-icontheme("go-previous-symbolic"); }
       &.right { -gtk-icon-source: -gtk-icontheme("go-next-symbolic"); }
