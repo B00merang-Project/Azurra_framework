@@ -3,9 +3,9 @@
     margin: 4px;
     padding: 4px 1px;
     border-radius: $menu_radius;
-    border: 1px solid gtkshade($menu_bg_color, 1.1);
-    color: $menu_fg_color;
-    background-color: $menu_bg_color;
+    border: 1px solid gtkshade($popover_bg_color, 1.1);
+    color: $popover_fg_color;
+    background-color: $popover_bg_color;
 
     // TODO: arrow
     
@@ -15,8 +15,8 @@
       padding: 4px;
       border: none;
       border-radius: 0;
-      color: $menu_fg_color;
-      background-color: $menu_bg_color;
+      color: $popover_fg_color;
+      background-color: $popover_bg_color;
 
       &:hover {
         color: $selected_fg_color;
@@ -29,7 +29,7 @@
       }
 
       &:disabled {
-        color: gtkmix($menu_fg_color, $menu_bg_color, 0.5);
+        color: gtkmix($popover_fg_color, $popover_bg_color, 0.5);
       }
 
       // TODO: arrow

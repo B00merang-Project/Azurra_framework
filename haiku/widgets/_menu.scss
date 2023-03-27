@@ -5,10 +5,10 @@
     padding: 4px;
     border-radius: $menu_radius;
     border-style: none;
-    color: $menu_fg_color;
-    background-color: $menu_bg_color;
-    box-shadow: inset -1px 0 gtkshade($menu_bg_color, 0.9),
-                inset 0 -1px gtkshade($menu_bg_color, 0.9),
+    color: $popover_fg_color;
+    background-color: $popover_bg_color;
+    box-shadow: inset -1px 0 gtkshade($popover_bg_color, 0.9),
+                inset 0 -1px gtkshade($popover_bg_color, 0.9),
                 inset 1px 0 gtkalpha($light_shadow, 0.7),
                 inset 0 1px gtkalpha($light_shadow, 0.7);
     
@@ -20,8 +20,8 @@
       padding: 4px;
       border: none;
       border-radius: 0;
-      color: $menu_fg_color;
-      background-color: $menu_bg_color;
+      color: $popover_fg_color;
+      background-color: $popover_bg_color;
 
       &:hover {
         color: $selected_fg_color;
@@ -37,14 +37,14 @@
       }
 
       &:disabled {
-        color: gtkmix($menu_fg_color, $menu_bg_color, 0.5);
+        color: gtkmix($popover_fg_color, $popover_bg_color, 0.5);
       }
 
       // TODO: arrow
 
       accelerator { color: gtkalpha(currentColor, 0.55);
         &:hover { color: gtkalpha($selected_fg_color, 0.8); }
-        &:disabled { color: gtkmix($menu_fg_color, $menu_bg_color, 0.5); }
+        &:disabled { color: gtkmix($popover_fg_color, $popover_bg_color, 0.5); }
       }
     }
   }

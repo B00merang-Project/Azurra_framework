@@ -4,8 +4,8 @@
     padding: 4px 4px;
     border-radius: $menu_radius;
     border: 3px solid transparent;
-    color: $menu_fg_color;
-    background-color: $menu_bg_color;
+    color: $popover_fg_color;
+    background-color: $popover_bg_color;
     border-image: url('assets/menu-bg.png') 3 3 3 3;
 
     // TODO: arrow
@@ -16,8 +16,8 @@
       padding: 4px;
       border: none;
       border-radius: 0;
-      color: $menu_fg_color;
-      background-color: $menu_bg_color;
+      color: $popover_fg_color;
+      background-color: $popover_bg_color;
 
       &:hover {
         color: $selected_fg_color;
@@ -33,14 +33,14 @@
       }
 
       &:disabled {
-        color: gtkmix($menu_fg_color, $menu_bg_color, 0.5);
+        color: gtkmix($popover_fg_color, $popover_bg_color, 0.5);
       }
 
       // TODO: arrow
 
       accelerator { color: gtkalpha(currentColor, 0.55);
         &:hover { color: gtkalpha($selected_fg_color, 0.8); }
-        &:disabled { color: gtkmix($menu_fg_color, $menu_bg_color, 0.5); }
+        &:disabled { color: gtkmix($popover_fg_color, $popover_bg_color, 0.5); }
       }
     }
   }
