@@ -709,7 +709,39 @@ columnview.view, treeview.view {
   &:last-child, &:last-child:backdrop { border-right-style: none; }
 }
 
-@include popover();
+popover {
+  &.background,
+  &.background:backdrop {
+    font: initial;
+    background-color: transparent;
+  }
+  
+  > arrow,
+  > contents {
+    @include popover();
+    
+    background-clip: padding-box;
+    box-shadow: none;   // override adwaita popover shadow
+  }
+
+  > contents {
+    padding: $popover_padding;
+    border-radius: $popover_radius;
+
+    > list,
+    > .view,
+    > toolbar {
+      border-style: none;
+      background-color: transparent;
+    }
+
+    // TODO: move to separators
+    separator {
+      margin: 3px;
+      background-color: $border_color;
+    }
+  }
+}
 
 magnifier { background-color: $base_color; }
 
