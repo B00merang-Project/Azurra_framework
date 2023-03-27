@@ -42,6 +42,7 @@ show_ops() {
   echo "For '_properties.scss'"
   echo "  -fp  <VALUE>                 Find <VALUE>"
   echo "  -rp  <VALUE> <NEW_VALUE>     Replace <VALUE> with <NEW_VALUE>"
+  echo "  -dp  <VALUE>                 Delete lines containing <VALUE>"
   echo "  -ap  <NAME>  <VALUE>         Add SCSS snippet '$<NAME> : <VALUE>;'"
   echo "  -apf <NAME>  <VALUE> <FIND>  Add SCSS snippet '$<NAME> : <VALUE>;' after line <FIND>"
 }
@@ -193,6 +194,13 @@ config_delete() {
   delete "$value" "$theme_dir/theme.rc"
 }
 
+props_delete() {
+  local theme_dir="$1"
+  local value="$2"
+  
+  delete "$value" "$theme_dir/_properties.scss"
+}
+
 ### Insert/append/add
 config_append() {
   local theme_dir="$1"
@@ -251,6 +259,7 @@ case $1 in
   -dc)  OP="colors_delete"       ;  MOD=1;;
   -dt)  OP="config_delete"       ;  MOD=1;;
   -dw)  OP="widget_delete"       ;  MOD=1;;
+  -dp)  OP="props_delete"        ;  MOD=1;;
   -at)  OP="config_append"       ;  MOD=1;;
   -ai)  OP="imports_append"      ;  MOD=1;;
   -ap)  OP="props_insert"        ;  MOD=1;  ARGS=3 ;;
