@@ -1021,19 +1021,18 @@ scrolledwindow {
 // TODO: move separators to their respective controls?
 @include separators();
 
-// TODO: update this block
 listview row {
   &:hover { @include listview("hover"); }
   &:active { @include listview("active"); }
   &:backdrop { @include listview("backdrop"); }
   
-  &:selected {
-    @include listview("selected");
-
+  &:selected { @include listview("selected");
     &:hover { @include listview("selected-hover"); }
     &:active { @include listview("selected-active"); }
     &:disabled { @include listview("disabled"); }
-    &:backdrop { @include listview("selected-backdrop"); }
+    &:backdrop { @include listview("selected-backdrop");
+      &:hover { @include listview("selected-backdrop-hover"); }  // only used by windows 7-like themes
+    }
   }
 }
 

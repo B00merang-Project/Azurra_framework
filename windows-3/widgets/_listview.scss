@@ -1,21 +1,19 @@
-@mixin listview() {
+@mixin listview($state) {
+  @if $state == "backdrop" { color: $backdrop_fg_color; }
 
-
-  &:backdrop { color: $backdrop_fg_color; }
-
-  &:selected {
+  @else if $state == "selected" {
     border: none;
     color: $selected_fg_color;
     background-color: $selected_bg_color;
+  }
 
-    &:disabled {
-      color: gtkalpha($selected_fg_color, 0.7);
-      background-color: gtkalpha($selected_bg_color, 0.9);
-    }
-    
-    &:backdrop {
-      color: $backdrop_selected_fg_color;
-      background-color: $backdrop_selected_bg_color;
-    }
+  @else if $state == "selected-disabled" {
+    color: gtkalpha($selected_fg_color, 0.7);
+    background-color: gtkalpha($selected_bg_color, 0.9);
+  }
+  
+  @else if $state == "selected-backdrop" {
+    color: $backdrop_selected_fg_color;
+    background-color: $backdrop_selected_bg_color;
   }
 }

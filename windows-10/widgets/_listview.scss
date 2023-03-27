@@ -1,39 +1,39 @@
-@mixin listview() {
-  &:hover {
+@mixin listview($state) {
+  @if $state == "hover" {
     color: $selected_fg_color;
     background-color: gtkshade($selected_bg_color, 1.05);
   }
   
-  &:active {
+  @else if $state == "active" {
     color: $selected_fg_color;
     background-color: gtkshade($selected_bg_color, 0.96);
   }
   
-  &:backdrop { color: $backdrop_fg_color; }
+  @else if $state == "backdrop" { color: $backdrop_fg_color; }
 
-  &:selected {
+  @else if $state == "selected" {
     border: none;
     color: $selected_fg_color;
     background-color: $selected_bg_color;
-      
-    &:hover {
-      color: $selected_fg_color;
-      background-color: gtkshade($selected_bg_color, 1.02);
-    }
-    
-    &:active {
-      color: $selected_fg_color;
-      background-color: gtkshade($selected_bg_color, 0.98);
-    }
+  }
 
-    &:disabled {
-      color: gtkalpha($selected_fg_color, 0.7);
-      background-color: $selected_bg_color;
-    }
-    
-    &:backdrop {
-      color: $backdrop_selected_fg_color;
-      background-color: $backdrop_selected_bg_color;
-    }
+  @else if $state == "selected-hover" {
+    color: $selected_fg_color;
+    background-color: gtkshade($selected_bg_color, 1.02);
+  }
+  
+  @else if $state == "selected-active" {
+    color: $selected_fg_color;
+    background-color: gtkshade($selected_bg_color, 0.98);
+  }
+
+  @else if $state == "selected-disabled" {
+    color: gtkalpha($selected_fg_color, 0.7);
+    background-color: $selected_bg_color;
+  }
+  
+  @else if $state == "selected-backdrop" {
+    color: $backdrop_selected_fg_color;
+    background-color: $backdrop_selected_bg_color;
   }
 }
