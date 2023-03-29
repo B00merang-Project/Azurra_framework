@@ -1,29 +1,29 @@
 @mixin headerbar() {
   headerbar {
+    min-height: $headerbar_size;
     padding: 4px 8px;
-    min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    box-shadow: inset 1px 0 gtkalpha($light_shadow, 0.6),
-                inset -1px 0 gtkalpha($light_shadow, 0.6),
-                inset 0 1px gtkalpha($light_shadow, 0.6);
     background-image: linear-gradient(
       to bottom,
       gtkshade(gtkmix($titlebar_bg_color, $selected_bg_color, 0.3),  0.8),
       gtkshade(gtkmix($titlebar_bg_color, $selected_bg_color, 0.3), 0.95)
     );
+    box-shadow: inset 1px 0 gtkalpha($light_shadow, 0.6),
+                inset -1px 0 gtkalpha($light_shadow, 0.6),
+                inset 0 1px gtkalpha($light_shadow, 0.6);
 
     &:backdrop {
       color: $backdrop_fg_color;
       background-color: gtkshade($backdrop_bg_color, 0.95);
-      box-shadow: inset 1px 0 gtkalpha($light_shadow, 0.3),
-                  inset -1px 0 gtkalpha($light_shadow, 0.3),
-                  inset 0 1px gtkalpha($light_shadow, 0.3);
       background-image: linear-gradient(
         to bottom,
         gtkshade($titlebar_bg_color, 0.85),
         gtkshade($titlebar_bg_color, 0.95)
       );
+      box-shadow: inset 1px 0 gtkalpha($light_shadow, 0.3),
+                  inset -1px 0 gtkalpha($light_shadow, 0.3),
+                  inset 0 1px gtkalpha($light_shadow, 0.3);
     }
 
     .tiled &, .tiled &:backdrop,

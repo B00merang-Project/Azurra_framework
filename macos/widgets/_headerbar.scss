@@ -1,23 +1,23 @@
 @mixin headerbar() {
   headerbar {
-    min-height: 30px;
+    min-height: $headerbar_size;
     
     // TODO: implement slim mode for headerbar
     // in the meantime, substitute padding with this
     // padding: 6px 8px;
     
     padding: 12px 14px;
-    border: none;
-    border-radius: 0px;
+    border-bottom: 1px solid gtkshade($border_color, 0.9);
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    border-bottom: 1px solid gtkshade($border_color, 0.9);
+    background-image: none;
+    box-shadow: none;
 
     &:backdrop {
-      color: $backdrop_fg_color;
-      background-image: none;
-      background-color: $backdrop_bg_color;
       border-color: $backdrop_border_color;
+      color: $backdrop_fg_color;
+      background-color: $backdrop_bg_color;
+      background-image: none;
     }
     
     .tiled &, .tiled &:backdrop,

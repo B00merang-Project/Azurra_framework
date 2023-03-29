@@ -1,14 +1,14 @@
 @mixin headerbar() {
   headerbar {
+    min-height: $headerbar_size;
     padding: 4px 8px;
-    min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
+    background-image: url('assets/titlebar.png');
+    background-size: 100% 100%;
     box-shadow: inset 1px 0 gtkalpha($light_shadow, 0.6),
                 inset -1px 0 gtkalpha($light_shadow, 0.6),
                 inset 0 1px gtkalpha($light_shadow, 0.6);
-    background-image: url('assets/titlebar.png');
-    background-size: 100% 100%;
 
     &:backdrop {
       color: $backdrop_fg_color;

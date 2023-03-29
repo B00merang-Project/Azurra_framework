@@ -1,7 +1,8 @@
 @mixin headerbar() {
   headerbar {
+    min-height: $headerbar_size;
     padding: 4px 8px;
-    min-height: 30px;
+    border-bottom: 1px solid $dark_shadow;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
     background-image: linear-gradient(
@@ -11,16 +12,15 @@
       gtkshade($titlebar_bg_color, 0.9)
     );
     box-shadow: inset 0 1px gtkalpha($light_shadow, 0.6);
-    border-bottom: 1px solid $dark_shadow;
 
     &:backdrop {
+      border-bottom-color: gtkalpha($dark_shadow, 0.15);
       background-image: linear-gradient(
         to bottom,
         gtkshade($backdrop_bg_color, 1.05),
         $backdrop_bg_color
       );
       box-shadow: none;
-      border-bottom-color: gtkalpha($dark_shadow, 0.15);
     }
 
     .tiled &, .tiled &:backdrop,

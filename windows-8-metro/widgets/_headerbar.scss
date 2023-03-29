@@ -1,13 +1,16 @@
 @mixin headerbar() {
   headerbar {
+    min-height: $headerbar_size;
     padding: 4px 8px;
-    min-height: 30px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
+    background-image: none;
+    box-shadow: none;
 
     &:backdrop {
-      background-color: gtkmix($titlebar_bg_color, $backdrop_bg_color, 0.3);
       color: gtkmix($titlebar_fg_color, $backdrop_fg_color, 0.3);
+      background-color: gtkmix($titlebar_bg_color, $backdrop_bg_color, 0.3);
+      background-image: none;
     }
 
     .tiled &, .tiled &:backdrop,

@@ -1,9 +1,11 @@
 @mixin headerbar() {
   headerbar {
+    min-height: $headerbar_size;
     padding: 2px;
-    min-height: 26px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
+    background-image: none;
+    box-shadow: none;
 
     &:backdrop {
       color: $backdrop_fg_color;

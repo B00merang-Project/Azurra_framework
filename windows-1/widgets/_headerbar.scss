@@ -1,16 +1,17 @@
 @mixin headerbar() {
   headerbar {
+    min-height: $headerbar_size;
     padding: 2px;
-    min-height: 26px;
+    border-bottom: 1px solid $border_color;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    border-bottom: 1px solid $border_color;
+    background-image: none;
+    box-shadow: none;
 
     &:backdrop {
-      color: $backdrop_fg_color;
-      background-image: none;
-      background-color: $titlebar_fg_color;
       border-bottom-color: $backdrop_border_color;
+      color: $backdrop_fg_color;
+      background-color: $titlebar_fg_color;
       background-image: linear-gradient(
         to bottom,
         $titlebar_bg_color 50%,

@@ -1,10 +1,9 @@
 @mixin headerbar() {
   headerbar {
+    min-height: $headerbar_size;
     padding: 4px 8px;
-    min-height: 30px;
     color: $titlebar_fg_color;
     background-color: transparent;
-    background-size: 100% 5px;
     background-image: linear-gradient(
       to bottom,
       $titlebar_bg_color 35%,
@@ -12,10 +11,13 @@
       gtkshade($border_color, 1.05) 64%,
       $titlebar_bg_color 85%
     );
+    background-size: 100% 5px;
+    box-shadow: none;
 
     &:backdrop {
       color: $backdrop_fg_color;
       background: transparent;
+      background-color: gtkalpha($titlebar_bg_color, 0.6);
       background-size: 100% 5px;
       background-image: linear-gradient(
         to bottom,
@@ -24,7 +26,6 @@
         gtkalpha($backdrop_border_color, 0.5) 64%,
         transparent 85%
       );
-      background-color: gtkalpha($titlebar_bg_color, 0.6);
     }
 
     .tiled &, .tiled &:backdrop,

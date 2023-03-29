@@ -1,10 +1,10 @@
 @mixin headerbar() {
   headerbar {
+    min-height: $headerbar_size;
     padding: 4px 8px;
-    min-height: 30px;
+    border-bottom: 1px solid $border_color;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    background-size: 100% 3px;
     background-image: linear-gradient(
       to bottom,
       transparent 35%,
@@ -12,14 +12,14 @@
       $border_color 64%,
       transparent 85%
     );
+    background-size: 100% 3px;
     box-shadow: inset 0 0 0 3px $titlebar_bg_color;
-    border-bottom: 1px solid $border_color;
 
     &:backdrop {
+      border-color: $backdrop_border_color;
       color: $backdrop_fg_color;
       background-color: $backdrop_bg_color;
       background-image: none;
-      border-color: $backdrop_border_color;
     }
 
     .tiled &, .tiled &:backdrop,

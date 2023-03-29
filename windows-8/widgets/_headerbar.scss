@@ -1,15 +1,17 @@
 @mixin headerbar() {
   headerbar {
+    min-height: $headerbar_size;
     padding: 4px 8px;
-    min-height: 30px;
+    border-bottom: 1px solid gtkshade($titlebar_bg_color, 0.9);
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    border-bottom: 1px solid gtkshade($titlebar_bg_color, 0.9);
+    background-image: none;
+    box-shadow: none;
 
     &:backdrop {
+      border-bottom-color: gtkshade($backdrop_bg_color, 0.85);
       color: $backdrop_fg_color;
       background-color: gtkshade($backdrop_bg_color, 0.95);
-      border-bottom-color: gtkshade($backdrop_bg_color, 0.85);
     }
 
     .tiled &, .tiled &:backdrop,

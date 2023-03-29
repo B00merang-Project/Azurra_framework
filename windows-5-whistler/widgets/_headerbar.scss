@@ -1,18 +1,19 @@
 @mixin headerbar() {
   headerbar {
+    min-height: $headerbar_size;
     padding: 4px 8px;
-    min-height: 34px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
     background-image: url('assets/titlebar.png');
     background-position: right;
     background-size: 200px 100%;
     background-repeat: no-repeat;
+    box-shadow: none;
 
     &:backdrop {
       color: gtkalpha($titlebar_fg_color, 0.4);
-      background-image: none;
       background-color: gtkshade($titlebar_bg_color, 0.65);
+      background-image: none;
     }
 
     .tiled &, .tiled &:backdrop,
