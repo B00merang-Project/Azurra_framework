@@ -1,0 +1,15 @@
+@mixin popover() {
+  border: none;
+  color: $popover_fg_color;
+  background-color: $popover_bg_color;
+  // horizontal lines pattern
+  background-image: linear-gradient(
+    to bottom,
+    $popover_bg_color 35%,
+    gtkalpha($border_color, 0.4) 40%,
+    gtkalpha($border_color, 0.4) 64%,
+    $popover_bg_color 85%
+  );
+  background-size: 100% 5px;
+  box-shadow: $popover_wm_shadow;
+}

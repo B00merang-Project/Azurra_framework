@@ -1,0 +1,14 @@
+@mixin popover() {
+  border: 1px solid $border_color;   // TODO: popover_border_color
+  color: $popover_fg_color;
+  background-color: $popover_bg_color;
+  background-clip: padding-box;
+  box-shadow: $popover_wm_shadow;
+  
+  // combobox menus don't have shadows, only black borders
+  @at-root
+  combobox > popover.menu > contents {
+    padding: 0px;
+    box-shadow: none;
+  }
+}

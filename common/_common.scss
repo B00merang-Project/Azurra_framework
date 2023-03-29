@@ -743,61 +743,7 @@ magnifier { background-color: $base_color; }
 
 // menus, mostly sizing stuff, styling is handled by popover()
 popover.menu {
-  > contents {
-    min-width: 120px;
-    padding: $menu_padding;
-  }
-  
-  box.inline-buttons {
-    padding: 0px $menuitem_padding;
-    
-    // TODO: button.image-button.model?
-  }
-  
-  modelbutton {
-    @include modelbutton("base");
-
-    &:hover, &:selected { @include modelbutton("hover"); }
-    &:disabled { @include modelbutton("disabled"); }
-
-    > image { padding-right: 4px; }
-
-    arrow {
-      background: none;
-      min-width: 16px;
-      min-height: 16px;
-      opacity: 0.3;     // libadwaita uses a global var for image opacity
-
-      &:hover { background: none; }
-      &:disabled { opacity: 0.15; }   // libadwaita uses a global var for dimmed disabled images
-
-      &.left { -gtk-icon-source: -gtk-icontheme("go-previous-symbolic"); }
-      &.right { -gtk-icon-source: -gtk-icontheme("go-next-symbolic"); }
-    }
-  }
-  
-  separator { margin: 6px 0; }
-  list separator { margin: 0; }
-  
-  // nested submenus
-  & & {
-    padding: 0 0 $menu_padding 0;
-
-    > contents {
-      margin: 0;
-      border-radius: $menu_radius; // including top
-    }
-  }
-  
-  // TODO: menu lists?
-  
-  accelerator { color: gtkalpha(currentColor, 0.55);
-    &:hover { color: gtkalpha($selected_fg_color, 0.8); }
-    &:disabled { color: gtkmix($popover_fg_color, $popover_bg_color, 0.5); }
-    
-    &:dir(ltr) { margin-left: $menuitem_padding; }    // TODO: modelbutton_padding?
-    &:dir(rtl) { margin-right: $menuitem_padding; }
-  }
+  @include menu();
 }
 
 menubar { @include menubar();

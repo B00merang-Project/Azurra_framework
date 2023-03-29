@@ -1,0 +1,15 @@
+@mixin popover() {
+  border: 1px solid $border_color;    // TODO: popover_border_color
+  border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+  border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+  color: $popover_fg_color;
+  background-color: $popover_bg_color;
+  background-clip: padding-box;
+  box-shadow: $popup_wm_shadow;
+  
+  // undo scrolled window border for popovers and menus
+  @at-root
+  popover > contents > scrolledwindow {
+    border-width: 0px;
+  }
+}

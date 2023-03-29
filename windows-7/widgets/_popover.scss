@@ -1,0 +1,8 @@
+@mixin popover() {
+  border: 1px solid $border-color;
+  color: $popover_fg_color;
+  background-color: $popover_bg_color;
+  background-clip: padding-box;
+  box-shadow: $popover_wm_shadow,
+              inset 0px 0px 0px 2px gtkshade($popover_bg_color, 1.0125);
+}

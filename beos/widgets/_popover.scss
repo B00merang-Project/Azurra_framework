@@ -1,0 +1,11 @@
+@mixin popover() {
+  border: 1px solid gtkshade($border_color, 0.6);   // TODO: popover_border_color
+  color: $popover_fg_color;
+  background-color: $popover_bg_color;
+  background-clip: padding-box;
+  
+  // popover_wm_shadow should only be for shadows behind the popover window
+  // here it is used to share the menu 3D effect with haiku
+  // as both use different colors for the shadows
+  box-shadow: $popover_wm_shadow;
+}

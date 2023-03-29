@@ -1,8 +1,12 @@
+// this applies to both popover content and arrow
+// border-radius only applies to popover content, so is applied separately in _common.scss
+
 @mixin popover() {
-  border: 1px solid $border_color;    // popover_border?
+  border: 1px solid $border_color;  // TODO: use new color popover_border?
   color: $popover_fg_color;
   background-color: $popover_bg_color;
   background-clip: padding-box;
-  box-shadow: none;   // override adwaita popover shadow
-  // TODO: backdrop?
+  box-shadow: $popover_wm_shadow;   // override adwaita popover shadow 
+  
+  // add backdrop state here if desired
 }
