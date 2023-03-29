@@ -45,6 +45,7 @@ show_ops() {
   echo "  -dp  <VALUE>                 Delete lines containing <VALUE>"
   echo "  -ap  <NAME>  <VALUE>         Add SCSS snippet '$<NAME> : <VALUE>;'"
   echo "  -apf <NAME>  <VALUE> <FIND>  Add SCSS snippet '$<NAME> : <VALUE>;' after line <FIND>"
+  echo "  -aps <NAME>                  Add new 'section' <NAME>"
 }
 
 help() {
@@ -233,6 +234,15 @@ props_insert_after() {
   insert_after "$insert_after" "\$$var_name : $var_value\;" "$theme_dir/_properties.scss" 
 }
 
+props_insert_section() {
+  local theme_dir="$1"
+  local sec_name="$2"
+  local insert_after="$3"
+  
+  # escape newline thrice, once for here, another for the insert_after function, and another for sed -i
+  insert_after "$insert_after" "\\\n// $sec_name" "$theme_dir/_properties.scss"
+}
+
 colors_insert_after() {
   local theme_dir="$1"
   local var_name="$2"
@@ -265,6 +275,7 @@ case $1 in
   -ap)  OP="props_insert"        ;  MOD=1;  ARGS=3 ;;
   -apf) OP="props_insert_after"  ;  MOD=1;  ARGS=4 ;;
   -acf) OP="colors_insert_after" ;  MOD=1;  ARGS=4 ;;
+  -aps) OP="props_insert_section";  MOD=1;  ARGS=3 ;;
   -h)   show_ops; exit;          ;;
 
   *)    echo -n "Invalid operation. "
