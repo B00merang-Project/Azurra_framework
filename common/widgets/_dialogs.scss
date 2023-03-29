@@ -5,8 +5,8 @@
       background-image: none;
       background-color: $bg_color;
       border-style: none;
-      border-top-left-radius: $window_radius;
-      border-top-right-radius: $window_radius;
+      border-top-left-radius: $dialog_window_radius;
+      border-top-right-radius: $dialog_window_radius;
     }
     
     box.dialog-vbox.vertical {
@@ -20,8 +20,8 @@
 
     &.csd {
       &.background {
-	      border-bottom-left-radius: $window_radius;
-	      border-bottom-right-radius: $window_radius;
+	      border-bottom-left-radius: $dialog_window_radius;
+	      border-bottom-right-radius: $dialog_window_radius;
       }
 
       .dialog-action-area button {
@@ -30,7 +30,10 @@
         border-left-style: solid;
         border-right-style: none;
         border-bottom-style: none;
-        // no background-image?
+        
+        @if $undecorated_dialog_button {
+          background-image: none;
+        }
 
         &:first-child {
           border-left-style: none;
