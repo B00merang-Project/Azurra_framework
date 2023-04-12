@@ -1,4 +1,9 @@
 @mixin progressbar_trough($type) {
+  // DOC
+  // @if $type == "base"
+  // @else if $type == "horiz"
+  // @else if $type == "vert"
+  
   @if $type == "base" {
     border-radius: $progressbar_radius;
     border: none;
@@ -11,6 +16,11 @@
 }
 
 @mixin progressbar($type) {
+  // DOC
+  // @if $type == "base"
+  // @else if $type == "horiz"
+  // @else if $type == "vert"
+  
   @if $type == "base" {
     border-radius: $progressbar_radius;
     border: none;
