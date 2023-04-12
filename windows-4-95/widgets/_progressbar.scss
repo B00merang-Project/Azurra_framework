@@ -1,64 +1,51 @@
-@mixin progressbar() {
-  progressbar {
-    font-size: smaller;
-    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+@mixin progressbar_trough($type) {
+  @if $type == "base" {
+    padding: 2px;
+    border-radius: $progressbar_radius;
+    border: 1px solid $border_color;
+    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+    background-color: $bg_color;
+    box-shadow: inset 1px 0 gtkshade($bg_color, 0.65),
+                inset 0 1px gtkshade($bg_color, 0.65),
+                inset -1px 0 gtkmix($bg_color, $light_shadow, 0.7),
+                inset 0 -1px gtkmix($bg_color, $light_shadow, 0.7);
+  }
+}
 
-    > trough {
-      padding: 2px;
-      border: 1px solid $border_color;
-      border-radius: $progressbar_radius;
-      background-color: $bg_color;
-      border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-      border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
-      box-shadow: inset 1px 0 gtkshade($bg_color, 0.65),
-                  inset 0 1px gtkshade($bg_color, 0.65),
-                  inset -1px 0 gtkmix($bg_color, $light_shadow, 0.7),
-                  inset 0 -1px gtkmix($bg_color, $light_shadow, 0.7);
-    }
-
-    > trough > progress {
-      border: none;
-      border-radius: $progressbar_radius;
-      background-image: linear-gradient(  // simulate progress blocks
-        to right,
-        transparent,
-        transparent 37.5%,
-        $bg_color 37.5%,
-        $bg_color 50%,
-        transparent 50%,
-        transparent 87.5%,
-        $bg_color 87.5%,
-        $bg_color 100%
-      ), image($selected_bg_color);
-      background-size: 20px 16px, auto;
-    }
-    
-    &.vertical > trough > progress {
-      background-image: linear-gradient(
-        to bottom,
-        transparent,
-        transparent 37.5%,
-        $bg_color 37.5%,
-        $bg_color 50%,
-        transparent 50%,
-        transparent 87.5%,
-        $bg_color 87.5%,
-        $bg_color 100%
-      ), image($selected_bg_color);
-      background-size: 16px 20px, auto;
-    }
-    
-    &.horizontal > trough { min-width: 150px; }
-    &.vertical > trough { min-height: 80px; }
-
-    &.horizontal > trough,
-    &.horizontal > trough > progress {
-      min-height: 18px;
-    }
-
-    &.vertical > trough,
-    &.vertical > trough > progress {
-      min-width: 18px;
-    }
+@mixin progressbar($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: none;
+  }
+  
+  @else if $type == "horiz" {
+    background-image: linear-gradient(  // simulate progress blocks
+      to right,
+      transparent,
+      transparent 37.5%,
+      $bg_color 37.5%,
+      $bg_color 50%,
+      transparent 50%,
+      transparent 87.5%,
+      $bg_color 87.5%,
+      $bg_color 100%
+    ), image($selected_bg_color);
+    background-size: 20px 16px, auto;
+  }
+  
+  @else if $type == "vert" {
+    background-image: linear-gradient(
+      to bottom,
+      transparent,
+      transparent 37.5%,
+      $bg_color 37.5%,
+      $bg_color 50%,
+      transparent 50%,
+      transparent 87.5%,
+      $bg_color 87.5%,
+      $bg_color 100%
+    ), image($selected_bg_color);
+    background-size: 16px 20px, auto;
   }
 }

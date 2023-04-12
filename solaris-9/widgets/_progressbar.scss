@@ -1,33 +1,17 @@
-@mixin progressbar() {
-  progressbar {
-    font-size: smaller;
-    color: gtkmix($fg_color, $selected_fg_color, 0.5);
-    
-    > trough {
-      border: 1px solid $border_color;
-      border-radius: $progressbar_radius;
-      background-color: $bg_color;
-      border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-      border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
-    }
+@mixin progressbar_trough($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: 1px solid $border_color;
+    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+    background-color: $bg_color;
+  }
+}
 
-    > trough > progress {
-      border: none;
-      border-radius: $progressbar_radius;
-      background-color: gtkalpha($dark_shadow, 0.15);
-    }
-    
-    &.horizontal > trough { min-width: 150px; }
-    &.vertical > trough { min-height: 80px; }
-
-    &.horizontal > trough,
-    &.horizontal > trough > progress {
-      min-height: 18px;
-    }
-
-    &.vertical > trough,
-    &.vertical > trough > progress {
-      min-width: 18px;
-    }
+@mixin progressbar($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: none;
+    background-color: gtkalpha($dark_shadow, 0.15);
   }
 }

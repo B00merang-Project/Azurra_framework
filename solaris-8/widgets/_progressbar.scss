@@ -1,43 +1,30 @@
-@mixin progressbar() {
-  progressbar {
-    font-size: smaller;
-    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+@mixin progressbar_trough($type) {
+  @if $type == "base" {
+    padding: 3px;
+    border: 1px solid $border_color;
+    border-radius: $progressbar_radius;
+    background-color: gtkshade($bg_color, 0.925);
+    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
     
-    > trough {
-      padding: 3px;
-      border: 1px solid $border_color;
-      border-radius: $progressbar_radius;
-      background-color: gtkshade($bg_color, 0.925);
-      border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-      border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+    &:disabled { border-style: dotted; }
+  }
+}
 
-      &:disabled { border-style: dotted; }
-    }
-
-    > trough > progress {
-      border: 1px solid $selected_bg_color;
-      border-radius: $progressbar_radius;
-      background-color: $selected_bg_color;
-      box-shadow: inset 0 1px $bg_color;
-      
-      &:disabled { border-style: dotted; }
-    }
+@mixin progressbar($type) {
+  @if $type == "base" {
+    border: 1px solid $selected_bg_color;
+    border-radius: $progressbar_radius;
+    background-color: $selected_bg_color;
     
-    &.vertical > trough > progress {
-      box-shadow: inset 1px 0 $bg_color;
-    }
-    
-    &.horizontal > trough { min-width: 150px; }
-    &.vertical > trough { min-height: 80px; }
-
-    &.horizontal > trough,
-    &.horizontal > trough > progress {
-      min-height: 5px;
-    }
-
-    &.vertical > trough,
-    &.vertical > trough > progress {
-      min-width: 5px;
-    }
+    &:disabled { border-style: dotted; }
+  }
+  
+  @else if $type == "horiz" {
+    box-shadow: inset 0 1px $bg_color;
+  }
+  
+  @else if $type == "vert" {
+    box-shadow: inset 1px 0 $bg_color;
   }
 }

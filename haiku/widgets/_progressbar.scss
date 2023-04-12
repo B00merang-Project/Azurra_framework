@@ -1,63 +1,54 @@
-@mixin progressbar() {
-  progressbar {
-    font-size: smaller;
-    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+@mixin progressbar_trough($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: 1px solid gtkshade($bg_color, 0.8);
+    border-bottom-color: gtkshade($base_color, 0.9);
+    border-right-color: gtkshade($base_color, 0.9);
+    background-color: $base_color;
+    color: $fg_color;
+    box-shadow: inset 1px 1px gtkshade($bg_color, 0.65),
+                inset -1px -1px gtkshade($bg_color, 1.02);
+  }
+  
+  @else if $type == "horiz" {
+    padding: 2px 0px;
+  }
+  
+  @else if $type == "vert" {
+    padding: 0px 2px;
+  }
+}
 
-    > trough {
-      padding: 2px 0px;
-      border-radius: $progressbar_radius;
-      border: 1px solid gtkshade($bg_color, 0.8);
-      border-bottom-color: gtkshade($base_color, 0.9);
-      border-right-color: gtkshade($base_color, 0.9);
-      background-color: $base_color;
-      color: $fg_color;
-      box-shadow: inset 1px 1px gtkshade($bg_color, 0.65),
-                  inset -1px -1px gtkshade($bg_color, 1.02);
-    }
-    
-    // TODO: remove hard-coded colors
-    > trough > progress {
-      border: 1px solid #1b528c;
-      border-top-color: #2777cb;
-      border-left-color: #2777cb;
-      background-color: #3196ff;
-      background-image: linear-gradient(
-        to bottom,
-        #8bc3ff,
-        #73b7ff 50%,
-        #5fadff 60%,
-        #46a0ff
-      );
-      box-shadow: inset 1px 1px gtkalpha($light_shadow, 0.5);
-      border-radius: $progressbar_radius;
-    }
+// TODO: remove hard-coded colors
+@mixin progressbar($type) {
+  @if $type == "base" {
+    border: 1px solid #1b528c;
+    background-color: #3196ff;
+  }
+  
+  @else if $type == "horiz" {
+    border-top-color: #2777cb;
+    border-left-color: #2777cb;
+    background-image: linear-gradient(
+      to bottom,
+      #8bc3ff,
+      #73b7ff 50%,
+      #5fadff 60%,
+      #46a0ff
+    );
+    box-shadow: inset 1px 1px gtkalpha($light_shadow, 0.5);
+    border-radius: $progressbar_radius;
+  }
 
-    // TODO: remove hard-coded colors
-    &.vertical > trough > progress {
-      border: 1px solid #1b528c;
-      border-bottom-color: #2777cb;
-      border-left-color: #2777cb;
-      background-color: #3196ff;
-      background-image: linear-gradient(
-        to right,
-        #8bc3ff,
-        #73b7ff 50%,
-        #5fadff 60%,
-        #46a0ff
-      );
-    }
-    
-    &.horizontal > trough { min-width: 150px; }
-    &.vertical > trough { min-height: 80px; }
-
-    &.horizontal > trough,
-    &.horizontal > trough > progress {
-      min-height: 18px;
-    }
-
-    &.vertical > trough,
-    &.vertical > trough > progress {
-      min-width: 18px;
-    }
+  @else if $type == "vert" {
+    border-bottom-color: #2777cb;
+    border-left-color: #2777cb;
+    background-image: linear-gradient(
+      to right,
+      #8bc3ff,
+      #73b7ff 50%,
+      #5fadff 60%,
+      #46a0ff
+    );
   }
 }

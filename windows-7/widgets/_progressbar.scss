@@ -1,104 +1,86 @@
-@mixin progressbar() {
-  progressbar {
-    font-size: smaller;
-    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+@mixin progressbar_trough($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: 1px solid #7d7d7d;
+    box-shadow: inset -6px 0 4px 0 gtkalpha($dark_shadow, 0.08),
+                inset 6px 0 4px 0 gtkalpha($dark_shadow, 0.08);
     
-    // TODO: replace hard-coded colors
-    > trough {
-      border: 1px solid #7d7d7d;
-      border-radius: $progressbar_radius;
-      background-image: linear-gradient(
-        to bottom,
-        $light_shadow 20%,
-        #c9cacb 65%,
-        $light_shadow 98%
-      );
-      box-shadow: inset -6px 0 4px 0 gtkalpha($dark_shadow, 0.08),
-                  inset 6px 0 4px 0 gtkalpha($dark_shadow, 0.08);
-
-      &:backdrop { background-color: gtkshade($backdrop_bg_color, 0.95); }
+    &:backdrop {
+      background-color: gtkshade($backdrop_bg_color, 0.95);
     }
+  }
+  
+  @else if $type == "horiz" {
+    background-image: linear-gradient(
+      to bottom,
+      $light_shadow 20%,
+      #c9cacb 65%,
+      $light_shadow 98%
+    );
+  }
+  
+  @else if $type == "vert" {
+    background-image: linear-gradient(
+      to right,
+      $light_shadow 20%,
+      #c9cacb 65%,
+      $light_shadow 98%
+    );
+  }
+}
 
-    > trough > progress {
-      border: none;
-      border-radius: 0;
+@mixin progressbar($type) {
+  @if $type == "base" {
+    border-radius: 0px;
+    border: none;
+    background-color: $success_color;
+    
+    &:backdrop {
       background-color: $success_color;
-      background: radial-gradient(
-        farthest-side at left,
-        gtkalpha($dark_shadow, 0.2),
-        transparent
-      ) left no-repeat, radial-gradient(
-        farthest-side at right,
-        gtkalpha($dark_shadow, 0.2),
-        transparent
-      ) right no-repeat,
-      linear-gradient(  // green fill
-        to bottom,
-        #cdffcd,
-        #a6efb3 45%,
-        #00d020 56%,
-        #1ce233
-      );
-      background-size: 40px 100%;  // shade sizing
-      
-      &:backdrop { background-color: $success_color; }
     }
+  }
+  
+  @else if $type == "horiz" {
+    background: radial-gradient(    // left shadow
+      farthest-side at left,
+      gtkalpha($dark_shadow, 0.2),
+      transparent
+    ) left no-repeat, radial-gradient(    // right shadow
+      farthest-side at right,
+      gtkalpha($dark_shadow, 0.2),
+      transparent
+    ) right no-repeat,
+    linear-gradient(  // green fill
+      to bottom,
+      #cdffcd,
+      #a6efb3 45%,
+      #00d020 56%,
+      #1ce233
+    );
+    background-size: 40px 100%;  // shade sizing
+  }
     
-    &.vertical {
-      // TODO: replace hard-coded colors
-      > trough {
-        border: 1px solid #7d7d7d;
-        border-radius: $progressbar_radius;
-        background-image: linear-gradient(
-          to right,
-          $light_shadow 20%,
-          #c9cacb 65%,
-          $light_shadow 98%
-        );
-        box-shadow: inset -6px 0 4px 0 gtkalpha($dark_shadow, 0.08),
-                    inset 6px 0 4px 0 gtkalpha($dark_shadow, 0.08);
-
-        &:backdrop { background-color: gtkshade($backdrop_bg_color, 0.95); }
-      }
-      
-      > trough > progress {
-        border: none;
-        border-radius: 0;
-        background-color: $success_color;
-        background: 
-        radial-gradient(
-          farthest-side at top,
-          gtkalpha($dark_shadow, 0.2),
-          transparent
-        ) top no-repeat, radial-gradient(
-          farthest-side at bottom,
-          gtkalpha($dark_shadow, 0.2),
-          transparent
-        ) bottom no-repeat,
-        linear-gradient(
-          to right,
-          #cdffcd,
-          #a6efb3 45%,
-          #00d020 56%,
-          #1ce233
-        );
-        background-size: 100% 40px;
-        
-        &:backdrop { background-color: $success_color; }
-      }
-    }
-
-    &.horizontal > trough { min-width: 150px; }
-    &.vertical > trough { min-height: 80px; }
-
-    &.horizontal > trough,
-    &.horizontal > trough > progress {
-      min-height: 16px;
-    }
-
-    &.vertical > trough,
-    &.vertical > trough > progress {
-      min-width: 16px;
-    }
+  @else if $type == "vert" {
+    border: none;
+    border-radius: 0;
+    background-color: $success_color;
+    background: 
+    radial-gradient(      // top shadow
+      farthest-side at top,
+      gtkalpha($dark_shadow, 0.2),
+      transparent
+    ) top no-repeat, radial-gradient(   // bottom shadow
+      farthest-side at bottom,
+      gtkalpha($dark_shadow, 0.2),
+      transparent
+    ) bottom no-repeat,
+    linear-gradient(      // green fill
+      to right,
+      #cdffcd,
+      #a6efb3 45%,
+      #00d020 56%,
+      #1ce233
+    );
+    background-size: 100% 40px;
   }
 }

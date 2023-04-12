@@ -499,7 +499,14 @@ button.link {
 @include spinbutton();
 // @include combobox();   CREATE: new mixin combobox
 
-@include toolbar();
+toolbar {
+  @include toolbar();
+  
+  // TODO: support states
+  button.flat {
+    @include toolbutton();
+  }
+}
 
 searchbar {
   border-width: 0 0 1px 0;
@@ -991,7 +998,81 @@ scale {
   }
 }
 
-@include progressbar();
+// progressbar
+// TODO: implement disabled state?
+// &:disabled { filter: opacity($disabled_opacity); }
+progressbar {
+  font-size: smaller;
+  color: gtkmix($fg_color, $selected_fg_color, 0.5);  // TODO: use other color?
+
+  // default orientation is horizontal
+  > trough {
+    @include progressbar_trough("base");
+  }
+  
+  > trough > progress {
+    @include progressbar("base");
+    
+    // no radius on "unfinished/moving" end of the progress bar
+    @if $progressbar_square_end {
+      border-radius: 1px;
+      
+      &.left {
+       border-top-left-radius: $progressbar_radius;
+       border-bottom-left-radius: $progressbar_radius;
+      }
+
+      &.right {
+       border-top-right-radius: $progressbar_radius;
+       border-bottom-right-radius: $progressbar_radius;
+      }
+
+      &.top {
+       border-top-right-radius: $progressbar_radius;
+       border-top-left-radius: $progressbar_radius;
+      }
+
+      &.bottom {
+       border-bottom-right-radius: $progressbar_radius;
+       border-bottom-left-radius: $progressbar_radius;
+      }
+    }
+  }
+  
+  &.vertical {
+    > trough {
+      @include progressbar_trough("vert");
+    }
+    
+    > trough > progress {
+      @include progressbar("vert");
+    }
+  }
+  
+  &.horizontal {
+    > trough {
+      @include progressbar_trough("horiz");
+    }
+    
+    > trough > progress {
+      @include progressbar("horiz");
+    }
+  }
+  
+  &.horizontal > trough { min-width: $progressbar_min_width; }
+  &.vertical > trough { min-height: $progressbar_min_height; }
+
+  &.horizontal > trough,
+  &.horizontal > trough > progress {
+    min-height: $progressbar_size;
+  }
+
+  &.vertical > trough,
+  &.vertical > trough > progress {
+    min-width: $progressbar_size;
+  }
+}
+
 @include levelbar();
 
 window.dialog.print {

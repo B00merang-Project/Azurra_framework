@@ -1,26 +1,15 @@
 @mixin toolbar() {
-  toolbar {
-    padding: 4px;
-    border: none;
-    color: $toolbar_fg_color;
-    background-color: $toolbar_bg_color;
+  padding: 4px;
+  border: none;
+  color: $toolbar_fg_color;
+  background-color: $toolbar_bg_color;
 
-    &:backdrop {
-      color: $backdrop_fg_color;
-      background-color: $backdrop_bg_color;
-    }
-
-    &:disabled {
-      color: $disabled_fg_color;
-      background-color: $disabled_bg_color;
-    }
-
-    button.flat {
-      @include flat_buttons($toolbar_bg_color, $toolbar_fg_color, $border_color);
-    }
-
-    // menubar toolbars 
-    menubar {
-    }
+  &:backdrop {
+    color: $backdrop_fg_color;
+    background-color: $backdrop_bg_color;
   }
+}
+
+@mixin toolbutton() {
+  @include flat_buttons($toolbar_bg_color, $toolbar_fg_color, $border_color);
 }

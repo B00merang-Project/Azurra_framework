@@ -1,44 +1,43 @@
-@mixin progressbar() {
-  // TODO: replace hard-coded colors?
-  $bg : #c48559;
-  $stripe : #b67d54;
+@mixin progressbar_trough($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: 1px solid gtkshade($bg_color, 0.75);
+    background-color: gtkshade($bg_color, 0.9);
+  }
+}
 
-  progressbar {
-    font-size: smaller;
-    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+// TODO: replace hard-coded colors?
+$bg : #c48559;
+$stripe : #b67d54;
 
-    > trough {
-      border: 1px solid gtkshade($bg_color, 0.75);
-      border-radius: $progressbar_radius;
-      background-color: gtkshade($bg_color, 0.9);
-    }
+// TODO: avoid use warning color?
+@mixin progressbar($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: 1px solid gtkshade($selected_bg_color, 1.1);
+    background-color: gtkshade(gtkmix($selected_bg_color, $warning_color, 0.2), 1.2);
+    box-shadow: inset 1px 1px gtkalpha($light_shadow, 0.15);
+  }
 
-    // TODO: don't use warning color, may be deprecated in the future
-    > trough > progress {
-      border: 1px solid gtkshade($selected_bg_color, 1.1);
-      border-radius: $progressbar_radius;
-      background-color: gtkshade(gtkmix($selected_bg_color, $warning_color, 0.2), 1.2);
-      box-shadow: inset 1px 1px gtkalpha($light_shadow, 0.15);
-      background-image: repeating-linear-gradient(65deg, $bg, $bg 10px, $stripe 10px, $stripe 20px);
-      background-size: 22px;
-    }
-    
-    &.vertical > trough > progress {
-      background-image: repeating-linear-gradient(-25deg, $bg, $bg 10px, $stripe 10px, $stripe 20px);
-      background-size: 20px;
-    }
-
-    &.horizontal > trough { min-width: 150px; }
-    &.vertical > trough { min-height: 80px; }
-
-    &.horizontal > trough,
-    &.horizontal > trough > progress {
-      min-height: 18px;
-    }
-
-    &.vertical > trough,
-    &.vertical > trough > progress {
-      min-width: 18px;
-    }
+  @else if $type == "horiz" {
+    background-image: repeating-linear-gradient(
+      65deg,
+      $bg,
+      $bg 10px,
+      $stripe 10px,
+      $stripe 20px
+    );
+    background-size: 22px;
+  }
+  
+  @else if $type == "vert" {
+    background-image: repeating-linear-gradient(
+      -25deg,
+      $bg,
+      $bg 10px,
+      $stripe 10px,
+      $stripe 20px
+    );
+    background-size: 20px;
   }
 }

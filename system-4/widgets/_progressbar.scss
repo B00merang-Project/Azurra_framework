@@ -1,33 +1,15 @@
-@mixin progressbar() {
-  progressbar {
-    font-size: smaller;
-    color: $disabled_fg_color;
+@mixin progressbar_trough($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: 1px solid $border_color;
+    background-color: $bg_color;
+  }
+}
 
-    > trough {
-      border-radius: $progressbar_radius;
-      border: 1px solid $border_color;
-      background-color: $bg_color;
-    }
-    
-    > trough > progress {
-      border: none;
-      border-radius: $progressbar_radius;
-      background-color: $selected_bg_color;
-
-      &:backdrop { background-color: $backdrop_selected_bg_color; }
-    }
-    
-    &.horizontal > trough { min-width: 150px; }
-    &.vertical > trough { min-height: 80px; }
-
-    &.horizontal > trough,
-    &.horizontal > trough > progress {
-      min-height: 11px;
-    }
-
-    &.vertical > trough,
-    &.vertical > trough > progress {
-      min-width: 11px;
-    }
+@mixin progressbar($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: none;
+    background-color: $selected_bg_color;
   }
 }

@@ -1,97 +1,86 @@
-@mixin progressbar() {
-  progressbar {
-    font-size: smaller;
-    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+// TODO: merge with macos-10/progressbar when we implement progress_color
 
-    > trough {
-      border-radius: 0;
-      border: 1px solid gtkshade($bg_color, 0.68);
-      border-left-color: gtkshade($bg_color, 0.8);
-      border-right-color: gtkshade($bg_color, 0.8);
-      border-bottom-color: gtkshade($bg_color, 0.9);
-      background-color: gtkshade($bg_color, 0.8);
-      background-image: linear-gradient(
-        to bottom,
-        $base_color 15%,
-        $bg_color 40%,
-        $base_color 75%
-      );
-      box-shadow: 0 2px 2px 0 gtkalpha($dark_shadow, 0.2);
+@mixin progressbar_trough($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: 1px solid gtkshade($bg_color, 0.68);
+    background-color: gtkshade($bg_color, 0.8);
 
-      &:backdrop { background-color: gtkshade($backdrop_bg_color, 0.95); }
+    &:backdrop {
+      background-color: gtkshade($backdrop_bg_color, 0.95);
     }
+  }
 
-    // TODO: remove hard-coded colors
-    > trough > progress {
-      border: none;
-      border-radius: 0;
-      box-shadow: 0 -1px #2b5dbe;
-      background-color: $selected_bg_color;
-      background-image: linear-gradient(
-        to right,
-        transparent,
-        gtkalpha($dark_shadow, 0.05),
-        transparent
-      ), linear-gradient(
-        to top,
-        #b9edff,
-        gtkshade($selected_bg_color, 1.8) 40%,
-        gtkshade($selected_bg_color, 1.6) 60%,
-        gtkshade($selected_bg_color, 2.1) 80%
-      );
-      background-size: 16px 16px, auto;
+  @else if $type == "horiz" {
+    border-left-color: gtkshade($bg_color, 0.8);
+    border-right-color: gtkshade($bg_color, 0.8);
+    border-bottom-color: gtkshade($bg_color, 0.9);
+    background-image: linear-gradient(
+      to bottom,
+      $base_color 15%,
+      $bg_color 40%,
+      $base_color 75%
+    );
+    box-shadow: 0 2px 2px 0 gtkalpha($dark_shadow, 0.2);
+  }
+  
+  @else if $type == "vert" {
+    border-top-color: gtkshade($bg_color, 0.8);
+    border-bottom-color: gtkshade($bg_color, 0.8);
+    border-right-color: gtkshade($bg_color, 0.9);
+    background-image: linear-gradient(
+      to right,
+      $base_color 15%,
+      $bg_color 40%,
+      $base_color 75%
+    );
+    box-shadow: 2px 0 2px 0 gtkalpha($dark_shadow, 0.2);
+  }
+}
 
-      &:backdrop { background-color: $backdrop_selected_bg_color; }
+// TODO: remove hard-coded colors
+@mixin progressbar($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: none;
+    background-color: $selected_bg_color;
+
+    &:backdrop {
+      background-color: $backdrop_selected_bg_color;
     }
+  }
 
-    // TODO: remove hard-coded colors
-    &.vertical {
-      > trough {
-        border-left-color: gtkshade($bg_color, 0.68);
-        border-top-color: gtkshade($bg_color, 0.8);
-        border-bottom-color: gtkshade($bg_color, 0.8);
-        border-right-color: gtkshade($bg_color, 0.9);
-        background-image: linear-gradient(
-          to right,
-          $base_color 15%,
-          $bg_color 40%,
-          $base_color 75%
-        );
-        box-shadow: 2px 0 2px 0 gtkalpha($dark_shadow, 0.2);
+  @else if $type == "horiz" {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      gtkalpha($dark_shadow, 0.05),
+      transparent
+    ), linear-gradient(
+      to top,
+      #b9edff,
+      gtkshade($selected_bg_color, 1.8) 40%,
+      gtkshade($selected_bg_color, 1.6) 60%,
+      gtkshade($selected_bg_color, 2.1) 80%
+    );
+    background-size: 16px 16px, auto;
+    box-shadow: 0 -1px #2b5dbe;
+  }
 
-        &:backdrop { background-color: gtkshade($backdrop_bg_color, 0.95); }
-      }
-      
-      > trough > progress {
-        box-shadow: -1px 0 #2b5dbe;
-        border-left-color: #2b5dbe;
-        background-image: linear-gradient(to top,
-          transparent,
-          gtkalpha($dark_shadow, 0.05),
-          transparent
-        ), linear-gradient(
-          to left,
-          #b9edff,
-          gtkshade($selected_bg_color, 1.8) 40%,
-          gtkshade($selected_bg_color, 1.6) 60%,
-          gtkshade($selected_bg_color, 2.1) 80%
-        );
-
-        &:backdrop { background-color: $backdrop_selected_bg_color; }
-      }
-    }
-    
-    &.horizontal > trough { min-width: 150px; }
-    &.vertical > trough { min-height: 80px; }
-
-    &.horizontal > trough,
-    &.horizontal > trough > progress {
-      min-height: 16px;
-    }
-
-    &.vertical > trough,
-    &.vertical > trough > progress {
-      min-width: 16px;
-    }
+  @else if $type == "vert" {
+    background-image: linear-gradient(
+      to top,
+      transparent,
+      gtkalpha($dark_shadow, 0.05),
+      transparent
+    ), linear-gradient(
+      to left,
+      #b9edff,
+      gtkshade($selected_bg_color, 1.8) 40%,
+      gtkshade($selected_bg_color, 1.6) 60%,
+      gtkshade($selected_bg_color, 2.1) 80%
+    );
+    background-size: 16px 16px, auto;
+    box-shadow: -1px 0 #2b5dbe;
   }
 }

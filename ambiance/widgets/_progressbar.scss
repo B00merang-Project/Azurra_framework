@@ -1,52 +1,36 @@
-@mixin progressbar() {
-  progressbar {
-    font-size: smaller;
-    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+@mixin progressbar_trough($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: 1px solid $border_color;
+    background-color: gtkalpha($dark_shadow, 0.1);
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($bg_color, 0.9),
+      gtkshade($bg_color, 0.93)
+    );
+    box-shadow: inset 0 1px gtkalpha($dark_shadow, 0.1);
 
-    > trough {
-      border: 1px solid $border_color;
-      border-radius: $progressbar_radius;
-      background-color: gtkalpha($dark_shadow, 0.1);
-      background-image: linear-gradient(
-        to bottom,
-        gtkshade($bg_color, 0.9),
-        gtkshade($bg_color, 0.93)
-      );
-      box-shadow: inset 0 1px gtkalpha($dark_shadow, 0.1);
-
-      &:backdrop {
-        background-color: gtkshade($backdrop_bg_color, 0.85);
-      }
+    &:backdrop {
+      background-color: gtkshade($backdrop_bg_color, 0.85);
     }
-    
-    > trough > progress {
-      border: 1px solid gtkshade($selected_bg_color, 0.8);
-      border-radius: $progressbar_radius;
-      background-color: $selected_bg_color;
-      background-image: linear-gradient(
-        to bottom,
-        gtkshade($selected_bg_color, 1.1),
-        $selected_bg_color
-      );
+  }
+}
 
-      &:backdrop {
-        border-color: gtkshade($backdrop_selected_bg_color, 0.8);
-        background-color: gtkshade($backdrop_selected_bg_color, 0.9);
-        background-image: none;
-      }
-    }
+@mixin progressbar($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: 1px solid gtkshade($selected_bg_color, 0.8);
+    background-color: $selected_bg_color;
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($selected_bg_color, 1.1),
+      $selected_bg_color
+    );
 
-    &.horizontal > trough { min-width: 150px; }
-    &.vertical > trough { min-height: 80px; }
-
-    &.horizontal > trough,
-    &.horizontal > trough > progress {
-      min-height: 7px;
-    }
-
-    &.vertical > trough,
-    &.vertical > trough > progress {
-      min-width: 7px;
+    &:backdrop {
+      border-color: gtkshade($backdrop_selected_bg_color, 0.8);
+      background-color: gtkshade($backdrop_selected_bg_color, 0.9);
+      background-image: none;
     }
   }
 }

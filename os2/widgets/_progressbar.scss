@@ -1,55 +1,42 @@
-@mixin progressbar() {
-  progressbar {
-    font-size: smaller;
-    color: gtkmix($fg_color, $selected_fg_color, 0.5);
+@mixin progressbar_trough($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: 1px solid $border_color;
+    border-bottom-color: $light_shadow;
+    border-right-color: $light_shadow;
+    background-color: $bg_color;
+    box-shadow: inset 1px 0 $border_color,
+                inset 0 1px $border_color,
+                inset -1px 0 $light_shadow,
+                inset 0 -1px $light_shadow;
+  }
+}
 
-    > trough {
-      border: 1px solid $border_color;
-      border-radius: $progressbar_radius;
-      background-color: $bg_color;
-      border-bottom-color: $light_shadow;
-      border-right-color: $light_shadow;
-      box-shadow: inset 1px 0 $border_color,
-                  inset 0 1px $border_color,
-                  inset -1px 0 $light_shadow,
-                  inset 0 -1px $light_shadow;
-    }
-    
-    > trough > progress {
-      border: none;
-      border-radius: $progressbar_radius;
-      background-image: linear-gradient(
-        to bottom,
-        $dark_shadow,
-        $border_color 10%,
-        $light_shadow,
-        $border_color 90%,
-        $dark_shadow
-      );
-    }
-    
-    &.vertical > trough > progress {
-      background-image: linear-gradient(
-        to right,
-        $dark_shadow,
-        $border_color 10%,
-        $light_shadow,
-        $border_color 90%,
-        $dark_shadow
-      );
-    }
-
-    &.horizontal > trough { min-width: 150px; }
-    &.vertical > trough { min-height: 80px; }
-
-    &.horizontal > trough,
-    &.horizontal > trough > progress {
-      min-height: 18px;
-    }
-
-    &.vertical > trough,
-    &.vertical > trough > progress {
-      min-width: 18px;
-    }
+@mixin progressbar($type) {
+  @if $type == "base" {
+    border-radius: $progressbar_radius;
+    border: none;
+  }
+  
+  @else if $type == "horiz" {
+    background-image: linear-gradient(
+      to bottom,
+      $dark_shadow,
+      $border_color 10%,
+      $light_shadow,
+      $border_color 90%,
+      $dark_shadow
+    );
+  }
+  
+  @else if $type == "vert" {
+    background-image: linear-gradient(
+      to right,
+      $dark_shadow,
+      $border_color 10%,
+      $light_shadow,
+      $border_color 90%,
+      $dark_shadow
+    );
   }
 }
