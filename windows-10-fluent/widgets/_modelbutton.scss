@@ -1,5 +1,5 @@
-@mixin modelbutton($state) {
-@if $state == "base" {
+@mixin modelbutton($type) {
+@if $type == "base" {
     min-height: $menuitem_size;
     padding-left: $menuitem_padding;
     padding-right: $menuitem_padding;
@@ -10,12 +10,12 @@
     box-shadow: none;
   }
 
-  @else if $state == "hover" {
+  @else if $type == "hover" {
     color: $popover_fg_color;
     background-color: gtkalpha($selected_bg_color, 0.4);
   }
 
-  @else if $state == "disabled" {
+  @else if $type == "disabled" {
     color: gtkmix($popover_fg_color, $popover_bg_color, 0.5);
   }
 }

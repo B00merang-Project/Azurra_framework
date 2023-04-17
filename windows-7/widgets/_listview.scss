@@ -1,5 +1,5 @@
-@mixin listview($state) {
-  @if $state == "hover" {
+@mixin listview($type) {
+  @if $type == "hover" {
     box-shadow: inset 0 0 0 1px gtkshade($selected_bg_color, 0.9);
     border-radius: $global_radius;
     background-color: gtkshade($selected_bg_color, 1.12);
@@ -10,7 +10,7 @@
     );
   }
   
-  @else if $state == "active" {
+  @else if $type == "active" {
     color: $selected_fg_color;
     box-shadow: inset 0 0 0 1px gtkshade($selected_bg_color, 0.8);
     background-image: linear-gradient(
@@ -20,9 +20,9 @@
     );
   }
 
-  @else if $state == "backdrop" { color: $backdrop_fg_color; }
+  @else if $type == "backdrop" { color: $backdrop_fg_color; }
 
-  @else if $state == "selected" {
+  @else if $type == "selected" {
     box-shadow: inset 0 0 0 1px gtkshade($selected_bg_color, 0.85);
     border-radius: $global_radius;
     color: $selected_fg_color;
@@ -34,7 +34,7 @@
     );
   }
     
-  @else if $state == "selected-hover" {
+  @else if $type == "selected-hover" {
     color: $selected_fg_color;
     box-shadow: inset 0 0 0 1px gtkshade($selected_bg_color, 0.87);
     background-image: linear-gradient(
@@ -44,7 +44,7 @@
     );
   }
   
-  @else if $state == "selected-active" {
+  @else if $type == "selected-active" {
     color: $selected_fg_color;
     box-shadow: inset 0 0 0 1px gtkshade($selected_bg_color, 0.8);
     background-image: linear-gradient(
@@ -54,7 +54,7 @@
     );
   }
   
-  @else if $state == "selected-disabled" {
+  @else if $type == "selected-disabled" {
     color: gtkalpha($selected_fg_color, 0.7);
     background-color: $selected_bg_color;
     background-image: linear-gradient(
@@ -64,7 +64,7 @@
     );
   }
   
-  @else if $state == "selected-backdrop" {
+  @else if $type == "selected-backdrop" {
     color: $backdrop_selected_fg_color;
     box-shadow: inset 0 0 0 1px gtkshade($backdrop_selected_bg_color, 0.9);
     background-image: linear-gradient(
@@ -74,7 +74,7 @@
     );
   }
     
-  @else if $state == "selected-backdrop-hover" {
+  @else if $type == "selected-backdrop-hover" {
     color: $selected_fg_color;
     box-shadow: inset 0 0 0 1px gtkshade($selected_bg_color, 0.85);
     background-image: linear-gradient(

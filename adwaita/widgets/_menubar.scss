@@ -12,8 +12,8 @@
   }
 }
     
-@mixin menubaritem($state : "base") {
-  @if $state == "base" {
+@mixin menubaritem($type : "base") {
+  @if $type == "base" {
     min-height: 16px;
     padding: 4px 8px;
     border: none;
@@ -21,16 +21,16 @@
     background-color: transparent;
   }
 
-  @else if $state == "hover" {
+  @else if $type == "hover" {
     color: $selected_bg_color;
     box-shadow: inset 0 -3px $selected_bg_color;
   }
   
-  @else if $state == "disabled" {
+  @else if $type == "disabled" {
     color: $disabled_fg_color;
   }
   
-  @else if $state == "backdrop" {
+  @else if $type == "backdrop" {
     color: $backdrop_fg_color;
   }
 }

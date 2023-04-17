@@ -13,8 +13,8 @@
   }
 }
     
-@mixin menubaritem($state : "base") {
-  @if $state == "base" {
+@mixin menubaritem($type : "base") {
+  @if $type == "base" {
     padding: 3px 5px;
     min-height: 12px;
     border-radius: $global_radius;
@@ -24,7 +24,7 @@
     box-shadow: none;
   }
 
-  @else if $state == "hover" {
+  @else if $type == "hover" {
     border-color: gtkshade($selected_bg_color, 0.9);
     color: $selected_fg_color;
     background-color: $selected_bg_color;
@@ -36,12 +36,12 @@
     );
   }
 
-  @else if $state == "disabled" {
+  @else if $type == "disabled" {
     color: $disabled_fg_color;
     background-color: transparent;
   }
 
-  @else if $state == "backdrop" {
+  @else if $type == "backdrop" {
     color: $backdrop_fg_color;
     background-color: transparent;
   }
