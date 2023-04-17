@@ -754,14 +754,154 @@ popover.menu {
 }
 
 menubar { @include menubar();
-  > item { @include menubaritem();
+  > item { @include menubaritem("base");
     &:selected { @include menubaritem("hover"); }
     &:disabled { @include menubaritem("disabled"); }
     &:backdrop { @include menubaritem("backdrop"); }
   }
 }
 
-@include notebook();  // TODO: modernize
+// legacy notebok
+notebook {
+  &.frame {
+    border: 1px solid $border_color;
+  }
+
+  > stack:not(:only-child) {
+    background-color: $base_color;
+  }
+  
+  > header {
+    @include notebook_header();
+    
+    &.top {
+      box-shadow: 0 1px $border_color;
+
+      > tabs > tab { @include notebook_tab("base", "top");
+        &:hover { @include notebook_tab("hover", "top"); }
+        &:checked { @include notebook_tab("checked", "top"); }
+      }
+    }
+    
+    &.bottom {
+      box-shadow: 0 -1px $border_color;
+
+      > tabs > tab { @include notebook_tab("base", "bottom");
+        &:hover { @include notebook_tab("hover", "bottom"); }
+        &:checked { @include notebook_tab("checked", "bottom"); }
+      }
+    }
+    
+    &.right {
+      box-shadow: -1px 0 $border_color;
+
+      > tabs > tab { @include notebook_tab("base", "right");
+        &:hover { @include notebook_tab("hover", "right"); }
+        &:checked { @include notebook_tab("checked", "right"); }
+      }
+    }
+
+    &.left {
+      box-shadow: 1px 0 $border_color;
+
+      > tabs > tab { @include notebook_tab("base", "left");
+        &:hover { @include notebook_tab("hover", "left"); }
+        &:checked { @include notebook_tab("checked", "left"); }
+      }
+    }
+
+    @at-root %notebook_vert_arrows {
+      margin-left: -5px;
+      margin-right: -5px;
+      padding-left: 4px;
+      padding-right: 4px;
+
+      &.down { -gtk-icon-source: -gtk-icontheme('pan-start-symbolic'); }
+      &.up { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic'); }
+    }
+
+    @at-root %notebook_horz_arrows {
+      margin-top: -5px;
+      margin-bottom: -5px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+
+      &.down { -gtk-icon-source: -gtk-icontheme('pan-up-symbolic'); }
+      &.up { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+    }
+    
+    &.top > tabs > arrow {
+      @extend %notebook_vert_arrows;
+
+      border-top-style: none;
+    }
+
+    &.bottom > tabs > arrow {
+      @extend %notebook_vert_arrows;
+
+      border-bottom-style: none;
+    }
+
+    &.left > tabs > arrow {
+      @extend %notebook_horz_arrows;
+
+      border-left-style: none;
+    }
+
+    &.right > tabs > arrow {
+      @extend %notebook_horz_arrows;
+
+      border-right-style: none;
+    }
+  }
+}
+
+// libadwaita tab view
+tabbar {
+  // notebook header
+  .box { @include notebook_header(); }
+  
+  tabbox {  // tab container
+    padding-bottom: 6px;
+    padding-top: 6px;
+    min-height: 34px;
+    
+    // TODO: move to separator?
+    > separator {
+      margin-top: 3px;
+      margin-bottom: 3px;
+      transition: opacity 150ms ease-in-out;
+
+      &.hidden { opacity: 0; }
+    }
+    
+    // I think this is for the arrows when overflowing?
+    > revealer > indicator {
+      min-width: 2px;
+      border-radius: $notebook_tab_radius;
+      margin: 3px 6px;
+    }
+  }
+  
+  // seems only horizontal tabs are supported at the moment
+  tab {
+    @include notebook_tab("base", "top");
+    
+    &:hover { @include notebook_tab("hover", "top"); }
+    &:selected { @include notebook_tab("checked", "top"); }
+    &:selected:backdrop { @include notebook_tab("checked-backdrop", "top"); }
+    &:backdrop { @include notebook_tab("backdrop", "top"); }
+  }
+  
+  // might be useful later?
+  tabbox.single-tab tab {
+    &, &:hover, &:active {
+      background: none;
+    }
+  }
+  
+  // ignore other tabbar stuff for now
+}
 
 // scrollbars
 // TODO: find a more elegant solution (half the themes have broken fine-tune scrollbars)

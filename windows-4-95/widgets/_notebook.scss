@@ -1,204 +1,170 @@
-@mixin notebook() {
-  notebook {
-    padding: 0;
+@mixin notebook_header() {
+  margin: -1px;   // hide border around the header
+  border: none;
+  background-color: $bg_color;
 
-    &.frame {
-      margin: -1px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: $border_color;
+  // add 3D shadows to the frame
+  @at-root
+  notebook.frame {
+    border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+  }
+  
+  // TODO: make properties too? or ignore when called from tabbar
+  &.top { margin-bottom: 1px; }
+  &.bottom { margin-top: 0px; }
+  &.left { margin-right: 1px; }
+  &.right { margin-left: 0px; }
+
+  // add 3D shadows to only-child tab stacks
+  @at-root
+  notebook > stack:not(:only-child) {
+    background-color: $bg_color;    // really necessary?
+    box-shadow: inset -1px 0 gtkshade($bg_color, 0.65),
+                inset 0 -1px gtkshade($bg_color, 0.65),
+                inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7),
+                inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
+    
+    // make file manager view base color
+    .nautilus-window & {
+      box-shadow: none;
+      background-color: $base_color;
+    }
+  }
+  
+  // add 3D shadows to headers
+  @at-root
+  notebook > header.top {
+    box-shadow: 0 1px gtkmix($bg_color, $light_shadow, 0.7),
+                inset 0 -1px gtkmix($bg_color, $light_shadow, 0.7);
+  }
+  
+  @at-root
+  notebook > header.bottom {
+    box-shadow: 0 -1px $border_color,
+                inset 0 1px gtkshade($bg_color, 0.65);
+  }
+  
+  @at-root
+  notebook > header.right {
+    box-shadow: -1px 0 $border_color,
+                inset 1px 0 gtkshade($bg_color, 0.65);
+  }
+  
+  @at-root
+  notebook > header.left {
+    box-shadow: 1px 0 gtkmix($bg_color, $light_shadow, 0.7),
+                inset -1px 0 gtkmix($bg_color, $light_shadow, 0.7);
+  }
+}
+
+$notebook_tab_margin : 1px;
+
+@mixin notebook_tab($type, $pos) {
+  @if $type == "base" {
+    margin: $notebook_tab_margin;
+    padding: 6px 20px;
+    border: 1px solid $border_color;
+    border-radius: $notebook_tab_radius;
+    color: $fg_color;
+    background-color: $bg_color;
+    
+    // TODO: this snippet is shared across many themes, move to core and disable manually for all-rounded tabs?
+    // property would be notebook_floating_tabs: true/false (because disconnected from the "view" area)
+    // if floating, use tab border_radius and skip the following block
+    // if not, set radius for specific summits (setting a radius for :checked state overrides the following block)
+    @if $pos == "top" {
+      border-bottom: none;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+    @else if $pos == "bottom" {
+      border-top: none;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+    }
+    @else if $pos == "right" {
+      border-left: none;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+    @else if $pos == "left" {
+      border-right: none;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+    
+    // styling portion
+    @if $pos == "top" {
+      margin-top: 2px;    // make unchecked tabs smaller
       border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
       border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
-
-      > header {
-        margin: -1px;
-
-        &.top {
-          margin-bottom: 0;
-        }
-
-        &.bottom {
-          margin-top: 0;
-        }
-
-        &.left {
-          margin-right: 0;
-        }
-
-        &.right {
-          margin-left: 0;
-        }
-
-        &.top, &.bottom {
-          padding-left: 0;
-          padding-right: 0;
-        }
-
-        &.left, &.right {
-          padding-top: 0;
-          padding-bottom: 0;
-        }
-      }
+      box-shadow: inset -1px 0 gtkshade($bg_color, 0.65),
+                  inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7),
+                  inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
     }
-
-    > stack:not(:only-child) {
-      background-color: $bg_color;
-      box-shadow: inset -1px 0 gtkshade($bg_color, 0.65), inset 0 -1px gtkshade($bg_color, 0.65), inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
-      
-      // file manager exception
-      .nautilus-window & {
-        box-shadow: none;
-        background-color: $base_color;
-      }
+    @else if $pos == "bottom" {
+      margin-bottom: 2px;
+      border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+      box-shadow: inset -1px 0 gtkshade($bg_color, 0.65),
+                  inset 0 -1px gtkshade($bg_color, 0.65),
+                  inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7);
     }
-
-    tab {
-      padding: 6px 20px;
-      border-width: 1px;
-      border-style: solid;
-      border-radius: $notebook_tab_radius;
-      border-color: $border_color;
-      color: $fg_color;
-      background-color: $bg_color;
-      
-      &:checked {
-        border-color: $border_color;
-        border-radius: $notebook_tab_radius + 1px;
-        background-color: $bg_color;
-      }
+    @else if $pos == "right" {
+      margin-right: 2px;
+      border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+      box-shadow: inset -1px 0 gtkshade($bg_color, 0.65),
+                  inset 0 -1px gtkshade($bg_color, 0.65),
+                  inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
     }
-
-    > header {
-      padding-top: 2px;
-      background-color: $bg_color;
-      
-      &.top {
-        box-shadow: 0 1px gtkmix($bg_color, $light_shadow, 0.7), inset 0 -1px gtkmix($bg_color, $light_shadow, 0.7);
-
-        > tabs > tab {
-          border-bottom: none;
-          margin-top: 2px;
-          margin-bottom: 1px;
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-          border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
-          border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
-          box-shadow: inset -1px 0 gtkshade($bg_color, 0.65), inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
-
-          &:checked {
-            margin-top: 0;
-            margin-bottom: -1px;
-          }
-        }
-      }
-
-      &.bottom {
-        padding-top: 0;
-        box-shadow: 0 -1px $border_color, inset 0 1px gtkshade($bg_color, 0.65);
-
-        > tabs > tab {
-          border-top: none;
-          margin-bottom: 2px;
-          margin-top: 1px;
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-          border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
-          box-shadow: inset -1px 0 gtkshade($bg_color, 0.65), inset 0 -1px gtkshade($bg_color, 0.65), inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7);
-
-          &:checked {
-            margin-bottom: 0;
-            margin-top: -1px;
-          }
-        }
-      }
-
-      &.right {
-        box-shadow: -1px 0 $border_color, inset 1px 0 gtkshade($bg_color, 0.65);
-
-        > tabs > tab {
-          border-left: none;
-          margin-right: 2px;
-          margin-left: 1px;
-          border-bottom-left-radius: 0;
-          border-top-left-radius: 0;
-          border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
-          box-shadow: inset -1px 0 gtkshade($bg_color, 0.65), inset 0 -1px gtkshade($bg_color, 0.65), inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
-
-          &:checked {
-            margin-right: 0;
-            margin-left: -1px;
-          }
-        }
-      }
-
-      &.left {
-        box-shadow: 1px 0 gtkmix($bg_color, $light_shadow, 0.7), inset -1px 0 gtkmix($bg_color, $light_shadow, 0.7);
-
-        > tabs > tab {
-          border-right: none;
-          margin-left: 2px;
-          margin-right: 1px;
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
-          border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
-          border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
-          box-shadow: inset 0 -1px gtkshade($bg_color, 0.65), inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7), inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
-
-          &:checked {
-            margin-left: 0;
-            margin-right: -1px;
-          }
-        }
-      }
+    @else if $pos == "left" {
+      margin-left: 2px;
+      border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
+      border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+      box-shadow: inset 0 -1px gtkshade($bg_color, 0.65),
+                  inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7),
+                  inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
     }
-
-    // alignments
-    > header.top > tabs > arrow.up, > header.bottom > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
-
-      &:last-child {
-        margin-left: 2px;
-      }
+  }
+  
+  @if $type == "checked" {
+    border-radius: $notebook_tab_radius + 1px;
+    background-color: $bg_color;
+    
+    // TODO: figure out a more efficient way to change tab radius when checked
+    // copy-pasted from "base" tabs
+    @if $pos == "top" {
+      border-bottom: none;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
     }
-
-    > header.top > tabs > arrow.down, > header.bottom > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
-
-      &:first-child {
-        margin-right: 2px;
-      }
+    @else if $pos == "bottom" {
+      border-top: none;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
     }
-
-    > header.left > tabs > arrow.up, > header.right > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-
-      &:last-child {
-        margin-top: 2px;
-      }
+    @else if $pos == "right" {
+      border-left: none;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
     }
-
-    > header.left > tabs > arrow.down, > header.right > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
-
-      &:first-child {
-        margin-bottom: 2px;
-      }
+    @else if $pos == "left" {
+      border-right: none;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
     }
-
-    > header > tabs > arrow {
-      color: $fg_color;
-
-      &:hover {
-        color: gtkshade($fg_color, 1.2);
-      }
-
-      &:active {
-        color: gtkshade($fg_color, 0.8);
-      }
-
-      &:disabled {
-        color: gtkshade($bg_color, 0.6);
-      }
-    }
+    
+    @if $pos == "top" { margin-top: 0px; }
+    @else if $pos == "bottom" { margin-bottom: 0px; }
+    @else if $pos == "right" { margin-right: 0px; }
+    @else if $pos == "left" { margin-left: 0px; }
+    
+    // TODO: make property and move code to core/common (only for notebook)
+    $notebook_tab_checked_margin : -1px;
+    
+    @if $pos == "top" { margin-bottom: $notebook_tab_checked_margin; }
+    @else if $pos == "bottom" { margin-top: $notebook_tab_checked_margin - 1px; }
+    @else if $pos == "right" { margin-left: $notebook_tab_checked_margin; }
+    @else if $pos == "left" { margin-right: $notebook_tab_checked_margin; }
   }
 }

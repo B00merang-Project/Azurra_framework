@@ -1,185 +1,80 @@
-@mixin notebook() {
-  notebook {
-    padding: 0;
+@mixin notebook_header() {
+  margin: -1px;   // hide border around the header
+  padding-top: 2px;
+  background-color: $bg_color;
+  
+  &:backdrop {
+    background-color: $backdrop_bg_color;
+  }
+  
+  // don't overlap with the header bottom border
+  // for some reason top and left headers require extra space
+  // TODO: make properties too? or ignore when called from tabbar
+  &.top { margin-bottom: 1px; }
+  &.bottom { margin-top: 0px; }
+  &.left { margin-right: 1px; }
+  &.right { margin-left: 0px; }
+}
 
-    &.frame {
-      margin: -1px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: $border_color;
+$notebook_tab_margin : 0px;
 
-      > header {
-        margin: -1px;
-
-        &.top {
-          margin-bottom: 0;
-        }
-
-        &.bottom {
-          margin-top: 0;
-        }
-
-        &.left {
-          margin-right: 0;
-        }
-
-        &.right {
-          margin-left: 0;
-        }
-
-        &.top, &.bottom {
-          padding-left: 0;
-          padding-right: 0;
-        }
-
-        &.left, &.right {
-          padding-top: 0;
-          padding-bottom: 0;
-        }
-      }
+@mixin notebook_tab($type, $pos) {
+  @if $type == "base" {
+    margin: $notebook_tab_margin;
+    padding: 6px 20px;
+    border-radius: $notebook_tab_radius;
+    border: 1px solid transparent;
+    color: $fg_color;
+    background-color: $bg_color;
+    
+    // set tab radius
+    @if $pos == "top" {
+      margin-bottom: 0px;
+      border-bottom: none;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
     }
-
-    > stack:not(:only-child) {
-      background-color: $base_color;
+    @else if $pos == "bottom" {
+      margin-top: 0px;
+      border-top: none;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
     }
-
-    tab {
-      padding: 6px 20px;
-      border-width: 1px;
-      border-style: solid;
-      border-radius: 0;
-      border-color: transparent;
-      color: $fg_color;
-      background-color: $bg_color;
-
-      &:checked {
-        border-color: $border_color;
-        background-color: $base_color;
-
-        &:backdrop {
-          border-color: $backdrop_border_color;
-          background-color: $backdrop_base_color;
-        }
-      }
-
-      &:backdrop {
-        background-color: $backdrop_bg_color;
-      }
+    @else if $pos == "right" {
+      margin-left: 0px;
+      border-left: none;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
     }
-
-    > header {
-      padding-top: 2px;
-      background-color: $bg_color;
-      
-      &:backdrop {
-        background-color: $backdrop_bg_color;
-      }
-
-      &.top {
-        box-shadow: 0 1px $border_color;
-
-        > tabs > tab {
-          border-bottom: none;
-
-          &:checked {
-            border-top-left-radius: $notebook_tab_radius;
-            border-top-right-radius: $notebook_tab_radius;
-            margin-bottom: -1px;
-          }
-        }
-      }
-
-      &.bottom {
-        padding-top: 0;
-        box-shadow: 0 -1px $border_color;
-
-        > tabs > tab {
-          border-top: none;
-
-          &:checked {
-            border-bottom-left-radius: $notebook_tab_radius;
-            border-bottom-right-radius: $notebook_tab_radius;
-            margin-top: -1px;
-          }
-        }
-      }
-
-      &.right {
-        box-shadow: -1px 0 $border_color;
-
-        > tabs > tab {
-          border-left: none;
-
-          &:checked {
-            border-top-right-radius: $notebook_tab_radius;
-            border-bottom-right-radius: $notebook_tab_radius;
-            margin-left: -1px;
-          }
-        }
-      }
-
-      &.left {
-        box-shadow: 1px 0 $border_color;
-
-        > tabs > tab {
-          border-right: none;
-
-          &:checked {
-            border-top-left-radius: $notebook_tab_radius;
-            border-bottom-left-radius: $notebook_tab_radius;
-            margin-right: -1px;
-          }
-        }
-      }
+    @else if $pos == "left" {
+      margin-right: 0px;
+      border-right: none;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
     }
-
-    // alignments
-    > header.top > tabs > arrow.up, & > header.bottom > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
-
-      &:last-child {
-        margin-left: 2px;
-      }
-    }
-
-    > header.top > tabs > arrow.down, & > header.bottom > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
-
-      &:first-child {
-        margin-right: 2px;
-      }
-    }
-
-    > header.left > tabs > arrow.up, & > header.right > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-
-      &:last-child {
-        margin-top: 2px;
-      }
-    }
-
-    > header.left > tabs > arrow.down, & > header.right > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
-
-      &:first-child {
-        margin-bottom: 2px;
-      }
-    }
-
-    > header > tabs > arrow {
-      color: $fg_color;
-
-      &:hover {
-        color: gtkshade($fg_color, 1.2);
-      }
-
-      &:active {
-        color: gtkshade($fg_color, 0.8);
-      }
-
-      &:disabled {
-        color: gtkshade($bg_color, 0.6);
-      }
-    }
+  }
+  @else if $type == "hover" {
+    box-shadow: none;
+  }
+  @else if $type == "checked" {
+    border-color: $border_color;
+    background-color: $base_color;
+    box-shadow: none;
+    
+    // TODO: make property and move code to core/common (only for notebook)
+    $notebook_tab_checked_margin : -1px;
+    
+    @if $pos == "top" { margin-bottom: $notebook_tab_checked_margin; }
+    @else if $pos == "bottom" { margin-top: $notebook_tab_checked_margin - 1px; }
+    @else if $pos == "right" { margin-left: $notebook_tab_checked_margin; }
+    @else if $pos == "left" { margin-right: $notebook_tab_checked_margin; }
+  }
+  @else if $type == "checked-backdrop" {
+    border-color: $backdrop_border_color;
+    background-color: $backdrop_base_color;
+  }
+  @else if $type == "backdrop" {
+    color: $backdrop_fg_color;    //  may interfere with other tab controls
+    background-color: $backdrop_bg_color;
   }
 }
