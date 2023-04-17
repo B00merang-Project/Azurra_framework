@@ -103,7 +103,7 @@ compile() {
   echo -n "Compiling $(hlight -n $name)..."
 
   for sass_file in $1/gtk*.scss; do
-    local filename=${sass_file%".scss"}
+    local filename=${sass_file%".scss"}   # remove .scss extension
     $sass_compiler $sass_args $sass_file $filename.css
 
     [ $? -ne 0 ] && fail "SASS exited unexpectedly, aborting"
