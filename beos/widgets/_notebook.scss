@@ -1,189 +1,85 @@
-@mixin notebook() {
-  notebook {
-    padding: 0;
+@mixin notebook_header() {
+  margin: -1px;
+  padding: 0px;
+  border: none;
+  background-color: $bg_color;
+  
+  &:backdrop {
+    background-color: $backdrop_bg_color;
+  }
 
-    &.frame {
-      margin: -1px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: gtkshade($bg_color, 1.1);
-      border-right-color: gtkshade($border_color, 0.8);
-      border-bottom-color: gtkshade($border_color, 0.8);
-      background-color: transparent;
+  @at-root
+  notebook.frame {
+    border-top-color: white;
+    border-left-color: white;
+  }
 
-      > header {
-        margin: -1px;
+  @at-root
+  notebook > stack:not(:only-child) {
+    background-color: transparent;
+  }
+  
+  // add 3D shadows to headers
+  // based on code from windows 95
+  @at-root
+  notebook > header.top {
+    box-shadow: 0 1px white;
+  }
+  
+  @at-root
+  notebook > header.left {
+    box-shadow: 1px 0 white;
+  }
+}
 
-        &.top {
-          margin-bottom: 0;
-        }
-
-        &.bottom {
-          margin-top: 0;
-        }
-
-        &.left {
-          margin-right: 0;
-        }
-
-        &.right {
-          margin-left: 0;
-        }
-
-        &.top, &.bottom {
-          padding-left: 0;
-          padding-right: 0;
-        }
-
-        &.left, &.right {
-          padding-top: 0;
-          padding-bottom: 0;
-        }
-      }
+@mixin notebook_tab($type, $pos) {
+  @if $type == "base" {
+    margin: 1px;
+    padding: 2px 6px;
+    border-radius: $notebook_tab_radius;
+    border: 1px solid gtkshade($border_color, 0.9);
+    border-top-color: white;
+    border-left-color: white;
+    color: $fg_color;
+    background-color: gtkshade($bg_color, 0.92);
+    box-shadow: none;
+    outline-color: transparent;
+    
+    @if $pos == "top" {
+      margin-top: 2px;
+      margin-bottom: 0px;
     }
-
-    > stack:not(:only-child) {
-      background-color: transparent;
+    @else if $pos == "bottom" {
+      margin-bottom: 2px;
+      margin-top: 0px;
     }
-
-    tab {
-      padding: 2px 6px;
-      border-width: 6px;
-      border-style: solid;
-      border-radius: 0;
-      border-color: transparent;
-      color: $fg_color;
-      outline-color: transparent;
-      background-color: gtkshade($bg_color, 0.92);
-
-      &:checked {
-        background-color: $bg_color;
-
-        &:backdrop {
-        }
-      }
-
-      &:backdrop {
-      }
+    @else if $pos == "left" {
+      margin-left: 2px;
+      margin-right: 0px;
     }
-
-    > header {
-      padding-top: 2px;
-      background-color: $bg_color;
-      
-      &:backdrop {
-        background-color: $backdrop_bg_color;
-      }
-
-      &.top {
-        box-shadow: 0 1px gtkshade($bg_color, 1.1);
-
-        > tabs > tab {
-          border-image: url('assets/tab-top.png') 6 6 6 6 stretch;
-          margin-top: 2px;
-
-          &:checked {
-            border-image: url('assets/tab-top-active.png') 6 6 6 6 stretch;
-            margin-top: 0;
-            margin-bottom: -1px;
-          }
-        }
-      }
-
-      &.bottom {
-        padding-top: 0;
-        box-shadow: 0 -1px gtkshade($border_color, 0.8);
-
-        > tabs > tab {
-          border-image: url('assets/tab-bottom.png') 6 6 6 6 stretch;
-          margin-bottom: 2px;
-
-          &:checked {
-            border-image: url('assets/tab-bottom-active.png') 6 6 6 6 stretch;
-            margin-bottom: 0;
-            margin-top: -1px;
-          }
-        }
-      }
-
-      &.right {
-        box-shadow: -1px 0 gtkshade($border_color, 0.8);
-
-        > tabs > tab {
-          border-image: url('assets/tab-right.png') 6 6 6 6 stretch;
-          margin-right: 2px;
-
-          &:checked {
-            border-image: url('assets/tab-right-active.png') 6 6 6 6 stretch;
-            margin-right: 0;
-            margin-left: -1px;
-          }
-        }
-      }
-
-      &.left {
-        box-shadow: 1px 0 gtkshade($bg_color, 1.1);
-
-        > tabs > tab {
-          border-image: url('assets/tab-left.png') 6 6 6 6 stretch;
-          margin-left: 2px;
-
-          &:checked {
-            border-image: url('assets/tab-left-active.png') 6 6 6 6 stretch;
-            margin-left: 0;
-            margin-right: -1px;
-          }
-        }
-      }
+    @else if $pos == "right" {
+      margin-right: 2px;
+      margin-left: 0px;
     }
-
-    // alignments
-    > header.top > tabs > arrow.up, > header.bottom > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
-
-      &:last-child {
-        margin-left: 2px;
-      }
+  }
+  @else if $type == "checked" {
+    background-color: $bg_color;
+    
+    @if $pos == "top" {
+      margin-top: 0px;
+      margin-bottom: -1px;
     }
-
-    > header.top > tabs > arrow.down, > header.bottom > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
-
-      &:first-child {
-        margin-right: 2px;
-      }
+    @else if $pos == "bottom" {
+      margin-bottom: 0px;
+      margin-top: -1px;
     }
-
-    > header.left > tabs > arrow.up, > header.right > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-
-      &:last-child {
-        margin-top: 2px;
-      }
+    @else if $pos == "left" {
+      margin-left: 0px;
+      margin-right: -1px;
     }
-
-    > header.left > tabs > arrow.down, > header.right > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
-
-      &:first-child {
-        margin-bottom: 2px;
-      }
-    }
-
-    > header > tabs > arrow {
-      color: $fg_color;
-
-      &:hover {
-        color: gtkshade($fg_color, 1.2);
-      }
-
-      &:active {
-        color: gtkshade($fg_color, 0.8);
-      }
-
-      &:disabled {
-        color: gtkshade($bg_color, 0.6);
-      }
+    @else if $pos == "right" {
+      margin-right: 0px;
+      margin-left: -1px;
     }
   }
 }

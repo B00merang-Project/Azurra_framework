@@ -1,180 +1,53 @@
-@mixin notebook() {
-  notebook {
-    padding: 0;
-
-    &.frame {
-      margin: -1px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: $border_color;
-
-      > header {
-        margin: -1px;
-
-        &.top {
-          margin-bottom: 0;
-        }
-
-        &.bottom {
-          margin-top: 0;
-        }
-
-        &.left {
-          margin-right: 0;
-        }
-
-        &.right {
-          margin-left: 0;
-        }
-
-        &.top, &.bottom {
-          padding-left: 0;
-          padding-right: 0;
-        }
-
-        &.left, &.right {
-          padding-top: 0;
-          padding-bottom: 0;
-        }
-      }
-    }
-
-    > stack:not(:only-child) {
-      background-color: $base_color;
+@mixin notebook_header() {
+  margin: -1px;
+  background-color: $bg_color;
       
-      &:backdrop {
-        background-color: $backdrop_base_color;
-      }
-    }
-
-    tab {
-      border-radius: $notebook_tab_radius;
-      color: $fg_color;
-      border: 1px solid gtkshade($border_color, 1.05);
-      padding: 4px 6px;
-      background-color: transparent;
-      
-      &:checked {
-        border-color: gtkshade($border_color, 0.9);
-        background-image: linear-gradient(to bottom, gtkshade($bg_color, 1.05), gtkshade($bg_color, 0.975));
-        
-        &:backdrop {
-          background-image: none;
-        }
-      }
-    }
-
-    > header {
-      background-color: $bg_color;
-      
-      &:backdrop {
-        background-color: $backdrop_bg_color;
-      }
-      
-      &.top {
-        box-shadow: 0 1px $border_color;
-
-        > tabs > tab {
-          border-bottom: none;
-          border-bottom-right-radius: 0;
-          border-bottom-left-radius: 0;
-
-          &:checked {
-            border-bottom: none;
-          }
-        }
-      }
-
-      &.bottom {
-        box-shadow: 0 -1px $border_color;
-
-        > tabs > tab {
-          border-top: none;
-          border-top-right-radius: 0;
-          border-top-left-radius: 0;
-
-          &:checked {
-            border-top: none;
-          }
-        }
-      }
-
-      &.right {
-        box-shadow: -1px 0 $border_color;
-
-        > tabs > tab {
-          border-left: none;
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-
-          &:checked {
-            border-left: none;
-          }
-        }
-      }
-
-      &.left {
-        box-shadow: 1px 0 $border_color;
-
-        > tabs > tab {
-          border-right: none;
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
-
-          &:checked {
-            border-right: none;
-          }
-        }
-      }
-    }
-
-    // alignments
-    > header.top > tabs > arrow.up, > header.bottom > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
-
-      &:last-child {
-        margin-left: 2px;
-      }
-    }
-
-    > header.top > tabs > arrow.down, > header.bottom > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
-
-      &:first-child {
-        margin-right: 2px;
-      }
-    }
-
-    > header.left > tabs > arrow.up, > header.right > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-
-      &:last-child {
-        margin-top: 2px;
-      }
-    }
-
-    > header.left > tabs > arrow.down, > header.right > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
-
-      &:first-child {
-        margin-bottom: 2px;
-      }
-    }
-
-    > header > tabs > arrow {
-      color: $fg_color;
-
-      &:hover {
-        color: gtkshade($fg_color, 1.2);
-      }
-
-      &:active {
-        color: gtkshade($fg_color, 0.8);
-      }
-
-      &:disabled {
-        color: gtkshade($bg_color, 0.6);
-      }
-    }
+  &:backdrop {
+    background-color: $backdrop_bg_color;
   }
+  
+  @at-root
+  > stack:not(:only-child):backdrop {
+    background-color: $backdrop_base_color;
+  }
+}
+
+@mixin notebook_tab($type, $pos) {
+  @if $type == "base" {
+    margin: 1px;
+    padding: 4px 6px;
+    border-radius: $notebook_tab_radius;
+    border: 1px solid $border_color;
+    color: $fg_color;
+    background-color: transparent;
+    background-image: linear-gradient(
+        to bottom,
+        $bg_color,
+        gtkshade($bg_color, 0.95)
+      );
+      box-shadow: 0 0 0 1px $bg_color;
+    
+    &:checked {
+      border-color: gtkshade($border_color, 0.95);
+      background-color: gtkshade($bg_color, 1.05);
+      background-image: none;
+      box-shadow: none;
+      
+      &:backdrop {
+        background-image: none;
+      }
+    }
+    
+    @if $pos == "top" { margin-bottom: -2px; margin-top: 2px; }
+    @else if $pos == "bottom" { margin-top: -2px; margin-bottom: 2px; }
+    @else if $pos == "left" { margin-right: -2px; margin-left: 2px; }
+    @else if $pos == "right" { margin-left: -2px; margin-right: 2px; }
+  }
+  @else if $type == "checked" {
+    @if $pos == "top" { margin-top: 0px; }
+    @else if $pos == "bottom" { margin-bottom: 0px; }
+    @else if $pos == "left" { margin-left: 0px; }
+    @else if $pos == "right" { margin-right: 0px; }
+  }
+
 }

@@ -774,10 +774,27 @@ notebook {
   > header {
     @include notebook_header();
     
+    // only show the header border on the side connecting with the notebook view
+    @if not $notebook_floating_tabs {
+      &.top { margin: -1px; margin-bottom: 1px; }
+      &.bottom { margin: -1px; margin-top: 1px; }
+      &.right { margin: -1px; margin-left: 1px; }
+      &.left { margin: -1px; margin-right: 1px; }
+    }
+    
     &.top {
       box-shadow: 0 1px $border_color;
 
-      > tabs > tab { @include notebook_tab("base", "top");
+      > tabs > tab {
+        @include notebook_tab("base", "top");
+        
+        // square off tab corners if floating tabs not enabled
+        @if not $notebook_floating_tabs {
+          border-bottom: none;
+          border-bottom-left-radius: 0px;
+          border-bottom-right-radius: 0px;
+        }
+        
         &:hover { @include notebook_tab("hover", "top"); }
         &:checked { @include notebook_tab("checked", "top"); }
       }
@@ -786,7 +803,15 @@ notebook {
     &.bottom {
       box-shadow: 0 -1px $border_color;
 
-      > tabs > tab { @include notebook_tab("base", "bottom");
+      > tabs > tab {
+        @include notebook_tab("base", "bottom");
+        
+        @if not $notebook_floating_tabs {
+          border-top: none;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+        }
+        
         &:hover { @include notebook_tab("hover", "bottom"); }
         &:checked { @include notebook_tab("checked", "bottom"); }
       }
@@ -795,7 +820,15 @@ notebook {
     &.right {
       box-shadow: -1px 0 $border_color;
 
-      > tabs > tab { @include notebook_tab("base", "right");
+      > tabs > tab {
+        @include notebook_tab("base", "right");
+        
+        @if not $notebook_floating_tabs {
+          border-left: none;
+          border-top-left-radius: 0px;
+          border-bottom-left-radius: 0px;
+        }
+        
         &:hover { @include notebook_tab("hover", "right"); }
         &:checked { @include notebook_tab("checked", "right"); }
       }
@@ -804,7 +837,15 @@ notebook {
     &.left {
       box-shadow: 1px 0 $border_color;
 
-      > tabs > tab { @include notebook_tab("base", "left");
+      > tabs > tab {
+        @include notebook_tab("base", "left");
+        
+        @if not $notebook_floating_tabs {
+          border-right: none;
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+        }
+          
         &:hover { @include notebook_tab("hover", "left"); }
         &:checked { @include notebook_tab("checked", "left"); }
       }

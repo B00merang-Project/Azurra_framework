@@ -1,57 +1,19 @@
 @mixin notebook_header() {
-  margin: -1px;   // hide border around the header
-  padding-top: 2px;
   background-color: $bg_color;
   
   &:backdrop {
     background-color: $backdrop_bg_color;
   }
-  
-  // don't overlap with the header bottom border
-  // for some reason top and left headers require extra space
-  // TODO: make properties too? or ignore when called from tabbar
-  &.top { margin-bottom: 1px; }
-  &.bottom { margin-top: 0px; }
-  &.left { margin-right: 1px; }
-  &.right { margin-left: 0px; }
 }
-
-$notebook_tab_margin : 0px;
 
 @mixin notebook_tab($type, $pos) {
   @if $type == "base" {
-    margin: $notebook_tab_margin;
+    margin: 0px;
     padding: 6px 20px;
     border-radius: $notebook_tab_radius;
     border: 1px solid transparent;
     color: $fg_color;
     background-color: $bg_color;
-    
-    // set tab radius
-    @if $pos == "top" {
-      margin-bottom: 0px;
-      border-bottom: none;
-      border-bottom-left-radius: 0px;
-      border-bottom-right-radius: 0px;
-    }
-    @else if $pos == "bottom" {
-      margin-top: 0px;
-      border-top: none;
-      border-top-left-radius: 0px;
-      border-top-right-radius: 0px;
-    }
-    @else if $pos == "right" {
-      margin-left: 0px;
-      border-left: none;
-      border-top-left-radius: 0px;
-      border-bottom-left-radius: 0px;
-    }
-    @else if $pos == "left" {
-      margin-right: 0px;
-      border-right: none;
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-    }
   }
   @else if $type == "hover" {
     box-shadow: none;
@@ -61,13 +23,10 @@ $notebook_tab_margin : 0px;
     background-color: $base_color;
     box-shadow: none;
     
-    // TODO: make property and move code to core/common (only for notebook)
-    $notebook_tab_checked_margin : -1px;
-    
-    @if $pos == "top" { margin-bottom: $notebook_tab_checked_margin; }
-    @else if $pos == "bottom" { margin-top: $notebook_tab_checked_margin - 1px; }
-    @else if $pos == "right" { margin-left: $notebook_tab_checked_margin; }
-    @else if $pos == "left" { margin-right: $notebook_tab_checked_margin; }
+    @if $pos == "top" { margin-bottom: -1px; }
+    @else if $pos == "bottom" { margin-top: -2px; }   // bottom tabs are weird
+    @else if $pos == "right" { margin-left: -1px; }
+    @else if $pos == "left" { margin-right: -1px; }
   }
   @else if $type == "checked-backdrop" {
     border-color: $backdrop_border_color;
