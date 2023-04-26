@@ -1,31 +1,22 @@
 @mixin entry($type : "base") {
   @if $type == "base" {
-    padding: 5px;
+    padding: 0px 4px;
     border-radius: $entry_radius;
     border: 1px solid $border_color;
-    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-bottom-color: $light_shadow;
+    border-right-color: $light_shadow;
     color: $text_color;
     background-color: $base_color;
-    box-shadow: inset 1px 0 gtkshade($bg_color, 0.65),
-                inset 0 1px gtkshade($bg_color, 0.65),
-                inset -1px 0 gtkmix($bg_color, $light_shadow, 0.7),
-                inset 0 -1px gtkmix($bg_color, $light_shadow, 0.7);
+    box-shadow: inset 1px 1px gtkshade($bg_color, 0.65),
+                inset -1px -1px $bg_color;
   }
 
   @else if $type == "disabled" {
+    border-color: gtkshade($disabled_bg_color, 0.8);
+    border-bottom-color: gtkmix($disabled_bg_color, $light_shadow, 0.65);
+    border-right-color: gtkmix($disabled_bg_color, $light_shadow, 0.65);
     color: $disabled_text_color;
     background-color: $disabled_base_color;
-  }
-
-  @else if $type == "disabled-backdrop" {
-    color: $backdrop_disabled_fg_color;
-    background-color: $backdrop_disabled_base_color;
-  }
-
-  @else if $type == "backdrop" {
-    color: $backdrop_fg_color;
-    background-color: $backdrop_base_color;
   }
 
   @else if $type == "flat" {

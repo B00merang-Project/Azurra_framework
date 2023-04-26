@@ -2,14 +2,11 @@
   margin: 0px;
   border-radius: $global_radius;
   border: 1px solid $border_color;
-  border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-  border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+  border-bottom-color: $light_shadow;
+  border-right-color: $light_shadow;
   color: $fg_color;
   background-color: $bg_color;
-  box-shadow: inset 1px 0 gtkshade($bg_color, 0.65),
-              inset 0 1px gtkshade($bg_color, 0.65),
-              inset -1px 0 gtkmix($bg_color, $light_shadow, 0.7),
-              inset 0 -1px gtkmix($bg_color, $light_shadow, 0.7);
+  box-shadow: inset 1px 1px gtkshade($bg_color, 0.65);
 
   &:checked {
     color: $selected_fg_color;
@@ -26,19 +23,16 @@
 @mixin switch_slider($type : "base") {
   @if $type == "base" {
     margin: 0px;
-    min-width: 40px;
-    min-height: 22px;
+    min-width: 26px;
+    min-height: 18px;
     border-radius: $global_radius;
     border: 1px solid $border_color;
-    border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
-    border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-top-color: $light_shadow;
+    border-left-color: $light_shadow;
     color: $fg_color;
     background-color: $bg_color;
     background-image: none;
-    box-shadow: inset -1px 0 gtkshade($bg_color, 0.65),
-                inset 0 -1px gtkshade($bg_color, 0.65),
-                inset 1px 0 gtkmix($bg_color, $light_shadow, 0.7),
-                inset 0 1px gtkmix($bg_color, $light_shadow, 0.7);
+    box-shadow: inset -1px -1px gtkshade($bg_color, 0.65);
   }
 
   @else if $type == "disabled" {
