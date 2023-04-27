@@ -20,15 +20,17 @@
   }
   
   // add 3D shadows to headers
-  // based on code from windows 95
-  @at-root
-  notebook > header.top {
+  &.top {
     box-shadow: 0 1px white;
   }
-  
-  @at-root
-  notebook > header.left {
+  &.bottom {
+    box-shadow: 0 -1px $border_color;
+  }
+  &.left {
     box-shadow: 1px 0 white;
+  }
+  &.right {
+    box-shadow: -1px 0 $border_color;
   }
 }
 

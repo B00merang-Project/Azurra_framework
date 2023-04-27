@@ -1,178 +1,49 @@
-@mixin notebook() {
-  notebook {
-    padding: 0;
+@mixin notebook_header() {
+  border: 0px solid gtkshade($border_color, 0.9);
+  background-color: $base_color;
 
-    &.frame {
-      margin: -1px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: $border_color;
+  &:backdrop {
+    background-color: $backdrop_base_color;
+  }
+  
+  &.top {
+    border-bottom-width: 1px;
+  }
+  &.bottom {
+    border-top-width: 1px;
+  }
+  &.left {
+    border-right-width: 1px;
+  }
+  &.right {
+    border-left-width: 1px;
+  }
+}
 
-      > header {
-        margin: -1px;
+@mixin notebook_tab($type, $pos) {
+  @if $type == "base" {
+    padding: 6px 20px;
+    border-radius: $notebook_tab_radius;
+    border: 1px solid transparent;
+    color: $fg_color;
+    background-color: transparent;
+    box-shadow: none;
+  }
 
-        &.top {
-          margin-bottom: 0;
-        }
-
-        &.bottom {
-          margin-top: 0;
-        }
-
-        &.left {
-          margin-right: 0;
-        }
-
-        &.right {
-          margin-left: 0;
-        }
-
-        &.top, &.bottom {
-          padding-left: 0;
-          padding-right: 0;
-        }
-
-        &.left, &.right {
-          padding-top: 0;
-          padding-bottom: 0;
-        }
-      }
+  @else if $type == "checked" {
+    color: $selected_bg_color;
+    
+    @if $pos == "top" {
+      box-shadow: 0 2px $selected_text_bg_color;
     }
-
-    > stack:not(:only-child) {
-      background-color: $base_color;
+    @else if $pos == "bottom" {
+      box-shadow: 0 -2px $selected_text_bg_color;
     }
-
-    tab {
-      padding: 6px 20px;
-      border: none;
-      border-radius: 0;
-      color: $fg_color;
-      background-color: transparent;
-      
-      &:hover {
-      }
-
-      &:checked {
-        color: $selected_text_bg_color;
-        
-        &:backdrop {
-        }
-      }
-
-      &:backdrop {
-      }
+    @else if $pos == "left" {
+      box-shadow: 2px 0 $selected_text_bg_color;
     }
-
-    > header {
-      padding-top: 2px;
-      background-color: $base_color;
-      
-      &:backdrop {
-        background-color: $backdrop_base_color;
-      }
-
-      &.top {
-        box-shadow: 0 2px gtkshade($border_color, 0.85);
-
-        > tabs > tab {
-          border-bottom: none;
-          margin-top: 2px;
-
-          &:checked {
-            box-shadow: 0 2px $selected_text_bg_color;
-          }
-        }
-      }
-
-      &.bottom {
-        padding-top: 0;
-        box-shadow: 0 -2px gtkshade($border_color, 0.85);
-
-        > tabs > tab {
-          border-top: none;
-          margin-bottom: 2px;
-
-          &:checked {
-            box-shadow: 0 -2px $selected_text_bg_color;
-          }
-        }
-      }
-
-      &.right {
-        box-shadow: -2px 0 gtkshade($border_color, 0.85);
-
-        > tabs > tab {
-          border-left: none;
-          margin-right: 2px;
-
-          &:checked {
-            box-shadow: -2px 0 $selected_text_bg_color;
-          }
-        }
-      }
-
-      &.left {
-        box-shadow: 2px 0 gtkshade($border_color, 0.85);
-
-        > tabs > tab {
-          border-right: none;
-          margin-left: 2px;
-
-          &:checked {
-            box-shadow: 2px 0 gtkshade($border_color, 0.85);
-          }
-        }
-      }
-    }
-
-    // alignments
-    > header.top > tabs > arrow.up, > header.bottom > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
-
-      &:last-child {
-        margin-left: 2px;
-      }
-    }
-
-    > header.top > tabs > arrow.down, > header.bottom > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
-
-      &:first-child {
-        margin-right: 2px;
-      }
-    }
-
-    > header.left > tabs > arrow.up, > header.right > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-
-      &:last-child {
-        margin-top: 2px;
-      }
-    }
-
-    > header.left > tabs > arrow.down, > header.right > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
-
-      &:first-child {
-        margin-bottom: 2px;
-      }
-    }
-
-    > header > tabs > arrow {
-      color: $fg_color;
-
-      &:hover {
-        color: gtkshade($fg_color, 1.2);
-      }
-
-      &:active {
-        color: gtkshade($fg_color, 0.8);
-      }
-
-      &:disabled {
-        color: gtkshade($bg_color, 0.6);
-      }
+    @else if $pos == "right" {
+      box-shadow: -2px 0 $selected_text_bg_color;
     }
   }
 }

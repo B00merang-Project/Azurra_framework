@@ -8,11 +8,22 @@
     background-color: gtkshade($backdrop_bg_color, 0.95);
   }
 
-  @at-root
-  > stack:not(:only-child):backdrop {
-    background-color: $backdrop_base_color;
+  // simulate border between header and view area
+  &.top {
+    box-shadow: 0 1px $border_color;
+    margin-bottom: 1px;   // compensate the overlap from the view area
   }
-  
+  &.bottom {
+    box-shadow: 0 -1px $border_color;
+  }
+  &.left {
+    box-shadow: 1px 0 $border_color;
+    margin-right: 1px;   // compensate the overlap from the view area
+  }
+  &.right {
+    box-shadow: -1px 0 $border_color;
+  }
+
   @at-root
   notebook > header.top > tabs,
   notebook > header.bottom > tabs {

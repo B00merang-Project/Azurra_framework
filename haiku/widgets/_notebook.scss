@@ -8,8 +8,9 @@
     background-color: $backdrop_bg_color;
   }
   
-  @at-root
+  // header gradients
   &.top {
+    margin-bottom: 1px;
     background-image: linear-gradient(
       to bottom,
       $bg_color 2px,
@@ -17,10 +18,11 @@
       gtkshade($bg_color, 0.9) 4px,
       gtkshade($bg_color, 0.95)
     );
+    box-shadow: 0 1px $border_color;
   }
   
-  @at-root
   &.bottom {
+    margin-top: 1px;
     background-image: linear-gradient(
       to top,
       $bg_color 2px,
@@ -28,10 +30,11 @@
       gtkshade($bg_color, 0.9) 4px,
       gtkshade($bg_color, 0.95)
     );
+    box-shadow: 0 -1px $border_color;
   }
   
-  @at-root
   &.left {
+    margin-right: 1px;
     background-image: linear-gradient(
       to right,
       $bg_color 2px,
@@ -39,10 +42,11 @@
       gtkshade($bg_color, 0.9) 4px,
       gtkshade($bg_color, 0.95)
     );
+    box-shadow: 1px 0 $border_color;
   }
   
-  @at-root
   &.right {
+    margin-bottom: 1px;
     background-image: linear-gradient(
       to left,
       $bg_color 2px,
@@ -50,8 +54,10 @@
       gtkshade($bg_color, 0.9) 4px,
       gtkshade($bg_color, 0.95)
     );
+    box-shadow: -1px 0 $border_color;
   }
 
+  // necessary?
   @at-root
   notebook > stack:not(:only-child) {
     background-color: transparent;
@@ -71,18 +77,22 @@
     
     @if $pos == "top" {
       margin-top: 2px;
+      margin-bottom: 0px;
       border-bottom-style: none;
     }
     @else if $pos == "bottom" {
       margin-bottom: 2px;
+      margin-top: 0px;
       border-top-style: none;
     }
     @else if $pos == "left" {
       margin-left: 2px;
+      margin-right: 0px;
       border-right-style: none;
     }
     @else if $pos == "right" {
       margin-right: 2px;
+      margin-left: 0px;
       border-left-style: none;
     }
   }

@@ -6,28 +6,24 @@
   }
   
   // simluate "tab bar border"
-  // since this is a one-time implementation, at-root usage is acceptable
-  @at-root
-  notebook > header {
-    &.top {
-      border-bottom: 4px solid #9ac7e6;
-      box-shadow: 0 1px gtkshade($border_color, 0.6), inset 0 -1px #3a5c8c;
-    }
+  &.top {
+    border-bottom: 4px solid #9ac7e6;
+    box-shadow: 0 1px gtkshade($border_color, 0.6), inset 0 -1px #3a5c8c;
+  }
 
-    &.bottom {
-      border-top: 4px solid #9ac7e6;
-      box-shadow: 0 -1px gtkshade($border_color, 0.6), inset 0 1px #3a5c8c;
-    }
+  &.bottom {
+    border-top: 4px solid #9ac7e6;
+    box-shadow: 0 -1px gtkshade($border_color, 0.6), inset 0 1px #3a5c8c;
+  }
 
-    &.left {
-      border-right: 4px solid #9ac7e6;
-      box-shadow: 1px 0 gtkshade($border_color, 0.6), inset -1px 0 #3a5c8c;
-    }
+  &.left {
+    border-right: 4px solid #9ac7e6;
+    box-shadow: 1px 0 gtkshade($border_color, 0.6), inset -1px 0 #3a5c8c;
+  }
 
-    &.right {
-      border-left: 4px solid #9ac7e6;
-      box-shadow: -1px 0 gtkshade($border_color, 0.6), inset 1px 0 #3a5c8c;
-    }
+  &.right {
+    border-left: 4px solid #9ac7e6;
+    box-shadow: -1px 0 gtkshade($border_color, 0.6), inset 1px 0 #3a5c8c;
   }
 }
 
@@ -41,7 +37,7 @@
 
     // base top tab
     @if $pos == "top" {
-      margin-bottom: 1px;
+      margin-bottom: -1px;
       background-image: linear-gradient(
         to bottom,
         gtkshade($bg_color, 0.85) 40%,
@@ -51,8 +47,7 @@
     }
     // base bottom tab
     @else if $pos == "bottom" {
-      border-top: none;
-      margin-top: 1px;
+      margin-top: -1px;
       background-image: linear-gradient(
         to top,
         gtkshade($bg_color, 0.85) 40%,
@@ -62,8 +57,7 @@
     }
     // base right tab
     @else if $pos == "right" {
-      border-left: none;
-      margin-left: 1px;
+      margin-left: -1px;
       background-image: linear-gradient(
         to left,
         gtkshade($bg_color, 0.85) 40%,
@@ -73,8 +67,7 @@
     }
     // base left tab
     @else if $pos == "left" {
-      border-right: none;
-      margin-right: 1px;
+      margin-right: -1px;
       background-image: linear-gradient(
         to right,
         gtkshade($bg_color, 0.85) 40%,
@@ -89,7 +82,6 @@
       border-color: #07067b;
       border-left-color: gtkshade($selected_bg_color, 1.15);
       border-right-color: gtkshade($selected_bg_color, 1.15);
-      border-bottom-color: gtkshade($selected_bg_color, 1.3);
       background-color: $base_color;
       background-image: linear-gradient(
         to bottom,
@@ -103,7 +95,6 @@
       border-color: #07067b;
       border-left-color: gtkshade($selected_bg_color, 1.15);
       border-right-color: gtkshade($selected_bg_color, 1.15);
-      border-top-color: gtkshade($selected_bg_color, 1.3);
       background-color: $base_color;
       background-image: linear-gradient(
         to top,
@@ -117,7 +108,6 @@
       border-color: #07067b;
       border-top-color: gtkshade($selected_bg_color, 1.15);
       border-bottom-color: gtkshade($selected_bg_color, 1.15);
-      border-right-color: gtkshade($selected_bg_color, 1.3);
       background-color: $base_color;
       background-image: linear-gradient(
         to left,
@@ -131,7 +121,6 @@
       border-color: #07067b;
       border-top-color: gtkshade($selected_bg_color, 1.15);
       border-bottom-color: gtkshade($selected_bg_color, 1.15);
-      border-left-color: gtkshade($selected_bg_color, 1.3);
       background-color: $base_color;
       background-image: linear-gradient(
         to right,

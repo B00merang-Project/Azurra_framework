@@ -763,12 +763,19 @@ menubar { @include menubar();
 
 // legacy notebok
 notebook {
+  // TODO: move to new mixin notebook_frame?
   &.frame {
     border: 1px solid $border_color;
   }
 
+  // override tab view pane color when many tabs are open 
   > stack:not(:only-child) {
     background-color: $base_color;
+    
+    // should this be togglable?
+    &:backdrop {
+      background-color: $backdrop_base_color;
+    }
   }
   
   > header {
@@ -783,8 +790,6 @@ notebook {
     }
     
     &.top {
-      box-shadow: 0 1px $border_color;
-
       > tabs > tab {
         @include notebook_tab("base", "top");
         
@@ -801,8 +806,6 @@ notebook {
     }
     
     &.bottom {
-      box-shadow: 0 -1px $border_color;
-
       > tabs > tab {
         @include notebook_tab("base", "bottom");
         
@@ -816,27 +819,8 @@ notebook {
         &:checked { @include notebook_tab("checked", "bottom"); }
       }
     }
-    
-    &.right {
-      box-shadow: -1px 0 $border_color;
-
-      > tabs > tab {
-        @include notebook_tab("base", "right");
-        
-        @if not $notebook_floating_tabs {
-          border-left: none;
-          border-top-left-radius: 0px;
-          border-bottom-left-radius: 0px;
-        }
-        
-        &:hover { @include notebook_tab("hover", "right"); }
-        &:checked { @include notebook_tab("checked", "right"); }
-      }
-    }
 
     &.left {
-      box-shadow: 1px 0 $border_color;
-
       > tabs > tab {
         @include notebook_tab("base", "left");
         
@@ -848,6 +832,21 @@ notebook {
           
         &:hover { @include notebook_tab("hover", "left"); }
         &:checked { @include notebook_tab("checked", "left"); }
+      }
+    }
+
+    &.right {
+      > tabs > tab {
+        @include notebook_tab("base", "right");
+        
+        @if not $notebook_floating_tabs {
+          border-left: none;
+          border-top-left-radius: 0px;
+          border-bottom-left-radius: 0px;
+        }
+        
+        &:hover { @include notebook_tab("hover", "right"); }
+        &:checked { @include notebook_tab("checked", "right"); }
       }
     }
 

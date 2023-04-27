@@ -4,6 +4,19 @@
   &:backdrop {
     background-color: $backdrop_base_color;
   }
+  
+  &.top {
+    box-shadow: 0 1px $border_color;
+  }
+  &.bottom {
+    box-shadow: 0 -1px $border_color;
+  }
+  &.left {
+    box-shadow: 1px 0 $border_color;
+  }
+  &.right {
+    box-shadow: -1px 0 $border_color;
+  }
 }
 
 @mixin notebook_tab($type, $pos) {
@@ -14,8 +27,11 @@
     color: $fg_color;
     background-color: transparent;
     box-shadow: none;
-
-    &:checked { color: $selected_bg_color; }
-    &:backdrop { background-color: transparent; }
+    
+    &:backdrop {
+      background-color: transparent;
+    }
   }
+
+  @else if $type == "checked" { color: $selected_bg_color; }
 }

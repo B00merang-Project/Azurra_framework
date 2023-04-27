@@ -4,6 +4,19 @@
   &:backdrop {
     background-color: $backdrop_bg_color;
   }
+  
+  &.top {
+    box-shadow: 0 1px $border_color;
+  }
+  &.bottom {
+    box-shadow: 0 -1px $border_color;
+  }
+  &.left {
+    box-shadow: 1px 0 $border_color;
+  }
+  &.right {
+    box-shadow: -1px 0 $border_color;
+  }
 }
 
 @mixin notebook_tab($type, $pos) {
@@ -23,10 +36,10 @@
     background-color: $base_color;
     box-shadow: none;
     
-    @if $pos == "top" { margin-bottom: -1px; }
-    @else if $pos == "bottom" { margin-top: -2px; }   // bottom tabs are weird
-    @else if $pos == "right" { margin-left: -1px; }
-    @else if $pos == "left" { margin-right: -1px; }
+    @if $pos == "top" { margin-bottom: -2px; }
+    @else if $pos == "bottom" { margin-top: -2px; }
+    @else if $pos == "right" { margin-left: -2px; }
+    @else if $pos == "left" { margin-right: -2px; }
   }
   @else if $type == "checked-backdrop" {
     border-color: $backdrop_border_color;

@@ -5,37 +5,37 @@
   // add 3D shadows to the frame
   @at-root
   notebook.frame {
-    border-top-color: white;
-    border-left-color: white;
+    border: 1px solid black;
   }
-
+  
   // add 3D shadows
   @at-root
   notebook > stack:not(:only-child) {
-    background-color: $bg_color;    // otherwise area is colored with $base_color
-    box-shadow: inset -1px -1px gtkshade($bg_color, 0.65);
+    background-color: gtkshade($bg_color, 1.1);
+    box-shadow: inset -1px -1px gtkshade($bg_color, 0.8),
+                inset 1px 1px white;    // TODO: fix top and left tabs getting cut off by this shadow
   }
   
   // add 3D shadows to headers
   &.top {
-    box-shadow: 0 1px white;
+    box-shadow: 0 1px black;
   }
   &.bottom {
-    box-shadow: 0 -1px $border_color;
+    box-shadow: 0 -1px black;
   }
   &.right {
-    box-shadow: -1px 0 $border_color;
+    box-shadow: -1px 0 black;
   }
   &.left {
-    box-shadow: 1px 0 white;
+    box-shadow: 1px 0 black;
   }
 }
 
 @mixin notebook_tab($type, $pos) {
   @if $type == "base" {
     margin: 1px;
-    padding: 2px 6px;
-    border: 1px solid $border_color;
+    padding: 0px 6px;
+    border: 1px solid black;
     border-radius: $notebook_tab_radius;
     font-weight: normal;
     color: $fg_color;
@@ -45,34 +45,32 @@
     @if $pos == "top" {
       margin-top: 2px;    // make unchecked tabs smaller
       margin-bottom: -1px;
-      border-top-color: white;
-      border-left-color: white;
-      box-shadow: inset -1px 0 gtkshade($bg_color, 0.65);
+      box-shadow: inset -1px 0 gtkshade($bg_color, 0.65),
+                  inset 1px 1px white;
     }
     @else if $pos == "bottom" {
       margin-bottom: 2px;
       margin-top: -1px;
-      border-left-color: white;
-      box-shadow: inset -1px -1px gtkshade($bg_color, 0.65);
+      box-shadow: inset -1px -1px gtkshade($bg_color, 0.65),
+                  inset 1px 0 white;
     }
     @else if $pos == "right" {
       margin-right: 2px;
       margin-left: -1px;
-      border-top-color: white;
-      box-shadow: inset -1px -1px gtkshade($bg_color, 0.65);
+      box-shadow: inset -1px -1px gtkshade($bg_color, 0.65),
+                  inset 0 1px white;
     }
     @else if $pos == "left" {
       margin-left: 2px;
       margin-right: -1px;
-      border-top-color: white;
-      border-left-color: white;
-      box-shadow: inset 0 -1px gtkshade($bg_color, 0.65);
+      box-shadow: inset 0 -1px gtkshade($bg_color, 0.65),
+                  inset 1px 1px white;
     }
   }
   
   @if $type == "checked" {
     border-radius: $notebook_tab_radius + 1px;
-    background-color: $bg_color;
+    background-color: gtkshade($bg_color, 1.1);
     
     @if $pos == "top" {
       margin-top: 0px;

@@ -1,186 +1,64 @@
-@mixin notebook() {
-  notebook {
-    padding: 0;
-
-    &.frame {
-      margin: 0;
-      border-width: 1px;
-      border-style: solid;
-      border-color: $border_color;
-
-      > header {
-        margin: 0;
-
-        &.top {
-          margin-bottom: 0;
-        }
-
-        &.bottom {
-          margin-top: 0;
-        }
-
-        &.left {
-          margin-right: 0;
-        }
-
-        &.right {
-          margin-left: 0;
-        }
-
-        &.top, &.bottom {
-          padding-left: 0;
-          padding-right: 0;
-        }
-
-        &.left, &.right {
-          padding-top: 0;
-          padding-bottom: 0;
-        }
-      }
-    }
-
-    > stack:not(:only-child) {
-      background-color: $base_color;
-    }
-
-    tab {
-      font-weight: bold;
-      padding: 6px 20px;
-      border-width: 0;
-      border-style: solid;
-      border-radius: 0;
-      border-color: $border_color;
-      color: $fg_color;
-      background-color: transparent;
-
-      &:checked {
-        color: $color_shadow;
-        border-color: $border_color;
-        background-color: $base_color;
-
-        &:backdrop {
-          background-image: none;
-          background-color: transparent;
-        }
-      }
-
-      &:backdrop {
-        border-color: $backdrop_border_color;
-        background-color: transparent;
-      }
-    }
-
-    > header {
-      background-color: $base_color;
+@mixin notebook_header() {
+  background-color: $base_color;
       
-      &:backdrop {
-        background-color: $backdrop_base_color;
-      }
+  &:backdrop {
+    background-color: $backdrop_base_color;
+  }
+  
+  // if the header is drawn before the view, the connecting border is drawn over and is not displayed
+  // add a 1px margin to draw the header away from the view and show the border
+  &.top {
+    margin-bottom: 1px;
+    box-shadow: 0 1px $border_color;
+  }
+  &.bottom {
+    box-shadow: 0 -1px $border_color;
+  }
+  &.left {
+    margin-right: 1px;
+    box-shadow: 1px 0 $border_color;
+  }
+  &.right {
+    box-shadow: -1px 0 $border_color;
+  }
+}
 
-      &.top {
-        box-shadow: 0 1px $border_color;
+@mixin notebook_tab($type, $pos) {
+  @if $type == "base" {
+    font-weight: bold;
+    padding: 6px 20px;
+    border-radius: $notebook_tab_radius;
+    border: 0px solid $border_color;
+    color: $fg_color;
+    background-color: transparent;
+    box-shadow: none;
 
-        > tabs > tab {
-          border-bottom: none;
-          border-right-width: 1px;
-
-          &:checked {
-            border-top-left-radius: $notebook_tab_radius;
-            border-top-right-radius: $notebook_tab_radius;
-          }
-        }
-      }
-
-      &.bottom {
-        box-shadow: 0 -1px $border_color;
-
-        > tabs > tab {
-          border-top: none;
-          border-right-width: 1px;
-
-          &:checked {
-            border-bottom-left-radius: $notebook_tab_radius;
-            border-bottom-right-radius: $notebook_tab_radius;
-          }
-        }
-      }
-
-      &.right {
-        box-shadow: -1px 0 $border_color;
-
-        > tabs > tab {
-          border-left: none;
-          border-bottom-width: 1px;
-
-          &:checked {
-            border-top-right-radius: $notebook_tab_radius;
-            border-bottom-right-radius: $notebook_tab_radius;
-          }
-        }
-      }
-
-      &.left {
-        box-shadow: 1px 0 $border_color;
-
-        > tabs > tab {
-          border-right: none;
-          border-bottom-width: 1px;
-
-          &:checked {
-            border-top-left-radius: $notebook_tab_radius;
-            border-bottom-left-radius: $notebook_tab_radius;
-          }
-        }
-      }
+    &:backdrop {
+      border-color: $backdrop_border_color;
+      background-color: transparent;
     }
-
-    // alignments
-    > header.top > tabs > arrow.up, > header.bottom > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
-
-      &:last-child {
-        margin-left: 2px;
-      }
+    
+    // separate tabs with their borders
+    @if $pos == "top" or $pos == "bottom" {
+      border-right-width: 1px;
+      
+      &:first-child { border-left-width: 1px; }
     }
-
-    > header.top > tabs > arrow.down, > header.bottom > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
-
-      &:first-child {
-        margin-right: 2px;
-      }
+    @else if $pos == "left" or $pos == "right" {
+      border-bottom-width: 1px;
+      
+      &:first-child { border-top-width: 1px; }
     }
+  }
 
-    > header.left > tabs > arrow.up, > header.right > tabs > arrow.up {
-      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+  @else if $type == "checked" {
+    color: $color_shadow;
+    border-color: $border_color;
+    background-color: $base_color;
 
-      &:last-child {
-        margin-top: 2px;
-      }
-    }
-
-    > header.left > tabs > arrow.down, > header.right > tabs > arrow.down {
-      -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
-
-      &:first-child {
-        margin-bottom: 2px;
-      }
-    }
-
-    > header > tabs > arrow {
-      color: $fg_color;
-
-      &:hover {
-        color: gtkshade($fg_color, 1.2);
-      }
-
-      &:active {
-        color: gtkshade($fg_color, 0.8);
-      }
-
-      &:disabled {
-        color: gtkshade($bg_color, 0.6);
-      }
+    &:backdrop {
+      background-image: none;
+      background-color: transparent;
     }
   }
 }
