@@ -32,7 +32,7 @@ def read_imports(theme: str):
 def get_themes():
     CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
     return sorted([name for name in os.listdir(CURRENT_DIR)
-        if os.path.isdir(os.path.join(CURRENT_DIR, name)) and not name.startswith('.') and name != 'common'])
+        if os.path.isdir(os.path.join(CURRENT_DIR, name)) and not name.startswith('.') and name != 'core'])
 
 def is_child_of(theme: str, target: str):
     for line in read_imports(theme):
