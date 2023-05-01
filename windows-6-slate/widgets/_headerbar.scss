@@ -4,13 +4,19 @@
     padding: 4px 8px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
-    background-image: url('assets/titlebar-focused-middle.png');
-    background-size: 1px 100%;
+    background-image: linear-gradient(
+      to right,
+      #4e4e4e,
+      #a3a3a3,
+      #4e4e4e
+    );
+    box-shadow: inset -1px 0 rgba(255,255,255,0.15),
+                inset 1px 0 rgba(255,255,255,0.15),
+                inset 0 1px rgba(255,255,255,0.15);
 
     &:backdrop {
       color: $backdrop_fg_color;
       background-color: $backdrop_bg_color;
-      background-image: url('assets/titlebar-unfocused-middle.png');
     }
     
     .tiled &, .tiled &:backdrop,
@@ -90,16 +96,16 @@
       &.close, &.maximize, &.minimize, &:not(separator) {
         margin: -1px;
         padding: 1px;
-        border: none;
-        box-shadow: none;
-        color: transparent;
-        background-color: transparent;
-        -gtk-icon-shadow: none;
-        
         min-height: 17px;
         min-width: 17px;
+        border: none;
+        color: transparent;
+        background-color: transparent;
+        background-size: 17px 17px;
         background-position: center center;
         background-repeat: no-repeat;
+        box-shadow: none;
+        -gtk-icon-shadow: none;
       }
 
       &.close { background-image: url('assets/close-normal.png');

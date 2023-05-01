@@ -76,15 +76,17 @@
 
     button {
       &.close, &.maximize, &.minimize {
-        padding: 7px 14px;
+        padding: 0px;
+        min-width: 44px;
+        min-height: 30px;
         border: none;
         color: transparent;
         background-color: transparent;
-        -gtk-icon-shadow: none;
-        
-        background-size:  100% 100%;
-        background-position: center;
+        background-size:  44px 30px;
+        background-position: center center;
         background-repeat: no-repeat;
+        box-shadow: none;
+        -gtk-icon-shadow: none;
         
         &:hover { background-color: gtkalpha($fg_color, 0.15); }
         &:active { background-color: gtkalpha($fg_color, 0.3); }
