@@ -779,7 +779,7 @@ notebook {
   }
   
   > header {
-    @include notebook_header();
+    @include notebook_header();   // TODO: add $pos argument?
     
     // only show the header border on the side connecting with the notebook view
     @if not $notebook_floating_tabs {
