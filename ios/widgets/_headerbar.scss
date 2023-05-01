@@ -1,105 +1,55 @@
-@mixin headerbar() {
-  headerbar {
+@mixin headerbar($type) {
+  @if $type == "base" {
     min-height: $headerbar_size;
     padding: 4px 8px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
     box-shadow: none;
 
-    &:backdrop {
-      color: $backdrop_fg_color;
-      background-color: $backdrop_bg_color;
-    }
-
-    .tiled &, .tiled &:backdrop,
-    .maximized &, .maximized &:backdrop {
-      border-radius: 0;
-    }
-    
-    // Fixes split headerbars
-    separator:first-child + &,
-    &:first-child {
-      &, &:backdrop {
-        border-top-left-radius: $window_radius;
-
-        .maximized &,
-        .tiled & { border-radius: 0; }
-      }
-    }
-
-    &:last-child {
-      &, &:backdrop {
-        border-top-right-radius: $window_radius;
-
-        .maximized &,
-        .tiled & { border-radius: 0; }
-      }
-    }
-
-    .title {
-      padding-left: 12px;
-      padding-right: 12px;
-      font-weight: bold;
-    }
-
-    .subtitle {
-      font-size: smaller;
-      padding-left: 12px;
-      padding-right: 12px;
-      color: gtkalpha(currentColor, 0.7);
-    }
-
     button {
       @include flat_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
     }
-
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
   }
+
+  @else if $type == "backdrop" {
+    color: $backdrop_fg_color;
+    background-color: $backdrop_bg_color;
+  }
+}
     
-  windowcontrols {
-    border-spacing: 6px;
-
-    &:not(.empty) {
-      &.start:dir(ltr),
-      &.end:dir(rtl) {
-        margin-right: 7px;
-      }
-
-      &.start:dir(rtl),
-      &.end:dir(ltr) {
-        margin-left: 7px;
-      }
-    }
-
-    button {
-      &.close, &.maximize, &.minimize {
-        padding: 2px 2px;
-        border: none;
-        color: transparent;
-        background-color: transparent;
-        -gtk-icon-shadow: none;
-        
-        background-position: center center;
-        background-repeat: no-repeat;
-      }
+@mixin titlebutton($type) {
+  // we can use padding and skip min-height/width and background-size
+  // since the images are SVGs, so they scale when rendered
+  padding: 2px 2px;
+  border: none;
+  color: transparent;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  box-shadow: none;
+  -gtk-icon-shadow: none;
       
-      &.close { background-image: url('assets/close-normal.svg');
-        &:hover { background-image: url('assets/close-hover.svg'); }
-        &:active { background-image: url('assets/close-active.svg'); }
-        &:backdrop { background-image: url('assets/close-backdrop.svg'); }
-      }
+  @if $type == "close" {
+    background-image: url('assets/close-normal.svg');
+    
+    &:hover { background-image: url('assets/close-hover.svg'); }
+    &:active { background-image: url('assets/close-active.svg'); }
+    &:backdrop { background-image: url('assets/close-backdrop.svg'); }
+  }
 
-      &.minimize { background-image: url('assets/minimize-normal.svg');
-        &:hover { background-image: url('assets/minimize-hover.svg'); }
-        &:active { background-image: url('assets/minimize-active.svg'); }
-        &:backdrop { background-image: url('assets/minimize-backdrop.svg'); }
-      }
+  @else if $type == "minimize" {
+    background-image: url('assets/minimize-normal.svg');
+    
+    &:hover { background-image: url('assets/minimize-hover.svg'); }
+    &:active { background-image: url('assets/minimize-active.svg'); }
+    &:backdrop { background-image: url('assets/minimize-backdrop.svg'); }
+  }
 
-      &.maximize { background-image: url('assets/maximize-normal.svg');
-        &:hover { background-image: url('assets/maximize-hover.svg'); }
-        &:active { background-image: url('assets/maximize-active.svg'); }
-        &:backdrop { background-image: url('assets/maximize-backdrop.svg'); }
-      }
-    }
+  @else if $type == "maximize" {
+    background-image: url('assets/maximize-normal.svg');
+    
+    &:hover { background-image: url('assets/maximize-hover.svg'); }
+    &:active { background-image: url('assets/maximize-active.svg'); }
+    &:backdrop { background-image: url('assets/maximize-backdrop.svg'); }
   }
 }

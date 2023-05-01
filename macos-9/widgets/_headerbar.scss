@@ -1,107 +1,57 @@
-@mixin headerbar() {
-  headerbar,
-  headerbar:not(.titlebar) {
+@mixin headerbar($type) {
+  @if $type == "base" {
     min-height: $headerbar_size;
     padding: 4px 8px;
     border-bottom: 1px solid gtkshade($border_color, 0.8);
     color: $titlebar_fg_color;
+    background-color: $titlebar_bg_color;
     background-image: url('assets/titlebar.png');
     background-size: 100% 32px;
     background-repeat: no-repeat repeat;
-    background-color: $titlebar_bg_color;
     box-shadow: inset 0 0 0 4px $titlebar_bg_color,
                 inset 1px 1px $light_shadow,
                 inset -1px -1px gtkshade($titlebar_bg_color, 0.85);
 
-    &:backdrop {
-      border-bottom-color: gtkshade($backdrop_border_color, 0.8);
-      color: $backdrop_fg_color;
-      background-image: none;
-      background-color: $titlebar_bg_color;
-      box-shadow: none;
-    }
-
-    .tiled &, .tiled &:backdrop,
-    .maximized &, .maximized &:backdrop {
-      border-radius: 0;
-    }
-    
-    // Fixes split headerbars
-    separator:first-child + &,
-    &:first-child {
-      &, &:backdrop {
-        border-top-left-radius: $window_radius;
-
-        .maximized &,
-        .tiled & { border-radius: 0; }
-      }
-    }
-
-    &:last-child {
-      &, &:backdrop {
-        border-top-right-radius: $window_radius;
-
-        .maximized &,
-        .tiled & { border-radius: 0; }
-      }
-    }
-
     .title {
-      padding-left: 12px;
-      padding-right: 12px;
-      font-weight: bold;
       background-color: $titlebar_bg_color;
       box-shadow: 0 10px $titlebar_bg_color,
                   0 -10px $titlebar_bg_color;
     }
 
     .subtitle {
-      font-size: smaller;
-      padding-left: 12px;
-      padding-right: 12px;
       background-color: $titlebar_bg_color;
     }
-
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
   }
+  
+  @else if $type == "backdrop" {
+    border-bottom-color: gtkshade($backdrop_border_color, 0.8);
+    color: $backdrop_fg_color;
+    background-color: $titlebar_bg_color;
+    background-image: none;
+    box-shadow: none;
+  }
+}
     
-  windowcontrols {
-    border-spacing: 6px;
+@mixin titlebutton($type) {
+  padding: 0px;
+  min-width: 17px;
+  min-height: 17px;
+  border: none;
+  color: transparent;
+  border-radius: 0;
+  background-color: $titlebar_bg_color;
+  background-size: 17px 17px;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: none;
+  -gtk-icon-shadow: none;
 
-    &:not(.empty) {
-      &.start:dir(ltr),
-      &.end:dir(rtl) {
-        margin-right: 7px;
-      }
-
-      &.start:dir(rtl),
-      &.end:dir(ltr) {
-        margin-left: 7px;
-      }
-    }
-
-    button {
-      &.close, &.maximize, &.minimize {
-        color: transparent;
-        padding: 0;
-        min-width: 17px;
-        min-height: 17px;
-        box-shadow: none;
-        border: none;
-        border-radius: 0;
-        -gtk-icon-shadow: none;
-        
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-      
-      &:backdrop {
-        background: $titlebar_bg_color;
-      }
-      
-      &.close { background: url('assets/close.png'), $titlebar_bg_color; }
-      &.minimize { background: url('assets/minimize.png'), $titlebar_bg_color; }
-      &.maximize { background: url('assets/maximize.png'), $titlebar_bg_color; }
-    }
+  // hide icons when not in focus
+  &:backdrop {
+    background: $titlebar_bg_color;
   }
+  
+  @if $type == "close" { background-image: url('assets/close.png'); }
+  @else if $type == "minimize" { background-image: url('assets/minimize.png'); }
+  @else if $type == "maximize" { background-image: url('assets/maximize.png'); }
 }

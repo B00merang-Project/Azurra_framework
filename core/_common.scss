@@ -520,9 +520,73 @@ searchbar {
 }
 
 @include infobar();
-@include headerbar();
-// NOTE: titlebuttons are defined in _headerbar.scss, should it go to a separate file?
-// NOTE: should window.devel be implemented?
+
+headerbar {
+  // put titles here so that they can be overridden/extended in headerbar if desired
+  .title {
+    padding-left: 12px;
+    padding-right: 12px;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    font-size: smaller;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: gtkalpha(currentColor, 0.7);
+  }
+
+  @include headerbar("base");
+  
+  &:backdrop { @include headerbar("backdrop"); }
+  
+  .tiled &, .tiled &:backdrop,
+  .maximized &, .maximized &:backdrop {
+    border-radius: 0;
+  }
+  
+  &.titlebar,
+  .titlebar & {
+    border-radius: $window_radius $window_radius 0px 0px;
+  }
+  
+  // Fix split headerbars
+  separator:first-child + &,
+  &:first-child {
+    &, &:backdrop { border-top-left-radius: $window_radius;
+      .maximized &, .tiled & { border-radius: 0; }
+    }
+  }
+
+  &:last-child {
+    &, &:backdrop { border-top-right-radius: $window_radius;
+      .maximized &, .tiled & { border-radius: 0; }
+    }
+  }
+  
+  windowcontrols {
+    border-spacing: 6px;
+
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: 7px;
+      }
+
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: 7px;
+      }
+    }
+    
+    button {
+      &.close { @include titlebutton("close"); }
+      &.maximize { @include titlebutton("maximize"); }
+      &.minimize { @include titlebutton("minimize"); }
+      .maximized &.maximize { @include titlebutton("restore"); }
+    }
+  }
+}
 
 // pathbar
 pathbar > button {
