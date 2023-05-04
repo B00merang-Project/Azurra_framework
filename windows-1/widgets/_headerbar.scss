@@ -1,5 +1,5 @@
-@mixin headerbar() {
-  headerbar {
+@mixin headerbar($type) {
+  @if $type == "base" {
     min-height: $headerbar_size;
     padding: 2px;
     border-bottom: 1px solid $border_color;
@@ -7,61 +7,13 @@
     background-color: $titlebar_bg_color;
     background-image: none;
     box-shadow: none;
-
-    &:backdrop {
-      border-bottom-color: $backdrop_border_color;
-      color: $backdrop_fg_color;
-      background-color: $titlebar_fg_color;
-      background-image: linear-gradient(
-        to bottom,
-        $titlebar_bg_color 50%,
-        transparent 50%
-      ),
-      linear-gradient(
-        to right,
-        $titlebar_bg_color 50%,
-        transparent 50%
-      );
-      background-size: 2px 2px;
-    }
-
-    .tiled &, .tiled &:backdrop,
-    .maximized &, .maximized &:backdrop {
-      border-radius: 0;
-    }
     
-    // Fixes split headerbars
-    separator:first-child + &,
-    &:first-child {
-      &, &:backdrop {
-        border-top-left-radius: $window_radius;
-
-        .maximized &,
-        .tiled & { border-radius: 0; }
-      }
-    }
-
-    &:last-child {
-      &, &:backdrop {
-        border-top-right-radius: $window_radius;
-
-        .maximized &,
-        .tiled & { border-radius: 0; }
-      }
-    }
-
     .title {
-      padding-left: 12px;
-      padding-right: 12px;
-      font-weight: bold;
       color: $titlebar_fg_color;
       background-color: $fg_color;
     }
 
     .subtitle {
-      font-size: smaller;
-      padding-left: 12px;
-      padding-right: 12px;
       color: gtkalpha($titlebar_fg_color, 0.7);
       background-color: $fg_color;
     }
@@ -69,49 +21,45 @@
     button {
       @include flat_buttons();
     }
-    
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
   }
-    
-  windowcontrols {
-    border-spacing: 6px;
-
-    &:not(.empty) {
-      &.start:dir(ltr),
-      &.end:dir(rtl) {
-        margin-right: 7px;
-      }
-
-      &.start:dir(rtl),
-      &.end:dir(ltr) {
-        margin-left: 7px;
-      }
-    }
-
-    button {
-      &.close, &.maximize, &.minimize {
-        color: transparent;
-        padding: 2px 2px;
-        border-radius: 0;
-        -gtk-icon-shadow: none;
-
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      &.close { background-image: url('assets/close.svg'); }
-      &.minimize { background-image: url('assets/minimize.svg'); }
-      &.maximize { background-image: url('assets/maximize.svg'); }
-      .maximized &.maximize { background-image: url('assets/restore.svg'); }
-    }
-
-    // TOOD: does this still work?
-    .horizontal.right .titlebutton.minimize { margin-left: -7px; }
+  
+ @else if $type == "backdrop" {
+    border-bottom-color: $backdrop_border_color;
+    color: $backdrop_fg_color;
+    background-color: $titlebar_fg_color;
+    background-image: linear-gradient(
+      to bottom,
+      $titlebar_bg_color 50%,
+      transparent 50%
+    ),
+    linear-gradient(
+      to right,
+      $titlebar_bg_color 50%,
+      transparent 50%
+    );
+    background-size: 2px 2px;
   }
-
-  // TODO: move to window.scss if still valid
-  window.ssd {
-    headerbar, .titlebar { margin: 0px; }
-    &.maximized headerbar, &.maximized .titlebar { margin: 0px; }
+}
+    
+@mixin titlebutton($type) {
+  padding: 2px 2px;
+  border-radius: 0;
+  color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: none;
+  -gtk-icon-shadow: none;
+  
+  @if $type == "close" {
+    background-image: url('assets/close.svg');
+  }
+  @else if $type == "minimize" {
+    background-image: url('assets/minimize.svg');
+  }
+  @else if $type == "maximize" {
+    background-image: url('assets/maximize.svg');
+  }
+  @else if $type == "restore" {
+    background-image: url('assets/restore.svg');
   }
 }

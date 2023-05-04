@@ -1,118 +1,49 @@
-@mixin headerbar() {
-  headerbar,
-  headerbar:not(.titlebar) {
+@mixin headerbar($type) {
+  @if $type == "base" {
     min-height: $headerbar_size;
     padding: 2px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
     background-image: none;
     box-shadow: none;
-
-    &:backdrop {
-      color: $backdrop_fg_color;
-      background-image: none;
-      background-color: gtkshade($backdrop_bg_color, 0.8);
-    }
-
-    .tiled &, .tiled &:backdrop,
-    .maximized &, .maximized &:backdrop {
-      border-radius: 0;
-    }
     
-    // Fixes split headerbars
-    separator:first-child + &,
-    &:first-child {
-      &, &:backdrop {
-        border-top-left-radius: $window_radius;
-
-        .maximized &,
-        .tiled & { border-radius: 0; }
-      }
-    }
-
-    &:last-child {
-      &, &:backdrop {
-        border-top-right-radius: $window_radius;
-
-        .maximized &,
-        .tiled & { border-radius: 0; }
-      }
-    }
-
-    .title {
-      padding-left: 12px;
-      padding-right: 12px;
-      font-weight: bold;
-      color: $selected_fg_color;
-      
+    .title { color: $selected_fg_color;
       &:backdrop { color: $backdrop_fg_color; }
     }
 
-    .subtitle {
-      font-size: smaller;
-      padding-left: 12px;
-      padding-right: 12px;
-      color: gtkalpha($selected_fg_color, 0.7);
-      
+    .subtitle { color: gtkalpha($selected_fg_color, 0.7);
       &:backdrop { color: gtkalpha($backdrop_fg_color, 0.7); }
     }
-    
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
   }
-    
-  windowcontrols {
-    padding: 0px;
-    border-spacing: 6px;
 
-    &:not(.empty) {
-      &.start:dir(ltr),
-      &.end:dir(rtl) {
-        margin-right: 7px;
-      }
-
-      &.start:dir(rtl),
-      &.end:dir(ltr) {
-        margin-left: 7px;
-      }
-    }
-
-    button {
-      &.close, &.maximize, &.minimize {
-        padding: 0px;
-        min-width: 16px;
-        min-height: 16px;
-        border-radius: 0;
-        color: transparent;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: 14px 12px;
-        -gtk-icon-shadow: none;
-      }
-      
-      &.close { background-image: url('assets/close.png'); }
-      &.minimize { background-image: url('assets/minimize.png'); }
-      &.maximize { background-image: url('assets/maximize.png'); }
-      .maximized &.maximize { background-image: url('assets/restore.png'); }
-    }
-    
-    .horizontal.right .titlebutton.maximize {
-      margin-left: -6px;
-      margin-right: -4px;
-    }
+  @else if $type == "backdrop" {
+    color: $backdrop_fg_color;
+    background-image: none;
+    background-color: gtkshade($backdrop_bg_color, 0.8);
   }
+}
+
+@mixin titlebutton($type) {
+  padding: 0px;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 0;
+  color: transparent;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 14px 12px;
+  -gtk-icon-shadow: none;
   
-  // TODO: move to window mixin
-  window.ssd headerbar, window.ssd .titlebar {
-    padding: 0px;
-    margin: 0px;
-    border: 3px solid transparent;
-    border-bottom: none;
+  @if $type == "close" {
+    background-image: url('assets/close.png');
   }
-
-  window.ssd.maximized headerbar, window.ssd.maximized .titlebar {
-    border: 0px;
-    border-bottom: 1px solid transparent;
-    box-shadow: none;
-    margin: 0px;
+  @else if $type == "minimize" {
+    background-image: url('assets/minimize.png');
+  }
+  @else if $type == "maximize" {
+    background-image: url('assets/maximize.png');
+  }
+  @else if $type == "restore" {
+    background-image: url('assets/restore.png');
   }
 }

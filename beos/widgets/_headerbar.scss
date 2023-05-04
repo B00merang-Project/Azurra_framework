@@ -20,21 +20,22 @@
                 inset -1px -1px gtkshade($bg_color, 0.85);
   }
 }
-    
+
 @mixin titlebutton($type) {
   padding: 0px;
-  min-width: 14px;
-  min-height: 14px;
   border: none;
   border-radius: 0;
   color: transparent;
-  background-color: transparent;
+  // TODO: make titlebutton size a property?
+  min-width: 14px;
+  min-height: 14px;
   background-size: 14px 14px;
+  background-color: transparent;
   background-repeat: no-repeat;
   background-position: center center;
   box-shadow: none;
   -gtk-icon-shadow: none;
-  
+
   @if $type == "close" {
     background-image: url('assets/close-focused.png');
     

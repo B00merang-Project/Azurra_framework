@@ -1,5 +1,5 @@
-@mixin headerbar() {
-  headerbar {
+@mixin headerbar($type) {
+  @if $type == "base" {
     min-height: $headerbar_size;
     padding: 4px 8px;
     color: $titlebar_fg_color;
@@ -7,44 +7,11 @@
     background-image: url('assets/titlebar-focused-middle.png');
     background-size: 1px 100%;
     box-shadow: none;
-
-    &:backdrop {
-      color: $backdrop_fg_color;
-      background-color: $backdrop_bg_color;
-      background-image: url('assets/titlebar-unfocused-middle.png');
-    }
     
-    .tiled &, .tiled &:backdrop,
-    .maximized &, .maximized &:backdrop {
-      border-radius: 0;
-    }
-
-    // Fixes split headerbars
-    separator:first-child + &,
-    &:first-child {
-      &, &:backdrop {
-        border-top-left-radius: $window_radius;
-
-        .maximized &,
-        .tiled & { border-radius: 0; }
-      }
-    }
-
-    &:last-child {
-      &, &:backdrop {
-        border-top-right-radius: $window_radius;
-
-        .maximized &,
-        .tiled & { border-radius: 0; }
-      }
-    }
-
+    // TODO: remove text shadow for metallic theme
     .title {
-      padding-left: 12px;
-      padding-right: 12px;
-      font-weight: bold;
       color: $selected_fg_color;
-      padding: 0 12px;
+      //@if $theme != "xp-metallic" {
       text-shadow: 1px 1px $dark_shadow;
       
       &:backdrop {
@@ -54,89 +21,80 @@
     }
 
     .subtitle {
-      font-size: smaller;
-      padding-left: 12px;
-      padding-right: 12px;
       color: gtkalpha($selected_fg_color, 0.7);
     }
-
+    
     button {
-      // TODO: make headerbar buttons more like titlebuttons
+      // TODO: make headerbar buttons more like titlebuttons ?
       @include flat_buttons();
     }
-
-    &.titlebar, .titlebar & { border-radius: $window_radius $window_radius 0px 0px; }
   }
+
+  @else if $type == "backdrop" {
+    color: $backdrop_fg_color;
+    background-color: $backdrop_bg_color;
+    background-image: url('assets/titlebar-unfocused-middle.png');
+  }
+}
     
-  windowcontrols {
-    border-spacing: 6px;
+@mixin titlebutton($type) {
+  padding: 0px;
+  min-width: 21px;
+  min-height: 21px;
+  border: none;
+  color: transparent;
+  background-color: transparent;
+  background-size: 21px 21px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-shadow: none;
+  -gtk-icon-shadow: none;
+      
+  @if $type == "close" {
+    background-image: url('assets/close-normal.png');
+    
+    &:hover { background-image: url('assets/close-hover.png'); }
+    &:active { background-image: url('assets/close-active.png'); }
 
-    &:not(.empty) {
-      &.start:dir(ltr),
-      &.end:dir(rtl) {
-        margin-right: 7px;
-      }
-
-      &.start:dir(rtl),
-      &.end:dir(ltr) {
-        margin-left: 7px;
-      }
+    &:backdrop { background-image: url('assets/close-backdrop.png');
+      &:hover { background-image: url('assets/close-backdrop-hover.png'); }
+      &:active { background-image: url('assets/close-active.png'); }
     }
+  }
 
-    button {
-      &.close, &.maximize, &.minimize {
-        padding: 0px;
-        min-width: 21px;
-        min-height: 21px;
-        border: none;
-        color: transparent;
-        background-color: transparent;
-        background-size: 21px 21px;
-        background-position: center center;
-        background-repeat: no-repeat;
-        box-shadow: none;
-        -gtk-icon-shadow: none;
-      }
-      
-      &.close { background-image: url('assets/close-normal.png');
-        &:hover { background-image: url('assets/close-hover.png'); }
-        &:active { background-image: url('assets/close-active.png'); }
+  @else if $type == "minimize" {
+    background-image: url('assets/minimize-normal.png');
+    
+    &:hover { background-image: url('assets/minimize-hover.png'); }
+    &:active { background-image: url('assets/minimize-active.png'); }
 
-        &:backdrop { background-image: url('assets/close-backdrop.png');
-          &:hover { background-image: url('assets/close-backdrop-hover.png'); }
-          &:active { background-image: url('assets/close-active.png'); }
-        }
-      }
+    &:backdrop { background-image: url('assets/minimize-backdrop.png');
+      &:hover { background-image: url('assets/minimize-backdrop-hover.png'); }
+      &:active { background-image: url('assets/minimize-active.png'); }
+    }
+  }
 
-      &.minimize { background-image: url('assets/minimize-normal.png');
-        &:hover { background-image: url('assets/minimize-hover.png'); }
-        &:active { background-image: url('assets/minimize-active.png'); }
+  @else if $type == "maximize" {
+    background-image: url('assets/maximize-normal.png');
+    
+    &:hover { background-image: url('assets/maximize-hover.png'); }
+    &:active { background-image: url('assets/maximize-active.png'); }
 
-        &:backdrop { background-image: url('assets/minimize-backdrop.png');
-          &:hover { background-image: url('assets/minimize-backdrop-hover.png'); }
-          &:active { background-image: url('assets/minimize-active.png'); }
-        }
-      }
+    &:backdrop { background-image: url('assets/maximize-backdrop.png');
+      &:hover { background-image: url('assets/maximize-backdrop-hover.png'); }
+      &:active { background-image: url('assets/maximize-active.png'); }
+    }
+  }
+  
+  @else if $type == "restore" {
+    background-image: url('assets/restore-normal.png');
+    
+    &:hover { background-image: url('assets/restore-hover.png'); }
+    &:active { background-image: url('assets/restore-active.png'); }
 
-      &.maximize { background-image: url('assets/maximize-normal.png');
-        &:hover { background-image: url('assets/maximize-hover.png'); }
-        &:active { background-image: url('assets/maximize-active.png'); }
-
-        &:backdrop { background-image: url('assets/maximize-backdrop.png');
-          &:hover { background-image: url('assets/maximize-backdrop-hover.png'); }
-          &:active { background-image: url('assets/maximize-active.png'); }
-        }
-      }
-      
-      .maximized &.maximize { background-image: url('assets/restore-normal.png');
-        &:hover { background-image: url('assets/restore-hover.png'); }
-        &:active { background-image: url('assets/restore-active.png'); }
-
-        &:backdrop { background-image: url('assets/restore-backdrop.png');
-          &:hover { background-image: url('assets/restore-backdrop-hover.png'); }
-          &:active { background-image: url('assets/restore-active.png'); }
-        }
-      }
+    &:backdrop { background-image: url('assets/restore-backdrop.png');
+      &:hover { background-image: url('assets/restore-backdrop-hover.png'); }
+      &:active { background-image: url('assets/restore-active.png'); }
     }
   }
 }
