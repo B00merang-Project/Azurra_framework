@@ -1,6 +1,5 @@
 @mixin entry($type : "base") {
-  // use different border color than luna. This is the only difference with luna/widgets/entry
-  $_border : gtkmix($selected_bg_color, $bg_color, 0.3);
+  $_border : gtkshade($bg_color, 0.75);
   $_disabled_border : gtkmix($_border, $disabled_bg_color, 0.5);
   
   @if $type == "base" {

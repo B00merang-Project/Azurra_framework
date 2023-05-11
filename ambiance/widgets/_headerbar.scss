@@ -12,25 +12,30 @@
   box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.08);
 
   &:hover {
+    border: 1px solid gtkshade($headerbar_bg_color, 0.8);
+    border-top-color: gtkshade(gtkshade($headerbar_bg_color, 0.8), 1.1);
+    border-left-color: gtkshade(gtkshade($headerbar_bg_color, 0.8), 1.05);
+    border-right-color: gtkshade(gtkshade($headerbar_bg_color, 0.8), 1.05);
     color: $headerbar_fg_color;
-    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
     background-color: gtkshade($headerbar_bg_color, 1.1);
+    background-image: none;
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
   }
   
   &:active {
-    color: $headerbar_fg_color;
-    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
-    background-color: gtkshade($headerbar_bg_color, 1.1);
     border-color: gtkshade(gtkshade($headerbar_bg_color, 0.8), 0.9);
+    color: $headerbar_fg_color;
+    background-color: gtkshade($headerbar_bg_color, 1.1);
     background-image: none;
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
   }
 
   &:checked {
-    color: $headerbar_fg_color;
-    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
-    background-color: gtkshade($headerbar_bg_color, 1.1);
     border-color: gtkshade(gtkshade($headerbar_bg_color, 0.8), 0.9);
+    color: $headerbar_fg_color;
+    background-color: gtkshade($headerbar_bg_color, 1.1);
     background-image: none;
+    box-shadow: inset 0 0 0 1px gtkalpha($light_shadow, 0.06);
     
     @if $variant != 'light' {
       box-shadow: inset 2px 2px gtkalpha($dark_shadow, 0.4),
@@ -48,8 +53,8 @@
     }
     
     &:disabled {
-      color: gtkmix($headerbar_fg_color, $disabled_fg_color, 0.1);
       border-color: gtkmix($headerbar_fg_color, $disabled_bg_color, 0.85);
+      color: gtkmix($headerbar_fg_color, $disabled_fg_color, 0.1);
       background-image: none;
       
       &:backdrop {

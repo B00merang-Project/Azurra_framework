@@ -1,3 +1,35 @@
+@mixin headerbutton() {
+  @include button('base', $headerbar_bg_color, $headerbar_fg_color);
+  
+  &:hover {
+    @include button('hover', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:active {
+    @include button('active', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:checked {
+    @include button('checked', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:checked:backdrop {
+    @include button('checked-backdrop', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:checked:disabled {
+    @include button('checked-disabled', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:checked:disabled:backdrop {
+    @include button('checked-disabled-backdrop', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:disabled {
+    @include button('disabled', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:disabled:backdrop {
+    @include button('disabled-backdrop', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:backdrop {
+    @include button('backdrop', $headerbar_bg_color, $headerbar_fg_color);
+  }
+}
+
 @mixin headerbar($type) {
   @if $type == "base" {
     min-height: $headerbar_size;
@@ -8,7 +40,7 @@
     box-shadow: inset 0 -2px gtkalpha($dark_shadow, 0.045);
    
     button {
-      @include normal_buttons($headerbar_bg_color, $headerbar_fg_color, $border_color);
+      @include headerbutton();
     }
   }
 
@@ -22,5 +54,5 @@
 
 // make all titlebutton types look like a flat button 
 @mixin titlebutton($type) {
-  @include flat_buttons($bg_color, $fg_color, $border_color);
+  @extend %button_flat;
 }

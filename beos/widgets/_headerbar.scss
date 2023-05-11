@@ -8,8 +8,7 @@
                 inset -1px -1px $titlebar_bg_color;
 
     button {
-      @include flat_buttons();
-      //@include normal_buttons($headerbar_bg_color, $headerbar_fg_color, gtkshade($border_color, 0.9));
+      @extend %button_flat;
     }
   }
 

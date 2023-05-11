@@ -21,13 +21,24 @@
     }
 
     button {
-    	@include normal_buttons($selected_bg_color, $selected_fg_color, gtkshade($selected_bg_color, 0.8));
+    	@include button('base', $selected_bg_color, $selected_fg_color);
+    	
+    	&:hover {
+    	  @include button('hover', $selected_bg_color, $selected_fg_color);
+    	}
+    	&:active, &:checked {
+    	  @include button('active', $selected_bg_color, $selected_fg_color);
+  	  }
+  	  &:backdrop {
+  	    @include button('backdrop', $selected_bg_color, $selected_fg_color);
+	    }
     }
   }
 
   infobar .close,
   searchbar .close {
-    @include flat_buttons($selected_bg_color, $selected_fg_color, gtkshade($selected_bg_color, 0.8));
+    @extend %button_flat;
+    
     min-width: 16px;
     min-height: 16px;
     padding: 4px;

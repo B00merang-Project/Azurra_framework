@@ -1,178 +1,92 @@
-// TODO: OSD buttons. Either a new mixin or rework normal/flat buttons to generate with received colors only 
-// TODO: unify flat with 'normal' buttons -> make flat a state and buttons() return code for each state
-@mixin normal_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
-  padding: 4px 8px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: $button_radius;
-  color: $button_fg;
-  border-color: $button_border;
-  background-color: $button_bg;
-  background-image: none;
-  box-shadow: none;
+@mixin button($type, $_bg : $bg_color, $_fg : $fg_color) {
+  // DOC
+  // @if $type == "base"
+  // @else if $type == "hover"
+  // @else if $type == "active"
+  // @else if $type == "checked"
+  // @else if $type == "checked-backdrop"
+  // @else if $type == "checked-disabled"
+  // @else if $type == "checked-disabled-backdrop"
+  // @else if $type == "disabled"
+  // @else if $type == "disabled-backdrop"
+  // @else if $type == "backdrop"
+  // @else if $type == "flat"
+  // @else if $type == "flat-backdrop"
+  // @else if $type == "flat-disabled"
+  // @else if $type == "flat-disabled-backdrop"
 
-  &:hover {
-    color: $button_fg;
-    border-color: $button_border;
-    background-color: gtkshade($button_bg, 1.1);
+  // local color definitions
+  // we remix the colors based on the related colors from _colors
+  // this allows to use one mixin for all button types (osd, suggested-action, destructive-action)
+  $_border : gtkshade($_bg, 0.9);
+  
+  $_disabled_bg : gtkshade($_bg, 0.9);
+  $_disabled_fg : gtkmix($_fg, $_bg, 0.2);
+  $_disabled_border : gtkshade($_bg, 0.95);
+  
+  @if $type == "base" {
+    padding: 4px 8px;
+    border-radius: $button_radius;
+    border: 1px solid $_border;
+    color: $_fg;
+    background-color: $_bg;
+    background-image: none;
+    text-shadow: none;
+    box-shadow: none;
+    -gtk-icon-shadow: none;
   }
 
-  &:active, &:checked {
-    color: $button_fg;
-    border-color: gtkshade($button_border, 0.9);
-    background-color: gtkshade($button_bg, 0.85);
+  @else if $type == "hover" {
+    color: $_fg;
+    border-color: $_border;
+    background-color: gtkshade($_bg, 1.1);
+  }
 
-    &:backdrop {
-      color: $backdrop_fg_color;
-      border-color: gtkshade($backdrop_bg_color, 0.85);
-      background-color: gtkshade($backdrop_bg_color, 0.85);
-    }
-    
-    &:disabled {
-      color: gtkmix($button_fg, $disabled_fg_color, 0.1);
-      border-color: gtkmix(gtkshade($button_bg, 0.85), $disabled_bg_color, 0.6);
-      background-color: gtkmix(gtkshade($button_bg, 0.85), $disabled_bg_color, 0.1);
+  // normally, if a theme doesn't use :backdrop states we'd remove them
+  // but since this is a template, we keep them
+  @else if $type == "active"
+  or $type == "checked"
+  or $type == "checked-backdrop" {
+    color: $_fg;
+    border-color: gtkshade($_border, 0.8);
+    background-color: gtkshade($_bg, 0.8);
+  }
+
+  @else if $type == "checked-disabled"
+  or $type == "checked-disabled-backdrop" {
+    color: $_disabled_fg;
+    border-color: gtkshade($_disabled_border, 0.8);
+    background-color: gtkshade($_disabled_bg, 0.8);
+  }
       
-      &:backdrop {
-        color: gtkmix($button_fg, $disabled_fg_color, 0.1);
-        border-color: gtkmix(gtkshade($button_bg, 0.85), $backdrop_disabled_bg_color, 0.6);
-        background-color: gtkmix(gtkshade($button_bg, 0.85), $backdrop_disabled_bg_color, 0.1);
-      }
-    }
+  @else if $type == "disabled"
+  or $type == "disabled-backdrop" {
+    color: $_disabled_fg;
+    border-color: $_disabled_border;
+    background-color: $_disabled_bg;
   }
-
-  &:disabled {
-    color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.1);
-    border-color: gtkmix($button_bg, $disabled_bg_color, 0.6);
-    background-color: gtkmix($button_bg, $disabled_bg_color, 0.1);
-    
-    &:backdrop {
-      color: $backdrop_disabled_fg_color;
-      border-color: $backdrop_border_color;
-      background-color: $backdrop_disabled_bg_color;
-    }
+  
+  @else if $type == "backdrop" {
+    color: $_fg;
+    border-color: $_border;
+    background-color: $_bg;
   }
-
-  &:backdrop {
-    border-color: $backdrop_border_color;
-    color: $backdrop_fg_color;
-    background-color: $backdrop_bg_color;
-  }
-}
-
-@mixin flat_buttons($button_bg : $bg_color, $button_fg : $fg_color, $button_border : $border_color) {
-  border-color: transparent;
-  border-radius: $button_radius;
-  color: $button_fg;
-  background-color: transparent;
-  background-image: none;
-  box-shadow: none;
-
-  &:hover {
-    border-color: $button_border;
-    color: $button_fg;
-    background-color: $button_bg;
-  }
-
-  &:active, &:checked {
-    border-color: $selected_bg_color;
-    color: $selected_fg_color;
-    background-color: $selected_bg_color;
-    
-    &:backdrop {
-      border-color: $backdrop_selected_bg_color;
-      color: $backdrop_selected_fg_color;
-      background-color: $backdrop_selected_bg_color;
-    }
-  }
-
-  &:disabled {
-    border-color: transparent;
-    color: gtkalpha($button_fg, 0.8);
-    background-color: transparent;
-    
-    &:backdrop {
-      border-color: transparent;
-      color: gtkalpha($button_fg, 0.7);
-      background-color: transparent;
-    }
-  }
-
-  &:backdrop {
-    border-color: transparent;
-    background-color: transparent;
-    color: $backdrop_fg_color;
-  }
-}
-
-// TODO: unify destructive and suggested buttons?
-@mixin action_button($button_bg, $button_fg, $button_border) {
-  @warn "Not implemented";
-}
-
-@mixin destructive_button() {
-  button.destructive-action {
+  
+  // flat states
+  @else if $type == "flat"
+  or $type == "flat-backdrop" {
     border-radius: $button_radius;
-    border: 1px solid gtkmix($error_color, $fg_color, 0.2);
-    color: gtkmix($selected_fg_color, $error_color, 0.1);
-    background-color: $error_color;
-
-    &:hover {
-      border-color: gtkmix($error_color, $fg_color, 0.3);
-      background-color: gtkmix($error_color, $selected_fg_color, 0.2);
-    }
-
-    &:active {
-      border-color: gtkmix($error_color, $fg_color, 0.3);
-      background-color: gtkmix($error_color, $fg_color, 0.1);
-    }
-
-    &:backdrop {
-      border-color: gtkmix($error_color, $backdrop_fg_color, 0.2);
-      color: gtkmix($backdrop_selected_fg_color, $error_color, 0.1);
-      background-color: gtkmix($error_color, $backdrop_bg_color, 0.3);
-    }
+    border-color: transparent;
+    color: $_fg;
+    background-color: transparent;
+    background-image: none;
+    text-shadow: none;
+    box-shadow: none;
+    -gtk-icon-shadow: none;
   }
-}
-
-@mixin suggested_button() {
-  button.suggested-action {
-    border-radius: $button_radius;
-    border-width: 1px solid $selected_bg_color;
-    color: gtkmix($selected_fg_color, $selected_bg_color, 0.1);
-    background-color: gtkmix($selected_bg_color, $selected_fg_color, 0.25);
-
-    &:hover {
-      border-color: gtkmix($selected_bg_color, $selected_fg_color, 0.2);
-      background-color: gtkmix($selected_bg_color, $selected_fg_color, 0.2);
-    }
-
-    &:active, &:checked {
-      border-color: gtkmix($selected_bg_color, $fg_color, 0.1);
-      background-color: gtkmix($selected_bg_color, $fg_color, 0.1);
-
-      &:backdrop {
-        border-color: gtkmix($backdrop_selected_bg_color, $backdrop_fg_color, 0.1);
-        background-color: gtkmix($backdrop_selected_bg_color, $backdrop_fg_color, 0.1);
-      }
-    }
-
-    &:disabled {
-      border-color: gtkmix($selected_bg_color, $disabled_bg_color, 0.2);
-      color: gtkmix($selected_fg_color, $disabled_fg_color, 0.2);
-      background-color: gtkmix($selected_bg_color, $disabled_bg_color, 0.2);
-
-      &:backdrop {
-        border-color: gtkmix($backdrop_selected_bg_color, $backdrop_disabled_bg_color, 0.2);
-        color: gtkmix($backdrop_selected_fg_color, $backdrop_disabled_fg_color, 0.2);
-        background-color: gtkmix($backdrop_selected_bg_color, $backdrop_disabled_bg_color, 0.2);
-      }
-    }
-
-    &:backdrop {
-      border-color: $backdrop_selected_bg_color;
-      color: $backdrop_selected_fg_color;
-      background-color: $backdrop_selected_bg_color;
-    }
+  
+  @else if $type == "flat-disabled"
+  or $type == "flat-disabled-backdrop" {
+    color: $_disabled_fg;
   }
 }

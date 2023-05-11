@@ -1,3 +1,13 @@
+@mixin headerbutton() {
+  @extend %button_flat;
+
+  // fix hover bg color
+  // TODO: implement a better solution
+  &:hover:not(:checked) {
+    background-color: gtkshade($headerbar_bg_color, 1.2);
+  }
+}
+
 @mixin headerbar($type) {
   @if $type == "base" {
     min-height: $headerbar_size;
@@ -8,7 +18,7 @@
     box-shadow: none;
 
     button {
-      @include flat_buttons($headerbar_bg_color, $headerbar_fg_color, $headerbar_bg_color); 
+      @include headerbutton();
     }
   }
   
@@ -24,5 +34,12 @@
   padding: 2px 2px;
   background-color: transparent;
   
-  &:active { color: gtkshade($titlebar_fg_color, 0.85); }
+  // override headerbar button override
+  &:hover:not(:checked) {
+    background-color: transparent;
+  }
+  
+  &:active {
+    color: gtkshade($titlebar_fg_color, 0.85);
+  }
 }

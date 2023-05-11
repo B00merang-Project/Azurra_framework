@@ -1,3 +1,7 @@
+@mixin headerbutton() {
+  @extend %button_flat;
+}
+
 @mixin headerbar($type) {
   @if $type == "base" {
     min-height: $headerbar_size;
@@ -13,7 +17,7 @@
                 inset -1px -1px $titlebar_bg_color;
 
     button {
-      @include flat_buttons();
+      @include headerbutton();
     }
   }
 
@@ -30,7 +34,7 @@
   }
 }
 
-%void_button {
+@mixin titlebutton($type) {
   padding: 0px;
   min-width: 14px;
   min-height: 14px;
@@ -43,25 +47,20 @@
   background-position: center center;
   box-shadow: none;
   -gtk-icon-shadow: none;
-}
-
-@mixin titlebutton($type) {
+  
   @if $type == "close" {
-    @extend %void_button;
     background-image: url('assets/close-focused.png');
     
     &:backdrop { background-image: url('assets/close-unfocused.png'); }
   } 
   
   @else if $type == "maximize" {
-    @extend %void_button;
     background-image: url('assets/maximize-focused.png');
     
     &:backdrop { background-image: url('assets/maximize-unfocused.png'); }
   }
   
   @else if $type == "minimize" {
-    @extend %void_button;
     background-image: url('assets/minimize-focused.png');
     
     &:backdrop { background-image: url('assets/minimize-unfocused.png'); }

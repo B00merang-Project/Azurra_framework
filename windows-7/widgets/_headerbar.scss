@@ -1,3 +1,7 @@
+@mixin headerbutton() {
+  @extend %button_flat;
+}
+
 @mixin headerbar($type) {
   @if $type == "base" {
     min-height: $headerbar_size;
@@ -14,7 +18,7 @@
                 inset 0 1px gtkalpha($light_shadow, 0.6);
 
     button {
-      @include flat_buttons();
+      @include headerbutton();
     }
   }
 

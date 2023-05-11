@@ -37,7 +37,9 @@ image:disabled { -gtk-icon-filter: opacity(0.5); }
       border-radius: $viewitem_radius;
     }
     
-    &:backdrop { @include selected_items('backdrop'); }
+    &:backdrop {
+      @include selected_items('backdrop');
+    }
   }
 }
 
@@ -137,7 +139,9 @@ gridview {
       // TODO: use 'selected' instead, or pass no value
       @include selected_items('normal');
       
-      &:backdrop { @include selected_items('backdrop'); }
+      &:backdrop {
+        @include selected_items('backdrop');
+      }
     }
 
     box { // cells
@@ -359,10 +363,16 @@ entry {
     > placeholder { opacity: 0; }
   }
 
-  &:disabled { @include entry("disabled");
-    &:backdrop { @include entry("disabled-backdrop"); }
+  &:disabled {
+    @include entry("disabled");
+    
+    &:backdrop {
+      @include entry("disabled-backdrop");
+    }
   }
-  &:backdrop { @include entry("backdrop"); }
+  &:backdrop {
+    @include entry("backdrop");
+  }
 
   &.flat,
   &.flat:focus {
@@ -446,13 +456,141 @@ editablelabel > stack > text {
   }
 }
 
-// TODO: rework button() mixin to process all types of buttons
-button { @include normal_buttons();
-  &.flat { @include flat_buttons(); }
+// button
+%button,
+button {
+  @include button('base');
+  
+  &:hover {
+    @include button('hover');
+  }
+  &:active {
+    @include button('active');
+  }
+  &:checked {
+    @include button('checked');
+  }
+  &:checked:backdrop {
+    @include button('checked-backdrop');
+  }
+  &:checked:disabled {
+    @include button('checked-disabled');
+  }
+  &:checked:disabled:backdrop {
+    @include button('checked-disabled-backdrop');
+  }
+  &:disabled {
+    @include button('disabled');
+  }
+  &:disabled:backdrop {
+    @include button('disabled-backdrop');
+  }
+  &:backdrop {
+    @include button('backdrop');
+  }
 }
 
-@include destructive_button();
-@include suggested_button();
+%button_flat,
+button.flat {
+  @include button('flat');
+  
+  &:hover {
+    @include button('hover');
+  }
+  &:active {
+    @include button('active');
+  }
+  &:checked {
+    @include button('checked');
+  }
+  &:checked:backdrop {
+    @include button('checked-backdrop');
+  }
+  &:checked:disabled {
+    @include button('checked-disabled');
+  }
+  &:checked:disabled:backdrop {
+    @include button('checked-disabled-backdrop');
+  }
+  &:disabled {
+    @include button('flat-disabled');
+  }
+  &:disabled:backdrop {
+    @include button('flat-disabled-backdrop');
+  }
+  &:backdrop {
+    @include button('flat-backdrop');
+  }
+}
+
+// TODO: sometimes a distinct style is desired for some action buttons
+// ex. os/2's suggested button should be 'normal', but with a shadow around it
+// create mixin and widget action_button to host the code. Most suggested buttons
+// can actually clone the regular button styling
+@warn "Move destructive and suggested button to new mixin 'action_button'";
+button.destructive-action {
+  @include button('base', $error_color, $selected_fg_color);
+
+  &:hover {
+    @include button('hover', $error_color, $selected_fg_color);
+  }
+  &:active {
+    @include button('active', $error_color, $selected_fg_color);
+  }
+  &:checked {
+    @include button('checked', $error_color, $selected_fg_color);
+  }
+  &:checked:backdrop {
+    @include button('checked-backdrop', $error_color, $selected_fg_color);
+  }
+  &:checked:disabled {
+    @include button('checked-disabled', $error_color, $selected_fg_color);
+  }
+  &:checked:disabled:backdrop {
+    @include button('checked-disabled-backdrop', $error_color, $selected_fg_color);
+  }
+  &:disabled {
+    @include button('disabled', $error_color, $selected_fg_color);
+  }
+  &:disabled:backdrop {
+    @include button('disabled-backdrop', $error_color, $selected_fg_color);
+  }
+  &:backdrop {
+    @include button('backdrop', $error_color, $selected_fg_color);
+  }
+}
+
+button.suggested-action {
+  @include button('base', $selected_bg_color, $selected_fg_color);
+
+  &:hover {
+    @include button('hover', $selected_bg_color, $selected_fg_color);
+  }
+  &:active {
+    @include button('active', $selected_bg_color, $selected_fg_color);
+  }
+  &:checked {
+    @include button('checked', $selected_bg_color, $selected_fg_color);
+  }
+  &:checked:backdrop {
+    @include button('checked-backdrop', $selected_bg_color, $selected_fg_color);
+  }
+  &:checked:disabled {
+    @include button('checked-disabled', $selected_bg_color, $selected_fg_color);
+  }
+  &:checked:disabled:backdrop {
+    @include button('checked-disabled-backdrop', $selected_bg_color, $selected_fg_color);
+  }
+  &:disabled {
+    @include button('disabled', $selected_bg_color, $selected_fg_color);
+  }
+  &:disabled:backdrop {
+    @include button('disabled-backdrop', $selected_bg_color, $selected_fg_color);
+  }
+  &:backdrop {
+    @include button('backdrop', $selected_bg_color, $selected_fg_color);
+  }
+}
 
 // MOVE: _colors*.scss
 $link_visited_color : gtkmix($link_color, $fg_color, 0.2);
@@ -499,11 +637,11 @@ button.link {
 @include spinbutton();
 // @include combobox();   CREATE: new mixin combobox
 
-toolbar {
+toolbar,
+.toolbar {
   @include toolbar();
   
-  // TODO: support states
-  button.flat {
+  button {
     @include toolbutton();
   }
 }
@@ -540,7 +678,9 @@ headerbar {
 
   @include headerbar("base");
   
-  &:backdrop { @include headerbar("backdrop"); }
+  &:backdrop {
+    @include headerbar("backdrop");
+  }
   
   .tiled &, .tiled &:backdrop,
   .maximized &, .maximized &:backdrop {
@@ -582,10 +722,18 @@ headerbar {
     }
     
     button {
-      &.close { @include titlebutton("close"); }
-      &.maximize { @include titlebutton("maximize"); }
-      &.minimize { @include titlebutton("minimize"); }
-      .maximized &.maximize { @include titlebutton("restore"); }
+      &.close {
+        @include titlebutton("close");
+      }
+      &.maximize {
+        @include titlebutton("maximize");
+      }
+      &.minimize {
+        @include titlebutton("minimize");
+      }
+      .maximized &.maximize {
+        @include titlebutton("restore");
+      }
     }
   }
 }
@@ -631,18 +779,30 @@ columnview.view, treeview.view {
   > rubberband { @include rubberband(); }
 
   &:selected {
-    &, &:focus { @include selected_items('normal'); 
-      &:backdrop { @include selected_items('backdrop'); }
+    &, &:focus {
+      @include selected_items('normal');
+      
+      &:backdrop {
+        @include selected_items('backdrop');
+      }
 
       border-radius: 0;
     }
   }
 
-  &:disabled { color: $disabled_fg_color;
-    &:backdrop { color: $backdrop_disabled_fg_color; }
+  &:disabled {
+    color: $disabled_fg_color;
+    
+    &:backdrop {
+      color: $backdrop_disabled_fg_color;
+    }
 
-    &:selected { @include selected_items('disabled');
-      &:backdrop { @include selected_items('backdrop-disabled'); }
+    &:selected {
+      @include selected_items('disabled');
+      
+      &:backdrop {
+        @include selected_items('backdrop-disabled');
+      }
     }
   }
 
@@ -819,11 +979,21 @@ popover.menu {
   @include menu();
 }
 
-menubar { @include menubar();
-  > item { @include menubaritem("base");
-    &:selected { @include menubaritem("hover"); }
-    &:disabled { @include menubaritem("disabled"); }
-    &:backdrop { @include menubaritem("backdrop"); }
+menubar {
+  @include menubar();
+  
+  > item {
+    @include menubaritem("base");
+    
+    &:selected {
+      @include menubaritem("hover");
+    }
+    &:disabled {
+      @include menubaritem("disabled");
+    }
+    &:backdrop {
+      @include menubaritem("backdrop");
+    }
   }
 }
 
@@ -866,8 +1036,12 @@ notebook {
           border-bottom-right-radius: 0px;
         }
         
-        &:hover { @include notebook_tab("hover", "top"); }
-        &:checked { @include notebook_tab("checked", "top"); }
+        &:hover {
+          @include notebook_tab("hover", "top");
+        }
+        &:checked {
+          @include notebook_tab("checked", "top");
+        }
       }
     }
     
@@ -881,8 +1055,12 @@ notebook {
           border-top-right-radius: 0px;
         }
         
-        &:hover { @include notebook_tab("hover", "bottom"); }
-        &:checked { @include notebook_tab("checked", "bottom"); }
+        &:hover {
+          @include notebook_tab("hover", "bottom");
+        }
+        &:checked {
+          @include notebook_tab("checked", "bottom");
+        }
       }
     }
 
@@ -896,8 +1074,12 @@ notebook {
           border-bottom-right-radius: 0px;
         }
           
-        &:hover { @include notebook_tab("hover", "left"); }
-        &:checked { @include notebook_tab("checked", "left"); }
+        &:hover {
+          @include notebook_tab("hover", "left");
+        }
+        &:checked {
+          @include notebook_tab("checked", "left");
+        }
       }
     }
 
@@ -911,8 +1093,12 @@ notebook {
           border-bottom-left-radius: 0px;
         }
         
-        &:hover { @include notebook_tab("hover", "right"); }
-        &:checked { @include notebook_tab("checked", "right"); }
+        &:hover {
+          @include notebook_tab("hover", "right");
+        }
+        &:checked {
+          @include notebook_tab("checked", "right");
+        }
       }
     }
 
@@ -965,7 +1151,9 @@ notebook {
 // libadwaita tab view
 tabbar {
   // notebook header
-  .box { @include notebook_header(); }
+  .box {
+    @include notebook_header();
+  }
   
   tabbox {  // tab container
     padding-bottom: 6px;
@@ -993,10 +1181,19 @@ tabbar {
   tab {
     @include notebook_tab("base", "top");
     
-    &:hover { @include notebook_tab("hover", "top"); }
-    &:selected { @include notebook_tab("checked", "top"); }
-    &:selected:backdrop { @include notebook_tab("checked-backdrop", "top"); }
-    &:backdrop { @include notebook_tab("backdrop", "top"); }
+    &:hover {
+      @include notebook_tab("hover", "top");
+    }
+    &:selected {
+      @include notebook_tab("checked", "top");
+      
+      &:backdrop {
+        @include notebook_tab("checked-backdrop", "top");
+      }
+    }
+    &:backdrop {
+      @include notebook_tab("backdrop", "top");
+    }
   }
   
   // might be useful later?
@@ -1024,13 +1221,17 @@ scrollbar {
   &.horizontal {
     @include scrollbar("horiz");
     
-    > range > trough > slider { @include scrollbar_slider("horiz"); }
+    > range > trough > slider {
+      @include scrollbar_slider("horiz");
+    }
   }
   
   &.vertical {
     @include scrollbar("vert");
     
-    > range > trough > slider { @include scrollbar_slider("vert"); }
+    > range > trough > slider {
+      @include scrollbar_slider("vert");
+    }
   }
   
   &.horizontal > range > trough > slider { min-width: $scrollbar_slider_min_length; }
@@ -1101,13 +1302,27 @@ switch {
   
   // TODO: outline
 
-  > slider { @include switch_slider(); }
-  &:hover > slider { @include switch_slider("hover"); }
-  &:checked > slider { @include switch_slider("checked"); }
-  &:checked:backdrop > slider { @include switch_slider("checked-backdrop"); }
-  &:disabled > slider { @include switch_slider("disabled"); }
-  &:disabled:backdrop > slider { @include switch_slider("disabled-backdrop"); }
-  &:backdrop > slider { @include switch_slider("backdrop"); }  
+  > slider {
+    @include switch_slider();
+  }
+  &:hover > slider {
+    @include switch_slider("hover");
+  }
+  &:checked > slider {
+    @include switch_slider("checked");
+  }
+  &:checked:backdrop > slider {
+    @include switch_slider("checked-backdrop");
+  }
+  &:disabled > slider {
+    @include switch_slider("disabled");
+  }
+  &:disabled:backdrop > slider {
+    @include switch_slider("disabled-backdrop");
+  }
+  &:backdrop > slider {
+    @include switch_slider("backdrop");
+  }  
 }
 
 @include checkradio();  // TODO: include special cases, like menu/modelbutton, treeview, etc.
@@ -1367,16 +1582,35 @@ scrolledwindow {
 @include separators();
 
 listview row {
-  &:hover { @include listview("hover"); }
-  &:active { @include listview("active"); }
-  &:backdrop { @include listview("backdrop"); }
+  &:hover {
+    @include listview("hover");
+  }
+  &:active {
+    @include listview("active");
+  }
+  &:backdrop {
+    @include listview("backdrop");
+  }
   
-  &:selected { @include listview("selected");
-    &:hover { @include listview("selected-hover"); }
-    &:active { @include listview("selected-active"); }
-    &:disabled { @include listview("selected-disabled"); }
-    &:backdrop { @include listview("selected-backdrop");
-      &:hover { @include listview("selected-backdrop-hover"); }  // only used by windows 7-like themes
+  &:selected {
+    @include listview("selected");
+    
+    &:hover {
+      @include listview("selected-hover");
+    }
+    &:active {
+      @include listview("selected-active");
+    }
+    &:disabled {
+      @include listview("selected-disabled");
+    }
+    &:backdrop {
+      @include listview("selected-backdrop");
+      
+      // only used by windows 7-like themes
+      &:hover {
+        @include listview("selected-backdrop-hover");
+      }
     }
   }
 }
@@ -1495,7 +1729,7 @@ calendar {
       
       // TODO: hover and active states
       &:hover { color: $fg_color; }
-      &:backdrop { color: $backdrop_text_color; }
+      &:backdrop { color: $backdrop_text_color; background: none; }
       &:disabled { color: $disabled_fg_color; }
     }
   }

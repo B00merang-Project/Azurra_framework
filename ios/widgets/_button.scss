@@ -1,134 +1,87 @@
-// TODO: use colors instead of transparent?
-@mixin normal_buttons($button_bg : transparent, $button_fg : $selected_bg_color, $button_border : transparent) {
-  padding: 4px 8px;
-  border-radius: $button_radius;
-  border: 1px solid $button_border;
-  color: $button_fg;
-  background-color: $button_bg;
-  background-image: none;
-  box-shadow: none;
+// HACK: use $_bg as background when the button is checked and as fg color otherwise
+@mixin button($type, $_bg : $selected_bg_color, $_fg : $selected_fg_color) {
+  $_disabled_bg : gtkmix($_fg, $_bg, 0.95);
+  $_disabled_fg : gtkmix($_fg, $_bg, 0.5);
+  
+  $_backdrop_fg : gtkalpha($_bg, 0.8);
+  
+  $_backdrop_disabled_bg : gtkmix($_fg, $_bg, 0.95);
+  $_backdrop_disabled_fg : gtkmix($_fg, $_bg, 0.5);
 
-  &:active, &:checked {
-    color: $selected_fg_color;
-    background-color: $selected_bg_color;
-
-    &:backdrop {
-      color: $backdrop_selected_fg_color;
-      background-color: $backdrop_selected_bg_color;
-    }
-    
-    &:disabled {
-      color: $disabled_fg_color;
-      background-color: gtkshade($disabled_bg_color, 0.9);
-      
-      &:backdrop {
-        color: $backdrop_disabled_fg_color;
-        background-color: gtkshade($backdrop_disabled_bg_color, 0.9);
-      }
-    }
-  }
-
-  &:disabled {
-    color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.5);
-    
-    &:backdrop { color: $backdrop_disabled_fg_color; }
-  }
-
-  &:backdrop { color: $backdrop_fg_color; }
-}
-
-@mixin flat_buttons($button_bg : transparent, $button_fg : $selected_bg_color, $button_border : transparent) {
-  border-color: transparent;
-  border-radius: $button_radius;
-  color: $button_fg;
-  background-color: transparent;
-  background-image: none;
-  box-shadow: none;
-
-  &:hover {
-    color: $button_fg;
-    background-color: $button_bg;
-  }
-
-  &:active, &:checked {
-    color: $selected_fg_color;
-    background-color: $selected_bg_color;
-    
-    &:backdrop {
-      color: $backdrop_selected_fg_color;
-      background-color: gtkshade($backdrop_selected_bg_color, 0.6);
-    }
-  }
-
-  &:disabled {
-    border-color: transparent;
-    color: gtkalpha($button_fg, 0.8);
-    background-color: transparent;
-    
-    &:backdrop {
-      border-color: transparent;
-      color: gtkalpha($button_fg, 0.7);
-      background-color: transparent;
-    }
-  }
-
-  &:backdrop {
-    border-color: transparent;
-    background-color: transparent;
-    color: $backdrop_fg_color;
-  }
-}
-
-@mixin destructive_button() {
-  button.destructive-action {
+  @if $type == "base" {
+    padding: 4px 8px;
     border-radius: $button_radius;
-    border: 1px solid gtkmix($error_color, $fg_color, 0.2);
-    color: gtkmix($selected_fg_color, $error_color, 0.1);
-    background-color: $error_color;
-
-    &:active {
-      border-color: gtkmix($error_color, $fg_color, 0.3);
-      background-color: gtkmix($error_color, $fg_color, 0.1);
-    }
-
-    &:backdrop {
-      border-color: gtkmix($error_color, $backdrop_fg_color, 0.2);
-      color: gtkmix($backdrop_selected_fg_color, $error_color, 0.1);
-      background-color: gtkmix($error_color, $backdrop_bg_color, 0.3);
-    }
+    border: 1px solid transparent;
+    color: $_bg;
+    background-color: transparent;
+    background-image: none;
+    text-shadow: none;
+    box-shadow: none;
+    -gtk-icon-shadow: none;
+    
+    // TODO: make suggested-button bolder?
   }
-}
+  
+  @else if $type == "hover" {
+    background-color: gtkalpha($fg_color, 0.1);
+  }
 
-@mixin suggested_button() {
-  button.suggested-action {
+  // normal states
+  @else if $type == "active"
+  or $type == "checked" {
+    color: $_fg;
+    background-color: $_bg;
+  }
+
+  // checked backdrop buttons will all look the same, but is it bad?
+  @else if $type == "checked-backdrop" {
+    color: $backdrop_selected_fg_color;
+    background-color: $backdrop_selected_bg_color;
+  }
+    
+  @else if $type == "checked-disabled" {
+    color: $_disabled_fg;
+    background-color: gtkshade($_disabled_bg, 0.9);
+  }
+    
+  @else if $type == "checked-disabled-backdrop" {
+    color: $_backdrop_disabled_fg;
+    background-color: gtkshade($_backdrop_disabled_bg, 0.9);
+  }
+
+  @else if $type == "disabled" {
+    color: $_disabled_fg;
+  }
+  
+  @else if $type == "disabled-backdrop" {
+    color: $_backdrop_disabled_fg;
+  }
+
+  @else if $type == "backdrop" {
+    color: $_backdrop_fg;
+  }
+  
+  // TODO: merge types with non-flat styles? All buttons are flat anyways
+  @else if $type == "flat" {
     border-radius: $button_radius;
-    border: 1px solid $selected_bg_color;
-    color: $selected_fg_color;
-    background-color: $selected_bg_color;
-
-    &:active, &:checked {
-      border-color: gtkshade($selected_bg_color, 0.95);
-      background-color: gtkshade($selected_bg_color, 0.95);
-
-      &:backdrop {
-        color: $backdrop_selected_fg_color;
-        background-color: $backdrop_selected_fg_color;
-      }
-    }
-
-    &:disabled {
-      border-color: gtkmix($selected_bg_color, $disabled_bg_color, 0.2);
-      color: gtkmix($selected_fg_color, $disabled_fg_color, 0.2);
-
-      &:backdrop {
-        border-color: gtkmix($backdrop_selected_bg_color, $backdrop_disabled_bg_color, 0.2);
-        color: gtkmix($backdrop_selected_fg_color, $backdrop_disabled_fg_color, 0.2);
-      }
-    }
-
-    &:backdrop {
-      border-color: $backdrop_selected_bg_color;
-      color: $backdrop_selected_fg_color;
-    }
+    border-color: transparent;
+    color: $_bg;
+    background-color: transparent;
+    background-image: none;
+    text-shadow: none;
+    box-shadow: none;
+    -gtk-icon-shadow: none;
+  }
+  
+  @else if $type == "flat-backdrop" {
+    color: $_backdrop_fg;
+  }
+  
+  @else if $type == "flat-disabled" {
+    color: $_disabled_fg;
+  }
+  
+  @else if $type == "flat-disabled-backdrop" {
+    color: $_backdrop_disabled_fg;
   }
 }

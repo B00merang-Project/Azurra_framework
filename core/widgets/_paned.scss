@@ -8,8 +8,14 @@
       background-color: transparent;
       background-image: image($border_color);
       background-size: 1px 1px;
-
+      
       &:selected { background-image: image($selected_bg_color); } // is this needed?
+
+      &:backdrop {
+        background-color: transparent;
+        background-image: image($backdrop_border_color);
+        background-size: 1px 1px;
+      }
 
       &.wide {
         min-width: 5px;

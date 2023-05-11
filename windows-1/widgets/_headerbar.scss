@@ -1,3 +1,7 @@
+@mixin headerbutton() {
+  @extend %button_flat;
+}
+
 @mixin headerbar($type) {
   @if $type == "base" {
     min-height: $headerbar_size;
@@ -19,7 +23,7 @@
     }
 
     button {
-      @include flat_buttons();
+      @include headerbutton();
     }
   }
   

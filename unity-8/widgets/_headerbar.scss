@@ -1,3 +1,26 @@
+@mixin headerbutton() {
+  @include button('flat', $headerbar_bg_color, $headerbar_fg_color);
+  
+  &:hover {
+    @include button('hover', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:active {
+    @include button('active', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:checked {
+    @include button('checked', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:checked:disabled {
+    @include button('checked-disabled', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:disabled {
+    @include button('flat-disabled', $headerbar_bg_color, $headerbar_fg_color);
+  }
+  &:backdrop {
+    @include button('flat-backdrop', $headerbar_bg_color, $headerbar_fg_color);
+  }
+}
+
 @mixin headerbar($type) {
   @if $type == "base" {
     min-height: $headerbar_size;
@@ -8,7 +31,7 @@
     box-shadow: none;
     
     button {
-      @include flat_buttons($headerbar_bg_color, $headerbar_fg_color, gtkshade($headerbar_fg_color, 0.2));
+      @include headerbutton();
     }
     
     // TODO: include flat entry too?

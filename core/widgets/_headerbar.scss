@@ -2,13 +2,13 @@
   @if $type == "base" {
     min-height: $headerbar_size;
     padding: 4px 8px;
-    border-bottom: 1px solid $titlebar_bg_color;
+    border-bottom: 1px solid $border_color;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
     box-shadow: none;   // override adwaita headerbar shadow
     
     button {
-      @include flat_buttons($headerbar_bg_color, $headerbar_fg_color, $headerbar_bg_color);
+      @extend %button_flat;
     }
   }
 
