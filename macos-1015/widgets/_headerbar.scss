@@ -1,3 +1,7 @@
+@mixin headerbutton() {
+  @extend %button;
+}
+
 @mixin headerbar($type) {
   @if $type == "base" {
     min-height: $headerbar_size;
@@ -13,7 +17,7 @@
     box-shadow: none;
     
     button {
-      @include normal_buttons($base_color, $headerbar_fg_color, $border_color);
+      @include headerbutton();
     }
   }
 

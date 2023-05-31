@@ -1,215 +1,98 @@
-@mixin normal_buttons($button_bg : $base_color, $button_fg : $fg_color, $button_border : $border_color) {
-  padding: 4px 8px;
-  border-radius: $button_radius;
-  border: 1px solid gtkshade($button_border, 0.85);
-  color: $button_fg;
-  background-color: $button_bg;
-  background-image: linear-gradient(
-    to bottom,
-    $button_bg,
-    gtkshade($button_bg, 0.975) 40%,
-    gtkshade($button_bg, 0.93) 55%
-  );
-  box-shadow: 0 1px gtkalpha(gtkmix($light_shadow, $dark_shadow, 0.5), 0.1);
-
-  // TODO: implement hover state
-
-  &:active, &:checked {
-    color: $selected_fg_color;
-    border-color: gtkshade($button_border, 0.5);
-    background-color: gtkshade($button_bg, 0.5);
-    background-image: none;
-    box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.45),
-                inset 0 -2px 3px 1px gtkalpha($light_shadow, 0.45),
-                inset 0 1px gtkshade($button_bg, 0.325);
-
-    &:backdrop {
-      color: $backdrop_fg_color;
-      border-color: gtkshade($backdrop_bg_color, 0.85);
-      background-color: gtkshade($backdrop_bg_color, 0.85);
-      box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.25),
-                  inset 0 1px gtkshade($button_bg, 0.51);
-    }
-    
-    &:disabled {
-      color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.1);
-      border-color: gtkmix($button_fg, $disabled_bg_color, 0.85);
-      background-color: gtkshade($disabled_bg_color, 0.9);
-      
-      &:backdrop {
-        color: $backdrop_disabled_fg_color;
-        border-color: $backdrop_border_color;
-        background-color: gtkshade($backdrop_disabled_bg_color, 0.9);
-      }
-    }
-  }
-
-  &:disabled {
-    color: gtkmix($button_fg, $backdrop_disabled_fg_color, 0.5);
-   
-    &:backdrop { color: $backdrop_disabled_fg_color; }
-  }
-
-  &:backdrop {
-    color: $backdrop_fg_color;
-    background-color: $backdrop_base_color;
-  }
-}
-
-@mixin flat_buttons($button_bg : $base_color, $button_fg : $fg_color, $button_border : $border_color) {
-  border-color: transparent;
-  border-radius: $button_radius;
-  color: $button_fg;
-  background-color: transparent;
-  background-image: none;
-  box-shadow: none;
-
-  &:hover {
-    color: $button_fg;
-    border-color: gtkshade($button_border, 0.85);
-    background-color: $button_bg;
+@mixin button($type, $_bg : $base_color, $_fg : $fg_color) {
+  $_border : gtkshade($_bg, 0.765);
+  
+  $_disabled_bg : gtkmix($_fg, $_bg, 0.95);
+  $_disabled_fg : gtkmix($_fg, $_bg, 0.5);
+  $_disabled_border : gtkmix($_fg, $_bg, 0.85);
+  
+  $_backdrop_bg : $_bg;
+  $_backdrop_fg : gtkshade($_bg, 0.2);
+  $_backdrop_border : gtkshade($_bg, 0.9);
+  
+  $_backdrop_disabled_bg : gtkmix($_fg, $_bg, 0.98);
+  $_backdrop_disabled_fg : gtkmix($_fg, $_bg, 0.75);
+  $_backdrop_disabled_border : gtkmix($_fg, $_bg, 0.85);
+  
+  @if $type == "base" {
+    padding: 4px 8px;
+    border-radius: $button_radius;
+    border: 1px solid $_border;
+    color: $_fg;
+    background-color: $_bg;
     background-image: linear-gradient(
       to bottom,
-      $button_bg,
-      gtkshade($button_bg, 0.975) 40%,
-      gtkshade($button_bg, 0.93) 55%
+      $_bg,
+      gtkshade($_bg, 0.975) 40%,
+      gtkshade($_bg, 0.93) 55%
     );
-    box-shadow: 0 1px gtkalpha(gtkmix($light_shadow, $dark_shadow, 0.5), 0.1);
+    text-shadow: none;
+    box-shadow: 0 1px gtkalpha(grey, 0.1);
+    -gtk-icon-shadow: none;
   }
 
-  &:active, &:checked {
+  @else if $type == "hover" {
+    border-color: $_border;
+    color: $_fg;
+    background-color: $_bg;
+    background-image: linear-gradient(
+      to bottom,
+      $_bg,
+      gtkshade($_bg, 0.975) 40%,
+      gtkshade($_bg, 0.93) 55%
+    );
+    box-shadow: 0 1px gtkalpha(grey, 0.1);
+  }
+
+  @else if $type == "active"
+  or $type == "checked" {
     color: $selected_fg_color;
-    border-color: gtkshade($button_border, 0.5);
-    background-color: gtkshade($button_bg, 0.5);
+    border-color: gtkshade($_border, 0.5);
+    background-color: gtkshade($_bg, 0.5);
     background-image: none;
-    box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.45),
-                inset 0 -2px 3px 1px gtkalpha($light_shadow, 0.45),
-                inset 0 1px gtkshade($button_bg, 0.325);
-    
-    &:backdrop {
-      color: $backdrop_fg_color;
-      border-color: gtkshade($backdrop_bg_color, 0.85);
-      background-color: gtkshade($backdrop_bg_color, 0.85);
-      box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.25),
-                  inset 0 1px gtkshade($button_bg, 0.51);
-    }
+    box-shadow: inset 0 2px 3px 1px gtkalpha(black, 0.45),
+                inset 0 -2px 3px 1px gtkalpha(white, 0.45),
+                inset 0 1px gtkshade($_bg, 0.325);
   }
 
-  &:disabled {
-    border-color: transparent;
-    color: gtkalpha($button_fg, 0.8);
-    background-color: transparent;
-    box-shadow: none;
-    
-    &:backdrop {
-      border-color: transparent;
-      color: gtkalpha($button_fg, 0.7);
-      background-color: transparent;
-      box-shadow: none;
-    }
+  @else if $type == "checked-backdrop" {
+    color: $_backdrop_fg;
+    border-color: $_backdrop_border;
+    background-color: gtkshade($_backdrop_bg, 0.85);
+    box-shadow: inset 0 2px 3px 1px gtkalpha(black, 0.25),
+                inset 0 1px gtkshade($_bg, 0.51);
+  }
+  
+  @else if $type == "checked-disabled" {
+    color: $_disabled_fg;
+    border-color: $_disabled_border;
+    background-color: gtkshade($_disabled_bg, 0.9);
+  }
+  
+  @else if $type == "checked-disabled-backdrop" {
+    color: $_backdrop_disabled_fg;
+    border-color: $_backdrop_border;
+    background-color: gtkshade($_backdrop_disabled_bg, 0.9);
   }
 
-  &:backdrop {
+  @else if $type == "disabled" {
+    color: $_disabled_fg;
+  }
+ 
+  @else if $type == "disabled-backdrop" {
+    color: $_backdrop_disabled_fg;
+  }
+
+  @else if $type == "backdrop" {
+    color: $_backdrop_fg;
+    background-color: $_backdrop_bg;
+  }
+  
+  @else if $type == "flat" {
     border-color: transparent;
     background-color: transparent;
-    color: $backdrop_fg_color;
+    background-image: none;
+    text-shadow: none;
     box-shadow: none;
-  }
-}
-
-@mixin destructive_button() {
-  button.destructive-action {
-    border-radius: $button_radius;
-    border: 1px solid gtkmix($error_color, $fg_color, 0.2);
-    color: gtkmix($selected_fg_color, $error_color, 0.1);
-    background-color: $error_color;
-    background-image: linear-gradient(
-      to bottom,
-      gtkshade($error_color,1.15),
-      gtkshade($error_color, 1.05) 40%,
-      $error_color 55%
-    );
-
-    &:hover {
-      border-color: gtkmix($error_color, $fg_color, 0.3);
-      background-color: gtkmix($error_color, $selected_fg_color, 0.2);
-    }
-
-    &:active {
-      border-color: gtkmix($error_color, $fg_color, 0.3);
-      background-color: gtkmix($error_color, $fg_color, 0.1);
-    }
-
-    &:backdrop {
-      border-color: gtkmix($error_color, $backdrop_fg_color, 0.2);
-      color: gtkmix($backdrop_selected_fg_color, $error_color, 0.1);
-      background-color: gtkmix($error_color, $backdrop_bg_color, 0.3);
-    }
-  }
-}
-
-@mixin suggested_button() {
-  button.suggested-action {
-    border-radius: $button_radius;
-    border: 1px solid #07067b;
-    border-left-color: gtkshade($selected_bg_color, 1.15);
-    border-right-color: gtkshade($selected_bg_color, 1.15);
-    border-bottom-color: gtkshade($selected_bg_color, 1.3);
-    color: $fg_color;
-    
-    // TODO: replace hard-coded color values
-    background-image: linear-gradient(
-      to bottom,
-      #b6d2ed,
-      #8ebbe8 45%,
-      #63a1df 50%,
-      #b9edff
-    );
-    box-shadow: 0 0 2px 0px gtkalpha($dark_shadow, 0.3),
-                inset 1px 0 2px 0 gtkalpha($dark_shadow, 0.4),
-                inset -1px 0 2px 0 gtkalpha($dark_shadow, 0.4);
-
-    &:active, &:checked {
-      box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.45),
-                  inset 0 -2px 3px 1px gtkalpha($light_shadow, 0.45),
-                  inset 0 1px gtkshade(#8ebbe8, 0.35);
-
-      &:backdrop {
-        color: $backdrop_selected_fg_color;
-      }
-    }
-
-    &:disabled {
-      border-color: gtkmix($selected_bg_color, $disabled_bg_color, 0.2);
-      color: gtkmix($selected_fg_color, $disabled_fg_color, 0.2);
-      background-image: linear-gradient(
-        to bottom,
-        gtkshade(gtkmix($selected_bg_color, $disabled_bg_color, 0.2), 1.2),
-        gtkshade(gtkmix($selected_bg_color, $disabled_bg_color, 0.2), 1.05)
-      );
-
-      &:backdrop {
-        border-color: gtkmix($backdrop_selected_bg_color, $backdrop_disabled_bg_color, 0.2);
-        color: gtkmix($backdrop_selected_fg_color, $backdrop_disabled_fg_color, 0.2);
-        background-image: linear-gradient(
-          to bottom,
-          gtkshade(gtkmix($backdrop_selected_bg_color, $backdrop_disabled_bg_color, 0.2), 1.1),
-          gtkshade(gtkmix($backdrop_selected_bg_color, $backdrop_disabled_bg_color, 0.2), 0.95)
-        );
-      }
-    }
-
-    &:backdrop {
-      border-color: $backdrop_selected_bg_color;
-      color: $backdrop_selected_fg_color;
-      // TODO: replace hard-coded color values
-      background-image: linear-gradient(
-        to bottom,
-        #b6d2ed,
-        #8ebbe8 45%,
-        #63a1df 50%,
-        #b9edff
-      );
-    }
+    -gtk-icon-shadow: none;
   }
 }

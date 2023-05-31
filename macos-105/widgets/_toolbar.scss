@@ -11,7 +11,7 @@
 }
 
 @mixin toolbutton() {
-  @include flat_buttons($base_color, $toolbar_fg_color, $border_color);
+  @extend %button_flat;
   
   // make toolbar buttons more square
   border-radius: $button_radius;

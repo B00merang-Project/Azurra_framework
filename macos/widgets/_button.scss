@@ -1,18 +1,15 @@
 @mixin button($type, $_bg : $bg_color, $_fg : $fg_color) {
-  // TODO: mix colors
-  $_border : ;
+  $_border : if($variant == 'light', gtkshade($bg_color, 0.9), gtkshade($fg_color, 0.28));
   
-  $_disabled_bg : ;
-  $_disabled_fg : ;
-  $_disabled_border : ;
+  $_disabled_bg : gtkmix($_fg, $_bg, 0.95);
+  $_disabled_fg : gtkmix($_fg, $_bg, 0.5);
   
-  $_backdrop_bg : ;
-  $_backdrop_fg : ;
-  $_backdrop_border : ;
+  $_backdrop_bg : gtkshade($_bg, 0.985);
+  $_backdrop_fg : #8c8c8c;  // TODO: make dynamic
+  $_backdrop_border : gtkshade($_backdrop_bg, 0.9);
   
-  $_backdrop_disabled_bg : ;
-  $_backdrop_disabled_fg : ;
-  $_backdrop_disabled_border : ;
+  $_backdrop_disabled_bg : gtkmix($_fg, $_bg, 0.98);
+  $_backdrop_disabled_fg : gtkmix($_fg, $_bg, 0.75);
   
   @if $type == "base" {
     padding: 6px 8px;
@@ -25,7 +22,7 @@
     background-color: $_bg;
     background-image: none;
     text-shadow: none;
-    box-shadow: 0 0 2px 0 gtkalpha($dark_shadow, 0.1);
+    box-shadow: 0 0 2px 0 gtkalpha(black, 0.1);
     -gtk-icon-shadow: none;
   }
 
@@ -37,7 +34,7 @@
     color: $_fg;
     background-color: $_bg;
     background-image: none;
-    box-shadow: 0 0 2px 0 gtkalpha($dark_shadow, 0.1);
+    box-shadow: 0 0 2px 0 gtkalpha(black, 0.1);
   }
 
   @else if $type == "active"
