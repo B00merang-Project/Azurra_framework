@@ -492,8 +492,14 @@ button {
 
 %button_flat,
 button.flat {
-  @include button('flat');
+  &,
+  &:backdrop,
+  &:disabled,
+  &:disabled:backdrop {
+    @include button('undecorated');
+  }
   
+  // TODO: are these necessary?
   &:hover {
     @include button('hover');
   }
@@ -511,15 +517,6 @@ button.flat {
   }
   &:checked:disabled:backdrop {
     @include button('checked-disabled-backdrop');
-  }
-  &:disabled {
-    @include button('flat-disabled');
-  }
-  &:disabled:backdrop {
-    @include button('flat-disabled-backdrop');
-  }
-  &:backdrop {
-    @include button('flat-backdrop');
   }
 }
 

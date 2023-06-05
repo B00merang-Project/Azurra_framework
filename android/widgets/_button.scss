@@ -1,5 +1,4 @@
 // HACK: use $_bg as background when the button is checked and as fg color otherwise
-// NOTE: normal buttons are flat, so no differentiation between normal and flat button styles
 @mixin button($type, $_bg : $selected_bg_color, $_fg : $selected_fg_color) {
   $_disabled_bg : gtkmix($_fg, $_bg, 0.9);
   $_disabled_fg : gtkmix($_fg, $_bg, 0.675);  // TODO: sync to _colors.scss?
@@ -8,9 +7,17 @@
   $_backdrop_disabled_fg : gtkmix($_fg, $_bg, 0.675);
   
   $_backdrop_fg : $_bg;
+  
+  // state-specific color mixes
+  $_hover_bg : gtkalpha($fg_color, 0.1);
+  
+  $_checked_disabled_bg : gtkmix($_bg, $_fg, 0.2);
+  $_checked_disabled_fg : $disabled_base_color;
 
-  @if $type == "base"
-  or $type == "flat" {
+  $_checked_backdrop_fg : $backdrop_selected_fg_color;
+  $_checked_disabled_backdrop_fg : $backdrop_disabled_base_color;
+
+  @if $type == "base" {
     padding: 4px 8px;
     border-radius: $button_radius;
     border: none;
@@ -23,7 +30,7 @@
   }
   
   @else if $type == "hover" {
-    background-color: gtkalpha($fg_color, 0.1);
+    background-color: $_hover_bg;
   }
 
   @else if $type == "active"
@@ -33,32 +40,38 @@
   }
   
   @else if $type == "checked-backdrop" {
-    color: $backdrop_selected_fg_color;   // all buttons use selected_fg_color as foreground, so this works
+    color: $_checked_backdrop_fg;
     background-color: $_bg;
   }
   
   @else if $type == "checked-disabled" {
-    color: $disabled_base_color;
-    background-color: gtkmix($_bg, $_fg, 0.2);
+    color: $_checked_disabled_fg;
+    background-color: $_checked_disabled_bg;
   }
   
   @else if $type == "checked-disabled-backdrop" {
-    color: $backdrop_disabled_base_color;
-    background-color: gtkmix($_bg, $_fg, 0.2);
+    color: $_checked_disabled_backdrop_fg;
+    background-color: $_checked_disabled_bg;
   }
 
-  @else if $type == "disabled"
-  or $type == "flat-disabled" {
+  @else if $type == "disabled" {
     color: $_disabled_fg;
   }
     
-  @else if $type == "disabled-backdrop"
-  or $type == "flat-disabled-backdrop" {
+  @else if $type == "disabled-backdrop" {
     color: $_backdrop_disabled_fg;
   }
 
-  @else if $type == "backdrop"
-  or $type == "flat-backdrop" {
+  @else if $type == "backdrop" {
     color: $_backdrop_fg;
+  }
+  
+  @else if $type == "undecorated" {
+    border-color: transparent;
+    background-color: transparent;
+    background-image: none;
+    text-shadow: none;
+    box-shadow: none;
+    -gtk-icon-shadow: none;
   }
 }

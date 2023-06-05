@@ -45,7 +45,7 @@
 
   @else if $type == "active"
   or $type == "checked" {
-    color: $selected_fg_color;
+    color: $selected_fg_color;  // white
     border-color: gtkshade($_border, 0.5);
     background-color: gtkshade($_bg, 0.5);
     background-image: none;
@@ -87,7 +87,7 @@
     background-color: $_backdrop_bg;
   }
   
-  @else if $type == "flat" {
+  @else if $type == "undecorated" {
     border-color: transparent;
     background-color: transparent;
     background-image: none;

@@ -79,10 +79,12 @@
     background-color: $_backdrop_bg;
   }
   
-  @else if $type == "flat" {
+  @else if $type == "undecorated" {
     border-color: transparent;
     background-color: transparent;
     background-image: none;
+    text-shadow: none;
     box-shadow: none;
+    -gtk-icon-shadow: none;
   }
 }

@@ -3,7 +3,9 @@
   
   $_disabled_fg : gtkmix($_fg, $_bg, 0.5);
   
+  $_backdrop_bg : gtkmix($_fg, $_bg, 0.95);
   $_backdrop_fg : $_fg;
+  
   $_backdrop_disabled_fg : gtkmix($_fg, $_bg, 0.75);
   
   @if $type == "base" {
@@ -24,7 +26,7 @@
     box-shadow: none;
     -gtk-icon-shadow: none;
     
-    // necessary?
+    // HACK: focused state
     &:focus {
       background-image: linear-gradient(to bottom,
         $light_shadow,
@@ -63,17 +65,18 @@
   }
 
   @else if $type == "checked-backdrop" {
-    color: $backdrop_fg_color;
-    border-color: gtkshade($backdrop_bg_color, 0.85);
-    background-color: gtkshade($backdrop_bg_color, 0.85);
+    color: $_backdrop_fg;
+    border-color: gtkshade($_backdrop_bg, 0.85);
+    background-color: gtkshade($_backdrop_bg, 0.85);
     background-image: linear-gradient(
       to bottom,
-      gtkshade($backdrop_selected_bg_color, 1.07),
-      gtkshade($backdrop_selected_bg_color, 0.95) 60%,
-      gtkshade($backdrop_selected_bg_color, 0.9) 70%
+      gtkshade($selected_bg_color, 1.07),
+      gtkshade($selected_bg_color, 0.95) 60%,
+      gtkshade($selected_bg_color, 0.9) 70%
     );
   }
   
+  // TODO: disabled states are supposed to be flat
   @else if $type == "checked-disabled" {
     color: $_disabled_fg;
   }
@@ -82,13 +85,11 @@
     color: $_backdrop_disabled_fg;
   }
   
-  @else if $type == "disabled"
-  or $type == "flat-disabled" {
-    color: $_disabled_fg;
+  @else if $type == "disabled" {
+    color: $_disabled_fg; 
   }
 
-  @else if $type == "disabled-backdrop"
-  or or $type == "flat-disabled-backdrop" {
+  @else if $type == "disabled-backdrop" {
     color: $_backdrop_disabled_fg;
   }
 
@@ -96,10 +97,8 @@
     color: $_backdrop_fg;
   }
   
-  @else if $type == "flat" {
-    border-radius: $button_radius;
+  @else if $type == "undecorated" {
     border-color: transparent;
-    color: $_fg;
     background-color: transparent;
     background-image: none;
     text-shadow: none;

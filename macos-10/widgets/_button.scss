@@ -59,7 +59,7 @@
       #63a1df 36%,
       #b9edff
     );
-    border-color: #07067b;
+    border-color: gtkmix(gtkshade($selected_bg_color, 0.65), blue, 0.25);
     border-left-color: gtkshade($selected_bg_color, 1.15);
     border-right-color: gtkshade($selected_bg_color, 1.15);
     border-bottom-color: gtkshade($selected_bg_color, 1.3);
@@ -136,11 +136,12 @@
                 inset 0 6px 3px -2px white;
   }
   
-  @else if $type == "flat" {
+  @else if $type == "undecorated" {
     border-color: transparent;
-    color: $_fg;
     background-color: transparent;
     background-image: none;
+    text-shadow: none;
     box-shadow: none;
+    -gtk-icon-shadow: none;
   }
 }

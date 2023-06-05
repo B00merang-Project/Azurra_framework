@@ -1,5 +1,4 @@
 @mixin button($type, $_bg : $bg_color, $_fg : $fg_color) {
-  // local color definitions
   $_border : gtkshade($_bg, 0.8);
   
   $_disabled_bg : gtkshade($_bg, 1.05);
@@ -42,7 +41,7 @@
       -gtk-icon-shadow: 0 1px white;
     }
     
-    // TODO: make it its own "type", or integrate in _common.scss?
+    // HACK: drop status (TODO: put in _common.scss or in all _button.scss files)
     &:drop(active) {
       color: $drop_target_color;
       border-color: $drop_target_color;
@@ -132,33 +131,12 @@
     -gtk-icon-shadow: none;
   }
   
-  // flat states
-  @else if $type == "flat" {
-    border-radius: $button_radius;
+  @else if $type == "undecorated" {
     border-color: transparent;
-    color: $_fg;
     background-color: transparent;
     background-image: none;
     box-shadow: none;
     text-shadow: none;
     -gtk-icon-shadow: none;
-  }
-  
-  @else if $type == "flat-backdrop" {
-    border-radius: $button_radius;
-    border-color: transparent;
-    color: $_backdrop_fg;
-    background-color: transparent;
-    background-image: none;
-    box-shadow: none;
-    text-shadow: none;
-  }
-  
-  @else if $type == "flat-disabled" {
-    color: $_disabled_fg;
-  }
-  
-  @else if $type == "flat-disabled-backdrop" {
-    color: $_backdrop_disabled_fg;
   }
 }

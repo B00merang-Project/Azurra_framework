@@ -19,8 +19,8 @@
     -gtk-icon-shadow: none;
   }
   
-  // hover copies the style of "base"
-  // it's required to apply a hover style to flat buttons
+  // a hover state is required for flat buttons, even if it's the same as "base"
+  // re-using base is not possible, because padding properties may interfere with other styles 
   @else if $type == "hover" {
     border-color: $_border;
     color: $_fg;
@@ -57,18 +57,12 @@
                 inset -2px -2px gtkshade($_bg, 0.95);
   }
 
-  @else if $type == "flat" {
-    border-radius: $button_radius;
+  @else if $type == "undecorated" {
     border-color: transparent;
-    color: $_fg;
     background-color: transparent;
     background-image: none;
     text-shadow: none;
     box-shadow: none;
     -gtk-icon-shadow: none;
-  }
-  
-  @else if $type == "flat-disabled" {
-    color: $_disabled_fg;
   }
 }

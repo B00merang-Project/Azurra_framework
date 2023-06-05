@@ -1,5 +1,14 @@
 @mixin button($type, $_bg : $bg_color, $_fg : $fg_color) {
-  $_border : $border_color;
+  $_border : gtkshade($_bg, 0.9);
+  
+  $_disabled_bg : gtkmix($_fg, $_bg, 0.95);
+  $_disabled_fg : gtkmix($_fg, $_bg, 0.5);
+  
+  $_backdrop_bg : gtkmix($_bg, $_fg, 0.2);
+  $_backdrop_fg : $_fg;
+  
+  $_backdrop_disabled_bg : gtkmix($_fg, $_bg, 0.98);
+  $_backdrop_disabled_fg : gtkmix($_fg, $_bg, 0.75);
   
   @if $type == "base" {
     padding: 4px 8px;
@@ -27,29 +36,27 @@
   }
 
   @else if $type == "checked-backdrop" {
-    color: $backdrop_fg_color;
-    background-color: gtkshade($backdrop_bg_color, 0.85);
+    color: $_backdrop_fg;
+    background-color: gtkshade($_backdrop_bg, 0.85);
   }
 
   @else if $type == "disabled" {
-    color: gtkmix($_fg, $backdrop_disabled_fg_color, 0.1);
-    background-color: gtkmix($_bg, $disabled_bg_color, 0.3);
+    color: $_disabled_fg;
+    background-color: $_disabled_bg;
   }
   
   @else if $type == "disabled-backdrop" {
-    color: $backdrop_disabled_fg_color;
-    background-color: gtkmix($_bg, $backdrop_disabled_bg_color, 0.3);
+    color: $_backdrop_disabled_fg;
+    background-color: $_backdrop_disabled_bg;
   }
 
   @else if $type == "backdrop" {
-    color: gtkmix($_fg, $backdrop_bg_color, 0.3);
-    background-color: gtkmix($_bg, $_fg, 0.2);
+    color: $_backdrop_fg;
+    background-color: $_backdrop_bg;
   }
   
-  @else if $type == "flat" {
+  @else if $type == "undecorated" {
     border-color: transparent;
-    border-radius: $button_radius;
-    color: $_fg;
     background-color: transparent;
     background-image: none;
     text-shadow: none;

@@ -61,20 +61,16 @@
 
   @else if $type == "checked-disabled" {
     color: $_disabled_fg;
-    border-color: gtkmix($_fg, $disabled_bg_color, 0.85);
+    border-color: gtkmix($_fg, $_disabled_bg, 0.85);
     background-color: gtkshade($_disabled_bg, 0.9);
   }
 
-  @else if $type == "disabled"
-  or $type == "flat-disabled" {
+  @else if $type == "disabled" {
     color: $_disabled_fg;
   }
   
-  @else if $type == "flat" {
-    border-radius: $button_radius;
+  @else if $type == "undecorated" {
     border-color: transparent;
-    color: $_fg;
-    box-shadow: none;
     background-color: transparent;
     background-image: none;
     text-shadow: none;

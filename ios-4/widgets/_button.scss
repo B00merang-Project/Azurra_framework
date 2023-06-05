@@ -6,7 +6,7 @@
   $_disabled_border : gtkshade($_bg, 0.9);
   
   $_backdrop_bg : $_bg;
-  $_backdrop_fg : gtkmix($_fg, $_bg, 0.41);   // simulate mix, since _colors uses a fixed color
+  $_backdrop_fg : gtkmix($_fg, $_bg, 0.41);   // approximation, since backdrop_fg_color is a fixed color
   $_backdrop_border : gtkshade($_bg, 0.75);
   
   $_backdrop_disabled_bg : gtkmix($_fg, $_bg, 0.98);
@@ -29,7 +29,6 @@
     -gtk-icon-shadow: none;
   }
   
-  // copy of "base" style
   @else if $type == "hover" {
     border-color: $_border;
     color: $_fg;
@@ -42,10 +41,9 @@
     box-shadow: 0 1px gtkalpha(gray, 0.1);
   }
   
-  // normal states
   @else if $type == "active"
   or $type == "checked" {
-    color: $selected_fg_color;
+    color: $selected_fg_color;  // white
     border-color: gtkshade($_border, 0.6);
     background-color: gtkshade($_bg, 0.5);
     background-image: none;
@@ -82,32 +80,12 @@
     color: $_backdrop_disabled_fg;
   }
   
-  @else if $type == "flat" {
-    border-radius: $button_radius;
+  @else if $type == "undecorated" {
     border-color: transparent;
-    color: $_fg;
     background-color: transparent;
     background-image: none;
     text-shadow: none;
     box-shadow: none;
     -gtk-icon-shadow: none;
-  }
-  
-  @else if $type == "flat-backdrop" {
-    border-color: transparent;
-    color: $_backdrop_fg;
-    background-color: transparent;
-    background-image: none;
-    text-shadow: none;
-    box-shadow: none;
-    -gtk-icon-shadow: none;
-  }
-  
-  @else if $type == "flat-disabled" {
-    color: $_disabled_fg;
-  }
-  
-  @else if $type == "flat-disabled-backdrop" {
-    color: $_backdrop_disabled_fg;
   }
 }

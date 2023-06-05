@@ -76,32 +76,12 @@
     background-color: $_backdrop_bg;
   }
   
-  @else if $type == "flat" {
-    border-radius: $button_radius;
+  @else if $type == "undecorated" {
     border-color: transparent;
-    color: $_fg;
     background-color: transparent;
     background-image: none;
     text-shadow: none;
     box-shadow: none;
     -gtk-icon-shadow: none;
-  }
-  
-  @else if $type == "flat-backdrop" {
-    border-color: transparent;
-    color: $_backdrop_fg;
-    background-color: transparent;
-    background-image: none;
-    text-shadow: none;
-    box-shadow: none;
-    -gtk-icon-shadow: none; 
-  }
-  
-  @else if $type == "flat-disabled" {
-    color: $_disabled_fg;
-  }
-  
-  @else if $type == "flat-disabled-backdrop" {
-    color: $_backdrop_disabled_fg;
   }
 }
