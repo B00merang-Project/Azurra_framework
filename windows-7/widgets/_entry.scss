@@ -17,12 +17,13 @@
   }
 
   @else if $type == "disabled-backdrop" {
+    border-color: gtkshade($backdrop_disabled_base_color, 0.85);
     color: $backdrop_disabled_fg_color;
-    border-color: $backdrop_border_color;
     background-color: $backdrop_disabled_base_color;
   }
 
   @else if $type == "backdrop" {
+    border-color: $backdrop_border_color;
     color: $backdrop_fg_color;
     background-color: $backdrop_base_color;
   }

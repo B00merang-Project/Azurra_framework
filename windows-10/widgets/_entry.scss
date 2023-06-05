@@ -13,18 +13,19 @@
   }
 
   @else if $type == "disabled" {
-    border-color: gtkmix($bg_color, $disabled_bg_color, 0.6);
+    border-color: gtkmix($disabled_fg_color, $disabled_bg_color, 0.9);
     color: $disabled_text_color;
     background-color: gtkmix($base_color, $disabled_bg_color, 0.1);
   }
 
   @else if $type == "disabled-backdrop" {
-    border-color: $backdrop_border_color;
+    border-color: gtkmix($backdrop_disabled_fg_color, $backdrop_disabled_bg_color, 0.9);
     color: $backdrop_disabled_fg_color;
     background-color: $backdrop_disabled_base_color;
   }
 
   @else if $type == "backdrop" {
+    border-color: $backdrop_border_color;
     color: $backdrop_fg_color;
     background-color: $backdrop_base_color;
   }

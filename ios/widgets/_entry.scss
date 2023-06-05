@@ -13,13 +13,15 @@
   }
 
   @else if $type == "disabled" {
+    border-color: gtkshade($disabled_bg_color, 1.075);
     color: $disabled_text_color;
+    background-color: gtkshade($disabled_bg_color, 1.075);
   }
 
   @else if $type == "disabled-backdrop" {
-    border-color: $backdrop_border_color;
+    border-color: gtkshade($backdrop_disabled_bg_color, 1.075);
     color: $backdrop_disabled_fg_color;
-    background-color: $backdrop_disabled_bg_color;
+    background-color: gtkshade($backdrop_disabled_bg_color, 1.075);
   }
 
   @else if $type == "backdrop" {
