@@ -1,6 +1,8 @@
 @mixin headerbutton() {
   // TODO: use headerbar_fg_color
   @extend %button_flat;
+  
+  color: $titlebar_fg_color;
 }
 
 @mixin headerbar($type) {
@@ -45,8 +47,8 @@
   background-repeat: no-repeat;
   -gtk-icon-shadow: none;
   
-  //@include button("base");
-  //&:active { @include button("active"); }
+  @include button("hover");   // same styling as "base", without the padding bits
+  &:active { @include button("active"); }
   
   @if $type == "close" {
     background-image: url('assets/close.svg');

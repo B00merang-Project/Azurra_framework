@@ -1,10 +1,9 @@
 @mixin headerbutton() {
   @extend %button_flat;
-
-  // fix hover bg color
-  // TODO: implement a better solution
+  
+  // override hover color
   &:hover:not(:checked) {
-    background-color: gtkshade($headerbar_bg_color, 1.2);
+    @include button('hover', $titlebar_bg_color, $titlebar_fg_color);
   }
 }
 
@@ -17,7 +16,7 @@
     background-color: $titlebar_bg_color;
     box-shadow: none;
 
-    button {
+    button:not(.suggested-action) {
       @include headerbutton();
     }
   }

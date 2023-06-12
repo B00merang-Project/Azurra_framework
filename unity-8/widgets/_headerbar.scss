@@ -1,5 +1,6 @@
 @mixin headerbutton() {
-  @include button('flat', $headerbar_bg_color, $headerbar_fg_color);
+  @include button("undecorated");
+  color: $headerbar_fg_color;
   
   &:hover {
     @include button('hover', $headerbar_bg_color, $headerbar_fg_color);
@@ -13,11 +14,8 @@
   &:checked:disabled {
     @include button('checked-disabled', $headerbar_bg_color, $headerbar_fg_color);
   }
-  &:disabled {
-    @include button('flat-disabled', $headerbar_bg_color, $headerbar_fg_color);
-  }
   &:backdrop {
-    @include button('flat-backdrop', $headerbar_bg_color, $headerbar_fg_color);
+    color: gtkshade($headerbar_fg_color, 0.8);
   }
 }
 

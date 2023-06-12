@@ -1,20 +1,23 @@
 @mixin headerbutton() {
   // TODO: reorganize eventually
-  padding: 4px 8px;
-  border-radius: $button_radius;
-  border: 1px solid gtkshade($headerbar_bg_color, 0.5);
-  color: $headerbar_fg_color;
-  background-color: $headerbar_bg_color;
-  background-image: linear-gradient(
-    to bottom,
-    gtkshade($headerbar_bg_color, 1.05),
-    gtkshade($headerbar_bg_color, 0.81) 50%,
-    gtkshade($headerbar_bg_color, 0.77) 51%,
-    gtkshade($headerbar_bg_color, 0.72)
-  );
-  box-shadow: 0 1px gtkalpha($light_shadow, 0.1);
-
-  // TODO: hover?
+  & {
+    padding: 4px 8px;
+    border-radius: $button_radius;
+    border: 1px solid gtkshade($headerbar_bg_color, 0.5);
+  }
+  &, &:hover {
+    border-color: gtkshade($headerbar_bg_color, 0.5);
+    color: $headerbar_fg_color;
+    background-color: $headerbar_bg_color;
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($headerbar_bg_color, 1.05),
+      gtkshade($headerbar_bg_color, 0.81) 50%,
+      gtkshade($headerbar_bg_color, 0.77) 51%,
+      gtkshade($headerbar_bg_color, 0.72)
+    );
+    box-shadow: 0 1px gtkalpha($light_shadow, 0.1);
+  }
 
   &:active, &:checked {
     color: $selected_fg_color;

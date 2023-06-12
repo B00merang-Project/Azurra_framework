@@ -1,11 +1,10 @@
 @mixin headerbar($type) {
   @if $type == "base" {
     min-height: $headerbar_size;
-    padding: 2px;
+    padding: 2px 0px;
     color: $titlebar_fg_color;
     background-color: $titlebar_bg_color;
     background-image: none;
-    box-shadow: inset -80px 0 $bg_color;
 
     .title {
       color: $selected_fg_color;
@@ -21,6 +20,10 @@
       &:backdrop {
         color: gtkalpha($backdrop_fg_color, 0.7);
       }
+    }
+    
+    windowcontrols {
+      background-color: $bg_color;
     }
   }
   
