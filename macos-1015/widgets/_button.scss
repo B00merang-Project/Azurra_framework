@@ -5,13 +5,13 @@
   $_disabled_fg : gtkmix($_fg, $_bg, 0.5);
   $_disabled_border : gtkmix($_fg, $_bg, 0.85);
   
-  $_backdrop_bg : gtkshade($_bg, 0.93);
-  $_backdrop_fg : gtkshade($_bg, 0.2);
-  $_backdrop_border : gtkshade($_bg, 0.9);
+  $_backdrop_bg : gtkmix($_fg, $_bg, 0.93);
+  $_backdrop_fg : gtkmix($_fg, $_bg, 0.6);
+  $_backdrop_border : gtkmix($_fg, $_bg, 0.9);
   
   $_backdrop_disabled_bg : gtkmix($_fg, $_bg, 0.98);
   $_backdrop_disabled_fg : gtkmix($_fg, $_bg, 0.75);
-  $_backdrop_disabled_border : gtkmix($_fg, $_bg, 0.85);
+  $_backdrop_disabled_border : gtkmix($_fg, $_bg, 0.95);
   
   @if $type == "base" {
     padding: 4px 8px;
@@ -22,11 +22,7 @@
     border-right-color: gtkshade($_border, 1.05);
     color: $_fg;
     background-color: $_bg;
-    background-image: linear-gradient(
-      to bottom,
-      $_bg,
-      gtkmix($_bg, black, 0.02)
-    );
+    background-image: none;
     text-shadow: none;
     box-shadow: none;
     -gtk-icon-shadow: none;
@@ -39,11 +35,6 @@
     border-right-color: gtkshade($_border, 1.05);
     color: $_fg;
     background-color: gtkshade($_bg, 1.1);
-    background-image: linear-gradient(
-      to bottom,
-      $_bg,
-      gtkmix($_bg, black, 0.02)
-    );
   }
 
   @else if $type == "active"
