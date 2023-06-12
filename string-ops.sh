@@ -30,7 +30,7 @@ show_ops() {
   echo "  -fi  <VALUE>                 Find <VALUE>"
   echo "  -ri  <VALUE> <NEW_VALUE>     Replace <VALUE> with <NEW_VALUE>"
   echo "  -di  <VALUE>                 Delete lines containing <VALUE>"
-  echo "  -at  <VALUE>                 Add \"@include '<VALUE>';\" as a new line"
+  echo "  -ai  <VALUE>                 Add \"@include '<VALUE>';\" as a new line"
 
   echo
   echo "For 'theme.rc'"
