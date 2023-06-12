@@ -6,7 +6,7 @@
   $_disabled_border : gtkshade($_bg, 0.9);
   
   $_backdrop_bg : $_bg;
-  $_backdrop_fg : gtkmix($_fg, $_bg, 0.41);   // approximation, since backdrop_fg_color is a fixed color
+  $_backdrop_fg : gtkmix($_fg, $_bg, 0.5);   // approximation, since backdrop_fg_color is a fixed color
   $_backdrop_border : gtkshade($_bg, 0.75);
   
   $_backdrop_disabled_bg : gtkmix($_fg, $_bg, 0.98);
@@ -21,8 +21,10 @@
     background-color: $_bg;
     background-image: linear-gradient(
       to bottom,
-      $_bg 40%,
-      gtkshade($_bg, 0.95) 60%
+      gtkshade($_bg, 1.2),
+      gtkshade($_bg, 0.95) 50%,
+      gtkshade($_bg, 0.9) 55%,
+      gtkshade($_bg, 0.925)
     );
     text-shadow: none;
     box-shadow: 0 1px gtkalpha(gray, 0.1);
@@ -35,8 +37,10 @@
     background-color: $_bg;
     background-image: linear-gradient(
       to bottom,
-      $_bg 40%,
-      gtkshade($_bg, 0.95) 60%
+      gtkshade($_bg, 1.2),
+      gtkshade($_bg, 0.95) 50%,
+      gtkshade($_bg, 0.9) 55%,
+      gtkshade($_bg, 0.925)
     );
     box-shadow: 0 1px gtkalpha(gray, 0.1);
   }
@@ -78,6 +82,10 @@
    
   @else if $type == "disabled-backdrop" {
     color: $_backdrop_disabled_fg;
+  }
+  
+  @else if $type == "backdrop" {
+    color: $_backdrop_fg;
   }
   
   @else if $type == "undecorated" {

@@ -39,6 +39,7 @@
   @else if $type == "hover" {
     &, &:focus {
       border-color: $_border;
+      color: $_fg;
       background-image: linear-gradient(to left, $_button_v_shadow),
         linear-gradient(to top, $_button_h_shadow),
         linear-gradient(to bottom, $_button_fill);
@@ -49,6 +50,7 @@
   @else if $type == "active"
   or $type == "checked" {
     border-color: $_border;
+    color: $_fg;
     background-color: gtkshade($_bg, 0.95);
     background-image: linear-gradient(to right, $_button_v_shadow),
       linear-gradient(to bottom, $_button_h_shadow),

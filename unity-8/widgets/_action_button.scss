@@ -1,0 +1,15 @@
+@mixin destructive_button($type) {
+  $_bg : $error_color;
+  $_fg : $selected_fg_color;
+  
+  // import default button with error colors
+  @include button($type, $_bg, $_fg);
+}
+
+@mixin suggested_button($type) {
+  $_bg : $success_color;
+  $_fg : $selected_fg_color;
+  
+  // import default button with success colors
+  @include button($type, $_bg, $_fg);
+}

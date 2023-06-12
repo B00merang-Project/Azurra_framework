@@ -1,0 +1,19 @@
+// same file than core, only adds font-weight: bold property
+
+@mixin destructive_button($type) {
+  $_bg : $error_color;
+  $_fg : $selected_fg_color;
+  
+  // import default button with error colors
+  @include button($type, $_bg, $_fg);
+}
+
+@mixin suggested_button($type) {
+  $_bg : $selected_bg_color;
+  $_fg : $selected_fg_color;
+  
+  // import default button with selected colors
+  @include button($type, $_bg, $_fg);
+  
+  font-weight: bold;
+}

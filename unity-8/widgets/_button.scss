@@ -26,7 +26,7 @@
     border-left-color: gtkshade($_border, 1.05);
     border-right-color: gtkshade($_border, 1.05);
     color: $_fg;
-    background-color: gtkshade($_bg, 1.1);
+    background-color: gtkmix($_bg, white, 0.1);   // HACK: stay white normally, shade if headerbar button
   }
 
   @else if $type == "active"

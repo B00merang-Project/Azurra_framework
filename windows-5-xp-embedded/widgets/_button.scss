@@ -28,6 +28,15 @@
   @else if $type == "hover" {
     &, &:focus {
       border-color: gtkmix($_border, $selected_bg_color, 0.3);
+      color: $_fg;
+      // TODO: replace hard-coded colors
+      background-image: linear-gradient(
+        to bottom,
+        $_bg 0%,
+        gtkshade($_bg, 0.933) 50%,
+        gtkshade($_bg, 0.875) 51%,
+        gtkshade($_bg, 0.69) 100%
+      );
       box-shadow: inset 0 0 0 2px #ffc73c;    // TODO: replace hard-coded colors
     }
   }
@@ -35,6 +44,7 @@
   @else if $type == "active"
   or $type == "checked" {
     border-color: $_border;
+    color: $_fg;
     background-color: gtkshade($_bg, 0.95);
     
     // TODO: replace hard-coded colors

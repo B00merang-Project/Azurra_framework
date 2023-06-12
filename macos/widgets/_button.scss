@@ -37,11 +37,12 @@
     box-shadow: 0 0 2px 0 gtkalpha(black, 0.1);
   }
 
+  // TODO: rework to use color mixes instead
   @else if $type == "active"
   or $type == "checked" {
     color: $_fg;
-    border-color: gtkalpha($_fg, 0.1);
-    background-color: gtkalpha($_fg, 0.1);
+    border-color: gtkmix($_bg, $_fg, 0.075);
+    background-color: gtkmix($_bg, $_fg, 0.075);
   }
 
   @else if $type == "checked-backdrop" {

@@ -1,0 +1,40 @@
+@mixin destructive_button($type) {
+  $_bg : $error_color;
+  $_fg : $selected_fg_color;
+  
+  // override background
+  @if $type == "base"
+  or $type == "hover" {
+    @include button($type, $_bg, $_fg);
+    
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($_bg, 1.6),
+      $_bg
+    );
+  }
+  @else if $type == "active" {
+    @include button($type, $_bg, $_fg);
+  }
+}
+
+@mixin suggested_button($type) {
+  $_bg : $selected_bg_color;
+  $_fg : $selected_fg_color;
+  
+    // override background
+  @if $type == "base"
+  or $type == "hover" {
+    @include button($type, gtkshade($_bg, 1.3), $_fg);
+    
+    background-image: linear-gradient(
+      to bottom,
+      gtkshade($_bg, 1.4),
+      $_bg
+    );
+  }
+  @else if $type == "active" {
+    @include button($type, gtkshade($_bg, 1.3), $_fg);
+    background-color: $_bg;
+  }
+}

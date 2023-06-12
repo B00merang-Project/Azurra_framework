@@ -1,0 +1,29 @@
+@mixin destructive_button($type) {
+  // DOC
+  // base
+  // hover
+  // active
+  // checked
+  // backdrop
+  
+  $_bg : $error_color;
+  $_fg : $selected_fg_color;
+  
+  // import default button with error colors
+  @include button($type, $_bg, $_fg);
+}
+
+@mixin suggested_button($type) {
+  // DOC
+  // base
+  // hover
+  // active
+  // checked
+  // backdrop
+  
+  $_bg : $selected_bg_color;
+  $_fg : $selected_fg_color;
+  
+  // import default button with selected colors
+  @include button($type, $_bg, $_fg);
+}

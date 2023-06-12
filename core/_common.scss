@@ -492,7 +492,8 @@ button {
 
 %button_flat,
 button.flat {
-  &,
+  @include button('undecorated');
+  
   &:backdrop,
   &:disabled,
   &:disabled:backdrop {
@@ -520,72 +521,39 @@ button.flat {
   }
 }
 
-// TODO: sometimes a distinct style is desired for some action buttons
-// ex. os/2's suggested button should be 'normal', but with a shadow around it
-// create mixin and widget action_button to host the code. Most suggested buttons
-// can actually clone the regular button styling
-@warn "Move destructive and suggested button to new mixin 'action_button'";
+// red buttons
 button.destructive-action {
-  @include button('base', $error_color, $selected_fg_color);
+  @include destructive_button('base');
 
   &:hover {
-    @include button('hover', $error_color, $selected_fg_color);
+    @include destructive_button('hover');
   }
   &:active {
-    @include button('active', $error_color, $selected_fg_color);
+    @include destructive_button('active');
   }
   &:checked {
-    @include button('checked', $error_color, $selected_fg_color);
-  }
-  &:checked:backdrop {
-    @include button('checked-backdrop', $error_color, $selected_fg_color);
-  }
-  &:checked:disabled {
-    @include button('checked-disabled', $error_color, $selected_fg_color);
-  }
-  &:checked:disabled:backdrop {
-    @include button('checked-disabled-backdrop', $error_color, $selected_fg_color);
-  }
-  &:disabled {
-    @include button('disabled', $error_color, $selected_fg_color);
-  }
-  &:disabled:backdrop {
-    @include button('disabled-backdrop', $error_color, $selected_fg_color);
+    @include destructive_button('checked');
   }
   &:backdrop {
-    @include button('backdrop', $error_color, $selected_fg_color);
+    @include destructive_button('backdrop');
   }
 }
 
+// suggested buttons, usually blue
 button.suggested-action {
-  @include button('base', $selected_bg_color, $selected_fg_color);
+  @include suggested_button('base');
 
   &:hover {
-    @include button('hover', $selected_bg_color, $selected_fg_color);
+    @include suggested_button('hover');
   }
   &:active {
-    @include button('active', $selected_bg_color, $selected_fg_color);
+    @include suggested_button('active');
   }
   &:checked {
-    @include button('checked', $selected_bg_color, $selected_fg_color);
-  }
-  &:checked:backdrop {
-    @include button('checked-backdrop', $selected_bg_color, $selected_fg_color);
-  }
-  &:checked:disabled {
-    @include button('checked-disabled', $selected_bg_color, $selected_fg_color);
-  }
-  &:checked:disabled:backdrop {
-    @include button('checked-disabled-backdrop', $selected_bg_color, $selected_fg_color);
-  }
-  &:disabled {
-    @include button('disabled', $selected_bg_color, $selected_fg_color);
-  }
-  &:disabled:backdrop {
-    @include button('disabled-backdrop', $selected_bg_color, $selected_fg_color);
+    @include suggested_button('checked');
   }
   &:backdrop {
-    @include button('backdrop', $selected_bg_color, $selected_fg_color);
+    @include suggested_button('backdrop');
   }
 }
 
