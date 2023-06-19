@@ -1,54 +1,87 @@
-@mixin spinbutton() {
-  spinbutton {
-    &.horizontal {
-      border: 1px solid $border_color;
-      border-radius: $entry_radius;
-      background-color: $base_color;
+@mixin spinbutton($orient, $type) {
+  @if $orient == "horiz" {
+    @if $type == "base" {
+      @include entry("base");
       
-      &:disabled {
-        border-color: $backdrop_border_color;
-        color: $disabled_fg_color;
-        background-color: $disabled_base_color;
-
-        &:backdrop {
-          border-color: $backdrop_border_color;
-          color: $backdrop_disabled_fg_color;
-          background-color: $backdrop_disabled_base_color;
+      min-height: 28px;   // this should be moved to _entry.scss
+      padding: 0px;
+      
+      &:focus { border-color: $selected_bg_color; }
+      
+      > text {
+        @include entry("flat");
+        
+        padding: 7px;
+        min-width: 36px;
+        
+        > selection {
+          // TODO: standardize text selections? there are many styles in _common.scss
+          background-color: $backdrop_selected_bg_color;
+          color: $backdrop_selected_fg_color;
+          
+          &:focus-within {
+            background-color: $selected_text_bg_color;
+            color: $selected_text_color;
+          }
         }
       }
       
-      &:backdrop {
-        background-color: $backdrop_base_color;
-        border-color: $backdrop_border_color;
-      }
-
-      &:focus { border-color: $selected_bg_color; }
-    
-      entry {
-        padding: 7px 15px;
-        border: none;
-        background: none;
-        border-radius: $entry_radius 0 0 $entry_radius;
+      > button {
+        @include button("undecorated");
         
-        &:focus { box-shadow: none; }
-        
-        &:disabled { background: none; }
-      }
-      
-      button {
-        border: none;
-        border-radius: 0;
-        background: none;
+        padding: 4px 6px;
+        border-radius: 0px;
         box-shadow: -1px 0 $border_color;
         
-        &:disabled, &:backdrop { box-shadow: -1px 0 $backdrop_border_color; background: none; }
+        // last button must be squared off
         &.up { border-radius: 0 $entry_radius $entry_radius 0; }
+        
+        &:hover {
+          background-color: gtkalpha(black, 0.1);
+        }
       }
     }
+    
+    @else if $type == "disabled" {
+      @include entry("disabled");
+    }
 
-    &.vertical {
-      entry { border-radius: 0; }
-      button {
+    @else if $type == "disabled-backdrop" {
+      @include entry("disabled-backdrop");
+    }
+    
+    @else if $type == "backdrop" {
+      @include entry("backdrop");
+    }
+  }
+
+  @else if $orient == "vert" {
+    @if $type == "base" {
+      > text {
+        @include entry("base");
+        
+        min-height: 32px;
+        min-width: 32px;
+        padding: 0;
+        border-radius: 0;
+        
+        > selection {
+          // TODO: standardize text selections? there are many styles in _common.scss
+          background-color: $backdrop_selected_bg_color;
+          color: $backdrop_selected_fg_color;
+          
+          &:focus-within {
+            background-color: $selected_text_bg_color;
+            color: $selected_text_color;
+          }
+        }
+      }
+      
+      > button {
+        min-height: 32px;
+        min-width: 32px;
+        padding: 0;
+
         &.up {
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
@@ -60,6 +93,11 @@
           border-top-left-radius: 0;
           border-top-right-radius: 0;
         }
+      }
+    
+      &:drop(active) {
+        border-color: transparent;
+        box-shadow: none;
       }
     }
   }

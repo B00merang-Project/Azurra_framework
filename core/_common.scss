@@ -599,7 +599,37 @@ button.link {
   > label { text-decoration: underline; }
 }
 
-@include spinbutton();
+spinbutton {
+  &:not(.vertical) {
+    @include spinbutton("horiz", "base");
+    
+    &:disabled {
+      @include spinbutton("horiz", "disabled");
+      
+      &:backdrop {
+        @include spinbutton("horiz", "disabled-backdrop");
+      }
+    }
+    &:backdrop {
+      @include spinbutton("horiz", "backdrop");
+    }
+  }
+  
+  &.vertical {
+    @include spinbutton("vert", "base");
+    
+    &:disabled {
+      @include spinbutton("vert", "disabled");
+      
+      &:backdrop {
+        @include spinbutton("vert", "disabled-backdrop");
+      }
+    }
+    &:backdrop {
+      @include spinbutton("vert", "backdrop");
+    }
+  }
+}
 // @include combobox();   CREATE: new mixin combobox
 
 toolbar,
