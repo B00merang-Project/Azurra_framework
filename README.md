@@ -1,4 +1,4 @@
-w![azurra-logo](https://raw.githubusercontent.com/B00merang-Project/Azurra_framework/assets/azurra_framework.png)
+![azurra-badge](https://raw.githubusercontent.com/B00merang-Project/B00merang-Project.github.io/master/resources/badges/azurra/badge.png)
 
 A theme creation framework for GTK themes (and potentially more platforms in the future).
 
