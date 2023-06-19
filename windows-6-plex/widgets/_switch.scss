@@ -18,22 +18,15 @@
 
 @mixin switch_slider($type : "base") {
   @if $type == "base" {
+    @include button('base');
+    
+    // override button properties
     margin: -1px;
     min-width: 28px;
-    min-height: 22px;
-    border-radius: $button_radius;
-    border: 1px solid gtkmix(gtkshade($border_color, 0.3), $selected_bg_color, 0.25);
-    background-color: $bg_color;
-    background-image: linear-gradient(
-      to bottom,
-      gtkshade($bg_color, 1.015) 20%,
-      $color_shadow 35%
-    );
-    box-shadow: none;
+    min-height: 22px;    
   }
 
   @else if $type == "disabled" {
-    border-color: gtkmix(gtkshade($border_color, 0.3), $disabled_bg_color, 0.85);
-    background-color: $disabled_base_color;
+    @include button('disabled');
   }
 }
