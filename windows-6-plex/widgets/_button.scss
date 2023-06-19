@@ -1,5 +1,5 @@
 @mixin button($type, $_bg : $bg_color, $_fg : $fg_color) {
-  $_border : gtkshade($selected_bg_color, 0.8);
+  $_border : gtkshade($selected_bg_color, 0.75);
   
   $_disabled_bg : gtkmix($_fg, $_bg, 0.95);
   $_disabled_fg : gtkmix($_fg, $_bg, 0.5);
@@ -14,7 +14,7 @@
     background-image: linear-gradient(
       to bottom,
       gtkshade($_bg, 1.015) 20%,
-      $color_shadow 35%
+      gtkshade($_bg, 0.96) 35%
     );
     text-shadow: none;
     box-shadow: none;
@@ -28,7 +28,7 @@
     background-image: linear-gradient(
       to bottom,
       gtkshade($_bg, 1.015) 20%,
-      $color_shadow 35%
+      gtkshade($_bg, 0.96) 35%
     );
   }
 

@@ -1,0 +1,27 @@
+// same file than core, only adds font-weight: bold property
+
+@mixin destructive_button($type) {
+  $_bg : $bg_color;
+  $_fg : $fg_color;
+  
+  // import default button with error colors
+  @include button($type, $_bg, $_fg);
+  
+  &:not(:hover) {
+    border-color: gtkshade($error_color, 0.9);
+    box-shadow: inset 0 0 0 1px gtkshade($error_color, 0.9);
+  }
+}
+
+@mixin suggested_button($type) {
+  $_bg : $bg_color;
+  $_fg : $fg_color;
+  
+  // import default button with selected colors
+  @include button($type, $_bg, $_fg);
+  
+  &:not(:hover) {
+    border-color: gtkshade($selected_text_bg_color, 0.9);
+    box-shadow: inset 0 0 0 1px gtkshade($selected_text_bg_color, 0.9);
+  }
+}
