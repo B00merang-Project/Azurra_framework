@@ -44,56 +44,56 @@
   color: transparent;
   background-color: transparent;
   background-size: 16px 16px;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center center;
   box-shadow: none;
   -gtk-icon-shadow: none;
       
   @if $type == "close" {
-    background: url('assets/close-normal.png') 100% 100%;
+    background-image: url('assets/close-normal.png');
     
-    &:hover { background: url('assets/close-hover.png') 100% 100%; }
-    &:active { background: url('assets/close-active.png') 100% 100%; }
+    &:hover { background-image: url('assets/close-hover.png'); }
+    &:active { background-image: url('assets/close-active.png'); }
 
-    &:backdrop { background: url('assets/close-backdrop.png') 100% 100%;
-      &:hover { background: url('assets/close-hover.png') 100% 100%; }
-      &:active { background: url('assets/close-active.png') 100% 100%; }
+    &:backdrop { background-image: url('assets/close-backdrop.png');
+      &:hover { background-image: url('assets/close-hover.png'); }
+      &:active { background-image: url('assets/close-active.png'); }
     }
   }
 
   @else if $type == "minimize" {
-    background: url('assets/minimize-normal.png') 100% 100%;
+    background-image: url('assets/minimize-normal.png');
     
-    &:hover { background: url('assets/minimize-hover.png') 100% 100%; }
-    &:active { background: url('assets/minimize-active.png') 100% 100%; }
+    &:hover { background-image: url('assets/minimize-hover.png'); }
+    &:active { background-image: url('assets/minimize-active.png'); }
 
-    &:backdrop { background: url('assets/minimize-backdrop.png') 100% 100%;
-      &:hover { background: url('assets/minimize-hover.png') 100% 100%; }
-      &:active { background: url('assets/minimize-active.png') 100% 100%; }
+    &:backdrop { background-image: url('assets/minimize-backdrop.png');
+      &:hover { background-image: url('assets/minimize-hover.png'); }
+      &:active { background-image: url('assets/minimize-active.png'); }
     }
   }
 
   @else if $type == "maximize" {
-    background: url('assets/maximize-normal.png') 100% 100%;
+    background-image: url('assets/maximize-normal.png');
     
-    &:hover { background: url('assets/maximize-hover.png') 100% 100%; }
-    &:active { background: url('assets/maximize-active.png') 100% 100%; }
+    &:hover { background-image: url('assets/maximize-hover.png'); }
+    &:active { background-image: url('assets/maximize-active.png'); }
 
-    &:backdrop { background: url('assets/maximize-backdrop.png') 100% 100%;
-      &:hover { background: url('assets/maximize-hover.png') 100% 100%; }
-      &:active { background: url('assets/maximize-active.png') 100% 100%; }
+    &:backdrop { background-image: url('assets/maximize-backdrop.png');
+      &:hover { background-image: url('assets/maximize-hover.png'); }
+      &:active { background-image: url('assets/maximize-active.png'); }
     }
   }
   
   @else if $type == "restore" {
-    background: url('assets/restore-normal.png') 100% 100%;
+    background-image: url('assets/restore-normal.png');
     
-    &:hover { background: url('assets/restore-hover.png') 100% 100%; }
-    &:active { background: url('assets/restore-active.png') 100% 100%; }
+    &:hover { background-image: url('assets/restore-hover.png'); }
+    &:active { background-image: url('assets/restore-active.png'); }
 
-    &:backdrop { background: url('assets/restore-backdrop.png') 100% 100%;
-      &:hover { background: url('assets/restore-hover.png') 100% 100%; }
-      &:active { background: url('assets/restore-active.png') 100% 100%; }
+    &:backdrop { background-image: url('assets/restore-backdrop.png');
+      &:hover { background-image: url('assets/restore-hover.png'); }
+      &:active { background-image: url('assets/restore-active.png'); }
     }
   }
 }
