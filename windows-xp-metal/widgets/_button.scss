@@ -1,5 +1,5 @@
 @mixin button($type, $_bg : $bg_color, $_fg : $fg_color) {
-  $_border : gtkshade($selected_bg_color, 0.8);
+  $_border : gtkshade($_bg, 0.45);
   
   $_disabled_bg : gtkmix($_fg, $_bg, 0.95);
   $_disabled_fg : gtkmix($_fg, $_bg, 0.5);
