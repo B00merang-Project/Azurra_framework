@@ -2,13 +2,13 @@
   @if $type == "base" {
     border-radius: $progressbar_radius;
     border: 1px solid $border_color;
-    border-bottom-color: $light_shadow;
-    border-right-color: $light_shadow;
+    border-bottom-color: white;
+    border-right-color: white;
     background-color: $bg_color;
     box-shadow: inset 1px 0 $border_color,
                 inset 0 1px $border_color,
-                inset -1px 0 $light_shadow,
-                inset 0 -1px $light_shadow;
+                inset -1px 0 white,
+                inset 0 -1px white;
   }
 }
 
@@ -21,22 +21,22 @@
   @else if $type == "horiz" {
     background-image: linear-gradient(
       to bottom,
-      $dark_shadow,
+      black,
       $border_color 10%,
-      $light_shadow,
+      white,
       $border_color 90%,
-      $dark_shadow
+      black
     );
   }
   
   @else if $type == "vert" {
     background-image: linear-gradient(
       to right,
-      $dark_shadow,
+      black,
       $border_color 10%,
-      $light_shadow,
+      white,
       $border_color 90%,
-      $dark_shadow
+      black
     );
   }
 }

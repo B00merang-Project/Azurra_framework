@@ -41,7 +41,7 @@
     border: 1px solid gtkshade($border_color, 0.55);
     color: $fg_color;
     background-color: gtkshade($bg_color, 1.08);
-    box-shadow: inset 3px 3px $light_shadow,
+    box-shadow: inset 3px 3px white,
                 inset 1px 1px $bg_color,
                 inset -2px -2px gtkshade($bg_color, 0.85),
                 inset -1px -1px gtkshade($bg_color, 0.65);
@@ -49,7 +49,7 @@
   
   @else if $type == "disabled" {
     border-color: gtkshade($disabled_bg_color, 0.85);
-    box-shadow: inset 3px 3px $light_shadow,
+    box-shadow: inset 3px 3px white,
                 inset 1px 1px $bg_color,
                 inset -2px -2px $bg_color,
                 inset -1px -1px gtkshade($bg_color, 0.8);

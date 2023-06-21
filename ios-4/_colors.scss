@@ -34,9 +34,7 @@ $darker_bg_color : #202F50;
 $darker_fg_color : #FFFFFF;
 
 // Shadows
-$dark_shadow : rgb(0, 0, 0);
 $color_shadow : $selected_bg_color;
-$light_shadow : rgb(255, 255, 255);
 $wm_shadow : #000000;
 
 // Borders
@@ -63,7 +61,7 @@ $toolbar_bg_color : gtkshade($dark_bg_color, 0.92);
 $toolbar_fg_color : $dark_fg_color;
 $sidebar_bg_color : #E2E5EC;
 $sidebar_fg_color : #000000;
-$taskbar_bg_color : gtkalpha($dark_shadow, 0.4);
+$taskbar_bg_color : rgba(0, 0, 0, 0.4);
 $taskbar_fg_color : $dark_fg_color;
 $titlebar_bg_color : $dark_bg_color;
 $titlebar_fg_color : $dark_fg_color;
@@ -71,7 +69,7 @@ $headerbar_bg_color : $dark_bg_color;
 $headerbar_fg_color : $dark_fg_color;
 $terminal_bg_color : $base_color;
 $terminal_fg_color : $text_color;
-$overshoot_color : gtkalpha($dark_shadow, 0.5);
+$overshoot_color : rgba(0, 0, 0, 0.5);
 $drop_target_color : $selected_bg_color;
 
 // OSD
@@ -79,15 +77,9 @@ $osd_fg : $darker_fg_color;
 $osd_bg : $darker_bg_color;
 $osd_base : $darker_bg_color;
 
-// Budgie colors
-$raven_fg_color : $darker_fg_color;
-$raven_bg_color : gtkalpha($darker_bg_color, 0.9);
 
 // Desktop Icons
 $desktop_item_fg : #FFFFFF;
 $desktop_item_selected_fg : $selected_fg_color;
-$desktop_item_text_shadow : gtkalpha($dark_shadow, 0.8);
+$desktop_item_text_shadow : rgba(0, 0, 0, 0.8);
 
-// LightDM greeter colors
-$lightdm_bg_color : $darker_bg_color;
-$lightdm_fg_color : $darker_fg_color;

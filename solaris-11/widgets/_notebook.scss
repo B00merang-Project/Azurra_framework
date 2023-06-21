@@ -3,31 +3,31 @@
   
   @at-root
   notebook.frame {
-    border: 1px solid $dark_shadow;
+    border: 1px solid black;
   }
   
   &.top {
     margin-bottom: 0;
     border-bottom: 4px solid #bbd0e3;
-    box-shadow: 0 1px $dark_shadow, inset 0 -1px $dark_shadow;
+    box-shadow: 0 1px black, inset 0 -1px black;
   }
 
   &.bottom {
     margin-top: 0;
     border-top: 4px solid #bbd0e3;
-    box-shadow: 0 -1px $dark_shadow, inset 0 1px $dark_shadow;
+    box-shadow: 0 -1px black, inset 0 1px black;
   }
 
   &.left {
     margin-right: 0;
     border-right: 4px solid #bbd0e3;
-    box-shadow: 1px 0 $dark_shadow, inset -1px 0 $dark_shadow;
+    box-shadow: 1px 0 black, inset -1px 0 black;
   }
 
   &.right {
     margin-left: 0;
     border-left: 4px solid #bbd0e3;
-    box-shadow: -1px 0 $dark_shadow, inset 1px 0 $dark_shadow;
+    box-shadow: -1px 0 black, inset 1px 0 black;
   }
   
   /*
@@ -49,31 +49,31 @@
     
     // less opaque shadows for dark variant
     @if $variant == 'dark' {
-      box-shadow: inset 0 -3px 4px 0 gtkalpha($light_shadow, 0.45),
-                  inset 0 1px 0 0 gtkalpha($light_shadow, 0.6),
-                  inset 0 8px 4px 0 gtkalpha($light_shadow, 0.35);
+      box-shadow: inset 0 -3px 4px 0 gtkalpha(white, 0.45),
+                  inset 0 1px 0 0 gtkalpha(white, 0.6),
+                  inset 0 8px 4px 0 gtkalpha(white, 0.35);
     }
     @else {
-      box-shadow: inset 0 -3px 4px 0 gtkalpha($light_shadow, 0.65),
-                  inset 0 1px 0 0 gtkalpha($light_shadow, 0.7),
-                  inset 0 8px 4px 0 gtkalpha($light_shadow, 0.5);
+      box-shadow: inset 0 -3px 4px 0 gtkalpha(white, 0.65),
+                  inset 0 1px 0 0 gtkalpha(white, 0.7),
+                  inset 0 8px 4px 0 gtkalpha(white, 0.5);
     }
     
     @if $pos == "top" {
       margin-top: 2px;
-      border-bottom: 1px solid $dark_shadow;
+      border-bottom: 1px solid black;
     }
     @else if $pos == "bottom" {
       margin-bottom: 2px;
-      border-top: 1px solid $dark_shadow;
+      border-top: 1px solid black;
     }
     @else if $pos == "left" {
       margin-left: 2px;
-      border-right: 1px solid $dark_shadow;
+      border-right: 1px solid black;
     }
     @else if $pos == "right" {
       margin-right: 2px;
-      border-left: 1px solid $dark_shadow;
+      border-left: 1px solid black;
     }
   }
 
@@ -83,14 +83,14 @@
     
     // invert bottom tab shadow
     @if $pos == "bottom" {
-      box-shadow: inset 0 3px 4px 0 gtkalpha($light_shadow, 0.3),
-                  inset 0 -1px 0 0 gtkalpha($light_shadow, 0.7),
-                  inset 0 -8px 4px 0 gtkalpha($light_shadow, 0.5);
+      box-shadow: inset 0 3px 4px 0 gtkalpha(white, 0.3),
+                  inset 0 -1px 0 0 gtkalpha(white, 0.7),
+                  inset 0 -8px 4px 0 gtkalpha(white, 0.5);
     }
     @else {
-      box-shadow: inset 0 -3px 4px 0 gtkalpha($light_shadow, 0.3),
-                  inset 0 1px 0 0 gtkalpha($light_shadow, 0.7),
-                  inset 0 8px 4px 0 gtkalpha($light_shadow, 0.5);
+      box-shadow: inset 0 -3px 4px 0 gtkalpha(white, 0.3),
+                  inset 0 1px 0 0 gtkalpha(white, 0.7),
+                  inset 0 8px 4px 0 gtkalpha(white, 0.5);
     }
 
     @if $pos == "top" {

@@ -5,16 +5,16 @@
   border-right-color: gtkshade($border_color, 0.9);
   border-bottom-color: gtkshade($border_color, 0.95);
   border-radius: $scale_trough_radius;
-  background-color: gtkalpha($dark_shadow, 0.175);
-  box-shadow: inset 0 2px 3px 0 gtkalpha($dark_shadow, 0.5);
+  background-color: gtkalpha(black, 0.175);
+  box-shadow: inset 0 2px 3px 0 gtkalpha(black, 0.5);
 
   &:disabled {
-    background-color: gtkalpha($dark_shadow, 0.05);
-    box-shadow: inset 0 2px 3px 0 gtkalpha($dark_shadow, 0.35);
+    background-color: gtkalpha(black, 0.05);
+    box-shadow: inset 0 2px 3px 0 gtkalpha(black, 0.35);
     
-    &:backdrop { background-color: gtkalpha($dark_shadow, 0.05); }
+    &:backdrop { background-color: gtkalpha(black, 0.05); }
   }
-  &:backdrop { background-color: gtkalpha($dark_shadow, 0.1); }
+  &:backdrop { background-color: gtkalpha(black, 0.1); }
     
   @at-root
   scale.vertical > trough {
@@ -22,9 +22,9 @@
     border-top-color: gtkshade($border_color, 0.9);
     border-bottom-color: gtkshade($border_color, 0.9);
     border-right-color: gtkshade($border_color, 0.95);
-    box-shadow: inset 2px 0 3px 0 gtkalpha($dark_shadow, 0.5);
+    box-shadow: inset 2px 0 3px 0 gtkalpha(black, 0.5);
     
-    &:disabled { box-shadow: inset 2px 0 3px 0 gtkalpha($dark_shadow, 0.35); }
+    &:disabled { box-shadow: inset 2px 0 3px 0 gtkalpha(black, 0.35); }
   }
 }
 

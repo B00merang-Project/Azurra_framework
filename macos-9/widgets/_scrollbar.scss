@@ -1,6 +1,6 @@
 @mixin scrollbar($type : "base") {
   @if $type == "base" {
-    border: 1px solid $dark_shadow;
+    border: 1px solid black;
     background-color: gtkshade($bg_color, 0.8);
     box-shadow: inset 2px 2px gtkshade($bg_color, 0.6),
                 inset -2px 0 gtkshade($bg_color, 0.95);
@@ -18,8 +18,8 @@
     min-height: $scrollbar_slider_size;
     border-radius: $scrollbar_slider_radius;
     border: 1px solid gtkshade($selected_bg_color, 0.7);
-    border-top-color: gtkmix($selected_bg_color, $light_shadow, 0.7);
-    border-left-color: gtkmix($selected_bg_color, $light_shadow, 0.7);
+    border-top-color: gtkmix($selected_bg_color, white, 0.7);
+    border-left-color: gtkmix($selected_bg_color, white, 0.7);
     background-clip: padding-box;
     background-color: $selected_bg_color;
     background-position: center center;

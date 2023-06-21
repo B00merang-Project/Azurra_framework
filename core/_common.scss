@@ -1901,13 +1901,13 @@ colorswatch {
   }
 
   &.dark {
-    > overlay { color: gtkalpha($light_shadow, 0.7); }
-    &.activatable:hover > overlay { border-color: gtkalpha($dark_shadow, 0.5); }
+    > overlay { color: gtkalpha(white, 0.7); }
+    &.activatable:hover > overlay { border-color: gtkalpha(black, 0.5); }
   }
 
   &.light
-    > overlay { color: gtkalpha($light_shadow, 0.7);
-    &.activatable:hover > overlay { border-color: gtkalpha($dark_shadow, 0.3); }
+    > overlay { color: gtkalpha(white, 0.7);
+    &.activatable:hover > overlay { border-color: gtkalpha(black, 0.3); }
   }
   
   &:drop(active) {
@@ -1926,8 +1926,8 @@ colorswatch {
     }
   }
 
-  > overlay { border: 1px solid gtkalpha($dark_shadow, 0.15); }
-  &.activatable:hover > overlay { background-color: gtkalpha($light_shadow, 0.2); }
+  > overlay { border: 1px solid gtkalpha(black, 0.15); }
+  &.activatable:hover > overlay { background-color: gtkalpha(white, 0.2); }
 
   &#add-color-button {
     border-radius: $colorswatch_radius 0 0 $colorswatch_radius;
@@ -1936,12 +1936,12 @@ colorswatch {
     
     // TODO: use regular style buttons here instead of old shadow-based colors?
     background-clip: padding-box;
-    border-color: gtkalpha($dark_shadow, 0.1);
+    border-color: gtkalpha(black, 0.1);
     background-color: gtkshade($bg_color, 0.95);
     color: $fg_color;
 
     &:hover {
-      border-color: gtkalpha($dark_shadow, 0.3);
+      border-color: gtkalpha(black, 0.3);
       background-color: gtkshade($bg_color, 0.90);
       color: $fg_color;
     }
@@ -1960,7 +1960,7 @@ colorswatch {
     opacity: 0.5;
 
     overlay {
-      border-color: gtkalpha($dark_shadow, 0.6);
+      border-color: gtkalpha(black, 0.6);
       box-shadow: none;
     }
   }
@@ -2185,19 +2185,19 @@ stackswitcher.circular {
 
 // outline for low res icons
 .lowres-icon {
-    -gtk-icon-shadow: 0 -1px gtkalpha($dark_shadow,0.05),
-      1px 0 gtkalpha($dark_shadow,0.1),
-      0 1px gtkalpha($dark_shadow,0.3),
-      -1px 0 gtkalpha($dark_shadow,0.1);
+    -gtk-icon-shadow: 0 -1px gtkalpha(black,0.05),
+      1px 0 gtkalpha(black,0.1),
+      0 1px gtkalpha(black,0.3),
+      -1px 0 gtkalpha(black,0.1);
 }
 
 // dropshadow for large icons
 .icon-dropshadow {
-  -gtk-icon-shadow: 0 1px 12px gtkalpha($dark_shadow,0.05),
-      0 -1px gtkalpha($dark_shadow,0.05),
-      1px 0 gtkalpha($dark_shadow,0.1),
-      0 1px gtkalpha($dark_shadow,0.3),
-      -1px 0 gtkalpha($dark_shadow,0.1);
+  -gtk-icon-shadow: 0 1px 12px gtkalpha(black,0.05),
+      0 -1px gtkalpha(black,0.05),
+      1px 0 gtkalpha(black,0.1),
+      0 1px gtkalpha(black,0.3),
+      -1px 0 gtkalpha(black,0.1);
 }
 
 // emoji selector

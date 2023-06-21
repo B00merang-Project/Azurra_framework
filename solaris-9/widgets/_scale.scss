@@ -3,8 +3,8 @@
   border-radius: $scale_trough_radius;
   background-color: $bg_color;
   outline-offset: 2px;
-  border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-  border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+  border-bottom-color: gtkmix($bg_color, white, 0.7);
+  border-right-color: gtkmix($bg_color, white, 0.7);
 
   &:disabled { background-color: $disabled_bg_color; }
 }
@@ -30,14 +30,14 @@
     color: $fg_color;
     background-color: $bg_color;
     border: 1px solid $border_color;
-    border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
-    border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-top-color: gtkmix($bg_color, white, 0.7);
+    border-left-color: gtkmix($bg_color, white, 0.7);
     
     // TODO: reuse this for os/2, haiku, beos?
     background-image: linear-gradient(
       to right,
       $border_color,
-      gtkmix($bg_color, $light_shadow, 0.7)
+      gtkmix($bg_color, white, 0.7)
     );
     background-size: 2px 100%;
     background-position: center center;
@@ -60,7 +60,7 @@
     background-image: linear-gradient(
       to bottom,
       $border_color,
-      gtkmix($bg_color, $light_shadow, 0.7)
+      gtkmix($bg_color, white, 0.7)
     );
   }
 }

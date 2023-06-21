@@ -3,8 +3,8 @@
   border: 1px solid $border_color;
   color: $menubar_fg_color;
   background-color: $menubar_bg_color;
-  border-top-color: gtkmix($menubar_bg_color, $light_shadow, 0.7);
-  border-left-color: gtkmix($menubar_bg_color, $light_shadow, 0.7);
+  border-top-color: gtkmix($menubar_bg_color, white, 0.7);
+  border-left-color: gtkmix($menubar_bg_color, white, 0.7);
 
   &:backdrop {
     color: $backdrop_fg_color;
@@ -19,8 +19,8 @@
     padding: 3px 20px 3px 8px;
     min-height: 12px;
     border: 1px solid gtkshade($border_color, 0.8);
-    border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
-    border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-top-color: gtkmix($bg_color, white, 0.7);
+    border-left-color: gtkmix($bg_color, white, 0.7);
     
     border-radius: 40px;
     color: $menubar_fg_color;
@@ -34,8 +34,8 @@
 
   @else if $type == "hover" {
     border-color: gtkshade($border_color, 0.8);
-    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-bottom-color: gtkmix($bg_color, white, 0.7);
+    border-right-color: gtkmix($bg_color, white, 0.7);
   }
 
   @else if $type == "disabled" {

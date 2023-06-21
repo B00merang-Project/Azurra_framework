@@ -1,18 +1,18 @@
 @mixin scale_trough() {
   border: none;
   border-radius: $scale_trough_radius;
-  background-color: gtkalpha($dark_shadow, 0.2);
+  background-color: gtkalpha(black, 0.2);
   background-image: linear-gradient(
     to bottom,
     gtkshade($bg_color, 0.4),
     gtkshade($bg_color, 0.9)
   );
 
-  &:disabled { background-color: gtkalpha($dark_shadow, 0.15);
-    &:backdrop { background-color: gtkalpha($dark_shadow, 0.08); }
+  &:disabled { background-color: gtkalpha(black, 0.15);
+    &:backdrop { background-color: gtkalpha(black, 0.08); }
   }
 
-  &:backdrop { background-color: gtkalpha($dark_shadow, 0.1); }
+  &:backdrop { background-color: gtkalpha(black, 0.1); }
   
   @at-root
   scale.vertical > trough {
@@ -60,7 +60,7 @@
     color: $fg_color;
     background-image: linear-gradient(
       to bottom,
-      $light_shadow,
+      white,
       #a3b8cb 50%,
       #a3b8cb 90%,
       #b8cde0

@@ -3,12 +3,12 @@
     padding: 5px;
     border-radius: $entry_radius;
     border: 1px solid $border_color;
-    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-bottom-color: gtkmix($bg_color, white, 0.7);
+    border-right-color: gtkmix($bg_color, white, 0.7);
     color: $text_color;
     background-color: $base_color;
-    box-shadow: inset 1px 1px $dark_shadow,
-                inset -1px -1px gtkmix($bg_color, $light_shadow, 0.7);
+    box-shadow: inset 1px 1px black,
+                inset -1px -1px gtkmix($bg_color, white, 0.7);
   }
 
   @else if $type == "disabled" {

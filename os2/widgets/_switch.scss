@@ -2,12 +2,12 @@
   margin: 0px;
   border-radius: $global_radius;
   border: 1px solid $border_color;
-  border-bottom-color: $light_shadow;
-  border-right-color: $light_shadow;
+  border-bottom-color: white;
+  border-right-color: white;
   color: $fg_color;
   background-color: $bg_color;
   box-shadow: inset 1px 1px $border_color,
-              inset -1px -1px $light_shadow;
+              inset -1px -1px white;
 
   &:checked {
     color: $selected_fg_color;
@@ -28,13 +28,13 @@
     min-width: 38px;
     border-radius: $global_radius;
     border: 1px solid $border_color;
-    border-top-color: $light_shadow;
-    border-left-color: $light_shadow;
+    border-top-color: white;
+    border-left-color: white;
     color: $fg_color;
     background-color: $bg_color;
     background-image: none;
     box-shadow: inset -1px -1px $border_color,
-                inset 1px 1px $light_shadow;
+                inset 1px 1px white;
   }
 
   @else if $type == "disabled" {

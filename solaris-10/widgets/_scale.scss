@@ -1,15 +1,15 @@
 @mixin scale_trough() {
   border-radius: $scale_trough_radius;
   border: 4px solid transparent;
-  background-color: gtkalpha($dark_shadow, 0.2);
+  background-color: gtkalpha(black, 0.2);
   background-image: linear-gradient(to bottom, gtkshade($bg_color, 0.8), $fg_color);
   border-image: url('assets/scale-h-trough.png') 4 4 4 4;
 
-  &:disabled { background-color: gtkalpha($dark_shadow, 0.15);
-    &:backdrop { background-color: gtkalpha($dark_shadow, 0.08); }
+  &:disabled { background-color: gtkalpha(black, 0.15);
+    &:backdrop { background-color: gtkalpha(black, 0.08); }
   }
 
-  &:backdrop { background-color: gtkalpha($dark_shadow, 0.1); }
+  &:backdrop { background-color: gtkalpha(black, 0.1); }
   
   @at-root
   scale.vertical > trough {
@@ -32,7 +32,7 @@
     margin: -$scale_slider_margin;
     border: none;
     border-radius: $scale_slider_radius;
-    box-shadow: 0 1px 2px 1px gtkalpha($dark_shadow, 0.09);
+    box-shadow: 0 1px 2px 1px gtkalpha(black, 0.09);
     color: $fg_color;
     background-color: transparent;
     background-position: center center;

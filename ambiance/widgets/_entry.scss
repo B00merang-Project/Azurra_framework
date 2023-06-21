@@ -15,20 +15,20 @@
     );
     
     @if $variant != 'dark' {
-      box-shadow: inset 0 1px gtkalpha($dark_shadow, 0.05),
-                  inset 1px 0 gtkalpha($dark_shadow, 0.035),
-                  inset -1px 0 gtkalpha($dark_shadow, 0.05),
-                  0 1px gtkalpha($light_shadow, 0.3),
-                  -1px 0 gtkalpha($light_shadow, 0.3),
-                  1px 0 gtkalpha($light_shadow, 0.3);
+      box-shadow: inset 0 1px gtkalpha(black, 0.05),
+                  inset 1px 0 gtkalpha(black, 0.035),
+                  inset -1px 0 gtkalpha(black, 0.05),
+                  0 1px gtkalpha(white, 0.3),
+                  -1px 0 gtkalpha(white, 0.3),
+                  1px 0 gtkalpha(white, 0.3);
     }
     @else {
-      box-shadow: inset 0 1px gtkalpha($dark_shadow, 0.05),
-                  inset 1px 0 gtkalpha($dark_shadow, 0.035),
-                  inset -1px 0 gtkalpha($dark_shadow, 0.05),
-                  0 1px gtkalpha($light_shadow, 0.05),
-                  -1px 0 gtkalpha($light_shadow, 0.05),
-                  1px 0 gtkalpha($light_shadow, 0.05);
+      box-shadow: inset 0 1px gtkalpha(black, 0.05),
+                  inset 1px 0 gtkalpha(black, 0.035),
+                  inset -1px 0 gtkalpha(black, 0.05),
+                  0 1px gtkalpha(white, 0.05),
+                  -1px 0 gtkalpha(white, 0.05),
+                  1px 0 gtkalpha(white, 0.05);
     }
   }
 

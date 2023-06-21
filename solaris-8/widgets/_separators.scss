@@ -1,7 +1,7 @@
 @mixin separators() {
   // TODO: is this still used?
   label.separator, popover label.separator, popover.background label.separator {
-    text-shadow: 1px 1px gtkalpha($light_shadow, 0.85);
+    text-shadow: 1px 1px gtkalpha(white, 0.85);
   }
 
   separator {
@@ -9,7 +9,7 @@
     min-width: 1px;
     min-height: 1px;
     background-color: gtkshade($bg_color, 0.7);
-    box-shadow: -1px -1px gtkmix($bg_color, $light_shadow, 0.7);
+    box-shadow: -1px -1px gtkmix($bg_color, white, 0.7);
 
     &:backdrop {
       background-color: gtkshade($bg_color, 0.7);
@@ -50,7 +50,7 @@
 
     .titlebar &, .titlebar:not(headerbar) > &, .titlebar &.titlebutton, .titlebar:not(headerbar) > &.titlebutton {
       background-color: gtkshade($titlebar_bg_color, 0.7);
-      box-shadow: -1px -1px gtkalpha($light_shadow, 0.4);
+      box-shadow: -1px -1px gtkalpha(white, 0.4);
 
       &:backdrop {
         background-color: gtkshade($bg_color, 0.7);
@@ -61,7 +61,7 @@
       min-width: 1px;
       min-height: 1px;
       background-color: gtkshade($titlebar_bg_color, 0.7);
-      box-shadow: -1px -1px gtkalpha($light_shadow, 0.4);
+      box-shadow: -1px -1px gtkalpha(white, 0.4);
 
       &:backdrop {
         background-color: gtkshade($bg_color, 0.7);
@@ -87,7 +87,7 @@
 
     .titlebutton button &, .titlebutton &.titlebutton {
       border-color: gtkshade($titlebar_bg_color, 0.7);
-      box-shadow: -1px -1px gtkalpha($light_shadow, 0.4);
+      box-shadow: -1px -1px gtkalpha(white, 0.4);
 
       &:backdrop {
         border-color: gtkshade($bg_color, 0.7);

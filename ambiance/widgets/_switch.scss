@@ -9,7 +9,7 @@
     gtkshade($bg_color, 0.9),
     gtkshade($bg_color, 0.96)
   );
-  box-shadow: inset 0 1px gtkalpha($dark_shadow, 0.1);
+  box-shadow: inset 0 1px gtkalpha(black, 0.1);
 
   &:checked {
     border-color: gtkshade($selected_bg_color, 0.65);
@@ -20,7 +20,7 @@
       gtkshade($selected_bg_color, 0.9),
       $selected_bg_color
     );
-    box-shadow: inset 0 0 0 1px gtkalpha($dark_shadow, 0.11);
+    box-shadow: inset 0 0 0 1px gtkalpha(black, 0.11);
 
     &:backdrop {
       color: $backdrop_selected_fg_color;

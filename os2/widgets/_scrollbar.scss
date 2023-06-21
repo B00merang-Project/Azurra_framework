@@ -1,8 +1,8 @@
 @mixin scrollbar($type : "base") {
   @if $type == "base" {
     border: 1px solid $border_color;
-    border-bottom-color: $light_shadow;
-    border-right-color: $light_shadow;
+    border-bottom-color: white;
+    border-right-color: white;
     background-color: $bg_color;
   }
 
@@ -18,16 +18,16 @@
     min-height: $scrollbar_slider_size;
     border-radius: $scrollbar_slider_radius;
     border: 1px solid $border_color;
-    border-top-color: $light_shadow;
-    border-left-color: $light_shadow;
+    border-top-color: white;
+    border-left-color: white;
     background-clip: padding-box;
     background-color: $bg_color;
     background-position: center center;
     background-repeat: no-repeat;
     box-shadow: inset -1px 0 $border_color,
                 inset 0 -1px $border_color,
-                inset 1px 0 $light_shadow,
-                inset 0 1px $light_shadow;
+                inset 1px 0 white,
+                inset 0 1px white;
   }
   
   @else if $type == "hint" {

@@ -3,8 +3,8 @@
   border-radius: $scale_trough_radius;
   background-color: gtkalpha($selected_bg_color, 0.2);
 
-  &:disabled { background-color: gtkalpha($dark_shadow, 0.15);
-    &:backdrop { background-color: gtkalpha($dark_shadow, 0.08); }
+  &:disabled { background-color: gtkalpha(black, 0.15);
+    &:backdrop { background-color: gtkalpha(black, 0.08); }
   }
   &:backdrop { background-color: gtkalpha($backdrop_selected_bg_color, 0.1); }
 }
@@ -32,7 +32,7 @@
     background-color: $selected_bg_color;
     background-image: none;
 
-    &:active { box-shadow: 0 0 0 8px gtkalpha($dark_shadow, 0.08); }
+    &:active { box-shadow: 0 0 0 8px gtkalpha(black, 0.08); }
 
     &:disabled { background-color: $disabled_bg_color;
       &:backdrop { background-color: $backdrop_disabled_bg_color; }

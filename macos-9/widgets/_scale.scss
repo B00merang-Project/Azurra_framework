@@ -1,17 +1,17 @@
 @mixin scale_trough() {
   border: 1px solid gtkshade($border_color, 0.75);
-  border-right-color: $light_shadow;
-  border-bottom-color: $light_shadow;
+  border-right-color: white;
+  border-bottom-color: white;
   border-radius: $scale_trough_radius;
   background-color: gtkshade($bg_color, 0.85);
-  box-shadow: inset 0px 0px 0px 1px $dark_shadow;
+  box-shadow: inset 0px 0px 0px 1px black;
   
   &:disabled {
     border-color: gtkshade($border_color, 0.95);
-    border-right-color: $light_shadow;
-    border-bottom-color: $light_shadow;
+    border-right-color: white;
+    border-bottom-color: white;
     background-color: $disabled_bg_color;
-    box-shadow: inset 0px 0px 0px 1px gtkalpha($dark_shadow, 0.2);
+    box-shadow: inset 0px 0px 0px 1px gtkalpha(black, 0.2);
   }
 }
 

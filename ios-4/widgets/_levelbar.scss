@@ -22,16 +22,16 @@
 
       &.high {
         background-color: gtkshade($success_color, 0.9);
-        background-image: linear-gradient(to bottom, gtkshade(gtkmix($success_color, $light_shadow, 0.45), 1.1), gtkshade(gtkmix($success_color, $light_shadow, 0.45), 0.9) 50%, gtkshade($success_color, 1.15) 51%, gtkshade($success_color, 1.01));
+        background-image: linear-gradient(to bottom, gtkshade(gtkmix($success_color, white, 0.45), 1.1), gtkshade(gtkmix($success_color, white, 0.45), 0.9) 50%, gtkshade($success_color, 1.15) 51%, gtkshade($success_color, 1.01));
       }
 
       &.low {
         background-color: gtkshade($warning_color, 0.9);
-        background-image: linear-gradient(to bottom, gtkshade(gtkmix($warning_color, $light_shadow, 0.45), 1.1), gtkshade(gtkmix($warning_color, $light_shadow, 0.45), 0.9) 50%, gtkshade($warning_color, 1.15) 51%, gtkshade($warning_color, 1.01));
+        background-image: linear-gradient(to bottom, gtkshade(gtkmix($warning_color, white, 0.45), 1.1), gtkshade(gtkmix($warning_color, white, 0.45), 0.9) 50%, gtkshade($warning_color, 1.15) 51%, gtkshade($warning_color, 1.01));
       }
 
       &.empty {
-        background-color: gtkalpha($dark_shadow, 0.1);
+        background-color: gtkalpha(black, 0.1);
         background-image: linear-gradient(to top, $base_color, gtkshade($bg_color, 1.05) 50%, gtkshade($bg_color, 1.02) 51%, gtkshade($bg_color, 0.85));
       }
     }

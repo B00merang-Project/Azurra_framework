@@ -1,8 +1,8 @@
 @mixin scrollbar($type : "base") {
   @if $type == "base" {
     border: 1px solid $border_color;
-    border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-    border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-bottom-color: gtkmix($bg_color, white, 0.7);
+    border-right-color: gtkmix($bg_color, white, 0.7);
     background-color: $border_color;
     box-shadow: inset 0px 0px 0px 6px gtkshade($bg_color, 0.9);;
     padding: 1px;
@@ -10,8 +10,8 @@
     @at-root
     scrolledwindow {
       border: 1px solid $border_color;
-      border-bottom-color: gtkmix($bg_color, $light_shadow, 0.7);
-      border-right-color: gtkmix($bg_color, $light_shadow, 0.7);
+      border-bottom-color: gtkmix($bg_color, white, 0.7);
+      border-right-color: gtkmix($bg_color, white, 0.7);
     }
   }
 
@@ -27,8 +27,8 @@
     min-height: $scrollbar_slider_size;
     border-radius: $scrollbar_slider_radius;
     border: 1px solid $border_color;
-    border-top-color: gtkmix($bg_color, $light_shadow, 0.7);
-    border-left-color: gtkmix($bg_color, $light_shadow, 0.7);
+    border-top-color: gtkmix($bg_color, white, 0.7);
+    border-left-color: gtkmix($bg_color, white, 0.7);
     background-color: $bg_color;
     background-clip: padding-box;
     background-repeat: no-repeat;

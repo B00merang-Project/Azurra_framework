@@ -1,7 +1,7 @@
 @mixin progressbar_trough($type) {
   @if $type == "base" {
     border-radius: $progressbar_radius;
-    border: 1px solid $dark_shadow;
+    border: 1px solid black;
     background-color: gtkshade($bg_color, 0.8);
     box-shadow: inset 1px 1px gtkshade($bg_color, 0.6),
                 inset -1px -1px gtkshade($bg_color, 0.95);
@@ -22,8 +22,8 @@
       $base_color,
       #000055 90%
     );
-    box-shadow: inset 2px 0px gtkalpha($light_shadow, 0.4),
-                inset -2px 0px gtkalpha($dark_shadow, 0.5);
+    box-shadow: inset 2px 0px gtkalpha(white, 0.4),
+                inset -2px 0px gtkalpha(black, 0.5);
   }
   
   @else if $type == "vert" {
@@ -33,7 +33,7 @@
       $base_color,
       #000055 90%
     );
-    box-shadow: inset 0px 2px gtkalpha($light_shadow, 0.4),
-                inset 0px -2px gtkalpha($dark_shadow, 0.5);
+    box-shadow: inset 0px 2px gtkalpha(white, 0.4),
+                inset 0px -2px gtkalpha(black, 0.5);
   }
 }

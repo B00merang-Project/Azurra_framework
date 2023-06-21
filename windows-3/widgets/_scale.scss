@@ -1,12 +1,12 @@
 @mixin scale_trough() {
   border: 1px solid $border_color;
   border-radius: $scale_trough_radius;
-  background-color: gtkalpha($dark_shadow, 0.1);
+  background-color: gtkalpha(black, 0.1);
 
-  &:disabled { background-color: gtkalpha($dark_shadow, 0.05);
-    &:backdrop { background-color: gtkalpha($dark_shadow, 0.05); }
+  &:disabled { background-color: gtkalpha(black, 0.05);
+    &:backdrop { background-color: gtkalpha(black, 0.05); }
   }
-  &:backdrop { background-color: gtkalpha($dark_shadow, 0.1); }
+  &:backdrop { background-color: gtkalpha(black, 0.1); }
 }
 
 @mixin scale_highlight() {

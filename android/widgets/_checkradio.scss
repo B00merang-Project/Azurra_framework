@@ -27,11 +27,11 @@
       &:focus { box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0.12); }
     }
     &:focus { box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0.16); }
-    &:disabled { color: gtkalpha($dark_shadow, 0.1); }
+    &:disabled { color: gtkalpha(black, 0.1); }
     
     &:checked,
     &:indeterminate { color: $selected_bg_color;
-      &:disabled { color: gtkalpha($dark_shadow, 0.26); }
+      &:disabled { color: gtkalpha(black, 0.26); }
     }
   }
   
@@ -52,7 +52,7 @@
       -gtk-icon-source: -gtk-recolor(url("assets/radio-checked-symbolic.svg"));
 
       &:disabled {
-        border-image-source: radial-gradient(circle, gtkalpha($dark_shadow, 0.26) 4.5px, transparent 5px);
+        border-image-source: radial-gradient(circle, gtkalpha(black, 0.26) 4.5px, transparent 5px);
       }
     }
   
@@ -64,7 +64,7 @@
       transition: none;
       box-shadow: none;
       background-image: none;
-      color: gtkalpha($light_shadow, 0.54);
+      color: gtkalpha(white, 0.54);
     }
   }
 }

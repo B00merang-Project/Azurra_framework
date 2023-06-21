@@ -24,17 +24,17 @@
   
   @else if $type == "selected-hover" {
     color: $selected_fg_color;
-    background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.15);
+    background-color: gtkmix($sidebar_bg_color, black, 0.15);
   }
   
   @else if $type == "selected-active" {
     color: $selected_fg_color;
-    background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.25);
+    background-color: gtkmix($sidebar_bg_color, black, 0.25);
   }
   
   @else if $type == "selected-backdrop" {
     color: $sidebar_fg_color;
-    background-color: gtkmix($sidebar_bg_color, $dark_shadow, 0.10);
+    background-color: gtkmix($sidebar_bg_color, black, 0.10);
     background-image: linear-gradient(
       to bottom,
       gtkshade($backdrop_selected_bg_color, 1.1),

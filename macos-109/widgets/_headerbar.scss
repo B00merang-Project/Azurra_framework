@@ -11,7 +11,7 @@
     gtkshade($base_color, 0.8),
     gtkshade($bg_color, 1.15)
   );
-  box-shadow: 0 1px gtkalpha($light_shadow, 0.1);
+  box-shadow: 0 1px gtkalpha(white, 0.1);
 
   // TODO: hover state?
 
@@ -20,15 +20,15 @@
     border-color: gtkshade(gtkshade($border_color, 0.7), 0.8);
     background-color: gtkshade($headerbar_bg_color, 0.5);
     background-image: none;
-    box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.45),
-                inset 0 -2px 3px 1px gtkalpha($light_shadow, 0.45),
+    box-shadow: inset 0 2px 3px 1px gtkalpha(black, 0.45),
+                inset 0 -2px 3px 1px gtkalpha(white, 0.45),
                 inset 0 1px gtkshade($bg_color, 0.35);
 
     &:backdrop {
       color: $backdrop_fg_color;
       border-color: gtkshade($backdrop_bg_color, 0.85);
       background-color: gtkshade($backdrop_bg_color, 0.85);
-      box-shadow: inset 0 2px 3px 1px gtkalpha($dark_shadow, 0.25),
+      box-shadow: inset 0 2px 3px 1px gtkalpha(black, 0.25),
                   inset 0 1px gtkshade($bg_color, 0.55);
     }
     

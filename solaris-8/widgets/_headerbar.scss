@@ -11,7 +11,7 @@
 
   @else if $type == "backdrop" {
     color: $backdrop_fg_color;
-    background-color: gtkmix($backdrop_bg_color, $light_shadow, 0.2);
+    background-color: gtkmix($backdrop_bg_color, white, 0.2);
     background-image: none;
     box-shadow: none;
   }
@@ -24,10 +24,10 @@
   border-radius: 0;
   color: $titlebar_bg_color;
   background-color: $titlebar_bg_color;
-  -gtk-icon-shadow: 1px 1px gtkalpha($light_shadow, 0.7),
+  -gtk-icon-shadow: 1px 1px gtkalpha(white, 0.7),
                     -1px -1px gtkshade($border_color, 0.85);
 
   &:backdrop {
-    background-color: gtkmix($backdrop_bg_color, $light_shadow, 0.2);
+    background-color: gtkmix($backdrop_bg_color, white, 0.2);
   }
 }

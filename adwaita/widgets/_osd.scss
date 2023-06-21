@@ -7,15 +7,15 @@
   color: $osd_text;
   background-color: $osd_base;
   background-image: linear-gradient(to bottom, gtkshade($osd_base, 1.01), gtkshade($osd_base, 0.92));
-  box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15), inset 0 -1px gtkalpha($dark_shadow, 0.35);
-  text-shadow: 0 1px $light_shadow;
-  -gtk-icon-shadow: 0 1px $light_shadow;
+  box-shadow: inset 0 1px gtkalpha(white, 0.15), inset 0 -1px gtkalpha(black, 0.35);
+  text-shadow: 0 1px white;
+  -gtk-icon-shadow: 0 1px white;
 
 
   &:hover {
     border-color: $osd_borders;
     background-image: linear-gradient(to bottom, gtkshade($osd_base, 1.075), gtkshade($osd_base, 0.945));
-    box-shadow: inset 0 1px gtkalpha($light_shadow, 0.15), inset 0 -1px gtkalpha($dark_shadow, 0.35);
+    box-shadow: inset 0 1px gtkalpha(white, 0.15), inset 0 -1px gtkalpha(black, 0.35);
   }
 
   &:active, &:checked {
@@ -79,7 +79,7 @@
         border-color: $osd_borders;
         background-color: $osd_base;
         background-image: linear-gradient(to bottom, gtkshade($osd_base, 1.03), gtkshade($osd_base, 0.94));
-        box-shadow: inset 0 1px gtkalpha($light_shadow, 0.05), inset 0 -1px gtkalpha($dark_shadow, 0.3), 0 1px gtkalpha($dark_shadow, 0.1);
+        box-shadow: inset 0 1px gtkalpha(white, 0.05), inset 0 -1px gtkalpha(black, 0.3), 0 1px gtkalpha(black, 0.1);
 
         &:hover {
           border-color: $osd_borders;
