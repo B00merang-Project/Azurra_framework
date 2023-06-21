@@ -30,12 +30,8 @@ $backdrop_disabled_text_color : $disabled_text_color;
 $dark_bg_color : $bg_color;
 $dark_fg_color : $fg_color;
 
-// Shadows
-$wm_shadow : #000000;
-
 // Borders
 $border_color : gtkshade($bg_color, 0.7);
-$outline_color : gtkshade($bg_color, 0.7);
 $backdrop_border_color : gtkshade($backdrop_bg_color, 0.7);
 
 // Event colors
@@ -46,7 +42,12 @@ $warning_color : #A77549;
 $error_color : #A74949;
 
 // Widget colors
+$outline_color : gtkshade($bg_color, 0.7);
 $link_color : #495DA7;
+$overshoot_color : rgba(0, 0, 0, 0.5);
+$drop_target_color : $selected_bg_color;
+$wm_shadow : #000000;
+
 $tooltip_bg_color : #FFFFBF;
 $tooltip_fg_color : #000000;
 $popover_bg_color : $bg_color;
@@ -65,17 +66,13 @@ $headerbar_bg_color : $bg_color;
 $headerbar_fg_color : $fg_color;
 $terminal_bg_color : #000000;
 $terminal_fg_color : #FFFFFF;
-$overshoot_color : rgba(0, 0, 0, 0.5);
-$drop_target_color : $selected_bg_color;
 
 // OSD
 $osd_fg : $dark_fg_color;
 $osd_bg : gtkmix($dark_bg_color, $dark_fg_color, 0.2);
 $osd_base : $dark_bg_color;
 
-
 // Desktop Icons
 $desktop_item_fg : #FFFFFF;
 $desktop_item_selected_fg : $selected_fg_color;
 $desktop_item_text_shadow : rgba(0, 0, 0, 0.8);
-
