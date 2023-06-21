@@ -9,8 +9,6 @@
   $_backdrop_disabled_fg : gtkmix($_fg, $_bg, 0.75);
   
   @if $type == "base" {
-    padding: 3px;
-    border-radius: $button_radius;
     border: 1px solid $_border;
     color: $_fg;
     background-color: $_bg;
@@ -44,10 +42,12 @@
     color: $_fg;
     background-color: gtkshade($selected_bg_color, 1.02);
     background-image: linear-gradient(
-      to bottom,
-      gtkshade($selected_bg_color, 1.12),
-      $selected_bg_color 60%,
-      gtkshade($selected_bg_color, 0.95) 70%
+      white,
+      gtkshade($selected_bg_color, 0.98) 21%,
+      gtkshade($selected_bg_color, 0.93) 51%,
+      gtkshade($selected_bg_color, 0.87) 60%,
+      gtkshade($selected_bg_color, 0.82) 70%,
+      gtkshade($selected_bg_color, 0.9) 90%
     );
   }
   

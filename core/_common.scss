@@ -459,6 +459,13 @@ editablelabel > stack > text {
 // button
 %button,
 button {
+  padding: $button_padding;
+  min-width: $button_min_width;
+  min-height: $button_min_height;
+  border-radius: $button_radius;
+  // TODO: declare border here
+  // border: $button_border_width solid;
+  
   @include button('base');
   
   &:hover {

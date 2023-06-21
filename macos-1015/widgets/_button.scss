@@ -13,9 +13,9 @@
   $_backdrop_disabled_fg : gtkmix($_fg, $_bg, 0.75);
   $_backdrop_disabled_border : gtkmix($_fg, $_bg, 0.95);
   
+  // TODO: fix dark variant (entry, button, borders)
+  
   @if $type == "base" {
-    padding: 4px 8px;
-    border-radius: $button_radius;
     border: 1px solid $_border;
     border-top-color: gtkshade($_border, 1.1);
     border-left-color: gtkshade($_border, 1.05);

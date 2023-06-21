@@ -1,13 +1,11 @@
 @mixin button($type, $_bg : $bg_color, $_fg : $fg_color) {
-  $_border : $border_color;
+  $_border : gtkshade($_bg, 0.5);
   
   $_disabled_bg : gtkmix($_fg, $_bg, 0.95);
   $_disabled_fg :gtkmix($_fg, $_bg, 0.5);
   $_disabled_border : gtkmix($_fg, $_bg, 0.8);
   
   @if $type == "base" {  
-    padding: 4px 8px;
-    border-radius: $button_radius;
     border: 1px solid $_border;
     color: $_fg;
     background-color: $_bg;
@@ -19,13 +17,13 @@
       gtkshade($_bg, 0.95) 90%
     );
     text-shadow: none;
-    box-shadow: inset -1px -1px gtkshade($_bg, 0.65),
+    box-shadow: inset -1px -1px gtkshade($_bg, 0.8),
                 inset 1px 1px gtkmix($_bg, white, 0.7);
     -gtk-icon-shadow: none;
   }
 
   @else if $type == "hover" {
-    border-color: $_border;
+    border-color: gtkshade($info_color, 0.5);
     background-color: $info_color;
     background-image: linear-gradient(
       to bottom,
@@ -34,8 +32,8 @@
       $info_color 70%,
       gtkshade($info_color, 0.95) 90%
     );
-    box-shadow: inset -1px -1px 0 gtkshade($info_color, 0.65),
-                inset 1px 1px gtkmix($info_color, white, 0.7);
+    box-shadow: inset -1px -1px 0 gtkshade($info_color, 0.85),
+                inset 1px 1px gtkmix($info_color, white, 0.45);
   }
 
   @else if $type == "active"
@@ -45,16 +43,16 @@
     background-color: $info_color;
     background-image: linear-gradient(
       to top,
-      gtkshade($info_color, 0.95) 5%,
-      gtkshade($info_color, 0.9) 20%,
-      gtkshade($info_color, 0.9) 70%,
-      gtkshade($info_color, 0.85) 90%
+      gtkshade($_bg, 0.95) 5%,
+      gtkshade($_bg, 0.9) 20%,
+      gtkshade($_bg, 0.9) 70%,
+      gtkshade($_bg, 0.85) 90%
     );
     box-shadow: none;
   }
 
   @else if $type == "checked-disabled" {
-    border-color: $_disabled_border;
+    border-color: gtkshade($_disabled_border, 0.8);
     color: $_disabled_fg;
     background-color: gtkshade($_disabled_bg, 0.9);
     background-image: linear-gradient(
@@ -67,6 +65,7 @@
   }
 
   @else if $type == "disabled"  {
+    border-color: $_disabled_border;
     color: $_disabled_fg;
   }
   
